@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const c = getCollection(params.slug);
-  return { title: c ? `${c.title} — Chrono-Protocol` : "Collection — Chrono-Protocol" };
+  return { title: c ? c.title : "Collection" };
 }
 
 export default function CollectionPage({ params }: { params: { slug: string } }) {

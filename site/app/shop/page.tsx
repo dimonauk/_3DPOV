@@ -4,7 +4,7 @@ import { PlatePlaceholder } from "@/components/plate-placeholder";
 import { EDITION_AP_SUFFIX } from "@/lib/constants";
 import { WORK_TYPE_LABEL, basePriceGBP } from "@/lib/works";
 
-export const metadata = { title: "Acquire — Chrono-Protocol" };
+export const metadata = { title: "Acquire" };
 
 export default function ShopIndex() {
   const collections = getCollections();

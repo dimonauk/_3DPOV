@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "The Protocol — Chrono-Protocol",
+  title: "The Protocol",
 };
 
 export default function ProtocolPage() {
