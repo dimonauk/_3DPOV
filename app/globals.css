@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/container-queries";
+@plugin "@tailwindcss/typography";
+
+/* ─── Holo-Flow Studio: kawaii-cyberpunk palette ────────────────────────
+   Tokens only. Don't hardcode hex anywhere else in the codebase —
+   extend here, reference via text-pink-200 / bg-warm-black / etc.
+*/
+@theme {
+  /* Soft pinks */
+  --color-pink-50: #fff5f9;
+  --color-pink-100: #ffe4ee;
+  --color-pink-200: #ffc4d9;
+  --color-pink-300: #ff9fbf;
+  --color-pink-400: #ff78a5;
+  --color-pink-500: #ff558f;
+  --color-pink-600: #e83c75;
+
+  /* Mint */
+  --color-mint-50: #effbf5;
+  --color-mint-100: #d5f5e3;
+  --color-mint-200: #a8ecc6;
+  --color-mint-300: #76dea6;
+  --color-mint-400: #46cf89;
+  --color-mint-500: #23b471;
+
+  /* Lavender */
+  --color-lavender-50: #f6f2ff;
+  --color-lavender-100: #e8ddff;
+  --color-lavender-200: #cfb7ff;
+  --color-lavender-300: #b490ff;
+  --color-lavender-400: #9a6dff;
+  --color-lavender-500: #8250ee;
+
+  /* Warm black — carries a pink/indigo bias so pastels stay luminous
+     against it. Never use pure #000 anywhere. */
+  --color-warm-black-50: #f6f4f7;
+  --color-warm-black-100: #d9d5dc;
+  --color-warm-black-700: #2a232f;
+  --color-warm-black-800: #1d181f;
+  --color-warm-black-900: #14111a;
+  --color-warm-black-950: #0c0a12;
+
+  /* Chrome — silver highlight for technical accents */
+  --color-chrome-100: #eef1f5;
+  --color-chrome-200: #d6dde5;
+  --color-chrome-300: #b5c0cd;
+  --color-chrome-400: #8d9bad;
+  --color-chrome-500: #6a7b8e;
+
+  /* Fonts — bridged from next/font's injected CSS variables. */
+  --font-display: var(--font-display-loaded), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-loaded), ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-warm-black-100, currentColor);
+  }
+
+  html,
+  body {
+    background: var(--color-warm-black-950);
+    color: var(--color-warm-black-50);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--color-pink-300);
+    color: var(--color-warm-black-950);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+}
+
+a,
+input,
+button {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2;
+}
+
+/* Monospace uppercase technical label. */
+.chrome-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  color: var(--color-chrome-400);
+}
+
+.prose-gallery {
+  max-width: 62ch;
+  line-height: 1.7;
+}
+
+.prose-gallery p + p {
+  margin-top: 1.1em;
+}
+
+.prose-gallery strong {
+  color: var(--color-pink-200);
+  font-weight: 500;
+}
+
+/* Holographic gradient sweep for logo / hero accents. */
+.chrome-sheen {
+  background: linear-gradient(
+    120deg,
+    var(--color-pink-200) 0%,
+    var(--color-lavender-200) 45%,
+    var(--color-mint-200) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
