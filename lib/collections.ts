@@ -3,6 +3,7 @@ import path from "node:path";
 import { cache } from "react";
 import matter from "gray-matter";
 import type { Work } from "./works";
+import { CollectionFrontmatterSchema } from "./schemas";
 
 export type Collection = {
   slug: string;
@@ -39,19 +40,16 @@ export const getCollection = cache((slug: string): Collection | null => {
     return null;
   }
   const { data, content } = matter(raw);
+  const parsed = CollectionFrontmatterSchema.safeParse(data);
+  if (!parsed.success) {
+    const issues = parsed.error.issues
+      .map((i) => `  - ${i.path.join(".")}: ${i.message}`)
+      .join("\n");
+    throw new Error(`Invalid frontmatter in content/collections/${slug}.mdx:\n${issues}`);
+  }
   return {
     slug,
-    code: data.code,
-    title: data.title,
-    kata: data.kata,
-    location: data.location,
-    coordinates: data.coordinates,
-    hour: data.hour,
-    performedOn: data.performedOn,
-    tint: data.tint,
-    heroCaption: data.heroCaption,
-    plateRef: data.plateRef,
-    work: data.work as Work,
+    ...parsed.data,
     body: content,
   };
 });
