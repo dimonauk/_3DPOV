@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getCollection, getCollectionSlugs, getCollections } from "@/lib/collections";
 import { PlatePlaceholder } from "@/components/plate-placeholder";
-import { CERTIFICATE_NOTE, EDITION_AP_SUFFIX, SHIPS_FROM } from "@/lib/constants";
+import { WorkPreview } from "@/components/work-preview";
+import { WorkSpec } from "@/components/work-spec";
+import { WORK_TYPE_LABEL } from "@/lib/works";
 
 export function generateStaticParams() {
   return getCollectionSlugs().map((slug) => ({ slug }));
@@ -22,6 +24,9 @@ export default function CollectionPage({ params }: { params: { slug: string } })
   const idx = all.findIndex((x) => x.slug === c.slug);
   const next = all[(idx + 1) % all.length];
 
+  const artefactNoun =
+    c.work.type === "plate" ? `Plate ${c.plateRef}` : `Object ${c.plateRef}`;
+
   return (
     <article>
       <header
@@ -31,7 +36,7 @@ export default function CollectionPage({ params }: { params: { slug: string } })
         }}
       >
         <div className="mx-auto max-w-5xl px-6 pt-16 pb-10">
-          <div className="protocol-label">{c.code} · Field Record</div>
+          <div className="protocol-label">{c.code} · Field Record · {WORK_TYPE_LABEL[c.work.type]}</div>
           <h1 className="display text-5xl md:text-6xl mt-5 leading-[1]">{c.title}</h1>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div>
@@ -64,25 +69,12 @@ export default function CollectionPage({ params }: { params: { slug: string } })
       <section className="border-t border-ink/10">
         <div className="mx-auto max-w-5xl px-6 py-14">
           <div className="protocol-label">The Artefact</div>
-          <h2 className="display text-3xl md:text-4xl mt-2">Plate {c.plateRef}</h2>
+          <h2 className="display text-3xl md:text-4xl mt-2">{artefactNoun}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-            <PlatePlaceholder tint={c.tint} aspect="3/4" hatch="diagonal" />
+            <WorkPreview work={c.work} tint={c.tint} aspect="3/4" />
             <div className="space-y-5 text-sm">
-              <dl className="grid grid-cols-2 gap-y-3">
-                <dt className="text-ink/60">Edition</dt>
-                <dd className="font-mono">{c.editionSize} {EDITION_AP_SUFFIX}</dd>
-                <dt className="text-ink/60">Dimensions</dt>
-                <dd>{c.dimensions}</dd>
-                <dt className="text-ink/60">Paper</dt>
-                <dd>{c.paper}</dd>
-                <dt className="text-ink/60">Certificate</dt>
-                <dd>{CERTIFICATE_NOTE}</dd>
-                <dt className="text-ink/60">Ships from</dt>
-                <dd>{SHIPS_FROM}</dd>
-                <dt className="text-ink/60">Price</dt>
-                <dd className="font-mono">£{c.priceGBP}</dd>
-              </dl>
+              <WorkSpec work={c.work} />
               <div className="flex gap-3 pt-3">
                 <Link
                   href={`/shop/${c.slug}`}
