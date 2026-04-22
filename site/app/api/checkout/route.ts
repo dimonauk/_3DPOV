@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     automatic_tax: { enabled: false },
     success_url: `${SITE_URL}/shop/${slug}/thanks?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE_URL}/shop/${slug}?cancelled=1`,
-    metadata: { slug, code: items[0].metadata.code },
+    metadata: { slug, code: items[0].metadata.code, title: items[0].name },
   });
 
   if (!session.url) {
