@@ -2,29 +2,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getCollection, getCollectionSlugs, getCollections } from "@/lib/collections";
+import { PlatePlaceholder } from "@/components/plate-placeholder";
+import { CERTIFICATE_NOTE, EDITION_AP_SUFFIX, SHIPS_FROM } from "@/lib/constants";
 
 export function generateStaticParams() {
   return getCollectionSlugs().map((slug) => ({ slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
-  try {
-    const c = getCollection(params.slug);
-    return { title: `${c.title} — Chrono-Protocol` };
-  } catch {
-    return { title: "Collection — Chrono-Protocol" };
-  }
+  const c = getCollection(params.slug);
+  return { title: c ? `${c.title} — Chrono-Protocol` : "Collection — Chrono-Protocol" };
 }
 
 export default function CollectionPage({ params }: { params: { slug: string } }) {
-  let collection;
-  try {
-    collection = getCollection(params.slug);
-  } catch {
-    notFound();
-  }
-  if (!collection) notFound();
-  const c = collection;
+  const c = getCollection(params.slug);
+  if (!c) notFound();
 
   const all = getCollections();
   const idx = all.findIndex((x) => x.slug === c.slug);
@@ -61,12 +53,7 @@ export default function CollectionPage({ params }: { params: { slug: string } })
       </header>
 
       <figure className="mx-auto max-w-5xl px-6 pt-10">
-        <div
-          className="aspect-[16/10] w-full border border-ink/15"
-          style={{
-            backgroundImage: `linear-gradient(135deg, ${c.tint}, transparent 80%), repeating-linear-gradient(90deg, rgba(11,11,13,0.05) 0 1px, transparent 1px 8px)`,
-          }}
-        />
+        <PlatePlaceholder tint={c.tint} aspect="16/10" hatch="vertical" tintStop="80%" />
         <figcaption className="protocol-label mt-3">{c.heroCaption}</figcaption>
       </figure>
 
@@ -80,24 +67,19 @@ export default function CollectionPage({ params }: { params: { slug: string } })
           <h2 className="display text-3xl md:text-4xl mt-2">Plate {c.plateRef}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-            <div
-              className="aspect-[3/4] w-full border border-ink/15"
-              style={{
-                backgroundImage: `linear-gradient(135deg, ${c.tint}, transparent 70%), repeating-linear-gradient(45deg, rgba(11,11,13,0.05) 0 1px, transparent 1px 6px)`,
-              }}
-            />
+            <PlatePlaceholder tint={c.tint} aspect="3/4" hatch="diagonal" />
             <div className="space-y-5 text-sm">
               <dl className="grid grid-cols-2 gap-y-3">
                 <dt className="text-ink/60">Edition</dt>
-                <dd className="font-mono">{c.editionSize} + 2 AP</dd>
+                <dd className="font-mono">{c.editionSize} {EDITION_AP_SUFFIX}</dd>
                 <dt className="text-ink/60">Dimensions</dt>
                 <dd>{c.dimensions}</dd>
                 <dt className="text-ink/60">Paper</dt>
                 <dd>{c.paper}</dd>
                 <dt className="text-ink/60">Certificate</dt>
-                <dd>Signed, numbered, embossed</dd>
+                <dd>{CERTIFICATE_NOTE}</dd>
                 <dt className="text-ink/60">Ships from</dt>
-                <dd>London, UK</dd>
+                <dd>{SHIPS_FROM}</dd>
                 <dt className="text-ink/60">Price</dt>
                 <dd className="font-mono">£{c.priceGBP}</dd>
               </dl>

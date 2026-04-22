@@ -2,20 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bone: #efece4;
-  --ink: #0b0b0d;
-  --rust: #8a3324;
-}
-
 html, body {
-  background: var(--bone);
-  color: var(--ink);
+  background: theme("colors.bone");
+  color: theme("colors.ink");
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--bone);
+  background: theme("colors.ink");
+  color: theme("colors.bone");
 }
 
 .rule {

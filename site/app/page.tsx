@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCollections } from "@/lib/collections";
+import { PlatePlaceholder } from "@/components/plate-placeholder";
 
 export default function HomePage() {
   const collections = getCollections().slice(0, 3);
@@ -82,12 +83,7 @@ export default function HomePage() {
           {collections.map((c) => (
             <li key={c.slug}>
               <Link href={`/collections/${c.slug}`} className="block group">
-                <div
-                  className="aspect-[4/5] w-full border border-ink/15"
-                  style={{
-                    backgroundImage: `linear-gradient(135deg, ${c.tint}, transparent 70%), repeating-linear-gradient(0deg, rgba(11,11,13,0.04) 0 1px, transparent 1px 6px)`,
-                  }}
-                />
+                <PlatePlaceholder tint={c.tint} aspect="4/5" hatch="horizontal" />
                 <div className="protocol-label mt-4">{c.code}</div>
                 <div className="display text-xl mt-1 group-hover:underline underline-offset-4">
                   {c.title}

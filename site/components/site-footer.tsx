@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ARCHIVE_VERSION, CONTACT_EMAIL } from "@/lib/constants";
 
 export function SiteFooter() {
   return (
@@ -22,7 +23,7 @@ export function SiteFooter() {
         <div>
           <div className="protocol-label mb-3">Contact</div>
           <ul className="space-y-2 text-sm">
-            <li><a href="mailto:archive@chrono-protocol.example">archive@chrono-protocol.example</a></li>
+            <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
             <li><Link href="/shop/shipping">Shipping &amp; returns</Link></li>
             <li><Link href="/shop/certificate">Certificate of authenticity</Link></li>
           </ul>
@@ -31,7 +32,7 @@ export function SiteFooter() {
       <div className="border-t border-ink/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-xs text-ink/60">
           <span>© {new Date().getFullYear()} Chrono-Protocol Archive</span>
-          <span className="font-mono tracking-protocol">CP-ARCHIVE / v0.1</span>
+          <span className="font-mono tracking-protocol">{ARCHIVE_VERSION}</span>
         </div>
       </div>
     </footer>
