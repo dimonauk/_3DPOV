@@ -1,0 +1,46 @@
+import Link from "next/link";
+import { getCollections } from "@/lib/collections";
+
+export const metadata = {
+  title: "Collections — Chrono-Protocol",
+};
+
+export default function CollectionsIndex() {
+  const collections = getCollections();
+  return (
+    <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="protocol-label">Index</div>
+      <h1 className="display text-4xl md:text-5xl mt-3">Collections</h1>
+      <p className="mt-4 max-w-xl text-ink/70">
+        Each collection documents a single kata and the space it was held
+        against. The artefact &mdash; the plate &mdash; is what the fieldwork
+        leaves behind.
+      </p>
+
+      <ul className="mt-14 divide-y divide-ink/10 border-t border-b border-ink/10">
+        {collections.map((c) => (
+          <li key={c.slug}>
+            <Link
+              href={`/collections/${c.slug}`}
+              className="grid grid-cols-12 gap-6 py-8 items-center hover:bg-ink/[0.03] transition-colors"
+            >
+              <div className="col-span-2 protocol-label">{c.code}</div>
+              <div className="col-span-5">
+                <div className="display text-2xl">{c.title}</div>
+                <div className="text-sm text-ink/60 mt-1">{c.kata}</div>
+              </div>
+              <div className="col-span-3 text-sm">
+                <div>{c.location}</div>
+                <div className="text-ink/60">{c.coordinates}</div>
+              </div>
+              <div className="col-span-2 text-right text-sm">
+                <div className="font-mono">Ed. {c.editionSize}</div>
+                <div className="text-ink/60">£{c.priceGBP}</div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
