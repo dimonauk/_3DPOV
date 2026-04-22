@@ -14,7 +14,8 @@ import type { Product } from "./shopify/types";
  * page call-site doesn't change.
  */
 export function resolveGlbUrl(product: Product): string | undefined {
-  if (!product.tags?.includes("3d")) return undefined;
+  const hasTag = product.tags?.some((t) => t.toLowerCase() === "3d");
+  if (!hasTag) return undefined;
   const base = process.env.NEXT_PUBLIC_MODEL_BASE_URL?.replace(/\/$/, "") ?? "";
   return `${base}/models/${product.handle}.glb`;
 }
