@@ -3,7 +3,7 @@ import { getCollections } from "@/lib/collections";
 import { WORK_TYPE_LABEL, basePriceGBP } from "@/lib/works";
 
 export const metadata = {
-  title: "Collections — Chrono-Protocol",
+  title: "Collections",
 };
 
 export default function CollectionsIndex() {

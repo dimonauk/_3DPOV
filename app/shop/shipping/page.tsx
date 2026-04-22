@@ -1,4 +1,4 @@
-export const metadata = { title: "Shipping & Returns — Chrono-Protocol" };
+export const metadata = { title: "Shipping & Returns" };
 
 export default function ShippingPage() {
   return (

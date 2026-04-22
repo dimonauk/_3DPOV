@@ -1,4 +1,4 @@
-export const metadata = { title: "Certificate of Authenticity — Chrono-Protocol" };
+export const metadata = { title: "Certificate of Authenticity" };
 
 export default function CertificatePage() {
   return (

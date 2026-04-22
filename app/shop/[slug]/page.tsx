@@ -14,7 +14,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const c = getCollection(params.slug);
-  return { title: c ? `Acquire ${c.title} — Chrono-Protocol` : "Acquire — Chrono-Protocol" };
+  return { title: c ? `Acquire ${c.title}` : "Acquire" };
 }
 
 export default function ShopItem({ params }: { params: { slug: string } }) {
@@ -85,20 +85,21 @@ function FixedPriceCheckout({
         <div className="text-xs text-ink/60">Tax &amp; shipping at checkout</div>
       </div>
 
-      {showFaceMount && (
-        <fieldset className="mt-6">
-          <legend className="protocol-label mb-2">Finish</legend>
-          <label className="flex items-center gap-3 border border-ink/15 p-3 text-sm">
-            <input type="radio" name="finish" defaultChecked /> Archival paper, unframed — included
-          </label>
-          <label className="flex items-center gap-3 border border-ink/15 p-3 text-sm mt-2">
-            <input type="radio" name="finish" /> Face-mount on 3mm acrylic — +£{faceMountPrice(priceGBP)}
-          </label>
-        </fieldset>
-      )}
-
       <form action="/api/checkout" method="post" className="mt-6">
         <input type="hidden" name="slug" value={slug} />
+
+        {showFaceMount && (
+          <fieldset className="mb-6">
+            <legend className="protocol-label mb-2">Finish</legend>
+            <label className="flex items-center gap-3 border border-ink/15 p-3 text-sm">
+              <input type="radio" name="finish" value="unframed" defaultChecked /> Archival paper, unframed — included
+            </label>
+            <label className="flex items-center gap-3 border border-ink/15 p-3 text-sm mt-2">
+              <input type="radio" name="finish" value="face-mount" /> Face-mount on 3mm acrylic — +£{faceMountPrice(priceGBP)}
+            </label>
+          </fieldset>
+        )}
+
         <button
           type="submit"
           className="w-full border border-ink bg-ink text-bone py-4 tracking-protocol text-sm hover:bg-bone hover:text-ink transition-colors"
