@@ -89,7 +89,7 @@ than broken.
 
 - **Staging**: Shopify Partners dev store `holoflow-dev.myshopify.com`,
   pointed at a Vercel preview branch. All experiments happen here first.
-- **Production**: `holoflow.myshopify.com`, pointed at `holo-flow.studio`.
+- **Production**: `holoflow.myshopify.com`, pointed at `holoflow.co.uk`.
 
 Env vars are scoped per-environment in Vercel's dashboard so dev-store
 data never reaches production and vice versa.

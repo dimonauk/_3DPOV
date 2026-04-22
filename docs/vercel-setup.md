@@ -14,7 +14,7 @@ vercel.com/new → Import Git Repository → pick `dimonauk/_3DPOV`.
   or set as production branch once you're happy
 
 If you forked the commerce repo into its own repository instead
-(`dimonauk/holo-flow-studio`), just swap the import source.
+(`dimonauk/holoflow`), just swap the import source.
 
 ## 2. Set environment variables
 
@@ -49,13 +49,33 @@ and at least one product).
 
 ## 4. Custom domain (production only)
 
-Project → Settings → Domains → Add `holo-flow.studio`. Vercel walks
-you through the DNS records. After DNS propagates (minutes):
+Project → Settings → Domains → Add `holoflow.co.uk` (and optionally
+`www.holoflow.co.uk` as a redirect).
 
-- Update Shopify webhooks to use `https://holo-flow.studio/api/revalidate?...`
+### Namecheap DNS records
+
+In Namecheap → Domain List → `holoflow.co.uk` → **Manage** →
+**Advanced DNS**, set the following (deleting any parking records
+Namecheap added by default):
+
+| Type  | Host  | Value                   | TTL       |
+|-------|-------|-------------------------|-----------|
+| A     | @     | `76.76.21.21`           | Automatic |
+| CNAME | www   | `cname.vercel-dns.com.` | Automatic |
+
+Vercel verifies ownership automatically once DNS propagates (a few
+minutes to an hour). You'll get a green tick next to the domain when
+it's live.
+
+### After DNS is live
+
+- Update Shopify webhooks to use
+  `https://holoflow.co.uk/api/revalidate?secret=<SHOPIFY_REVALIDATION_SECRET>`
   (see `docs/shopify-setup.md` step 4).
-- The OG tags and sitemap auto-pick up the domain via `VERCEL_URL`; if
-  you want to force a specific production URL, set `NEXT_PUBLIC_VERCEL_URL`.
+- The OG tags and sitemap auto-pick up the domain via `VERCEL_URL`.
+- If you want to force a specific production URL (for instance in
+  previews that should still link back to prod), set
+  `NEXT_PUBLIC_VERCEL_URL=holoflow.co.uk` as a production env var.
 
 ## 5. Analytics & Speed Insights
 
