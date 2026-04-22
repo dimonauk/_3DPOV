@@ -101,13 +101,27 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-warm-black-800">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-6 py-5 text-xs text-chrome-400 md:flex-row md:items-center md:justify-between">
-          <p>
-            &copy; {currentYear} {copyrightName}. All rights reserved.
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-chrome-400">
+          <p className="text-[0.7rem] leading-relaxed">
+            Holo-Flow Studio is a sole-trader business operated by Dimona
+            Dougherty, Manchester, UK. Trading address available upon
+            request &mdash;{" "}
+            <a
+              href="mailto:studio@holoflow.co.uk"
+              className="underline underline-offset-4 hover:text-pink-200"
+            >
+              studio@holoflow.co.uk
+            </a>
+            .
           </p>
-          <p className="font-mono tracking-[0.22em] uppercase">
-            Holo-Flow / Field records
-          </p>
+          <div className="mt-1 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p>
+              &copy; {currentYear} {copyrightName}. All rights reserved.
+            </p>
+            <p className="font-mono tracking-[0.22em] uppercase">
+              Holo-Flow / Field records
+            </p>
+          </div>
         </div>
       </div>
     </footer>

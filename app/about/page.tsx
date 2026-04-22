@@ -82,10 +82,10 @@ export default function AboutPage() {
             Manchester, UK.
           </h2>
           <p>
-            Holo-Flow Studio is based in Manchester. Dimona &mdash;
-            founder, technologist, twelve years into poi &mdash; runs the
-            practice. The studio is a small one: one pair of hands, one
-            workshop, small editions.
+            Holo-Flow Studio is based in Manchester. Dimona Dougherty
+            &mdash; founder, technologist, twelve years into poi &mdash;
+            runs the practice. The studio is a small one: one pair of
+            hands, one workshop, small editions.
           </p>
           <p>
             Everything is made to order, in runs. We don't stockpile.
