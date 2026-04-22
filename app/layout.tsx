@@ -28,12 +28,27 @@ const mono = JetBrains_Mono({
 });
 
 const { SITE_NAME } = process.env;
+const NAME = SITE_NAME ?? "Holo-Flow Studio";
+const DESCRIPTION =
+  "Editioned waveguide sculptures, desktop objects, and configurable wall arrays from a twelve-year poi practice. Manchester, UK.";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: SITE_NAME ?? "Holo-Flow Studio",
-    template: `%s | ${SITE_NAME ?? "Holo-Flow Studio"}`,
+    default: `${NAME} — Light, held in the hand`,
+    template: `%s | ${NAME}`,
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: NAME,
+    title: `${NAME} — Light, held in the hand`,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${NAME} — Light, held in the hand`,
+    description: DESCRIPTION,
   },
   robots: {
     follow: true,

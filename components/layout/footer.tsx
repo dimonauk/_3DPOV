@@ -4,72 +4,109 @@ import FooterMenu from "components/layout/footer-menu";
 import LogoSquare from "components/logo-square";
 import { getMenu } from "lib/shopify";
 import { Suspense } from "react";
+import { NewsletterForm } from "./newsletter-form";
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const skeleton =
-    "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
+  const skeleton = "w-full h-5 animate-pulse rounded-sm bg-warm-black-800";
   const menu = await getMenu("next-js-frontend-footer-menu");
-  const copyrightName = COMPANY_NAME || SITE_NAME || "";
+  const copyrightName = COMPANY_NAME || SITE_NAME || "Holo-Flow Studio";
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
-        <div>
-          <Link
-            className="flex items-center gap-2 text-black md:pt-1 dark:text-white"
-            href="/"
-          >
+    <footer className="border-t border-warm-black-800 bg-warm-black-950 text-sm text-chrome-300">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-4">
+        <div className="md:col-span-1">
+          <Link className="flex items-center gap-3 text-chrome-100" href="/">
             <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
-          </Link>
-        </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+            <div className="flex flex-col leading-tight">
+              <span className="chrome-label text-[0.65rem]">Holo-Flow</span>
+              <span
+                className="font-display text-base chrome-sheen"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Studio
+              </span>
             </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
-        <div className="md:ml-auto">
-          <a
-            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
+          </Link>
+          <p className="mt-4 max-w-xs text-xs leading-relaxed text-chrome-400">
+            Editioned objects from a twelve-year poi practice. Manchester, UK.
+          </p>
+        </div>
+
+        <div>
+          <div className="chrome-label mb-4">Studio</div>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link href="/about" className="hover:text-pink-200">About</Link>
+            </li>
+            <li>
+              <Link href="/search" className="hover:text-pink-200">Catalogue</Link>
+            </li>
+            <li>
+              <Link href="/journal" className="hover:text-pink-200">Journal</Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-pink-200">Contact</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div className="chrome-label mb-4">Policies</div>
+          <Suspense
+            fallback={
+              <div className="flex flex-col gap-2">
+                <div className={skeleton} />
+                <div className={skeleton} />
+                <div className={skeleton} />
+              </div>
+            }
           >
-            <span className="px-3">▲</span>
-            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
-          </a>
+            <FooterMenu menu={menu} />
+          </Suspense>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link href="/policies/privacy-policy" className="hover:text-pink-200">
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/terms-of-service" className="hover:text-pink-200">
+                Terms
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/refund-policy" className="hover:text-pink-200">
+                Returns
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/shipping-policy" className="hover:text-pink-200">
+                Shipping
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div className="chrome-label mb-4">Dispatch notes</div>
+          <p className="mb-3 text-xs leading-relaxed text-chrome-400">
+            New releases, field records, and studio notes. Roughly monthly.
+            Never advertising.
+          </p>
+          <NewsletterForm />
         </div>
       </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
+
+      <div className="border-t border-warm-black-800">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-6 py-5 text-xs text-chrome-400 md:flex-row md:items-center md:justify-between">
           <p>
-            &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith(".")
-              ? "."
-              : ""}{" "}
-            All rights reserved.
+            &copy; {currentYear} {copyrightName}. All rights reserved.
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>
-            <a href="https://github.com/vercel/commerce">View the source</a>
-          </p>
-          <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              Created by ▲ Vercel
-            </a>
+          <p className="font-mono tracking-[0.22em] uppercase">
+            Holo-Flow / Field records
           </p>
         </div>
       </div>
