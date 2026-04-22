@@ -1,38 +1,27 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCollection, getCollectionSlugs } from "@/lib/collections";
+import { faceMountPrice } from "@/lib/pricing";
+import { CERTIFICATE_NOTE, DISPATCH_WINDOW, EDITION_AP_SUFFIX, SHIPS_FROM } from "@/lib/constants";
+import { PlatePlaceholder } from "@/components/plate-placeholder";
 
 export function generateStaticParams() {
   return getCollectionSlugs().map((slug) => ({ slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
-  try {
-    const c = getCollection(params.slug);
-    return { title: `Acquire ${c.title} — Chrono-Protocol` };
-  } catch {
-    return { title: "Acquire — Chrono-Protocol" };
-  }
+  const c = getCollection(params.slug);
+  return { title: c ? `Acquire ${c.title} — Chrono-Protocol` : "Acquire — Chrono-Protocol" };
 }
 
 export default function ShopItem({ params }: { params: { slug: string } }) {
-  let c;
-  try {
-    c = getCollection(params.slug);
-  } catch {
-    notFound();
-  }
+  const c = getCollection(params.slug);
   if (!c) notFound();
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12">
       <div>
-        <div
-          className="aspect-[3/4] border border-ink/15"
-          style={{
-            backgroundImage: `linear-gradient(135deg, ${c.tint}, transparent 70%), repeating-linear-gradient(45deg, rgba(11,11,13,0.05) 0 1px, transparent 1px 6px)`,
-          }}
-        />
+        <PlatePlaceholder tint={c.tint} aspect="3/4" hatch="diagonal" />
         <div className="protocol-label mt-3">Plate {c.plateRef} · {c.code}</div>
       </div>
 
@@ -45,17 +34,17 @@ export default function ShopItem({ params }: { params: { slug: string } }) {
 
         <dl className="mt-8 grid grid-cols-2 gap-y-3 text-sm border-t border-ink/10 pt-6">
           <dt className="text-ink/60">Edition</dt>
-          <dd className="font-mono">{c.editionSize} + 2 AP</dd>
+          <dd className="font-mono">{c.editionSize} {EDITION_AP_SUFFIX}</dd>
           <dt className="text-ink/60">Dimensions</dt>
           <dd>{c.dimensions}</dd>
           <dt className="text-ink/60">Paper</dt>
           <dd>{c.paper}</dd>
           <dt className="text-ink/60">Certificate</dt>
-          <dd>Signed, numbered, embossed</dd>
+          <dd>{CERTIFICATE_NOTE}</dd>
           <dt className="text-ink/60">Ships from</dt>
-          <dd>London, UK</dd>
+          <dd>{SHIPS_FROM}</dd>
           <dt className="text-ink/60">Dispatch</dt>
-          <dd>3&ndash;5 working days</dd>
+          <dd>{DISPATCH_WINDOW}</dd>
         </dl>
 
         <div className="mt-8 border-t border-ink/10 pt-6">
@@ -73,7 +62,7 @@ export default function ShopItem({ params }: { params: { slug: string } }) {
               <input type="radio" name="finish" defaultChecked /> Archival paper, unframed — included
             </label>
             <label className="flex items-center gap-3 border border-ink/15 p-3 text-sm mt-2">
-              <input type="radio" name="finish" /> Face-mount on 3mm acrylic — +£{Math.round(c.priceGBP * 0.55)}
+              <input type="radio" name="finish" /> Face-mount on 3mm acrylic — +£{faceMountPrice(c.priceGBP)}
             </label>
           </fieldset>
 

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getCollections } from "@/lib/collections";
+import { PlatePlaceholder } from "@/components/plate-placeholder";
+import { EDITION_AP_SUFFIX } from "@/lib/constants";
 
 export const metadata = { title: "Acquire — Chrono-Protocol" };
 
@@ -18,17 +20,12 @@ export default function ShopIndex() {
       <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
         {collections.map((c) => (
           <li key={c.slug} className="border border-ink/15 p-6">
-            <div
-              className="aspect-[4/5] mb-5"
-              style={{
-                backgroundImage: `linear-gradient(135deg, ${c.tint}, transparent 70%), repeating-linear-gradient(0deg, rgba(11,11,13,0.04) 0 1px, transparent 1px 6px)`,
-              }}
-            />
+            <PlatePlaceholder tint={c.tint} aspect="4/5" hatch="horizontal" className="mb-5" />
             <div className="protocol-label">{c.code} · Plate {c.plateRef}</div>
             <div className="display text-2xl mt-1">{c.title}</div>
             <dl className="mt-4 grid grid-cols-2 gap-y-2 text-sm">
               <dt className="text-ink/60">Edition</dt>
-              <dd className="font-mono">{c.editionSize} + 2 AP</dd>
+              <dd className="font-mono">{c.editionSize} {EDITION_AP_SUFFIX}</dd>
               <dt className="text-ink/60">Size</dt>
               <dd>{c.dimensions}</dd>
               <dt className="text-ink/60">Price</dt>

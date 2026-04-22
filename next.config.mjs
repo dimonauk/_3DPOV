@@ -3,9 +3,6 @@ const nextConfig = {
   images: {
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
-  experimental: {
-    mdxRs: false,
-  },
 };
 
 export default nextConfig;

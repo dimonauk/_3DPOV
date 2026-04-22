@@ -17,6 +17,7 @@ const config: Config = {
         bone: "#efece4",
         rust: "#8a3324",
         verdigris: "#2f5d50",
+        plum: "#3a2f5d",
       },
       letterSpacing: {
         protocol: "0.2em",

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { cache } from "react";
 import matter from "gray-matter";
 
 export type Collection = {
@@ -23,19 +24,22 @@ export type Collection = {
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "collections");
 
-export function getCollectionSlugs(): string[] {
+export const getCollectionSlugs = cache((): string[] => {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
     .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"))
-    .map((f) => f.replace(/\.mdx?$/, ""));
-}
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.replace(/\.mdx$/, ""));
+});
 
-export function getCollection(slug: string): Collection {
-  const mdxPath = path.join(CONTENT_DIR, `${slug}.mdx`);
-  const mdPath = path.join(CONTENT_DIR, `${slug}.md`);
-  const filePath = fs.existsSync(mdxPath) ? mdxPath : mdPath;
-  const raw = fs.readFileSync(filePath, "utf8");
+export const getCollection = cache((slug: string): Collection | null => {
+  const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
+  let raw: string;
+  try {
+    raw = fs.readFileSync(filePath, "utf8");
+  } catch {
+    return null;
+  }
   const { data, content } = matter(raw);
   return {
     slug,
@@ -55,10 +59,11 @@ export function getCollection(slug: string): Collection {
     plateRef: data.plateRef,
     body: content,
   };
-}
+});
 
-export function getCollections(): Collection[] {
-  return getCollectionSlugs()
+export const getCollections = cache((): Collection[] =>
+  getCollectionSlugs()
     .map((s) => getCollection(s))
-    .sort((a, b) => a.code.localeCompare(b.code));
-}
+    .filter((c): c is Collection => c !== null)
+    .sort((a, b) => a.code.localeCompare(b.code))
+);
