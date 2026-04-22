@@ -115,7 +115,7 @@ export default function AboutPage() {
         <section className="mt-20">
           <div className="chrome-label mb-3">Contact</div>
           <p className="text-chrome-200">
-            Studio: <a href="mailto:studio@holoflow.co.uk" className="text-pink-200 underline underline-offset-4">studio@holoflow.co.uk</a>
+            Studio: <a href="mailto:contact@holoflow.co.uk" className="text-pink-200 underline underline-offset-4">contact@holoflow.co.uk</a>
             <br />
             Instagram: <a href="https://instagram.com/holoflow.studio" className="text-pink-200 underline underline-offset-4" target="_blank" rel="noreferrer">@holoflow.studio</a>
           </p>

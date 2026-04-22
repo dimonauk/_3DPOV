@@ -107,10 +107,10 @@ export default async function Footer() {
             Dougherty, Manchester, UK. Trading address available upon
             request &mdash;{" "}
             <a
-              href="mailto:studio@holoflow.co.uk"
+              href="mailto:contact@holoflow.co.uk"
               className="underline underline-offset-4 hover:text-pink-200"
             >
-              studio@holoflow.co.uk
+              contact@holoflow.co.uk
             </a>
             .
           </p>
