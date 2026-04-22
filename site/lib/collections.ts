@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { cache } from "react";
 import matter from "gray-matter";
+import type { Work } from "./works";
 
 export type Collection = {
   slug: string;
@@ -12,14 +13,11 @@ export type Collection = {
   coordinates: string;
   hour: string;
   performedOn: string;
-  editionSize: number;
-  priceGBP: number;
-  dimensions: string;
-  paper: string;
   tint: string;
   heroCaption: string;
-  body: string;
   plateRef: string;
+  body: string;
+  work: Work;
 };
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "collections");
@@ -50,13 +48,10 @@ export const getCollection = cache((slug: string): Collection | null => {
     coordinates: data.coordinates,
     hour: data.hour,
     performedOn: data.performedOn,
-    editionSize: data.editionSize,
-    priceGBP: data.priceGBP,
-    dimensions: data.dimensions,
-    paper: data.paper,
     tint: data.tint,
     heroCaption: data.heroCaption,
     plateRef: data.plateRef,
+    work: data.work as Work,
     body: content,
   };
 });
