@@ -2,6 +2,10 @@ import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
 import { GalleryWith3D } from "components/product/gallery-with-3d";
 import { ProductDescription } from "components/product/product-description";
+import {
+  PhotographMeta,
+  isPhotographProduct,
+} from "components/product/photograph-meta";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { resolveGlbUrl } from "lib/three-d";
 import { getProduct, getProductRecommendations } from "lib/shopify";
@@ -102,6 +106,9 @@ export default async function ProductPage(props: {
           </div>
 
           <div className="basis-full lg:basis-2/6">
+            {isPhotographProduct(product) && (
+              <PhotographMeta product={product} />
+            )}
             <Suspense fallback={null}>
               <ProductDescription product={product} />
             </Suspense>

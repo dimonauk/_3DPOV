@@ -10,8 +10,20 @@ import Search, { SearchSkeleton } from "./search";
 const { SITE_NAME } = process.env;
 const SITE_LABEL = SITE_NAME ?? "Holo-Flow Studio";
 
+// Fallback nav shown when the Shopify "next-js-frontend-header-menu"
+// menu isn't configured yet. Once Shopify's menu has entries they take
+// over — this list is only displayed when the remote fetch returns [].
+const FALLBACK_MENU: Menu[] = [
+  { title: "Photographs", path: "/photographs" },
+  { title: "Objects", path: "/search" },
+  { title: "Bureau", path: "/bureau" },
+  { title: "Practice", path: "/practice" },
+  { title: "About", path: "/about" },
+];
+
 export async function Navbar() {
-  const menu = await getMenu("next-js-frontend-header-menu");
+  const remote = await getMenu("next-js-frontend-header-menu");
+  const menu = remote.length ? remote : FALLBACK_MENU;
 
   return (
     <nav className="sticky top-0 z-40 border-b border-warm-black-800 bg-warm-black-950/85 backdrop-blur supports-[backdrop-filter]:bg-warm-black-950/60">
@@ -42,21 +54,19 @@ export async function Navbar() {
               </div>
             </Link>
 
-            {menu.length ? (
-              <ul className="hidden items-center gap-6 text-sm md:flex">
-                {menu.map((item: Menu) => (
-                  <li key={item.title}>
-                    <Link
-                      href={item.path}
-                      prefetch={true}
-                      className="text-chrome-300 underline-offset-4 transition-colors hover:text-pink-200 hover:underline"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
+            <ul className="hidden items-center gap-6 text-sm md:flex">
+              {menu.map((item: Menu) => (
+                <li key={item.title}>
+                  <Link
+                    href={item.path}
+                    prefetch={true}
+                    className="text-chrome-300 underline-offset-4 transition-colors hover:text-pink-200 hover:underline"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="hidden justify-center md:flex md:w-1/3">

@@ -42,7 +42,13 @@ export default async function Footer() {
               <Link href="/about" className="hover:text-pink-200">About</Link>
             </li>
             <li>
+              <Link href="/photographs" className="hover:text-pink-200">Photographs</Link>
+            </li>
+            <li>
               <Link href="/search" className="hover:text-pink-200">Catalogue</Link>
+            </li>
+            <li>
+              <Link href="/bureau" className="hover:text-pink-200">Print bureau</Link>
             </li>
             <li>
               <Link href="/journal" className="hover:text-pink-200">Journal</Link>
