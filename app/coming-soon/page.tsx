@@ -74,7 +74,8 @@ export default function ComingSoonPage() {
             <p className="max-w-md text-xs leading-relaxed text-chrome-400 md:text-sm">
               Designed, manufactured, and shipped in-studio &mdash; the same
               stack the consultancy delivers, end-to-end. Light captured,
-              translated into geometry, fabricated, finished, sold.
+              translated into geometry, embedded with ambient-light
+              waveguides, fabricated, finished, sold.
             </p>
           </div>
           <ul className="flex w-full flex-col gap-3 text-left text-sm leading-relaxed text-chrome-200 md:text-base">
@@ -84,12 +85,24 @@ export default function ComingSoonPage() {
               </span>{" "}
               &mdash; signed, small batch waveguide sculptures from the
               twelve-year poi practice. Light-paintings translated into 3D
-              geometry, printed, finished by hand.
+              geometry, embedded with{" "}
+              <span className="text-chrome-100">ambient-light waveguides</span>
+              {" "}&mdash; tech lifted from AR glasses, repurposed for
+              artistic intent. Each piece pulls room light through curved
+              channels in the printed form. Printed, finished by hand.
             </li>
             <li>
               <span className="font-display text-pink-200">Photographs</span>{" "}
               &mdash; limited editions of the source light-paintings on
               Hahnem&uuml;hle and Canson Baryta papers.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">
+                Brand &amp; promotional capture
+              </span>{" "}
+              &mdash; persistence-of-vision LED arrays in long exposure,
+              on-site. Bespoke light-painted imagery for brand campaigns,
+              product launches, and event documentation.
             </li>
             <li>
               <span className="font-display text-pink-200">Print bureau</span>{" "}
