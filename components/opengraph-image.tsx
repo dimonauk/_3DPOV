@@ -24,8 +24,9 @@ export default async function OpengraphImage(
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          background:
-            "radial-gradient(900px 480px at 78% 18%, rgba(255,120,165,0.32), transparent 62%), radial-gradient(780px 520px at 8% 82%, rgba(154,109,255,0.32), transparent 62%), radial-gradient(600px 380px at 50% 100%, rgba(118,222,166,0.22), transparent 65%), #0c0a12",
+          backgroundColor: "#0c0a12",
+          backgroundImage:
+            "radial-gradient(900px 480px at 78% 18%, rgba(255,120,165,0.32), transparent 62%), radial-gradient(780px 520px at 8% 82%, rgba(154,109,255,0.32), transparent 62%), radial-gradient(600px 380px at 50% 100%, rgba(118,222,166,0.22), transparent 65%)",
           color: "#efece4",
           fontFamily: "Inter",
         }}
