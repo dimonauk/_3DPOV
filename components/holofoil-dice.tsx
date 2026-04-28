@@ -3,29 +3,33 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Holofoil Dice — WebGL2 raymarching shader by Jaenam (2025-12-07,
+ * Holofoil Dice — WebGL raymarching shader by Jaenam (2025-12-07,
  * CC BY-NC-SA 4.0). Original Twigl source:
  * https://x.com/Jaenam97/status/1997653539078693351
  *
- * Wrapped in a full-bleed canvas with mouse / touch rotation, paused
- * when the tab is hidden, and dpr-aware so it stays crisp on retina.
+ * Ported to WebGL 1.0 / GLSL ES 1.0 to match Twigl's runtime exactly
+ * (Twigl targets WebGL 1.0). tanh polyfilled. Aggressive diagnostic
+ * logging — open DevTools console to see [HolofoilDice] lines.
  */
 
-const VERTEX_SHADER = `#version 300 es
-in vec2 a_position;
+const VERTEX_SHADER = `
+attribute vec2 a_position;
 void main() {
   gl_Position = vec4(a_position, 0.0, 1.0);
 }
 `;
 
-const FRAGMENT_SHADER = `#version 300 es
+const FRAGMENT_SHADER = `
 precision highp float;
 
 uniform vec3 iResolution;
 uniform float iTime;
 uniform vec4 iMouse;
 
-out vec4 fragColor;
+vec4 tanh4(vec4 x) {
+  vec4 e2 = exp(2.0 * x);
+  return (e2 - 1.0) / (e2 + 1.0);
+}
 
 #define A(C, Z) \\
 for (float d = 0., i = 0., c, e, sc, h, a, s, sf; i++ < 80.;) { \\
@@ -62,20 +66,30 @@ void main() {
     A(g, 0.)
     A(b, 1.)
 
-    fragColor = tanh(O * O / 1e7);
+    gl_FragColor = tanh4(O * O / 1e7);
 }
 `;
 
-function compile(gl: WebGL2RenderingContext, type: number, src: string) {
+function compile(
+  gl: WebGLRenderingContext,
+  type: number,
+  src: string,
+  label: string,
+) {
   const sh = gl.createShader(type);
-  if (!sh) return null;
+  if (!sh) {
+    console.error(`[HolofoilDice] failed to create ${label} shader`);
+    return null;
+  }
   gl.shaderSource(sh, src);
   gl.compileShader(sh);
   if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-    console.error("shader compile error:", gl.getShaderInfoLog(sh));
+    const log = gl.getShaderInfoLog(sh);
+    console.error(`[HolofoilDice] ${label} compile error:\n${log}`);
     gl.deleteShader(sh);
     return null;
   }
+  console.log(`[HolofoilDice] ${label} compiled ✓`);
   return sh;
 }
 
@@ -84,29 +98,54 @@ export function HolofoilDice() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      console.error("[HolofoilDice] no canvas ref");
+      return;
+    }
+    console.log("[HolofoilDice] mounting", {
+      clientW: canvas.clientWidth,
+      clientH: canvas.clientHeight,
+    });
 
-    const gl = canvas.getContext("webgl2", {
+    const gl = (canvas.getContext("webgl", {
       antialias: false,
       premultipliedAlpha: false,
+      preserveDrawingBuffer: false,
       powerPreference: "high-performance",
-    });
-    if (!gl) return;
+    }) ||
+      canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
 
-    const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER);
+    if (!gl) {
+      console.error("[HolofoilDice] WebGL not supported on this browser");
+      return;
+    }
+    console.log(
+      "[HolofoilDice] WebGL ctx ✓",
+      gl.getParameter(gl.VERSION),
+      gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
+    );
+
+    const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER, "vertex");
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER, "fragment");
     if (!vs || !fs) return;
 
     const prog = gl.createProgram();
-    if (!prog) return;
+    if (!prog) {
+      console.error("[HolofoilDice] failed to create program");
+      return;
+    }
     gl.attachShader(prog, vs);
     gl.attachShader(prog, fs);
     gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.error("program link error:", gl.getProgramInfoLog(prog));
+      console.error(
+        "[HolofoilDice] program link error:\n",
+        gl.getProgramInfoLog(prog),
+      );
       return;
     }
     gl.useProgram(prog);
+    console.log("[HolofoilDice] program linked ✓");
 
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -127,7 +166,11 @@ export function HolofoilDice() {
     let mouseY = 0;
     let mouseDown = 0;
 
-    const setPointer = (clientX: number, clientY: number, down: boolean) => {
+    const setPointer = (
+      clientX: number,
+      clientY: number,
+      down?: boolean,
+    ) => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio, 2);
       mouseX = (clientX - rect.left) * dpr;
@@ -156,7 +199,12 @@ export function HolofoilDice() {
 
     let raf = 0;
     let paused = document.hidden;
+    let frameCount = 0;
     const t0 = performance.now();
+
+    // visible-tinted clear so we can confirm the canvas is painting at all
+    // even if the shader itself produces black
+    gl.clearColor(0.05, 0.02, 0.08, 1.0);
 
     const tick = () => {
       if (paused) {
@@ -164,10 +212,20 @@ export function HolofoilDice() {
         return;
       }
       resize();
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform3f(uRes, canvas.width, canvas.height, 1);
       gl.uniform1f(uTime, (performance.now() - t0) / 1000);
       gl.uniform4f(uMouse, mouseX, mouseY, mouseDown, 0);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (frameCount === 0) {
+        console.log(
+          "[HolofoilDice] first frame drawn at",
+          canvas.width,
+          "×",
+          canvas.height,
+        );
+      }
+      frameCount++;
       raf = requestAnimationFrame(tick);
     };
 
@@ -197,7 +255,7 @@ export function HolofoilDice() {
       ref={canvasRef}
       aria-hidden
       className="block h-full w-full"
-      style={{ touchAction: "none" }}
+      style={{ touchAction: "none", backgroundColor: "#0c0a12" }}
     />
   );
 }

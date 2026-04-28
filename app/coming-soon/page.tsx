@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { HolofoilDice } from "components/holofoil-dice";
+import { GallerySection } from "components/gallery/gallery-section";
+import { FeaturedCarousel } from "components/gallery/featured-carousel";
 
 export const metadata: Metadata = {
   title: "Studio open — Holo-Flow Studio",
@@ -48,6 +50,8 @@ export default function ComingSoonPage() {
           worksite capture, gaussian splat mapping. Twelve years of kinetic
           arts underwrites the maths.
         </p>
+
+        <FeaturedCarousel />
 
         <div className="flex w-full flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
           <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
@@ -116,6 +120,24 @@ export default function ComingSoonPage() {
             </li>
           </ul>
         </div>
+
+        <GallerySection
+          category="holographic"
+          title="Holographic photography"
+          caption="Persistence-of-vision LED arrays in long exposure. The source data for every editioned waveguide object."
+        />
+
+        <GallerySection
+          category="printed"
+          title="Printed objects"
+          caption="Editioned waveguide sculptures, 3D-printed and hand-finished. Each piece embeds ambient-light optics — AR-glasses tech, repurposed for art."
+        />
+
+        <GallerySection
+          category="drone"
+          title="Drone photography"
+          caption="Heritage and worksite capture. Long-exposure stills, swarm-flown light-painting, and source plates for gaussian splat reconstruction."
+        />
 
         <div className="mt-2 flex flex-col items-center gap-3">
           <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
