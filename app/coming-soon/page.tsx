@@ -11,21 +11,23 @@ export const metadata: Metadata = {
 export default function ComingSoonPage() {
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto bg-warm-black-950 text-warm-black-50">
-      {/* shader hero — fills the viewport behind everything */}
-      <div className="pointer-events-auto fixed inset-0 -z-20">
+      {/* shader hero — absolute (not fixed) positive z-index so it can't be
+          hidden by the parent's bg in any stacking-context edge case */}
+      <div className="pointer-events-auto absolute inset-0 z-0">
         <HolofoilDice />
       </div>
 
-      {/* dark vignette so the central text reads cleanly over the shader */}
+      {/* subtle vignette so the central text reads cleanly over the shader,
+          but light enough that the shader stays visible at edges + corners */}
       <div
-        className="pointer-events-none fixed inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at center, rgba(12,10,18,0.78) 0%, rgba(12,10,18,0.55) 45%, rgba(12,10,18,0.15) 80%, transparent 100%)",
+            "radial-gradient(ellipse 60% 55% at center, rgba(12,10,18,0.55) 0%, rgba(12,10,18,0.3) 45%, rgba(12,10,18,0.05) 75%, transparent 100%)",
         }}
       />
 
-      <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-9 px-6 py-20 text-center">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-9 px-6 py-20 text-center">
         <span className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-chrome-400">
           Holo-Flow Studio · Field records
         </span>
@@ -62,6 +64,36 @@ export default function ComingSoonPage() {
               Immersive media
             </span>
           </div>
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
+          <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
+            Also from the studio
+          </span>
+          <ul className="flex w-full flex-col gap-3 text-left text-sm leading-relaxed text-chrome-200 md:text-base">
+            <li>
+              <span className="font-display text-pink-200">
+                Editioned objects
+              </span>{" "}
+              &mdash; signed, small batch waveguide sculptures and desktop
+              pieces from the twelve-year poi practice.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">Photographs</span>{" "}
+              &mdash; limited editions of the source light-paintings on
+              Hahnem&uuml;hle and Canson Baryta papers.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">Print bureau</span>{" "}
+              &mdash; A2 archival prints from the studio&rsquo;s Canon
+              imagePROGRAF PRO-1100, paper choice your call.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">Commissions</span>{" "}
+              &mdash; one-off pieces, configurable wall arrays, brand and
+              corporate work.
+            </li>
+          </ul>
         </div>
 
         <div className="mt-2 flex flex-col items-center gap-3">
