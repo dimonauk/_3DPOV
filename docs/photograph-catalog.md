@@ -35,16 +35,16 @@ record — so copy the tags exactly.
 
 Tags drive everything — the collection, the edition-info panel, the field record metadata. Use them consistently.
 
-| Tag | Effect |
-|---|---|
-| `photo-print` | product joins the `photographs` collection and gets the edition info panel |
-| `edition-NN` | declares edition size (`edition-25` → "Edition of 25 + 2 AP") |
-| `method-traditional` | technique label: "Traditional light painting" |
-| `method-led-pov` | technique label: "Persistence-of-vision LED array" |
-| `method-drone-led` | technique label: "Drone-mounted LED system" |
-| `loc-SLUG` | field record location (hyphens to spaces, auto-titled) |
-| `hour-HH-MM` | field record hour (`hour-23-14` → "23:14") |
-| `date-YYYY-MM-DD` | field record date (auto-formatted) |
+| Tag                  | Effect                                                                     |
+| -------------------- | -------------------------------------------------------------------------- |
+| `photo-print`        | product joins the `photographs` collection and gets the edition info panel |
+| `edition-NN`         | declares edition size (`edition-25` → "Edition of 25 + 2 AP")              |
+| `method-traditional` | technique label: "Traditional light painting"                              |
+| `method-led-pov`     | technique label: "Persistence-of-vision LED array"                         |
+| `method-drone-led`   | technique label: "Drone-mounted LED system"                                |
+| `loc-SLUG`           | field record location (hyphens to spaces, auto-titled)                     |
+| `hour-HH-MM`         | field record hour (`hour-23-14` → "23:14")                                 |
+| `date-YYYY-MM-DD`    | field record date (auto-formatted)                                         |
 
 A product can carry multiple method tags if it combines techniques (common in mixed exposures).
 

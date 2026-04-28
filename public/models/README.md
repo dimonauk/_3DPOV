@@ -1,1 +1,1 @@
-# Holo-Flow 3D models\n\nDrop product GLB files here matching the product handle on Shopify:\n\n    /public/models/{product-handle}.glb\n\nThe product page HEAD-probes on mount. If missing, the viewer renders a tinted primitive with a "Model pending" caption so the page never looks broken.
+# Holo-Flow 3D models\n\nDrop product GLB files here matching the product handle on Shopify:\n\n /public/models/{product-handle}.glb\n\nThe product page HEAD-probes on mount. If missing, the viewer renders a tinted primitive with a "Model pending" caption so the page never looks broken.

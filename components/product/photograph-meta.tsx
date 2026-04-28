@@ -20,7 +20,11 @@ function method(tags: string[]): string | null {
   return t ? METHOD_LABEL[t]! : null;
 }
 
-function fieldRecord(tags: string[]): { location?: string; hour?: string; date?: string } {
+function fieldRecord(tags: string[]): {
+  location?: string;
+  hour?: string;
+  date?: string;
+} {
   // Tags of the form:
   //   loc-manchester-uk   →  Manchester, UK
   //   hour-23-00          →  23:00

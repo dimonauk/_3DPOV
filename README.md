@@ -27,15 +27,15 @@ Branch layout on `dimonauk/_3DPOV`:
 
 Matches the original handoff brief's order of attack:
 
-| Touchpoint | File |
-|---|---|
-| Palette | `app/globals.css` (`@theme` block — kawaii-cyberpunk tokens) |
-| Fonts | `app/layout.tsx` (`next/font` loaders) |
-| Navbar | `components/layout/navbar/index.tsx` |
-| Logo | `components/icons/logo.tsx`, `components/logo-square.tsx` |
-| Hero + statement | `app/page.tsx` |
+| Touchpoint        | File                                                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Palette           | `app/globals.css` (`@theme` block — kawaii-cyberpunk tokens)                                                     |
+| Fonts             | `app/layout.tsx` (`next/font` loaders)                                                                           |
+| Navbar            | `components/layout/navbar/index.tsx`                                                                             |
+| Logo              | `components/icons/logo.tsx`, `components/logo-square.tsx`                                                        |
+| Hero + statement  | `app/page.tsx`                                                                                                   |
 | Product page + 3D | `app/product/[handle]/page.tsx` · `components/product/gallery-with-3d.tsx` · `components/product/glb-viewer.tsx` |
-| 3D URL convention | `lib/three-d.ts` |
+| 3D URL convention | `lib/three-d.ts`                                                                                                 |
 
 ## Untouched (per brief)
 

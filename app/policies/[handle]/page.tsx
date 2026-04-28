@@ -32,9 +32,9 @@ export default async function PolicyPage(props: {
           <div className="chrome-label">Policy</div>
           <h1 className="mt-4 text-5xl">Pending.</h1>
           <p className="mt-8 text-chrome-300">
-            This policy has not been published yet. Once the studio's legal
-            text is pasted into Shopify admin (<em>Settings → Policies</em>),
-            it will render here automatically.
+            This policy has not been published yet. Once the studio's legal text
+            is pasted into Shopify admin (<em>Settings → Policies</em>), it will
+            render here automatically.
           </p>
         </article>
         <Footer />

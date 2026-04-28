@@ -13,14 +13,11 @@ export default function JournalPage() {
     <>
       <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="chrome-label">Field records</div>
-        <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">
-          Journal.
-        </h1>
+        <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">Journal.</h1>
         <p className="mt-6 max-w-xl text-chrome-200">
-          Notes from the studio. Location records from the poi practice
-          &mdash; where, when, what the weather was doing. Build logs for
-          the rigs. The occasional essay about holding a gesture long
-          enough to leave residue.
+          Notes from the studio. Location records from the poi practice &mdash;
+          where, when, what the weather was doing. Build logs for the rigs. The
+          occasional essay about holding a gesture long enough to leave residue.
         </p>
 
         <section className="mt-16 rounded-sm border border-warm-black-800 bg-warm-black-900/50 p-8">
@@ -30,12 +27,12 @@ export default function JournalPage() {
           </h2>
           <p className="mt-4 text-chrome-300">
             The journal is being written. Rather than pad this page with
-            lorem-copy until it's ready, the studio would rather let it
-            arrive in proper time.
+            lorem-copy until it's ready, the studio would rather let it arrive
+            in proper time.
           </p>
           <p className="mt-4 text-chrome-300">
-            When entries land, they'll appear here. Subscribe below to
-            get them directly &mdash; roughly monthly, never advertising.
+            When entries land, they'll appear here. Subscribe below to get them
+            directly &mdash; roughly monthly, never advertising.
           </p>
 
           <div className="mt-8 max-w-sm">

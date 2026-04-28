@@ -56,6 +56,7 @@ For ISR revalidation. Shopify admin → Settings → **Notifications** →
    ```
 2. Set it as `SHOPIFY_REVALIDATION_SECRET` in Vercel.
 3. For each event below, click **Create webhook**:
+
    - Format: **JSON**
    - API version: **latest stable**
    - URL: `https://YOUR_DOMAIN/api/revalidate?secret=YOUR_SECRET`
@@ -63,6 +64,7 @@ For ISR revalidation. Shopify admin → Settings → **Notifications** →
      production domain at cutover)
 
    Events:
+
    - `products/create`
    - `products/update`
    - `products/delete`

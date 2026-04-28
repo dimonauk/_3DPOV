@@ -26,16 +26,15 @@ export default async function PhotographsPage() {
           Light, <span className="chrome-sheen">written in the air.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-chrome-200">
-          Every image in this series is a single long exposure. Inside
-          that exposure: a persistence-of-vision LED array moving through
-          real space, rendering programmed image data frame by frame as
-          light. No compositing. The image was physically in the room.
-          The camera simply held the room open long enough to see it.
+          Every image in this series is a single long exposure. Inside that
+          exposure: a persistence-of-vision LED array moving through real space,
+          rendering programmed image data frame by frame as light. No
+          compositing. The image was physically in the room. The camera simply
+          held the room open long enough to see it.
         </p>
         <p className="mt-4 max-w-2xl text-chrome-300">
-          All prints are signed, numbered, and shipped with a field
-          record naming the kata, the location, the hour, and the date
-          of capture.
+          All prints are signed, numbered, and shipped with a field record
+          naming the kata, the location, the hour, and the date of capture.
         </p>
       </article>
 
@@ -56,25 +55,25 @@ export default async function PhotographsPage() {
           <div>
             <div className="chrome-label mb-2">Papers</div>
             <p>
-              Hahnem&uuml;hle Photo Rag 308&thinsp;gsm, Hahnem&uuml;hle
-              German Etching 310&thinsp;gsm, Canson Infinity Baryta
-              Prestige II 340&thinsp;gsm. Other stocks on request.
+              Hahnem&uuml;hle Photo Rag 308&thinsp;gsm, Hahnem&uuml;hle German
+              Etching 310&thinsp;gsm, Canson Infinity Baryta Prestige II
+              340&thinsp;gsm. Other stocks on request.
             </p>
           </div>
           <div>
             <div className="chrome-label mb-2">Sizes</div>
             <p>
               A3 (297 &times; 420&thinsp;mm) and A2 (420 &times; 594&thinsp;mm)
-              from the catalogue. Commission sizes (A1, A0,
-              non-standard) on enquiry.
+              from the catalogue. Commission sizes (A1, A0, non-standard) on
+              enquiry.
             </p>
           </div>
           <div>
             <div className="chrome-label mb-2">Certificate</div>
             <p>
-              Each print ships with a signed certificate naming edition
-              number, kata, coordinates, hour, and date of capture.
-              Editions close on sell-through and do not re-open.
+              Each print ships with a signed certificate naming edition number,
+              kata, coordinates, hour, and date of capture. Editions close on
+              sell-through and do not re-open.
             </p>
           </div>
         </div>
@@ -87,9 +86,9 @@ export default async function PhotographsPage() {
             A gesture for your room.
           </h2>
           <p className="mt-3 text-chrome-300">
-            Custom kata performed on commission &mdash; your choice of
-            location, colour programme, duration. One-off print, runs of
-            two or three for families. Discuss via the contact form.
+            Custom kata performed on commission &mdash; your choice of location,
+            colour programme, duration. One-off print, runs of two or three for
+            families. Discuss via the contact form.
           </p>
           <div className="mt-5">
             <Link

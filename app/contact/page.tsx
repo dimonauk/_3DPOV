@@ -12,13 +12,11 @@ export default function ContactPage() {
     <>
       <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="chrome-label">Write to the studio</div>
-        <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">
-          Contact.
-        </h1>
+        <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">Contact.</h1>
         <p className="mt-6 max-w-xl text-chrome-200">
           For commissions, press, print-bureau enquiries, or just to say
-          something about the work. Every message is read. Replies
-          typically within a day or two.
+          something about the work. Every message is read. Replies typically
+          within a day or two.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -66,8 +64,7 @@ export default function ContactPage() {
               <div className="chrome-label mb-2">Voicemail</div>
               <p className="text-xs leading-relaxed text-chrome-400">
                 We prefer writing. It gives the work the time it needs. If
-                something is urgent, email with "urgent" in the subject
-                line.
+                something is urgent, email with "urgent" in the subject line.
               </p>
             </div>
           </aside>

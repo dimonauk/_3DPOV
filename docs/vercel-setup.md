@@ -20,21 +20,23 @@ If you forked the commerce repo into its own repository instead
 
 Project → Settings → **Environment Variables**. Keys from `.env.example`:
 
-| Key                              | Value                              | Environments |
-|----------------------------------|------------------------------------|--------------|
-| `SITE_NAME`                      | `Holo-Flow Studio`                 | all          |
-| `COMPANY_NAME`                   | `Holo-Flow Studio`                 | all          |
-| `SHOPIFY_STORE_DOMAIN`           | `holoflow-dev.myshopify.com`       | preview      |
-| `SHOPIFY_STORE_DOMAIN`           | `holoflow.myshopify.com`           | production   |
-| `SHOPIFY_STOREFRONT_ACCESS_TOKEN`| dev store token                    | preview      |
-| `SHOPIFY_STOREFRONT_ACCESS_TOKEN`| prod store token                   | production   |
-| `SHOPIFY_REVALIDATION_SECRET`    | `openssl rand -hex 32`             | all          |
-| `NEXT_PUBLIC_MODEL_BASE_URL`     | CDN URL (optional)                 | all          |
+| Key                               | Value                        | Environments |
+| --------------------------------- | ---------------------------- | ------------ |
+| `SITE_NAME`                       | `Holo-Flow Studio`           | all          |
+| `COMPANY_NAME`                    | `Holo-Flow Studio`           | all          |
+| `SHOPIFY_STORE_DOMAIN`            | `holoflow-dev.myshopify.com` | preview      |
+| `SHOPIFY_STORE_DOMAIN`            | `holoflow.myshopify.com`     | production   |
+| `SHOPIFY_STOREFRONT_ACCESS_TOKEN` | dev store token              | preview      |
+| `SHOPIFY_STOREFRONT_ACCESS_TOKEN` | prod store token             | production   |
+| `SHOPIFY_REVALIDATION_SECRET`     | `openssl rand -hex 32`       | all          |
+| `NEXT_PUBLIC_MODEL_BASE_URL`      | CDN URL (optional)           | all          |
 
 Tip: on your desktop, pull these into `.env.local` with
+
 ```
 vc env pull .env.local
 ```
+
 once the Vercel CLI is authed to the project.
 
 ## 3. Deploy
@@ -58,10 +60,10 @@ In Namecheap → Domain List → `holoflow.co.uk` → **Manage** →
 **Advanced DNS**, set the following (deleting any parking records
 Namecheap added by default):
 
-| Type  | Host  | Value                   | TTL       |
-|-------|-------|-------------------------|-----------|
-| A     | @     | `76.76.21.21`           | Automatic |
-| CNAME | www   | `cname.vercel-dns.com.` | Automatic |
+| Type  | Host | Value                   | TTL       |
+| ----- | ---- | ----------------------- | --------- |
+| A     | @    | `76.76.21.21`           | Automatic |
+| CNAME | www  | `cname.vercel-dns.com.` | Automatic |
 
 Vercel verifies ownership automatically once DNS propagates (a few
 minutes to an hour). You'll get a green tick next to the domain when

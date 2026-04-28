@@ -18,10 +18,10 @@ export default function BureauPage() {
           <span className="chrome-sheen">A2, pigment, fine-art paper.</span>
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          The same printer used for the studio's own editions, offered
-          for other people's work. Photographs, illustration, prints of
-          digital pieces. A2 and smaller, on pigment inks, on paper you
-          can pick from a short list of archival stocks.
+          The same printer used for the studio's own editions, offered for other
+          people's work. Photographs, illustration, prints of digital pieces. A2
+          and smaller, on pigment inks, on paper you can pick from a short list
+          of archival stocks.
         </p>
 
         <section className="mt-16 prose-gallery text-chrome-200">
@@ -31,8 +31,8 @@ export default function BureauPage() {
           </h2>
           <p>
             Twelve-ink pigment system. Monochrome range managed by three
-            separate dilutions of black; colour gamut calibrated against
-            the studio's standard viewing light. Maximum print width A2+
+            separate dilutions of black; colour gamut calibrated against the
+            studio's standard viewing light. Maximum print width A2+
             (17&Prime;). Borderless optional.
           </p>
         </section>
@@ -61,21 +61,19 @@ export default function BureauPage() {
             <li>
               Send your file and notes via the contact form &mdash; select
               "Print bureau" from the subject dropdown. 300 DPI TIFF or
-              high-quality JPEG / PSD, sRGB or AdobeRGB, no sharpening
-              baked in.
+              high-quality JPEG / PSD, sRGB or AdobeRGB, no sharpening baked in.
             </li>
             <li>
-              The studio will reply with a quote, a recommended paper, and
-              an expected lead time. Typically within a day.
+              The studio will reply with a quote, a recommended paper, and an
+              expected lead time. Typically within a day.
             </li>
             <li>
-              On approval, a test print is made, photographed under
-              reference light, and sent to you for sign-off before the
-              final run.
+              On approval, a test print is made, photographed under reference
+              light, and sent to you for sign-off before the final run.
             </li>
             <li>
-              Final prints are rolled in archival tubes (or crated flat,
-              by arrangement), shipped insured, anywhere.
+              Final prints are rolled in archival tubes (or crated flat, by
+              arrangement), shipped insured, anywhere.
             </li>
           </ol>
         </section>
@@ -87,8 +85,8 @@ export default function BureauPage() {
           </h2>
           <p className="mt-4 text-chrome-300">
             The bureau is currently being shaken down with friends of the
-            studio. To be put on the list for the public opening &mdash;
-            and to get early booking slots &mdash; write in now.
+            studio. To be put on the list for the public opening &mdash; and to
+            get early booking slots &mdash; write in now.
           </p>
           <div className="mt-6 flex gap-4">
             <Link

@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.2.0",
     "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.0.0",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "next": "15.6.0-canary.60",
     "react": "19.0.0",

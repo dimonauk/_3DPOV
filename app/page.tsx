@@ -48,8 +48,8 @@ function Hero() {
           Long-exposure photographs of gestures &mdash; drawn with fire,
           persistence-of-vision LED arrays, and drone-mounted lights &mdash;
           translated into 3D geometry and cast as objects with ambient
-          waveguides grown through their bodies. The photograph is what
-          the room saw. The object is what the gesture left behind.
+          waveguides grown through their bodies. The photograph is what the room
+          saw. The object is what the gesture left behind.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-5 text-sm">
           <Link
@@ -92,29 +92,26 @@ function Statement() {
         <div className="prose-gallery md:col-span-3">
           <p>
             Holo-Flow Studio began as twelve years of poi &mdash; the spun
-            weight, the practised arc, fire held against the dark. The
-            camera came later, to keep the gestures that would otherwise
-            disappear at dawn. Then the gestures got programmed, precise,
-            rendered in LED arrays built to draw whatever the hand could
-            lift.
+            weight, the practised arc, fire held against the dark. The camera
+            came later, to keep the gestures that would otherwise disappear at
+            dawn. Then the gestures got programmed, precise, rendered in LED
+            arrays built to draw whatever the hand could lift.
           </p>
           <p>
             The <strong>photographs</strong> are the record: single long
-            exposures of image data written into physical space by
-            moving light, captured whole. No compositing.
+            exposures of image data written into physical space by moving light,
+            captured whole. No compositing.
           </p>
           <p>
-            The <strong>objects</strong> are what happens when those
-            photographs go back into the physical. 3D-printed bodies
-            whose geometry is derived from the captured trace, shot
-            through with clear acrylic waveguides that carry internal
-            light through the print. The gesture glows again from
-            inside the body it drew.
+            The <strong>objects</strong> are what happens when those photographs
+            go back into the physical. 3D-printed bodies whose geometry is
+            derived from the captured trace, shot through with clear acrylic
+            waveguides that carry internal light through the print. The gesture
+            glows again from inside the body it drew.
           </p>
           <p>
-            Each piece is editioned, signed, and ships with the field
-            record &mdash; where the gesture was performed, what hour,
-            what date.
+            Each piece is editioned, signed, and ships with the field record
+            &mdash; where the gesture was performed, what hour, what date.
           </p>
         </div>
       </div>
@@ -163,9 +160,7 @@ function PipelineSection() {
               key={s.label}
               className="rounded-sm border border-warm-black-800 bg-warm-black-950/60 p-5"
             >
-              <div className="chrome-label text-pink-200">
-                Stage {s.label}
-              </div>
+              <div className="chrome-label text-pink-200">Stage {s.label}</div>
               <div className="mt-2 font-display text-xl text-chrome-100">
                 {s.title}
               </div>

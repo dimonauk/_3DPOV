@@ -14,7 +14,13 @@ function fromPrice(p: Product): string {
   const { amount, currencyCode } = p.priceRange.minVariantPrice;
   const rounded = Math.round(parseFloat(amount));
   const symbol =
-    currencyCode === "GBP" ? "£" : currencyCode === "USD" ? "$" : currencyCode === "EUR" ? "€" : "";
+    currencyCode === "GBP"
+      ? "£"
+      : currencyCode === "USD"
+        ? "$"
+        : currencyCode === "EUR"
+          ? "€"
+          : "";
   return `from ${symbol}${rounded}`;
 }
 

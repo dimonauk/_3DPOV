@@ -39,22 +39,34 @@ export default async function Footer() {
           <div className="chrome-label mb-4">Studio</div>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/about" className="hover:text-pink-200">About</Link>
+              <Link href="/about" className="hover:text-pink-200">
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/photographs" className="hover:text-pink-200">Photographs</Link>
+              <Link href="/photographs" className="hover:text-pink-200">
+                Photographs
+              </Link>
             </li>
             <li>
-              <Link href="/search" className="hover:text-pink-200">Catalogue</Link>
+              <Link href="/search" className="hover:text-pink-200">
+                Catalogue
+              </Link>
             </li>
             <li>
-              <Link href="/bureau" className="hover:text-pink-200">Print bureau</Link>
+              <Link href="/bureau" className="hover:text-pink-200">
+                Print bureau
+              </Link>
             </li>
             <li>
-              <Link href="/journal" className="hover:text-pink-200">Journal</Link>
+              <Link href="/journal" className="hover:text-pink-200">
+                Journal
+              </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-pink-200">Contact</Link>
+              <Link href="/contact" className="hover:text-pink-200">
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
@@ -74,22 +86,34 @@ export default async function Footer() {
           </Suspense>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/policies/privacy-policy" className="hover:text-pink-200">
+              <Link
+                href="/policies/privacy-policy"
+                className="hover:text-pink-200"
+              >
                 Privacy
               </Link>
             </li>
             <li>
-              <Link href="/policies/terms-of-service" className="hover:text-pink-200">
+              <Link
+                href="/policies/terms-of-service"
+                className="hover:text-pink-200"
+              >
                 Terms
               </Link>
             </li>
             <li>
-              <Link href="/policies/refund-policy" className="hover:text-pink-200">
+              <Link
+                href="/policies/refund-policy"
+                className="hover:text-pink-200"
+              >
                 Returns
               </Link>
             </li>
             <li>
-              <Link href="/policies/shipping-policy" className="hover:text-pink-200">
+              <Link
+                href="/policies/shipping-policy"
+                className="hover:text-pink-200"
+              >
                 Shipping
               </Link>
             </li>
@@ -110,8 +134,8 @@ export default async function Footer() {
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-chrome-400">
           <p className="text-[0.7rem] leading-relaxed">
             Holo-Flow Studio is a sole-trader business operated by Dimona
-            Dougherty, Manchester, UK. Trading address available upon
-            request &mdash;{" "}
+            Dougherty, Manchester, UK. Trading address available upon request
+            &mdash;{" "}
             <a
               href="mailto:contact@holoflow.co.uk"
               className="underline underline-offset-4 hover:text-pink-200"

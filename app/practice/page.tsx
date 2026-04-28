@@ -18,159 +18,125 @@ export default function PracticePage() {
           to hold <span className="chrome-sheen">a shape.</span>
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          The tools changed. The question didn't. Each stage of the
-          practice is a different answer to the same one: can a gesture
-          last longer than the body that drew it?
+          The tools changed. The question didn't. Each stage of the practice is
+          a different answer to the same one: can a gesture last longer than the
+          body that drew it?
         </p>
 
-        <Stage
-          roman="I"
-          year="c. 2013"
-          title="Poi."
-        >
+        <Stage roman="I" year="c. 2013" title="Poi.">
           <p>
             Poi is a movement discipline: two weights on two cords, drawn
-            through planes by the body. It takes a long time to make
-            fluent &mdash; years before the weights stop ruling you and
-            you start ruling them. I came to it for the dance, not the
-            photograph.
+            through planes by the body. It takes a long time to make fluent
+            &mdash; years before the weights stop ruling you and you start
+            ruling them. I came to it for the dance, not the photograph.
           </p>
           <p>
-            The first few thousand hours were spent on the geometry
-            itself. Cross-follow, antispin, weaves, arm combinations.
-            Fire poi at the end of the first year. After that, the body
-            knew what a planar gesture was. It just couldn't
+            The first few thousand hours were spent on the geometry itself.
+            Cross-follow, antispin, weaves, arm combinations. Fire poi at the
+            end of the first year. After that, the body knew what a planar
+            gesture was. It just couldn't
             <em> keep </em> one.
           </p>
         </Stage>
 
-        <Stage
-          roman="II"
-          year="c. 2015"
-          title="Long exposure."
-        >
+        <Stage roman="II" year="c. 2015" title="Long exposure.">
           <p>
-            Someone pointed a camera. A fifteen-second exposure of a fire
-            kata &mdash; one single still of a minute&rsquo;s worth of
-            spinning &mdash; and the thing the body had known became
-            visible to everyone else. That was the hinge. Dance left a
-            trace; the trace was worth keeping.
+            Someone pointed a camera. A fifteen-second exposure of a fire kata
+            &mdash; one single still of a minute&rsquo;s worth of spinning
+            &mdash; and the thing the body had known became visible to everyone
+            else. That was the hinge. Dance left a trace; the trace was worth
+            keeping.
           </p>
           <p>
-            For the next few years, <strong>traditional light painting</strong>
-            {" "}
+            For the next few years, <strong>traditional light painting</strong>{" "}
             was the main tool: fire, LED wands, handheld torches, staff.
             Organic, gestural. A record of the body in motion. Still the
             practice most of the landscape photographs are made with.
           </p>
         </Stage>
 
-        <Stage
-          roman="III"
-          year="c. 2019"
-          title="Pixel poi."
-        >
+        <Stage roman="III" year="c. 2019" title="Pixel poi.">
           <p>
-            The commercial LED pois began arriving &mdash; pixel poi, addressable
-            strips on a chassis that would read an image file and
-            replay it, column by column, as the poi swung. Suddenly a
-            kata could carry a <em>picture</em>. You could swing a
-            parrot; you could swing a word. Most of the scene used them
-            as a party trick. A few of us started treating them as
-            instruments.
+            The commercial LED pois began arriving &mdash; pixel poi,
+            addressable strips on a chassis that would read an image file and
+            replay it, column by column, as the poi swung. Suddenly a kata could
+            carry a <em>picture</em>. You could swing a parrot; you could swing
+            a word. Most of the scene used them as a party trick. A few of us
+            started treating them as instruments.
           </p>
           <p>
-            What I wanted was to get the image quality up and the
-            drift down. Commercial pois are designed for performance
-            durability, not for photographic sharpness. So I started
-            building.
+            What I wanted was to get the image quality up and the drift down.
+            Commercial pois are designed for performance durability, not for
+            photographic sharpness. So I started building.
           </p>
         </Stage>
 
-        <Stage
-          roman="IV"
-          year="c. 2021"
-          title="POV LED arrays."
-        >
+        <Stage roman="IV" year="c. 2021" title="POV LED arrays.">
           <p>
-            A <strong>persistence-of-vision LED array</strong> is a
-            display that doesn&rsquo;t look like a display until it
-            moves. A strip of addressable LEDs, a microcontroller, a
-            rotation or translation mechanism, a synchronisation signal.
-            When it moves, it draws &mdash; one vertical slice of image
-            per angular sample, a thousand times a second. The eye
-            integrates. The camera integrates too.
+            A <strong>persistence-of-vision LED array</strong> is a display that
+            doesn&rsquo;t look like a display until it moves. A strip of
+            addressable LEDs, a microcontroller, a rotation or translation
+            mechanism, a synchronisation signal. When it moves, it draws &mdash;
+            one vertical slice of image per angular sample, a thousand times a
+            second. The eye integrates. The camera integrates too.
           </p>
           <p>
-            My own rigs are built around a Teensy microcontroller, a
-            bank of TLC5927 LED drivers, and Hall-effect sensors for
-            rotational sync. One-hundred updates per revolution, at
-            revolution rates the arm can sustain, means the image
-            lands with photographic precision. I program the frames
-            ahead of time; the body walks a trajectory; the long
-            exposure captures the 3D volume the rig swept through.
+            My own rigs are built around a Teensy microcontroller, a bank of
+            TLC5927 LED drivers, and Hall-effect sensors for rotational sync.
+            One-hundred updates per revolution, at revolution rates the arm can
+            sustain, means the image lands with photographic precision. I
+            program the frames ahead of time; the body walks a trajectory; the
+            long exposure captures the 3D volume the rig swept through.
           </p>
           <p>
-            That&rsquo;s the Holo-Flow signature: a photograph that is
-            not of anything that ever stood still.
+            That&rsquo;s the Holo-Flow signature: a photograph that is not of
+            anything that ever stood still.
           </p>
         </Stage>
 
-        <Stage
-          roman="V"
-          year="2025 &rarr;"
-          title="Drones, modified."
-        >
+        <Stage roman="V" year="2025 &rarr;" title="Drones, modified.">
           <p>
-            The next move is up. LED systems mounted on drones &mdash;
-            the rig freed from the body, able to draw at altitude, over
-            landscape, across architecture. Think: a ring of light held
-            thirty metres above a moor at 04:30, tracing a kata too
-            large for any performer.
+            The next move is up. LED systems mounted on drones &mdash; the rig
+            freed from the body, able to draw at altitude, over landscape,
+            across architecture. Think: a ring of light held thirty metres above
+            a moor at 04:30, tracing a kata too large for any performer.
           </p>
           <p>
-            This stage is <em>in progress</em>. First test flights
-            shortly. Early photographs when they&rsquo;re ready.
+            This stage is <em>in progress</em>. First test flights shortly.
+            Early photographs when they&rsquo;re ready.
           </p>
         </Stage>
 
-        <Stage
-          roman="VI"
-          year="2025 &rarr;"
-          title="The objects."
-        >
+        <Stage roman="VI" year="2025 &rarr;" title="The objects.">
           <p>
-            The photographs became the source for a new line: 3D-printed
-            objects whose geometry is <em>derived</em> from the captured
-            light. A gesture that was drawn in air becomes a sculpture
-            cast in resin.
+            The photographs became the source for a new line: 3D-printed objects
+            whose geometry is <em>derived</em> from the captured light. A
+            gesture that was drawn in air becomes a sculpture cast in resin.
           </p>
           <p>
             Embedded in the body of every object: clear acrylic{" "}
-            <strong>ambient-light waveguides</strong>, grown along the
-            trace lines of the original gesture. A small LED seated at
-            the waveguide root carries warm light through the print,
-            edge-lighting the geometry from inside. The gesture that
-            the body drew in the dark glows again from inside the
-            object it made.
+            <strong>ambient-light waveguides</strong>, grown along the trace
+            lines of the original gesture. A small LED seated at the waveguide
+            root carries warm light through the print, edge-lighting the
+            geometry from inside. The gesture that the body drew in the dark
+            glows again from inside the object it made.
           </p>
           <p>
-            Desktop pieces, wall arrays, and one-off sculptures &mdash;
-            every one an object of the photograph it was grown from.
+            Desktop pieces, wall arrays, and one-off sculptures &mdash; every
+            one an object of the photograph it was grown from.
           </p>
         </Stage>
 
         <section className="mt-24">
           <div className="chrome-label mb-3">What it adds up to</div>
           <p className="prose-gallery text-chrome-200">
-            Holo-Flow Studio is the apparatus for holding gestures. Poi
-            trained the body. Long exposure trained the camera.
-            Pixel-level programming trained the eye to what light can
-            carry. The objects are what those trainings make possible
-            together: a sculpture, in a room, lit from inside by the
-            residue of a gesture performed on a specific date, in a
-            specific place, at a specific hour, held long enough to
-            leave a mark.
+            Holo-Flow Studio is the apparatus for holding gestures. Poi trained
+            the body. Long exposure trained the camera. Pixel-level programming
+            trained the eye to what light can carry. The objects are what those
+            trainings make possible together: a sculpture, in a room, lit from
+            inside by the residue of a gesture performed on a specific date, in
+            a specific place, at a specific hour, held long enough to leave a
+            mark.
           </p>
         </section>
 
