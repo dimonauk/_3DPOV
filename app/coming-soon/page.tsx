@@ -4,7 +4,7 @@ import { HolofoilDice } from "components/holofoil-dice";
 export const metadata: Metadata = {
   title: "Studio open — Holo-Flow Studio",
   description:
-    "Holo-Flow Studio is open for commissions, editioned objects, and print bureau bookings. Get in touch at contact@holoflow.co.uk while the new site is built.",
+    "Artistic engineer running Holo-Flow Studio from Salford. AI agent orchestration across software, VR, and parametric manufacturing; drone swarm capture for heritage and worksites with gaussian splat mapping. Open to AI, phygital pipelines, immersive media.",
   robots: { index: false, follow: false },
 };
 
@@ -40,46 +40,33 @@ export default function ComingSoonPage() {
         </h1>
 
         <p className="max-w-xl text-base leading-relaxed text-chrome-200 md:text-lg">
-          Holo-Flow Studio makes editioned waveguide sculptures and photographs
-          drawn from a twelve-year poi practice. Light painted in the air,
-          captured as long-exposure photographs, then translated into 3D-printed
-          objects with embedded acrylic light-pipes that pull ambient light
-          through the form. Manchester, UK.
+          Artistic engineer running Holo-Flow Studio from Salford.
+          Orchestrating AI agents across software engineering, VR development,
+          and parametric manufacturing. Drone swarm pilot &mdash; heritage and
+          worksite capture, gaussian splat mapping. Twelve years of kinetic
+          arts underwrites the maths.
         </p>
 
-        <div className="flex w-full max-w-md flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
+        <div className="flex w-full flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
           <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
-            Available now
+            Open to talking
           </span>
-          <ul className="flex w-full flex-col gap-3 text-left text-sm leading-relaxed text-chrome-200 md:text-base">
-            <li>
-              <span className="font-display text-pink-200">
-                Editioned objects
-              </span>{" "}
-              &mdash; signed, small batch waveguide sculptures and desktop
-              pieces.
-            </li>
-            <li>
-              <span className="font-display text-pink-200">Photographs</span>{" "}
-              &mdash; limited editions on Hahnem&uuml;hle and Canson Baryta
-              fine-art papers.
-            </li>
-            <li>
-              <span className="font-display text-pink-200">Print bureau</span>{" "}
-              &mdash; A2 archival prints from the studio&rsquo;s Canon imagePROGRAF
-              PRO-1100, paper choice your call.
-            </li>
-            <li>
-              <span className="font-display text-pink-200">Commissions</span>{" "}
-              &mdash; one-off pieces, configurable wall arrays, brand and
-              corporate work.
-            </li>
-          </ul>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="rounded-full border border-warm-black-700 bg-warm-black-900/60 px-4 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-chrome-200">
+              AI
+            </span>
+            <span className="rounded-full border border-warm-black-700 bg-warm-black-900/60 px-4 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-chrome-200">
+              Phygital pipelines
+            </span>
+            <span className="rounded-full border border-warm-black-700 bg-warm-black-900/60 px-4 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-chrome-200">
+              Immersive media
+            </span>
+          </div>
         </div>
 
         <div className="mt-2 flex flex-col items-center gap-3">
           <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
-            Direct line &mdash; catalogue, pricing, commissions
+            Direct line &mdash; projects, commissions, conversation
           </span>
           <a
             href="mailto:contact@holoflow.co.uk"
@@ -91,7 +78,7 @@ export default function ComingSoonPage() {
         </div>
 
         <div className="mt-6 text-center font-mono text-[0.6rem] uppercase tracking-[0.22em] text-chrome-500">
-          Holoflow.co.uk &middot; Manchester, UK &middot; Open for business
+          Holoflow.co.uk &middot; Salford, UK &middot; Open for business
         </div>
       </div>
     </div>
