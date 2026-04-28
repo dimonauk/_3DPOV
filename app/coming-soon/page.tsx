@@ -66,17 +66,25 @@ export default function ComingSoonPage() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
-          <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
-            Also from the studio
-          </span>
+        <div className="flex w-full flex-col items-center gap-5 border-t border-warm-black-800 pt-8">
+          <div className="flex flex-col items-center gap-2">
+            <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
+              Proof of work
+            </span>
+            <p className="max-w-md text-xs leading-relaxed text-chrome-400 md:text-sm">
+              Designed, manufactured, and shipped in-studio &mdash; the same
+              stack the consultancy delivers, end-to-end. Light captured,
+              translated into geometry, fabricated, finished, sold.
+            </p>
+          </div>
           <ul className="flex w-full flex-col gap-3 text-left text-sm leading-relaxed text-chrome-200 md:text-base">
             <li>
               <span className="font-display text-pink-200">
                 Editioned objects
               </span>{" "}
-              &mdash; signed, small batch waveguide sculptures and desktop
-              pieces from the twelve-year poi practice.
+              &mdash; signed, small batch waveguide sculptures from the
+              twelve-year poi practice. Light-paintings translated into 3D
+              geometry, printed, finished by hand.
             </li>
             <li>
               <span className="font-display text-pink-200">Photographs</span>{" "}
