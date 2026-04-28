@@ -73,6 +73,65 @@ export default function ComingSoonPage() {
         <div className="flex w-full flex-col items-center gap-5 border-t border-warm-black-800 pt-8">
           <div className="flex flex-col items-center gap-2">
             <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
+              Built and shipping
+            </span>
+            <p className="max-w-md text-xs leading-relaxed text-chrome-400 md:text-sm">
+              Studio infrastructure built end-to-end &mdash; the tools the
+              consultancy delivers from. Local-first AI, real hardware,
+              every layer in-house.
+            </p>
+          </div>
+          <ul className="flex w-full flex-col gap-3 text-left text-sm leading-relaxed text-chrome-200 md:text-base">
+            <li>
+              <span className="font-display text-pink-200">Dolly_OS</span>{" "}
+              &mdash; faux-OS PWA shell. WebGPU + TSL scenes, layered Z-stack
+              viewport, parallax depth, embedded ComfyUI client, agent
+              compositor. React 18 + Vite + Three.js / R3F.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">Aura</span>{" "}
+              &mdash; multimodal VRM agent. Voice (Kokoro / RunPod TTS),
+              memory (Qdrant), OCEAN-state somatic mapping to attractor
+              geometries, MQTT bridge to Telegram &amp; Discord.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">Light_Weiver</span>{" "}
+              &mdash; VR poi-combat training game. Real-world flowarts muscle
+              memory; Camden L1 tutorial, sister co-op, Optimizer
+              Compliance AI antagonist.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">
+                Mesh studio &amp; fabrication
+              </span>{" "}
+              &mdash; sculpture genome with evolutionary breeding, Blender
+              automation, waveguide TIR caustic fitness scoring, OctoPrint
+              farm orchestration, STL / 3MF export.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">
+                Spatial capture
+              </span>{" "}
+              &mdash; Leap Motion + Azure Kinect motion capture into
+              manifold mesh, ZoeDepth &amp; MiDaS depth-to-3D, gaussian
+              splat rendering in WebGPU. 360 Studio for parallax
+              backgrounds.
+            </li>
+            <li>
+              <span className="font-display text-pink-200">
+                Studio tooling
+              </span>{" "}
+              &mdash; 20+ Claude skills (Blender automation, slot-in porting,
+              skill index), Hangar console (scan / fix / extract / build),
+              unified launcher orchestrating Ollama, Qdrant, Mosquitto,
+              FastAPI.
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-5 border-t border-warm-black-800 pt-8">
+          <div className="flex flex-col items-center gap-2">
+            <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-chrome-500">
               Proof of work
             </span>
             <p className="max-w-md text-xs leading-relaxed text-chrome-400 md:text-sm">
