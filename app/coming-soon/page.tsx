@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HolofoilDice } from "components/holofoil-dice";
 import { GallerySection } from "components/gallery/gallery-section";
 import { FeaturedCarousel } from "components/gallery/featured-carousel";
+import { NewsletterSignup } from "components/newsletter-signup";
 
 export const metadata: Metadata = {
   title: "Studio open — Holo-Flow Studio",
@@ -209,6 +210,10 @@ export default function ComingSoonPage() {
           >
             contact@holoflow.co.uk
           </a>
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-4 border-t border-warm-black-800 pt-8">
+          <NewsletterSignup />
         </div>
 
         <div className="mt-6 text-center font-mono text-[0.6rem] uppercase tracking-[0.22em] text-chrome-500">

@@ -1,0 +1,35 @@
+rules_version = '2';
+
+// Holo-Flow Studio — Firestore security rules.
+//
+// Deploy via Firebase Console (Firestore → Rules → paste → publish) or
+// `firebase deploy --only firestore:rules` from a CLI that's logged in
+// to the gen-lang-client-0149679024 project.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Newsletter subscribers — anyone can opt in by creating a single
+    // record with a sensible shape. Reads / updates / deletes are
+    // server-only (admin SDK or Firebase Console).
+    match /subscribers/{docId} {
+      allow create: if
+        request.resource.data.keys().hasOnly(['email', 'source', 'createdAt'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() < 320
+        && request.resource.data.email.matches('.+@.+\\..+')
+        && request.resource.data.source is string
+        && request.resource.data.source.size() < 64;
+      allow read, update, delete: if false;
+    }
+
+    // User profiles — full magic-link account holders. Each user can
+    // read / write only their own document.
+    match /users/{userId} {
+      allow read, update, create:
+        if request.auth != null && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+  }
+}

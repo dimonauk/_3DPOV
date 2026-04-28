@@ -4,6 +4,7 @@ import { WelcomeToast } from "components/welcome-toast";
 import { PlausibleAnalytics } from "components/analytics/plausible";
 import { KlaviyoAnalytics } from "components/analytics/klaviyo";
 import { Analytics } from "@vercel/analytics/next";
+import { AuthProvider } from "components/auth/auth-provider";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import { getCart } from "lib/shopify";
 import { ReactNode } from "react";
@@ -72,14 +73,16 @@ export default async function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body className="bg-warm-black-950 text-warm-black-50 antialiased">
-        <CartProvider cartPromise={cart}>
-          <Navbar />
-          <main>
-            {children}
-            <Toaster closeButton theme="dark" />
-            <WelcomeToast />
-          </main>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider cartPromise={cart}>
+            <Navbar />
+            <main>
+              {children}
+              <Toaster closeButton theme="dark" />
+              <WelcomeToast />
+            </main>
+          </CartProvider>
+        </AuthProvider>
         <PlausibleAnalytics />
         <KlaviyoAnalytics />
         <Analytics />
