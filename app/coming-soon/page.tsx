@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HolofoilDice } from "components/holofoil-dice";
 
 export const metadata: Metadata = {
   title: "Studio open — Holo-Flow Studio",
@@ -10,11 +11,17 @@ export const metadata: Metadata = {
 export default function ComingSoonPage() {
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto bg-warm-black-950 text-warm-black-50">
+      {/* shader hero — fills the viewport behind everything */}
+      <div className="pointer-events-auto fixed inset-0 -z-20">
+        <HolofoilDice />
+      </div>
+
+      {/* dark vignette so the central text reads cleanly over the shader */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none fixed inset-0 -z-10"
         style={{
-          backgroundImage:
-            "radial-gradient(900px 480px at 78% 18%, rgba(255,120,165,0.18), transparent 62%), radial-gradient(780px 520px at 8% 82%, rgba(154,109,255,0.18), transparent 62%), radial-gradient(600px 380px at 50% 100%, rgba(118,222,166,0.12), transparent 65%)",
+          background:
+            "radial-gradient(ellipse 70% 60% at center, rgba(12,10,18,0.78) 0%, rgba(12,10,18,0.55) 45%, rgba(12,10,18,0.15) 80%, transparent 100%)",
         }}
       />
 
