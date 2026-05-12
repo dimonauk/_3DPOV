@@ -1,5 +1,6 @@
 import BuildingAPovLedRig from "components/tutorials/entries/building-a-pov-led-rig";
 import FromPhotographToObject from "components/tutorials/entries/from-photograph-to-object";
+import LightingAWaveguideObject from "components/tutorials/entries/lighting-a-waveguide-object";
 import ProgrammingPovFrames from "components/tutorials/entries/programming-pov-frames";
 import SpinningFirePoiSafely from "components/tutorials/entries/spinning-fire-poi-safely";
 import YourFirstLongExposure from "components/tutorials/entries/your-first-long-exposure";
@@ -303,6 +304,64 @@ const ENTRIES: Entry[] = [
         href: "https://www.pjrc.com/teensy/td_pulse.html",
         label: "Teensy hardware timers — PJRC",
         note: "Microsecond-level pulse generation for column-by-column writes.",
+      },
+    ],
+  },
+  {
+    slug: "lighting-a-waveguide-object",
+    title: "Lighting a Waveguide Object",
+    date: "2023-11-08",
+    kind: "tutorial",
+    excerpt:
+      "The waveguide is the easy bit. The hard bit is making it look good in a room. LED choice (CRI matters), coupling (optical adhesive vs polished air-gap), scattering (sand the rod), driving (constant current, not a resistor), modes.",
+    Body: LightingAWaveguideObject,
+    related: [
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The pipeline that produces the body around the waveguide.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Per-array lighting design at scale.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "Wearable-scale variant with battery + magnetic charge.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The studio's object-production kit list.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Total_internal_reflection",
+        label: "Total internal reflection — Wikipedia",
+        note: "The optical principle the waveguide relies on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Color_rendering_index",
+        label: "Colour rendering index (CRI) — Wikipedia",
+        note: "Why a 90+ CRI LED makes the resin look warm rather than greenish-grey.",
+      },
+      {
+        href: "https://www.norlandprod.com/adhesives/noa61.html",
+        label: "Norland NOA61 — UV-cure optical adhesive",
+        note: "Refractive-index-matched glue for permanent LED→rod coupling.",
+      },
+      {
+        href: "https://www.ti.com/product/LM3445",
+        label: "TI LM3445 — constant-current LED driver",
+        note: "The chip class to drive a small LED at flat brightness from a battery.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Pulse-width_modulation",
+        label: "Pulse-width modulation — Wikipedia",
+        note: "How LEDs are dimmed without flicker showing up in photographs.",
       },
     ],
   },

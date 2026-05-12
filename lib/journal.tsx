@@ -1,6 +1,7 @@
 import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
 import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
+import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
 import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
 import TheQuestionTheCameraAnswered from "components/journal/entries/the-question-the-camera-answered";
 import YearOneFire from "components/journal/entries/year-one-fire";
@@ -219,8 +220,38 @@ const ENTRIES: Entry[] = [
         label: "Practice — Stage I, poi",
       },
       {
+        href: "/tutorials/spinning-fire-poi-safely",
+        label: "Tutorial — Spinning Fire Poi Safely",
+        note: "The boring stuff that came after this entry's recklessness.",
+      },
+      {
         href: "/about",
         label: "About — the practice",
+      },
+    ],
+  },
+  {
+    slug: "the-first-wall-array",
+    title: "The First Wall Array",
+    date: "2024-05-12",
+    kind: "journal",
+    excerpt:
+      "Field record of the commission that worked out how to do wall arrays properly. Nine pieces, three years of practice, six layout drafts, two days of install. The composition was alive by the second night.",
+    Body: TheFirstWallArray,
+    related: [
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The article that grew out of this install.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The per-piece optical engineering.",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a wall array",
       },
     ],
   },

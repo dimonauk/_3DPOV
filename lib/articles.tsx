@@ -1,4 +1,6 @@
+import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery-the-same-trace-wearable";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
+import WallArraysGeometryOfRooms from "components/articles/entries/wall-arrays-geometry-of-rooms";
 import WhyIBuildMyOwnRigs from "components/articles/entries/why-i-build-my-own-rigs";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -124,6 +126,99 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Light_painting",
         label: "Light painting — Wikipedia",
         note: "Contemporary technique and major practitioners.",
+      },
+    ],
+  },
+  {
+    slug: "wall-arrays-geometry-of-rooms",
+    title: "Wall Arrays — the Geometry of Rooms",
+    date: "2024-07-18",
+    kind: "article",
+    excerpt:
+      "Wall arrays are not made of bigger sculptures. They are compositions of palm-scale pieces in deliberate layouts, with the dark pieces as load-bearing as the lit ones. Scale, light budget, interaction, install.",
+    Body: WallArraysGeometryOfRooms,
+    related: [
+      {
+        href: "/journal/the-first-wall-array",
+        label: "Field record — The First Wall Array",
+        note: "The commission that worked out how to do this properly.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "Scaling the same pipeline down to the wrist.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The per-piece optical engineering inside each array element.",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a wall array",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Installation_art",
+        label: "Installation art — Wikipedia",
+        note: "Critical context for the genre this work sits in.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Passive_infrared_sensor",
+        label: "Passive infrared sensors — Wikipedia",
+        note: "How the studio's interactive arrays detect viewer proximity.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/DMX512",
+        label: "DMX512 — Wikipedia",
+        note: "The lighting-control protocol the arrays speak to controllers.",
+      },
+    ],
+  },
+  {
+    slug: "jewellery-the-same-trace-wearable",
+    title: "Jewellery — the Same Trace, Wearable",
+    date: "2025-05-31",
+    kind: "article",
+    excerpt:
+      "The same photograph that becomes a sculpture can become a pendant. Pendants, earrings, brooches, bangles — same source, smaller body, the gesture carried into rooms the sculpture will never see.",
+    Body: JewelleryTheSameTraceWearable,
+    related: [
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The other end of the same trace, scaled up.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "Optical engineering of the per-piece waveguide.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs — the source material",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a piece",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Light_pipe",
+        label: "Light pipe / waveguide — Wikipedia",
+        note: "The optical principle the wearable channels rely on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Inductive_charging",
+        label: "Inductive charging — Wikipedia",
+        note: "The Qi-adjacent system the studio's pieces charge through.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Lithium_polymer_battery",
+        label: "Lithium-polymer batteries — Wikipedia",
+        note: "What sits inside the bezel; replaceable, standard part.",
       },
     ],
   },
