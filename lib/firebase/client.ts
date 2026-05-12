@@ -1,5 +1,11 @@
 import { type FirebaseApp, getApp, getApps, initializeApp } from "firebase/app";
-import { type Auth, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  type Auth,
+  type UserCredential,
+  getAuth,
+} from "firebase/auth";
 import { type Firestore, getFirestore } from "firebase/firestore";
 
 /**
@@ -56,4 +62,29 @@ export function getFirebaseDb(): Firestore | null {
   if (!app) return null;
   _db = getFirestore(app);
   return _db;
+}
+
+/**
+ * Build a fresh GoogleAuthProvider on each call. The provider object is
+ * not reusable across sign-in calls — Firebase mutates internal state on
+ * it during the popup flow. Configure the scopes / prompt behaviour here
+ * if the studio ever wants to nudge Google's chooser.
+ */
+export function getGoogleProvider(): GoogleAuthProvider {
+  const provider = new GoogleAuthProvider();
+  // Force the chooser every time so users with multiple Google accounts
+  // can pick the right one. They will thank you.
+  provider.setCustomParameters({ prompt: "select_account" });
+  return provider;
+}
+
+/**
+ * Pop a Google sign-in window. Returns the resolved UserCredential, or
+ * null if Firebase isn't configured (e.g. local dev without .env.local).
+ * Throws on actual auth errors so the caller can surface them.
+ */
+export async function signInWithGoogle(): Promise<UserCredential | null> {
+  const auth = getFirebaseAuth();
+  if (!auth) return null;
+  return signInWithPopup(auth, getGoogleProvider());
 }
