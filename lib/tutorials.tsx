@@ -1,4 +1,5 @@
 import BuildingAPovLedRig from "components/tutorials/entries/building-a-pov-led-rig";
+import CalibratingTheImageprografPro1100 from "components/tutorials/entries/calibrating-the-imageprograf-pro-1100";
 import FromPhotographToObject from "components/tutorials/entries/from-photograph-to-object";
 import LightingAWaveguideObject from "components/tutorials/entries/lighting-a-waveguide-object";
 import ProgrammingPovFrames from "components/tutorials/entries/programming-pov-frames";
@@ -362,6 +363,94 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Pulse-width_modulation",
         label: "Pulse-width modulation — Wikipedia",
         note: "How LEDs are dimmed without flicker showing up in photographs.",
+      },
+    ],
+  },
+  {
+    slug: "calibrating-the-imageprograf-pro-1100",
+    title: "Calibrating the Canon imagePROGRAF PRO-1100 for Long-Exposure Light-Painting Prints",
+    date: "2024-10-22",
+    kind: "tutorial",
+    excerpt:
+      "How the bureau actually does it. Monitor at 120 cd/m² and D65 first, paper ICCs from Hahnemühle / Canson / Ilford, soft-proof in Relative Colorimetric, A4 test strip before any A2, sign after a 24-hour cure. Specific numbers, in order.",
+    Body: CalibratingTheImageprografPro1100,
+    related: [
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "The bureau page, with the current paper list and how to send a file in.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The editions this calibration workflow exists to serve.",
+      },
+      {
+        href: "/tutorials/your-first-long-exposure",
+        label: "Tutorial — Your First Long-Exposure Light Painting",
+        note: "The capture discipline upstream of this one. Get the file right before you print it.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The other place CRI 95+ matters. Same reasoning, different output.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The studio's full kit list, including the viewing booth.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.northlight-images.co.uk/",
+        label: "Northlight Images — Keith Cooper",
+        note: "The canonical English-language resource for Canon imagePROGRAF printers. The bureau is set up the way it is because of Keith's reviews and walk-throughs. Read everything.",
+      },
+      {
+        href: "https://www.youtube.com/@KeithCooper",
+        label: "Keith Cooper — YouTube channel",
+        note: "Video walk-throughs of the PRO-1000 and PRO-1100 setup, ink-swap mechanics, paper handling, and ICC workflow. The studio's printer setup is downstream of these videos.",
+      },
+      {
+        href: "https://www.usa.canon.com/shop/p/imageprograf-pro-1100",
+        label: "Canon imagePROGRAF PRO-1100 — product page",
+        note: "11-ink LUCIA PRO II + Chroma Optimiser, 2400 × 1200 dpi, A2+ output.",
+      },
+      {
+        href: "https://calibrite.com/product/display-pro-hl/",
+        label: "Calibrite Display Pro HL — colorimeter",
+        note: "Current product, descended from the X-Rite i1Display Pro line.",
+      },
+      {
+        href: "https://www.hahnemuehle.com/en/digital-papers/icc-profile/download-center.html",
+        label: "Hahnemühle ICC profile download centre",
+        note: "Free PRO-1100 profiles for Photo Rag 308, German Etching 310, and the full Hahnemühle range.",
+      },
+      {
+        href: "https://www.canson-infinity.com/en/icc-profiles",
+        label: "Canson Infinity — ICC profile selector",
+        note: "Free PRO-1100 profiles for Baryta Prestige II and the rest of the Canson archival line.",
+      },
+      {
+        href: "https://www.ilford.com/ilford-profiles/",
+        label: "Ilford Galerie — ICC profiles",
+        note: "Free profiles for Smooth Cotton Rag and the Galerie series.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/ICC_profile",
+        label: "ICC profile — Wikipedia",
+        note: "Foundational article on the colour-management file format the workflow rests on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Color_rendering_index",
+        label: "Colour rendering index (CRI) — Wikipedia",
+        note: "Why 95+ matters at the viewing booth and the studio bench.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Standard_illuminant",
+        label: "Standard illuminants (D50 / D65) — Wikipedia",
+        note: "The difference between the screen white point (D65) and the print viewing reference (D50, ~5000K).",
       },
     ],
   },

@@ -50,7 +50,7 @@ export const ladders: Ladder[] = [
       {
         title: "Calibrating the Canon imagePROGRAF PRO-1100",
         blurb:
-          "How the studio gets long-exposure light-paintings to print faithfully. Monitor calibration, paper profiling, soft-proofing, the test-print discipline.",
+          "How the bureau actually does it. Monitor at 120 cd/m² and D65 first, paper ICCs from Hahnemühle / Canson / Ilford, soft-proof in Relative Colorimetric, A4 test strip before any A2, sign after a 24-hour cure. With grateful credit to Keith Cooper at Northlight Images.",
         href: "/tutorials/calibrating-the-imageprograf-pro-1100",
       },
       {

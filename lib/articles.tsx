@@ -6,9 +6,11 @@ import NineSecondsPromptToPrintable from "components/articles/entries/nine-secon
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
 import SellotapeAndTiltBrush from "components/articles/entries/sellotape-and-tilt-brush";
 import TheFamiliar from "components/articles/entries/the-familiar";
+import TheFleetFourAirframes from "components/articles/entries/the-fleet-four-airframes";
 import VrAsPsychologicalSystem from "components/articles/entries/vr-as-psychological-system";
 import VrPovControllersTheProduct from "components/articles/entries/vr-pov-controllers-the-product";
 import WallArraysGeometryOfRooms from "components/articles/entries/wall-arrays-geometry-of-rooms";
+import WhatTheStudioWontDo from "components/articles/entries/what-the-studio-wont-do";
 import WhyIBuildMyOwnRigs from "components/articles/entries/why-i-build-my-own-rigs";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -671,6 +673,152 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Bas-relief",
         label: "Bas-relief — Wikipedia",
         note: "The art-historical register the belt-printed pieces sit in.",
+      },
+    ],
+  },
+  {
+    slug: "the-fleet-four-airframes",
+    title: "The Fleet — Four Airframes, Honestly Reviewed",
+    date: "2025-04-09",
+    kind: "article",
+    excerpt:
+      "Four DJI airframes in the studio case — Mavic 2 Pro, Neo, Neo 2, Avata 360 — plus the LED-modified rigs in first-flight testing. Real specs, honest limitations, and the FPV pipeline (Goggles + RC 2 + InAir head-tracking pod + Xreal One Pro) that ties them together.",
+    Body: TheFleetFourAirframes,
+    related: [
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "The commissions page this fleet exists to serve.",
+      },
+      {
+        href: "/journal/first-light",
+        label: "Field record — First Light",
+        note: "The first proper flight of the LED-modified airframes.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Where the Mavic's recce and documentation footage ends up serving a commission.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The bench tradition the LED-modified airframes come out of.",
+      },
+      {
+        href: "/contact?intent=aerial",
+        label: "Brief the studio — aerial",
+        note: "Commission a flight.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.dji.com/uk/mavic-2/info",
+        label: "DJI Mavic 2 — official product page",
+        note: "The Hasselblad L1D-20c platform; 1-inch sensor, adjustable aperture.",
+      },
+      {
+        href: "https://www.dji.com/uk/neo/specs",
+        label: "DJI Neo — specifications",
+        note: "135 g, single-axis gimbal, 4K/30.",
+      },
+      {
+        href: "https://www.dji.com/uk/neo-2/specs",
+        label: "DJI Neo 2 — specifications",
+        note: "151 g, two-axis gimbal, 4K/100 slow motion, omnidirectional vision with forward LiDAR.",
+      },
+      {
+        href: "https://store.dji.com/uk/product/dji-avata-360",
+        label: "DJI Avata 360 — product page",
+        note: "Dual 1-inch-equivalent CMOS sensors, 8K/60 360° video, O4+ transmission.",
+      },
+      {
+        href: "https://www.dji.com/uk/goggles-3",
+        label: "DJI Goggles 3 — product page",
+        note: "The FPV headset used for Avata 360 and head-tracked Neo work.",
+      },
+      {
+        href: "https://www.xreal.com/us/one-pro",
+        label: "Xreal One Pro — product page",
+        note: "57° FOV AR glasses worn under the Goggles to keep external line of sight to the airframe.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/First-person_view_(radio_control)",
+        label: "First-person view (radio control) — Wikipedia",
+        note: "The broader tradition the FPV pipeline sits in.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "What lets the LED-modified airframes paint a trail into a long-exposure photograph.",
+      },
+    ],
+  },
+  {
+    slug: "what-the-studio-wont-do",
+    title: "What the Studio Won't Do",
+    date: "2024-11-18",
+    kind: "article",
+    excerpt:
+      "On the record: the lines the studio holds. Single-exposure photographs, no invented teachers, no AI-generated imagery sold as the studio's work, no NFTs, no edition inflation, no fake scarcity, no paywall on the writing, no platform dependency the studio can't replace.",
+    Body: WhatTheStudioWontDo,
+    related: [
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "Who runs the studio, and who writes the writing.",
+      },
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+        note: "The studio's longer self-description.",
+      },
+      {
+        href: "/shop/certificate",
+        label: "Certificate of Authenticity",
+        note: "What ships with every print and sculpture, and what the edition numbers mean.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The catalogue. Every image a single long exposure of a real body in a real room.",
+      },
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The studio's actual genealogy, named in full.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The maintainers whose code the rigs depend on; the ladder the studio refuses to pull up.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "The photographic tradition the single-exposure discipline descends from.",
+      },
+      {
+        href: "https://www.homeofpoi.com/lessons/teach",
+        label: "Home of Poi — free lesson library",
+        note: "The free public source that taught a generation of flow artists, this studio included.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "NeoPixel Überguide — Adafruit Learn",
+        note: "An example of the free, complete, well-written documentation the studio's tutorials try to honour.",
+      },
+      {
+        href: "https://creativecommons.org/about/cclicenses/",
+        label: "Creative Commons licences — overview",
+        note: "The licensing family the studio's writing is published under.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Artist%27s_proof",
+        label: "Artist's proof — Wikipedia",
+        note: "Background on the print-edition convention the studio uses for retained APs.",
       },
     ],
   },
