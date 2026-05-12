@@ -14,6 +14,21 @@ repo), **when** (date), and **why** (what it enables here).
 
 ## 2026-05-12
 
+### Holofoil Hypercube — site signature glyph
+
+- **What:** `components/holofoil-hypercube.tsx` — rotating 4D
+  tesseract, three-colour chromatic-smear wireframe (cyan / magenta /
+  arcane-gold on deep midnight).
+- **Where from:** Aesthetic family lifted from
+  `components/holofoil-dice.tsx` (original WebGL raymarcher by
+  Jaenam, CC BY-NC-SA 4.0). 4D math written from scratch; palette
+  pulled from the DollyOS canon
+  (`C:\Users\dimon\.claude\skills\dollyos-world\SKILL.md`).
+- **Where to:** `components/holofoil-hypercube.tsx` (new).
+- **Why:** The site's bullet-point glyph. Replaces the dice as the
+  primary signature in future hero treatments; dice stays as the
+  fallback for now so the swap can be staged page by page.
+
 ### Google OAuth — `signInWithPopup` pattern
 
 - **What:** `GoogleAuthProvider` instance + `signInWithPopup` flow.
