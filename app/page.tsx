@@ -1,6 +1,7 @@
 import { Carousel } from "components/carousel";
 import { ThreeItemGrid } from "components/grid/three-items";
 import Footer from "components/layout/footer";
+import { HolofoilHypercube } from "components/holofoil-hypercube";
 import Link from "next/link";
 
 export const metadata = {
@@ -27,19 +28,23 @@ export default function HomePage() {
 function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-warm-black-800">
+      {/* The hypercube: the site's bullet point. Sits behind the content
+          on a deep-midnight plate and bleeds outward through a vignette
+          so the typography reads cleanly without losing the glyph. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(900px 480px at 78% 18%, rgba(255,120,165,0.28), transparent 62%), radial-gradient(780px 520px at 8% 82%, rgba(154,109,255,0.28), transparent 62%), radial-gradient(600px 380px at 50% 100%, rgba(118,222,166,0.18), transparent 65%)",
-        }}
-      />
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 pt-20 pb-28 md:px-8 md:pt-28 md:pb-36">
-        <div className="chrome-label">
+        className="pointer-events-none absolute inset-0 -z-10 bg-[#0c0a12]"
+      >
+        <div className="absolute inset-0 opacity-60">
+          <HolofoilHypercube />
+        </div>
+        <div className="absolute inset-0 hero-vignette" />
+      </div>
+      <div className="relative mx-auto max-w-(--breakpoint-2xl) px-4 pt-20 pb-28 md:px-8 md:pt-28 md:pb-36 [perspective:1400px]">
+        <div className="chrome-label [transform:translateZ(20px)]">
           Holo-Flow Studio &middot; Salford, UK
         </div>
-        <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] tracking-tight md:text-7xl">
+        <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] tracking-tight md:text-7xl [transform:translateZ(40px)]">
           Light painted in the air,
           <br />
           <span className="chrome-sheen">printed into objects.</span>

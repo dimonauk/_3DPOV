@@ -14,6 +14,43 @@ repo), **when** (date), and **why** (what it enables here).
 
 ## 2026-05-12
 
+### The Rookery v0 — social spine
+
+- **What:** Public-read, signed-in-write threaded community at
+  `/rookery`. Threads (title + body, max 200 / 5000 chars), flat
+  replies per thread (5000 chars). No edits, no deletes — what you
+  put in the air, you put in the air.
+- **Where from:** Schema invented; auth gating pattern adapted from
+  the existing `subscribers` collection in `firestore.rules`.
+  Architectural lessons taken from the Hangar's
+  `apps/charming-academy` and `apps/discord-bot` patterns (read,
+  not copied).
+- **Where to:**
+  - `lib/rookery/types.ts` — `Thread`, `Reply`, length constants.
+  - `lib/rookery/client.ts` — Firestore CRUD: `listRecentThreads`,
+    `getThreadById`, `listReplies`, `createThread`, `createReply`,
+    `formatRelative`.
+  - `app/rookery/page.tsx` — listing with auth-aware CTA.
+  - `app/rookery/new/page.tsx` — composer with sign-in gate.
+  - `app/rookery/[id]/page.tsx` — thread + flat replies + reply form.
+  - `firestore.rules` — `threads/{id}` + `threads/{id}/replies/{id}`
+    rules with auth-checked author UID and field whitelists.
+  - `middleware.ts` — `/rookery` added to pass-through prefixes so
+    the veil doesn't 302 it (the route itself gates by auth).
+  - `components/layout/navbar/index.tsx` + `components/layout/
+    footer.tsx` — nav entries.
+- **Why:** The social spine of the longer-arc vision. Holds tier-
+  gated channels later; today is the free public feed v0.
+
+**External configuration required** (Firebase Console):
+
+1. Firestore Database → must exist (eur3 region recommended).
+2. Publish `firestore.rules` (paste the updated file in the Rules
+   tab → Publish).
+3. Optional but recommended: build a Firestore index on `threads`
+   ordered by `createdAt desc` — Firestore will prompt to create it
+   the first time `listRecentThreads()` runs in production.
+
 ### Holofoil Hypercube — site signature glyph
 
 - **What:** `components/holofoil-hypercube.tsx` — rotating 4D

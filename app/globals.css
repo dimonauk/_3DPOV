@@ -3,6 +3,29 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/* Hero vignette — radial dimming over the hypercube so display
+   type reads cleanly while the glyph still bleeds out to the edges. */
+.hero-vignette {
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 30% 50%,
+      rgba(12, 10, 18, 0.92) 0%,
+      rgba(12, 10, 18, 0.55) 45%,
+      rgba(12, 10, 18, 0.1) 75%,
+      transparent 100%
+    ),
+    radial-gradient(
+      900px 480px at 80% 18%,
+      rgba(255, 120, 165, 0.22),
+      transparent 62%
+    ),
+    radial-gradient(
+      780px 520px at 8% 82%,
+      rgba(154, 109, 255, 0.22),
+      transparent 62%
+    );
+}
+
 /* ─── Holo-Flow Studio: kawaii-cyberpunk palette ────────────────────────
    Tokens only. Don't hardcode hex anywhere else in the codebase —
    extend here, reference via text-pink-200 / bg-warm-black / etc.

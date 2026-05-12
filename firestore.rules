@@ -31,5 +31,38 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // The Rookery — public read, signed-in write, no edits, no
+    // deletes. What you put in the air, you put in the air.
+    match /threads/{threadId} {
+      allow read: if true;
+      allow create: if
+        request.auth != null
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.body is string
+        && request.resource.data.body.size() > 0
+        && request.resource.data.body.size() <= 5000
+        && request.resource.data.keys().hasOnly([
+             'title', 'body', 'authorUid', 'authorName', 'createdAt'
+           ]);
+      allow update, delete: if false;
+
+      match /replies/{replyId} {
+        allow read: if true;
+        allow create: if
+          request.auth != null
+          && request.resource.data.authorUid == request.auth.uid
+          && request.resource.data.body is string
+          && request.resource.data.body.size() > 0
+          && request.resource.data.body.size() <= 5000
+          && request.resource.data.keys().hasOnly([
+               'body', 'authorUid', 'authorName', 'createdAt'
+             ]);
+        allow update, delete: if false;
+      }
+    }
+
   }
 }

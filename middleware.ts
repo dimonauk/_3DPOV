@@ -5,7 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 // Next internals, the OG image, the favicon, and API routes keep
 // working. Remove this file (and app/coming-soon/) to lift the veil.
 
-const PASS_THROUGH_PREFIXES = ["/_next/", "/api/", "/icon", "/signin"];
+const PASS_THROUGH_PREFIXES = [
+  "/_next/",
+  "/api/",
+  "/icon",
+  "/signin",
+  "/rookery",
+];
 const PASS_THROUGH_EXACT = new Set([
   "/coming-soon",
   "/favicon.ico",

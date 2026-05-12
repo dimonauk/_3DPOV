@@ -23,6 +23,7 @@ const FALLBACK_MENU: Menu[] = [
   { title: "Journal", path: "/journal" },
   { title: "Articles", path: "/articles" },
   { title: "Tutorials", path: "/tutorials" },
+  { title: "The Rookery", path: "/rookery" },
 ];
 
 export async function Navbar() {
