@@ -1,7 +1,9 @@
 import BeltPrintedWallReliefs from "components/articles/entries/belt-printed-wall-reliefs";
+import FromPicassoForward from "components/articles/entries/from-picasso-forward";
 import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery-the-same-trace-wearable";
 import KindredPractices from "components/articles/entries/kindred-practices";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
+import London360Walking from "components/articles/entries/london-360-walking";
 import NineSecondsPromptToPrintable from "components/articles/entries/nine-seconds-prompt-to-printable";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
 import SellotapeAndTiltBrush from "components/articles/entries/sellotape-and-tilt-brush";
@@ -11,6 +13,7 @@ import VrAsPsychologicalSystem from "components/articles/entries/vr-as-psycholog
 import VrPovControllersTheProduct from "components/articles/entries/vr-pov-controllers-the-product";
 import WallArraysGeometryOfRooms from "components/articles/entries/wall-arrays-geometry-of-rooms";
 import WhatTheStudioWontDo from "components/articles/entries/what-the-studio-wont-do";
+import WhereTheStudioHasLived from "components/articles/entries/where-the-studio-has-lived";
 import WhyIBuildMyOwnRigs from "components/articles/entries/why-i-build-my-own-rigs";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -751,6 +754,69 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
         label: "Persistence of vision — Wikipedia",
         note: "What lets the LED-modified airframes paint a trail into a long-exposure photograph.",
+      },
+    ],
+  },
+  {
+    slug: "london-360-walking",
+    title: "Ten Years of 360 Cameras, One Pole",
+    date: "2025-09-15",
+    kind: "article",
+    excerpt:
+      "Hours of London walking with a trekking pole, a selfie stick, and a 360 camera on top of that. From the 2016 Samsung Gear 360 eyeball through the Ricoh Theta and the long Insta360 middle to the current DJI Osmo 360. Why glass and sensor beat AI processing, and why ending up inside the DJI ecosystem was the calculation flipping.",
+    Body: London360Walking,
+    related: [
+      {
+        href: "/articles/the-fleet-four-airframes",
+        label: "The Fleet — Four Airframes",
+        note: "The aerial counterpart. The DJI ecosystem on the air-side.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "Where the 360 walks meet the drones over the same sites.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The single-frame deliverables that come out of the equirectangulars.",
+      },
+      {
+        href: "/articles/sellotape-and-tilt-brush",
+        label: "Sellotape and Tilt Brush",
+        note: "The other origin-walk piece. The drawer the Samsung eyeball lives in.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Samsung_Gear_360",
+        label: "Samsung Gear 360 — Wikipedia",
+        note: "Full spec history of the spherical eyeball that started the studio's 360 walks.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Ricoh_Theta",
+        label: "Ricoh Theta — Wikipedia",
+        note: "The Theta line, including the Z1 with its 1-inch sensors. The first consumer 360 with files you could treat as photographs.",
+      },
+      {
+        href: "https://www.insta360.com/",
+        label: "Insta360 — manufacturer site",
+        note: "The catalogue the studio walked through for several years. Their AI Reframe and Studio software are the architectural choice this article argues against; the cameras genuinely earned their generation.",
+      },
+      {
+        href: "https://www.insta360.com/blog/tips/invisible-selfie-stick-how-to-use.html",
+        label: "How to use the invisible selfie stick — Insta360",
+        note: "Official explanation of the stitching trick that hides a monopod from an equirectangular.",
+      },
+      {
+        href: "https://www.dji.com/360",
+        label: "DJI Osmo 360 — product page",
+        note: "Current studio camera. Two 1/1.1-inch square CMOS, f/1.9, 8K/30 360 video, 13.5 stops dynamic range, 120 MP stills.",
+      },
+      {
+        href: "https://gopro.com/en/us/shop/cameras/max/CHDHZ-202-master.html",
+        label: "GoPro MAX — product page",
+        note: "The action-camera detour. Rugged, honest, not the answer for printable photographs.",
       },
     ],
   },
