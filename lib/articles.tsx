@@ -1,6 +1,7 @@
 import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery-the-same-trace-wearable";
 import KindredPractices from "components/articles/entries/kindred-practices";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
+import NineSecondsPromptToPrintable from "components/articles/entries/nine-seconds-prompt-to-printable";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
 import TheFamiliar from "components/articles/entries/the-familiar";
 import VrAsPsychologicalSystem from "components/articles/entries/vr-as-psychological-system";
@@ -548,6 +549,74 @@ const ENTRIES: Entry[] = [
         href: "/contact",
         label: "Write to the studio",
         note: "The human reads the messages.",
+      },
+    ],
+  },
+  {
+    slug: "nine-seconds-prompt-to-printable",
+    title: "Nine Seconds from Prompt to Printable",
+    date: "2025-12-18",
+    kind: "article",
+    excerpt:
+      "Building a browser pipeline that turns sentences into 3D-printable art. Three open-source AI models, one consumer GPU, a Python orchestrator, marching cubes, quadric error decimation, watertight STLs in about nine seconds.",
+    Body: NineSecondsPromptToPrintable,
+    related: [
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The slower, photograph-driven cousin of this pipeline.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Where the belt-printed wall art ends up.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The open-source models this pipeline glues together.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "Where the next iteration's image input is meant to come from.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://github.com/comfyanonymous/ComfyUI",
+        label: "ComfyUI",
+        note: "The image-generation server hosting SDXL.",
+      },
+      {
+        href: "https://github.com/facebookresearch/sam2",
+        label: "SAM2 — Segment Anything Model 2",
+        note: "Meta's segmentation model; the click-to-mask workhorse.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Marching_cubes",
+        label: "Marching cubes — Wikipedia",
+        note: "The 1987 SIGGRAPH paper that does the voxel-to-mesh work.",
+      },
+      {
+        href: "https://github.com/TencentARC/InstantMesh",
+        label: "InstantMesh",
+        note: "Single-image to true-3D mesh model; next iteration's depth fix.",
+      },
+      {
+        href: "https://github.com/microsoft/TRELLIS",
+        label: "TRELLIS",
+        note: "Microsoft's image-to-3D model; the other half of next iteration.",
+      },
+      {
+        href: "https://github.com/dimtoneff/ComfyUI-PixelArt-Detector",
+        label: "PixelArt-Detector for ComfyUI",
+        note: "The palette quantiser used in the pipeline.",
+      },
+      {
+        href: "https://threejs.org/",
+        label: "Three.js",
+        note: "The in-browser 3D library the inline preview runs on.",
       },
     ],
   },
