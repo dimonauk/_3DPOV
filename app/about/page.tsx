@@ -24,24 +24,47 @@ export default function AboutPage() {
           <div className="chrome-label mb-3">I · The practice</div>
           <h2 className="mb-6 text-3xl text-chrome-100">
             Twelve years of poi.
+            <br />
+            Twenty-two years of thinking.
           </h2>
           <p>
-            Poi is a movement discipline. Two weights on two cords, held
-            in the hands, drawn through the air by the body. The
-            geometry is ancient &mdash; Māori in origin &mdash; and it
-            takes years to become fluent in. I came to it for the dance.
-            That was twelve years ago.
+            The studio sits at the intersection of two long arcs.
+            Twelve years of poi &mdash; the movement discipline of two
+            weights on two cords, drawn through the air by the body
+            &mdash; trained how a gesture is held. Twenty-two years of
+            academic and applied work on immersive systems as{" "}
+            <Link
+              href="/articles/vr-as-psychological-system"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              psychological systems
+            </Link>{" "}
+            trained how a gesture is captured, embodied, and made
+            transmissible. The studio is what happens when those two
+            arcs land in the same pair of hands.
+          </p>
+          <p>
+            Poi is ancient &mdash; Māori in origin. The undergraduate
+            degree that started the cognitive-systems arc was at
+            twenty-four, in the era when consumer VR was a graphics
+            problem most people thought would arrive any minute and
+            still hadn&rsquo;t. Both threads required the same kind of
+            long patience to make fluent.
           </p>
           <p>
             The thing you realise, eventually, is that a gesture
             sustained long enough stops being a gesture and starts
             being an object. Long-exposure photography proved it for
-            the rest of us: the trails hold.
+            the rest of us: the trails hold. The cognitive-systems
+            line says <em>why</em> they hold &mdash; the body schema
+            extends to include the rig, the rig writes into space,
+            the camera holds what was actually there.
           </p>
           <p>
             Holo-Flow Studio is what happens when those trails are
             pulled out of the photograph and cast into something you
-            can put on a shelf.
+            can put on a shelf, on a wall, around your neck, or
+            inside a headset.
           </p>
         </section>
 
@@ -134,7 +157,9 @@ export default function AboutPage() {
             Dimona Dougherty runs the practice as a Manchester&ndash;
             London-based freelance consultant artist. One pair of
             hands, one workshop, small editions, and an unreasonable
-            amount of patience.
+            amount of patience &mdash; twelve years on the body,
+            twenty-two on the mind, all of it in stealth until the
+            tools caught up.
           </p>
           <p>
             Everything is made to order, in runs. Nothing is
