@@ -43,10 +43,16 @@ const MONTHS = [
   "December",
 ];
 
+/**
+ * Year-stripped date display. The studio's website reads as a
+ * twelve-year archive landing all at once, so individual entries
+ * don't telegraph the year they were written. Day + month only;
+ * ordering is preserved by the underlying ISO date.
+ */
 export function formatEntryDate(iso: string): string {
-  const [y, m, d] = iso.split("-").map((s) => parseInt(s, 10));
-  if (!y || !m || !d) return iso;
-  return `${d} ${MONTHS[m - 1]} ${y}`;
+  const [, m, d] = iso.split("-").map((s) => parseInt(s, 10));
+  if (!m || !d) return iso;
+  return `${d} ${MONTHS[m - 1]}`;
 }
 
 export function sortByDateDescending<T extends { date: string }>(

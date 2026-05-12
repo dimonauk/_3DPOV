@@ -160,10 +160,11 @@ export function formatRelative(ms: number): string {
   if (hours < 24) return `${hours}h ago`;
   const days = Math.floor(hours / 24);
   if (days < 30) return `${days}d ago`;
+  // Anything older than a month falls back to day + month, no year —
+  // the site reads as an archive, not a timestamped feed.
   const date = new Date(ms);
   return date.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
-    year: "numeric",
   });
 }

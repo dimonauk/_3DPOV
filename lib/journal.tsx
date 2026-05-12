@@ -1,13 +1,16 @@
 import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
+import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
+import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
 import TheQuestionTheCameraAnswered from "components/journal/entries/the-question-the-camera-answered";
+import YearOneFire from "components/journal/entries/year-one-fire";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
   {
     slug: "first-light",
     title: "First Light",
-    date: "2026-05-12",
+    date: "2026-04-22",
     kind: "journal",
     excerpt:
       "First flight of the LED-modified airframes. The platform is flying; the technique is not consistent yet.",
@@ -50,7 +53,7 @@ const ENTRIES: Entry[] = [
   {
     slug: "on-the-apparatus",
     title: "On the Apparatus",
-    date: "2026-05-10",
+    date: "2026-03-09",
     kind: "journal",
     excerpt:
       "A working set, not a portfolio. The kit currently on the bench, in the workshop, and in the air.",
@@ -103,7 +106,7 @@ const ENTRIES: Entry[] = [
   {
     slug: "the-question-the-camera-answered",
     title: "The Question the Camera Answered",
-    date: "2026-05-05",
+    date: "2025-11-14",
     kind: "journal",
     excerpt:
       "Twelve years in. On how a long exposure made the gesture visible to everyone — and what the studio became next.",
@@ -112,6 +115,11 @@ const ENTRIES: Entry[] = [
       {
         href: "/about",
         label: "About — the practice, the method, the studio",
+      },
+      {
+        href: "/journal/the-night-the-camera-was-right",
+        label: "The Night the Camera Was Right",
+        note: "The hinge night this piece reflects on.",
       },
       {
         href: "/articles/why-i-build-my-own-rigs",
@@ -144,6 +152,75 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Poi_(performance_art)",
         label: "Poi (performance art) — Wikipedia",
         note: "Cultural and historical background on poi, including its Māori origin.",
+      },
+    ],
+  },
+  {
+    slug: "the-night-the-camera-was-right",
+    title: "The Night the Camera Was Right",
+    date: "2017-09-22",
+    kind: "journal",
+    excerpt:
+      "The hinge night. The first long exposure that came back as object rather than as snapshot. Twenty-five seconds, wet grass, no idea yet what it meant.",
+    Body: TheNightTheCameraWasRight,
+    related: [
+      {
+        href: "/journal/the-question-the-camera-answered",
+        label: "The Question the Camera Answered",
+        note: "The reflection piece that grew out of this night.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage II, long exposure",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs — what the camera has been holding ever since",
+      },
+    ],
+  },
+  {
+    slug: "on-the-bench-year-ten",
+    title: "On the Bench, Year Ten",
+    date: "2023-08-04",
+    kind: "journal",
+    excerpt:
+      "Building the first rig that did what the commercial pois couldn't. A Teensy on a desk, a Hall sensor and a magnet, a vertical white line that was a vertical white line.",
+    Body: OnTheBenchYearTen,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The argument this entry is the field note for.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The walkthrough version of the same build.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The current state of the kit, six years on.",
+      },
+    ],
+  },
+  {
+    slug: "year-one-fire",
+    title: "Year One, Fire",
+    date: "2014-11-30",
+    kind: "journal",
+    excerpt:
+      "Before the camera, before the rigs, before any of this. The body learning the geometry. Sock poi, three-beat weaves, eyes closed, then fire.",
+    Body: YearOneFire,
+    related: [
+      {
+        href: "/practice",
+        label: "Practice — Stage I, poi",
+      },
+      {
+        href: "/about",
+        label: "About — the practice",
       },
     ],
   },
