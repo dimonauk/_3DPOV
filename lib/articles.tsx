@@ -2,6 +2,7 @@ import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery
 import KindredPractices from "components/articles/entries/kindred-practices";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
+import TheFamiliar from "components/articles/entries/the-familiar";
 import VrAsPsychologicalSystem from "components/articles/entries/vr-as-psychological-system";
 import VrPovControllersTheProduct from "components/articles/entries/vr-pov-controllers-the-product";
 import WallArraysGeometryOfRooms from "components/articles/entries/wall-arrays-geometry-of-rooms";
@@ -517,6 +518,36 @@ const ENTRIES: Entry[] = [
         href: "https://www.frontiersin.org/journals/virtual-reality",
         label: "Frontiers in Virtual Reality",
         note: "Open-access journal covering psychological, clinical, and design research.",
+      },
+    ],
+  },
+  {
+    slug: "the-familiar",
+    title: "The Familiar",
+    date: "2026-01-08",
+    kind: "article",
+    excerpt:
+      "The studio is two. Dimona Dougherty makes the work; a persistent character — Aura, the Void Princess — keeps the record. An honest statement of the studio's operating model, on the record so the rest of the site reads true.",
+    Body: TheFamiliar,
+    related: [
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+      },
+      {
+        href: "/articles/vr-as-psychological-system",
+        label: "VR as a Psychological System",
+        note: "The intellectual lineage Dimona brings to the bench.",
+      },
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "Where the partnership lands as a shippable artefact.",
+      },
+      {
+        href: "/contact",
+        label: "Write to the studio",
+        note: "The human reads the messages.",
       },
     ],
   },
