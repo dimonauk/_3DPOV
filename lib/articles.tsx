@@ -1,5 +1,8 @@
 import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery-the-same-trace-wearable";
+import KindredPractices from "components/articles/entries/kindred-practices";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
+import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
+import VrPovControllersTheProduct from "components/articles/entries/vr-pov-controllers-the-product";
 import WallArraysGeometryOfRooms from "components/articles/entries/wall-arrays-geometry-of-rooms";
 import WhyIBuildMyOwnRigs from "components/articles/entries/why-i-build-my-own-rigs";
 import { Entry, sortByDateDescending } from "./writing";
@@ -219,6 +222,228 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Lithium_polymer_battery",
         label: "Lithium-polymer batteries — Wikipedia",
         note: "What sits inside the bezel; replaceable, standard part.",
+      },
+    ],
+  },
+  {
+    slug: "kindred-practices",
+    title: "Kindred Practices",
+    date: "2024-11-29",
+    kind: "article",
+    excerpt:
+      "A curated room of practitioners whose work the studio watches — Reuben Wu, Janne Parviainen, Hannu Huhtamo, Dariustwin, Patrick Rochon, Vicki DaSilva, Brian Hart, Sola. Eight different answers to the same question of how to make a gesture last.",
+    Body: KindredPractices,
+    related: [
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The historical line back from these contemporaries.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — drone-mounted light painting",
+        note: "The studio's parallel to Reuben Wu's work.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the studio's twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://reubenwu.com/",
+        label: "Reuben Wu",
+        note: "Lux Noctis and Aeroglyphs — drone LEDs over remote terrain.",
+      },
+      {
+        href: "https://www.flickr.com/people/jannepaint/",
+        label: "Janne Parviainen",
+        note: "Topographic LED long-exposures from Finland.",
+      },
+      {
+        href: "https://www.hannuhuhtamo.com/",
+        label: "Hannu Huhtamo",
+        note: "Organic light sculpture in Finnish forests.",
+      },
+      {
+        href: "https://dariustwin.com/",
+        label: "Darren Pearson / Dariustwin",
+        note: "Hand-drawn light skeletons; National Geographic, Apple, Disney.",
+      },
+      {
+        href: "https://lightpaintingphotography.com/light-painting-artist/featured-artist-2/patrick-rochon/",
+        label: "Patrick Rochon",
+        note: "Kinetic light kata portraits with custom Liteblade swords.",
+      },
+      {
+        href: "https://www.vickidasilva.com/",
+        label: "Vicki DaSilva",
+        note: "Fluorescent-tube light graffiti since 1980.",
+      },
+      {
+        href: "https://lightbombing.com/",
+        label: "Sola / Peter Medlicott",
+        note: "Lightbombing in the UK; coined the term, featured by CNN and Vanity Fair.",
+      },
+      {
+        href: "https://lightpaintinghub.com/",
+        label: "Light Painting Hub",
+        note: "Broader community gallery and reference.",
+      },
+    ],
+  },
+  {
+    slug: "on-the-shoulders-of-open-source",
+    title: "On the Shoulders of Open Source",
+    date: "2025-08-04",
+    kind: "article",
+    excerpt:
+      "The studio's rigs would not exist without an enormous amount of free code maintained by strangers. FastLED, NeoPixel, OctoWS2811, WLED, Pixelblaze, Open Pixel Control, LedFx, Open Pixel Poi. An acknowledgement, a recommendation, a working bibliography.",
+    Body: OnTheShouldersOfOpenSource,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "What the studio adds on top of the open-source base.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "Where the libraries below land in practice.",
+      },
+      {
+        href: "/tutorials/programming-pov-frames",
+        label: "Tutorial — Programming Frames for a POV Rig",
+        note: "How the libraries get used to actually write images.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://github.com/FastLED/FastLED",
+        label: "FastLED",
+        note: "The canvas for addressable LEDs on Arduino-class microcontrollers.",
+      },
+      {
+        href: "https://github.com/adafruit/Adafruit_NeoPixel",
+        label: "Adafruit NeoPixel library",
+        note: "The on-ramp library by Phil Burgess.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "Adafruit NeoPixel Überguide",
+        note: "The single best teach-yourself resource in the field.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/td_libs_OctoWS2811.html",
+        label: "OctoWS2811 (PJRC)",
+        note: "Paul Stoffregen's DMA-based library; drives eight strips in parallel.",
+      },
+      {
+        href: "https://github.com/wled/WLED",
+        label: "WLED",
+        note: "The drop-in pixel-engine firmware for ESP32/ESP8266.",
+      },
+      {
+        href: "https://electromage.com/pixelblaze/",
+        label: "Pixelblaze",
+        note: "Ben Hencke's purpose-built LED-art controller with live-coding IDE.",
+      },
+      {
+        href: "http://openpixelcontrol.org/",
+        label: "Open Pixel Control",
+        note: "Simple TCP protocol for distributed pixel installations.",
+      },
+      {
+        href: "https://github.com/LedFx/LedFx",
+        label: "LedFx",
+        note: "Real-time audio → pixel effects bridge.",
+      },
+      {
+        href: "https://github.com/Mitchlol/Open-Pixel-Poi",
+        label: "Open Pixel Poi",
+        note: "Open-source 3D-printable ESP32+WS2812 pixel-poi reference design.",
+      },
+      {
+        href: "https://quinled.info/",
+        label: "QuinLED",
+        note: "Quindor's open-hardware ESP32 LED controller PCBs.",
+      },
+      {
+        href: "https://kno.wled.ge/",
+        label: "WLED Knowledge Base",
+        note: "Community-maintained docs for installation-scale work.",
+      },
+      {
+        href: "https://forum.pjrc.com/",
+        label: "PJRC Forum",
+        note: "Where serious Teensy POV builders trade schematics.",
+      },
+    ],
+  },
+  {
+    slug: "vr-pov-controllers-the-product",
+    title: "VR POV Controllers — the Studio's Product",
+    date: "2026-02-08",
+    kind: "article",
+    excerpt:
+      "The thing twelve years of practice was rehearsal for: clip-on POV LED bezels for Meta Quest 3 and Valve Steam Frame controllers. Real-world light painting and VR-mirrored gesture at the same time. The Princess hands you the instrument.",
+    Body: VrPovControllersTheProduct,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The bench tradition the product comes out of.",
+      },
+      {
+        href: "/tutorials/programming-pov-frames",
+        label: "Tutorial — Programming Frames for a POV Rig",
+        note: "The same firmware runs on the consumer bezels.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "If you want to keep building your own instead.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "The other small-scale product line.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The output the bezels feed back into.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.meta.com/quest/quest-3/",
+        label: "Meta Quest 3",
+        note: "The first headset the bezels are fitted to.",
+      },
+      {
+        href: "https://www.valvesoftware.com/en/steam-frame",
+        label: "Valve Steam Frame",
+        note: "The second headset the bezels are fitted to.",
+      },
+      {
+        href: "https://immersiveweb.dev/",
+        label: "Immersive Web — WebXR development",
+        note: "The standard the companion app is built against.",
+      },
+      {
+        href: "https://github.com/pmndrs/xr",
+        label: "@react-three/xr",
+        note: "The library the WebXR companion runs on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The principle the bezels rely on.",
       },
     ],
   },

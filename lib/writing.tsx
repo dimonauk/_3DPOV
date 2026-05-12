@@ -9,6 +9,18 @@ export type RelatedLink = {
   note?: string;
 };
 
+export type EntryImage = {
+  /**
+   * Path under /public/ (e.g. "/journal/first-light-hero.jpg"). When
+   * absent, the detail page falls back to a chrome-sheen gradient
+   * plate so the layout still reads.
+   */
+  src: string;
+  alt: string;
+  /** Optional photographer / source attribution shown beneath the image. */
+  credit?: string;
+};
+
 export type Entry = {
   slug: string;
   title: string;
@@ -16,6 +28,9 @@ export type Entry = {
   kind: EntryKind;
   excerpt: string;
   Body: ComponentType;
+  // Optional hero image at the top of the detail page. When absent,
+  // the page falls back to a chrome-sheen gradient plate.
+  heroImage?: EntryImage;
   // On-site cross-references — other entries or main pages.
   related?: RelatedLink[];
   // External learning resources — the studio's position is that anyone

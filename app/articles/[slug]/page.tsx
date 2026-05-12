@@ -1,4 +1,5 @@
 import Footer from "components/layout/footer";
+import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -49,6 +50,7 @@ export default async function ArticlePage({
         <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05] text-chrome-100">
           {entry.title}
         </h1>
+        <HeroPlate image={entry.heroImage} title={entry.title} />
         <div className="mt-12 prose-gallery text-chrome-200">
           <Body />
         </div>
