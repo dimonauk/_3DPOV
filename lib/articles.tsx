@@ -956,6 +956,155 @@ const ENTRIES: Entry[] = [
       },
     ],
   },
+  {
+    slug: "where-the-studio-has-lived",
+    title: "Where the Studio Has Lived",
+    date: "2025-06-12",
+    kind: "article",
+    excerpt:
+      "A practice accumulates its writing on whatever platform was open in another tab. Make:, CodePen, GitHub, Instructables, the forums, the gists, the Reddit threads. The retelling on this site is the consolidation — in one voice, cross-referenced, on infrastructure the studio owns.",
+    Body: WhereTheStudioHasLived,
+    related: [
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "Including the line on no platform the studio can't replace.",
+      },
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "How the studio is actually run, two minds keeping it whole.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The wider gratitude — the free code the rigs rest on.",
+      },
+      {
+        href: "/tutorials",
+        label: "Tutorials — the current canonical surface",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://makezine.com/",
+        label: "Make: — DIY projects and ideas for makers",
+        note: "The maker-community ecosystem that taught a generation how to write a build log.",
+      },
+      {
+        href: "https://www.instructables.com/",
+        label: "Instructables",
+        note: "Long-form step-by-step maker tutorials with photographs and parts lists.",
+      },
+      {
+        href: "https://codepen.io/",
+        label: "CodePen",
+        note: "Front-end code sketchpad.",
+      },
+      {
+        href: "https://github.com/",
+        label: "GitHub",
+        note: "Where the code has to live because it's code.",
+      },
+      {
+        href: "https://hackaday.com/",
+        label: "Hackaday",
+        note: "Daily hardware-hacking writing.",
+      },
+      {
+        href: "https://web.archive.org/",
+        label: "Internet Archive — Wayback Machine",
+        note: "Where older versions of the studio's writing on dead or renamed platforms can sometimes still be recovered.",
+      },
+    ],
+  },
+  {
+    slug: "from-picasso-forward",
+    title: "From Picasso, Forward",
+    date: "2025-11-21",
+    kind: "article",
+    excerpt:
+      "The course of light-painting photography from Picasso's 1949 penlight centaurs to the present studio bench. Mili, DaSilva, the Flickr decade, Rochon and Pearson and Huhtamo and Parviainen, Wu's drone halos, and the angular-synced rigs in Salford that turn the photograph into an object.",
+    Body: FromPicassoForward,
+    related: [
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The ancestral half of the same chronology.",
+      },
+      {
+        href: "/articles/kindred-practices",
+        label: "Kindred Practices",
+        note: "Contemporary practitioner survey in full.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The technical argument for angular sync over time sync.",
+      },
+      {
+        href: "/articles/sellotape-and-tilt-brush",
+        label: "Sellotape and Tilt Brush",
+        note: "Where the photograph-to-object instinct originally came from.",
+      },
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "The forward bet named at the end of this piece.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Gjon_Mili",
+        label: "Gjon Mili — Wikipedia",
+        note: "Edgerton student, Life staff photographer; set the camera in Vallauris in 1949.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Pablo_Picasso",
+        label: "Pablo Picasso — Wikipedia",
+        note: "The artist who treated the long exposure as a sheet of paper.",
+      },
+      {
+        href: "https://www.life.com/arts-entertainment/behind-the-picture-picasso-draws-with-light/",
+        label: "Behind the Picture: Picasso 'Draws' With Light — LIFE",
+        note: "The magazine's own archived account of the 1949 shoot.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Light_painting",
+        label: "Light painting — Wikipedia",
+        note: "Discipline overview; chronology of major practitioners and techniques.",
+      },
+      {
+        href: "https://www.vickidasilva.com/",
+        label: "Vicki DaSilva",
+        note: "Fluorescent-tube light graffiti since 1980; coined the term.",
+      },
+      {
+        href: "https://reubenwu.com/",
+        label: "Reuben Wu",
+        note: "Lux Noctis and Aeroglyphs — drone-LED long exposures at architectural scale.",
+      },
+      {
+        href: "https://thepixelstick.com/",
+        label: "Pixelstick",
+        note: "The 2013 Kickstarter that made the commercial time-synced pixel rig mainstream.",
+      },
+      {
+        href: "https://lightpaintinghub.com/",
+        label: "Light Painting Hub",
+        note: "Contemporary community entry point; practitioner directory.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "The photographic tradition the entire chronology descends from.",
+      },
+    ],
+  },
 ];
 
 export const articles: Entry[] = sortByDateDescending(ENTRIES);
