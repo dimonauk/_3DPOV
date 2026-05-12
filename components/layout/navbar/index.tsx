@@ -20,6 +20,7 @@ const FALLBACK_MENU: Menu[] = [
   { title: "Bureau", path: "/bureau" },
   { title: "Practice", path: "/practice" },
   { title: "About", path: "/about" },
+  { title: "Learn", path: "/learn" },
   { title: "Journal", path: "/journal" },
   { title: "Articles", path: "/articles" },
   { title: "Tutorials", path: "/tutorials" },

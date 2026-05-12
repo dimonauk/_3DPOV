@@ -66,6 +66,9 @@ export default async function Footer() {
               <Link href="/tutorials" className="hover:text-pink-200">Tutorials</Link>
             </li>
             <li>
+              <Link href="/learn" className="hover:text-pink-200">Learn (curriculum)</Link>
+            </li>
+            <li>
               <Link href="/rookery" className="hover:text-pink-200">The Rookery</Link>
             </li>
             <li>

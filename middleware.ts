@@ -11,6 +11,7 @@ const PASS_THROUGH_PREFIXES = [
   "/icon",
   "/signin",
   "/rookery",
+  "/learn",
 ];
 const PASS_THROUGH_EXACT = new Set([
   "/coming-soon",
