@@ -20,7 +20,9 @@ export default function ArticlesPage() {
         <p className="mt-8 max-w-xl text-chrome-200">
           Longer pieces, less timely than journal entries. On the
           studio&rsquo;s tradeoffs &mdash; what gets built, what gets
-          bought, what gets photographed.
+          bought, what gets photographed, and what gets left in the
+          ground because the world doesn&rsquo;t need another version
+          of it.
         </p>
 
         <ul className="mt-16 divide-y divide-warm-black-800 border-t border-warm-black-800">

@@ -20,10 +20,11 @@ export default function AerialPage() {
           </span>
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          The studio&rsquo;s drone fleet, available for commission. Aerial
-          stills, motion, FPV cinewhoop fly-throughs, and &mdash; new this
-          season &mdash; aerial light painting flown with LED-modified
-          airframes.
+          Four airframes, one FPV pipeline, available for commission.
+          Aerial stills, motion, FPV cinewhoop fly-throughs, 360&deg;
+          immersive capture, and &mdash; new this season &mdash;
+          aerial light painting flown with LED-modified airframes. The
+          fleet is up; the technique is settling.
         </p>
 
         <section className="mt-16 prose-gallery text-chrome-200">

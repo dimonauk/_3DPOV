@@ -15,13 +15,17 @@ export default function BureauPage() {
         <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">
           Print bureau.
           <br />
-          <span className="chrome-sheen">A2, pigment, fine-art paper.</span>
+          <span className="chrome-sheen">
+            A2, pigment, careful colour.
+          </span>
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          The same printer used for the studio's own editions, offered
-          for other people's work. Photographs, illustration, prints of
-          digital pieces. A2 and smaller, on pigment inks, on paper you
-          can pick from a short list of archival stocks.
+          The printer the studio uses for its own editions, open for
+          other people&rsquo;s work. Photographs, illustration, prints
+          of digital pieces. A2 and smaller, on pigment inks, on paper
+          chosen from a short list of archival stocks. I&rsquo;ll
+          match colour to your reference and I won&rsquo;t print on a
+          paper I haven&rsquo;t tested myself.
         </p>
 
         <section className="mt-16 prose-gallery text-chrome-200">
@@ -86,9 +90,11 @@ export default function BureauPage() {
             Opening to external clients soon.
           </h2>
           <p className="mt-4 text-chrome-300">
-            The bureau is currently being shaken down with friends of the
-            studio. To be put on the list for the public opening &mdash;
-            and to get early booking slots &mdash; write in now.
+            The bureau is being shaken down with friends of the studio
+            first; nothing leaves the shop until I&rsquo;m sure the
+            colour holds across the papers. Bookings open to the public
+            shortly. To be on that list &mdash; and to get the early
+            slots &mdash; write in now.
           </p>
           <div className="mt-6 flex gap-4">
             <Link

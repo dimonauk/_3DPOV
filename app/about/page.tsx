@@ -26,21 +26,22 @@ export default function AboutPage() {
             Twelve years of poi.
           </h2>
           <p>
-            Poi is a movement discipline. Two weights on two cords, held in
-            the hands, drawn through the air by the body. The geometry is
-            ancient &mdash; Māori in origin &mdash; and it takes years to
-            become fluent in it. I've been practicing for twelve.
+            Poi is a movement discipline. Two weights on two cords, held
+            in the hands, drawn through the air by the body. The
+            geometry is ancient &mdash; Māori in origin &mdash; and it
+            takes years to become fluent in. I came to it for the dance.
+            That was twelve years ago.
           </p>
           <p>
-            The thing you realise, eventually, is that a gesture sustained
-            long enough stops being a gesture and becomes an object.
-            Long-exposure photography proved it to the rest of us: the
-            trails hold.
+            The thing you realise, eventually, is that a gesture
+            sustained long enough stops being a gesture and starts
+            being an object. Long-exposure photography proved it for
+            the rest of us: the trails hold.
           </p>
           <p>
-            Holo-Flow Studio is what happens when those trails are pulled
-            out of the photograph and cast into something you can put on a
-            shelf.
+            Holo-Flow Studio is what happens when those trails are
+            pulled out of the photograph and cast into something you
+            can put on a shelf.
           </p>
         </section>
 
@@ -50,27 +51,28 @@ export default function AboutPage() {
             Three ways to paint light, one way to hold it.
           </h2>
           <p>
-            The photographs come from three different light-painting
-            practices, each contributing different qualities to the
-            archive.
+            The photographs come from three light-painting practices
+            that the studio runs in parallel. Each makes a different
+            kind of picture.
           </p>
           <p>
             <strong>Traditional light painting.</strong> Torches, LED
-            wands, fire poi, handheld sticks. Organic, gestural,
-            human-scale. Good for landscape pieces and for work where
-            the body&rsquo;s presence in the gesture is part of the
-            subject.
+            wands, fire poi, staff. Organic, gestural, human-scale.
+            Right for landscape pieces and for any image where the body
+            being there is part of the subject.
           </p>
           <p>
-            <strong>Persistence-of-vision LED arrays.</strong> Addressable
-            LEDs on a moving chassis &mdash; programmed frame by frame,
-            synced against a rotation sensor, able to render arbitrary
-            image data <em>as light, in physical space.</em> The rigs
-            are built in-studio around a Teensy microcontroller and
-            TLC5927 drivers; the frames are designed ahead in software;
-            the body walks the spatial trajectory. What the camera
-            captures is not the body &mdash; it is the image data in
-            its briefly-real physical form.
+            <strong>Persistence-of-vision LED arrays.</strong>{" "}
+            Addressable LEDs on a moving chassis: programmed frame by
+            frame, synced against a rotation sensor, able to render
+            arbitrary image data <em>as light, in physical space.</em>
+            The rigs are built in-studio around a Teensy microcontroller
+            and TLC5927 drivers. The frames are written in software
+            before the performance; the body walks the spatial
+            trajectory; the camera captures the volume the rig
+            sweeps through. What the photograph holds is not the body.
+            The body was a blur. The photograph holds the image data,
+            in its briefly-real physical form.
           </p>
           <p>
             <strong>Drone-mounted LED systems.</strong> The studio&rsquo;s
@@ -99,26 +101,26 @@ export default function AboutPage() {
             Photograph becomes geometry. Geometry becomes object.
           </h2>
           <p>
-            The photographs are finished work in their own right,
-            editioned and printed. But they are also source material.
-            Each capture can be translated into 3D geometry &mdash;
-            voxel-traced, extruded, refined as a mesh &mdash; and then
-            SLA-printed in resin as an object.
+            The photographs are finished work, editioned and printed.
+            They are also source material. Each capture can be
+            translated into 3D geometry &mdash; voxel-traced, surfaced,
+            cleaned up &mdash; then SLA-printed in resin as an object.
           </p>
           <p>
-            Embedded in the body of every object: clear acrylic{" "}
+            Inside the body of every object: clear acrylic{" "}
             <strong>ambient-light waveguides</strong>, grown along the
-            trace lines of the original gesture. A small warm LED
-            seated at the waveguide root carries light through the
-            print, edge-lighting the geometry from inside. The gesture
-            that was drawn in the dark glows again, from inside the
-            body it drew.
+            trace lines of the original gesture. A small warm LED at
+            the waveguide root carries light through the print,
+            edge-lighting the geometry from inside. The gesture that
+            was drawn in the dark glows again, from inside the body it
+            drew. There&rsquo;s no metaphor in that sentence; it is
+            literally what happens.
           </p>
           <p>
-            Three product lines: <strong>desktop waveguides</strong>
-            (palm-scale, lit), <strong>sculptures</strong> (object-scale,
-            lit or unlit), and <strong>wall arrays</strong>
-            (configurable, commission).
+            Three product lines: <strong>desktop waveguides</strong>{" "}
+            (palm-scale, lit), <strong>sculptures</strong>{" "}
+            (object-scale, lit or unlit), and{" "}
+            <strong>wall arrays</strong> (configurable, on commission).
           </p>
         </section>
 
@@ -128,18 +130,20 @@ export default function AboutPage() {
             Salford, Greater Manchester.
           </h2>
           <p>
-            Holo-Flow Studio is based in Salford, in Greater Manchester.
-            Dimona Dougherty runs the practice as a Manchester&ndash;London-
-            based freelance consultant artist. The studio is a small
-            one: one pair of hands, one workshop, small editions.
+            Holo-Flow Studio sits in Salford, in Greater Manchester.
+            Dimona Dougherty runs the practice as a Manchester&ndash;
+            London-based freelance consultant artist. One pair of
+            hands, one workshop, small editions, and an unreasonable
+            amount of patience.
           </p>
           <p>
             Everything is made to order, in runs. Nothing is
-            stockpiled. Editions close on sell-through and never
-            reopen. Each object carries its provenance: a card inside
-            the shipping box naming the kata, the location, the hour,
-            the date. If a track of music mattered to the gesture,
-            it&rsquo;s named too.
+            stockpiled; nothing is lying around waiting to be sold.
+            Editions close on sell-through and never reopen. Each
+            object ships with its provenance &mdash; a card inside the
+            shipping box naming the kata, the location, the hour, the
+            date, and the music if music mattered to the gesture. Yes,
+            we name the track. It mattered at the time.
           </p>
           <p>
             Field records and longer pieces live in the{" "}

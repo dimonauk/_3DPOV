@@ -26,16 +26,18 @@ export default async function PhotographsPage() {
           Light, <span className="chrome-sheen">written in the air.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-chrome-200">
-          Every image in this series is a single long exposure. Inside
-          that exposure: a persistence-of-vision LED array moving through
-          real space, rendering programmed image data frame by frame as
-          light. No compositing. The image was physically in the room.
-          The camera simply held the room open long enough to see it.
+          Every image in this series is a single long exposure. No
+          compositing &mdash; that&rsquo;s the rule, and the rule
+          isn&rsquo;t aesthetic. Inside the exposure: a
+          persistence-of-vision LED array moving through real space,
+          writing programmed image data into the air column by column.
+          The picture was physically in the room before the camera saw
+          it. The camera held the room open long enough to catch it.
         </p>
         <p className="mt-4 max-w-2xl text-chrome-300">
-          All prints are signed, numbered, and shipped with a field
-          record naming the kata, the location, the hour, and the date
-          of capture.
+          All prints are signed, numbered, and ship with a field record
+          naming the kata, the location, the hour, the date, and the
+          music if music mattered to the gesture.
         </p>
         <p className="mt-6 max-w-2xl text-sm text-chrome-400">
           Curious how these are made? The studio writes a{" "}
@@ -111,9 +113,10 @@ export default async function PhotographsPage() {
             A gesture for your room.
           </h2>
           <p className="mt-3 text-chrome-300">
-            Custom kata performed on commission &mdash; your choice of
-            location, colour programme, duration. One-off print, runs of
-            two or three for families. Discuss via the contact form.
+            A kata performed on commission. Your choice of location,
+            colour programme, duration. One-off print, or runs of two
+            or three if the family wants matching impressions. Write
+            in and tell me the room.
           </p>
           <div className="mt-5">
             <Link
@@ -139,16 +142,17 @@ function EmptyState({ hasCollection }: { hasCollection: boolean }) {
         First editions landing shortly.
       </h2>
       <p className="mx-auto mt-4 max-w-lg text-sm text-chrome-300">
-        {hasCollection
-          ? "The collection is live but has no products yet. Add products in Shopify admin with the `photo-print` tag to populate the gallery."
-          : "The `photographs` collection hasn't been created in Shopify yet. See docs/photograph-catalog.md for the nine-edition seed list and bulk-import CSV."}
+        Nothing on the shelf yet &mdash; the prints are being made,
+        signed, and packed. The first editions go up here as soon as
+        they&rsquo;re ready. If you want to be told first, leave your
+        address in the dispatch notes at the bottom of any page.
       </p>
       <div className="mt-6">
         <Link
           href="/contact?intent=general"
           className="text-sm text-pink-200 underline underline-offset-4"
         >
-          Be told first &rarr;
+          Or write directly &rarr;
         </Link>
       </div>
     </div>

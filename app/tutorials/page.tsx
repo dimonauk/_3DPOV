@@ -18,9 +18,11 @@ export default function TutorialsPage() {
           Tutorials.
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          How to do it yourself. Starting points for working with
-          long-exposure light painting and the adjacent practices the
-          studio runs through.
+          How to do it yourself. The studio&rsquo;s position is that
+          this work is learnable; these are starting points and full
+          walkthroughs for long-exposure light painting and the
+          adjacent practices the studio runs through. Anyone willing
+          to sit and learn can get here.
         </p>
 
         <ul className="mt-16 divide-y divide-warm-black-800 border-t border-warm-black-800">

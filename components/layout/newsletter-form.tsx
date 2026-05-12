@@ -33,7 +33,7 @@ export function NewsletterForm() {
   if (state === "done") {
     return (
       <p className="chrome-label text-pink-200">
-        Subscribed — watch your inbox.
+        Logged. The next dispatch goes to you.
       </p>
     );
   }
@@ -62,7 +62,7 @@ export function NewsletterForm() {
       </button>
       {state === "error" && (
         <p className="text-xs text-pink-300">
-          Something failed. Try again in a moment.
+          That didn&rsquo;t take. Try again in a moment.
         </p>
       )}
     </form>

@@ -20,9 +20,10 @@ export default function JournalPage() {
         </h1>
         <p className="mt-6 max-w-xl text-chrome-200">
           Notes from the studio. Location records from the poi practice
-          &mdash; where, when, what the weather was doing. Build logs
-          for the rigs. The occasional essay about holding a gesture
-          long enough to leave residue.
+          &mdash; where, when, what the weather was doing, what the
+          rigs were doing. Build logs and field reports. The occasional
+          essay about holding a gesture long enough to leave residue
+          someone else can look at.
         </p>
 
         <ul className="mt-16 divide-y divide-warm-black-800 border-t border-warm-black-800">

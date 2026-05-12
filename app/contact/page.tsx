@@ -16,9 +16,10 @@ export default function ContactPage() {
           Contact.
         </h1>
         <p className="mt-6 max-w-xl text-chrome-200">
-          For commissions, press, print-bureau enquiries, or just to say
-          something about the work. Every message is read. Replies
-          typically within a day or two.
+          For commissions, press, print-bureau enquiries, aerial work,
+          or just to say something about the work. I read every one.
+          Replies typically within a day or two; sometimes faster if
+          I&rsquo;m at the bench and the kettle is on.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -53,7 +54,7 @@ export default function ContactPage() {
                   <a
                     href="https://instagram.com/holoflow.studio"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="hover:text-pink-200"
                   >
                     Instagram &rarr;
@@ -65,9 +66,11 @@ export default function ContactPage() {
             <div>
               <div className="chrome-label mb-2">Voicemail</div>
               <p className="text-xs leading-relaxed text-chrome-400">
-                We prefer writing. It gives the work the time it needs. If
-                something is urgent, email with "urgent" in the subject
-                line.
+                Writing only, for now. It gives the work the time it
+                needs, and it leaves a thread I can come back to without
+                losing the plot. If something is genuinely urgent, put
+                &ldquo;urgent&rdquo; in the subject line and I&rsquo;ll
+                find it.
               </p>
             </div>
           </aside>

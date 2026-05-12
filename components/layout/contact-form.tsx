@@ -51,8 +51,9 @@ export function ContactForm() {
       <div className="rounded-sm border border-pink-200/30 bg-pink-200/5 p-6">
         <div className="chrome-label text-pink-200">Sent</div>
         <p className="mt-2 text-chrome-200">
-          Thanks &mdash; the studio will reply within a day or two. If it's
-          urgent you can also reach us directly at{" "}
+          Got it. I read every one. Expect a reply within a day or two.
+          If it&rsquo;s urgent, put &ldquo;urgent&rdquo; in the subject
+          and write directly to{" "}
           <a
             href="mailto:contact@holoflow.co.uk"
             className="text-pink-200 underline underline-offset-4"
@@ -129,14 +130,14 @@ export function ContactForm() {
           className="w-full rounded-sm border border-warm-black-700 bg-warm-black-900 px-3 py-2.5 text-sm text-chrome-100 focus:border-pink-200 focus:outline-none"
           placeholder={
             intent === "commission"
-              ? "The room, the wall, the rough dimensions, what the space feels like. No need to be exact."
+              ? "The room, the wall, the rough dimensions, what the space feels like. No need to be exact — that's what the conversation is for."
               : intent === "bureau"
-                ? "Paper preference, size, quantity, deadline. Files welcome."
+                ? "Paper preference, size, quantity, deadline. Files welcome; rough scans fine."
                 : intent === "aerial"
-                  ? "Site, intent, deliverable, dates. Stills, motion, FPV, 360°, or aerial light painting — let me know which."
+                  ? "Site, intent, deliverable, dates. Stills, motion, FPV, 360°, or aerial light painting — tell me which and I'll tell you which airframe."
                   : intent === "press"
-                    ? "Publication, deadline, angle."
-                    : "Whatever it is. We read every one."
+                    ? "Publication, deadline, angle. The more specific, the faster I can answer usefully."
+                    : "Whatever it is. I read every one."
           }
         />
       </div>

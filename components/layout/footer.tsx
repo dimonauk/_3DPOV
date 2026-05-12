@@ -31,7 +31,7 @@ export default async function Footer() {
             </div>
           </Link>
           <p className="mt-4 max-w-xs text-xs leading-relaxed text-chrome-400">
-            Editioned objects from a twelve-year poi practice. Salford, UK.
+            Editioned objects out of twelve years of poi. Salford.
           </p>
         </div>
 
@@ -111,8 +111,8 @@ export default async function Footer() {
         <div>
           <div className="chrome-label mb-4">Dispatch notes</div>
           <p className="mb-3 text-xs leading-relaxed text-chrome-400">
-            New releases, field records, and studio notes. Roughly monthly.
-            Never advertising.
+            New releases, field records, studio notes. Roughly monthly.
+            Never advertising; I don&rsquo;t have the temperament for it.
           </p>
           <NewsletterForm />
         </div>

@@ -45,11 +45,13 @@ function Hero() {
           <span className="chrome-sheen">printed into objects.</span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg text-chrome-200">
-          Long-exposure photographs of gestures &mdash; drawn with fire,
-          persistence-of-vision LED arrays, and drone-mounted lights &mdash;
-          translated into 3D geometry and cast as objects with ambient
-          waveguides grown through their bodies. The photograph is what
-          the room saw. The object is what the gesture left behind.
+          Long-exposure photographs of gestures drawn in fire, in
+          programmable LED, in light flown on drones. Captured in a
+          single frame, no compositing &mdash; there isn&rsquo;t any
+          need and there isn&rsquo;t any reason. Then translated into
+          3D-printed objects with acrylic waveguides grown along the
+          original trace, lit from inside. The photograph is what the
+          room saw. The object is what the gesture left behind.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-5 text-sm">
           <Link
@@ -91,30 +93,31 @@ function Statement() {
         </div>
         <div className="prose-gallery md:col-span-3">
           <p>
-            Holo-Flow Studio began as twelve years of poi &mdash; the spun
-            weight, the practised arc, fire held against the dark. The
-            camera came later, to keep the gestures that would otherwise
-            disappear at dawn. Then the gestures got programmed, precise,
-            rendered in LED arrays built to draw whatever the hand could
-            lift.
+            Twelve years of poi got the body fluent. Two weights, two
+            cords, fire held against the dark, the practised arc. The
+            camera turned up around year three to keep the gestures
+            that would otherwise disappear at dawn. The rigs turned up
+            around year nine to write whatever the body could lift.
           </p>
           <p>
-            The <strong>photographs</strong> are the record: single long
-            exposures of image data written into physical space by
-            moving light, captured whole. No compositing.
+            The <strong>photographs</strong> are the record. Single long
+            exposures. Image data written into physical space by moving
+            light, captured in one frame. No compositing &mdash; there
+            isn&rsquo;t any need.
           </p>
           <p>
-            The <strong>objects</strong> are what happens when those
-            photographs go back into the physical. 3D-printed bodies
-            whose geometry is derived from the captured trace, shot
-            through with clear acrylic waveguides that carry internal
-            light through the print. The gesture glows again from
-            inside the body it drew.
+            The <strong>objects</strong> are what happens when the
+            photographs go back into the physical. Their geometry comes
+            out of the captured trace &mdash; voxel-traced, surfaced,
+            refined &mdash; and gets 3D-printed in resin. Clear acrylic
+            waveguides run along the original gesture lines, lit from
+            inside. The gesture glows again from inside the body it
+            drew.
           </p>
           <p>
             Each piece is editioned, signed, and ships with the field
-            record &mdash; where the gesture was performed, what hour,
-            what date.
+            record: where the gesture was performed, what hour, what
+            date, what music if music mattered.
           </p>
         </div>
       </div>
@@ -127,27 +130,27 @@ function PipelineSection() {
     {
       label: "I",
       title: "Perform",
-      body: "A kata held in a place that matters &mdash; fire poi, programmed LED arrays, drone-mounted lights. One exposure.",
+      body: "A kata, in a place that matters. Fire poi, programmable LED, drone-mounted light. One exposure.",
     },
     {
       label: "II",
       title: "Capture",
-      body: "The photograph holds what the eye and the room saw. Sometimes it's the final object. Sometimes it's the seed.",
+      body: "The photograph holds what the eye and the room saw. Sometimes it is the work. Sometimes it is the seed for what comes next.",
     },
     {
       label: "III",
       title: "Translate",
-      body: "The photograph becomes a mesh. Voxel tracing, extrusion, boolean passes. The gesture becomes geometry.",
+      body: "Photograph becomes mesh. Voxel-trace, extrude, boolean. The gesture becomes geometry.",
     },
     {
       label: "IV",
       title: "Print",
-      body: "SLA-printed in resin. Clear acrylic waveguides grown through the body. LEDs seated at the waveguide roots.",
+      body: "SLA print in resin. Acrylic waveguides grown through the body. LEDs seated at the waveguide roots.",
     },
     {
       label: "V",
       title: "Finish",
-      body: "Sanded, tinted, polished. Seated on its base. Powered, addressed, numbered. Packed with its field record.",
+      body: "Sanded, tinted, polished. Seated on its base. Powered, addressed, numbered. Field record in the box.",
     },
   ];
   return (
@@ -184,7 +187,9 @@ function FeaturedSection() {
       <div className="mb-6 flex items-end justify-between">
         <div>
           <div className="chrome-label">Current release</div>
-          <h2 className="mt-2 text-3xl md:text-4xl">Featured work.</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl">
+            What is on the shelf right now.
+          </h2>
         </div>
         <Link
           href="/search"
