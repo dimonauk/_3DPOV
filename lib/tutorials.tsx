@@ -1,5 +1,7 @@
 import BuildingAPovLedRig from "components/tutorials/entries/building-a-pov-led-rig";
 import FromPhotographToObject from "components/tutorials/entries/from-photograph-to-object";
+import ProgrammingPovFrames from "components/tutorials/entries/programming-pov-frames";
+import SpinningFirePoiSafely from "components/tutorials/entries/spinning-fire-poi-safely";
 import YourFirstLongExposure from "components/tutorials/entries/your-first-long-exposure";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -7,7 +9,7 @@ const ENTRIES: Entry[] = [
   {
     slug: "your-first-long-exposure",
     title: "Your First Long-Exposure Light Painting",
-    date: "2026-05-06",
+    date: "2022-03-15",
     kind: "tutorial",
     excerpt:
       "A beginner walkthrough. Camera, place, tool, frame, shutter, gesture. The first photograph is always the same.",
@@ -79,7 +81,7 @@ const ENTRIES: Entry[] = [
   {
     slug: "building-a-pov-led-rig",
     title: "Building a POV LED Rig",
-    date: "2026-05-09",
+    date: "2024-02-11",
     kind: "tutorial",
     excerpt:
       "A bill of materials and assembly walkthrough for a first persistence-of-vision rig. Teensy, LED driver, addressable strip, Hall sensor, chassis.",
@@ -146,7 +148,7 @@ const ENTRIES: Entry[] = [
   {
     slug: "from-photograph-to-object",
     title: "From Photograph to 3D Object",
-    date: "2026-05-07",
+    date: "2025-09-18",
     kind: "tutorial",
     excerpt:
       "The studio's pipeline. How a long-exposure photograph becomes voxel data, becomes a mesh, becomes a resin print with embedded waveguides.",
@@ -202,6 +204,105 @@ const ENTRIES: Entry[] = [
         href: "https://www.openscad.org/documentation.html",
         label: "OpenSCAD documentation",
         note: "Programmatic CAD. Useful for parametric waveguide channel design.",
+      },
+    ],
+  },
+  {
+    slug: "spinning-fire-poi-safely",
+    title: "Spinning Fire Poi Safely",
+    date: "2019-06-04",
+    kind: "tutorial",
+    excerpt:
+      "Not a beginner tutorial. The body needs the kata before fire enters the picture. Kit, site, light-up, kata, end — read whole before you light anything.",
+    Body: SpinningFirePoiSafely,
+    related: [
+      {
+        href: "/tutorials/your-first-long-exposure",
+        label: "Tutorial — Your First Long-Exposure Light Painting",
+        note: "The discipline this presumes you have done.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage I, poi",
+      },
+      {
+        href: "/journal/year-one-fire",
+        label: "Field record — Year One, Fire",
+        note: "Before any of the safety mattered.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Fire_performance",
+        label: "Fire performance — Wikipedia",
+        note: "Safety, fuels, and discipline overview. Read before going anywhere near open flame.",
+      },
+      {
+        href: "https://homeofpoi.com/lessons_view/Fire+Safety",
+        label: "Home of Poi — fire safety lessons",
+        note: "Free, video-led safety walkthroughs from the longest-running poi-instruction community.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Kerosene",
+        label: "Kerosene / paraffin lamp oil — Wikipedia",
+        note: "Properties of the fuel, including flash point and combustion byproducts.",
+      },
+    ],
+  },
+  {
+    slug: "programming-pov-frames",
+    title: "Programming Frames for a POV Rig",
+    date: "2024-09-22",
+    kind: "tutorial",
+    excerpt:
+      "From a regular image to the per-column polar data the rig actually wants. Gamma, brightness budgets, the angular reference, and the three test patterns the studio runs on every new rig.",
+    Body: ProgrammingPovFrames,
+    related: [
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The hardware this tutorial presumes you have on the bench.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The architectural argument for angle-sync vs time-sync.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage IV, POV LED arrays",
+      },
+      {
+        href: "/journal/on-the-bench-year-ten",
+        label: "On the Bench, Year Ten",
+        note: "The field record of the first rig that did this properly.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://numpy.org/doc/stable/reference/index.html",
+        label: "NumPy — official reference",
+        note: "Array operations, polar transforms, the underlying maths of the image prep.",
+      },
+      {
+        href: "https://pillow.readthedocs.io/en/stable/",
+        label: "Pillow — Python Imaging Library",
+        note: "Open-source image read/resize/write toolkit.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gamma_correction",
+        label: "Gamma correction — Wikipedia",
+        note: "Why a linear-to-sRGB curve matters for LED output.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels",
+        label: "NeoPixel power — Adafruit Learn",
+        note: "Current budgets, supply sizing, the gotchas of running addressable LEDs at full brightness.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/td_pulse.html",
+        label: "Teensy hardware timers — PJRC",
+        note: "Microsecond-level pulse generation for column-by-column writes.",
       },
     ],
   },
