@@ -124,7 +124,7 @@ export function PhotographMeta({ product }: { product: Product }) {
         <dt className="text-chrome-500">Certificate</dt>
         <dd>Signed, numbered, embossed</dd>
         <dt className="text-chrome-500">Ships from</dt>
-        <dd>Manchester, UK</dd>
+        <dd>Salford, UK</dd>
       </dl>
     </section>
   );

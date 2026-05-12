@@ -34,7 +34,7 @@ const mono = JetBrains_Mono({
 const { SITE_NAME } = process.env;
 const NAME = SITE_NAME ?? "Holo-Flow Studio";
 const DESCRIPTION =
-  "Editioned waveguide sculptures, desktop objects, and configurable wall arrays from a twelve-year poi practice. Manchester, UK.";
+  "Editioned waveguide sculptures, desktop objects, and configurable wall arrays from a twelve-year poi practice. Salford, UK.";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),

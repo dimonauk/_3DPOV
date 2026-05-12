@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Print bureau",
   description:
-    "A2 fine-art print bureau on a Canon imagePROGRAF PRO-1100, operated from the Holo-Flow studio in Manchester.",
+    "A2 fine-art print bureau on a Canon imagePROGRAF PRO-1100, operated from the Holo-Flow studio in Salford.",
 };
 
 export default function BureauPage() {

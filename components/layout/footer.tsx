@@ -31,7 +31,7 @@ export default async function Footer() {
             </div>
           </Link>
           <p className="mt-4 max-w-xs text-xs leading-relaxed text-chrome-400">
-            Editioned objects from a twelve-year poi practice. Manchester, UK.
+            Editioned objects from a twelve-year poi practice. Salford, UK.
           </p>
         </div>
 
@@ -48,10 +48,22 @@ export default async function Footer() {
               <Link href="/search" className="hover:text-pink-200">Catalogue</Link>
             </li>
             <li>
+              <Link href="/aerial" className="hover:text-pink-200">Aerial</Link>
+            </li>
+            <li>
               <Link href="/bureau" className="hover:text-pink-200">Print bureau</Link>
             </li>
             <li>
+              <Link href="/practice" className="hover:text-pink-200">Practice</Link>
+            </li>
+            <li>
               <Link href="/journal" className="hover:text-pink-200">Journal</Link>
+            </li>
+            <li>
+              <Link href="/articles" className="hover:text-pink-200">Articles</Link>
+            </li>
+            <li>
+              <Link href="/tutorials" className="hover:text-pink-200">Tutorials</Link>
             </li>
             <li>
               <Link href="/contact" className="hover:text-pink-200">Contact</Link>
@@ -110,8 +122,8 @@ export default async function Footer() {
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-chrome-400">
           <p className="text-[0.7rem] leading-relaxed">
             Holo-Flow Studio is a sole-trader business operated by Dimona
-            Dougherty, Manchester, UK. Trading address available upon
-            request &mdash;{" "}
+            Dougherty. Studio in Salford, Greater Manchester. Trading
+            address available upon request &mdash;{" "}
             <a
               href="mailto:contact@holoflow.co.uk"
               className="underline underline-offset-4 hover:text-pink-200"

@@ -122,15 +122,25 @@ export default function PracticePage() {
           title="Drones, modified."
         >
           <p>
-            The next move is up. LED systems mounted on drones &mdash;
-            the rig freed from the body, able to draw at altitude, over
-            landscape, across architecture. Think: a ring of light held
-            thirty metres above a moor at 04:30, tracing a kata too
-            large for any performer.
+            The next move is up. The drone fleet is already in service
+            for aerial photography &mdash; a Mavic 2 Pro for the
+            photography-grade glass, a pair of Neos for follow-cam, an
+            Avata 360 for FPV cinewhoop work, all flown through goggles
+            and an RC 2 controller, head-tracked through an InAir pod
+            with the live feed mirrored to Xreal One Pro AR glasses.
+            Real flights, not hover-and-shoot.
           </p>
           <p>
-            This stage is <em>in progress</em>. First test flights
-            shortly. Early photographs when they&rsquo;re ready.
+            The current build mounts{" "}
+            <strong>programmable LED arrays onto the airframes</strong>:
+            the rig freed from the body, able to draw at altitude, across
+            landscape, around architecture. Think a ring of light held
+            thirty metres above a moor at 04:30, tracing a kata too large
+            for any performer.
+          </p>
+          <p>
+            The platform is operational. The LED-modified airframes are
+            flying. <em>First test captures this evening.</em>
           </p>
         </Stage>
 
@@ -172,6 +182,76 @@ export default function PracticePage() {
             specific place, at a specific hour, held long enough to
             leave a mark.
           </p>
+        </section>
+
+        <section className="mt-24 border-t border-warm-black-800 pt-10">
+          <div className="chrome-label mb-3">Apparatus</div>
+          <h2 className="text-3xl text-chrome-100">
+            The kit, on the bench.
+          </h2>
+          <div className="mt-8 space-y-8">
+            <KitBlock name="Persistence-of-vision LED rigs">
+              <p>
+                Custom-built in studio. Teensy 3.1 microcontroller,
+                TLC5927 LED drivers, addressable LEDs running 100
+                updates per revolution against a Hall-effect rotation
+                reference. Frame data prepared in software ahead of
+                performance; the rig is swung through space during a
+                long exposure.
+              </p>
+            </KitBlock>
+            <KitBlock name="Drone fleet">
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                <li>
+                  DJI Mavic 2 Pro &mdash; Hasselblad L1D-20c, 1&Prime;
+                  sensor, adjustable aperture. Photography-grade glass
+                  for stills and motion.
+                </li>
+                <li>
+                  DJI Neo &amp; Neo 2 &mdash; follow-cam, proximity work,
+                  indoors and around people.
+                </li>
+                <li>
+                  DJI Avata 360 &mdash; FPV cinewhoop with an integrated
+                  8K 360&deg; camera (twin 64MP 1/1.1&Prime; sensors,
+                  200&deg; lenses, single-lens 4K mode).
+                </li>
+              </ul>
+            </KitBlock>
+            <KitBlock name="FPV / control pipeline">
+              <p>
+                DJI Goggles + RC 2 controller, head-tracked through an
+                InAir pod, with the live feed mirrored to Xreal One Pro
+                AR glasses. Allows simultaneous gimbal control,
+                AR-overlaid telemetry, and external situational awareness
+                without breaking sight of the airframe.
+              </p>
+            </KitBlock>
+            <KitBlock name="Aerial light painting">
+              <p>
+                LED-modified airframes &mdash; programmable arrays
+                mounted to the drone bodies for aerial light painting
+                kata. The rig is flying. First test captures booked for
+                this evening; field photographs publishing as the
+                technique stabilises.
+              </p>
+            </KitBlock>
+            <KitBlock name="Print bureau">
+              <p>
+                Canon imagePROGRAF PRO-1100 &mdash; A2+ pigment printer
+                for the studio&rsquo;s own editions and offered to other
+                artists at the bureau.
+              </p>
+            </KitBlock>
+            <KitBlock name="Object production">
+              <p>
+                SLA resin printing, hand-finishing, embedded acrylic
+                waveguide channels grown along the trace lines of the
+                source photograph. LEDs seated at waveguide roots carry
+                warm light through the body of each piece.
+              </p>
+            </KitBlock>
+          </div>
         </section>
 
         <div className="mt-16 flex flex-wrap gap-4">
@@ -219,5 +299,20 @@ function Stage({
       <h2 className="text-3xl text-chrome-100">{title}</h2>
       <div className="prose-gallery mt-5 text-chrome-200">{children}</div>
     </section>
+  );
+}
+
+function KitBlock({
+  name,
+  children,
+}: {
+  name: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <div className="chrome-label mb-2 text-pink-200">{name}</div>
+      <div className="prose-gallery text-chrome-300">{children}</div>
+    </div>
   );
 }

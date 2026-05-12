@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata = {
   description:
-    "Holo-Flow Studio — long-exposure light-painting photographs translated into 3D-printed objects with embedded ambient-light waveguides. Poi practice, persistence-of-vision LED arrays, drone-mounted LED systems. Manchester, UK.",
+    "Holo-Flow Studio — long-exposure light-painting photographs translated into 3D-printed objects with embedded ambient-light waveguides. Poi practice, persistence-of-vision LED arrays, drone-mounted LED systems. Salford, UK.",
   openGraph: {
     type: "website",
   },
@@ -37,7 +37,7 @@ function Hero() {
       />
       <div className="mx-auto max-w-(--breakpoint-2xl) px-4 pt-20 pb-28 md:px-8 md:pt-28 md:pb-36">
         <div className="chrome-label">
-          Holo-Flow Studio &middot; Manchester, UK
+          Holo-Flow Studio &middot; Salford, UK
         </div>
         <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] tracking-tight md:text-7xl">
           Light painted in the air,

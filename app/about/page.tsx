@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "About",
   description:
-    "The practice, the method, the studio — Holo-Flow Studio, Manchester. Twelve years of poi, condensed into editioned objects.",
+    "The practice, the method, the studio — Holo-Flow Studio, Salford. Twelve years of poi, condensed into editioned objects.",
 };
 
 export default function AboutPage() {
@@ -73,10 +73,15 @@ export default function AboutPage() {
             its briefly-real physical form.
           </p>
           <p>
-            <strong>Drone-mounted LED systems.</strong> New. The rig
-            goes into the air, able to sustain geometries too large
-            for any body: rings at altitude, traces over landscape,
-            arcs across architecture. First captures landing shortly.
+            <strong>Drone-mounted LED systems.</strong> The studio&rsquo;s
+            drone fleet (Mavic 2 Pro, Neo, Neo 2, Avata 360) is in service
+            for aerial photography today, flown FPV through DJI Goggles,
+            an RC 2 controller, an InAir head-tracking pod, and Xreal One
+            Pro AR glasses. The airframes have now been modified with
+            programmable LED arrays for aerial light painting &mdash;
+            rings at altitude, traces over landscape, arcs across
+            architecture, geometries too large for any body. The platform
+            is flying. First test captures recording this season.
           </p>
           <p className="pt-2">
             <Link
@@ -120,13 +125,13 @@ export default function AboutPage() {
         <section className="mt-20 prose-gallery text-chrome-200">
           <div className="chrome-label mb-3">IV · The studio</div>
           <h2 className="mb-6 text-3xl text-chrome-100">
-            Manchester, UK.
+            Salford, Greater Manchester.
           </h2>
           <p>
-            Holo-Flow Studio is based in Manchester. Dimona Dougherty
-            &mdash; founder, technologist, twelve years into poi &mdash;
-            runs the practice. The studio is a small one: one pair of
-            hands, one workshop, small editions.
+            Holo-Flow Studio is based in Salford, in Greater Manchester.
+            Dimona Dougherty runs the practice as a Manchester&ndash;London-
+            based freelance consultant artist. The studio is a small
+            one: one pair of hands, one workshop, small editions.
           </p>
           <p>
             Everything is made to order, in runs. Nothing is

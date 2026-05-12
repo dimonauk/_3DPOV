@@ -16,9 +16,13 @@ const SITE_LABEL = SITE_NAME ?? "Holo-Flow Studio";
 const FALLBACK_MENU: Menu[] = [
   { title: "Photographs", path: "/photographs" },
   { title: "Objects", path: "/search" },
+  { title: "Aerial", path: "/aerial" },
   { title: "Bureau", path: "/bureau" },
   { title: "Practice", path: "/practice" },
   { title: "About", path: "/about" },
+  { title: "Journal", path: "/journal" },
+  { title: "Articles", path: "/articles" },
+  { title: "Tutorials", path: "/tutorials" },
 ];
 
 export async function Navbar() {

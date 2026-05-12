@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-const INTENT_SET = new Set(["general", "commission", "bureau", "press"]);
+const INTENT_SET = new Set([
+  "general",
+  "commission",
+  "bureau",
+  "aerial",
+  "press",
+]);
 
 /**
  * Contact form submissions. Today: validates + logs to console.

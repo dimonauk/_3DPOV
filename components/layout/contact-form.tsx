@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 
-type Intent = "general" | "commission" | "bureau" | "press";
+type Intent = "general" | "commission" | "bureau" | "aerial" | "press";
 
 const INTENT_OPTIONS: { value: Intent; label: string }[] = [
   { value: "general", label: "General enquiry" },
   { value: "commission", label: "Commission / wall array" },
   { value: "bureau", label: "Print bureau" },
+  { value: "aerial", label: "Aerial / drone work" },
   { value: "press", label: "Press / feature" },
 ];
 
@@ -131,9 +132,11 @@ export function ContactForm() {
               ? "The room, the wall, the rough dimensions, what the space feels like. No need to be exact."
               : intent === "bureau"
                 ? "Paper preference, size, quantity, deadline. Files welcome."
-                : intent === "press"
-                  ? "Publication, deadline, angle."
-                  : "Whatever it is. We read every one."
+                : intent === "aerial"
+                  ? "Site, intent, deliverable, dates. Stills, motion, FPV, 360°, or aerial light painting — let me know which."
+                  : intent === "press"
+                    ? "Publication, deadline, angle."
+                    : "Whatever it is. We read every one."
           }
         />
       </div>

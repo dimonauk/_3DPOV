@@ -40,7 +40,7 @@ export default function ContactPage() {
             <div>
               <div className="chrome-label mb-2">Studio</div>
               <p>
-                Manchester, UK.
+                Salford, in Greater Manchester.
                 <br />
                 Trading address available upon request.
               </p>
