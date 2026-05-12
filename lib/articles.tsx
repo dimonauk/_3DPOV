@@ -1,3 +1,4 @@
+import BeltPrintedWallReliefs from "components/articles/entries/belt-printed-wall-reliefs";
 import JewelleryTheSameTraceWearable from "components/articles/entries/jewellery-the-same-trace-wearable";
 import KindredPractices from "components/articles/entries/kindred-practices";
 import LineageMareyToNow from "components/articles/entries/lineage-marey-to-now";
@@ -602,6 +603,74 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Marching_cubes",
         label: "Marching cubes — Wikipedia",
         note: "The 1987 algorithm that does the volume-to-mesh work.",
+      },
+    ],
+  },
+  {
+    slug: "belt-printed-wall-reliefs",
+    title: "Belt-Printed Wall Reliefs — Dragon Scale by the Metre",
+    date: "2025-04-22",
+    kind: "article",
+    excerpt:
+      "The CR-30 in the corner of the workshop, tilted at 45 degrees, vomiting out continuous fabric-like reliefs of dragon-scale and chain-mail patterns. The studio's parametric, architectural-finish line — counterpart to the figurative SLA waveguide work.",
+    Body: BeltPrintedWallReliefs,
+    related: [
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The SLA-resin, figurative, palm-scale counterpart. Same studio, different register.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The pipeline that drops parametric STLs onto the belt printer's slicer.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The figurative pipeline this line is the parametric opposite of.",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a wall relief",
+        note: "Send a wall, a length, a pattern family, a colour.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.creality.com/products/creality-cr-30-3d-printer",
+        label: "Creality CR-30 3DPrintMill — official product page",
+        note: "The belt printer the studio runs. 200 × 170 mm XY, infinite Z, 45° belt.",
+      },
+      {
+        href: "https://www.tomshardware.com/reviews/creality-cr-30-3d-printer",
+        label: "Creality CR-30 review — Tom's Hardware",
+        note: "Independent review covering build, calibration, and the chain-mail batch-printing trick.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gyroid",
+        label: "Gyroid — Wikipedia",
+        note: "The triply-periodic minimal surface used as one of the studio's relief patterns.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Triply_periodic_minimal_surface",
+        label: "Triply periodic minimal surfaces — Wikipedia",
+        note: "Family of surfaces the parametric patterns draw from.",
+      },
+      {
+        href: "https://openscad.org/",
+        label: "OpenSCAD",
+        note: "Script-based CAD; where most of the studio's pattern files live.",
+      },
+      {
+        href: "https://www.grasshopper3d.com/",
+        label: "Grasshopper for Rhino",
+        note: "Visual parametric design environment; second home of the generative wall-relief work.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Bas-relief",
+        label: "Bas-relief — Wikipedia",
+        note: "The art-historical register the belt-printed pieces sit in.",
       },
     ],
   },
