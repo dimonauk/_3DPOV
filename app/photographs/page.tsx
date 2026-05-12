@@ -37,6 +37,30 @@ export default async function PhotographsPage() {
           record naming the kata, the location, the hour, and the date
           of capture.
         </p>
+        <p className="mt-6 max-w-2xl text-sm text-chrome-400">
+          Curious how these are made? The studio writes a{" "}
+          <Link
+            href="/tutorials/your-first-long-exposure"
+            className="text-pink-200 underline underline-offset-4"
+          >
+            beginner tutorial on long-exposure light painting
+          </Link>{" "}
+          and a deeper{" "}
+          <Link
+            href="/articles/why-i-build-my-own-rigs"
+            className="text-pink-200 underline underline-offset-4"
+          >
+            article on why the rigs are custom-built
+          </Link>
+          . The full history lives on{" "}
+          <Link
+            href="/practice"
+            className="text-pink-200 underline underline-offset-4"
+          >
+            the practice page
+          </Link>
+          .
+        </p>
       </article>
 
       <section className="mx-auto max-w-(--breakpoint-2xl) px-4 pb-20 md:px-8">

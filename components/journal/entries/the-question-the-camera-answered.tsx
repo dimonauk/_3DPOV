@@ -1,12 +1,22 @@
+import Link from "next/link";
+
 export default function TheQuestionTheCameraAnswered() {
   return (
     <>
       <p>
-        For most of the first decade, poi was a dance. The body learned
-        to draw planes in the dark. There was no record of those planes
-        &mdash; the gestures happened, the gestures dissolved, the next
-        gesture began. Like any movement discipline. The work was in the
-        body.
+        For most of the first decade,{" "}
+        <a
+          href="https://en.wikipedia.org/wiki/Poi_(performance_art)"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          poi<span className="ml-0.5 text-chrome-500">&nearr;</span>
+        </a>{" "}
+        was a dance. The body learned to draw planes in the dark. There
+        was no record of those planes &mdash; the gestures happened, the
+        gestures dissolved, the next gesture began. Like any movement
+        discipline. The work was in the body.
       </p>
       <p>
         The camera changed the practice without me noticing it had
@@ -25,25 +35,50 @@ export default function TheQuestionTheCameraAnswered() {
       <p>
         The next ten years were spent making the trace hold better. Fire
         was bright but messy. LED wands were cleaner but smaller. Pixel
-        poi let me write images, but the commercial rigs drifted. The
-        persistence-of-vision arrays the studio builds now hold the
-        trace to the pixel: a photograph that is sharp where the rig
-        was, blurred where the body was, and faithful to the image
-        programmed into the rig before the kata began.
+        poi let me write images, but the commercial rigs drifted. The{" "}
+        <Link
+          href="/practice"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          persistence-of-vision arrays the studio builds
+        </Link>{" "}
+        now hold the trace to the pixel: a photograph that is sharp
+        where the rig was, blurred where the body was, and faithful to
+        the image programmed into the rig before the kata began.
       </p>
       <p>
-        The objects came after the photographs. A trace is a record. An
-        object is a record made physical. Cast the photograph back into
-        three dimensions, give it a body to live in, run a waveguide
-        along the trace lines, light the waveguide. The gesture that
-        was drawn in a field at midnight glows again from inside a
-        sculpture on a shelf, twenty miles and several months later.
+        The{" "}
+        <Link
+          href="/search"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          objects
+        </Link>{" "}
+        came after the{" "}
+        <Link
+          href="/photographs"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          photographs
+        </Link>
+        . A trace is a record. An object is a record made physical.
+        Cast the photograph back into three dimensions, give it a body
+        to live in, run a waveguide along the trace lines, light the
+        waveguide. The gesture that was drawn in a field at midnight
+        glows again from inside a sculpture on a shelf, twenty miles
+        and several months later.
       </p>
       <p>
-        Twelve years of poi underwrites all of it. The maths of
-        cross-follow, antispin, weaves &mdash; none of that comes from
-        the rig. The rig is just precise enough to keep up with the
-        body. The body was always the source.
+        <Link
+          href="/about"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          Twelve years of poi
+        </Link>{" "}
+        underwrites all of it. The maths of cross-follow, antispin,
+        weaves &mdash; none of that comes from the rig. The rig is just
+        precise enough to keep up with the body. The body was always
+        the source.
       </p>
       <p>
         The camera answered: yes, the gesture exists. The studio

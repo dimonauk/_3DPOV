@@ -2,6 +2,13 @@ import type { ComponentType } from "react";
 
 export type EntryKind = "journal" | "article" | "tutorial";
 
+export type RelatedLink = {
+  href: string;
+  label: string;
+  // Optional short context shown beneath the label
+  note?: string;
+};
+
 export type Entry = {
   slug: string;
   title: string;
@@ -9,7 +16,17 @@ export type Entry = {
   kind: EntryKind;
   excerpt: string;
   Body: ComponentType;
+  // On-site cross-references — other entries or main pages.
+  related?: RelatedLink[];
+  // External learning resources — the studio's position is that anyone
+  // willing to sit and learn can get to this work. These links are the
+  // ladder up.
+  furtherReading?: RelatedLink[];
 };
+
+export function isExternalHref(href: string): boolean {
+  return /^https?:\/\//i.test(href);
+}
 
 const MONTHS = [
   "January",

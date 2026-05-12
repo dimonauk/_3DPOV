@@ -151,6 +151,17 @@ export default function AerialPage() {
             </Link>
           </div>
         </section>
+
+        <p className="mt-10 text-sm text-chrome-400">
+          The first LED-modified flight is recorded in the journal:{" "}
+          <Link
+            href="/journal/first-light"
+            className="text-pink-200 underline underline-offset-4"
+          >
+            First Light
+          </Link>
+          .
+        </p>
       </article>
       <Footer />
     </>

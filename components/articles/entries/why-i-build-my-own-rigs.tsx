@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function WhyIBuildMyOwnRigs() {
   return (
     <>
@@ -32,23 +34,53 @@ export default function WhyIBuildMyOwnRigs() {
       <p>
         When I started building, I gave up everything the commercial
         rigs were optimised for and bought everything they were not
-        optimised for. The rigs on the studio bench cannot take a hard
-        fall. They are not weatherproof. They will not run for thirty
-        consecutive performances on a single charge. They will do one
-        or two takes a night. What they will do &mdash; and what the
-        commercial rigs cannot &mdash; is hold the image to a pixel at
-        the speeds the arm sustains.
+        optimised for. The{" "}
+        <Link
+          href="/practice"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          rigs on the studio bench
+        </Link>{" "}
+        cannot take a hard fall. They are not weatherproof. They will
+        not run for thirty consecutive performances on a single charge.
+        They will do one or two takes a night. What they will do
+        &mdash; and what the commercial rigs cannot &mdash; is hold the
+        image to a pixel at the speeds the arm sustains.
       </p>
       <p>
-        The components are not exotic. A Teensy 3.1 microcontroller, a
-        bank of TLC5927 16-channel constant-current LED drivers,
-        addressable LEDs in a one-dimensional strip on a balanced
-        chassis, a Hall-effect rotation sensor reading off a magnet at
-        the pivot. The frame rate at 100 updates per revolution lands
-        a photograph that does not require any cleanup in post. The
-        image data goes into the rig before the performance; the rig
-        writes the image into space; the camera reads the image off
-        the air.
+        The components are not exotic. A{" "}
+        <a
+          href="https://www.pjrc.com/teensy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          Teensy 3.1<span className="ml-0.5 text-chrome-500">&nearr;</span>
+        </a>{" "}
+        microcontroller, a bank of{" "}
+        <a
+          href="https://www.ti.com/product/TLC5927"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          TLC5927<span className="ml-0.5 text-chrome-500">&nearr;</span>
+        </a>{" "}
+        16-channel constant-current LED drivers, addressable LEDs in a
+        one-dimensional strip on a balanced chassis, a{" "}
+        <a
+          href="https://en.wikipedia.org/wiki/Hall_effect_sensor"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          Hall-effect rotation sensor<span className="ml-0.5 text-chrome-500">&nearr;</span>
+        </a>{" "}
+        reading off a magnet at the pivot. The frame rate at 100 updates
+        per revolution lands a photograph that does not require any
+        cleanup in post. The image data goes into the rig before the
+        performance; the rig writes the image into space; the camera
+        reads the image off the air.
       </p>
       <p>
         The architectural choice is the only one that matters.
@@ -67,7 +99,16 @@ export default function WhyIBuildMyOwnRigs() {
         one I want to take, and the difference is unfixable in post.
         The picture has to be right when it leaves the rig.
       </p>
-      <p>The studio sells the photographs. The rigs stay on the bench.</p>
+      <p>
+        The studio sells the{" "}
+        <Link
+          href="/photographs"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          photographs
+        </Link>
+        . The rigs stay on the bench.
+      </p>
     </>
   );
 }

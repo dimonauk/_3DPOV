@@ -1,13 +1,22 @@
+import Link from "next/link";
+
 export default function FirstLight() {
   return (
     <>
       <p>
-        The drone fleet has been operational for months &mdash; photography
-        work, mostly. Tonight was something else. The first airframe came
-        out of the workshop with a programmable LED array bolted to its
-        underside. A short strip, addressable, running a test pattern
-        designed to look like a horizontal line when the drone is in
-        motion.
+        The{" "}
+        <Link
+          href="/aerial"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          drone fleet
+        </Link>{" "}
+        has been operational for months &mdash; photography work,
+        mostly. Tonight was something else. The first airframe came
+        out of the workshop with a programmable LED array bolted to
+        its underside. A short strip, addressable, running a test
+        pattern designed to look like a horizontal line when the
+        drone is in motion.
       </p>
       <p>
         We did not go far. A patch of unlit ground a few minutes&rsquo;
@@ -24,8 +33,14 @@ export default function FirstLight() {
       </p>
       <p>
         What didn&rsquo;t: the synchronisation between the drone&rsquo;s
-        flight path and the LED frame timing. On the body, with a swung
-        rig, the sync is mechanical &mdash; the Hall sensor reads the
+        flight path and the LED frame timing. On the body, with a{" "}
+        <Link
+          href="/practice"
+          className="underline underline-offset-4 hover:text-pink-200"
+        >
+          swung rig
+        </Link>
+        , the sync is mechanical &mdash; the Hall sensor reads the
         rotation, the frames clock against it. In the air, the rig moves
         but does not rotate. The first sync logic was timing-based, and
         at the speeds the airframe flies, the frames drifted within a

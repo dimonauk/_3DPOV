@@ -252,6 +252,31 @@ export default function PracticePage() {
               </p>
             </KitBlock>
           </div>
+          <p className="mt-10 text-sm text-chrome-400">
+            More on the kit:{" "}
+            <Link
+              href="/journal/on-the-apparatus"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              the journal entry &ldquo;On the Apparatus&rdquo;
+            </Link>{" "}
+            walks the same list dispassionately.{" "}
+            <Link
+              href="/articles/why-i-build-my-own-rigs"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              The argument for building the rigs
+            </Link>{" "}
+            covers why the studio is on the bench rather than the
+            catalogue.{" "}
+            <Link
+              href="/tutorials/building-a-pov-led-rig"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              The build tutorial
+            </Link>{" "}
+            takes you through making one.
+          </p>
         </section>
 
         <div className="mt-16 flex flex-wrap gap-4">

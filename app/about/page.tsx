@@ -141,6 +141,31 @@ export default function AboutPage() {
             the date. If a track of music mattered to the gesture,
             it&rsquo;s named too.
           </p>
+          <p>
+            Field records and longer pieces live in the{" "}
+            <Link
+              href="/journal"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              journal
+            </Link>
+            , the{" "}
+            <Link
+              href="/articles"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              articles
+            </Link>
+            , and the{" "}
+            <Link
+              href="/tutorials"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              tutorials
+            </Link>
+            . The studio&rsquo;s position is that everything visible
+            here is learnable; the writing is the ladder up.
+          </p>
         </section>
 
         <section className="mt-20">
@@ -148,7 +173,7 @@ export default function AboutPage() {
           <p className="text-chrome-200">
             Studio: <a href="mailto:contact@holoflow.co.uk" className="text-pink-200 underline underline-offset-4">contact@holoflow.co.uk</a>
             <br />
-            Instagram: <a href="https://instagram.com/holoflow.studio" className="text-pink-200 underline underline-offset-4" target="_blank" rel="noreferrer">@holoflow.studio</a>
+            Instagram: <a href="https://instagram.com/holoflow.studio" className="text-pink-200 underline underline-offset-4" target="_blank" rel="noopener noreferrer">@holoflow.studio</a>
           </p>
         </section>
 

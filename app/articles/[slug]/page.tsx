@@ -1,4 +1,5 @@
 import Footer from "components/layout/footer";
+import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, articles } from "lib/articles";
@@ -51,6 +52,10 @@ export default async function ArticlePage({
         <div className="mt-12 prose-gallery text-chrome-200">
           <Body />
         </div>
+        <RelatedBlock
+          related={entry.related}
+          furtherReading={entry.furtherReading}
+        />
       </article>
       <Footer />
     </>
