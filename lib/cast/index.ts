@@ -14,6 +14,7 @@ import { baby } from "./baby";
 import { scribe } from "./scribe";
 import { millie } from "./millie";
 import { tim } from "./tim";
+import { excavationBot } from "./excavation-bot";
 
 export type CastMemberId =
   | "aura"
@@ -24,7 +25,8 @@ export type CastMemberId =
   | "baby"
   | "scribe"
   | "millie"
-  | "tim";
+  | "tim"
+  | "excavation-bot";
 
 export const bibles: Record<CastMemberId, CharacterBible> = {
   aura,
@@ -36,6 +38,7 @@ export const bibles: Record<CastMemberId, CharacterBible> = {
   scribe,
   millie,
   tim,
+  "excavation-bot": excavationBot,
 };
 
 export function getBible(id: CastMemberId): CharacterBible {
@@ -51,4 +54,4 @@ export function listCastIds(): CastMemberId[] {
 }
 
 export type { CharacterBible };
-export { aura, penny, marcel, betsy, trixie, baby, scribe, millie, tim };
+export { aura, penny, marcel, betsy, trixie, baby, scribe, millie, tim, excavationBot };

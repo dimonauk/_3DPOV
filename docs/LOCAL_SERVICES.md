@@ -42,6 +42,7 @@ exist and what ports they listen on.
 | LightWeiver Studio | 5219 | http:// | manual | Internal satellite app | Not site-relevant |
 | WebGPU Gaussian Splatting | 5262 | http:// | manual | Queued for `/play/neo-london` (per `docs/HANGAR_MAP.md`) | The play page is not yet wired |
 | Qdrant | system service | http:// | Windows service | Vector memory (Hangar-side; site uses Firestore instead) | Site uses Firestore for any memory write |
+| poi-game-bridge | 8211 | ws:// | `python -m uvicorn poi_game_bridge:app --host 0.0.0.0 --port 8211` | None yet — forward-looking. Typed client at `lib/integrations/poi-game-bridge.ts` waits for a wrapping capability | Fabrication-chain UI sits cold; articles describe Pipeline Delta without driving it |
 
 The site never connects to these directly from production. Connection
 is via a thin capability adapter that checks for the bridge, falls
@@ -148,6 +149,25 @@ execute through this MCP. Smoke test before any pipeline run via
 `scripts/blender_pipelines/pipeline_00_smoke_test.py`. The site
 links to the pipeline articles; nothing on the site executes
 against the MCP.
+
+### poi-game-bridge — port 8211, ws://
+
+`D:\The_Hangar\apps\prototypes\poi-sculptor\poi_game_bridge.py` is the
+local orchestrator for Pipeline Delta — the fabrication chain that
+takes a recorded finger-sweep (or any joint trail), melds it through
+a Wyvill implicit field, hands the resulting mesh to Blender MCP for
+waveguide channel carving, and exports a printable 3MF (with STL
+fallback). The bridge runs on FastAPI + uvicorn and also publishes
+per-stage progress to MQTT on `neo/poi/fabricate/{job_id}`. The site
+surfaces this as a typed client at `lib/integrations/poi-game-bridge.ts`
+that speaks four conceptual stages: `fingerSweep`, `meld`, `blender`,
+`3mf`. The client is forward-looking — no capability wraps it yet —
+so absence is the current default. When wired, the wrapping capability
+will own the `BridgeClient` lifecycle and stage events onto the
+fabrication slice. Note: this is the first entry under
+`lib/integrations/`, a new folder convention for typed clients of
+external services (distinct from capabilities, which are registered,
+breedable, and slotted by the genome).
 
 ### Skybrush studio integration
 

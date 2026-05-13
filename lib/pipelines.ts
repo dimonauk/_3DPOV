@@ -142,8 +142,8 @@ export const pipelines: Pipeline[] = [
       { capability: "vrm.expressions.blend", note: "mouth + face per speaker's mood" },
     ],
     slices: ["agent", "cast", "aura", "audio", "vrm"],
-    surface: undefined,
-    status: "speculative",
+    surface: "/chrono-protocol/run",
+    status: "registered",
   },
   {
     id: "kinematic-extraction",

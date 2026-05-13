@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
+import { GameLoopRunner } from "components/chrono-protocol/game-loop-runner";
 import { ZoneCard } from "components/chrono-protocol/zone-card";
 import { zones } from "lib/chrono-protocol/zones";
 
@@ -219,6 +220,10 @@ export default function ChronoProtocolLandingPage() {
           </ul>
         </section>
       </article>
+      {/* Headless rAF orchestrator — mounts the live game-loop slice
+          so the landing page's mode-wheel preview ticks. Renders
+          nothing; the loop only fires while phase is run / encounter. */}
+      <GameLoopRunner />
       <Footer />
     </>
   );

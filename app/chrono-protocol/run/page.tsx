@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import Footer from "components/layout/footer";
 import { GameCanvas } from "components/chrono-protocol/game-canvas";
+import { GameLoopRunner } from "components/chrono-protocol/game-loop-runner";
 import { getZoneBySlug, isZoneSlug, zones } from "lib/chrono-protocol/zones";
 
 export const metadata = {
@@ -76,6 +77,9 @@ export default async function RunPage({
           >
             <GameCanvas zone={zone} mode="run" />
           </Suspense>
+          {/* Headless rAF orchestrator — drives tickTunnel + banter into
+              the chrono-protocol slice. Renders nothing of its own. */}
+          <GameLoopRunner />
         </section>
 
         <section className="mt-8 rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-5">

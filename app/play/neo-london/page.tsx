@@ -1,6 +1,7 @@
 import Footer from "components/layout/footer";
 import Link from "next/link";
 import { LondonMap } from "components/neo-london/london-map";
+import { LoopStatus } from "components/chrono-protocol/loop-status";
 import {
   zones,
   ZONE_COUNT_BY_STATUS,
@@ -118,6 +119,11 @@ export default function NeoLondonPage() {
         </section>
 
         <section className="mt-12">
+          {/* Live read-out from the chrono-protocol slice. Renders
+              static values when no run is active. */}
+          <div className="mb-4">
+            <LoopStatus />
+          </div>
           <LondonMap zones={zones} />
           <p className="mt-3 text-xs text-chrome-500">
             Hand-traced Thames + canal spines, not survey data.
