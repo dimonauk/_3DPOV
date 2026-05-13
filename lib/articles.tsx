@@ -1,6 +1,7 @@
 import ArtAsDoorFiveLayers from "components/articles/entries/art-as-door-five-layers";
 import AuraTheBody from "components/articles/entries/aura-the-body";
 import BeltPrintedWallReliefs from "components/articles/entries/belt-printed-wall-reliefs";
+import ChoreographingWithLabanArticle from "components/articles/entries/choreographing-with-laban";
 import ColourWithoutPigment from "components/articles/entries/colour-without-pigment";
 import FromPicassoForward from "components/articles/entries/from-picasso-forward";
 import HowTheStudioBreedsSculptures from "components/articles/entries/how-the-studio-breeds-sculptures";
@@ -3107,6 +3108,59 @@ const ENTRIES: Entry[] = [
         href: "https://en.wikipedia.org/wiki/Computer-aided_design",
         label: "Computer-aided design — Wikipedia",
         note: "The wider field Stages 3A, 4, and 6A operate inside. Parametric geometry and procedural modelling as production tools.",
+      },
+    ],
+  },
+  {
+    slug: "choreographing-with-laban",
+    title: "Choreographing with Laban",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "The studio's move library and the motion.laban capability, named in full. Space, Time, Weight, Flow as four numbers between zero and one. Fifteen named moves clustered around the eight Basic Efforts. Cross as the worked example. The kinematic-extraction layer of the choreography engine, made public.",
+    Body: ChoreographingWithLabanArticle,
+    related: [
+      {
+        href: "/visualiser/laban-dial",
+        label: "Visualiser — Laban Effort dial",
+        note: "Interactive — drag the four sliders, watch the named Basic Efforts emerge at the corners of the cube. The dial companion to this piece.",
+      },
+      {
+        href: "/capabilities",
+        label: "Capabilities — the studio's typed surface",
+        note: "Where motion.laban sits in the wider catalogue of capabilities the engine composes against.",
+      },
+      {
+        href: "/articles/the-living-stage",
+        label: "The Living Stage",
+        note: "The long-form Effort argument. Laban as gesture vocabulary, Hall as spatial grammar, song structure as dramatic scaffold.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The genetic counterpart. Laban-Effort drift is one of the four named morphing operations the breeding engine uses.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Laban_movement_analysis",
+        label: "Laban Movement Analysis — Wikipedia",
+        note: "The full vocabulary: Body, Effort, Shape, Space. The system the move library rests on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Effort_(Laban)",
+        label: "Effort (Laban) — Wikipedia",
+        note: "The four sub-spectra (Weight, Space, Time, Flow) and the eight named Basic Efforts at the corners of the cube.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Rudolf_von_Laban",
+        label: "Rudolf Laban — Wikipedia",
+        note: "Biography of the dance theorist whose 1920s work the studio's choreography engine descends from.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Kinesphere",
+        label: "Kinesphere — Wikipedia",
+        note: "Laban's term for the personal space within reach of the body. The unit of measurement for movement extension.",
       },
     ],
   },

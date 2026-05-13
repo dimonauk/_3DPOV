@@ -76,6 +76,7 @@ export type CapabilityId =
   | "motion.idle"
   | "motion.gesture"
   | "motion.laban"
+  | "agent.banter"
   | "agent.dialogue"
   | "agent.memory"
   | "input.headpose"

@@ -147,6 +147,19 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: [],
   },
   {
+    id: "agent.banter",
+    kind: "agent",
+    name: "Banter runtime",
+    summary:
+      "Multi-character LLM banter driven by live telemetry. Returns a 1-3 line exchange between named cast members. Throttle hint via tickMs.",
+    status: "registered",
+    source:
+      "Hangar: apps/prototypes/neo-london-chrono-protocol/services/geminiService.ts (SYSTEM_INSTRUCTION + 12s tick canon). Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./agent/banter"),
+    stateSlices: ["agent", "cast", "aura"],
+    dependsOn: [],
+  },
+  {
     id: "agent.dialogue",
     kind: "agent",
     name: "Dialogue runtime",
