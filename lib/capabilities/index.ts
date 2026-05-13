@@ -110,6 +110,19 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["audio.tts"],
   },
   {
+    id: "audio.lipsync-analysis",
+    kind: "audio",
+    name: "Lipsync analysis",
+    summary:
+      "AnalyserNode + formant detection + RMS → real-time viseme stream from an actual audio source. Ready for when ElevenLabs/Kokoro/F5 wire in; uses the same audio.visemes slot as the text-based estimator.",
+    status: "registered",
+    source:
+      "Hangar: apps/aura-vrm/src/features/lipSync/lipSync.ts (AnalyserNode + formant + RMS). Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./audio/lipsync-analysis"),
+    stateSlices: ["audio"],
+    dependsOn: ["audio.tts"],
+  },
+  {
     id: "motion.idle",
     kind: "motion",
     name: "Idle motion",

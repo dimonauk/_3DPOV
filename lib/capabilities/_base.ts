@@ -70,6 +70,7 @@ export type CapabilityId =
   | "vrm.bones.pose"
   | "vrm.expressions.blend"
   | "vrm.lookAt"
+  | "audio.lipsync-analysis"
   | "audio.stt"
   | "audio.tts"
   | "audio.visemes"
