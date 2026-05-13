@@ -170,6 +170,26 @@ export const portedAlgorithms: Record<string, PortedAlgorithm> = {
     load: () => import("./penrose-tiling"),
     params: COMMON_PARAMS,
   },
+  enneper: {
+    slug: "enneper",
+    load: () => import("./enneper"),
+    params: COMMON_PARAMS,
+  },
+  "lsystem-tube": {
+    slug: "lsystem-tube",
+    load: () => import("./lsystem-tube"),
+    params: COMMON_PARAMS,
+  },
+  "pcb-trace": {
+    slug: "pcb-trace",
+    load: () => import("./pcb-trace"),
+    params: COMMON_PARAMS,
+  },
+  "diatom-hex": {
+    slug: "diatom-hex",
+    load: () => import("./diatom-hex"),
+    params: COMMON_PARAMS,
+  },
 };
 
 export function isPorted(slug: string): boolean {
