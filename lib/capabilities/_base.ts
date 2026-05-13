@@ -57,7 +57,9 @@ export type CapabilityKind =
   | "algo"
   | "shell"
   | "world"
-  | "geo";
+  | "geo"
+  | "ar"
+  | "media";
 
 /**
  * Stable identifier. Convention: `<kind>.<verb-or-noun>`, kebab-case
@@ -85,7 +87,9 @@ export type CapabilityId =
   | "viz.attractor"
   | "viz.light-sculpture"
   | "viz.particles"
-  | "geo.position";
+  | "geo.position"
+  | "ar.window"
+  | "media.capture";
 
 export type CapabilityStatus =
   | "registered" // module present, callable

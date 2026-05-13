@@ -112,6 +112,33 @@ export const pipelines: Pipeline[] = [
     status: "registered",
   },
   {
+    id: "outdoor-trail",
+    name: "HoloWalk outdoor trail",
+    codename: "Pipeline HoloWalk",
+    summary:
+      "Magic-window AR. Visitor at the GPS spot, phone up, animated light sculpture re-anchored in the camera view. The flagship.",
+    stages: [
+      { capability: "geo.position", note: "GPS + heading watcher" },
+      { capability: "ar.window", note: "camera + computeARTransform for the world-locked target position" },
+      { capability: "viz.light-sculpture", note: "animated trajectory rendered as Trail + Bloom inside the camera-overlay canvas" },
+    ],
+    slices: ["geo", "viz"],
+    surface: "/holo-walk/[id]/ar",
+    status: "registered",
+  },
+  {
+    id: "ar-capture",
+    name: "AR capture + share",
+    summary:
+      "Composite of camera + overlay sampled per-frame, encoded as JPEG (photo) or MP4 (video) via Mediabunny, shared via navigator.share with download fallback.",
+    stages: [
+      { capability: "media.capture", note: "capturePhoto / startRecording / shareBlob — works on iOS Safari 26+ via WebCodecs" },
+    ],
+    slices: [],
+    surface: "/holo-walk/[id]/ar",
+    status: "registered",
+  },
+  {
     id: "dialogue-loop",
     name: "Dialogue loop",
     summary:

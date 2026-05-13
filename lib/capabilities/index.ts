@@ -229,6 +229,28 @@ const auraAliveStubs: CapabilityRecord[] = [
     stateSlices: ["geo"],
   },
   {
+    id: "ar.window",
+    kind: "ar",
+    name: "Magic-window AR",
+    summary:
+      "Camera stream + GPS-locked world transform for the HoloWalk AR view. requestCameraStream + attachStreamToVideo + releaseStream + computeARTransform (haversine + ENU + heading rotation). Pure math + browser-API helpers.",
+    status: "registered",
+    source: "Studio — getUserMedia + DeviceOrientation composition + WGS84 ENU math. Works on iOS Safari + Android Chrome today without WebXR.",
+    load: () => import("./ar/window"),
+    stateSlices: ["geo"],
+    dependsOn: ["geo.position"],
+  },
+  {
+    id: "media.capture",
+    kind: "media",
+    name: "Photo + video capture",
+    summary:
+      "Composite camera + overlay canvas into JPEG/PNG photo or MP4 video via Mediabunny. Share via navigator.share with file-download fallback. Hardware-accelerated H.264 on iOS Safari 26+ via WebCodecs.",
+    status: "registered",
+    source: "Box 3: Mediabunny (MPL-2.0, supersedes mp4-muxer / webm-muxer) + Web Share API + canvas 2D composite. The iOS-Safari MP4-capture solve.",
+    load: () => import("./media/capture"),
+  },
+  {
     id: "viz.attractor",
     kind: "viz",
     name: "Strange attractor",
