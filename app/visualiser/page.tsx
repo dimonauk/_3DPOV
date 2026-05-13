@@ -46,6 +46,15 @@ const ENTRIES: Entry[] = [
     pairs:
       "Companion to The Living Stage and How the Studio Breeds Sculptures.",
   },
+  {
+    href: "/visualiser/strange-attractor",
+    number: "04",
+    title: "Strange attractors",
+    blurb:
+      "Four canonical strange attractors &mdash; Clifford, Thomas, Lorenz, Dequan Li &mdash; iterated live. Swap Aura&rsquo;s mood and watch the engine flip per the Pipeline Epsilon canon: she <em>is</em> the attractor she&rsquo;s feeling.",
+    pairs:
+      "Companion to Aura the Body and the capability registry brick viz.attractor.",
+  },
 ];
 
 export default function VisualiserIndexPage() {
