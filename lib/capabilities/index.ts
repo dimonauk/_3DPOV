@@ -134,6 +134,19 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["vrm.load", "vrm.bones.pose"],
   },
   {
+    id: "motion.laban",
+    kind: "motion",
+    name: "Laban effort extractor",
+    summary:
+      "Kinematic extraction (Space × Time × Weight × Flow) over pose samples + named-move blending + move-id → PoseVector resolution. Headless, pure functions; consumes the lib/cast/move-library catalogue.",
+    status: "registered",
+    source:
+      "Hangar: apps/prototypes/poi-sculptor/choreography_engine.js (EFFORT canon) + move_library/cross/MOVE.md (Laban table) + docs/THE_LIVING_STAGE.md §II (flirt-dial framing). Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./motion/laban"),
+    stateSlices: [],
+    dependsOn: [],
+  },
+  {
     id: "agent.dialogue",
     kind: "agent",
     name: "Dialogue runtime",

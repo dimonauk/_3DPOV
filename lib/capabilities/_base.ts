@@ -75,6 +75,7 @@ export type CapabilityId =
   | "audio.visemes"
   | "motion.idle"
   | "motion.gesture"
+  | "motion.laban"
   | "agent.dialogue"
   | "agent.memory"
   | "input.headpose"
