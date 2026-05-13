@@ -692,7 +692,7 @@ The top 10 by priority for the next migration wave. Each item names the Class fr
 
 | # | Open item | Lens | Priority | Reason |
 |---|---|---|---|---|
-| 1 | **Finish the missing atelier algorithms** (PCB-Trace, Clash-Compositor, Wigner-Seitz, Spinodal, Enneper, Diatom-Hex, LSystem-Tube, Auxetic-Corrugation) | tech (Class T-A #13) | High | Wave 3 in progress. DLA + Voronoi + Reaction-Diffusion + Penrose-Tiling ported (23/30 done). 7 to go. |
+| 1 | **The atelier algorithms** | tech (Class T-A #13) | DONE | 30/30 ported. Eight new this session (DLA, Voronoi, Reaction-Diffusion, Penrose-Tiling, Enneper, LSystem-Tube, PCB-Trace, Diatom-Hex, Spinodal, Wigner-Seitz, Clash-Compositor). Auxetic-Corrugation already covered by the existing `auxetic.ts`. |
 | 2 | **Wire `lib/evolution/*`** (the empty directory) — port `evolution-engine`, `breeding`, `fitness`, `mutation`, `kingdoms`, `genome-store` from Dolly_OS as typed read-only data + a static visualisation route | tech + narrative (Class A #7, #8, #10) | High | Wave 2 in flight; `app/atelier/evolution/*` is the surfacing target. |
 | 3 | **The Aura body article** (`articles/aura-the-body`) | narrative (Class A #6) | DONE | Reconciled against capability registry: voice-provider canon (three-paths-one-surface), VRM file (`nanny.vrm`), lipsync chain (audio.tts → audio.visemes → vrm.expressions.blend), head-tracking priority chain, particle library, motion.idle. Cross-links to /capabilities and /demo/aura-talks. |
 | 4 | **The fleet count reconciliation** (4 → 5 airframes) | narrative (Class C #1) | DONE | Article renamed `the-fleet-five-airframes`; DJI Mini 5 Pro added as fifth; 15+ cross-refs updated. |

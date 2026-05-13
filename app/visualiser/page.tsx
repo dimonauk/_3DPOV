@@ -64,6 +64,15 @@ const ENTRIES: Entry[] = [
     pairs:
       "Companion to The Jewellery Algorithms and the atelier&rsquo;s reaction-diffusion algorithm.",
   },
+  {
+    href: "/visualiser/caustic-projector",
+    number: "06",
+    title: "Caustic projector",
+    blurb:
+      "Parallel rays through a curved refractive surface focus into a bright caustic pattern below. Scrub amplitude, wavelength, IOR and phase &mdash; watch the bright bands gather and disperse. The forward direction of the optics behind the studio&rsquo;s caustic discs.",
+    pairs:
+      "Companion to The Caustic Disc article and the inverse optimiser at python-services/caustic_optimizer.py.",
+  },
 ];
 
 export default function VisualiserIndexPage() {

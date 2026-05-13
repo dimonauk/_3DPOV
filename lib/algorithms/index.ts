@@ -190,6 +190,21 @@ export const portedAlgorithms: Record<string, PortedAlgorithm> = {
     load: () => import("./diatom-hex"),
     params: COMMON_PARAMS,
   },
+  spinodal: {
+    slug: "spinodal",
+    load: () => import("./spinodal"),
+    params: COMMON_PARAMS,
+  },
+  "wigner-seitz": {
+    slug: "wigner-seitz",
+    load: () => import("./wigner-seitz"),
+    params: COMMON_PARAMS,
+  },
+  "clash-compositor": {
+    slug: "clash-compositor",
+    load: () => import("./clash-compositor"),
+    params: COMMON_PARAMS,
+  },
 };
 
 export function isPorted(slug: string): boolean {
