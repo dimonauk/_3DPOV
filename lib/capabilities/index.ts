@@ -171,12 +171,12 @@ const auraAliveStubs: CapabilityRecord[] = [
     kind: "viz",
     name: "Strange attractor",
     summary:
-      "GPGPU 4-engine attractor field (Clifford / Thomas / Lorenz / Dequan Li). Pipeline Epsilon's body.",
-    status: "stub",
+      "Pipeline Epsilon — Clifford / Thomas / Lorenz / Dequan-Li trajectory generation. Mood → engine canon. v0.1 CPU; WebGPU TSL upgrade target.",
+    status: "registered",
     source:
-      "Box 3 crib: merrypranxter/strange_attractors (5-engine GPGPU; we keep 4 + add Dequan Li)",
-    load: () => Promise.resolve({}),
-    stateSlices: ["aura", "viz"],
+      "Box 3 crib: merrypranxter/strange_attractors (MIT) + canonical attractor lit. We dropped de Jong + Aizawa, added Dequan Li. Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./viz/attractor"),
+    stateSlices: ["viz", "aura"],
   },
   {
     id: "viz.particles",
