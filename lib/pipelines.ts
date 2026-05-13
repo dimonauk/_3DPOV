@@ -139,6 +139,34 @@ export const pipelines: Pipeline[] = [
     status: "registered",
   },
   {
+    id: "photo-to-3d",
+    name: "Photo to 3D (in-browser)",
+    summary:
+      "Free path. Depth Anything V2 estimates depth in the browser; a depth-weighted warp produces a stereo pair; output as USDZ for iOS AR Quick Look or SBS-MP4 for Quest 3 / Vision Pro.",
+    stages: [
+      { capability: "viz.depth-estimation", note: "Depth Anything V2 small via Transformers.js; WebGPU on capable phones, WebGL fallback" },
+      { capability: "viz.stereo-pair", note: "depth-weighted horizontal warp at IPD baseline; pure-math, no GPU required" },
+      { capability: "viz.usdz-export", note: "wrap stereo pair as USDZ for Apple AR Quick Look (iOS native)" },
+      { capability: "viz.spatial-export", note: "alternate: composite side-by-side MP4 for Quest 3 / Vision Pro playback" },
+    ],
+    slices: [],
+    surface: "/spatial",
+    status: "registered",
+  },
+  {
+    id: "sharp-commission",
+    name: "SHARP commission (premium)",
+    codename: "Pipeline SHARP",
+    summary:
+      "Server-side path. Same input photo, higher fidelity. Apple SHARP single-image Gaussian splat run on the studio's local 3080 Ti; job is polled, result delivered as splat + USDZ. Degrades gracefully to the in-browser path when the SHARP service is offline.",
+    stages: [
+      { capability: "commerce.sharp-job", note: "submit / poll / download against the studio's SHARP service; feature-detected at /spatial" },
+    ],
+    slices: [],
+    surface: "/spatial",
+    status: "registered",
+  },
+  {
     id: "dialogue-loop",
     name: "Dialogue loop",
     summary:

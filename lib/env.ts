@@ -17,7 +17,8 @@ export type EnvKey =
   | "GOOGLE_AI_MODEL"
   | "RESEND_API_KEY"
   | "CONTACT_INBOX_EMAIL"
-  | "NEXT_PUBLIC_MAPLIBRE_TILES_URL";
+  | "NEXT_PUBLIC_MAPLIBRE_TILES_URL"
+  | "SHARP_SERVICE_URL";
 
 /** Return the env value or `undefined`. Never throws. */
 export function envOrUndefined(key: EnvKey): string | undefined {

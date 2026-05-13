@@ -251,6 +251,57 @@ const auraAliveStubs: CapabilityRecord[] = [
     load: () => import("./media/capture"),
   },
   {
+    id: "viz.depth-estimation",
+    kind: "viz",
+    name: "Depth estimation",
+    summary:
+      "Depth Anything V2 small via Transformers.js, WebGPU when available, WebGL/WASM fallback. probeDepthSupport gates the user-facing button so iOS Safari without WebGPU never starts a 50MB download for an unusable path.",
+    status: "registered",
+    source: "Box 3: Depth Anything V2 (Apache-2.0) + @huggingface/transformers (Apache-2.0). Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./viz/depth-estimation"),
+  },
+  {
+    id: "viz.stereo-pair",
+    kind: "viz",
+    name: "Stereo pair",
+    summary:
+      "Pure-math depth-warp: image + depth map → left/right ImageData pair. IPD-baseline driven, depth-weighted horizontal shift, simple horizontal hole-fill for occlusion edges.",
+    status: "registered",
+    source: "Studio — classic depth-image-based-rendering (DIBR) implementation.",
+    load: () => import("./viz/stereo-pair"),
+  },
+  {
+    id: "viz.usdz-export",
+    kind: "viz",
+    name: "USDZ export",
+    summary:
+      "THREE.USDZExporter wrapper + AR Quick Look launcher. iOS users tap to place the 3D scene in their room via Apple's native AR Quick Look — works on iOS without WebXR.",
+    status: "registered",
+    source: "three.js USDZExporter (MIT) + Apple AR Quick Look pattern (rel=ar anchor with child element).",
+    load: () => import("./viz/usdz-export"),
+  },
+  {
+    id: "viz.spatial-export",
+    kind: "viz",
+    name: "Spatial photo + video",
+    summary:
+      "Side-by-side / over-under MP4 + USDZ stereo still output. Quest 3 + Vision Pro players auto-detect SBS aspect ratio. v1: SBS-MP4 / OU-MP4 / usdz-stereo. v2: MV-HEVC.",
+    status: "registered",
+    source: "Studio composite + Mediabunny (re-uses media.capture's video-encoder pattern).",
+    load: () => import("./viz/spatial-export"),
+    dependsOn: ["viz.stereo-pair"],
+  },
+  {
+    id: "commerce.sharp-job",
+    kind: "commerce",
+    name: "SHARP commission",
+    summary:
+      "Server-side SHARP single-image-to-gaussian-splat job. Submits to the studio's 3080 Ti via the python-services/sharp_service.py FastAPI bridge. Premium-quality 2D→3D; falls back gracefully to the free in-browser viz.depth-estimation when the GPU is offline.",
+    status: "registered",
+    source: "Apple ml-sharp (Apple AI Research License) wrapped in a FastAPI service on the studio's local GPU. Atomised per docs/MIGRATION_PRINCIPLES.md.",
+    load: () => import("./commerce/sharp-job"),
+  },
+  {
     id: "viz.attractor",
     kind: "viz",
     name: "Strange attractor",

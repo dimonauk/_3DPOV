@@ -59,7 +59,8 @@ export type CapabilityKind =
   | "world"
   | "geo"
   | "ar"
-  | "media";
+  | "media"
+  | "commerce";
 
 /**
  * Stable identifier. Convention: `<kind>.<verb-or-noun>`, kebab-case
@@ -85,11 +86,16 @@ export type CapabilityId =
   | "agent.memory"
   | "input.headpose"
   | "viz.attractor"
+  | "viz.depth-estimation"
   | "viz.light-sculpture"
   | "viz.particles"
+  | "viz.spatial-export"
+  | "viz.stereo-pair"
+  | "viz.usdz-export"
   | "geo.position"
   | "ar.window"
-  | "media.capture";
+  | "media.capture"
+  | "commerce.sharp-job";
 
 export type CapabilityStatus =
   | "registered" // module present, callable

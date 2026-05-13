@@ -43,6 +43,7 @@ exist and what ports they listen on.
 | WebGPU Gaussian Splatting | 5262 | http:// | manual | Queued for `/play/neo-london` (per `docs/HANGAR_MAP.md`) | The play page is not yet wired |
 | Qdrant | system service | http:// | Windows service | Vector memory (Hangar-side; site uses Firestore instead) | Site uses Firestore for any memory write |
 | poi-game-bridge | 8211 | ws:// | `python -m uvicorn poi_game_bridge:app --host 0.0.0.0 --port 8211` | None yet — forward-looking. Typed client at `lib/integrations/poi-game-bridge.ts` waits for a wrapping capability | Fabrication-chain UI sits cold; articles describe Pipeline Delta without driving it |
+| SHARP service | 7842 | http:// | `uvicorn sharp_service:app --host 0.0.0.0 --port 7842` (in `python-services/`) | `commerce.sharp-job` — the editioned-quality single-image-to-gaussian-splat path on the 3080 Ti | Browser falls back to the in-browser depth-estimation path via `viz.depth-estimation` (lower quality but free) |
 
 The site never connects to these directly from production. Connection
 is via a thin capability adapter that checks for the bridge, falls
@@ -168,6 +169,28 @@ fabrication slice. Note: this is the first entry under
 `lib/integrations/`, a new folder convention for typed clients of
 external services (distinct from capabilities, which are registered,
 breedable, and slotted by the genome).
+
+### SHARP service &mdash; port 7842, http://
+
+`python-services/sharp_service.py` is a FastAPI wrapper around Apple
+SHARP &mdash; the single-image-to-gaussian-splat model documented in
+`docs/SHARP_PIPELINE.md`. The service exposes four routes: `POST /jobs`
+to submit an image, `GET /jobs/{id}` to poll status, `GET /jobs/{id}/result`
+to download the finished `.ply`, and `DELETE /jobs/{id}` to cancel. The
+site consumes it through the `commerce.sharp-job` capability at
+`lib/capabilities/commerce/sharp-job.ts`, which speaks the REST surface
+from the browser. Jobs run on the studio's 3080 Ti machine; the service
+binds `0.0.0.0:7842` so the development laptop (and the deployed site
+on a Tailscale-fronted ingress, eventually) can reach it across the
+local network. CORS allows `http://localhost:3000` and
+`https://holoflow.co.uk` by default &mdash; configurable via
+`SHARP_CORS_ORIGINS`. Operator runbook: `python-services/SHARP_SERVICE.md`.
+When absent, the TS client throws a typed `SharpServiceUnreachableError`
+that the calling page translates to "premium conversion needs the
+studio's GPU &mdash; using the free in-browser version instead" and
+the visitor falls through to the free in-browser depth-estimation path
+via `viz.depth-estimation`. The premium path is the editioned-quality
+version; the in-browser path is the freebie that always works.
 
 ### Skybrush studio integration
 

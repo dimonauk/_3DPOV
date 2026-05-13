@@ -16,6 +16,7 @@
     "@google/generative-ai": "^0.24.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@huggingface/transformers": "^4.2.0",
     "@pixiv/three-vrm": "^3.5.2",
     "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.0.0",
