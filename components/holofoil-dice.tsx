@@ -31,27 +31,39 @@ vec4 tanh4(vec4 x) {
   return (e2 - 1.0) / (e2 + 1.0);
 }
 
-#define A(C, Z) \\
-for (float d = 0., i = 0., c, e, sc, h, a, s, sf; i++ < 80.;) { \\
-    vec3 p = vec3((I + I - r.xy) / r.y * d, d - 8.), g, f, k; \\
-    if (abs(p.x) > 5.) break; \\
-    p.xz *= Rx; \\
-    iMouse.z > 0. ? p.yz *= Ry : p.xy *= Ry; \\
-    g = floor(p * 6.); \\
-    f = fract(p * 6.) - .5; \\
-    h = step(length(f), fract(sin(dot(g, vec3(127.1, 311.7, 74.7))) * 43758.5) * .3 + .1); \\
-    a = fract(sin(dot(g, vec3(43.7, 78.2, 123.4))) * 127.1) * 6.28; \\
-    e = 1.; sc = 2.; \\
-    for (int j = 0; j < 3; j++) { \\
-        g = abs(mod(p * sc, 2.) - 1.); \\
-        e = min(e, min(max(g.x, g.y), min(max(g.y, g.z), max(g.x, g.z))) / sc); \\
-        sc *= .6; \\
+// WebGL 1.0 GLSL ES 1.00 requires for-loops with a single-variable
+// integer-or-float init, a constant-bound comparison condition, and an
+// explicit increment slot. The original Twigl source used a multi-var
+// init + side-effect condition ('i++ < 80.') + empty increment, which
+// is valid in WebGL 2.0 / desktop GLSL but rejected here. Rewritten to
+// the canonical form: integer counter, 'i' derived per iteration, 'd'
+// scoped to a wrapping block so each 'A(...)' invocation gets its own
+// march distance.
+#define A(C, Z) { \\
+    float d = 0.; \\
+    for (int j2 = 1; j2 <= 80; j2++) { \\
+        float i = float(j2); \\
+        float c, e, sc, h, a, s, sf; \\
+        vec3 p = vec3((I + I - r.xy) / r.y * d, d - 8.), g, f, k; \\
+        if (abs(p.x) > 5.) break; \\
+        p.xz *= Rx; \\
+        iMouse.z > 0. ? p.yz *= Ry : p.xy *= Ry; \\
+        g = floor(p * 6.); \\
+        f = fract(p * 6.) - .5; \\
+        h = step(length(f), fract(sin(dot(g, vec3(127.1, 311.7, 74.7))) * 43758.5) * .3 + .1); \\
+        a = fract(sin(dot(g, vec3(43.7, 78.2, 123.4))) * 127.1) * 6.28; \\
+        e = 1.; sc = 2.; \\
+        for (int j = 0; j < 3; j++) { \\
+            g = abs(mod(p * sc, 2.) - 1.); \\
+            e = min(e, min(max(g.x, g.y), min(max(g.y, g.z), max(g.x, g.z))) / sc); \\
+            sc *= .6; \\
+        } \\
+        c = max(max(max(abs(p.x), abs(p.y)), abs(p.z)), dot(abs(p), vec3(.577)) * .9) - 3.; \\
+        s = .01 + .15 * abs(max(max(c, e - .1), length(sin(c)) - .3) + Z * .02 - i / 130.); \\
+        d += s; \\
+        sf = smoothstep(.02, .01, s); \\
+        O.C += 1.6 / s * (.5 + .5 * sin(i * .3 + Z * 5.) + sf * 4. * h * sin(a + i * .4 + Z * 5.)); \\
     } \\
-    c = max(max(max(abs(p.x), abs(p.y)), abs(p.z)), dot(abs(p), vec3(.577)) * .9) - 3.; \\
-    s = .01 + .15 * abs(max(max(c, e - .1), length(sin(c)) - .3) + Z * .02 - i / 130.); \\
-    d += s; \\
-    sf = smoothstep(.02, .01, s); \\
-    O.C += 1.6 / s * (.5 + .5 * sin(i * .3 + Z * 5.) + sf * 4. * h * sin(a + i * .4 + Z * 5.)); \\
 }
 
 void main() {
@@ -254,8 +266,7 @@ export function HolofoilDice() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="block h-full w-full"
-      style={{ touchAction: "none", backgroundColor: "#0c0a12" }}
+      className="block h-full w-full touch-none bg-warm-black-950"
     />
   );
 }
