@@ -11,12 +11,10 @@ import {
 } from "react";
 
 import {
-  defaultShellState,
-  loadShellState,
-  saveShellState,
+  useShellStore,
   type PanelKey,
   type ShellState,
-} from "lib/shell/state";
+} from "lib/state/shell";
 
 type TerminalLine = {
   id: number;
@@ -46,32 +44,34 @@ const nextLineId = (): number => {
 };
 
 export function ShellProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<ShellState>(defaultShellState);
+  const open = useShellStore((s) => s.open);
+  const toggleStore = useShellStore((s) => s.toggle);
+  const setOpenStore = useShellStore((s) => s.setOpen);
   const [hydrated, setHydrated] = useState(false);
   const [terminalLines, setTerminalLines] = useState<TerminalLine[]>([]);
 
-  // Hydrate from localStorage once on mount. Server renders all closed;
-  // client picks up the visitor's last shape and slides into it.
+  const state: ShellState = useMemo(() => ({ open }), [open]);
+
+  // zustand's persist middleware hydrates async on the client. We mark
+  // hydrated true after first paint so components can rely on the SSR
+  // closed-default-then-slide-in transition.
   useEffect(() => {
-    setState(loadShellState());
     setHydrated(true);
   }, []);
 
-  // Persist on every change after hydration.
-  useEffect(() => {
-    if (!hydrated) return;
-    saveShellState(state);
-  }, [state, hydrated]);
+  const toggle = useCallback(
+    (key: PanelKey) => {
+      toggleStore(key);
+    },
+    [toggleStore],
+  );
 
-  const toggle = useCallback((key: PanelKey) => {
-    setState((prev) => ({
-      open: { ...prev.open, [key]: !prev.open[key] },
-    }));
-  }, []);
-
-  const setOpen = useCallback((key: PanelKey, open: boolean) => {
-    setState((prev) => ({ open: { ...prev.open, [key]: open } }));
-  }, []);
+  const setOpen = useCallback(
+    (key: PanelKey, open: boolean) => {
+      setOpenStore(key, open);
+    },
+    [setOpenStore],
+  );
 
   const appendTerminalLine = useCallback(
     (line: Omit<TerminalLine, "id">) => {

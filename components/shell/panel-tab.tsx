@@ -1,7 +1,7 @@
 "use client";
 
 import { useShell } from "components/shell/shell-context";
-import type { PanelKey } from "lib/shell/state";
+import type { PanelKey } from "lib/state/shell";
 
 type Orientation = "left" | "right" | "bottom";
 
