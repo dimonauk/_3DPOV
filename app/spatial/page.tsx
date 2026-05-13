@@ -55,6 +55,13 @@ export default function SpatialPage() {
           >
             capabilities
           </Link>
+          <span
+            aria-disabled="true"
+            className="cursor-not-allowed rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-500"
+            title="2D→4D video extension — wave 2; service runs on the studio's 3080 Ti via python-services/sharp_video_service.py."
+          >
+            video → 4D · coming next wave
+          </span>
         </div>
 
         <div className="mt-12">

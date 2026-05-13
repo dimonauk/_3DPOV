@@ -167,6 +167,19 @@ export const pipelines: Pipeline[] = [
     status: "registered",
   },
   {
+    id: "video-to-4d",
+    name: "Video to 4D (premium)",
+    codename: "Pipeline SHARP-Video",
+    summary:
+      "Server-side path. 2D clip in, 4D Gaussian Splat timeline + stereo MP4 out. ffmpeg decodes, SHARP runs per keyframe, 4DGaussians temporal fit, ffmpeg stitches the SBS MP4. Long-running (minutes per few-second clip); progress reports per-frame counter + current stage.",
+    stages: [
+      { capability: "commerce.sharp-video-job", note: "submit / poll / download against the studio's SHARP-video service; per-frame progress channel for live counter" },
+    ],
+    slices: [],
+    surface: "/spatial/video",
+    status: "registered",
+  },
+  {
     id: "dialogue-loop",
     name: "Dialogue loop",
     summary:

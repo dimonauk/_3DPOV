@@ -302,6 +302,17 @@ const auraAliveStubs: CapabilityRecord[] = [
     load: () => import("./commerce/sharp-job"),
   },
   {
+    id: "commerce.sharp-video-job",
+    kind: "commerce",
+    name: "SHARP video commission (4D)",
+    summary:
+      "Server-side 2D→4D video job. Decodes input video, runs SHARP per keyframe, threads splats into a 4D Gaussian timeline + stereo-MP4 stitch. Studio's 3080 Ti; output is .4dgs + stereo-MP4 + USDZ keyframes. Long-running — handle exposes per-frame progress events. Falls back gracefully to the free in-browser depth-anything-v2 per-frame path when the GPU is offline.",
+    status: "registered",
+    source: "Studio composition: StereoCrafter (TencentARC MIT) + 4DGaussians (hustvl) + Apple ml-sharp keyframes. Wrapped in python-services/sharp_video_service.py.",
+    load: () => import("./commerce/sharp-video-job"),
+    dependsOn: ["commerce.sharp-job"],
+  },
+  {
     id: "viz.attractor",
     kind: "viz",
     name: "Strange attractor",

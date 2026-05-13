@@ -44,6 +44,7 @@ exist and what ports they listen on.
 | Qdrant | system service | http:// | Windows service | Vector memory (Hangar-side; site uses Firestore instead) | Site uses Firestore for any memory write |
 | poi-game-bridge | 8211 | ws:// | `python -m uvicorn poi_game_bridge:app --host 0.0.0.0 --port 8211` | None yet — forward-looking. Typed client at `lib/integrations/poi-game-bridge.ts` waits for a wrapping capability | Fabrication-chain UI sits cold; articles describe Pipeline Delta without driving it |
 | SHARP service | 7842 | http:// | `uvicorn sharp_service:app --host 0.0.0.0 --port 7842` (in `python-services/`) | `commerce.sharp-job` — the editioned-quality single-image-to-gaussian-splat path on the 3080 Ti | Browser falls back to the in-browser depth-estimation path via `viz.depth-estimation` (lower quality but free) |
+| SHARP-video service | 7843 | http:// | `uvicorn sharp_video_service:app --host 0.0.0.0 --port 7843` (in `python-services/`) | `commerce.sharp-video-job` — the editioned-quality 2D-video-to-4D-splat path; per-keyframe SHARP + 4DGaussians temporal fit + stereo-MP4 stitch | Browser falls back to per-frame `viz.depth-estimation` stitched into a stereo MP4 (slower; rough; free) |
 
 The site never connects to these directly from production. Connection
 is via a thin capability adapter that checks for the bridge, falls
@@ -191,6 +192,27 @@ studio's GPU &mdash; using the free in-browser version instead" and
 the visitor falls through to the free in-browser depth-estimation path
 via `viz.depth-estimation`. The premium path is the editioned-quality
 version; the in-browser path is the freebie that always works.
+
+### SHARP-video service &mdash; port 7843, http://
+
+`python-services/sharp_video_service.py` extends the SHARP path from
+single images to video: ffmpeg decodes the upload into frames, SHARP
+runs per keyframe on the 3080 Ti, and 4DGaussians (`hustvl/4DGaussians`)
+fits a temporally-coherent splat timeline that ships as a `.4dgs`
+bundle plus a stereo-MP4 stitch (the latter consumable on Quest 3 /
+Vision Pro / any SBS-aware player). Routes mirror the photo service:
+`POST /jobs` (multipart `video` + `meta`), `GET /jobs/{id}` for status
+(includes per-frame `framesDone / framesTotal` so the UI can render a
+live counter), `DELETE /jobs/{id}` for cancel, and
+`GET /jobs/{id}/result/{splat4d|stereoMp4|usdzKeyframes}` for the
+binary downloads. Binds `0.0.0.0:7843` &mdash; one port above the photo
+service so they coexist cleanly. CORS allows the same origins as the
+photo service; the env var to override the client base URL is
+`SHARP_VIDEO_SERVICE_URL`. The TS client lives at
+`lib/capabilities/commerce/sharp-video-job.ts`. When absent, the
+calling page falls back to the free per-frame in-browser path:
+`viz.depth-estimation` per decoded frame, stitched into a stereo MP4
+client-side via Mediabunny. Slower; rougher; always works.
 
 ### Skybrush studio integration
 

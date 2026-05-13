@@ -95,7 +95,8 @@ export type CapabilityId =
   | "geo.position"
   | "ar.window"
   | "media.capture"
-  | "commerce.sharp-job";
+  | "commerce.sharp-job"
+  | "commerce.sharp-video-job";
 
 export type CapabilityStatus =
   | "registered" // module present, callable
