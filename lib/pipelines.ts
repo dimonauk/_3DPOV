@@ -129,6 +129,76 @@ export const pipelines: Pipeline[] = [
     surface: undefined,
     status: "speculative",
   },
+  {
+    id: "cast-banter",
+    name: "Cast banter",
+    codename: "Pipeline Banter",
+    summary:
+      "Multi-character LLM exchange. Telemetry + active-speaker subset → Gemini returns 1-3 turns of in-voice exchange. The mechanism Aura + Yow + Purp used to flank the player in Neo-London Chrono-Protocol; generalised here to any subset of the cast.",
+    stages: [
+      { capability: "agent.banter", note: "Gemini call with multi-character system prompt + responseSchema; returns {turns, tickMs, followUpEta}" },
+      { capability: "audio.tts", note: "speak each turn in order; voice routed per speaker" },
+      { capability: "audio.visemes", note: "viseme timeline per turn" },
+      { capability: "vrm.expressions.blend", note: "mouth + face per speaker's mood" },
+    ],
+    slices: ["agent", "cast", "aura", "audio", "vrm"],
+    surface: undefined,
+    status: "speculative",
+  },
+  {
+    id: "kinematic-extraction",
+    name: "Kinematic extraction",
+    summary:
+      "Pose-sample stream → Laban Effort vector (Space × Time × Weight × Flow) → nearest named Basic Effort. The classifier that says what kind of movement just happened.",
+    stages: [
+      { capability: "input.headpose", note: "raw pose / motion sample feed (head + hand placeholder; depth-camera path future)" },
+      { capability: "motion.laban", note: "analyseEffort(samples) returns {effort, basic, sampleCount, meanIntervalMs}" },
+    ],
+    slices: ["input"],
+    surface: "/visualiser/laban-dial",
+    status: "registered",
+  },
+  {
+    id: "named-move-blend",
+    name: "Named-move blend",
+    summary:
+      "Two named moves from the move-library, blended by their Laban coordinates at parameter t. Interpolated Effort points become a continuous gradient between named gestures.",
+    stages: [
+      { capability: "motion.laban", note: "interpolateMoves(fromId, toId, t) returns the blended EffortVector" },
+      { capability: "motion.gesture", note: "(future) apply the blended Effort as a transient pose" },
+    ],
+    slices: ["vrm"],
+    surface: undefined,
+    status: "speculative",
+  },
+  {
+    id: "ocean-mood-drift",
+    name: "OCEAN mood drift",
+    summary:
+      "Conversational outcome (intent + sentiment) nudges Aura's OCEAN vector; the new vector recomputes mood; mood propagates into face + posture + attractor engine.",
+    stages: [
+      { capability: "agent.dialogue", note: "post-turn intent triggers a nudgeOcean call" },
+      { capability: "viz.attractor", note: "engineFromMood(new mood) re-selects attractor engine" },
+      { capability: "motion.idle", note: "moodGain re-scales breath + micro-shift amplitudes" },
+      { capability: "vrm.expressions.blend", note: "faceForMood updates brow/eye/relaxed weights" },
+    ],
+    slices: ["aura", "agent", "vrm", "viz"],
+    surface: undefined,
+    status: "speculative",
+  },
+  {
+    id: "morphing-curve-modulation",
+    name: "Morphing curve modulation",
+    summary:
+      "An animation specified as MorphingConfig (duration + easing + endpoints) drives a parameter from A to B with a named Penner curve. The aesthetic backbone of every alive-not-metronome animation in the system.",
+    stages: [
+      { capability: "motion.gesture", note: "uses easeInOutCubic internally; can route through lib/math/easing for the full 31-curve catalogue" },
+      { capability: "motion.idle", note: "sine-over-time breath cycle; cosineLerp helper for blending two curves" },
+    ],
+    slices: ["vrm"],
+    surface: undefined,
+    status: "registered",
+  },
 ];
 
 export function getPipeline(id: string): Pipeline | undefined {
