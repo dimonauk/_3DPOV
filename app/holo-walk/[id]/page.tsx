@@ -113,21 +113,22 @@ export default async function HoloWalkLocationPage({
         )}
 
         <section className="mt-10 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-8 text-sm text-chrome-300">
-          <div className="chrome-label">Print bar &mdash; coming next wave</div>
+          <div className="chrome-label">The bar inside the viewport</div>
           <p className="mt-3">
-            The 3D viewport above will ship with a YouTube-style strip
-            underneath: pick material (resin / nylon / steel), scale
-            (palm / desktop / shelf), finish, then either{" "}
-            <span className="text-chrome-200">press-to-print</span>{" "}
-            (drop-ship from the studio&rsquo;s UK partner) or{" "}
-            <span className="text-chrome-200">pay-to-download</span>{" "}
-            (signed STL/GLB delivery via Cloudflare R2 with a C2PA
-            provenance manifest). Same bar, every 3D viewport on the
-            site. Architecture lives in{" "}
-            <span className="font-mono text-chrome-100">
-              memory:project_print_bar_commerce
-            </span>
-            ; build wave: post-Stripe.
+            The 3D preview above ships with the print-bar mounted{" "}
+            <em>inside</em> the scene — the same world the sculpture
+            lives in. Hover the plates on the lower row (palm / desktop
+            / shelf / wall &middot; resin / nylon / steel &middot; raw
+            / sanded / polished / painted) to nudge the quote, then tap
+            the action plate for{" "}
+            <span className="text-chrome-200">print to order</span>{" "}
+            (drop-ship from the studio&rsquo;s Manchester partner).
+            Touch-only devices fall back to an HTML overlay anchored in
+            3D space. Pay-to-download (signed STL/GLB delivery via
+            Cloudflare R2 with a C2PA provenance manifest) lands when
+            the C2PA wave ships. Live partner-API quoting + Stripe
+            checkout land in the Stripe wave; v0.1 prices are
+            plausible-but-mocked.
           </p>
         </section>
 

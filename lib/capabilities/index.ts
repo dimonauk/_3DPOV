@@ -313,6 +313,16 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["commerce.sharp-job"],
   },
   {
+    id: "commerce.print-order",
+    kind: "commerce",
+    name: "Print-bar order",
+    summary:
+      "Drop-ship 3D-print quote + order seam under every 3D viewport. Vendor catalogue × scale band × finish surcharge → live PrintQuote on every dropdown change. v0.1 quotes are synchronous and mocked; the requestPrintQuote function is the seam Stripe + partner APIs wire into in the Stripe wave.",
+    status: "registered",
+    source: "Studio commerce substrate. Vendor data lives in lib/print-vendors/; rendered by components/three/print-bar.tsx.",
+    load: () => import("./commerce/print-order"),
+  },
+  {
     id: "viz.attractor",
     kind: "viz",
     name: "Strange attractor",

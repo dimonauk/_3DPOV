@@ -180,6 +180,19 @@ export const pipelines: Pipeline[] = [
     status: "registered",
   },
   {
+    id: "print-bar-order",
+    name: "Print-bar order",
+    codename: "Pipeline Drop-Ship",
+    summary:
+      "Every 3D viewport on the site mounts a 3D commerce strip inside its own scene. Material × scale × finish dropdowns quote live via the print-vendor catalogue; the action plate posts a (v0.1 mock) order receipt. The Stripe wave swaps the receipt for live Stripe + partner-API checkout without touching the bar or the viewport.",
+    stages: [
+      { capability: "commerce.print-order", note: "quotePrint synchronously on every dropdown change; requestPrintQuote on action-plate click (mocked in v0.1; Stripe seam)" },
+    ],
+    slices: [],
+    surface: "/holo-walk/[id]",
+    status: "registered",
+  },
+  {
     id: "dialogue-loop",
     name: "Dialogue loop",
     summary:

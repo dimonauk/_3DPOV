@@ -96,7 +96,8 @@ export type CapabilityId =
   | "ar.window"
   | "media.capture"
   | "commerce.sharp-job"
-  | "commerce.sharp-video-job";
+  | "commerce.sharp-video-job"
+  | "commerce.print-order";
 
 export type CapabilityStatus =
   | "registered" // module present, callable
