@@ -55,6 +55,15 @@ const ENTRIES: Entry[] = [
     pairs:
       "Companion to Aura the Body and the capability registry brick viz.attractor.",
   },
+  {
+    href: "/visualiser/reaction-diffusion",
+    number: "05",
+    title: "Reaction-Diffusion",
+    blurb:
+      "Gray-Scott chemistry on a 128&times;128 grid, live in the browser. Scrub F and k; watch the system march between leopards, mitosis, coral, solitons and spirals &mdash; without a single random number.",
+    pairs:
+      "Companion to The Jewellery Algorithms and the atelier&rsquo;s reaction-diffusion algorithm.",
+  },
 ];
 
 export default function VisualiserIndexPage() {

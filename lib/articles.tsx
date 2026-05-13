@@ -12,6 +12,7 @@ import MorphingThingsTogether from "components/articles/entries/morphing-things-
 import NeoLondonChronoProtocol from "components/articles/entries/neo-london-chrono-protocol";
 import NineSecondsPromptToPrintable from "components/articles/entries/nine-seconds-prompt-to-printable";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
+import ProvenanceAsDisciplineArticle from "components/articles/entries/provenance-as-discipline";
 import SellotapeAndTiltBrush from "components/articles/entries/sellotape-and-tilt-brush";
 import SpiralCognition from "components/articles/entries/spiral-cognition";
 import TheBench from "components/articles/entries/the-bench";
@@ -23,6 +24,7 @@ import TheJewelleryAlgorithms from "components/articles/entries/the-jewellery-al
 import TheLivingStage from "components/articles/entries/the-living-stage";
 import ThePracticeInEightThreads from "components/articles/entries/the-practice-in-eight-threads";
 import TheRightPaperForALightPainting from "components/articles/entries/the-right-paper-for-a-light-painting";
+import TheSieveAndTheOracleArticle from "components/articles/entries/the-sieve-and-the-oracle";
 import Ungrounded from "components/articles/entries/ungrounded";
 import VrAsPsychologicalSystem from "components/articles/entries/vr-as-psychological-system";
 import VrPovControllersTheProduct from "components/articles/entries/vr-pov-controllers-the-product";
@@ -1752,6 +1754,127 @@ const ENTRIES: Entry[] = [
         href: "https://www.canon.co.uk/ink-paper-media/papers/",
         label: "Canon ink paper and media — UK",
         note: "Vendor page for the Canon paper line currently on the bench.",
+      },
+    ],
+  },
+  {
+    slug: "provenance-as-discipline",
+    title: "Provenance as Discipline",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Provenance is not a marketing artefact — it is a discipline. Every editioned piece ships with a typed JSON record alongside the paper certificate: edition, capture, processing chain, reference-light photograph of the actual print, COA hash, contextual articles, algorithm lineage. The typed contract for the physical artefact, type-checked the same way the rest of the studio's substrate is.",
+    Body: ProvenanceAsDisciplineArticle,
+    related: [
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "Where the discipline becomes visible to the buyer.",
+      },
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Calibrating the imagePROGRAF PRO-1100",
+        note: "The viewing booth and reference-light context the provenance record anchors against.",
+      },
+      {
+        href: "/articles/the-right-paper-for-a-light-painting",
+        label: "The Right Paper for a Light Painting",
+        note: "The paper field of the processing chain, in long form.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The wider working bench the bureau queue lives at the back of.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The structural cousin — typed interfaces, frozen long enough to be useful, the same instinct applied one layer up.",
+      },
+      {
+        href: "/articles/the-sieve-and-the-oracle",
+        label: "The Sieve and the Oracle",
+        note: "The human-judgement layer the typed record cannot replace.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Provenance",
+        label: "Provenance — Wikipedia",
+        note: "The art-world definition of the term, and why the gallery norm of a paper COA is the visible half of a longer chain.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/SHA-2",
+        label: "SHA-2 — Wikipedia",
+        note: "The hashing family the COA hash is drawn from. SHA-256 specifically.",
+      },
+      {
+        href: "https://www.typescriptlang.org/",
+        label: "TypeScript",
+        note: "The language the schema is written in; the rules that keep a missing field from shipping a record.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/JSON",
+        label: "JSON — Wikipedia",
+        note: "The serialisation format the record is canonicalised against before hashing.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Certificate_of_authenticity",
+        label: "Certificate of authenticity — Wikipedia",
+        note: "Background on the paper-COA convention the JSON record extends rather than replaces.",
+      },
+    ],
+  },
+  {
+    slug: "the-sieve-and-the-oracle",
+    title: "The Sieve and the Oracle",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Editioned work crosses two gates before it leaves the bench. The Sieve is mechanical — paper profile, edition number, COA fields, reference-light photograph, file hash. The Oracle is considered — me, under the studio's reference light, deciding whether the print belongs in the line. The Sieve runs first; the Oracle has refusal authority; they do not collapse into one pass.",
+    Body: TheSieveAndTheOracleArticle,
+    related: [
+      {
+        href: "/articles/provenance-as-discipline",
+        label: "Provenance as Discipline",
+        note: "The typed record the Sieve produces; the structural cousin to this piece.",
+      },
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "Where the two-pass discipline runs every print through.",
+      },
+      {
+        href: "/articles/the-right-paper-for-a-light-painting",
+        label: "The Right Paper for a Light Painting",
+        note: "The soft-proof procedure the Sieve checks against.",
+      },
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "The refusals register, at higher altitude. The Oracle is what that register looks like at the bench.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The wider working environment the two passes sit inside.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Quality_control",
+        label: "Quality control — Wikipedia",
+        note: "Background on the two-stage inspection pattern this discipline is a domain-specific case of.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Inter-rater_reliability",
+        label: "Inter-rater reliability — Wikipedia",
+        note: "Why subjective judgement needs anchoring against a known-good reference, and why the Oracle works against an exemplar from the same line.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Edition_(printmaking)",
+        label: "Edition (printmaking) — Wikipedia",
+        note: "Why edition-numbering integrity is load-bearing on value, and why the Sieve protects the ledger before charisma can talk past it.",
       },
     ],
   },
