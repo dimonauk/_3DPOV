@@ -37,6 +37,12 @@ const NAME = SITE_NAME ?? "Holo-Flow Studio";
 const DESCRIPTION =
   "Editioned waveguide sculptures, desktop objects, and configurable wall arrays from a twelve-year poi practice. Salford, UK.";
 
+export const viewport = {
+  themeColor: "#0a0a0f",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
@@ -44,6 +50,7 @@ export const metadata = {
     template: `%s | ${NAME}`,
   },
   description: DESCRIPTION,
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     siteName: NAME,

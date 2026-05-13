@@ -1,0 +1,19 @@
+{
+  "name": "Holoflow Studio",
+  "short_name": "Holoflow",
+  "description": "Editioned waveguide sculptures, desktop objects, and configurable wall arrays from a twelve-year poi practice. Salford, UK.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["art", "shopping", "entertainment"]
+}
