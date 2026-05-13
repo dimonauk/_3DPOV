@@ -12,6 +12,9 @@ import {
   pauseWebSpeech,
   resumeWebSpeech,
 } from "./tts-providers/web-speech";
+import { speakElevenLabs } from "./tts-providers/elevenlabs";
+import { speakKokoro } from "./tts-providers/kokoro";
+import { speakF5 } from "./tts-providers/f5";
 
 export type TTSProvider = "web-speech" | "elevenlabs" | "f5" | "kokoro";
 
@@ -82,11 +85,11 @@ function routeProvider(
         locale: options.locale,
       });
     case "elevenlabs":
-    case "f5":
+      return speakElevenLabs(req, { voiceId: options.voice });
     case "kokoro":
-      return Promise.reject(
-        new Error(`audio.tts: provider "${provider}" not implemented yet`),
-      );
+      return speakKokoro(req, { voice: options.voice });
+    case "f5":
+      return speakF5(req, { voice: options.voice });
   }
 }
 
