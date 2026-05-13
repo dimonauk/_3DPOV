@@ -127,10 +127,10 @@ export default function SignInCallbackPage() {
               Welcome, {status.email}.
             </p>
             <Link
-              href="/coming-soon"
+              href="/rookery"
               className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-pink-200 hover:underline"
             >
-              Continue to the studio →
+              Continue to the Rookery →
             </Link>
           </div>
         )}

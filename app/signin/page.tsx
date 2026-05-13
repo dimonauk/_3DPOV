@@ -39,8 +39,10 @@ export default function SignInPage() {
         setStatus({ kind: "error", message: "Auth unavailable." });
         return;
       }
-      // onAuthStateChanged in AuthProvider will fire; redirect to home.
-      window.location.replace("/");
+      // onAuthStateChanged in AuthProvider will fire; redirect to the
+      // Rookery (the signed-in landing route; whitelisted past the
+      // /coming-soon launch gate so the navbar's auth slot is visible).
+      window.location.replace("/rookery");
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Google sign-in failed.";
