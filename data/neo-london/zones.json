@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "bankside",
+    "name": "Bankside",
+    "lat": 51.5074,
+    "lng": -0.0972,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-07-12",
+    "notes": "South Bank strip in front of Tate Modern; one of the most-walked frames in the archive, dusk and morning both repeat here.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "limehouse-cut-north",
+    "name": "Limehouse Cut, north entrance",
+    "lat": 51.5145,
+    "lng": -0.0357,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-03-21",
+    "notes": "Where the Cut opens onto Bow Locks; the canal corridor the eventual game will treat as a fast-travel spine.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "smithfield-alleys",
+    "name": "Smithfield alleys",
+    "lat": 51.5188,
+    "lng": -0.1015,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2023-11-04",
+    "notes": "The back-of-market alleys behind Smithfield at six in the morning; Victorian ironwork and a working market in the same frame.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "camden-lock",
+    "name": "Regent's Canal at Camden Lock",
+    "lat": 51.5414,
+    "lng": -0.1462,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-05-18",
+    "notes": "The first lock of the Camden-to-Lea walk; the bridge frame here is a recurring composition across four cameras&rsquo; worth of kit.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "hackney-marshes",
+    "name": "River Lea at Hackney Marshes",
+    "lat": 51.5557,
+    "lng": -0.0457,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-08-09",
+    "notes": "End of the Camden-to-Lea spine; the towpath opens into the marshes and the sky doubles in size.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "wapping-tideway",
+    "name": "Thames tideway at Wapping",
+    "lat": 51.5036,
+    "lng": -0.0573,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-02-15",
+    "notes": "Foreshore at low water near Wapping Old Stairs; the river bed is briefly a walkable surface here.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "south-bank-wind-tunnel",
+    "name": "South Bank wind tunnel",
+    "lat": 51.5067,
+    "lng": -0.1158,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-10-30",
+    "notes": "The undercroft turn at Royal Festival Hall that becomes a wind tunnel at dusk; the camera-tested truth of the article.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "liverpool-street-half-hour",
+    "name": "Liverpool Street (the half-hour wait)",
+    "lat": 51.5180,
+    "lng": -0.0817,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2014-09-02",
+    "notes": "The kerbside where the home-built 360 rig waited thirty minutes for a hotspot association in 2014; origin chapter of the whole practice.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "rotherhithe-blue-hour",
+    "name": "Rotherhithe at blue hour",
+    "lat": 51.5009,
+    "lng": -0.0524,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2025-01-19",
+    "notes": "The closing line of the 360-walking article landed here; the river bend the studio walks to when the light goes.",
+    "status": "placeholder"
+  },
+  {
+    "slug": "regents-canal-mile-end",
+    "name": "Regent's Canal at Mile End",
+    "lat": 51.5266,
+    "lng": -0.0331,
+    "source": "archive-360",
+    "plyUrl": null,
+    "capturedAt": "2024-06-22",
+    "notes": "The Mile End stretch where the towpath narrows and the gasholder frame opens up; midway on the Camden-to-Lea route.",
+    "status": "placeholder"
+  }
+]

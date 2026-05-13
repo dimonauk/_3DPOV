@@ -1,0 +1,75 @@
+{
+  "comment": "Public mirror of the curated sculpture-genome catalogue. The full registry (hundreds of mutations and crossovers) lives in The Hangar at D:/The_Hangar/apps/prototypes/poi-sculptor/sculpture_registry.json. This file carries the publishable subset; the embedded Blender builder_script bytecode is intentionally omitted because it requires a Blender runtime to interpret.",
+  "schema_version": 1,
+  "generated_from": "lib/assets/genomes.ts",
+  "genomes": [
+    {
+      "slug": "g52393-radial-plano-convex",
+      "genome_id": "g52393",
+      "kingdom": "biomech",
+      "generation_number": 0,
+      "fitness_score": 0,
+      "gene_vector": {
+        "arm_count": 3,
+        "arm_length_mm": 80.0,
+        "arm_taper": 0.7,
+        "branching_depth": 2,
+        "branching_angle_deg": 35.0,
+        "murray_exponent": 3.0,
+        "core_diameter_mm": 3.0,
+        "wall_thickness_mm": 0.8,
+        "surface_texture": "smooth",
+        "ior_target": 1.5,
+        "lens_type": "plano-convex",
+        "focal_length_mm": 50.0,
+        "aperture_mm": 5.0,
+        "zone_count": 8,
+        "base_diameter_mm": 40.0,
+        "base_height_mm": 15.0,
+        "mount_type": "magnetic",
+        "symmetry": "radial"
+      }
+    },
+    {
+      "slug": "cr-8411-eve-v3",
+      "genome_id": "CR-8411",
+      "kingdom": "techno",
+      "generation_number": 0,
+      "fitness_score": 96,
+      "gene_vector": {
+        "grid_x": 24,
+        "grid_y": 24,
+        "spacing_mm": 2.8,
+        "twist_angle": 25.0,
+        "base_size_mm": 2.2,
+        "peak_height_mm": 6.0,
+        "undulation_amp": 0.003
+      }
+    },
+    {
+      "slug": "g66903-default-baseline",
+      "genome_id": "g66903",
+      "kingdom": "biomech",
+      "generation_number": 0,
+      "fitness_score": 0,
+      "gene_vector": {
+        "arm_length_mm": 200.0,
+        "arm_taper": 0.5,
+        "branching_angle_deg": 35.0,
+        "murray_exponent": 3.0,
+        "core_diameter_mm": 40.0,
+        "wall_thickness_mm": 1.2,
+        "ior_target": 1.5,
+        "surface_pattern": "none",
+        "symmetry": "radial",
+        "lens_type": "none",
+        "base_diameter_mm": 60.0,
+        "base_height_mm": 10.0,
+        "arm_count": 1,
+        "branching_depth": 0,
+        "zone_count": 1,
+        "surface_texture": "polished"
+      }
+    }
+  ]
+}

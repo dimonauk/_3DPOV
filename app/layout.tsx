@@ -1,5 +1,6 @@
 import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
+import { WorkshopShell } from "components/shell/workshop-shell";
 import { WelcomeToast } from "components/welcome-toast";
 import { PlausibleAnalytics } from "components/analytics/plausible";
 import { KlaviyoAnalytics } from "components/analytics/klaviyo";
@@ -76,11 +77,11 @@ export default async function RootLayout({
         <AuthProvider>
           <CartProvider cartPromise={cart}>
             <Navbar />
-            <main>
+            <WorkshopShell>
               {children}
               <Toaster closeButton theme="dark" />
               <WelcomeToast />
-            </main>
+            </WorkshopShell>
           </CartProvider>
         </AuthProvider>
         <PlausibleAnalytics />

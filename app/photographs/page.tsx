@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Footer from "components/layout/footer";
 import { PhotographTile } from "components/grid/photograph-tile";
-import { getCollection, getCollectionProducts } from "lib/shopify";
+import { getCollection, getCollectionProducts } from "lib/shopify/cached";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

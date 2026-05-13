@@ -1,4 +1,11 @@
-import { shopifyFetch } from "lib/shopify";
+// Imported directly from `_internal` rather than `lib/shopify`.
+// The `lib/shopify` index intentionally does not re-export
+// `shopifyFetch` because doing so dragged extra modules through the
+// `"use server"` cart-actions import graph and tripped Turbopack's
+// boundary analyser in Next 15.6 canary. `_internal` has no
+// directive, so the generic `shopifyFetch<T>` signature is plain to
+// import from anywhere on the server.
+import { shopifyFetch } from "lib/shopify/_internal";
 import { getShopPolicyQuery } from "lib/shopify/queries/policy";
 
 type ShopifyPolicy = {
@@ -30,11 +37,23 @@ type ShopifyPolicyResponse = {
 export async function getShopPolicy(
   handle: string,
 ): Promise<ShopifyPolicy | null> {
-  // shopifyFetch is exported from lib/shopify via a re-export below.
-  // If lib/shopify doesn't export it, see the footnote.
-  const res = await shopifyFetch<ShopifyPolicyResponse>({
-    query: getShopPolicyQuery,
-  });
+  // If Shopify isn't configured, return null so the policy page
+  // falls back to its "Pending" empty state rather than throwing
+  // during prerender.
+  if (!process.env.SHOPIFY_STORE_DOMAIN) {
+    return null;
+  }
+
+  let res;
+  try {
+    res = await shopifyFetch<ShopifyPolicyResponse>({
+      query: getShopPolicyQuery,
+    });
+  } catch {
+    // Network or auth error — let the page show its empty state
+    // instead of failing the build.
+    return null;
+  }
 
   const shop = res.body?.data?.shop;
   if (!shop) return null;

@@ -37,3 +37,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# splat pipeline (staging frames, SHARP outputs, run logs, per-machine config)
+tmp/
+scripts/cctv-fetch.config.json

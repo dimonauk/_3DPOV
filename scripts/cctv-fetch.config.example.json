@@ -1,0 +1,39 @@
+{
+  "_comment": "Copy this file to scripts/cctv-fetch.config.json and edit. The real config file is in .gitignore so per-machine paths and any future API keys never leave the workstation.",
+  "stagingDir": "./tmp/staging",
+  "outputDir": "./tmp/splats",
+  "maxImagesPerRun": 20,
+  "sources": [
+    {
+      "id": "tfl-jamcams",
+      "name": "Transport for London — JamCams",
+      "kind": "tfl-jamcam",
+      "endpoint": "https://api.tfl.gov.uk/Place/Type/JamCam",
+      "enabled": true,
+      "notes": "Open public endpoint, no API key required. Returns the full JamCams list with imageUrl in additionalProperties and lat/lon at the top level. Attribution required per TFL's open-data terms — record the camera ID in each zone's notes field."
+    },
+    {
+      "id": "bbc-london-feeds",
+      "name": "BBC London public feeds",
+      "kind": "placeholder",
+      "enabled": false,
+      "notes": "Placeholder. If/when a stable public BBC London feed list exists, model it as either a manual-list (with the URLs hard-coded here) or extend cctv-fetch.ts with a new resolver kind."
+    },
+    {
+      "id": "manual-archive-ingest",
+      "name": "Studio manual archive ingest",
+      "kind": "manual-list",
+      "enabled": false,
+      "urls": [
+        {
+          "cameraId": "archive-360-bankside",
+          "imageUrl": "file:///D:/path/to/360/cube-face/bankside-2024-07-12.jpg",
+          "lat": 51.5074,
+          "lng": -0.0972,
+          "label": "Bankside cube-face, 12 Jul 2024"
+        }
+      ],
+      "notes": "Drop in cube-face extractions from the 360 archive here. Generate the cube face beforehand with ffmpeg's v360 filter — see docs/CCTV_PIPELINE.md."
+    }
+  ]
+}

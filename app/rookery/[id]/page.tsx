@@ -1,6 +1,7 @@
 "use client";
 
-import Footer from "components/layout/footer";
+// `Footer` is rendered by `app/rookery/layout.tsx` (a Server
+// Component), not imported here.
 import { useAuth } from "components/auth/auth-provider";
 import {
   createReply,
@@ -82,7 +83,6 @@ export default function ThreadPage() {
           <div className="mt-4 h-8 w-3/4 animate-pulse rounded-sm bg-warm-black-800" />
           <div className="mt-6 h-3 w-full animate-pulse rounded-sm bg-warm-black-800" />
         </article>
-        <Footer />
       </>
     );
   }
@@ -105,7 +105,6 @@ export default function ThreadPage() {
             never written.
           </p>
         </article>
-        <Footer />
       </>
     );
   }
@@ -217,7 +216,6 @@ export default function ThreadPage() {
           )}
         </section>
       </article>
-      <Footer />
     </>
   );
 }

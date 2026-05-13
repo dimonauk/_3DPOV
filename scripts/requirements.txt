@@ -1,0 +1,16 @@
+# Python 3.12. See docs/CCTV_PIPELINE.md.
+#
+# Apple SHARP (https://github.com/apple/ml-sharp) is installed
+# separately — clone the repo and `pip install -e .` from there, or
+# follow whichever install instructions ship with the version you
+# pull. The packages below cover the runtime sharp-runner.py expects
+# in this environment.
+
+torch>=2.0
+torchvision>=0.15
+transformers>=4.40
+accelerate>=0.30
+huggingface_hub>=0.20
+safetensors>=0.4
+Pillow>=10.0
+numpy>=1.26

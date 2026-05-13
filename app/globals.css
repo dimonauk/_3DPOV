@@ -78,6 +78,19 @@
   --font-mono: var(--font-mono-loaded), ui-monospace, SFMono-Regular, monospace;
 }
 
+/* ─── Workshop shell — IDE/DAW-style chrome around the page ──────────
+   Sizes for the three collapsible panels and their always-visible tabs.
+   The cyan/gold tokens are the TUI palette for the bottom terminal. */
+:root {
+  --shell-panel-width: 280px;
+  --shell-terminal-height: 200px;
+  --shell-tab-width: 32px;
+  --shell-tab-height: 28px;
+  --shell-mobile-terminal-height: 30vh;
+  --shell-cyan: #00f3ff;
+  --shell-gold: #ffd700;
+}
+
 @layer base {
   *,
   ::after,

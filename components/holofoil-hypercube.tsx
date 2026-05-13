@@ -109,9 +109,10 @@ function Tesseract({
       project4to3(rotate4(v, t + hueShift)),
     );
     for (let i = 0; i < EDGES.length; i++) {
-      const [a, b] = EDGES[i];
-      const pa = projected[a];
-      const pb = projected[b];
+      const edge = EDGES[i]!;
+      const [a, b] = edge;
+      const pa = projected[a]!;
+      const pb = projected[b]!;
       positions[i * 6 + 0] = pa[0];
       positions[i * 6 + 1] = pa[1];
       positions[i * 6 + 2] = pa[2];

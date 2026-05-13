@@ -1,0 +1,90 @@
+{
+    "CONFIGS": [
+        {
+            "id": "bird_bone",
+            "title": "BIRD BONE",
+            "sub": "hollow pneumatic + helical trabeculae (Wolff's Law)",
+            "status": "ok",
+            "statusText": "FULLY PRINTABLE"
+        },
+        {
+            "id": "bird_feather",
+            "title": "BIRD FEATHER",
+            "sub": "4-level hierarchy: rachis→barb→barbule→hooklet",
+            "status": "warn",
+            "statusText": "3/4 LEVELS IN RESIN"
+        },
+        {
+            "id": "butterfly",
+            "title": "BUTTERFLY WING",
+            "sub": "scale tile mosaic + hierarchical venation",
+            "status": "warn",
+            "statusText": "FORM YES · COLOUR NO"
+        },
+        {
+            "id": "leaf_vein",
+            "title": "LEAF VEIN",
+            "sub": "Murray's Law r³ + areole closure · poi-encoded angles",
+            "status": "ok",
+            "statusText": "FULLY PRINTABLE"
+        },
+        {
+            "id": "shark",
+            "title": "SHARK DENTICLE",
+            "sub": "placoid scale array + 3 keels · dome height field",
+            "status": "ok",
+            "statusText": "ARRAY + OPTICS ✓"
+        },
+        {
+            "id": "dragonfly",
+            "title": "DRAGONFLY WING",
+            "sub": "Wootton auxetic 2-layer venation · Fabry-Pérot gap",
+            "status": "ok",
+            "statusText": "RESIN ONLY"
+        }
+    ],
+    "DEFAULT_GENOMES": {
+        "bird_bone": {
+            "scale": 0.5,
+            "density": 0.5,
+            "complexity": 0.6,
+            "taper": 0.3,
+            "asymmetry": 0.2
+        },
+        "bird_feather": {
+            "scale": 0.5,
+            "density": 0.5,
+            "length_ratio": 0.6,
+            "curve_angle": 0.4,
+            "asymmetry": 0.2
+        },
+        "butterfly": {
+            "scale": 0.5,
+            "vein_density": 0.5,
+            "scale_density": 0.5,
+            "colour_shift": 0.55,
+            "outline": 0.4
+        },
+        "leaf_vein": {
+            "scale": 0.5,
+            "vein_order": 0.6,
+            "poi_petals": 0.4,
+            "density": 0.5,
+            "margin_shape": 0.3
+        },
+        "shark": {
+            "scale": 0.5,
+            "density": 0.5,
+            "keel_height": 0.5,
+            "dome_profile": 0.45,
+            "flow_align": 0.5
+        },
+        "dragonfly": {
+            "scale": 0.5,
+            "n_veins": 0.5,
+            "gap_height": 0.4,
+            "corrugation": 0.5,
+            "nodus_position": 0.4
+        }
+    }
+}

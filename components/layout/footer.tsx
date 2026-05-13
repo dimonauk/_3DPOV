@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import FooterMenu from "components/layout/footer-menu";
 import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
+import { getMenu } from "lib/shopify/cached";
 import { Suspense } from "react";
 import { NewsletterForm } from "./newsletter-form";
 
@@ -42,16 +42,37 @@ export default async function Footer() {
               <Link href="/about" className="hover:text-pink-200">About</Link>
             </li>
             <li>
+              <Link href="/the-loop" className="hover:text-pink-200">The Loop</Link>
+            </li>
+            <li>
+              <Link href="/sphere" className="hover:text-pink-200">The sphere</Link>
+            </li>
+            <li>
+              <Link href="/play" className="hover:text-pink-200">Play</Link>
+            </li>
+            <li>
+              <Link href="/play/neo-london" className="hover:text-pink-200">Neo-London</Link>
+            </li>
+            <li>
+              <Link href="/chrono-protocol" className="hover:text-pink-200">Chrono-Protocol</Link>
+            </li>
+            <li>
               <Link href="/photographs" className="hover:text-pink-200">Photographs</Link>
             </li>
             <li>
               <Link href="/search" className="hover:text-pink-200">Catalogue</Link>
             </li>
             <li>
+              <Link href="/services" className="hover:text-pink-200">Services</Link>
+            </li>
+            <li>
               <Link href="/aerial" className="hover:text-pink-200">Aerial</Link>
             </li>
             <li>
               <Link href="/bureau" className="hover:text-pink-200">Print bureau</Link>
+            </li>
+            <li>
+              <Link href="/bezel" className="hover:text-pink-200">Bezel (interest list)</Link>
             </li>
             <li>
               <Link href="/practice" className="hover:text-pink-200">Practice</Link>
@@ -67,6 +88,21 @@ export default async function Footer() {
             </li>
             <li>
               <Link href="/learn" className="hover:text-pink-200">Learn (curriculum)</Link>
+            </li>
+            <li>
+              <Link href="/stack" className="hover:text-pink-200">The stack</Link>
+            </li>
+            <li>
+              <Link href="/atelier" className="hover:text-pink-200">The atelier</Link>
+            </li>
+            <li>
+              <Link href="/atelier/algorithms" className="hover:text-pink-200">Atelier &mdash; Algorithms</Link>
+            </li>
+            <li>
+              <Link href="/atelier/evolution" className="hover:text-pink-200">Atelier &mdash; Evolution</Link>
+            </li>
+            <li>
+              <Link href="/visualiser" className="hover:text-pink-200">Visualisers &mdash; series</Link>
             </li>
             <li>
               <Link href="/rookery" className="hover:text-pink-200">The Rookery</Link>

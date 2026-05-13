@@ -394,6 +394,3 @@ export default function CalibratingTheImageprografPro1100() {
     </>
   );
 }
-    </>
-  );
-}

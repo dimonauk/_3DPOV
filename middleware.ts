@@ -12,6 +12,18 @@ const PASS_THROUGH_PREFIXES = [
   "/signin",
   "/rookery",
   "/learn",
+  "/stack",
+  "/watch",
+  "/the-loop",
+  "/aerial",
+  "/bureau",
+  "/bezel",
+  "/services",
+  "/play",
+  "/chrono-protocol",
+  "/sphere",
+  "/visualiser",
+  "/atelier",
 ];
 const PASS_THROUGH_EXACT = new Set([
   "/coming-soon",

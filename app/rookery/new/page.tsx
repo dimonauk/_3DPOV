@@ -1,6 +1,7 @@
 "use client";
 
-import Footer from "components/layout/footer";
+// `Footer` is rendered by `app/rookery/layout.tsx` (a Server
+// Component), not imported here.
 import { useAuth } from "components/auth/auth-provider";
 import {
   createThread,
@@ -143,7 +144,6 @@ export default function NewThreadPage() {
           </form>
         )}
       </article>
-      <Footer />
     </>
   );
 }

@@ -8,7 +8,7 @@ import {
 } from "components/product/photograph-meta";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { resolveGlbUrl } from "lib/three-d";
-import { getProduct, getProductRecommendations } from "lib/shopify";
+import { getProduct, getProductRecommendations } from "lib/shopify/cached";
 import type { Image } from "lib/shopify/types";
 import type { Metadata } from "next";
 import Link from "next/link";

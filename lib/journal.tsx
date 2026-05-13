@@ -2,6 +2,7 @@ import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
 import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
 import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
+import TheFleetUpdateMiniFivePro from "components/journal/entries/the-fleet-update-mini-five-pro";
 import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
 import TheQuestionTheCameraAnswered from "components/journal/entries/the-question-the-camera-answered";
 import YearOneFire from "components/journal/entries/year-one-fire";
@@ -252,6 +253,59 @@ const ENTRIES: Entry[] = [
       {
         href: "/contact?intent=commission",
         label: "Commission a wall array",
+      },
+    ],
+  },
+  {
+    slug: "the-fleet-update-mini-five-pro",
+    title: "The Fleet Update — Mini 5 Pro and the Bluetooth LEDs",
+    date: "2026-04-22",
+    kind: "journal",
+    excerpt:
+      "The fifth airframe came home from the shop. Sub-250-gram DJI Mini 5 Pro, AliExpress Bluetooth LEDs gorilla-glued to the spine, a small Osmo Action body-mounted for ground-level capture. The mission shape that was not possible with four — the unsynchronised LED swarm — is now on the table.",
+    Body: TheFleetUpdateMiniFivePro,
+    related: [
+      {
+        href: "/articles/the-fleet-four-airframes",
+        label: "The Fleet — Four Airframes",
+        note: "The prior-state article; the snapshot before the fifth airframe.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The architectural cousin — same persistence-of-vision trick at a different scale.",
+      },
+      {
+        href: "/journal/first-light",
+        label: "First Light",
+        note: "The first quiet step toward the technique this entry is the fleet-scale version of.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "The commission shape this fleet exists to serve.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "The bench, including all five airframes named in full.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.dji.com/uk/mini-5-pro",
+        label: "DJI Mini 5 Pro — official product page",
+        note: "Sub-250-gram travel airframe; 1-inch sensor.",
+      },
+      {
+        href: "https://www.dji.com/uk/osmo-action-5-pro",
+        label: "DJI Osmo Action — official product page",
+        note: "Body-mounted action camera; ecosystem-coherent with the rest of the DJI side.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The optical foundation the LED-swarm photographs depend on.",
       },
     ],
   },

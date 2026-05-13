@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Aerial — photography, cinematography, light painting from above",
   description:
-    "Aerial cinematography and photography from Holo-Flow Studio, Salford. DJI Mavic 2 Pro, Neo, Neo 2, and Avata 360 — flown FPV, with LED-modified airframes for aerial light painting.",
+    "Aerial cinematography and photography from Holo-Flow Studio, Salford. Five airframes, one FPV pipeline, CAA-registered. Editorial stills, follow-cam B-roll, 360° fly-throughs, and LED-modified airframes for aerial light painting.",
 };
 
 export default function AerialPage() {
@@ -13,24 +13,62 @@ export default function AerialPage() {
       <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="chrome-label">A working line</div>
         <h1 className="mt-4 text-5xl md:text-6xl leading-[0.95]">
-          Aerial.
+          The studio flies
           <br />
-          <span className="chrome-sheen">
-            Photography, cinematography, light painting from above.
-          </span>
+          <span className="chrome-sheen">its own line.</span>
         </h1>
         <p className="mt-8 max-w-xl text-chrome-200">
-          Four airframes, one FPV pipeline, available for commission.
-          Aerial stills, motion, FPV cinewhoop fly-throughs, 360&deg;
-          immersive capture, and &mdash; new this season &mdash;
-          aerial light painting flown with LED-modified airframes. The
-          fleet is up; the technique is settling.
+          A five-airframe fleet, one FPV pipeline, CAA-registered,
+          Salford-based. Editorial stills, follow-cam B-roll, immersive
+          360&deg; fly-throughs, and &mdash; first-flight this season
+          &mdash; LED-modified airframes for aerial light painting.
+        </p>
+        <p className="mt-4 max-w-xl text-chrome-400 text-sm italic">
+          What this is: a one-person aerial cinematography and
+          photography line accepting commissions across the UK.
         </p>
 
-        <section className="mt-16 prose-gallery text-chrome-200">
+        <section className="mt-12 prose-gallery text-chrome-200">
+          <div className="chrome-label mb-3">From the bench</div>
+          <p>
+            I fly the fleet myself. Mavic 2 Pro for stills and editorial
+            motion, Neo and Neo 2 for follow-cam and indoor proximity
+            work, Avata 360 for cinewhoop FPV and 8K equirectangular,
+            Mini 5 Pro as the sub-250g travel airframe. Five airframes,
+            one operator, one CAA registration. The light-painting
+            airframes are a parallel build &mdash; programmable LED
+            arrays gorilla-glued and Vifly-mounted to the spines, flown
+            on slow programmed paths after sundown. That side of the
+            line is in first-flight testing and I&rsquo;m not pretending
+            it&rsquo;s production-ready. The standard work is. Insurance
+            and op-id are in the bag; I&rsquo;ll fly in the rain if
+            the airframe rating permits and the brief is honest about
+            the look that gives you.
+          </p>
+        </section>
+
+        <section className="mt-12 prose-gallery text-chrome-200">
+          <div className="chrome-label mb-3">Use this when&hellip;</div>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-chrome-300">
+            <li>
+              You need an editorial aerial photograph or short motion
+              piece, graded for print or web.
+            </li>
+            <li>
+              You want a 360&deg; fly-through of a venue, procession,
+              or interior &mdash; reframed in post.
+            </li>
+            <li>
+              You want indoor or close-quarters follow-cam at a
+              rehearsal, gig, or studio shoot.
+            </li>
+          </ul>
+        </section>
+
+        <section className="mt-12 prose-gallery text-chrome-200">
           <div className="chrome-label mb-3">The fleet</div>
           <h2 className="mb-4 text-2xl text-chrome-100">
-            Four airframes, one pipeline.
+            Five airframes, one pipeline.
           </h2>
           <ul className="mt-2 list-disc space-y-2 pl-5 text-chrome-300">
             <li>
@@ -48,6 +86,12 @@ export default function AerialPage() {
               integrated 8K 360&deg; camera (twin 64MP 1/1.1&Prime;
               sensors, 200&deg; lenses). Single-lens mode for traditional
               FPV at 4K, dual-lens for full omnidirectional capture.
+            </li>
+            <li>
+              <strong>DJI Mini 5 Pro</strong> &mdash; sub-250g travel
+              airframe, 1&Prime; sensor. Carries Bluetooth-controllable
+              LED bars for the unsynced-swarm aerial light-painting
+              pieces.
             </li>
             <li>
               <strong>LED-modified airframes</strong> &mdash; programmable
@@ -71,34 +115,6 @@ export default function AerialPage() {
             line of sight to the airframe. Real flights, not
             hover-and-shoot.
           </p>
-        </section>
-
-        <section className="mt-12 prose-gallery text-chrome-200">
-          <div className="chrome-label mb-3">What it&rsquo;s good for</div>
-          <h2 className="mb-4 text-2xl text-chrome-100">
-            What the studio takes on.
-          </h2>
-          <ul className="mt-2 list-disc space-y-2 pl-5 text-chrome-300">
-            <li>
-              <strong>Editorial / portraiture aerial.</strong> Mavic 2 Pro,
-              single-shot or short series, framed and graded for print.
-            </li>
-            <li>
-              <strong>FPV cinewhoop fly-throughs.</strong> Avata 360 in
-              360 mode for venue interiors, processions, gigs &mdash;
-              shot once, reframed in post.
-            </li>
-            <li>
-              <strong>Aerial light painting commissions.</strong>
-              LED-modified airframes performing programmed light kata
-              over your site at night. Output is a print or an editioned
-              photograph.
-            </li>
-            <li>
-              <strong>360&deg; immersive capture.</strong> Avata 360 for
-              VR and virtual-tour applications.
-            </li>
-          </ul>
         </section>
 
         <section className="mt-12 prose-gallery text-chrome-200">
@@ -132,16 +148,69 @@ export default function AerialPage() {
           </ol>
         </section>
 
+        <section className="mt-12 prose-gallery text-chrome-200">
+          <div className="chrome-label mb-3">FAQ</div>
+          <dl className="mt-2 space-y-6 text-chrome-300">
+            <div>
+              <dt className="text-chrome-100">
+                Are you insured and CAA-registered?
+              </dt>
+              <dd className="mt-1">
+                Yes. Operator ID and flyer ID in hand, public liability
+                in force, A2 Certificate of Competency on file. Paperwork
+                forwarded on request before the recce.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-chrome-100">
+                Can you fly indoors?
+              </dt>
+              <dd className="mt-1">
+                Yes &mdash; the Neo and Neo 2 are sized for it, the
+                Avata 360 in cinewhoop trim handles tighter interiors
+                when the brief justifies the noise. CAA rules treat
+                indoor flight as outside the open-category framework,
+                so the constraint is the venue&rsquo;s, not mine.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-chrome-100">
+                Will you fly my wedding?
+              </dt>
+              <dd className="mt-1">
+                Probably not. The studio&rsquo;s aerial line is
+                editorial, architectural, and performance-led; the
+                wedding-photography pipeline is its own discipline and
+                I&rsquo;m not the right person for it. If you want a
+                single editioned aerial portrait of the venue, that
+                I&rsquo;ll do.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
         <section className="mt-12 rounded-sm border border-warm-black-800 bg-warm-black-900/50 p-8">
-          <div className="chrome-label">Booking</div>
+          <div className="chrome-label">Booking and price</div>
           <h2 className="mt-3 text-2xl text-chrome-100">
             Available now.
           </h2>
           <p className="mt-4 text-chrome-300">
-            Standard aerial work is bookable today; aerial light painting
-            is in first-flight testing this season and will open to
-            commissions once the technique is consistent. Either way,
-            write in.
+            Bookable today via{" "}
+            <Link
+              href="/contact?intent=aerial"
+              className="text-pink-200 underline underline-offset-4"
+            >
+              /contact?intent=aerial
+            </Link>
+            .{" "}
+            <span data-pricing="proposed">
+              Half-day shoots from &pound;450; full-day from &pound;750;
+              editioned aerial light-painting prints from &pound;350/A2
+            </span>{" "}
+            once the technique opens for commission. Travel from Salford
+            at HMRC mileage rates. Standard work is confirmed within a
+            week; aerial light painting is open to brief but not yet
+            guaranteed.
           </p>
           <div className="mt-6 flex gap-4">
             <Link
@@ -153,16 +222,59 @@ export default function AerialPage() {
           </div>
         </section>
 
-        <p className="mt-10 text-sm text-chrome-400">
-          The first LED-modified flight is recorded in the journal:{" "}
-          <Link
-            href="/journal/first-light"
-            className="text-pink-200 underline underline-offset-4"
-          >
-            First Light
-          </Link>
-          .
-        </p>
+        <section className="mt-16 prose-gallery text-chrome-200">
+          <div className="chrome-label mb-3">Further reading</div>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-chrome-300">
+            <li>
+              <Link
+                href="/articles/the-fleet-four-airframes"
+                className="text-pink-200 underline underline-offset-4"
+              >
+                The Fleet &mdash; Four Airframes
+              </Link>{" "}
+              &mdash; the original four, the architectural argument for
+              each.
+            </li>
+            <li>
+              <Link
+                href="/stack"
+                className="text-pink-200 underline underline-offset-4"
+              >
+                The stack
+              </Link>{" "}
+              &mdash; every airframe, controller, and bridge by name.
+            </li>
+            <li>
+              <Link
+                href="/journal/first-light"
+                className="text-pink-200 underline underline-offset-4"
+              >
+                First Light
+              </Link>{" "}
+              &mdash; the first LED-modified flight, recorded in the
+              journal.
+            </li>
+            <li>
+              <Link
+                href="/contact?intent=aerial"
+                className="text-pink-200 underline underline-offset-4"
+              >
+                /contact?intent=aerial
+              </Link>{" "}
+              &mdash; book the line.
+            </li>
+            <li>
+              <Link
+                href="/services"
+                className="text-pink-200 underline underline-offset-4"
+              >
+                Services
+              </Link>{" "}
+              &mdash; see the full commercial surface, every service in
+              one place.
+            </li>
+          </ul>
+        </section>
       </article>
       <Footer />
     </>

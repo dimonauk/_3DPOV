@@ -271,6 +271,11 @@ const ENTRIES: Entry[] = [
         note: "The architectural argument for angle-sync vs time-sync.",
       },
       {
+        href: "/play",
+        label: "Play — solo level two, The Trail",
+        note: "The angular-sync architecture this tutorial walks through, played in a browser instead of programmed.",
+      },
+      {
         href: "/practice",
         label: "Practice — Stage IV, POV LED arrays",
       },
@@ -333,6 +338,16 @@ const ENTRIES: Entry[] = [
         note: "Wearable-scale variant with battery + magnetic charge.",
       },
       {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows From the Inside",
+        note: "The optics article behind this tutorial. Total internal reflection, evanescent leakage, critical angle, in long form.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "The structural-colour cousin. Where the colour of the lit waveguide comes from.",
+      },
+      {
         href: "/journal/on-the-apparatus",
         label: "On the Apparatus",
         note: "The studio's object-production kit list.",
@@ -379,6 +394,11 @@ const ENTRIES: Entry[] = [
         href: "/bureau",
         label: "Print bureau",
         note: "The bureau page, with the current paper list and how to send a file in.",
+      },
+      {
+        href: "/articles/the-right-paper-for-a-light-painting",
+        label: "The Right Paper for a Light Painting",
+        note: "The paper companion. Why the current Canon Pro Platinum / Lustre / metallic rotation is what it is.",
       },
       {
         href: "/photographs",

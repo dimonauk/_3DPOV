@@ -50,7 +50,76 @@ export default function London360WalkingTheCameraEvolution() {
 
       <p>
         <strong>
-          Samsung Gear 360 (2016) &mdash; the eyeball that started it.
+          The home-built rig (~2014) &mdash; the one that actually
+          started it.
+        </strong>{" "}
+        Before there was a consumer 360 camera I trusted to take into
+        the street, there was a couple of security cameras built
+        together on a monopod. Industrial IP-security kit, the kind
+        normally bolted to a car-park ceiling watching a stationary
+        scene that does not move. I took the camera, built a mobile
+        system around it, fitted a battery pack, dropped the whole
+        assembly on the monopod, and walked it into the centre of
+        London. The optics were rigorous; the housing was industrial;
+        the per-frame image could hold up. I knew while I was
+        building it that this was going to matter &mdash; not because
+        the photographs would be famous, but because the act of
+        building the rig was the act the studio&rsquo;s whole
+        practice would turn out to rest on. I built the system in
+        bed. Around then I had spent the better part of two years
+        off my feet, and those two years were not lost time &mdash;
+        they were when the framework for the entire practice got
+        designed, mentally, in horizontal silence: the rigs, the
+        printer, the pipeline, the loop, the bench-built-not-bought
+        position the studio still holds. The home-built 360 rig was
+        one of the first concrete expressions of that thinking. The
+        disability is part of the practice and has been since that
+        period; ho hum, as the studio says about it. The rig still
+        works. I keep it. It earned its place on the shelf the same
+        way the{" "}
+        <Link href="/articles/sellotape-and-tilt-brush" className={ext}>
+          Sellotape and Tilt Brush controller
+        </Link>{" "}
+        earned its place in the drawer ten years later. The framework
+        the two years drew was the framework the studio is now
+        executing. I was right.
+      </p>
+      <p>
+        The <em>networking</em> was the problem. The camera was
+        designed for a fixed installation behind a managed access
+        point, talking to a recorder over a copper run. Out on the
+        pavement on a phone hotspot, it would spend twenty to thirty
+        minutes negotiating an association before it condescended to
+        take a frame. I would stand on the kerb with the monopod up,
+        watching pedestrians flow past, waiting for one photograph.
+        The networking stack assumed a kind of network that does not
+        exist in a person&rsquo;s hand on a street. A fixed-install
+        camera flown as portable kit is an architecture lesson
+        delivered slowly, in person, on the pavement at Liverpool
+        Street at two in the afternoon.
+      </p>
+      <p>
+        This is the chapter that turns out to be the origin proof of
+        the studio&rsquo;s whole position. Even the first 360 capture
+        the studio ever made was a thing the studio had to build for
+        itself, because the right tool did not exist at consumer
+        scale. The article on{" "}
+        <Link href="/articles/why-i-build-my-own-rigs" className={ext}>
+          why I build my own rigs
+        </Link>{" "}
+        describes the photographic side of the pattern; the
+        modular-versus-rigorous diagnosis in{" "}
+        <Link href="/articles/why-i-build-modular" className={ext}>
+          Why I Build Modular
+        </Link>{" "}
+        describes the vendor-side of it. This page is the chapter
+        where both of those threads start, ten years before either
+        article was written.
+      </p>
+
+      <p>
+        <strong>
+          Samsung Gear 360 (2016) &mdash; the sidegrade.
         </strong>{" "}
         A spherical body slightly smaller than a baseball, two{" "}
         <a

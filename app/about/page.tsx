@@ -52,6 +52,17 @@ export default function AboutPage() {
             long patience to make fluent.
           </p>
           <p>
+            There was also a two-year stretch in bed, off my feet, in
+            the middle of all of this. The studio&rsquo;s framework
+            was designed during that period &mdash; the rigs, the
+            printer, the pipeline, the loop, the bench-built-not-bought
+            position the practice still holds, in horizontal silence,
+            on paper and in the head. The disability has been part of
+            the practice since then; ho hum, as the studio says about
+            it. The site you are reading is the slow execution of
+            what those two years drew.
+          </p>
+          <p>
             The thing you realise, eventually, is that a gesture
             sustained long enough stops being a gesture and starts
             being an object. Long-exposure photography proved it for
@@ -99,8 +110,9 @@ export default function AboutPage() {
           </p>
           <p>
             <strong>Drone-mounted LED systems.</strong> The studio&rsquo;s
-            drone fleet (Mavic 2 Pro, Neo, Neo 2, Avata 360) is in service
-            for aerial photography today, flown FPV through DJI Goggles,
+            drone fleet (Mavic 2 Pro, Neo, Neo 2, Avata 360, Mini 5 Pro)
+            is in service for aerial photography today, flown FPV through
+            DJI Goggles,
             an RC 2 controller, an InAir head-tracking pod, and Xreal One
             Pro AR glasses. The airframes have now been modified with
             programmable LED arrays for aerial light painting &mdash;
