@@ -9,7 +9,11 @@
  * the same `respond()` surface.
  */
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import {
+  GoogleGenerativeAI,
+  SchemaType,
+  type ResponseSchema,
+} from "@google/generative-ai";
 
 import { envOrThrow, isConfigured } from "lib/env";
 import { agentStore } from "lib/state/agent";
@@ -62,17 +66,31 @@ ${catchphrases}
 FORBIDDEN PHRASES (never say these):
 ${forbidden}
 
-OUTPUT FORMAT:
-Reply as a JSON object with three fields:
-{
-  "text": "<your spoken reply>",
-  "intent": "<one short word: greet | answer | redirect | refuse | tease | reflect | invite>",
-  "mode": "<one of: amber | azure | amethyst | crimson | veridian>"
-}
-The "mode" is which ChronoMode register you're holding for this reply. Default to "${bible.defaultMode}" unless the user's intent calls for a different one.`;
+Output a JSON object honouring the response schema:
+  - "text" — your spoken reply, in your voice.
+  - "intent" — one of greet | answer | redirect | refuse | tease | reflect | invite.
+  - "mode" — one of amber | azure | amethyst | crimson | veridian. Default to "${bible.defaultMode}" unless the user's intent calls for a different register.`;
 
   return contextSuffix ? `${base}\n\nCONTEXT: ${contextSuffix}` : base;
 }
+
+const DIALOGUE_RESPONSE_SCHEMA: ResponseSchema = {
+  type: SchemaType.OBJECT,
+  properties: {
+    text: { type: SchemaType.STRING },
+    intent: {
+      type: SchemaType.STRING,
+      format: "enum",
+      enum: ["greet", "answer", "redirect", "refuse", "tease", "reflect", "invite"],
+    },
+    mode: {
+      type: SchemaType.STRING,
+      format: "enum",
+      enum: ["amber", "azure", "amethyst", "crimson", "veridian"],
+    },
+  },
+  required: ["text", "intent", "mode"],
+};
 
 async function callGemini(
   systemPrompt: string,
@@ -80,11 +98,16 @@ async function callGemini(
   userText: string,
 ): Promise<string> {
   const apiKey = envOrThrow("GOOGLE_AI_API_KEY");
-  const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.0-flash-exp";
+  const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.5-flash";
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
     model: modelName,
     systemInstruction: systemPrompt,
+    generationConfig: {
+      temperature: 0.75,
+      responseMimeType: "application/json",
+      responseSchema: DIALOGUE_RESPONSE_SCHEMA,
+    },
   });
   const chat = model.startChat({
     history: history.map((h) => ({
@@ -111,12 +134,33 @@ function parseResponse(raw: string): RespondResult {
 }
 
 /**
+ * The fallback returned when the configured provider is unreachable —
+ * either the API key is unset or the call failed. Callers translate this
+ * into "Aura's brain is offline" copy rather than crashing the UI.
+ */
+function offlineResult(): RespondResult {
+  return {
+    text: "(Aura's brain is offline — set GOOGLE_AI_API_KEY in your env to enable replies.)",
+    intent: null,
+    mode: null,
+  };
+}
+
+/**
  * One turn: user input → LLM call → text + intent + mode, written to
  * cast.history + agent.lastIntent + aura.mode (if mode returned).
- * Throws if the configured provider has no API key.
+ *
+ * Graceful on missing API key / provider failure: returns a typed
+ * `offlineResult()` instead of throwing, so the UI can render a
+ * sensible "brain offline" state without bubbling exceptions into the
+ * React tree. Use `isProviderAvailable(provider)` to feature-detect
+ * before the user-facing button is enabled.
  */
 export async function respond(options: RespondOptions): Promise<RespondResult> {
   const provider: AgentProvider = options.provider ?? "gemini";
+  if (!isProviderAvailable(provider)) {
+    return offlineResult();
+  }
   agentStore.getState().setTurn("agent-thinking");
   agentStore.getState().setActiveSpeaker(options.speakerId);
 
@@ -137,13 +181,18 @@ export async function respond(options: RespondOptions): Promise<RespondResult> {
     });
 
     let raw: string;
-    switch (provider) {
-      case "gemini":
-        raw = await callGemini(systemPrompt, history, options.userText);
-        break;
-      case "openai":
-      case "anthropic":
-        throw new Error(`agent.dialogue: provider "${provider}" not implemented yet`);
+    try {
+      switch (provider) {
+        case "gemini":
+          raw = await callGemini(systemPrompt, history, options.userText);
+          break;
+        case "openai":
+        case "anthropic":
+          throw new Error(`agent.dialogue: provider "${provider}" not implemented yet`);
+      }
+    } catch (err) {
+      console.error("agent.dialogue: Gemini call failed", err);
+      return offlineResult();
     }
 
     const result = parseResponse(raw);

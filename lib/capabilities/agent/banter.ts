@@ -171,7 +171,7 @@ async function callGemini(
   userPayload: string,
 ): Promise<string> {
   const apiKey = envOrThrow("GOOGLE_AI_API_KEY");
-  const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.0-flash-exp";
+  const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.5-flash";
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
     model: modelName,

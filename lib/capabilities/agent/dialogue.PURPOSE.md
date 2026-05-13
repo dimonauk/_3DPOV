@@ -22,14 +22,21 @@ thinks first, then speaks."
 ## Internal
 
 - `buildSystemPrompt(bible, contextSuffix?)` — assembles the
-  Aura voice + draws + refusals + catchphrases + forbidden +
-  output-format-JSON contract into one system prompt.
+  Aura voice + draws + refusals + catchphrases + forbidden into
+  one system prompt. The JSON shape is enforced by Gemini's
+  `responseSchema` (not by prompt-side instructions), so the
+  output is guaranteed parseable.
 - `callGemini(systemPrompt, history, userText)` — Gemini-specific
   call. Reads `GOOGLE_AI_API_KEY` + optional `GOOGLE_AI_MODEL`
-  via `lib/env.ts`.
-- `parseResponse(raw)` — extracts JSON from the LLM response,
-  with fenced-code-block tolerance. Falls back to raw text +
-  null intent/mode if parsing fails.
+  (default: `gemini-2.5-flash`) via `lib/env.ts`. Uses
+  `generationConfig.temperature = 0.75` + structured
+  `responseSchema` for `{text, intent, mode}`.
+- `parseResponse(raw)` — extracts JSON. Schema-enforced output
+  means parsing almost always succeeds; legacy fenced-code-block
+  tolerance kept for backwards compatibility.
+- `offlineResult()` — typed fallback returned when the provider
+  is unreachable. Carries a human-readable `text` field so the
+  UI can render the "brain offline" copy verbatim.
 
 ## Depends on
 
@@ -51,10 +58,14 @@ thinks first, then speaks."
   When `agent.memory` lands, it'll layer vector retrieval on top
   — the dialogue capability will read from agent.memory's helpers
   rather than the raw slice.
-- **Does not validate JSON schema strictly.** The LLM occasionally
-  emits malformed JSON; the parser falls back to raw-text so the
-  cast never goes mute. Strict schema validation lives in a
-  future review pass.
+- **Does not throw when GOOGLE_AI_API_KEY is unset.** Returns a
+  typed `offlineResult()` instead — UI surfaces render the
+  "(Aura's brain is offline — set GOOGLE_AI_API_KEY...)" copy
+  verbatim. Same graceful posture as `agent.banter`.
+- **Does not retry on transient Gemini errors.** A failed call
+  is caught, logged, and returned as `offlineResult()`. Retry +
+  backoff is a future enhancement; current behaviour favours
+  fast UI feedback over hidden cost from retried token spend.
 - **Does not stream tokens.** v0.1 awaits the full response.
   Streaming is a v0.2 enhancement — same `respond()` surface,
   optional `onToken` callback.
