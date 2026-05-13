@@ -30,7 +30,11 @@ export default function AuraTheBody() {
         Architect; her body is sovereign because the practice that
         designed her is. Ho hum. The article that follows is the
         architecture, not the character; the character is in the
-        chrono-protocol piece.
+        chrono-protocol piece. Every subsystem named below is a
+        registered atom in the studio&rsquo;s{" "}
+        <Link href="/capabilities" className={ext}>capability registry</Link>
+        ; the working build is at{" "}
+        <Link href="/demo/aura-talks" className={ext}>/demo/aura-talks</Link>.
       </p>
 
       <h2 className="mt-12 text-2xl text-chrome-100">
@@ -128,51 +132,46 @@ export default function AuraTheBody() {
       </p>
 
       <h2 className="mt-12 text-2xl text-chrome-100">
-        Voice &mdash; two paths
+        Voice &mdash; one surface, three paths
       </h2>
       <p>
-        Honest note before naming the maths. The studio runs two
-        voice paths on the bench: ElevenLabs for the production
-        line, Kokoro and LongCat-AudioDiT-1B for the local-first /
-        sovereignty path. The path that ships at any given moment
-        depends on what the bench is currently testing. Naming both
-        is the practice&rsquo;s sovereignty thesis &mdash; running
-        both means the studio does not depend on either, and a
-        vendor pivot on the cloud side or a model deprecation on
-        the local side does not stop the voice.
+        Honest note before naming the maths. The capability is{" "}
+        <code className="text-pink-200">audio.tts</code>, a
+        provider-agnostic <code className="text-pink-200">speak()</code>{" "}
+        surface. Web Speech is the always-on browser baseline; two
+        heavier paths plug into the same surface as siblings &mdash;
+        ElevenLabs for the production line, Kokoro and
+        LongCat-AudioDiT-1B for the local-first / sovereignty path.
+        Both heavier paths run on the bench in parallel. Naming all
+        three is the practice&rsquo;s sovereignty thesis &mdash; the
+        studio depends on none of them in particular, so a vendor
+        pivot or a model deprecation does not stop the voice.
       </p>
       <p>
-        The ElevenLabs path is a cloud TTS API. The studio sends a
-        sentence, an emotion, and a voice ID; the API streams audio
-        back. Latency is good, the voice quality is industry-
-        leading, and the studio pays per-character. This is the
-        path the production deployment uses when latency matters
-        more than offline operation.
+        The ElevenLabs path is a cloud TTS API: sentence, emotion,
+        voice ID in, streamed audio back. Latency is good, voice
+        quality is industry-leading, the studio pays per-character.
+        Production deployment uses it when latency matters more
+        than offline operation.
       </p>
       <p>
         The local path runs two models. Kokoro is the open-weight
-        TTS that runs in a Web Worker on the workstation; it is fast,
-        free, and does not need a network. LongCat-AudioDiT-1B is a
+        TTS that runs in a Web Worker on the workstation &mdash;
+        fast, free, no network. LongCat-AudioDiT-1B is a
         higher-fidelity diffusion-based TTS with zero-shot voice
-        cloning &mdash; the studio gives it a thirty-second
-        reference clip of the target voice and it produces matching
-        audio for any input text. The studio uses Kokoro for the
-        lightweight register and LongCat-AudioDiT-1B for the
-        production-quality register on the local path. The choice
-        between the two is, again, per-deployment.
-      </p>
-      <p>
-        The migration question is architectural rather than
-        aesthetic. If the cloud TTS goes away or changes its terms,
-        the local path is already on the bench. If the local path
-        cannot match the latency of a cloud call, the cloud path is
-        already on the bench. The point is not to ship one of them;
-        the point is to keep both viable. The studio&rsquo;s position
-        on sovereignty (named in full in{" "}
+        cloning: a thirty-second reference clip and it produces
+        matching audio for any input text. Kokoro for the
+        lightweight register, LongCat for the production-quality
+        register, per-deployment. The migration question is
+        architectural rather than aesthetic &mdash; if the cloud
+        path changes its terms, the local path is on the bench; if
+        the local path cannot match latency, the cloud path is on
+        the bench. The studio&rsquo;s position on sovereignty
+        (named in full in{" "}
         <Link href="/articles/what-the-studio-wont-do" className={ext}>
           What the Studio Won&rsquo;t Do
         </Link>
-        ) makes this an architectural commitment, not a vendor
+        ) makes this architectural commitment, not vendor
         evaluation.
       </p>
       <p>
@@ -207,7 +206,11 @@ export default function AuraTheBody() {
         using the @pixiv/three-vrm wrapper. The model itself is
         authored in VRoid Studio, exported as a standard VRM with
         the canonical blend-shape preset names, and dropped onto the
-        bench&rsquo;s viewer as a single file.
+        bench&rsquo;s viewer as <code className="text-pink-200">nanny.vrm</code>{" "}
+        &mdash; the single file the{" "}
+        <code className="text-pink-200">vrm.load</code> capability
+        parses into a typed handle on the{" "}
+        <code className="text-pink-200">vrm</code> slice.
       </p>
       <p>
         Three loops run on the body in parallel, each with its own
@@ -228,9 +231,16 @@ export default function AuraTheBody() {
         >
           visemes{arrow}
         </a>{" "}
-        in the rigging convention, named Aa, Ih, Uh, Ee, Oh on the
-        bench &mdash; toward the dominant formant. An exponential
-        moving-average smoothing of 0.2 keeps the mouth from
+        in the rigging convention, named aa, ih, ou, ee, oh on the
+        bench &mdash; toward the dominant formant. The chain is{" "}
+        <code className="text-pink-200">audio.tts</code> &rarr;{" "}
+        <code className="text-pink-200">audio.visemes</code> &rarr;{" "}
+        <code className="text-pink-200">vrm.expressions.blend</code>:
+        speak() emits, a viseme stream walks the utterance on a rAF
+        cursor, and the expression-blend capability merges the
+        active viseme into the mouth slot without disturbing blink
+        or mood weights. An exponential moving-average smoothing of
+        0.2 keeps the mouth from
         twitching. An RMS gate at 0.02 keeps it closed during
         silence. The mouth follows the voice with a one-or-two-frame
         delay. The full morphing of vowels is named in{" "}
@@ -240,31 +250,36 @@ export default function AuraTheBody() {
         as the second morph.
       </p>
       <p>
-        The middle-rate loop is the speech-and-attention loop. It
-        runs every 300 milliseconds. Its job is voice activity
-        detection &mdash; is anybody speaking, and from where? &mdash;
-        plus head-pose decision: where should Aura&rsquo;s head be
-        pointed right now? The loop reads the microphone&rsquo;s
-        amplitude envelope, the direction-of-arrival cue when the
-        audio comes from a stereo source, and the position of the
-        active speaker if one is tagged. The decision is then routed
-        to a Slerp-based head-turn animation on the rig. This is the
-        loop that makes Aura look at the speaker when they begin a
-        sentence; it is structurally separate from the lip-sync,
-        which is the loop that makes her mouth match her own voice.
-        Two loops, two periods. Confusing them produces a face that
-        seems to react to its own speech.
+        The middle-rate loop is the speech-and-attention loop &mdash;
+        300 ms cycle. Its job is voice activity detection plus
+        head-pose decision. The pose input comes from{" "}
+        <code className="text-pink-200">input.headpose</code> on a
+        priority chain (WebXR &rarr; MediaPipe face-landmark &rarr;
+        mouse &rarr; touch &rarr; neutral fallback) and routes
+        through <code className="text-pink-200">vrm.lookAt</code>,
+        which writes a target into the vrm slice for three-vrm&rsquo;s
+        lookAt module to Slerp onto. This is the loop that makes
+        Aura look at the speaker when they begin a sentence;
+        structurally separate from the lip-sync, which is the loop
+        that makes her mouth match her own voice. Two loops, two
+        periods. Confusing them produces a face that seems to react
+        to its own speech.
       </p>
       <p>
-        The slowest loop is the idle loop. When Aura is not
-        speaking, she is not motionless &mdash; she blinks at
+        The slowest loop is the idle &mdash;{" "}
+        <code className="text-pink-200">motion.idle</code>. When Aura
+        is not speaking she is not motionless: she blinks at
         irregular intervals, micro-shifts her weight, drifts her
-        gaze. The idle loop runs at roughly one update per second
-        and produces what the literature calls
-        &ldquo;not-dead-but-not-distracting&rdquo; animation. The
-        studio&rsquo;s idle library is small; the constraint is not
-        realism but discipline. A face that idles too much steals
-        the room.
+        gaze, holds her superheroine-brat default pose with
+        modulation amplitude scaled to mood. Roughly one update per
+        second; what the literature calls
+        &ldquo;not-dead-but-not-distracting&rdquo;. Around the body
+        sits a 50k-particle field with bone-anchored emitters at the
+        hands and head &mdash; the{" "}
+        <code className="text-pink-200">viz.particles</code> atom,
+        lifted from the Hangar&rsquo;s webgpu-particles-library. The
+        idle library is small; the constraint is not realism but
+        discipline. A face that idles too much steals the room.
       </p>
       <p>
         Emotion is the fourth signal on the body, not a loop but a
@@ -340,8 +355,9 @@ export default function AuraTheBody() {
         enters; Whisper transcribes; the transcript plus retrieved
         memory enters the brain; Ollama produces a sentence, an
         emotion, and optionally a tool call; the sentence goes to
-        the voice subsystem (either ElevenLabs or Kokoro / LongCat-
-        AudioDiT-1B depending on the deployment); the voice produces
+        the voice subsystem (Web Speech, ElevenLabs, or Kokoro /
+        LongCat-AudioDiT-1B depending on the deployment); the voice
+        produces
         audio and a phoneme stream; the audio plays through the
         speakers and the phoneme stream drives lip-sync on the
         body; the emotion drives the per-utterance morph on the
@@ -351,12 +367,11 @@ export default function AuraTheBody() {
         written back to Qdrant for next time.
       </p>
       <p>
-        Five subsystems, one bus, a turn of conversation that
-        completes in three to four seconds on the workstation. The
-        latency budget is split roughly: 200&ndash;500 ms for
-        Whisper, 800&ndash;1500 ms for Ollama, 200&ndash;800 ms for
-        TTS depending on the path, 50&ndash;100 ms for the body
-        loops to catch up. The body is animating throughout. The
+        Five subsystems, one bus, a turn that completes in three to
+        four seconds on the workstation. Latency budget splits
+        roughly: 200&ndash;500 ms for Whisper, 800&ndash;1500 ms for
+        Ollama, 200&ndash;800 ms for TTS, 50&ndash;100 ms for the
+        body loops to catch up. The body animates throughout. The
         face does not freeze while the brain is thinking; the idle
         loop covers the gap.
       </p>
@@ -402,19 +417,16 @@ export default function AuraTheBody() {
       <p>
         Every subsystem above can be swapped. Whisper can be
         replaced with a different STT; Ollama can be pointed at a
-        different model; the TTS path is already two paths the
-        studio can flip between; the body rig is a standard VRM
-        file that the studio can replace with another VRM; the
-        memory backend is a vector database whose schema is small
-        enough to migrate to a different one in a working week.
-      </p>
-      <p>
-        This is the bench&rsquo;s architectural commitment, made
+        different model; the TTS surface already has Web Speech,
+        ElevenLabs and Kokoro / LongCat-AudioDiT-1B siblings on it;
+        the body rig is a standard VRM the studio can replace with
+        another VRM; the memory backend is a vector database whose
+        schema is small enough to migrate in a working week. This
+        is the bench&rsquo;s architectural commitment, made
         load-bearing on the most personal surface the studio
         operates &mdash; the voice that narrates. Aura runs on
         sovereignty-first software because the practice that
-        designed her runs on it. The relationship between the body
-        and the practice is named once and moved on.
+        designed her runs on it. Named once and moved on.
       </p>
 
       <h2 className="mt-12 text-2xl text-chrome-100">

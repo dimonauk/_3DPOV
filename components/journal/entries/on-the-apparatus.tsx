@@ -53,13 +53,14 @@ export default function OnTheApparatus() {
             The drone fleet.
           </Link>
         </strong>{" "}
-        Four airframes. Mavic 2 Pro for stills &mdash; Hasselblad
+        Five airframes. Mavic 2 Pro for stills &mdash; Hasselblad
         L1D-20c, one-inch sensor, adjustable aperture. Neo and Neo 2 for
         proximity and follow-cam, including indoors. Avata 360 for FPV
         with an integrated 8K 360 camera, twin 64MP sensors behind
-        200-degree lenses. All flown FPV through DJI Goggles and an
-        RC 2 controller, head-tracked through an InAir pod, the live
-        feed mirrored to{" "}
+        200-degree lenses. Mini 5 Pro as the sub-250g travel airframe,
+        one-inch sensor, carrier for the AliExpress Bluetooth LED swarm.
+        All flown FPV through DJI Goggles and an RC 2 controller,
+        head-tracked through an InAir pod, the live feed mirrored to{" "}
         <a
           href="https://www.xreal.com/"
           target="_blank"

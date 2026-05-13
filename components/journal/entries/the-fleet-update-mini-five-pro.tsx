@@ -26,7 +26,7 @@ export default function TheFleetUpdateMiniFivePro() {
         one-inch sensor, and the carry-on bag fits all five
         airframes plus a controller plus the goggles plus the
         Xreals plus a charging brick. The{" "}
-        <Link href="/articles/the-fleet-four-airframes" className={ext}>
+        <Link href="/articles/the-fleet-five-airframes" className={ext}>
           fleet write-up
         </Link>{" "}
         called out the editorial frame as the Mavic&rsquo;s job and

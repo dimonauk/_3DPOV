@@ -259,10 +259,10 @@ export default function WhyIBuildModular() {
       </p>
       <p>
         The{" "}
-        <Link href="/articles/the-fleet-four-airframes" className={ext}>
+        <Link href="/articles/the-fleet-five-airframes" className={ext}>
           aerial fleet
         </Link>{" "}
-        &mdash; five airframes in the carry-on case now &mdash; is
+        &mdash; five airframes in the carry-on case &mdash; is
         modular at the mission level. A Mavic 2 Pro for the
         editorial frame, a Neo and a Neo 2 for close-quarters
         follow work, an Avata 360 for the immersive cinewhoop

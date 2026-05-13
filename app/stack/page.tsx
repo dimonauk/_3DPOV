@@ -82,10 +82,10 @@ export default function StackPage() {
             </Link>
             . For the aerial half of the same line,{" "}
             <Link
-              href="/articles/the-fleet-four-airframes"
+              href="/articles/the-fleet-five-airframes"
               className="text-pink-200 underline underline-offset-4"
             >
-              The Fleet &mdash; Four Airframes
+              The Fleet &mdash; Five Airframes
             </Link>
             .
           </p>

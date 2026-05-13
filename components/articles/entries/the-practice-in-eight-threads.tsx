@@ -454,13 +454,12 @@ export default function ThePracticeInEightThreads() {
         </Link>{" "}
         and the fleet companion is at{" "}
         <Link
-          href="/articles/the-fleet-four-airframes"
+          href="/articles/the-fleet-five-airframes"
           className={ext}
         >
-          The Fleet &mdash; Four Airframes
-        </Link>{" "}
-        (written when the case held four; the case now holds
-        five).
+          The Fleet &mdash; Five Airframes
+        </Link>
+        .
       </p>
       <p>
         The proving level is{" "}

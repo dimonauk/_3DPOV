@@ -266,9 +266,9 @@ const ENTRIES: Entry[] = [
     Body: TheFleetUpdateMiniFivePro,
     related: [
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "The prior-state article; the snapshot before the fifth airframe.",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The full fleet article. The Mini 5 Pro is the fifth airframe this entry records.",
       },
       {
         href: "/articles/why-i-build-my-own-rigs",

@@ -296,12 +296,13 @@ export default function London360WalkingTheCameraEvolution() {
         <strong>The ecosystem argument.</strong> The other reason the
         Osmo 360 lives on top of the trekking pole now is that the{" "}
         <Link
-          href="/articles/the-fleet-four-airframes"
+          href="/articles/the-fleet-five-airframes"
           className={ext}
         >
           rest of the studio&rsquo;s aerial kit is DJI
         </Link>
-        . The Mavic 2 Pro, the Neo, the Neo 2, the Avata 360 &mdash;
+        . The Mavic 2 Pro, the Neo, the Neo 2, the Avata 360, the
+        Mini 5 Pro &mdash;
         same colour pipeline, same Mimo / DaVinci handoff, same
         goggles when I want to review a clip head-mounted, same
         battery philosophy, same controller ecosystem. The Osmo 360

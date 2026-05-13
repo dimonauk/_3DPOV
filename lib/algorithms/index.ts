@@ -150,6 +150,26 @@ export const portedAlgorithms: Record<string, PortedAlgorithm> = {
     load: () => import("./ribbon-helix"),
     params: COMMON_PARAMS,
   },
+  dla: {
+    slug: "dla",
+    load: () => import("./dla"),
+    params: COMMON_PARAMS,
+  },
+  voronoi: {
+    slug: "voronoi",
+    load: () => import("./voronoi"),
+    params: COMMON_PARAMS,
+  },
+  "reaction-diffusion": {
+    slug: "reaction-diffusion",
+    load: () => import("./reaction-diffusion"),
+    params: COMMON_PARAMS,
+  },
+  "penrose-tiling": {
+    slug: "penrose-tiling",
+    load: () => import("./penrose-tiling"),
+    params: COMMON_PARAMS,
+  },
 };
 
 export function isPorted(slug: string): boolean {

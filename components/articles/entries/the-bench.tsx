@@ -63,11 +63,11 @@ export default function TheBench() {
         1-inch sensor, AliExpress Bluetooth-controllable LEDs
         gorilla-glued to the spine for the unsynced-swarm pieces.
         The fleet&rsquo;s shape and how it grew is in{" "}
-        <Link href="/articles/the-fleet-four-airframes" className={ext}>
+        <Link href="/articles/the-fleet-five-airframes" className={ext}>
           The Fleet
         </Link>{" "}
-        (written when it was four) and the journal piece on the
-        Mini 5 Pro coming home from the shop.
+        and the journal piece on the Mini 5 Pro coming home from the
+        shop.
       </p>
       <p>
         The constraint that drives the fleet is one airframe per

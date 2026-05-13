@@ -39,7 +39,7 @@ export const stack: StackSection[] = [
     title: "Aerial capture",
     subtitle: "Five airframes, one flight bag",
     intro:
-      "Each airframe answers a different shape of brief. The fleet is a pipeline, not a collection — see The Fleet — Four Airframes for the original four, and the journal for the Mini 5 Pro and the LED-modded swarm that brought it to five.",
+      "Each airframe answers a different shape of brief. The fleet is a pipeline, not a collection — see The Fleet — Five Airframes for the full case, and the journal for the Mini 5 Pro and the LED-modded swarm.",
     items: [
       {
         name: "DJI Mavic 2 Pro",

@@ -80,9 +80,9 @@ export const loopPositions: LoopPosition[] = [
         note: "The architectural argument for angular sync over time sync.",
       },
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "The airframe side of the line; the Mini 5 Pro brings it to five.",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The airframe side of the line; five airframes, one pipeline.",
       },
       {
         href: "/tutorials/building-a-pov-led-rig",

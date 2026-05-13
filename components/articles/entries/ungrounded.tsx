@@ -100,12 +100,12 @@ export default function Ungrounded() {
         Five airframes in the case, four of them flying the same
         forward-facing optical logic the studio had been working with
         since 2014, and one of them capturing the whole volume around
-        itself. The fleet article at{" "}
-        <Link href="/articles/the-fleet-four-airframes" className={ext}>
+        itself. The fleet write-up in full is at{" "}
+        <Link href="/articles/the-fleet-five-airframes" className={ext}>
           The Fleet
-        </Link>{" "}
-        was written when the case held four. The case now holds five.
-        The fifth is the one this article is about.
+        </Link>
+        . This article is about the airframe that left the optical
+        plane.
       </p>
 
       <h2 className="mt-12 text-2xl text-chrome-100">

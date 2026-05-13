@@ -611,7 +611,7 @@ What's on the site, mapped to its Hangar source.
 | `the-convergence.tsx` | `CONVERGENCE_ARCHITECTURE.md` (Class A #1 shipped) | ✅ |
 | `the-eight-kingdoms.tsx` | Dolly_OS `lib/evolution/kingdoms/index.ts` (Class A #8 shipped) | ✅ |
 | `the-familiar.tsx` | (Studio voice — Aura's introduction) | ✅ |
-| `the-fleet-four-airframes.tsx` | (Studio voice + drone_show context) | ⏳ Class C #1 reconciliation pending (should be 5 not 4) |
+| `the-fleet-five-airframes.tsx` | (Studio voice + drone_show context + DJI Mini 5 Pro section) | ✅ Class C #1 reconciliation closed |
 | `the-jewellery-algorithms.tsx` | Dolly_OS `jewel-array/geometry/algorithms/` (Class A #4 + Class T-A #13 shipped as one) | ✅ |
 | `the-living-stage.tsx` | `THE_LIVING_STAGE.md` | ✅ |
 | `the-practice-in-eight-threads.tsx` | `lib/play.ts` + studio canon (BACKWARDS_DESIGN gap #12 closed) | ✅ |
@@ -692,10 +692,10 @@ The top 10 by priority for the next migration wave. Each item names the Class fr
 
 | # | Open item | Lens | Priority | Reason |
 |---|---|---|---|---|
-| 1 | **Finish the 10 missing atelier algorithms** (DLA, Voronoi, Reaction-Diffusion, PCB-Trace, Penrose-Tiling, Clash-Compositor, Wigner-Seitz, Spinodal, Enneper, Diatom-Hex, LSystem-Tube, Auxetic-Corrugation) | tech (Class T-A #13) | High | Wave 2 in flight. **20/30 done — finishing this closes the "the atelier exists" gap completely.** |
+| 1 | **Finish the missing atelier algorithms** (PCB-Trace, Clash-Compositor, Wigner-Seitz, Spinodal, Enneper, Diatom-Hex, LSystem-Tube, Auxetic-Corrugation) | tech (Class T-A #13) | High | Wave 3 in progress. DLA + Voronoi + Reaction-Diffusion + Penrose-Tiling ported (23/30 done). 7 to go. |
 | 2 | **Wire `lib/evolution/*`** (the empty directory) — port `evolution-engine`, `breeding`, `fitness`, `mutation`, `kingdoms`, `genome-store` from Dolly_OS as typed read-only data + a static visualisation route | tech + narrative (Class A #7, #8, #10) | High | Wave 2 in flight; `app/atelier/evolution/*` is the surfacing target. |
-| 3 | **The Aura body article** (`articles/aura-the-body`) — the Aura VRM + voice + 300ms orientation loop + idle life | narrative (Class A #6) | High | Reconciliation #1 priority per `HANGAR_RECONCILIATION.md`. The narrator has an implementation; the article surfaces it. Once. The article is on-disk per the site index — VERIFY: does the prose match the architectural depth from `apps/aura-vrm/ARCHITECTURE_AURA.md`? |
-| 4 | **The fleet count reconciliation** (4 → 5 airframes) | narrative (Class C #1) | High | Mechanical edit. `articles/the-fleet-four-airframes.tsx` title + lines 10/13/253. Trivial cost, important canon fix. |
+| 3 | **The Aura body article** (`articles/aura-the-body`) | narrative (Class A #6) | DONE | Reconciled against capability registry: voice-provider canon (three-paths-one-surface), VRM file (`nanny.vrm`), lipsync chain (audio.tts → audio.visemes → vrm.expressions.blend), head-tracking priority chain, particle library, motion.idle. Cross-links to /capabilities and /demo/aura-talks. |
+| 4 | **The fleet count reconciliation** (4 → 5 airframes) | narrative (Class C #1) | DONE | Article renamed `the-fleet-five-airframes`; DJI Mini 5 Pro added as fifth; 15+ cross-refs updated. |
 | 5 | **Shopify admin seeding** | commerce (COMMERCE_ROADMAP §2 item 1) | High | One afternoon. Photograph editions live the same day. Highest revenue-per-hour unlock. |
 | 6 | **The Eight Kingdoms** (`articles/the-eight-kingdoms`) | narrative (Class A #8) | Medium-high | Article shipped per `components/articles/entries/the-eight-kingdoms.tsx` — verify substance matches the Dolly_OS `kingdoms/index.ts` source-of-truth. |
 | 7 | **The Sieve + The Oracle article** (`articles/the-sieve-and-the-oracle`) | narrative (Class A #11) | Medium | Two-step quality system. Maps to commerce trust-building. |

@@ -227,12 +227,12 @@ export default function AerialPage() {
           <ul className="mt-2 list-disc space-y-2 pl-5 text-chrome-300">
             <li>
               <Link
-                href="/articles/the-fleet-four-airframes"
+                href="/articles/the-fleet-five-airframes"
                 className="text-pink-200 underline underline-offset-4"
               >
-                The Fleet &mdash; Four Airframes
+                The Fleet &mdash; Five Airframes
               </Link>{" "}
-              &mdash; the original four, the architectural argument for
+              &mdash; every airframe, the architectural argument for
               each.
             </li>
             <li>

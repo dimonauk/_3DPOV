@@ -18,7 +18,7 @@ import TheBench from "components/articles/entries/the-bench";
 import TheConvergence from "components/articles/entries/the-convergence";
 import TheFamiliar from "components/articles/entries/the-familiar";
 import TheEightKingdoms from "components/articles/entries/the-eight-kingdoms";
-import TheFleetFourAirframes from "components/articles/entries/the-fleet-four-airframes";
+import TheFleetFiveAirframes from "components/articles/entries/the-fleet-five-airframes";
 import TheJewelleryAlgorithms from "components/articles/entries/the-jewellery-algorithms";
 import TheLivingStage from "components/articles/entries/the-living-stage";
 import ThePracticeInEightThreads from "components/articles/entries/the-practice-in-eight-threads";
@@ -757,13 +757,13 @@ const ENTRIES: Entry[] = [
     ],
   },
   {
-    slug: "the-fleet-four-airframes",
-    title: "The Fleet — Four Airframes, Honestly Reviewed",
+    slug: "the-fleet-five-airframes",
+    title: "The Fleet — Five Airframes, Honestly Reviewed",
     date: "2025-04-09",
     kind: "article",
     excerpt:
-      "Four DJI airframes in the studio case — Mavic 2 Pro, Neo, Neo 2, Avata 360 — plus the LED-modified rigs in first-flight testing. Real specs, honest limitations, and the FPV pipeline (Goggles + RC 2 + InAir head-tracking pod + Xreal One Pro) that ties them together.",
-    Body: TheFleetFourAirframes,
+      "Five DJI airframes in the studio case — Mavic 2 Pro, Neo, Neo 2, Avata 360, Mini 5 Pro — plus the LED-modified rigs in first-flight testing. Real specs, honest limitations, and the FPV pipeline (Goggles + RC 2 + InAir head-tracking pod + Xreal One Pro) that ties them together.",
+    Body: TheFleetFiveAirframes,
     related: [
       {
         href: "/aerial",
@@ -773,7 +773,7 @@ const ENTRIES: Entry[] = [
       {
         href: "/journal/the-fleet-update-mini-five-pro",
         label: "Field record — Mini 5 Pro and the Bluetooth LEDs",
-        note: "The update to this article. Fleet is now five; the fifth airframe carries the unsynchronised LED swarm.",
+        note: "The field-notes companion. The fifth airframe coming home from the shop and the unsynchronised LED swarm it carries.",
       },
       {
         href: "/journal/first-light",
@@ -854,8 +854,8 @@ const ENTRIES: Entry[] = [
     Body: London360Walking,
     related: [
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
         note: "The aerial counterpart. The DJI ecosystem on the air-side.",
       },
       {
@@ -1355,9 +1355,9 @@ const ENTRIES: Entry[] = [
         note: "The local AI pipeline layer, in full detail.",
       },
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "The aerial-capture layer, written when the fleet was four (now five — see the journal).",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The aerial-capture layer; the studio's five-airframe fleet in full.",
       },
       {
         href: "/journal/the-fleet-update-mini-five-pro",
@@ -1775,9 +1775,9 @@ const ENTRIES: Entry[] = [
         note: "The inventory companion. Every layer this article references in one place.",
       },
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "Mission-shape modularity on the air-side, written when the fleet was four.",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "Mission-shape modularity on the air-side. Five airframes, one pipeline.",
       },
       {
         href: "/articles/vr-pov-controllers-the-product",
@@ -2137,9 +2137,9 @@ const ENTRIES: Entry[] = [
         note: "The spirit cousin. The bench-built side of the same bench-vs-bought line this article draws.",
       },
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "The fleet article, written when the case held four. The fifth is the airframe this piece is about.",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The fleet article in full. The Mini 5 Pro is the fifth airframe this piece adds to the case.",
       },
       {
         href: "/journal/the-fleet-update-mini-five-pro",
@@ -2300,9 +2300,9 @@ const ENTRIES: Entry[] = [
         note: "Thread eight in long form. Drones and the bezel-clip as the same augmentation pattern applied to two volumes.",
       },
       {
-        href: "/articles/the-fleet-four-airframes",
-        label: "The Fleet — Four Airframes",
-        note: "Thread eight's kit version. The fleet (now five airframes) as the augmentation of reach into airspace.",
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "Thread eight's kit version. The five-airframe fleet as the augmentation of reach into airspace.",
       },
       {
         href: "/articles/the-bench",

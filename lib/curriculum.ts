@@ -143,7 +143,7 @@ export const ladders: Ladder[] = [
       {
         title: "Aerial — the studio's fleet, the FPV pipeline",
         blurb:
-          "Four airframes, one pipeline. Editorial aerial, FPV cinewhoop fly-throughs, aerial light-painting commissions, 360 immersive capture.",
+          "Five airframes, one pipeline. Editorial aerial, FPV cinewhoop fly-throughs, aerial light-painting commissions, 360 immersive capture.",
         href: "/aerial",
       },
       {
