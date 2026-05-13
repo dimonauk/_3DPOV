@@ -10,13 +10,21 @@ import { penny } from "./penny";
 import { marcel } from "./marcel";
 import { betsy } from "./betsy";
 import { trixie } from "./trixie";
+import { baby } from "./baby";
+import { scribe } from "./scribe";
+import { millie } from "./millie";
+import { tim } from "./tim";
 
 export type CastMemberId =
   | "aura"
   | "penny"
   | "marcel"
   | "betsy"
-  | "trixie";
+  | "trixie"
+  | "baby"
+  | "scribe"
+  | "millie"
+  | "tim";
 
 export const bibles: Record<CastMemberId, CharacterBible> = {
   aura,
@@ -24,6 +32,10 @@ export const bibles: Record<CastMemberId, CharacterBible> = {
   marcel,
   betsy,
   trixie,
+  baby,
+  scribe,
+  millie,
+  tim,
 };
 
 export function getBible(id: CastMemberId): CharacterBible {
@@ -39,4 +51,4 @@ export function listCastIds(): CastMemberId[] {
 }
 
 export type { CharacterBible };
-export { aura, penny, marcel, betsy, trixie };
+export { aura, penny, marcel, betsy, trixie, baby, scribe, millie, tim };

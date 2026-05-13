@@ -12,6 +12,7 @@
  */
 
 import { vrmStore, type Euler, type PoseVector, type VRMHandleId } from "lib/state/vrm";
+import { byName, type Easing, type EasingName } from "lib/math/easing";
 
 /**
  * Peak poses for each gesture. The capability eases baseline → peak →
@@ -67,6 +68,10 @@ export type TriggerGestureOptions = {
   holdMs?: number;
   /** Ease-out duration peak → baseline (ms). Default 350. */
   releaseMs?: number;
+  /** Easing curve for the attack phase. Defaults to `easeInOutCubic`. */
+  attackEasing?: EasingName;
+  /** Easing curve for the release phase. Defaults to `easeInOutCubic`. */
+  releaseEasing?: EasingName;
 };
 
 type InFlight = {
@@ -77,10 +82,6 @@ type InFlight = {
 };
 
 const active = new Map<VRMHandleId, InFlight>();
-
-function easeInOutCubic(t: number): number {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-}
 
 function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
@@ -137,6 +138,8 @@ export function triggerGesture(
   const attackMs = options?.attackMs ?? 250;
   const holdMs = options?.holdMs ?? 600;
   const releaseMs = options?.releaseMs ?? 350;
+  const attackCurve: Easing = byName(options?.attackEasing ?? "easeInOutCubic");
+  const releaseCurve: Easing = byName(options?.releaseEasing ?? "easeInOutCubic");
   const peak = GESTURES[name];
 
   // Cancelling in-flight: keep its baseline so the next gesture's
@@ -164,12 +167,12 @@ export function triggerGesture(
 
       let blend: number;
       if (elapsed <= attackMs) {
-        blend = easeInOutCubic(elapsed / Math.max(attackMs, 1));
+        blend = attackCurve(elapsed / Math.max(attackMs, 1));
       } else if (elapsed <= attackMs + holdMs) {
         blend = 1;
       } else if (elapsed <= total) {
         const releaseT = (elapsed - attackMs - holdMs) / Math.max(releaseMs, 1);
-        blend = 1 - easeInOutCubic(Math.min(releaseT, 1));
+        blend = 1 - releaseCurve(Math.min(releaseT, 1));
       } else {
         blend = 0;
       }
