@@ -206,6 +206,29 @@ const auraAliveStubs: CapabilityRecord[] = [
     stateSlices: ["input"],
   },
   {
+    id: "viz.light-sculpture",
+    kind: "viz",
+    name: "Light sculpture",
+    summary:
+      "Animated long-exposure trajectory renderer. Composes viz.attractor over time — a head cursor walks the trajectory, a fading tail trails behind. The HoloWalk sculpture format.",
+    status: "registered",
+    source: "Studio composition over viz.attractor; HoloWalk flagship rendering.",
+    load: () => import("./viz/light-sculpture"),
+    stateSlices: ["viz"],
+    dependsOn: ["viz.attractor"],
+  },
+  {
+    id: "geo.position",
+    kind: "geo",
+    name: "Geolocation + heading",
+    summary:
+      "GPS watcher + compass heading writer (webkitCompassHeading on iOS; alpha on Android). Permission-gated via DeviceOrientationEvent.requestPermission() for iOS. Foundation for the HoloWalk outdoor AR trail.",
+    status: "registered",
+    source: "Browser Geolocation API + DeviceOrientationEvent + iOS permission-gate dance.",
+    load: () => import("./geo/position"),
+    stateSlices: ["geo"],
+  },
+  {
     id: "viz.attractor",
     kind: "viz",
     name: "Strange attractor",

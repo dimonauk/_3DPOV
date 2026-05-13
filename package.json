@@ -23,6 +23,7 @@
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "firebase": "^12.12.1",
+    "maplibre-gl": "^5.24.0",
     "next": "15.6.0-canary.60",
     "react": "19.0.0",
     "react-dom": "19.0.0",
