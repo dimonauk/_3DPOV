@@ -4,6 +4,9 @@
 // signInWithGoogle() all require runtime so static generation is
 // pointless here.
 export const dynamic = "force-dynamic";
+// PPR (experimental.ppr) generates a static shell for every page,
+// which collides with useSearchParams() / location.hash readers.
+export const experimental_ppr = false;
 
 /**
  * app/cards/mine/page.tsx — Signed-in user's card dashboard.
