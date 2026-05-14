@@ -11,6 +11,11 @@
  * Dignity-of-capture rules are handled by the human at review time,
  * not by a heuristic here. (See docs/CCTV_PIPELINE.md.)
  *
+ * Pieces live in sibling modules:
+ *   - `./cctv-fetch-types`   — Config + Candidate + StagedSidecar + loader
+ *   - `./cctv-fetch-sources` — resolveTflJamCams, resolveManualList
+ *   - `./cctv-fetch-save`    — readExistingHashes, fetchAndSave
+ *
  * Run:
  *   pnpm splat:fetch
  *   pnpm exec tsx scripts/cctv-fetch.ts --config scripts/cctv-fetch.config.json
@@ -21,69 +26,14 @@
  * crypto). Requires Node 18+.
  */
 
-import { createHash } from "node:crypto";
-import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, join, resolve } from "node:path";
+import { mkdir } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { argv, exit, stderr, stdout } from "node:process";
 
-// --- Types -----------------------------------------------------------------
-
-type FetchSource = {
-  /** Stable id for this source — used in filenames. */
-  id: string;
-  /** Display name for logs. */
-  name: string;
-  /** Endpoint type. */
-  kind: "tfl-jamcam" | "manual-list" | "placeholder";
-  /** For tfl-jamcam: the JSON list endpoint. */
-  endpoint?: string;
-  /** For manual-list: an explicit list of image URLs to pull. */
-  urls?: ManualUrl[];
-  /** Toggle for the runtime. */
-  enabled: boolean;
-  /** Free-form note for the example config. */
-  notes?: string;
-};
-
-type ManualUrl = {
-  cameraId: string;
-  imageUrl: string;
-  lat?: number;
-  lng?: number;
-  label?: string;
-};
-
-type Config = {
-  stagingDir: string;
-  outputDir: string;
-  maxImagesPerRun: number;
-  sources: FetchSource[];
-};
-
-type StagedSidecar = {
-  cameraId: string;
-  sourceUrl: string;
-  source: "cctv-tfl" | "cctv-other" | "manual";
-  fetchedAt: string;
-  lat?: number;
-  lng?: number;
-  label?: string;
-  contentHashSha256: string;
-};
-
-type TflJamCam = {
-  id: string;
-  commonName?: string;
-  lat?: number;
-  lon?: number;
-  additionalProperties?: Array<{
-    key?: string;
-    value?: string;
-  }>;
-};
-
-// --- CLI parsing -----------------------------------------------------------
+import { loadConfig, type Candidate, type Config } from "./cctv-fetch-types";
+import { resolveCandidates } from "./cctv-fetch-sources";
+import { fetchAndSave, readExistingHashes } from "./cctv-fetch-save";
 
 type CliFlags = {
   configPath: string;
@@ -137,221 +87,6 @@ function printHelp(): void {
     ].join("\n"),
   );
 }
-
-// --- Config loading --------------------------------------------------------
-
-async function loadConfig(configPath: string): Promise<Config> {
-  const text = await readFile(configPath, "utf8");
-  const raw: unknown = JSON.parse(text);
-  if (!isConfig(raw)) {
-    throw new Error(
-      `Config at ${configPath} did not match the expected shape.`,
-    );
-  }
-  return raw;
-}
-
-function isConfig(x: unknown): x is Config {
-  if (!x || typeof x !== "object") return false;
-  const obj = x as Record<string, unknown>;
-  return (
-    typeof obj.stagingDir === "string" &&
-    typeof obj.outputDir === "string" &&
-    typeof obj.maxImagesPerRun === "number" &&
-    Array.isArray(obj.sources)
-  );
-}
-
-// --- Hashing & idempotency -------------------------------------------------
-
-function sha256(buf: Uint8Array): string {
-  return createHash("sha256").update(buf).digest("hex");
-}
-
-async function readExistingHashes(stagingDir: string): Promise<Set<string>> {
-  const hashes = new Set<string>();
-  let entries: string[];
-  try {
-    entries = await readdir(stagingDir);
-  } catch {
-    return hashes;
-  }
-  for (const name of entries) {
-    if (!name.endsWith(".meta.json")) continue;
-    try {
-      const raw = await readFile(join(stagingDir, name), "utf8");
-      const parsed: unknown = JSON.parse(raw);
-      if (
-        parsed &&
-        typeof parsed === "object" &&
-        typeof (parsed as { contentHashSha256?: unknown })
-          .contentHashSha256 === "string"
-      ) {
-        hashes.add(
-          (parsed as { contentHashSha256: string }).contentHashSha256,
-        );
-      }
-    } catch {
-      // Skip unreadable sidecars; we'll just re-fetch if needed.
-    }
-  }
-  return hashes;
-}
-
-// --- Source resolvers ------------------------------------------------------
-
-type Candidate = {
-  cameraId: string;
-  imageUrl: string;
-  lat?: number;
-  lng?: number;
-  label?: string;
-  splatSource: "cctv-tfl" | "cctv-other" | "manual";
-};
-
-async function resolveTflJamCams(source: FetchSource): Promise<Candidate[]> {
-  if (!source.endpoint) {
-    throw new Error(`Source ${source.id} (tfl-jamcam) needs an endpoint.`);
-  }
-  const res = await fetch(source.endpoint);
-  if (!res.ok) {
-    throw new Error(
-      `TFL JamCams endpoint returned ${res.status} ${res.statusText}`,
-    );
-  }
-  const raw: unknown = await res.json();
-  if (!Array.isArray(raw)) {
-    throw new Error("TFL JamCams response was not an array.");
-  }
-  const out: Candidate[] = [];
-  for (const item of raw as TflJamCam[]) {
-    if (!item || typeof item.id !== "string") continue;
-    const propList = Array.isArray(item.additionalProperties)
-      ? item.additionalProperties
-      : [];
-    let imageUrl: string | undefined;
-    let available = true;
-    for (const p of propList) {
-      if (!p) continue;
-      if (p.key === "imageUrl" && typeof p.value === "string") {
-        imageUrl = p.value;
-      }
-      if (p.key === "available" && typeof p.value === "string") {
-        if (p.value.toLowerCase() === "false") available = false;
-      }
-    }
-    if (!imageUrl || !available) continue;
-    out.push({
-      cameraId: item.id,
-      imageUrl,
-      lat: typeof item.lat === "number" ? item.lat : undefined,
-      lng: typeof item.lon === "number" ? item.lon : undefined,
-      label: item.commonName,
-      splatSource: "cctv-tfl",
-    });
-  }
-  return out;
-}
-
-function resolveManualList(source: FetchSource): Candidate[] {
-  const urls = source.urls ?? [];
-  return urls.map((u) => ({
-    cameraId: u.cameraId,
-    imageUrl: u.imageUrl,
-    lat: u.lat,
-    lng: u.lng,
-    label: u.label,
-    splatSource: "manual",
-  }));
-}
-
-async function resolveCandidates(
-  source: FetchSource,
-): Promise<Candidate[]> {
-  switch (source.kind) {
-    case "tfl-jamcam":
-      return resolveTflJamCams(source);
-    case "manual-list":
-      return resolveManualList(source);
-    case "placeholder":
-      return [];
-    default:
-      stderr.write(`Unknown source kind for ${source.id}, skipping.\n`);
-      return [];
-  }
-}
-
-// --- Fetch & save ----------------------------------------------------------
-
-function sanitiseCameraId(id: string): string {
-  return id.replace(/[^A-Za-z0-9._-]+/g, "_");
-}
-
-function isoNowForFilename(): string {
-  return new Date().toISOString().replace(/[:.]/g, "-");
-}
-
-async function fetchAndSave(
-  candidate: Candidate,
-  stagingDir: string,
-  existingHashes: Set<string>,
-  dryRun: boolean,
-): Promise<"saved" | "duplicate" | "skipped" | "error"> {
-  if (dryRun) {
-    stdout.write(`  [dry-run] would fetch ${candidate.imageUrl}\n`);
-    return "skipped";
-  }
-  let res: Response;
-  try {
-    res = await fetch(candidate.imageUrl);
-  } catch (err) {
-    stderr.write(
-      `  fetch failed for ${candidate.cameraId}: ${(err as Error).message}\n`,
-    );
-    return "error";
-  }
-  if (!res.ok) {
-    stderr.write(
-      `  ${candidate.cameraId}: HTTP ${res.status} ${res.statusText}\n`,
-    );
-    return "error";
-  }
-  const arrayBuf = await res.arrayBuffer();
-  const bytes = new Uint8Array(arrayBuf);
-  if (bytes.byteLength === 0) {
-    stderr.write(`  ${candidate.cameraId}: zero-byte response\n`);
-    return "error";
-  }
-  const hash = sha256(bytes);
-  if (existingHashes.has(hash)) {
-    return "duplicate";
-  }
-  existingHashes.add(hash);
-
-  const ext = candidate.imageUrl.toLowerCase().endsWith(".png")
-    ? ".png"
-    : ".jpg";
-  const base = `${sanitiseCameraId(candidate.cameraId)}-${isoNowForFilename()}`;
-  const imagePath = join(stagingDir, `${base}${ext}`);
-  const metaPath = join(stagingDir, `${base}.meta.json`);
-
-  await writeFile(imagePath, bytes);
-  const sidecar: StagedSidecar = {
-    cameraId: candidate.cameraId,
-    sourceUrl: candidate.imageUrl,
-    source: candidate.splatSource,
-    fetchedAt: new Date().toISOString(),
-    lat: candidate.lat,
-    lng: candidate.lng,
-    label: candidate.label,
-    contentHashSha256: hash,
-  };
-  await writeFile(metaPath, JSON.stringify(sidecar, null, 2) + "\n");
-  stdout.write(`  saved ${base}${ext}\n`);
-  return "saved";
-}
-
-// --- Entry point -----------------------------------------------------------
 
 async function main(): Promise<void> {
   const flags = parseFlags(argv.slice(2));
@@ -434,7 +169,9 @@ async function main(): Promise<void> {
     `\ncctv-fetch: done. saved=${savedThisRun} duplicates=${duplicates} errors=${errors}\n`,
   );
   if (savedThisRun > 0 && !flags.dryRun) {
-    stdout.write(`Next: python scripts/sharp-runner.py --staging ${config.stagingDir} --output ${config.outputDir}\n`);
+    stdout.write(
+      `Next: python scripts/sharp-runner.py --staging ${config.stagingDir} --output ${config.outputDir}\n`,
+    );
   }
 }
 
