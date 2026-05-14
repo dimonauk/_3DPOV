@@ -64,5 +64,15 @@ service cloud.firestore {
       }
     }
 
+    // Operator media library — Vercel Blob URL + Firestore metadata.
+    // Reads are public (the URL is the canonical reference; nothing
+    // secret lives here) except for retired items, which the public
+    // site hides. All writes go through the admin SDK from the
+    // operator-only `/admin/*` route, which bypasses these rules.
+    match /media/{id} {
+      allow read: if !('retired' in resource.data) || resource.data.retired != true;
+      allow write: if false;
+    }
+
   }
 }
