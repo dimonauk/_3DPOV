@@ -2,11 +2,14 @@ import type { ComponentType } from "react";
 import AddressableLeds from "components/codex/entries/addressable-leds";
 import ArtistsProof from "components/codex/entries/artists-proof";
 import AugmentedReality from "components/codex/entries/augmented-reality";
+import BeltPrinter from "components/codex/entries/belt-printer";
 import C2paContentProvenance from "components/codex/entries/c2pa-content-provenance";
 import CanonImageprografPro1100 from "components/codex/entries/canon-imageprograf-pro-1100";
 import Caustics from "components/codex/entries/caustics";
 import CertificateOfAuthenticity from "components/codex/entries/certificate-of-authenticity";
+import DjiMini5Pro from "components/codex/entries/dji-mini-5-pro";
 import EditionSizeConventions from "components/codex/entries/edition-size-conventions";
+import FdmPrinting from "components/codex/entries/fdm-printing";
 import GaussianSplatting from "components/codex/entries/gaussian-splatting";
 import GyroidSurfaces from "components/codex/entries/gyroid-surfaces";
 import HahnemuhlePhotoRag308 from "components/codex/entries/hahnemuhle-photo-rag-308";
@@ -17,15 +20,18 @@ import MarchingCubes from "components/codex/entries/marching-cubes";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
 import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
+import Photogrammetry from "components/codex/entries/photogrammetry";
 import Pixelstick from "components/codex/entries/pixelstick";
 import Poi from "components/codex/entries/poi";
 import PovLedArray from "components/codex/entries/pov-led-array";
 import PtguiHuginLightroomStitching from "components/codex/entries/ptgui-hugin-lightroom-stitching";
+import SlicerSoftware from "components/codex/entries/slicer-software";
 import SpatialAudioExplained from "components/codex/entries/spatial-audio-explained";
 import Teensy from "components/codex/entries/teensy";
 import ThreeSixtyPhotography from "components/codex/entries/three-sixty-photography";
 import UkCaaDroneRegulations2026 from "components/codex/entries/uk-caa-drone-regulations-2026";
 import VirtualReality from "components/codex/entries/virtual-reality";
+import WaveguideObject from "components/codex/entries/waveguide-object";
 
 export type CodexCategory =
   | "Practice"
@@ -891,6 +897,221 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: C2paContentProvenance,
+  },
+  {
+    slug: "dji-mini-5-pro",
+    title: "DJI Mini 5 Pro",
+    category: "Drone",
+    date: "2026-05-14",
+    summary:
+      "Sub-250g consumer drone with a 1-inch CMOS sensor on a three-axis gimbal, omni-directional obstacle sensing, and the O4+ radio link. The studio's workhorse for site recces, low-altitude facade capture, and survey-grade photogrammetric runs.",
+    seeAlso: [
+      "uk-caa-drone-regulations-2026",
+      "photogrammetry",
+      "one-press-three-sixty-capture",
+    ],
+    sources: [
+      {
+        label: "DJI: Mini 5 Pro product page",
+        url: "https://www.dji.com/mini-5-pro",
+      },
+      {
+        label: "DJI Viewpoints: Mini 5 Pro specifications and review",
+        url: "https://viewpoints.dji.com/blog/dji-mini-5-pro",
+      },
+      {
+        label: "CAA: drone regulations effective 1 January 2026",
+        url: "https://www.caa.co.uk/drones/",
+      },
+      {
+        label: "Holo-Flow Studio: working fleet register",
+      },
+    ],
+    Body: DjiMini5Pro,
+  },
+  {
+    slug: "photogrammetry",
+    title: "Photogrammetry",
+    category: "Drone",
+    date: "2026-05-14",
+    summary:
+      "Reconstructing 3D geometry from overlapping photographs. Laussedat 1859 to structure-from-motion (SfM) to RealityCapture / Metashape / Meshroom. Capture geometry (nadir grids plus oblique passes), the three-stage pipeline, and where it feeds the studio's HoloWalk and gaussian-splatting work.",
+    seeAlso: [
+      "dji-mini-5-pro",
+      "gaussian-splatting",
+      "marching-cubes",
+      "three-sixty-photography",
+    ],
+    sources: [
+      {
+        label: "Wikipedia: Photogrammetry",
+        url: "https://en.wikipedia.org/wiki/Photogrammetry",
+      },
+      {
+        label: "Wikipedia: Structure from motion",
+        url: "https://en.wikipedia.org/wiki/Structure_from_motion",
+      },
+      {
+        label: "RealityCapture (Epic Games / CapturingReality)",
+        url: "https://www.capturingreality.com/",
+      },
+      {
+        label: "Agisoft Metashape",
+        url: "https://www.agisoft.com/",
+      },
+      {
+        label: "AliceVision Meshroom (free, open-source)",
+        url: "https://alicevision.org/",
+      },
+      {
+        label: "COLMAP — structure-from-motion / multi-view stereo",
+        url: "https://colmap.github.io/",
+      },
+    ],
+    Body: Photogrammetry,
+  },
+  {
+    slug: "fdm-printing",
+    title: "Fused deposition modelling (FDM)",
+    category: "Print",
+    date: "2026-05-14",
+    summary:
+      "The additive process that melts a thermoplastic filament and deposits it in stacked layers. Crump's 1989 patent, the 2009 RepRap explosion when it expired, and the contemporary CoreXY-with-input-shaping floor of around 500mm/s. The commodity layer of studio fabrication.",
+    seeAlso: [
+      "belt-printer",
+      "slicer-software",
+      "gyroid-surfaces",
+      "waveguide-object",
+    ],
+    sources: [
+      {
+        label: "Wikipedia: Fused deposition modeling",
+        url: "https://en.wikipedia.org/wiki/Fused_deposition_modeling",
+      },
+      {
+        label: "Wikipedia: RepRap project",
+        url: "https://en.wikipedia.org/wiki/RepRap_project",
+      },
+      {
+        label: "Bambu Lab: X1 Carbon product page",
+        url: "https://bambulab.com/en/x1",
+      },
+      {
+        label: "Prusa Research: Original Prusa MK4S",
+        url: "https://www.prusa3d.com/",
+      },
+      {
+        label: "Klipper firmware project",
+        url: "https://www.klipper3d.org/",
+      },
+    ],
+    Body: FdmPrinting,
+  },
+  {
+    slug: "belt-printer",
+    title: "Belt printer",
+    category: "Apparatus",
+    date: "2026-05-14",
+    summary:
+      "An FDM machine whose build plate is a continuous belt rather than a fixed plate, allowing arbitrarily long prints along the belt axis. Blackbelt 3D 2017 to Creality CR-30 in 2020. The studio's production path for long-axis gyroid wall reliefs.",
+    seeAlso: [
+      "fdm-printing",
+      "slicer-software",
+      "gyroid-surfaces",
+    ],
+    sources: [
+      {
+        label: "Blackbelt 3D (the original commercial belt printer)",
+        url: "https://blackbelt-3d.com/",
+      },
+      {
+        label: "Creality CR-30 3DPrintMill (community archive)",
+        url: "https://www.creality.com/",
+      },
+      {
+        label:
+          "BlackBelt Cura — community-maintained slicer fork for angled-bed machines",
+        url: "https://github.com/Ultimaker/Cura",
+      },
+      {
+        label: "Holo-Flow Studio: belt-printed wall reliefs",
+      },
+    ],
+    Body: BeltPrinter,
+  },
+  {
+    slug: "waveguide-object",
+    title: "Waveguide object",
+    category: "Practice",
+    date: "2026-05-14",
+    summary:
+      "A 3D-printed structure whose internal geometry channels light through its volume by total internal reflection. Kepler 1611, Snell's law, optical-fibre lineage; the critical angle for clear photopolymer (n ~ 1.50) in air is around 41.8 degrees. The studio's signature path for gyroid wall pieces.",
+    seeAlso: [
+      "gyroid-surfaces",
+      "addressable-leds",
+      "marching-cubes",
+      "caustics",
+    ],
+    sources: [
+      {
+        label: "Wikipedia: Total internal reflection",
+        url: "https://en.wikipedia.org/wiki/Total_internal_reflection",
+      },
+      {
+        label: "Wikipedia: Optical fiber",
+        url: "https://en.wikipedia.org/wiki/Optical_fiber",
+      },
+      {
+        label: "Wikipedia: Snell's law",
+        url: "https://en.wikipedia.org/wiki/Snell%27s_law",
+      },
+      {
+        label:
+          "Kao & Hockham: Dielectric-fibre surface waveguides for optical frequencies (Proc. IEE, 1966)",
+        url: "https://digital-library.theiet.org/content/journals/10.1049/piee.1966.0189",
+      },
+      {
+        label: "Holo-Flow Studio: clear-resin waveguide pieces",
+      },
+    ],
+    Body: WaveguideObject,
+  },
+  {
+    slug: "slicer-software",
+    title: "Slicer software",
+    category: "Production",
+    date: "2026-05-14",
+    summary:
+      "The production layer that converts a 3D mesh into the G-code toolpath a printer can execute. PrusaSlicer, Cura, Bambu Studio in 2026; Skeinforge in the 2008 prehistory. Where most print failures are designed in, usually invisibly.",
+    seeAlso: [
+      "fdm-printing",
+      "belt-printer",
+      "marching-cubes",
+      "gyroid-surfaces",
+    ],
+    sources: [
+      {
+        label: "PrusaSlicer (Prusa Research, open-source AGPL)",
+        url: "https://www.prusa3d.com/page/prusaslicer_424/",
+      },
+      {
+        label: "Ultimaker Cura (open-source)",
+        url: "https://ultimaker.com/software/ultimaker-cura/",
+      },
+      {
+        label: "Bambu Studio (forked from PrusaSlicer)",
+        url: "https://bambulab.com/en/download/studio",
+      },
+      {
+        label: "SuperSlicer (PrusaSlicer fork with experimental features)",
+        url: "https://github.com/supermerill/SuperSlicer",
+      },
+      {
+        label: "Wikipedia: Slicer (3D printing)",
+        url: "https://en.wikipedia.org/wiki/Slicer_(3D_printing)",
+      },
+    ],
+    Body: SlicerSoftware,
   },
 ];
 
