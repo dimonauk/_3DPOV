@@ -20,7 +20,7 @@
  *
  * - "spark-js" — sparkjsdev/spark gaussian-splat renderer on three.js.
  *   Default for product surfaces. R3F-compatible.
- * - "gsplat-js" — `@mkkellogg/gaussian-splat-3d` on three.js. Alternative
+ * - "gsplat-js" — `@mkkellogg/gaussian-splats-3d` on three.js. Alternative
  *   three.js implementation; useful when a surface needs slightly
  *   different camera / animation primitives or wants a second
  *   implementation to compare against.

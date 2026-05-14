@@ -56,6 +56,7 @@ const SUBJECTS: ReadonlySet<MediaSubject> = new Set([
   "product",
   "rookery",
   "press",
+  "research",
   "other",
 ]);
 

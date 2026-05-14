@@ -9,7 +9,7 @@ this is how it gets seen.
 | Renderer | Tier | Engine | Where it fits |
 | --- | --- | --- | --- |
 | **spark-js** (sparkjsdev/spark) | Web | three.js | Default for product pages — runs inside R3F scenes, integrates with the site's three.js stack |
-| **gsplat-js** (`@mkkellogg/gaussian-splat-3d`) | Web | three.js | Alternative three.js implementation; lets us A/B without changing surface code |
+| **gsplat-js** (`@mkkellogg/gaussian-splats-3d`) | Web | three.js | Alternative three.js implementation; lets us A/B without changing surface code |
 | **postshot-binary** | Bench-only | Native (Vulkan) | Studio review — opens the `.ply` in the installed Postshot.exe via a protocol handler |
 
 The web side is intentionally single-engine. Both Spark and gsplat.js

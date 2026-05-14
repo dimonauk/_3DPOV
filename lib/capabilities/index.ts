@@ -308,7 +308,7 @@ const auraAliveStubs: CapabilityRecord[] = [
     summary:
       "Viewer-agnostic .ply gaussian-splat embedding. Renderer union (spark-js | gsplat-js | postshot-binary); web side single-engine on three.js so the site keeps one WebGL context. Flavour-gates SHARP raw PLYs out of web targets (must pass through convert_sharp_ply.py first). Foundation-phase stub — props surface only, no concrete viewers wired.",
     status: "stub",
-    source: "Studio composite over sparkjsdev/spark (MIT) + @mkkellogg/gaussian-splat-3d (MIT) + Jawset Postshot binary.",
+    source: "Studio composite over sparkjsdev/spark (MIT) + @mkkellogg/gaussian-splats-3d (MIT) + Jawset Postshot binary.",
     load: () => import("./viz/splat-render"),
     dependsOn: ["viz.splat-generate"],
   },

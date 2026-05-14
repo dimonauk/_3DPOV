@@ -67,6 +67,7 @@ export type MediaSubject =
   | "product"
   | "rookery"
   | "press"
+  | "research"
   | "other";
 
 /** Variant sizes generated at (or after) upload. */
@@ -85,6 +86,27 @@ export type MediaSourceRef = {
   googlePhotos?: { mediaItemId: string };
   googleDrive?: { fileId: string };
   sanity?: { documentId: string };
+  /**
+   * Splat-specific metadata. Present when `kind === "ply"` and the file
+   * is a 3D Gaussian Splat produced by `viz.splat-generate`. The
+   * `licence` field gates commerce surfaces (see `isSplatCommerceEligible`
+   * in `lib/capabilities/viz/splat-generate.ts`).
+   */
+  splat?: {
+    provider:
+      | "sharp-onnx"
+      | "postshot"
+      | "studio-rig-native"
+      | "luma-genie";
+    licence:
+      | "research-only"
+      | "commercial-ok"
+      | "third-party-commercial";
+    plyFlavour: "standard-3dgs" | "sharp-onnx-raw";
+    gaussianCount: number;
+    sourceImageUrl?: string;
+    durationSeconds?: number | null;
+  };
 };
 
 export type MediaLocation = {
