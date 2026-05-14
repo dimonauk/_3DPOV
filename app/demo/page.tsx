@@ -70,6 +70,22 @@ const families: DemoFamily[] = [
     ],
   },
   {
+    slug: "poi-as-solid",
+    label: "Poi as solid",
+    title: "Poi practice as printable solid.",
+    intro:
+      "The bench draws poi moves with light through a spinning rig. The same moves, evaluated as parametric two-hand functions and extruded as tubes, become objects you can hold. Same maths, two outputs.",
+    demos: [
+      {
+        href: "/atelier/poi-sculptor",
+        title: "Poi sculptor",
+        description:
+          "Twenty-one parametric flow moves rendered as GPU-driven 3D sculpture. Pick a move, pick a surface, drive the hands along an anchor path, export STL or GLB for the print bureau.",
+        requires: ["WebGPU"],
+      },
+    ],
+  },
+  {
     slug: "visualisers",
     label: "Visualisers",
     title: "The visualiser series.",
