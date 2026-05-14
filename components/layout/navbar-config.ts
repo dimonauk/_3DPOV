@@ -43,6 +43,7 @@ export const GROUPS: NavGroup[] = [
       { label: "Aerial", href: "/aerial" },
       { label: "Print bureau", href: "/bureau" },
       { label: "Bezel", href: "/bezel" },
+      { label: "AR cards", href: "/cards" },
       { label: "Services", href: "/services" },
     ],
   },
