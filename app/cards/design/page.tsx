@@ -20,7 +20,7 @@ export const experimental_ppr = false;
  */
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import type { Card } from "lib/ar/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "components/auth/auth-provider";
@@ -99,6 +99,22 @@ function encodeFragment(card: Card): string {
 }
 
 export default function CardDesignerPage() {
+  return (
+    <Suspense fallback={<DesignerLoading />}>
+      <CardDesignerInner />
+    </Suspense>
+  );
+}
+
+function DesignerLoading() {
+  return (
+    <main className="min-h-screen bg-warm-black-950 px-6 py-20 text-chrome-400">
+      <p className="mx-auto max-w-3xl text-sm">Loading designer…</p>
+    </main>
+  );
+}
+
+function CardDesignerInner() {
   const [card, setCard] = useState<Card>(STARTER);
   const [slugDirty, setSlugDirty] = useState(false);
   const [copied, setCopied] = useState(false);
