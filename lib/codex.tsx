@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
+import ArtistsProof from "components/codex/entries/artists-proof";
 import AugmentedReality from "components/codex/entries/augmented-reality";
+import CanonImageprografPro1100 from "components/codex/entries/canon-imageprograf-pro-1100";
+import CertificateOfAuthenticity from "components/codex/entries/certificate-of-authenticity";
+import EditionSizeConventions from "components/codex/entries/edition-size-conventions";
+import HahnemuhlePhotoRag308 from "components/codex/entries/hahnemuhle-photo-rag-308";
 import KolorAutopanoHistorical from "components/codex/entries/kolor-autopano-historical";
 import LongExposurePhotography from "components/codex/entries/long-exposure-photography";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
@@ -496,6 +501,117 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: UkCaaDroneRegulations2026,
+  },
+  {
+    slug: "edition-size-conventions",
+    title: "Edition size conventions",
+    category: "Commerce",
+    date: "2026-05-14",
+    summary:
+      "A finite, numbered run of identical pieces from a single artistic source. 19th-century intaglio origins; modern photographic conventions; the studio's typical 15–30 + 2 AP framework for original captures, 10–20 + 2 AP for hand-worked composites.",
+    seeAlso: ["artists-proof", "certificate-of-authenticity"],
+    sources: [
+      {
+        label: "Wikipedia: Print (artwork)",
+        url: "https://en.wikipedia.org/wiki/Print_(artwork)",
+      },
+      {
+        label: "Sebastião Salgado — editioning practice",
+        url: "https://en.wikipedia.org/wiki/Sebasti%C3%A3o_Salgado",
+      },
+      {
+        label: "Holo-Flow Studio: editioning practice",
+      },
+    ],
+    Body: EditionSizeConventions,
+  },
+  {
+    slug: "artists-proof",
+    title: "Artist's proof (AP)",
+    category: "Commerce",
+    date: "2026-05-14",
+    summary:
+      "A copy retained by the artist outside the numbered edition. 19th-century intaglio origin (test pulls before the numbered run); modern fine-art-photography convention (2 APs per edition, marked AP 1/2 and AP 2/2 on the back of the print).",
+    seeAlso: ["edition-size-conventions", "certificate-of-authenticity"],
+    sources: [
+      {
+        label: "Wikipedia: Artist's proof",
+        url: "https://en.wikipedia.org/wiki/Artist%27s_proof",
+      },
+      {
+        label: "Holo-Flow Studio: AP convention",
+      },
+    ],
+    Body: ArtistsProof,
+  },
+  {
+    slug: "certificate-of-authenticity",
+    title: "Certificate of authenticity (CoA)",
+    category: "Commerce",
+    date: "2026-05-14",
+    summary:
+      "The document accompanying an editioned artwork that records its identity, edition number, materials, dimensions, signature, and provenance. The studio ships a C2PA-signed CoA with every numbered copy from 2026 forward.",
+    seeAlso: ["edition-size-conventions", "artists-proof"],
+    sources: [
+      {
+        label: "Wikipedia: Certificate of authenticity",
+        url: "https://en.wikipedia.org/wiki/Certificate_of_authenticity",
+      },
+      {
+        label: "C2PA: Content Provenance and Authenticity",
+        url: "https://c2pa.org/",
+      },
+      {
+        label: "Holo-Flow Studio: certification practice",
+      },
+    ],
+    Body: CertificateOfAuthenticity,
+  },
+  {
+    slug: "hahnemuhle-photo-rag-308",
+    title: "Hahnemühle Photo Rag 308gsm",
+    category: "Print",
+    date: "2026-05-14",
+    summary:
+      "The studio's default fine-art paper: 100% cotton matte, 308gsm, no optical brighteners, ISO 9706 archival. Hahnemühle has been making paper at Dassel, Lower Saxony, since 1584. The black point holds, the whites don't shift, the texture reads as 'print' not 'photo'.",
+    seeAlso: ["canon-imageprograf-pro-1100"],
+    sources: [
+      {
+        label: "Hahnemühle: Photo Rag 308 data sheet",
+        url: "https://www.hahnemuehle.com/en/photo-rag.html",
+      },
+      {
+        label: "Wikipedia: Hahnemühle FineArt",
+        url: "https://en.wikipedia.org/wiki/Hahnem%C3%BChle",
+      },
+      {
+        label: "Holo-Flow Studio: bench working notes",
+      },
+    ],
+    Body: HahnemuhlePhotoRag308,
+  },
+  {
+    slug: "canon-imageprograf-pro-1100",
+    title: "Canon imagePROGRAF PRO-1100",
+    category: "Print",
+    date: "2026-05-14",
+    summary:
+      "The studio's printer: 17″-wide, 12-channel Lucia PRO II pigment inkset, A2-capable, Chroma Optimizer for uniform matte, dedicated Red channel for warm-LED traces. The engine behind both the studio's editioned prints and the /bureau service.",
+    seeAlso: ["hahnemuhle-photo-rag-308"],
+    sources: [
+      {
+        label: "Canon: imagePROGRAF PRO-1100 product page",
+        url: "https://www.canon.co.uk/printers/imageprograf-pro-1100/",
+      },
+      {
+        label: "Wilhelm Imaging Research: print permanence ratings",
+        url: "https://www.wilhelm-research.com/",
+      },
+      {
+        label: "Holo-Flow Studio: calibration log",
+      },
+    ],
+    Body: CanonImageprografPro1100,
   },
 ];
 
