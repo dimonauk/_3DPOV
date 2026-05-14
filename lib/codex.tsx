@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import AddressableLeds from "components/codex/entries/addressable-leds";
 import ArtistsProof from "components/codex/entries/artists-proof";
 import AugmentedReality from "components/codex/entries/augmented-reality";
 import CanonImageprografPro1100 from "components/codex/entries/canon-imageprograf-pro-1100";
@@ -10,10 +11,12 @@ import LongExposurePhotography from "components/codex/entries/long-exposure-phot
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
 import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
+import Pixelstick from "components/codex/entries/pixelstick";
 import Poi from "components/codex/entries/poi";
 import PovLedArray from "components/codex/entries/pov-led-array";
 import PtguiHuginLightroomStitching from "components/codex/entries/ptgui-hugin-lightroom-stitching";
 import SpatialAudioExplained from "components/codex/entries/spatial-audio-explained";
+import Teensy from "components/codex/entries/teensy";
 import ThreeSixtyPhotography from "components/codex/entries/three-sixty-photography";
 import UkCaaDroneRegulations2026 from "components/codex/entries/uk-caa-drone-regulations-2026";
 import VirtualReality from "components/codex/entries/virtual-reality";
@@ -612,6 +615,73 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: CanonImageprografPro1100,
+  },
+  {
+    slug: "pixelstick",
+    title: "Pixelstick",
+    category: "Apparatus",
+    date: "2026-05-14",
+    summary:
+      "Bitbanger Labs' 200-LED light-painting wand, introduced via Kickstarter in 2014. The commercial reference instrument that introduced the POV-LED technique to a non-electronics audience. The studio owns one as a reference; primary rigs are bespoke.",
+    seeAlso: ["pov-led-array", "persistence-of-vision", "teensy"],
+    sources: [
+      {
+        label: "Bitbanger Labs: Pixelstick",
+        url: "https://www.thepixelstick.com/",
+      },
+      {
+        label: "Reuben Wu: Lux Noctis series",
+        url: "https://reubenwu.com/projects/lux-noctis",
+      },
+    ],
+    Body: Pixelstick,
+  },
+  {
+    slug: "teensy",
+    title: "Teensy microcontroller (3.x / 4.x)",
+    category: "Apparatus",
+    date: "2026-05-14",
+    summary:
+      "PJRC's family of small USB-based development boards. Cortex-M4 at 72MHz on the 3.x generation (current studio standard); M7 at 600MHz on the 4.x (next generation). The substrate for studio rig firmware where real-time-grade timing matters.",
+    seeAlso: ["pov-led-array", "addressable-leds"],
+    sources: [
+      {
+        label: "PJRC: Teensy product family",
+        url: "https://www.pjrc.com/teensy/",
+      },
+      {
+        label: "Arduino IDE / Teensyduino toolchain",
+        url: "https://www.pjrc.com/teensy/td_download.html",
+      },
+      {
+        label: "Holo-Flow Studio: firmware register",
+      },
+    ],
+    Body: Teensy,
+  },
+  {
+    slug: "addressable-leds",
+    title: "Addressable LEDs (WS2812 / APA102)",
+    category: "Apparatus",
+    date: "2026-05-14",
+    summary:
+      "RGB LEDs with onboard colour drivers + serial-protocol interfaces. WS2812 (single-wire, ubiquitous) vs APA102 (SPI, interrupt-tolerant, the studio's choice). 144-LED-per-metre density, 200-LED strips driven via Teensy hardware SPI + TLC5927 constant-current regulation.",
+    seeAlso: ["teensy", "pov-led-array"],
+    sources: [
+      {
+        label: "Adafruit: NeoPixel guide",
+        url: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+      },
+      {
+        label: "Adafruit: DotStar guide",
+        url: "https://learn.adafruit.com/adafruit-dotstar-leds",
+      },
+      {
+        label: "Texas Instruments: TLC5927 datasheet",
+        url: "https://www.ti.com/product/TLC5927",
+      },
+    ],
+    Body: AddressableLeds,
   },
 ];
 
