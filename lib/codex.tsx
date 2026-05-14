@@ -1,11 +1,16 @@
 import type { ComponentType } from "react";
 import AugmentedReality from "components/codex/entries/augmented-reality";
 import KolorAutopanoHistorical from "components/codex/entries/kolor-autopano-historical";
+import LongExposurePhotography from "components/codex/entries/long-exposure-photography";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
+import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
+import Poi from "components/codex/entries/poi";
+import PovLedArray from "components/codex/entries/pov-led-array";
 import PtguiHuginLightroomStitching from "components/codex/entries/ptgui-hugin-lightroom-stitching";
 import SpatialAudioExplained from "components/codex/entries/spatial-audio-explained";
 import ThreeSixtyPhotography from "components/codex/entries/three-sixty-photography";
+import UkCaaDroneRegulations2026 from "components/codex/entries/uk-caa-drone-regulations-2026";
 import VirtualReality from "components/codex/entries/virtual-reality";
 
 export type CodexCategory =
@@ -379,6 +384,118 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: OnePressThreeSixtyCapture,
+  },
+  {
+    slug: "persistence-of-vision",
+    title: "Persistence of vision",
+    category: "Capture",
+    date: "2026-05-14",
+    summary:
+      "The optical phenomenon by which a flickering or rapidly-changing light source appears as a continuous trace. D'Arcy 1768 → Roget 1824 → modern vision-science disaggregation. Foundation of every entry under Apparatus and Capture in this codex.",
+    seeAlso: ["pov-led-array", "long-exposure-photography"],
+    sources: [
+      {
+        label: "Wikipedia: Persistence of vision",
+        url: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+      },
+      {
+        label: "Patrick D'Arcy, 1768 — Royal Society Memoirs",
+        url: "https://royalsocietypublishing.org/",
+      },
+      {
+        label: "Peter Mark Roget, Royal Society of London, 1824",
+      },
+    ],
+    Body: PersistenceOfVision,
+  },
+  {
+    slug: "poi",
+    title: "Poi",
+    category: "Practice",
+    date: "2026-05-14",
+    summary:
+      "Movement discipline of Māori origin in which a performer swings a pair of weights on flexible cords through geometric patterns around the body. Aotearoa origin pre-1500 CE; global flow-arts diffusion since the 1990s. The studio practice is twelve years deep in this lineage.",
+    seeAlso: ["pov-led-array", "long-exposure-photography"],
+    sources: [
+      {
+        label: "Wikipedia: Poi (performance art)",
+        url: "https://en.wikipedia.org/wiki/Poi_(performance_art)",
+      },
+      {
+        label: "Te Papa Tongarewa: What makes a poi",
+        url: "https://www.tepapa.govt.nz/discover-collections/read-watch-play/poi/what-makes-poi-traditional-materials",
+      },
+      {
+        label: "SpinPoi: History of Poi",
+        url: "https://spinpoi.com/what-is-poi/",
+      },
+    ],
+    Body: Poi,
+  },
+  {
+    slug: "pov-led-array",
+    title: "Persistence-of-vision LED array (POV LED array)",
+    category: "Apparatus",
+    date: "2026-05-14",
+    summary:
+      "A line or grid of addressable LEDs whose elements update rapidly while the array moves through space. To a long-exposure camera, the array writes a 2D (or 3D, given motion in depth) image into the frame. Pixelstick / Pixel Poi / studio Teensy rigs.",
+    seeAlso: ["persistence-of-vision", "long-exposure-photography", "poi"],
+    sources: [
+      {
+        label: "Adafruit: MiniPOV4 reference design",
+        url: "https://learn.adafruit.com/minipov4-diy-full-color-persistence-of-vision-light-painting-kit",
+      },
+      {
+        label: "Bitbanger Labs: Pixelstick",
+        url: "https://www.thepixelstick.com/",
+      },
+      {
+        label: "Holo-Flow Studio: studio rig specs (Teensy 3.1 + TLC5927)",
+      },
+    ],
+    Body: PovLedArray,
+  },
+  {
+    slug: "long-exposure-photography",
+    title: "Long-exposure photography",
+    category: "Capture",
+    date: "2026-05-14",
+    summary:
+      "Leaving the shutter open long enough that the image integrates light over time. f/8–f/11 at ISO 50–100 with the focus taped, in genuinely dark locations, tuned to the duration of the kata rather than the brightness of the scene.",
+    seeAlso: ["persistence-of-vision", "pov-led-array"],
+    sources: [
+      {
+        label: "General photographic theory (any introductory text)",
+      },
+      {
+        label: "Holo-Flow Studio: working conventions",
+      },
+    ],
+    Body: LongExposurePhotography,
+  },
+  {
+    slug: "uk-caa-drone-regulations-2026",
+    title: "UK CAA drone regulations (2026)",
+    category: "Drone",
+    date: "2026-05-14",
+    summary:
+      "From 1 January 2026, the UK CAA's drone regulations apply with a 100g registration threshold (down from 250g) and a clarified competency framework. Operator ID, Flyer ID, A2 CofC, insurance — what the working artist needs to fly legally.",
+    seeAlso: [],
+    sources: [
+      {
+        label: "CAA, drone regulations effective 1 January 2026",
+        url: "https://www.caa.co.uk/drones/",
+      },
+      {
+        label: "DJI Viewpoints: 2026 UK rules summary",
+        url: "https://viewpoints.dji.com/blog/new-uk-drone-regulations",
+      },
+      {
+        label: "Impact Aerial: A2 CofC walkthrough",
+        url: "https://www.impactaerial.co.uk/",
+      },
+    ],
+    Body: UkCaaDroneRegulations2026,
   },
 ];
 
