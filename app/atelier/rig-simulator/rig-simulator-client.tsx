@@ -17,7 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { FALLBACK_LED_COUNT, HARDWARE, type Pattern } from "./hardware";
 import { makePattern } from "./patterns";
-import { Simulator } from "./simulator";
+import type { Simulator } from "./simulator";
 
 export default function RigSimulatorClient() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -44,6 +44,11 @@ export default function RigSimulatorClient() {
         const canvas = canvasRef.current;
         const captureCanvas = captureCanvasRef.current;
         if (!canvas || !captureCanvas) return;
+        // Dynamic import: `./simulator` pulls in `three/webgpu`, which
+        // touches browser globals at module load. Keep it off the server
+        // bundle so PPR prerender of this page doesn't crash with
+        // "ReferenceError: self is not defined".
+        const { Simulator } = await import("./simulator");
         const sim = await Simulator.create(canvas, captureCanvas);
         if (cancelled) {
           sim.dispose();
