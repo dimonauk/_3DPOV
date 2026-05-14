@@ -150,7 +150,7 @@ export default function CardDesignerPage() {
       setSavedSlug(saved.slug);
       // Push to the public landing in a fresh window so the designer
       // stays open for further edits.
-      window.open(/c/, "_blank", "noopener");
+      window.open("/c/" + saved.slug, "_blank", "noopener");
     } catch (err) {
       if (err instanceof CardError) {
         setSaveError({ code: err.code, message: err.message });
