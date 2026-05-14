@@ -42,6 +42,22 @@ import {
 const DEFAULT_SERVICE_URL =
   process.env["SHARP_ONNX_SERVICE_URL"] ?? "http://localhost:7845";
 
+/**
+ * Shared bearer token. The bench service is reachable over Tailscale
+ * Funnel — i.e. publicly addressable on the internet, TLS-terminated
+ * by Tailscale, but with no IP-level gate. This token is the actual
+ * lock. Set on both ends: bench `SHARP_ONNX_AUTH_TOKEN` env, Vercel
+ * project `SHARP_ONNX_AUTH_TOKEN` env. Empty disables auth (only safe
+ * for bench-local dev with Funnel off).
+ */
+const SERVICE_AUTH_TOKEN = process.env["SHARP_ONNX_AUTH_TOKEN"] ?? "";
+
+function authHeaders(): Record<string, string> {
+  return SERVICE_AUTH_TOKEN
+    ? { Authorization: `Bearer ${SERVICE_AUTH_TOKEN}` }
+    : {};
+}
+
 const POLL_INTERVAL_MS = 1_500;
 const POLL_TIMEOUT_MS = 5 * 60 * 1_000; // 5 minutes — single frame should
 // finish in ~10s, but cold-start + queue depth could stretch it.
@@ -65,7 +81,11 @@ async function postSharpOnnxJob(
     imageFilename,
   );
   form.set("meta", JSON.stringify(meta));
-  const res = await fetch(`${serviceUrl}/jobs`, { method: "POST", body: form });
+  const res = await fetch(`${serviceUrl}/jobs`, {
+    method: "POST",
+    body: form,
+    headers: authHeaders(),
+  });
   if (!res.ok) {
     throw asError(
       "provider-unavailable",
@@ -104,7 +124,9 @@ async function pollUntilDone(
         `SHARP-ONNX job ${jobId} timed out after ${POLL_TIMEOUT_MS / 1000}s`,
       );
     }
-    const res = await fetch(`${serviceUrl}/jobs/${jobId}`);
+    const res = await fetch(`${serviceUrl}/jobs/${jobId}`, {
+      headers: authHeaders(),
+    });
     if (!res.ok) {
       throw asError(
         "provider-unavailable",
@@ -133,7 +155,9 @@ async function downloadResult(
   serviceUrl: string,
   jobId: string,
 ): Promise<Uint8Array> {
-  const res = await fetch(`${serviceUrl}/jobs/${jobId}/result/std`);
+  const res = await fetch(`${serviceUrl}/jobs/${jobId}/result/std`, {
+    headers: authHeaders(),
+  });
   if (!res.ok) {
     throw asError(
       "generation-failed",

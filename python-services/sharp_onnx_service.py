@@ -38,7 +38,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import numpy as np
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+from fastapi import FastAPI, HTTPException, Request, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
@@ -126,6 +126,13 @@ CORS_ORIGINS = [
     for o in os.environ.get("SHARP_ONNX_CORS_ORIGINS", DEFAULT_ORIGINS).split(",")
     if o.strip()
 ]
+
+# Required bearer token. The service runs over Tailscale Funnel —
+# i.e. publicly reachable on the internet (with TLS) — so this token
+# is the actual gate. Set in env on the bench AND mirrored to Vercel
+# project env as SHARP_ONNX_AUTH_TOKEN. Empty means no auth (only
+# safe when AllowFunnel is false in serve-config.json).
+SHARP_ONNX_AUTH_TOKEN = os.environ.get("SHARP_ONNX_AUTH_TOKEN", "").strip()
 
 # ---------- job model ----------
 
@@ -334,6 +341,35 @@ app.add_middleware(
     allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
+
+
+# Endpoints that bypass the bearer-token check (liveness probes, etc).
+_AUTH_BYPASS_PATHS = frozenset({"/health"})
+
+
+@app.middleware("http")
+async def _require_bearer_token(request: Request, call_next):
+    """Reject every request without a valid `Authorization: Bearer <token>`
+    header when `SHARP_ONNX_AUTH_TOKEN` is set in env. Bypass for /health
+    so Tailscale + uptime probes don't need credentials.
+
+    When the token is unset (empty string), enforcement is OFF — fine
+    for bench-local development but never run that way over Funnel.
+    """
+    if not SHARP_ONNX_AUTH_TOKEN:
+        return await call_next(request)
+    if request.url.path in _AUTH_BYPASS_PATHS:
+        return await call_next(request)
+    header = request.headers.get("authorization", "")
+    if not header.lower().startswith("bearer "):
+        return JSONResponse(
+            {"error": "missing Authorization: Bearer <token>"},
+            status_code=401,
+        )
+    presented = header[7:].strip()
+    if presented != SHARP_ONNX_AUTH_TOKEN:
+        return JSONResponse({"error": "invalid bearer token"}, status_code=401)
+    return await call_next(request)
 
 
 @app.get("/health")
