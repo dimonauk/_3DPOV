@@ -1,6 +1,7 @@
 import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
 import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
+import TheBenchInHttps from "components/journal/entries/the-bench-in-https";
 import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
 import TheFleetUpdateMiniFivePro from "components/journal/entries/the-fleet-update-mini-five-pro";
 import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
@@ -318,6 +319,44 @@ const ENTRIES: Entry[] = [
     excerpt:
       "Pre-flight notes. The drone fleet on the bench, the time-sync firmware for first flights, tomorrow's shoot.",
     Body: TheWeekBefore,
+  },
+  {
+    slug: "the-bench-in-https",
+    title: "The Bench in HTTPS",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "The studio's Sharp image bench got a tailnet hostname and a real TLS cert today. Same Docker host, one sidecar, no public internet — the bench is now reachable from anywhere I am logged in.",
+    Body: TheBenchInHttps,
+    related: [
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The wider working set the Sharp bench is part of.",
+      },
+      {
+        href: "/codex/persistence-of-vision",
+        label: "Persistence of Vision",
+        note: "An adjacent piece of studio infrastructure documented in catalogue mode.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://tailscale.com/kb/1242/tailscale-serve",
+        label: "Tailscale Serve — official documentation",
+        note: "The mechanism that puts a private service behind a tailnet hostname with a real cert.",
+      },
+      {
+        href: "https://sharp.pixelplumbing.com/",
+        label: "Sharp — high-performance Node.js image processing",
+        note: "The libvips-backed image library the studio's print pipeline depends on.",
+      },
+      {
+        href: "https://letsencrypt.org/how-it-works/",
+        label: "Let's Encrypt — how it works",
+        note: "The ACME-based cert issuer that signs the tailnet hostnames.",
+      },
+    ],
   },
 ];
 
