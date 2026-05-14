@@ -71,6 +71,8 @@ const GROUPS: NavGroup[] = [
       { label: "Play", href: "/play" },
       { label: "Neo-London", href: "/play/neo-london" },
       { label: "The Sphere", href: "/sphere" },
+      { label: "CCTV cross-ref", href: "/atelier/cctv-cross-reference" },
+      { label: "Rig simulator", href: "/atelier/rig-simulator" },
       // The visualiser index doesn't exist yet — point to the only one
       // shipped. When a /visualiser index lands, change this to /visualiser.
       { label: "Visualisers", href: "/visualiser/total-internal-reflection" },

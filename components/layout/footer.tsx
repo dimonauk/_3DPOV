@@ -102,6 +102,12 @@ export default async function Footer() {
               <Link href="/atelier/algorithms" className="hover:text-pink-200">Atelier &mdash; Algorithms</Link>
             </li>
             <li>
+              <Link href="/atelier/rig-simulator" className="hover:text-pink-200">Atelier &mdash; Rig simulator</Link>
+            </li>
+            <li>
+              <Link href="/atelier/cctv-cross-reference" className="hover:text-pink-200">Atelier &mdash; CCTV cross-reference</Link>
+            </li>
+            <li>
               <Link href="/atelier/evolution" className="hover:text-pink-200">Atelier &mdash; Evolution</Link>
             </li>
             <li>
