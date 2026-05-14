@@ -13,6 +13,7 @@ import MorphingThingsTogether from "components/articles/entries/morphing-things-
 import NeoLondonChronoProtocol from "components/articles/entries/neo-london-chrono-protocol";
 import NineSecondsPromptToPrintable from "components/articles/entries/nine-seconds-prompt-to-printable";
 import OceanAsWardrobe from "components/articles/entries/ocean-as-wardrobe";
+import OnEditioningPhotographs from "components/articles/entries/on-editioning-photographs";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
 import ProvenanceAsDisciplineArticle from "components/articles/entries/provenance-as-discipline";
 import SellotapeAndTiltBrush from "components/articles/entries/sellotape-and-tilt-brush";
@@ -3271,6 +3272,15 @@ const ENTRIES: Entry[] = [
         note: "Laban's term for the personal space within reach of the body. The unit of measurement for movement extension.",
       },
     ],
+  },
+  {
+    slug: "on-editioning-photographs",
+    title: "On Editioning Photographs",
+    date: "2026-05-11",
+    kind: "article",
+    excerpt:
+      "The edition is a promise. A note on sizes, artist's proofs, certificates, and what it means to close one.",
+    Body: OnEditioningPhotographs,
   },
 ];
 

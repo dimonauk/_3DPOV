@@ -443,59 +443,6 @@ export function findLinkedItem(slug: string): LinkedItem | undefined {
   return undefined;
 }
 
-/**
- * Reverse cross-reference: which other Codex entries list the given
- * slug in their `seeAlso` array. Computed at build time over the
- * static registry; cheap.
- */
-export function getCodexReferencedBy(slug: string): CodexEntry[] {
-  return codex.filter((e) => e.seeAlso?.includes(slug));
-}
-
-/**
- * Cross-system lookup: a slug in a Codex entry's `seeAlso` can
- * resolve to another Codex entry, an article, a tutorial, or a
- * journal entry. This helper returns the URL + display title for
- * any of those, or undefined if the slug doesn't resolve anywhere.
- *
- * The writing.tsx registries are imported lazily inside the function
- * body so the Codex doesn't take a hard dep on them at module load.
- */
-export type LinkedItem = {
-  slug: string;
-  title: string;
-  href: string;
-  kind: "codex" | "article" | "tutorial" | "journal";
-};
-
-export function findLinkedItem(slug: string): LinkedItem | undefined {
-  const c = getCodexEntry(slug);
-  if (c) {
-    return { slug: c.slug, title: c.title, href: `/codex/${c.slug}`, kind: "codex" };
-  }
-  // Lazy-require the writing registries — keeps the Codex module
-  // independent and avoids circular imports during build.
-  try {
-    const { getArticle } = require("./articles") as typeof import("./articles");
-    const a = getArticle(slug);
-    if (a) {
-      return { slug: a.slug, title: a.title, href: `/articles/${a.slug}`, kind: "article" };
-    }
-  } catch {
-    /* articles registry not present at runtime */
-  }
-  try {
-    const { getTutorial } = require("./tutorials") as typeof import("./tutorials");
-    const t = getTutorial(slug);
-    if (t) {
-      return { slug: t.slug, title: t.title, href: `/tutorials/${t.slug}`, kind: "tutorial" };
-    }
-  } catch {
-    /* tutorials registry not present at runtime */
-  }
-  return undefined;
-}
-
 export function getCodexByCategory(): Map<CodexCategory, CodexEntry[]> {
   const map = new Map<CodexCategory, CodexEntry[]>();
   for (const entry of codex) {

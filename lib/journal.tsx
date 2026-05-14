@@ -5,6 +5,7 @@ import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
 import TheFleetUpdateMiniFivePro from "components/journal/entries/the-fleet-update-mini-five-pro";
 import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
 import TheQuestionTheCameraAnswered from "components/journal/entries/the-question-the-camera-answered";
+import TheWeekBefore from "components/journal/entries/the-week-before";
 import YearOneFire from "components/journal/entries/year-one-fire";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -308,6 +309,15 @@ const ENTRIES: Entry[] = [
         note: "The optical foundation the LED-swarm photographs depend on.",
       },
     ],
+  },
+  {
+    slug: "the-week-before",
+    title: "The week before",
+    date: "2026-05-13",
+    kind: "journal",
+    excerpt:
+      "Pre-flight notes. The drone fleet on the bench, the time-sync firmware for first flights, tomorrow's shoot.",
+    Body: TheWeekBefore,
   },
 ];
 
