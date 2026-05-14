@@ -9,6 +9,8 @@
  * the source frame. Sidecar `.sharp.meta.json` records the SHARP
  * job id, durations, and any failure reason.
  *
+ * The REST client lives in `./cctv-sharp-client.ts`.
+ *
  * The SHARP service must be running on the studio's 3080 Ti
  * machine. Default URL: http://localhost:7842 (override via
  * SHARP_SERVICE_URL env). When the service is offline this script
@@ -26,12 +28,17 @@
  * (or .spz) result already exists next to the source.
  */
 
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { basename, join, relative, resolve } from "node:path";
+import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { join, relative, resolve } from "node:path";
 import { argv, env, exit, stderr, stdout } from "node:process";
 
-// ── Config ─────────────────────────────────────────────────────────────────
+import {
+  downloadResult,
+  isServiceUp,
+  submitJob,
+  waitForCompletion,
+} from "./cctv-sharp-client";
 
 type CliFlags = {
   stagingDir: string;
@@ -44,8 +51,7 @@ type CliFlags = {
 
 function parseFlags(args: string[]): CliFlags {
   let stagingDir = "scripts/cctv-staging";
-  let serviceUrl =
-    env.SHARP_SERVICE_URL ?? "http://localhost:7842";
+  let serviceUrl = env.SHARP_SERVICE_URL ?? "http://localhost:7842";
   let format: CliFlags["format"] = "ply";
   let perLocationLimit: number | null = null;
   let dryRun = false;
@@ -114,133 +120,6 @@ function printHelp(): void {
   );
 }
 
-// ── SHARP REST client ──────────────────────────────────────────────────────
-
-type SharpStatus =
-  | { state: "queued"; positionInQueue: number; submittedAt: string }
-  | { state: "running"; progressPct: number; etaSeconds: number | null }
-  | {
-      state: "done";
-      resultUrl: string;
-      format: "ply" | "spz";
-      sizeBytes: number;
-      durationSeconds: number;
-    }
-  | { state: "error"; message: string; code?: string }
-  | { state: "cancelled" };
-
-async function isServiceUp(serviceUrl: string): Promise<{
-  ok: boolean;
-  version?: string;
-  queueDepth?: number;
-  gpuAvailable?: boolean;
-  reason?: string;
-}> {
-  try {
-    const res = await fetch(`${serviceUrl}/health`, {
-      headers: { Accept: "application/json" },
-    });
-    if (!res.ok) {
-      return { ok: false, reason: `${res.status} ${res.statusText}` };
-    }
-    const body = (await res.json()) as {
-      status?: string;
-      version?: string;
-      queue_depth?: number;
-      gpu_available?: boolean;
-    };
-    return {
-      ok: body.status === "ok",
-      version: body.version,
-      queueDepth: body.queue_depth,
-      gpuAvailable: body.gpu_available,
-    };
-  } catch (err) {
-    return {
-      ok: false,
-      reason: err instanceof Error ? err.message : String(err),
-    };
-  }
-}
-
-async function submitJob(
-  serviceUrl: string,
-  imagePath: string,
-  meta: Record<string, unknown>,
-  format: "ply" | "spz",
-): Promise<string> {
-  const buf = await readFile(imagePath);
-  const blob = new Blob([buf], { type: "image/jpeg" });
-  const form = new FormData();
-  form.append("image", blob, basename(imagePath));
-  form.append("meta", JSON.stringify({ outputFormat: format, ...meta }));
-  const res = await fetch(`${serviceUrl}/jobs`, {
-    method: "POST",
-    body: form,
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(
-      `submit failed: ${res.status} ${res.statusText} ${text.slice(0, 200)}`,
-    );
-  }
-  const body = (await res.json()) as { jobId?: unknown };
-  if (typeof body.jobId !== "string") {
-    throw new Error("submit response missing jobId");
-  }
-  return body.jobId;
-}
-
-async function pollJob(serviceUrl: string, jobId: string): Promise<SharpStatus> {
-  const res = await fetch(
-    `${serviceUrl}/jobs/${encodeURIComponent(jobId)}`,
-    { headers: { Accept: "application/json" } },
-  );
-  if (!res.ok) {
-    return {
-      state: "error",
-      message: `poll failed ${res.status}`,
-      code: "POLL_FAILED",
-    };
-  }
-  return (await res.json()) as SharpStatus;
-}
-
-async function downloadResult(
-  serviceUrl: string,
-  jobId: string,
-  destPath: string,
-): Promise<number> {
-  const res = await fetch(
-    `${serviceUrl}/jobs/${encodeURIComponent(jobId)}/result`,
-  );
-  if (!res.ok) {
-    throw new Error(`result download failed: ${res.status} ${res.statusText}`);
-  }
-  const buf = new Uint8Array(await res.arrayBuffer());
-  await writeFile(destPath, buf);
-  return buf.byteLength;
-}
-
-async function waitForCompletion(
-  serviceUrl: string,
-  jobId: string,
-  pollIntervalMs: number,
-  onProgress: (s: SharpStatus) => void,
-): Promise<SharpStatus> {
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    const s = await pollJob(serviceUrl, jobId);
-    onProgress(s);
-    if (s.state === "done" || s.state === "error" || s.state === "cancelled") {
-      return s;
-    }
-    await new Promise((r) => setTimeout(r, pollIntervalMs));
-  }
-}
-
-// ── Walking the staging tree ───────────────────────────────────────────────
-
 type FrameJob = {
   imagePath: string;
   locationId: string;
@@ -290,13 +169,10 @@ async function readSidecar(
   }
 }
 
-// ── Main ───────────────────────────────────────────────────────────────────
-
 async function main(): Promise<void> {
   const flags = parseFlags(argv.slice(2));
   const stagingDir = resolve(flags.stagingDir);
 
-  // Service health check first — fail fast if the bench isn't up.
   stdout.write(`SHARP service: ${flags.serviceUrl}\n`);
   const health = await isServiceUp(flags.serviceUrl);
   if (!health.ok) {
