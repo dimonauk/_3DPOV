@@ -17,12 +17,12 @@ export const dynamic = "force-dynamic";
  * regardless of whether a card with slug="preview" ever gets hosted.
  */
 
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Card } from "lib/ar/types";
 
-const ARLandingClient = dynamic(
+const ARLandingClient = nextDynamic(
   () => import("components/ar/ARLandingClient"),
   { ssr: false },
 );
