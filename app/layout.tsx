@@ -62,10 +62,7 @@ export const metadata = {
     title: `${NAME} — Light, held in the hand`,
     description: DESCRIPTION,
   },
-  robots: {
-    follow: true,
-    index: true,
-  },
+  robots: { follow: false, index: false },
 };
 
 export default async function RootLayout({
