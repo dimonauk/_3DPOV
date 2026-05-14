@@ -2,12 +2,18 @@ import type { ComponentType } from "react";
 import AddressableLeds from "components/codex/entries/addressable-leds";
 import ArtistsProof from "components/codex/entries/artists-proof";
 import AugmentedReality from "components/codex/entries/augmented-reality";
+import C2paContentProvenance from "components/codex/entries/c2pa-content-provenance";
 import CanonImageprografPro1100 from "components/codex/entries/canon-imageprograf-pro-1100";
+import Caustics from "components/codex/entries/caustics";
 import CertificateOfAuthenticity from "components/codex/entries/certificate-of-authenticity";
 import EditionSizeConventions from "components/codex/entries/edition-size-conventions";
+import GaussianSplatting from "components/codex/entries/gaussian-splatting";
+import GyroidSurfaces from "components/codex/entries/gyroid-surfaces";
 import HahnemuhlePhotoRag308 from "components/codex/entries/hahnemuhle-photo-rag-308";
 import KolorAutopanoHistorical from "components/codex/entries/kolor-autopano-historical";
+import LabanMovementAnalysis from "components/codex/entries/laban-movement-analysis";
 import LongExposurePhotography from "components/codex/entries/long-exposure-photography";
+import MarchingCubes from "components/codex/entries/marching-cubes";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
 import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
@@ -682,6 +688,209 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: AddressableLeds,
+  },
+  {
+    slug: "gaussian-splatting",
+    title: "Gaussian splatting",
+    category: "Capture (Immersive)",
+    date: "2026-05-14",
+    summary:
+      "Real-time radiance-field rendering by rasterising millions of 3D gaussian ellipsoids. Kerbl et al., SIGGRAPH 2023. The mechanism behind the studio's HoloWalk bubbles and the from-360-to-splat pipeline.",
+    seeAlso: [
+      "three-sixty-photography",
+      "one-press-three-sixty-capture",
+      "marching-cubes",
+      "virtual-reality",
+    ],
+    sources: [
+      {
+        label:
+          "Kerbl, Kopanas, Leimkühler & Drettakis: 3D Gaussian Splatting for Real-Time Radiance Field Rendering (SIGGRAPH 2023)",
+        url: "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+      },
+      {
+        label: "Wikipedia: Gaussian splatting",
+        url: "https://en.wikipedia.org/wiki/Gaussian_splatting",
+      },
+      {
+        label: "COLMAP — structure-from-motion / multi-view stereo",
+        url: "https://colmap.github.io/",
+      },
+      {
+        label: "Apple SHARP / 4D Gaussians research page",
+        url: "https://machinelearning.apple.com/research",
+      },
+      {
+        label: "Holo-Flow Studio: from-360-to-splat tutorial",
+      },
+    ],
+    Body: GaussianSplatting,
+  },
+  {
+    slug: "marching-cubes",
+    title: "Marching cubes",
+    category: "Production",
+    date: "2026-05-14",
+    summary:
+      "The 1987 algorithm that turns a 3D scalar field into a watertight triangulated surface. Lorensen & Cline at GE; SIGGRAPH 1987. The bridge between every voxel grid the studio generates and a printable mesh.",
+    seeAlso: [
+      "gyroid-surfaces",
+      "gaussian-splatting",
+      "long-exposure-photography",
+    ],
+    sources: [
+      {
+        label:
+          "Lorensen & Cline: Marching Cubes: A high resolution 3D surface construction algorithm (SIGGRAPH 1987)",
+        url: "https://dl.acm.org/doi/10.1145/37402.37422",
+      },
+      {
+        label: "Wikipedia: Marching cubes",
+        url: "https://en.wikipedia.org/wiki/Marching_cubes",
+      },
+      {
+        label: "scikit-image: marching_cubes implementation",
+        url: "https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.marching_cubes",
+      },
+      {
+        label:
+          "Ju, Losasso, Schaefer & Warren: Dual Contouring of Hermite Data (SIGGRAPH 2002)",
+        url: "https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf",
+      },
+    ],
+    Body: MarchingCubes,
+  },
+  {
+    slug: "gyroid-surfaces",
+    title: "Gyroid (triply periodic minimal surface)",
+    category: "Practice",
+    date: "2026-05-14",
+    summary:
+      "Alan Schoen's 1970 triply periodic minimal surface, identified at NASA's Electronics Research Center. The substrate the studio reuses across nine orders of magnitude — from photonic butterfly-scale resin to wall-sized PLA reliefs.",
+    seeAlso: ["marching-cubes"],
+    sources: [
+      {
+        label:
+          "Alan Schoen: Infinite Periodic Minimal Surfaces Without Self-Intersections (NASA TN D-5541, 1970)",
+        url: "https://ntrs.nasa.gov/citations/19700020472",
+      },
+      {
+        label: "Wikipedia: Gyroid",
+        url: "https://en.wikipedia.org/wiki/Gyroid",
+      },
+      {
+        label:
+          "Saranathan et al.: Structure, function, and self-assembly of single network gyroid photonic crystals in butterfly wing scales (PNAS 2010)",
+        url: "https://www.pnas.org/doi/10.1073/pnas.0909616107",
+      },
+      {
+        label: "Wikipedia: Triply periodic minimal surface",
+        url: "https://en.wikipedia.org/wiki/Triply_periodic_minimal_surface",
+      },
+      {
+        label: "Holo-Flow Studio: belt-printed wall reliefs",
+      },
+    ],
+    Body: GyroidSurfaces,
+  },
+  {
+    slug: "laban-movement-analysis",
+    title: "Laban Movement Analysis (Effort)",
+    category: "Practice",
+    date: "2026-05-14",
+    summary:
+      "Rudolf Laban's 1920s framework for describing how a movement is performed: Body, Space, Shape, Effort. The four Effort axes (Weight, Time, Space, Flow) are the coordinate system the studio's morphing pipeline interpolates inside.",
+    seeAlso: ["poi", "long-exposure-photography"],
+    sources: [
+      {
+        label: "Wikipedia: Laban Movement Analysis",
+        url: "https://en.wikipedia.org/wiki/Laban_movement_analysis",
+      },
+      {
+        label: "Wikipedia: Rudolf Laban",
+        url: "https://en.wikipedia.org/wiki/Rudolf_von_Laban",
+      },
+      {
+        label: "Wikipedia: Labanotation (Kinetography Laban)",
+        url: "https://en.wikipedia.org/wiki/Labanotation",
+      },
+      {
+        label: "Laban/Bartenieff Institute of Movement Studies",
+        url: "https://labaninstitute.org/",
+      },
+      {
+        label: "Holo-Flow Studio: choreographing-with-laban",
+      },
+    ],
+    Body: LabanMovementAnalysis,
+  },
+  {
+    slug: "caustics",
+    title: "Caustics",
+    category: "Capture",
+    date: "2026-05-14",
+    summary:
+      "The bright envelope a curved surface focuses light onto. Greek kaustikos, 'burning'. Arnold's catastrophe-theory classification of singularities; Pauly's 2014 algorithm for computing a surface that throws a chosen image. Substrate of the studio's caustic disc.",
+    seeAlso: ["long-exposure-photography", "marching-cubes"],
+    sources: [
+      {
+        label: "Wikipedia: Caustic (optics)",
+        url: "https://en.wikipedia.org/wiki/Caustic_(optics)",
+      },
+      {
+        label:
+          "Schwartzburg, Testuz, Tagliasacchi & Pauly: High-Contrast Computational Caustic Design (SIGGRAPH 2014)",
+        url: "https://lgg.epfl.ch/publications/2014/Mirrors/index.php",
+      },
+      {
+        label:
+          "Yue, Iwasaki, Chen, Dobashi & Nishita: Poisson-Based Continuous Surface Generation for Goal-Based Caustics (SIGGRAPH 2014)",
+        url: "https://dl.acm.org/doi/10.1145/2629541",
+      },
+      {
+        label: "Wikipedia: Catastrophe theory",
+        url: "https://en.wikipedia.org/wiki/Catastrophe_theory",
+      },
+      {
+        label: "Holo-Flow Studio: the caustic disc",
+      },
+    ],
+    Body: Caustics,
+  },
+  {
+    slug: "c2pa-content-provenance",
+    title: "C2PA (Content Provenance and Authenticity)",
+    category: "Commerce",
+    date: "2026-05-14",
+    summary:
+      "Open technical standard for cryptographically binding a media file to a verifiable record of its origin and history. Coalition founded February 2021; v1.0 spec January 2022; v2.0 2024. The provenance layer underneath the studio's editioned print certificates from 2026 forward.",
+    seeAlso: ["certificate-of-authenticity", "edition-size-conventions", "artists-proof"],
+    sources: [
+      {
+        label: "C2PA — official site",
+        url: "https://c2pa.org/",
+      },
+      {
+        label: "C2PA Technical Specification (latest)",
+        url: "https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html",
+      },
+      {
+        label: "Adobe Content Authenticity Initiative",
+        url: "https://contentauthenticity.org/",
+      },
+      {
+        label: "Wikipedia: Content Authenticity Initiative",
+        url: "https://en.wikipedia.org/wiki/Content_Authenticity_Initiative",
+      },
+      {
+        label: "Leica M11-P press release (first C2PA-capable camera)",
+        url: "https://leica-camera.com/en-int/photography/cameras/m/leica-m11-p",
+      },
+      {
+        label: "Holo-Flow Studio: provenance as discipline",
+      },
+    ],
+    Body: C2paContentProvenance,
   },
 ];
 
