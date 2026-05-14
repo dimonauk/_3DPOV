@@ -1,3 +1,4 @@
+import ElevenMammothsInThreeHours from "components/journal/entries/eleven-mammoths-in-three-hours";
 import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
 import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
@@ -5,6 +6,7 @@ import TheBenchInHttps from "components/journal/entries/the-bench-in-https";
 import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
 import TheFleetUpdateMiniFivePro from "components/journal/entries/the-fleet-update-mini-five-pro";
 import TheNightTheCameraWasRight from "components/journal/entries/the-night-the-camera-was-right";
+import TheNightTheFontsCameBack from "components/journal/entries/the-night-the-fonts-came-back";
 import TheQuestionTheCameraAnswered from "components/journal/entries/the-question-the-camera-answered";
 import TheWeekBefore from "components/journal/entries/the-week-before";
 import YearOneFire from "components/journal/entries/year-one-fire";
@@ -319,6 +321,65 @@ const ENTRIES: Entry[] = [
     excerpt:
       "Pre-flight notes. The drone fleet on the bench, the time-sync firmware for first flights, tomorrow's shoot.",
     Body: TheWeekBefore,
+  },
+  {
+    slug: "eleven-mammoths-in-three-hours",
+    title: "Eleven mammoths in three hours",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "A Wednesday refactor: eleven oversized code files split into smaller, single-purpose siblings under a 300-line cap. Same behaviour, smaller rooms.",
+    Body: ElevenMammothsInThreeHours,
+    related: [
+      {
+        href: "/codex/marching-cubes",
+        label: "Marching Cubes",
+        note: "The algorithm whose 723-line module was the biggest of the eleven.",
+      },
+      {
+        href: "/codex/gyroid-surfaces",
+        label: "Gyroid Surfaces",
+        note: "The test scene used to confirm the marching-cubes split was behaviour-preserving.",
+      },
+      {
+        href: "/journal/the-bench-in-https",
+        label: "The Bench in HTTPS",
+        note: "Another piece of quiet studio infrastructure, in the same workshop register.",
+      },
+    ],
+  },
+  {
+    slug: "the-night-the-fonts-came-back",
+    title: "The night the fonts came back",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "A Next.js 15.6 canary regression silently dropped the /_next/static prefix from inlined @font-face URLs. The page kept working in Times New Roman. The fix was one flag.",
+    Body: TheNightTheFontsCameBack,
+    related: [
+      {
+        href: "/atelier/rig-simulator",
+        label: "Rig Simulator",
+        note: "The SSR-safe three.js pattern this entry contrasts with — a noisier, easier-to-catch failure mode.",
+      },
+      {
+        href: "/journal/the-bench-in-https",
+        label: "The Bench in HTTPS",
+        note: "An adjacent piece of studio plumbing in the same workshop register.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://nextjs.org/docs/app/api-reference/components/font",
+        label: "next/font — official documentation",
+        note: "The self-hosting font helper that produces the hashed /_next/static/media URLs at build time.",
+      },
+      {
+        href: "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss",
+        label: "experimental.inlineCss — Next.js config reference",
+        note: "The flag whose canary behaviour caused the regression.",
+      },
+    ],
   },
   {
     slug: "the-bench-in-https",
