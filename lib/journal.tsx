@@ -2,6 +2,7 @@ import ElevenMammothsInThreeHours from "components/journal/entries/eleven-mammot
 import FirstLight from "components/journal/entries/first-light";
 import OnTheApparatus from "components/journal/entries/on-the-apparatus";
 import OnTheBenchYearTen from "components/journal/entries/on-the-bench-year-ten";
+import SplatsFromTheCamerasOutside from "components/journal/entries/splats-from-the-cameras-outside";
 import TheBenchInHttps from "components/journal/entries/the-bench-in-https";
 import TheFirstWallArray from "components/journal/entries/the-first-wall-array";
 import TheFleetUpdateMiniFivePro from "components/journal/entries/the-fleet-update-mini-five-pro";
@@ -378,6 +379,49 @@ const ENTRIES: Entry[] = [
         href: "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss",
         label: "experimental.inlineCss — Next.js config reference",
         note: "The flag whose canary behaviour caused the regression.",
+      },
+    ],
+  },
+  {
+    slug: "splats-from-the-cameras-outside",
+    title: "Splats from the cameras outside",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "Ninety stills from public CCTV feeds across London — Battersea, Burlington Arcade, the Wellington Arch — ran through Apple SHARP on the bench this afternoon and came out as 1.18-million-gaussian splats apiece. A field record of the research track of the studio's splat work, and the licence boundary that keeps it research.",
+    Body: SplatsFromTheCamerasOutside,
+    related: [
+      {
+        href: "/journal/the-bench-in-https",
+        label: "The Bench in HTTPS",
+        note: "The piece of plumbing that made the SHARP service reachable in the first place.",
+      },
+      {
+        href: "/research",
+        label: "Research — the notebook",
+        note: "Where the CCTV splats will live when their public surface is wired.",
+      },
+      {
+        href: "/journal/eleven-mammoths-in-three-hours",
+        label: "Eleven mammoths in three hours",
+        note: "Another Wednesday on the bench in the same workshop register.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://huggingface.co/pearsonkyle/Sharp-onnx",
+        label: "pearsonkyle/Sharp-onnx — Hugging Face",
+        note: "The ONNX export of Apple SHARP the studio's bench runs against. Includes the canonical inference script and the licence terms in full.",
+      },
+      {
+        href: "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+        label: "3D Gaussian Splatting for Real-Time Radiance Field Rendering — INRIA",
+        note: "The paper whose .ply layout became the de-facto standard for every web-side splat viewer.",
+      },
+      {
+        href: "https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html",
+        label: "ONNX Runtime — CUDA Execution Provider",
+        note: "The driver-side compatibility chart that determines which CUDA + cuDNN + cuBLAS combinations the bench needs to stitch together for a session.",
       },
     ],
   },
