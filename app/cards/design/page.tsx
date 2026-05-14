@@ -14,6 +14,15 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Card } from "lib/ar/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useAuth } from "components/auth/auth-provider";
+import {
+  saveCardClient,
+  getCardClient,
+  CardError,
+  type CardErrorCode,
+} from "lib/cards/firestore";
+import { signInWithGoogle } from "lib/firebase/client";
 
 // Sensible defaults so the page is never empty.
 const STARTER: Card = {
@@ -86,6 +95,74 @@ export default function CardDesignerPage() {
   const [slugDirty, setSlugDirty] = useState(false);
   const [copied, setCopied] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string>("");
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<{
+    code: CardErrorCode;
+    message: string;
+  } | null>(null);
+  const [savedSlug, setSavedSlug] = useState<string | null>(null);
+  const auth = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [editingExisting, setEditingExisting] = useState(false);
+
+  // If ?slug=existing-card is set, fetch that card from Firestore and
+  // pre-populate the form. Slug becomes read-only when editing existing.
+  useEffect(() => {
+    const slugParam = searchParams.get("slug");
+    if (!slugParam) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const doc = await getCardClient(slugParam);
+        if (cancelled) return;
+        if (doc) {
+          setCard(doc.card);
+          setSlugDirty(true); // prevent slug auto-derivation from clobbering
+          setEditingExisting(true);
+        }
+      } catch (err) {
+        console.warn("Failed to load card for editing:", err);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams]);
+
+  // Save handler: signs in via Google if not authed, then writes to Firestore.
+  const handleSave = async () => {
+    setSaveError(null);
+    setSaving(true);
+    try {
+      // Auto-prompt Google sign-in when not authed. The popup blocks
+      // until the user picks an account or cancels; on cancel, throw.
+      if (!auth.user) {
+        const cred = await signInWithGoogle();
+        if (!cred) {
+          throw new CardError(
+            "firebase-not-configured",
+            "Auth isn't configured on this deployment. Use the share URL instead.",
+          );
+        }
+      }
+      const saved = await saveCardClient(card);
+      setSavedSlug(saved.slug);
+      // Push to the public landing in a fresh window so the designer
+      // stays open for further edits.
+      window.open(/c/, "_blank", "noopener");
+    } catch (err) {
+      if (err instanceof CardError) {
+        setSaveError({ code: err.code, message: err.message });
+      } else {
+        const message =
+          err instanceof Error ? err.message : "Couldn't save.";
+        setSaveError({ code: "unknown", message });
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
 
   // Auto-derive slug from name unless the user has typed in the slug field.
   useEffect(() => {
@@ -224,6 +301,7 @@ export default function CardDesignerPage() {
                     update("slug", slugify(e.target.value) || "you");
                   }}
                   placeholder="you"
+                    disabled={editingExisting}
                   className="design-input font-mono"
                 />
               </Field>
@@ -304,6 +382,79 @@ export default function CardDesignerPage() {
                 </select>
               </Field>
             </Fieldset>
+
+            {/* ─── Save (permanent, requires Google sign-in) ──────── */}
+            <div className="rounded-sm border border-pink-200/30 bg-warm-black-900/40 p-5">
+              <div className="flex items-center justify-between">
+                <div className="chrome-label text-pink-200">
+                  Save permanently
+                </div>
+                {auth.user ? (
+                  <span className="text-xs text-chrome-400">
+                    Signed in as {auth.user.displayName ?? auth.user.email}
+                  </span>
+                ) : (
+                  <span className="text-xs text-chrome-500">
+                    Google sign-in required
+                  </span>
+                )}
+              </div>
+              <p className="mt-2 text-sm text-chrome-300">
+                Claim a permanent vanity URL at{" "}
+                <code className="text-pink-200">
+                  holoflow.co.uk/c/{card.slug || "you"}
+                </code>
+                . Saved cards live in your account; you can edit or delete
+                them any time. Image-tracking AR (with a printed card) is
+                still studio-hosted only.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={handleSave}
+                  disabled={saving || !auth.configured}
+                  className="rounded-full border border-pink-200/60 bg-pink-200/30 px-5 py-2 chrome-label text-pink-50 transition-colors hover:border-pink-200 hover:bg-pink-200/40 disabled:opacity-50"
+                >
+                  {saving
+                    ? "Saving…"
+                    : auth.user
+                      ? "Save my card"
+                      : "Sign in with Google + save"}
+                </button>
+                {auth.user && (
+                  <Link
+                    href="/cards/mine"
+                    className="rounded-full border border-chrome-400/30 px-5 py-2 chrome-label text-chrome-200 transition-colors hover:border-chrome-300 hover:text-chrome-100"
+                  >
+                    My cards &rarr;
+                  </Link>
+                )}
+              </div>
+              {savedSlug && !saveError && (
+                <p className="mt-3 rounded-sm border border-pink-200/40 bg-pink-200/10 px-3 py-2 text-xs text-pink-100">
+                  Saved. Live at{" "}
+                  <Link
+                    href={`/c/${savedSlug}`}
+                    target="_blank"
+                    className="underline underline-offset-4"
+                  >
+                    /c/{savedSlug}
+                  </Link>
+                  .
+                </p>
+              )}
+              {saveError && (
+                <p className="mt-3 rounded-sm border border-red-300/40 bg-red-300/10 px-3 py-2 text-xs text-red-100">
+                  {saveError.message}
+                </p>
+              )}
+              {!auth.configured && (
+                <p className="mt-3 text-xs text-chrome-500">
+                  Auth isn&rsquo;t configured on this deployment. The share-URL
+                  flow above still works without an account.
+                </p>
+              )}
+            </div>
 
             {/* ─── Actions ──────────────────────────────────────────── */}
             <div className="rounded-sm border border-pink-200/30 bg-pink-200/[0.04] p-5">

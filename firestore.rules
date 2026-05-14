@@ -31,6 +31,55 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // AR business cards — slug is the doc ID.
+    //
+    // Read: anyone (the card landing pages at /c/<slug> must render for
+    //   unauthenticated visitors).
+    // Create: signed-in users only, and the new doc must claim them as
+    //   owner. Slug is the doc ID, so duplicate slugs naturally fail
+    //   via create-only-when-missing semantics combined with the
+    //   "only your own" rule on update.
+    // Update: only the existing owner.
+    // Delete: only the existing owner.
+    //
+    // Shape validation: must include the slug, the ownerUid (== caller),
+    // the card payload, timestamps, and the flags. Card payload itself
+    // is not deep-validated by rules; size cap (5KB serialised) is the
+    // backstop. Studio-hosted cards (hosted: true) cannot be created or
+    // modified from the client — only via the admin SDK with the
+    // service-account credential.
+    match /cards/{slug} {
+      allow read: if true;
+
+      allow create: if
+        request.auth != null
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.slug == slug
+        && request.resource.data.card is map
+        && request.resource.data.createdAt is string
+        && request.resource.data.updatedAt is string
+        && request.resource.data.public is bool
+        && (
+          !('hosted' in request.resource.data)
+          || request.resource.data.hosted == false
+        )
+        && slug.matches('^[a-z0-9][a-z0-9-]{1,31}$');
+
+      allow update: if
+        request.auth != null
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.slug == slug
+        && (
+          !('hosted' in request.resource.data)
+          || request.resource.data.hosted == resource.data.hosted
+        );
+
+      allow delete: if
+        request.auth != null
+        && resource.data.ownerUid == request.auth.uid;
+    }
+
     // The Rookery — public read, signed-in write, no edits, no
     // deletes. What you put in the air, you put in the air.
     match /threads/{threadId} {

@@ -67,6 +67,7 @@ export const GROUPS: NavGroup[] = [
       { label: "The Rookery", href: "/rookery" },
       { label: "About the Rookery", href: "/rookery/about" },
       { label: "Tiers", href: "/rookery/tiers" },
+      { label: "My cards", href: "/cards/mine" },
       { label: "Sign in", href: "/signin" },
     ],
   },
