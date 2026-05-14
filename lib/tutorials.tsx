@@ -1,6 +1,8 @@
 import BuildingAPovLedRig from "components/tutorials/entries/building-a-pov-led-rig";
 import CalibratingTheImageprografPro1100 from "components/tutorials/entries/calibrating-the-imageprograf-pro-1100";
+import EditioningASingleExposure from "components/tutorials/entries/editioning-a-single-exposure";
 import From360ToSplatTutorial from "components/tutorials/entries/from-360-to-splat";
+import FromJamcamToMesh from "components/tutorials/entries/from-jamcam-to-mesh";
 import FromPhotographToObject from "components/tutorials/entries/from-photograph-to-object";
 import LightingAWaveguideObject from "components/tutorials/entries/lighting-a-waveguide-object";
 import ProgrammingPovFrames from "components/tutorials/entries/programming-pov-frames";
@@ -540,6 +542,142 @@ const ENTRIES: Entry[] = [
         href: "https://www.dji.com/360",
         label: "DJI Osmo 360 — product page",
         note: "The studio's current 360 camera. Two square 1/1.1-inch sensors, glass-and-sensor before software.",
+      },
+    ],
+  },
+  {
+    slug: "from-jamcam-to-mesh",
+    title: "From JamCam to mesh: building a 3D archive from public CCTV",
+    date: "2026-05-14",
+    kind: "tutorial",
+    excerpt:
+      "Cross-reference TfL JamCams against HoloWalk pins, poll the stills on a schedule, and feed each frame into Apple SHARP or InstantMesh on the bench. A continuously refreshing 3D archive of London at street level.",
+    Body: FromJamcamToMesh,
+    related: [
+      {
+        href: "/tutorials/from-360-to-splat",
+        label: "Tutorial — From 360 to Splat",
+        note: "The sibling pipeline. Different input camera, same mesh-from-image instinct.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The earlier flat-to-volumetric pipeline. Different model class, same destination.",
+      },
+      {
+        href: "/holo-walk",
+        label: "HoloWalk",
+        note: "The sculpture-pin geography the camera roster is matched against.",
+      },
+      {
+        href: "/articles/ungrounded",
+        label: "Ungrounded",
+        note: "The architectural framing of the studio leaving the 2D plane.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://api.tfl.gov.uk/Place/Type/JamCam",
+        label: "TfL JamCams — Place API endpoint",
+        note: "Live JSON roster of every JamCam in London, with lat/lng and current still URL. No auth, no key.",
+      },
+      {
+        href: "https://api-portal.tfl.gov.uk/api-details#api=Place&operation=Place_PlacesByTypeByTypesQueryActiveOnly",
+        label: "TfL Unified API portal — Place endpoint",
+        note: "The official documentation for the endpoint above, including query parameters and response shape.",
+      },
+      {
+        href: "https://github.com/apple/ml-sharp",
+        label: "Apple ml-sharp — official repository",
+        note: "Source code and weights link for the archival-path model. Research-only licence; check before publishing outputs.",
+      },
+      {
+        href: "https://github.com/TencentARC/InstantMesh",
+        label: "InstantMesh — official repository",
+        note: "The print-safe path. Apache-2.0 licence, feed-forward mesh from a single image, ~30s per frame on a 3080 Ti.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gaussian_splatting",
+        label: "Gaussian splatting — Wikipedia",
+        note: "The rendering technique SHARP produces. Read this if the .ply format does not feel familiar.",
+      },
+      {
+        href: "https://tailscale.com/kb/1019/subnets",
+        label: "Tailscale — subnet routing docs",
+        note: "How the studio exposes the bench services across the tailnet as mesh-bench and sharp-bench.",
+      },
+    ],
+  },
+  {
+    slug: "editioning-a-single-exposure",
+    title: "Editioning a single exposure",
+    date: "2026-05-14",
+    kind: "tutorial",
+    excerpt:
+      "The boring, paperwork-shaped part of selling photographs. Edition size, numbering convention, master-file hashing, certificates of authenticity, 3-2-2 archival storage, and what to do when the edition runs out (you don't reprint, you retire).",
+    Body: EditioningASingleExposure,
+    related: [
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Tutorial — Calibrating the imagePROGRAF PRO-1100",
+        note: "The print workflow upstream of this one. Identical copies require identical calibration.",
+      },
+      {
+        href: "/codex/edition-size-conventions",
+        label: "Codex — Edition size conventions",
+        note: "Why 15 to 30 + 2 AP, and what the other sizes signal.",
+      },
+      {
+        href: "/codex/certificate-of-authenticity",
+        label: "Codex — Certificate of authenticity",
+        note: "The full field list the studio's CoA template carries.",
+      },
+      {
+        href: "/codex/artists-proof",
+        label: "Codex — Artist's proof",
+        note: "Why the studio keeps two, sells them last, and never makes a third.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The editions the paperwork exists to serve.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Edition_(printmaking)",
+        label: "Edition (printmaking) — Wikipedia",
+        note: "Where the numbering convention came from, and the 19th-century intaglio practice that justifies it.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Artist%27s_proof",
+        label: "Artist's proof — Wikipedia",
+        note: "Foundational article on the AP convention and the secondary-market behaviour around it.",
+      },
+      {
+        href: "https://www.hahnemuehle.com/en/digital-papers/fineart-photo/fineart-photo-rag.html",
+        label: "Hahnemühle Photo Rag 308 — product page",
+        note: "The paper the studio's default certificates declare. Rated for >100 years archival under proper storage.",
+      },
+      {
+        href: "https://www.canson-infinity.com/en/products/baryta-prestige-ii",
+        label: "Canson Baryta Prestige II — product page",
+        note: "The alternative paper of record for the studio's gloss-finish editions.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/SHA-2",
+        label: "SHA-256 — Wikipedia",
+        note: "The hashing algorithm used to bind a certificate to a specific master file.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Linear_Tape-Open",
+        label: "LTO (Linear Tape-Open) — Wikipedia",
+        note: "The cold-storage medium the studio uses for one of the three master copies.",
+      },
+      {
+        href: "https://www.archivalmethods.com/",
+        label: "Archival Methods — conservation supplies",
+        note: "Sleeves, conservation boxes, and the rest of the dark-cupboard kit. The studio buys from them.",
       },
     ],
   },
