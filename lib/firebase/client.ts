@@ -1,5 +1,10 @@
 import { type FirebaseApp, getApp, getApps, initializeApp } from "firebase/app";
 import {
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider,
+  type AppCheck,
+} from "firebase/app-check";
+import {
   GoogleAuthProvider,
   signInWithPopup,
   type Auth,
@@ -13,6 +18,14 @@ import { type Firestore, getFirestore } from "firebase/firestore";
  * vars aren't set (e.g. local dev without .env.local) the exports
  * return null and consumers degrade gracefully rather than the build
  * exploding.
+ *
+ * # App Check
+ * When NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY is set, App Check is
+ * initialised with reCAPTCHA Enterprise once per session. This makes
+ * Firestore + Auth refuse requests that didn't pass the reCAPTCHA
+ * challenge (drive-by abuse with stolen keys becomes useless).
+ * Localhost development auto-uses the debug-token bypass; production
+ * uses the live key.
  */
 
 const config = {
@@ -24,12 +37,50 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+const recaptchaSiteKey = process.env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY;
+
 let _app: FirebaseApp | null = null;
 let _auth: Auth | null = null;
 let _db: Firestore | null = null;
+let _appCheck: AppCheck | null = null;
 
 export function isFirebaseConfigured(): boolean {
   return Boolean(config.apiKey && config.projectId && config.appId);
+}
+
+/**
+ * Initialise Firebase App Check with reCAPTCHA Enterprise. Idempotent
+ * (only runs once per session); silently skips when the site key isn't
+ * configured, when running server-side, or when App Check has already
+ * been initialised.
+ *
+ * Localhost development needs the debug-token bypass — set it before
+ * the SDK auto-detects the deployment surface. Open the browser
+ * console after a refresh and Firebase logs a one-time debug token
+ * you paste into the Firebase Console → App Check → Apps tab to
+ * whitelist your machine.
+ */
+function initAppCheck(app: FirebaseApp): void {
+  if (_appCheck) return;
+  if (!recaptchaSiteKey) return;
+  if (typeof window === "undefined") return;
+
+  if (process.env.NODE_ENV === "development") {
+    // The debug-token flag must be set before initializeAppCheck.
+    // See https://firebase.google.com/docs/app-check/web/debug-provider
+    (globalThis as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string }).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+  }
+
+  try {
+    _appCheck = initializeAppCheck(app, {
+      provider: new ReCaptchaEnterpriseProvider(recaptchaSiteKey),
+      isTokenAutoRefreshEnabled: true,
+    });
+  } catch (err) {
+    // Safe to swallow: App Check init failure should never block the
+    // auth/firestore code paths. Surfaces in dev console for debugging.
+    console.warn("[firebase] App Check init failed; continuing without it.", err);
+  }
 }
 
 export function getFirebaseApp(): FirebaseApp | null {
@@ -45,6 +96,7 @@ export function getFirebaseApp(): FirebaseApp | null {
         messagingSenderId: config.messagingSenderId,
         appId: config.appId!,
       });
+  initAppCheck(_app);
   return _app;
 }
 
