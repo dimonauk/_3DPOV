@@ -9,11 +9,7 @@
  * the same `respond()` surface.
  */
 
-import {
-  GoogleGenerativeAI,
-  SchemaType,
-  type ResponseSchema,
-} from "@google/generative-ai";
+import { GoogleGenAI, Type, type Schema } from "@google/genai";
 
 import { envOrThrow, isConfigured } from "lib/env";
 import { agentStore } from "lib/state/agent";
@@ -74,18 +70,16 @@ Output a JSON object honouring the response schema:
   return contextSuffix ? `${base}\n\nCONTEXT: ${contextSuffix}` : base;
 }
 
-const DIALOGUE_RESPONSE_SCHEMA: ResponseSchema = {
-  type: SchemaType.OBJECT,
+const DIALOGUE_RESPONSE_SCHEMA: Schema = {
+  type: Type.OBJECT,
   properties: {
-    text: { type: SchemaType.STRING },
+    text: { type: Type.STRING },
     intent: {
-      type: SchemaType.STRING,
-      format: "enum",
+      type: Type.STRING,
       enum: ["greet", "answer", "redirect", "refuse", "tease", "reflect", "invite"],
     },
     mode: {
-      type: SchemaType.STRING,
-      format: "enum",
+      type: Type.STRING,
       enum: ["amber", "azure", "amethyst", "crimson", "veridian"],
     },
   },
@@ -99,24 +93,22 @@ async function callGemini(
 ): Promise<string> {
   const apiKey = envOrThrow("GOOGLE_AI_API_KEY");
   const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.5-flash";
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({
+  const ai = new GoogleGenAI({ apiKey });
+  const chat = ai.chats.create({
     model: modelName,
-    systemInstruction: systemPrompt,
-    generationConfig: {
+    config: {
+      systemInstruction: systemPrompt,
       temperature: 0.75,
       responseMimeType: "application/json",
       responseSchema: DIALOGUE_RESPONSE_SCHEMA,
     },
-  });
-  const chat = model.startChat({
     history: history.map((h) => ({
       role: h.role,
       parts: [{ text: h.text }],
     })),
   });
-  const result = await chat.sendMessage(userText);
-  return result.response.text();
+  const response = await chat.sendMessage({ message: userText });
+  return response.text ?? "";
 }
 
 function parseResponse(raw: string): RespondResult {

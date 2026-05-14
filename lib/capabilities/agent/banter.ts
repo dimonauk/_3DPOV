@@ -11,11 +11,7 @@
  * any active subset of the cast can banter, with no hardcoded triple.
  */
 
-import {
-  GoogleGenerativeAI,
-  SchemaType,
-  type ResponseSchema,
-} from "@google/generative-ai";
+import { GoogleGenAI, Type, type Schema } from "@google/genai";
 
 import type { CharacterBible } from "lib/cast/aura";
 import type { ChronoModeSlug } from "lib/chrono-protocol";
@@ -143,21 +139,20 @@ type RawTurn = {
   text?: string;
 };
 
-const RESPONSE_SCHEMA: ResponseSchema = {
-  type: SchemaType.OBJECT,
+const RESPONSE_SCHEMA: Schema = {
+  type: Type.OBJECT,
   properties: {
     turns: {
-      type: SchemaType.ARRAY,
+      type: Type.ARRAY,
       items: {
-        type: SchemaType.OBJECT,
+        type: Type.OBJECT,
         properties: {
-          speaker: { type: SchemaType.STRING },
+          speaker: { type: Type.STRING },
           emotion: {
-            type: SchemaType.STRING,
-            format: "enum",
+            type: Type.STRING,
             enum: ["neutral", "happy", "angry", "fear", "excited", "sad"],
           },
-          text: { type: SchemaType.STRING },
+          text: { type: Type.STRING },
         },
         required: ["speaker", "emotion", "text"],
       },
@@ -172,18 +167,18 @@ async function callGemini(
 ): Promise<string> {
   const apiKey = envOrThrow("GOOGLE_AI_API_KEY");
   const modelName = process.env.GOOGLE_AI_MODEL ?? "gemini-2.5-flash";
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({
+  const ai = new GoogleGenAI({ apiKey });
+  const response = await ai.models.generateContent({
     model: modelName,
-    systemInstruction: systemPrompt,
-    generationConfig: {
+    contents: userPayload,
+    config: {
+      systemInstruction: systemPrompt,
       temperature: 0.8,
       responseMimeType: "application/json",
       responseSchema: RESPONSE_SCHEMA,
     },
   });
-  const result = await model.generateContent(userPayload);
-  return result.response.text();
+  return response.text ?? "";
 }
 
 // ---------- parsing ----------
