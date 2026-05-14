@@ -14,8 +14,9 @@ export function generateStaticParams() {
   return algorithms.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const algo = getAlgorithm(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const algo = getAlgorithm(slug);
   if (!algo) return { title: "Algorithm — not found" };
   return {
     title: `${algo.name} — algorithm cabinet`,
@@ -103,12 +104,13 @@ const PARAM_DESCRIPTIONS: Record<string, string> = {
     "0 to 1. Drives tube radius / fill weight. Higher values produce a chunkier, more visually-solid output.",
 };
 
-export default function AlgorithmDetailPage({
+export default async function AlgorithmDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const algo = getAlgorithm(params.slug);
+  const { slug } = await params;
+  const algo = getAlgorithm(slug);
   if (!algo) notFound();
 
   const ported = isPorted(algo.slug);

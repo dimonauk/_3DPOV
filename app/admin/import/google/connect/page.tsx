@@ -22,15 +22,14 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function ConnectGooglePage({
+export default async function ConnectGooglePage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const status =
-    typeof searchParams?.status === "string" ? searchParams.status : undefined;
-  const error =
-    typeof searchParams?.error === "string" ? searchParams.error : undefined;
+  const sp = (await searchParams) ?? {};
+  const status = typeof sp.status === "string" ? sp.status : undefined;
+  const error = typeof sp.error === "string" ? sp.error : undefined;
 
   return (
     <main className="min-h-screen bg-warm-black-950 px-6 py-16 font-mono text-chrome-200">
