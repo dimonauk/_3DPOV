@@ -1,5 +1,10 @@
 "use client";
 
+// Opt out of static prerendering: useSearchParams() / useAuth() /
+// signInWithGoogle() all require runtime so static generation is
+// pointless here.
+export const dynamic = "force-dynamic";
+
 /**
  * app/cards/design/page.tsx — In-browser AR card designer.
  *
