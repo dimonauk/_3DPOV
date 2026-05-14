@@ -12,81 +12,38 @@
  *   - this — Apple SHARP per keyframe, 4DGaussians for temporal
  *     coherence, stitched into a stereo-MP4 + signed .4dgs bundle.
  *
- * # Why this shape
- * Per-frame splat generation is minutes-long for a few-second clip.
- * The handle exposes both whole-job status and a per-frame progress
- * channel (`framesDone / framesTotal`) so the calling UI can render a
- * frame-counter live. Cancellation is honoured between frames. All
- * errors are typed; `SharpServiceUnreachableError` is re-used from
+ * Per-frame splat generation is minutes-long for a few-second clip. The
+ * handle exposes both whole-job status and a per-frame progress channel
+ * (`framesDone / framesTotal`) so the calling UI can render a frame-
+ * counter live. Cancellation is honoured between frames. All errors are
+ * typed; `SharpServiceUnreachableError` is re-used from
  * `commerce.sharp-job` so the UI's degraded-mode copy works for both.
+ *
+ * Types live in `./sharp-video-job-types`; JSON parsing + URL helpers
+ * in `./sharp-video-job-parser`. Both are re-exported here so the
+ * public import path stays stable.
  *
  * Full purpose in sharp-video-job.PURPOSE.md.
  */
 
-import { envOrUndefined } from "lib/env";
 import { SharpServiceUnreachableError } from "./sharp-job";
+import {
+  baseUrl,
+  errMessage,
+  narrow,
+  safeText,
+} from "./sharp-video-job-parser";
+import type {
+  SharpVideoJobHandle,
+  SharpVideoJobInput,
+  SharpVideoJobStatus,
+} from "./sharp-video-job-types";
 
-const SHARP_VIDEO_DEFAULT_BASE_URL = "http://localhost:7843";
-
-function baseUrl(): string {
-  return (
-    envOrUndefined("SHARP_VIDEO_SERVICE_URL") ?? SHARP_VIDEO_DEFAULT_BASE_URL
-  );
-}
-
-export type SharpVideoJobInput = {
-  videoBlob: Blob;
-  /** 1 keyframe every N input frames. Higher = faster + coarser. Default 6. */
-  keyframeStride?: number;
-  /** Output formats to bundle. */
-  outputs?: {
-    splat4d?: boolean;
-    stereoMp4?: boolean;
-    usdzKeyframes?: boolean;
-  };
-  meta?: {
-    title?: string;
-    captureDate?: string;
-    locationId?: string;
-    photographSlug?: string;
-  };
-};
-
-export type SharpVideoJobStatus =
-  | { state: "queued"; positionInQueue: number; submittedAt: string }
-  | {
-      state: "decoding";
-      framesTotal: number | null;
-      progressPct: number;
-    }
-  | {
-      state: "running";
-      framesDone: number;
-      framesTotal: number;
-      progressPct: number;
-      etaSeconds: number | null;
-      currentFrameStage: "sharp" | "4dgs-fit" | "stitch";
-    }
-  | {
-      state: "done";
-      bundle: {
-        splat4dUrl?: string;
-        stereoMp4Url?: string;
-        usdzKeyframesUrl?: string;
-      };
-      framesTotal: number;
-      durationSeconds: number;
-      sizeBytes: number;
-    }
-  | { state: "error"; message: string; code?: string }
-  | { state: "cancelled" };
-
-export type SharpVideoJobHandle = {
-  jobId: string;
-  poll(): Promise<SharpVideoJobStatus>;
-  cancel(): Promise<void>;
-  waitForCompletion(intervalMs?: number): Promise<SharpVideoJobStatus>;
-};
+export type {
+  SharpVideoJobHandle,
+  SharpVideoJobInput,
+  SharpVideoJobStatus,
+} from "./sharp-video-job-types";
 
 /** Probe service reachability + version. Never throws. */
 export async function isSharpVideoServiceAvailable(): Promise<{
@@ -227,98 +184,5 @@ async function waitLoop(
       return status;
     }
     await new Promise((r) => setTimeout(r, delay));
-  }
-}
-
-function narrow(
-  body: Record<string, unknown>,
-  jobId: string,
-): SharpVideoJobStatus {
-  const state = body["state"];
-  if (state === "queued") {
-    return {
-      state: "queued",
-      positionInQueue: num(body["positionInQueue"], 0),
-      submittedAt: str(body["submittedAt"], new Date(0).toISOString()),
-    };
-  }
-  if (state === "decoding") {
-    const totalRaw = body["framesTotal"];
-    return {
-      state: "decoding",
-      framesTotal: typeof totalRaw === "number" ? totalRaw : null,
-      progressPct: num(body["progressPct"], 0),
-    };
-  }
-  if (state === "running") {
-    const etaRaw = body["etaSeconds"];
-    const stageRaw = body["currentFrameStage"];
-    const stage: "sharp" | "4dgs-fit" | "stitch" =
-      stageRaw === "4dgs-fit" || stageRaw === "stitch" ? stageRaw : "sharp";
-    return {
-      state: "running",
-      framesDone: num(body["framesDone"], 0),
-      framesTotal: num(body["framesTotal"], 0),
-      progressPct: num(body["progressPct"], 0),
-      etaSeconds: typeof etaRaw === "number" ? etaRaw : null,
-      currentFrameStage: stage,
-    };
-  }
-  if (state === "done") {
-    const bundleRaw = body["bundle"];
-    const bundle: SharpVideoJobStatus & { state: "done" } = {
-      state: "done",
-      bundle: extractBundle(bundleRaw, jobId),
-      framesTotal: num(body["framesTotal"], 0),
-      durationSeconds: num(body["durationSeconds"], 0),
-      sizeBytes: num(body["sizeBytes"], 0),
-    };
-    return bundle;
-  }
-  if (state === "cancelled") return { state: "cancelled" };
-  const code = body["code"];
-  return {
-    state: "error",
-    message: str(body["message"], `unknown state: ${String(state)}`),
-    ...(typeof code === "string" ? { code } : {}),
-  };
-}
-
-function extractBundle(
-  raw: unknown,
-  jobId: string,
-): { splat4dUrl?: string; stereoMp4Url?: string; usdzKeyframesUrl?: string } {
-  const out: {
-    splat4dUrl?: string;
-    stereoMp4Url?: string;
-    usdzKeyframesUrl?: string;
-  } = {};
-  if (raw && typeof raw === "object") {
-    const r = raw as Record<string, unknown>;
-    if (typeof r["splat4dUrl"] === "string") out.splat4dUrl = r["splat4dUrl"];
-    if (typeof r["stereoMp4Url"] === "string") out.stereoMp4Url = r["stereoMp4Url"];
-    if (typeof r["usdzKeyframesUrl"] === "string")
-      out.usdzKeyframesUrl = r["usdzKeyframesUrl"];
-  }
-  if (!out.splat4dUrl) {
-    out.splat4dUrl = `${baseUrl()}/jobs/${encodeURIComponent(jobId)}/result/splat4d`;
-  }
-  return out;
-}
-
-function num(v: unknown, fallback: number): number {
-  return typeof v === "number" && Number.isFinite(v) ? v : fallback;
-}
-function str(v: unknown, fallback: string): string {
-  return typeof v === "string" && v.length > 0 ? v : fallback;
-}
-function errMessage(e: unknown): string {
-  return e instanceof Error ? e.message : "unknown network error";
-}
-async function safeText(res: Response): Promise<string> {
-  try {
-    return await res.text();
-  } catch {
-    return "";
   }
 }
