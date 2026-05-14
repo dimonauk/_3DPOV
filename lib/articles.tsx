@@ -14,6 +14,7 @@ import NeoLondonChronoProtocol from "components/articles/entries/neo-london-chro
 import NineSecondsPromptToPrintable from "components/articles/entries/nine-seconds-prompt-to-printable";
 import OceanAsWardrobe from "components/articles/entries/ocean-as-wardrobe";
 import OnEditioningPhotographs from "components/articles/entries/on-editioning-photographs";
+import OnSplatLicences from "components/articles/entries/on-splat-licences";
 import OnTheShouldersOfOpenSource from "components/articles/entries/on-the-shoulders-of-open-source";
 import ProvenanceAsDisciplineArticle from "components/articles/entries/provenance-as-discipline";
 import SellotapeAndTiltBrush from "components/articles/entries/sellotape-and-tilt-brush";
@@ -363,6 +364,59 @@ const ENTRIES: Entry[] = [
         href: "https://lightpaintinghub.com/",
         label: "Light Painting Hub",
         note: "Broader community gallery and reference.",
+      },
+    ],
+  },
+  {
+    slug: "on-splat-licences",
+    title: "On Splat Licences",
+    date: "2026-05-14",
+    kind: "article",
+    excerpt:
+      "Three pipelines, three licences, one record per splat. Why the studio runs Apple SHARP for the research track, Postshot or Luma for commerce, and its own POV rigs for original IP — and how the licence travels with the record so the architecture honours the boundary by construction.",
+    Body: OnSplatLicences,
+    related: [
+      {
+        href: "/journal/splats-from-the-cameras-outside",
+        label: "Splats from the cameras outside",
+        note: "The bench note that came out of the first SHARP batch — the practical companion to this piece.",
+      },
+      {
+        href: "/articles/provenance-as-discipline",
+        label: "Provenance as Discipline",
+        note: "The editioned-print equivalent. Same shape of thinking, different artefact.",
+      },
+      {
+        href: "/research",
+        label: "Research — the notebook",
+        note: "Where the research-licenced splats land.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "An adjacent acknowledgement: most of the libraries the studio uses are open source, and the studio's relationship to them is part of the practice.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+        label: "3D Gaussian Splatting for Real-Time Radiance Field Rendering — INRIA",
+        note: "The 2023 paper whose .ply layout became the de-facto standard for the field.",
+      },
+      {
+        href: "https://github.com/apple/ml-sharp",
+        label: "Apple ml-sharp — research repository",
+        note: "The Apple research release whose ONNX export the studio runs on the bench. Licence terms are in the repository.",
+      },
+      {
+        href: "https://www.jawset.com/",
+        label: "Jawset Postshot — gaussian-splat trainer",
+        note: "Jascha Wetzel's Windows-native trainer; the studio's primary commercial-track splat pipeline.",
+      },
+      {
+        href: "https://lumalabs.ai/",
+        label: "Luma Labs — hosted gaussian-splat API",
+        note: "The third-party commercial path the studio uses when the per-job cost is worth the speed and quality.",
       },
     ],
   },

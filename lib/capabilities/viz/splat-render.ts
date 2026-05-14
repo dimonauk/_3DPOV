@@ -11,19 +11,27 @@
  * Full purpose in splat-render.PURPOSE.md.
  *
  * # Renderers
+ * Web side is intentionally single-engine (three.js) so the site keeps
+ * one WebGL/WebGPU context, one set of dependencies, one mental model.
+ * Two three.js gaussian-splat libraries are listed so we can A/B them
+ * without surface code knowing; if neither holds up under load,
+ * branching out (PlayCanvas SuperSplat in an iframe, splat.js, etc.)
+ * happens here later.
+ *
  * - "spark-js" — sparkjsdev/spark gaussian-splat renderer on three.js.
- *   In-process, fits naturally inside R3F scenes. Default for product
- *   surfaces.
- * - "supersplat-iframe" — PlayCanvas SuperSplat editor in an iframe.
- *   Useful for journal entries / research pages where the user wants
- *   to inspect / annotate. No local code to maintain.
+ *   Default for product surfaces. R3F-compatible.
+ * - "gsplat-js" — `@mkkellogg/gaussian-splat-3d` on three.js. Alternative
+ *   three.js implementation; useful when a surface needs slightly
+ *   different camera / animation primitives or wants a second
+ *   implementation to compare against.
  * - "postshot-binary" — open the file in Postshot via a system-level
  *   protocol handler. Studio-bench only; not for public surfaces.
  *
  * # PLY flavour requirements
- * Each renderer has different tolerance for non-standard PLY layouts.
- * Spark and SuperSplat require `standard-3dgs` flavour. SHARP's raw
- * PLYs must be converted first (`convert_sharp_ply.py`).
+ * Both web renderers require the standard INRIA-3DGS PLY layout.
+ * SHARP's raw PLYs must be converted first via `convert_sharp_ply.py`
+ * (in `D:/The_Hangar/engines/sharp-onnx/`) before they reach a web
+ * target.
  *
  * # Posture
  * Foundation phase: types + props surface only. Concrete React
@@ -36,7 +44,7 @@ import type { SplatPlyFlavour, SplatRecord } from "./splat-generate";
 
 export type SplatRenderer =
   | "spark-js"
-  | "supersplat-iframe"
+  | "gsplat-js"
   | "postshot-binary";
 
 /**
@@ -48,7 +56,7 @@ export type SplatRendererTier = "web" | "bench-only";
 export const RENDERER_TIER: Readonly<Record<SplatRenderer, SplatRendererTier>> =
   {
     "spark-js": "web",
-    "supersplat-iframe": "web",
+    "gsplat-js": "web",
     "postshot-binary": "bench-only",
   };
 
@@ -60,7 +68,7 @@ export const RENDERER_FLAVOURS: Readonly<
   Record<SplatRenderer, readonly SplatPlyFlavour[]>
 > = {
   "spark-js": ["standard-3dgs"],
-  "supersplat-iframe": ["standard-3dgs"],
+  "gsplat-js": ["standard-3dgs"],
   // Postshot 1.1.0 imports standard PLYs cleanly; SHARP's superset
   // header trips it. Treat as standard-only for safety.
   "postshot-binary": ["standard-3dgs"],
@@ -91,15 +99,15 @@ export type SplatRenderError = {
 };
 
 /**
- * Decide which renderer to use for a given record + surface context.
- * Returns "spark-js" by default; downgrades to "supersplat-iframe"
- * when the host page can't run an R3F scene (e.g. plain markdown
- * surface). Throws when the record's flavour is incompatible with
- * every web renderer.
+ * Decide which renderer to use for a given record. Defaults to
+ * "spark-js" on the web side; bench-only contexts (Electron-shell
+ * studio tools, not the public site) can override to "postshot-binary".
+ * Throws when the record's PLY flavour is incompatible with web
+ * renderers — caller must convert through `convert_sharp_ply.py` first.
  */
 export function pickSplatRenderer(
   record: Pick<SplatRecord, "plyFlavour">,
-  context: { hostHasR3F: boolean },
+  context: { bench?: boolean } = {},
 ): SplatRenderer {
   if (record.plyFlavour !== "standard-3dgs") {
     const detail: SplatRenderError = {
@@ -108,5 +116,5 @@ export function pickSplatRenderer(
     };
     throw Object.assign(new Error(detail.message), detail);
   }
-  return context.hostHasR3F ? "spark-js" : "supersplat-iframe";
+  return context.bench ? "postshot-binary" : "spark-js";
 }
