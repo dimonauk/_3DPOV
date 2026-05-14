@@ -45,6 +45,7 @@ exist and what ports they listen on.
 | poi-game-bridge | 8211 | ws:// | `python -m uvicorn poi_game_bridge:app --host 0.0.0.0 --port 8211` | None yet — forward-looking. Typed client at `lib/integrations/poi-game-bridge.ts` waits for a wrapping capability | Fabrication-chain UI sits cold; articles describe Pipeline Delta without driving it |
 | SHARP service | 7842 | http:// | `uvicorn sharp_service:app --host 0.0.0.0 --port 7842` (in `python-services/`) | `commerce.sharp-job` — the editioned-quality single-image-to-gaussian-splat path on the 3080 Ti | Browser falls back to the in-browser depth-estimation path via `viz.depth-estimation` (lower quality but free) |
 | SHARP-video service | 7843 | http:// | `uvicorn sharp_video_service:app --host 0.0.0.0 --port 7843` (in `python-services/`) | `commerce.sharp-video-job` — the editioned-quality 2D-video-to-4D-splat path; per-keyframe SHARP + 4DGaussians temporal fit + stereo-MP4 stitch | Browser falls back to per-frame `viz.depth-estimation` stitched into a stereo MP4 (slower; rough; free) |
+| Mesh service (InstantMesh) | 7844 | http:// | `uvicorn mesh_service:app --host 0.0.0.0 --port 7844` (in `python-services/`) | `commerce.mesh-job` — the print-bar's commercially-safe image-to-mesh path (TencentARC/InstantMesh, Apache-2.0); single-image-to-GLB textured mesh | Print-bar shows the quote without a live preview; order falls back to a request-quote flow |
 
 The site never connects to these directly from production. Connection
 is via a thin capability adapter that checks for the bridge, falls
@@ -213,6 +214,27 @@ photo service; the env var to override the client base URL is
 calling page falls back to the free per-frame in-browser path:
 `viz.depth-estimation` per decoded frame, stitched into a stereo MP4
 client-side via Mediabunny. Slower; rougher; always works.
+
+### Mesh service (InstantMesh) &mdash; port 7844, http://
+
+`python-services/mesh_service.py` wraps
+[TencentARC/InstantMesh](https://github.com/TencentARC/InstantMesh) (Apache-2.0)
+as a FastAPI service. Single-image-to-textured-GLB mesh conversion on the
+studio&rsquo;s 3080 Ti, ~12-20 s per image on the `instant-mesh-base` config.
+Routes mirror the SHARP services: `POST /jobs` (multipart `image` + `meta`)
+returns `{ jobId }`; `GET /jobs/{id}` polls status; `GET /jobs/{id}/result`
+streams the produced `.glb` (post-converted from InstantMesh&rsquo;s native
+OBJ+MTL+texture trio via `trimesh`); `DELETE /jobs/{id}` cancels. CORS allows
+the same origins as the SHARP services. The TS client lives at
+`lib/capabilities/commerce/mesh-job.ts` (forthcoming) and the env var to
+override the base URL is `MESH_SERVICE_URL`. **License posture:** Apache-2.0
+on both code and weights &mdash; commercial use is clean (no revenue gate,
+no attribution clause), which is why this is the print-bar&rsquo;s
+&ldquo;commission this print&rdquo; path rather than SHARP (whose
+`apple-amlr` weights ship for research-only use). Operator runbook:
+`python-services/MESH_SERVICE.md`. When absent, the print-bar still quotes
+locally and submits a request-only order; live mesh preview just isn&rsquo;t
+available.
 
 ### Skybrush studio integration
 
