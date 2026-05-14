@@ -14,7 +14,8 @@ import {
 import { MediaLibraryError } from "lib/capabilities/media/library-types";
 
 export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
+// `runtime` is incompatible with experimental.useCache — Next defaults to
+// Node.js for routes importing server-only modules.
 
 const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
 

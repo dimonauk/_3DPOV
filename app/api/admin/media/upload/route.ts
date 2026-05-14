@@ -21,7 +21,10 @@ import {
 } from "lib/capabilities/media/library-types";
 
 export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
+// `runtime` is incompatible with experimental.useCache in this Next canary
+// — Next chooses Node.js by default for routes that import server-only
+// modules (firebase-admin, @vercel/blob), so removing the explicit
+// directive is safe and unblocks the build.
 // Operator uploads can be large (4K stills, video). Allow up to ~250MB.
 export const maxDuration = 300;
 
