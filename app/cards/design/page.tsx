@@ -388,6 +388,31 @@ export default function CardDesignerPage() {
               </Field>
             </Fieldset>
 
+            <Fieldset legend="AR model (.glb)">
+              <ModelUploadField
+                currentUrl={card.ar.model}
+                isPlaceholder={card.ar.model === "/cards/dimona/model.glb"}
+                authReady={auth.configured}
+                user={auth.user}
+                onUploaded={(url) =>
+                  setCard((c) => ({
+                    ...c,
+                    ar: { ...c.ar, model: url, modelUSDZ: "" },
+                  }))
+                }
+                onReset={() =>
+                  setCard((c) => ({
+                    ...c,
+                    ar: {
+                      ...c.ar,
+                      model: "/cards/dimona/model.glb",
+                      modelUSDZ: "/cards/dimona/model.usdz",
+                    },
+                  }))
+                }
+              />
+            </Fieldset>
+
             {/* ─── Save (permanent, requires Google sign-in) ──────── */}
             <div className="rounded-sm border border-pink-200/30 bg-warm-black-900/40 p-5">
               <div className="flex items-center justify-between">
@@ -666,6 +691,151 @@ function HandlesField({
       >
         + Add a handle
       </button>
+    </div>
+  );
+}
+
+/* ─── ModelUploadField ───────────────────────────────────────────────── */
+
+function ModelUploadField({
+  currentUrl,
+  isPlaceholder,
+  authReady,
+  user,
+  onUploaded,
+  onReset,
+}: {
+  currentUrl: string;
+  isPlaceholder: boolean;
+  authReady: boolean;
+  user: ReturnType<typeof useAuth>["user"];
+  onUploaded: (url: string) => void;
+  onReset: () => void;
+}) {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  const handlePick = () => fileInputRef.current?.click();
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = ""; // reset so picking the same file again re-fires onChange
+
+    setUploadError(null);
+    setUploading(true);
+
+    try {
+      // Need auth — if not signed in, prompt for Google sign-in inline.
+      let signedIn = user;
+      if (!signedIn) {
+        const cred = await signInWithGoogle();
+        if (!cred) {
+          throw new Error(
+            "Sign-in was cancelled. You need a Google account to upload GLB files.",
+          );
+        }
+        signedIn = cred.user;
+      }
+
+      // Get a fresh ID token (don't cache; they expire after 1 hour).
+      const idToken = await signedIn.getIdToken();
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("filename", file.name);
+
+      const res = await fetch("/api/cards/upload-glb", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${idToken}` },
+        body: formData,
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.error ?? `Upload failed (${res.status})`);
+      }
+      onUploaded(data.url);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Upload failed.";
+      setUploadError(message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-3">
+      <span className="text-xs uppercase tracking-[0.12em] text-chrome-400">
+        Your 3D model
+      </span>
+
+      {isPlaceholder ? (
+        <p className="text-xs text-chrome-500">
+          Using the studio placeholder (a small pink octahedron). Upload a{" "}
+          <code className="text-pink-200">.glb</code> below to swap it in.
+        </p>
+      ) : (
+        <div className="flex flex-col gap-1 rounded-sm border border-pink-200/30 bg-pink-200/5 p-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs text-pink-100">✓ Custom model uploaded</span>
+            <button
+              type="button"
+              onClick={onReset}
+              className="text-xs text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+            >
+              Reset to placeholder
+            </button>
+          </div>
+          <code className="break-all text-[0.65rem] text-chrome-400">
+            {currentUrl}
+          </code>
+        </div>
+      )}
+
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".glb,model/gltf-binary"
+        onChange={handleChange}
+        disabled={!authReady || uploading}
+        className="hidden"
+      />
+      <div className="flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={handlePick}
+          disabled={!authReady || uploading}
+          className="rounded-full border border-pink-200/60 bg-pink-200/10 px-5 py-2 chrome-label text-pink-100 transition-colors hover:border-pink-200 hover:bg-pink-200/20 disabled:opacity-50"
+        >
+          {uploading
+            ? "Uploading…"
+            : isPlaceholder
+              ? user
+                ? "Upload .glb"
+                : "Sign in + upload .glb"
+              : "Replace .glb"}
+        </button>
+        <span className="self-center text-xs text-chrome-500">
+          Max 10 MB &middot; glTF 2.0 binary only &middot; iOS Quick Look needs{" "}
+          <code className="text-pink-200">.usdz</code> (studio tier)
+        </span>
+      </div>
+
+      {!authReady && (
+        <p className="text-xs text-chrome-500">
+          Auth isn&rsquo;t configured on this deployment, so uploads are
+          unavailable. The share-URL flow below still works without uploads.
+        </p>
+      )}
+
+      {uploadError && (
+        <p className="rounded-sm border border-red-300/40 bg-red-300/10 px-3 py-2 text-xs text-red-100">
+          {uploadError}
+        </p>
+      )}
     </div>
   );
 }
