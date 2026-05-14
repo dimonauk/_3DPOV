@@ -6,6 +6,7 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
 import { portedAlgorithms, type ParamDescriptor } from "lib/algorithms";
 import type { CommonParams } from "lib/algorithms/_base";
+import PrintBarCanvas from "components/three/print-bar-canvas";
 
 type LoadedModule = Awaited<
   ReturnType<(typeof portedAlgorithms)[string]["load"]>
@@ -170,6 +171,7 @@ export default function AlgorithmPreview({
       >
         Reroll
       </button>
+      <PrintBarCanvas geometryId={`atelier-${slug}`} />
     </div>
   );
 }
