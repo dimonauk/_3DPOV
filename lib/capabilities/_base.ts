@@ -90,6 +90,8 @@ export type CapabilityId =
   | "viz.light-sculpture"
   | "viz.particles"
   | "viz.spatial-export"
+  | "viz.splat-generate"
+  | "viz.splat-render"
   | "viz.stereo-pair"
   | "viz.usdz-export"
   | "geo.position"

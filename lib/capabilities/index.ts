@@ -292,6 +292,27 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["viz.stereo-pair"],
   },
   {
+    id: "viz.splat-generate",
+    kind: "viz",
+    name: "Splat generate",
+    summary:
+      "Source-agnostic 3D Gaussian Splat synthesis. Provider union (sharp-onnx | postshot | studio-rig-native | luma-genie); every record carries a licence field that commerce surfaces filter on. Foundation-phase stub — router exists, providers wire in one at a time.",
+    status: "stub",
+    source: "Studio composite over apple-amlr (research-only) + Jawset Postshot (commercial) + studio POV-rig (owned) + Luma API.",
+    load: () => import("./viz/splat-generate"),
+  },
+  {
+    id: "viz.splat-render",
+    kind: "viz",
+    name: "Splat render",
+    summary:
+      "Viewer-agnostic .ply gaussian-splat embedding. Renderer union (spark-js | supersplat-iframe | postshot-binary); flavour-gates SHARP raw PLYs out of web targets (must pass through convert_sharp_ply.py first). Foundation-phase stub — props surface only, no concrete viewers wired.",
+    status: "stub",
+    source: "Studio composite over sparkjsdev/spark (MIT) + PlayCanvas SuperSplat (MIT iframe) + Jawset Postshot binary.",
+    load: () => import("./viz/splat-render"),
+    dependsOn: ["viz.splat-generate"],
+  },
+  {
     id: "commerce.sharp-job",
     kind: "commerce",
     name: "SHARP commission",
