@@ -19,7 +19,7 @@ import {
   deleteCardClient,
   listMyCardsClient,
   type CardDoc,
-} from "lib/cards/firestore";
+} from "lib/cards/firestore-client";
 
 export default function MyCardsPage() {
   const auth = useAuth();

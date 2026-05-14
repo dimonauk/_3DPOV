@@ -21,7 +21,7 @@ import {
   getCardClient,
   CardError,
   type CardErrorCode,
-} from "lib/cards/firestore";
+} from "lib/cards/firestore-client";
 import { signInWithGoogle } from "lib/firebase/client";
 
 // Sensible defaults so the page is never empty.

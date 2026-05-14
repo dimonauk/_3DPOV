@@ -37,7 +37,7 @@ export async function getCard(slug: string): Promise<Card | null> {
   // Tier 2: Firestore (only available server-side, only when admin
   // SDK creds are configured).
   try {
-    const { getCardServer } = await import("../cards/firestore");
+    const { getCardServer } = await import("../cards/firestore-server");
     const doc = await getCardServer(slug);
     return doc?.card ?? null;
   } catch (err) {
