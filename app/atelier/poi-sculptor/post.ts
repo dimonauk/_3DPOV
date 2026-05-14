@@ -11,18 +11,22 @@
 
 import * as THREE from "three/webgpu";
 import {
-  bloom,
   length,
   mx_noise_float,
   pass,
   smoothstep,
-  timerGlobal,
+  time,
   uv,
   vec2,
   vec3,
 } from "three/tsl";
-
-const time = timerGlobal();
+// BloomNode is vendored at lib/three-vendor/BloomNode.js (MIT, copied
+// verbatim from three/examples/jsm/tsl/display/BloomNode.js). Vendored
+// because Next 15.6 canary's Turbopack mis-resolves the export through
+// `three/tsl` when the file is imported via three's package exports,
+// failing the prod build with "The export bloom was not found in
+// module three/build/three.tsl.js". Direct path-import avoids that.
+import { bloom } from "lib/three-vendor/BloomNode.js";
 
 export type FxState = {
   bloom: boolean;
