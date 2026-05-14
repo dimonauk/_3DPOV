@@ -10,7 +10,12 @@
     "typecheck": "tsc --noEmit",
     "test": "pnpm prettier:check",
     "splat:fetch": "tsx scripts/cctv-fetch.ts",
-    "splat:register": "tsx scripts/register-splat.ts"
+    "splat:register": "tsx scripts/register-splat.ts",
+    "postinstall": "node scripts/patch-mind-ar.mjs",
+    "cards:build": "node scripts/ar-build-card.mjs",
+    "cards:mind": "node scripts/ar-compile-mind.mjs",
+    "cards:qr": "node scripts/ar-generate-qr.mjs",
+    "cards:build:all": "node scripts/ar-build-all.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.2.0",
@@ -40,7 +45,11 @@
     "sonner": "^2.0.1",
     "styled-components": "^6.4.1",
     "three": "^0.171.0",
-    "zustand": "^5.0.13"
+    "zustand": "^5.0.13",
+    "qrcode": "^1.5.4",
+    "@google/model-viewer": "^4.2.0",
+    "mind-ar": "^1.2.5",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
@@ -54,6 +63,8 @@
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.14",
-    "typescript": "5.8.2"
-  }
+    "typescript": "5.8.2",
+    "@types/qrcode": "^1.5.6"
+  },
+  "pnpm": {}
 }

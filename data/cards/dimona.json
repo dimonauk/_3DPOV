@@ -1,0 +1,46 @@
+{
+  "slug": "dimona",
+  "name": "Dimona Dougherty",
+  "role": "Founder · Flow Artist · Heritage Documentor",
+  "studio": "Holo-Flow Studio",
+  "tagline": "Poi performance, light painting, waveguide sculpture, AR for heritage",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      { "platform": "instagram", "handle": "@dimonauk" },
+      { "platform": "github", "handle": "dimonauk" }
+    ]
+  },
+  "brand": {
+    "primary": "#FF6FB5",
+    "secondary": "#B488E0",
+    "accent": "#FFC1E3",
+    "font": "display",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/cards/dimona/model.glb",
+    "modelUSDZ": "/cards/dimona/model.usdz",
+    "modelScale": 0.6,
+    "modelRotation": [0, 0, 0],
+    "modelPosition": [0, 0.05, 0],
+    "description": "Aura emerges from the card. Move your phone around to see her from different angles. Holographic sleeves track real lighting.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.5,
+      "directionalAngle": 30
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-14T00:00:00.000Z",
+  "public": true
+}

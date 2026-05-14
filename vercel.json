@@ -1,0 +1,52 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "headers": [
+    {
+      "source": "/cards/:slug/target.mind",
+      "headers": [
+        { "key": "Cache-Control",                "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type",                 "value": "application/octet-stream" },
+        { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" }
+      ]
+    },
+    {
+      "source": "/cards/:slug/model.glb",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type",  "value": "model/gltf-binary" }
+      ]
+    },
+    {
+      "source": "/cards/:slug/model.usdz",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type",  "value": "model/vnd.usdz+zip" }
+      ]
+    },
+    {
+      "source": "/cards/:slug/(card-front|qr).(png|svg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    },
+    {
+      "source": "/c/:slug",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(self), gyroscope=(self), accelerometer=(self), magnetometer=(self)"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

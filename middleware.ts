@@ -7,7 +7,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 const PASS_THROUGH_PREFIXES = [
   "/_next/",
+  "/c/",      // AR business card landing
   "/api/",
+  "/cards/",  // AR card static assets
   "/icon",
   "/signin",
   "/rookery",
