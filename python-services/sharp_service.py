@@ -37,9 +37,16 @@ OUTPUT_DIR = TMP_ROOT / "out"
 INPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-SHARP_PYTHON = os.environ.get("SHARP_PYTHON", "python")
-SHARP_MODULE = os.environ.get("SHARP_MODULE", "sharp.infer")
-SHARP_CHECKPOINT = os.environ.get("SHARP_CHECKPOINT", "./checkpoints/sharp-base.pt")
+# Apple ml-sharp installs a "sharp" console script (per
+# https://github.com/apple/ml-sharp). The real invocation is:
+#   sharp predict -i <input_image_or_dir> -o <output_dir> [-c <checkpoint>]
+# Output: one or more .ply Gaussian-splat files in <output_dir>.
+# Checkpoint sharp_2572gikvuh.pt auto-downloads from the Apple CDN on
+# first run (~hundreds of MB, cached at ~/.cache/torch/hub/checkpoints/).
+SHARP_BIN = os.environ.get("SHARP_BIN", "sharp")
+# Optional explicit checkpoint path (if pre-staged to avoid cold-start
+# CDN download). Pass empty string to defer to auto-download.
+SHARP_CHECKPOINT = os.environ.get("SHARP_CHECKPOINT", "")
 SHARP_WORKING_DIR = os.environ.get("SHARP_WORKING_DIR", ".")
 
 DEFAULT_ORIGINS = "http://localhost:3000,https://holoflow.co.uk"
@@ -146,12 +153,14 @@ def _run_sharp(job: Job) -> None:
     job.started_at = time.time()
     job.state = "running"
     job.progress_pct = 1.0
-    cmd = [
-        SHARP_PYTHON, "-m", SHARP_MODULE,
-        "--image", str(job.image_path),
-        "--output", str(job.output_path),
-        "--checkpoint", SHARP_CHECKPOINT,
-    ]
+    # SHARP's CLI writes to a directory, not a single file. Use a per-job
+    # subdirectory under OUTPUT_DIR so concurrent jobs don't collide, then
+    # move the produced .ply to the canonical job.output_path at the end.
+    sharp_out_dir = OUTPUT_DIR / job.job_id
+    sharp_out_dir.mkdir(parents=True, exist_ok=True)
+    cmd = [SHARP_BIN, "predict", "-i", str(job.image_path), "-o", str(sharp_out_dir)]
+    if SHARP_CHECKPOINT:
+        cmd.extend(["-c", SHARP_CHECKPOINT])
     try:
         proc = subprocess.Popen(
             cmd, cwd=SHARP_WORKING_DIR,
@@ -175,17 +184,39 @@ def _run_sharp(job: Job) -> None:
             job.error_message = f"sharp exited with code {rc}"
             job.error_code = "SHARP_EXIT_NONZERO"
             return
-        if not job.output_path.exists():
+        # Find the produced .ply in sharp_out_dir (apple/ml-sharp predict
+        # typically writes one .ply per input image; pick the largest if
+        # multiple appear, e.g. side products).
+        candidates = sorted(
+            sharp_out_dir.glob("*.ply"),
+            key=lambda p: p.stat().st_size,
+            reverse=True,
+        )
+        if not candidates:
             job.state = "error"
-            job.error_message = "sharp exited 0 but no output file"
+            job.error_message = (
+                "sharp exited 0 but no .ply found in output dir — check "
+                "checkpoint download succeeded and the input image was readable"
+            )
             job.error_code = "SHARP_NO_OUTPUT"
             return
+        # Move the best candidate to the canonical job.output_path.
+        candidates[0].replace(job.output_path)
+        # Cleanup the per-job sub-dir if empty after the move.
+        try:
+            sharp_out_dir.rmdir()
+        except OSError:
+            # Non-empty (e.g. side products) — leave for manual review.
+            pass
         job.size_bytes = job.output_path.stat().st_size
         job.progress_pct = 100.0
         job.state = "done"
     except FileNotFoundError as e:
         job.state = "error"
-        job.error_message = f"sharp executable not found: {e}"
+        job.error_message = (
+            f"sharp executable not found ({e}). Is apple/ml-sharp installed "
+            "in the active venv? `pip install git+https://github.com/apple/ml-sharp`"
+        )
         job.error_code = "SHARP_NOT_INSTALLED"
     except Exception as e:  # pragma: no cover
         job.state = "error"

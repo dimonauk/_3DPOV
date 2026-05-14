@@ -23,20 +23,60 @@ wraps it.
 ## Prerequisites
 
 The service is `sharp_service.py` &mdash; one file, FastAPI + uvicorn,
-no other Python deps beyond the SHARP install you already have for
-`docs/SHARP_PIPELINE.md`.
+plus Apple's `ml-sharp` installed alongside.
 
-Python 3.12 is canonical for the studio (3.14 is too new for PyTorch
-wheels as of 2026). Install the three packages the wrapper needs:
+**Apple SHARP** lives at [apple/ml-sharp](https://github.com/apple/ml-sharp).
+As of Dec 2025 it installs a `sharp` console script and is invoked as:
 
 ```sh
-C:/Users/dimon/AppData/Local/Programs/Python/Python312/python.exe ^
-  -m pip install fastapi uvicorn python-multipart
+sharp predict -i <input_image_or_dir> -o <output_dir> [-c <checkpoint>]
 ```
 
-SHARP itself must already be installed and runnable as
-`python -m sharp.infer ...` from the working directory the service
-points at &mdash; see `docs/SHARP_PIPELINE.md` for that setup.
+Output is one or more `.ply` Gaussian-splat files in `<output_dir>`.
+
+**License note:** the weights on Hugging Face (`apple/Sharp`) carry
+Apple's `apple-amlr` (AI/ML Research) license &mdash; research and
+sample-code use, **not commercial**. The studio&rsquo;s SHARP
+commission path needs legal review before paid customer-facing use.
+For internal experimentation and the CCTV pipeline the licence is
+fine.
+
+### Install
+
+The README ships a canonical setup:
+
+```sh
+conda create -n sharp python=3.13
+conda activate sharp
+git clone https://github.com/apple/ml-sharp
+cd ml-sharp
+pip install -r requirements.txt
+pip install -e .
+```
+
+Or the zero-clone path:
+
+```sh
+uvx --from=git+https://github.com/apple/ml-sharp sharp predict -i image.png -o ./out
+```
+
+Then the FastAPI wrapper&rsquo;s own deps:
+
+```sh
+pip install fastapi uvicorn python-multipart
+```
+
+### Checkpoint
+
+The default checkpoint `sharp_2572gikvuh.pt` auto-downloads from the
+Apple CDN to `~/.cache/torch/hub/checkpoints/` on first run
+(~hundreds of MB). To pre-stage and avoid the cold-start download:
+
+```sh
+huggingface-cli download --include sharp_2572gikvuh.pt --local-dir . apple/Sharp
+```
+
+Then point `SHARP_CHECKPOINT` env var at the file path.
 
 ## Environment variables
 
@@ -45,10 +85,9 @@ The service reads the following at startup:
 | Variable | Default | What it controls |
 | --- | --- | --- |
 | `SHARP_TMP_DIR` | `tmp/sharp` | Where uploaded images and rendered `.ply` files land. Relative paths resolve from the working directory. |
-| `SHARP_PYTHON` | `python` | The Python binary used to call SHARP. Point this at the venv interpreter if the venv is not active. |
-| `SHARP_MODULE` | `sharp.infer` | The `-m` argument to SHARP. Override if the upstream module path changes. |
-| `SHARP_CHECKPOINT` | `./checkpoints/sharp-base.pt` | Path to the SHARP weights (downloaded via `huggingface-cli` per the pipeline doc). |
-| `SHARP_WORKING_DIR` | `.` | Working directory for the SHARP subprocess. Typically the `ml-sharp` repo root. |
+| `SHARP_BIN` | `sharp` | The `apple/ml-sharp` console script. Override if the binary isn&rsquo;t on `PATH` (e.g. absolute path to a venv&rsquo;s `bin/sharp`). |
+| `SHARP_CHECKPOINT` | _(empty &mdash; auto-download)_ | Optional explicit path to `sharp_2572gikvuh.pt`. When unset, SHARP auto-downloads the checkpoint from the Apple CDN to `~/.cache/torch/hub/checkpoints/` on first run. |
+| `SHARP_WORKING_DIR` | `.` | Working directory for the SHARP subprocess. Typically the `ml-sharp` repo root, or anywhere when invoking via `uvx`. |
 | `SHARP_CORS_ORIGINS` | `http://localhost:3000,https://holoflow.co.uk` | Comma-separated list of origins allowed to POST jobs. |
 
 The TS client reads `SHARP_SERVICE_URL` (default `http://localhost:7842`)
@@ -60,8 +99,13 @@ The TS client reads `SHARP_SERVICE_URL` (default `http://localhost:7842`)
 # From the python-services/ directory:
 cd D:\.github\_3DPOV\python-services
 
-# Activate the SHARP venv first (so SHARP itself is importable):
-D:\path\to\ml-sharp\.venv\Scripts\activate
+# Activate the conda env (or venv) that has both apple/ml-sharp + the
+# wrapper's FastAPI deps installed (per Prerequisites above):
+conda activate sharp
+# or: D:\path\to\.venv\Scripts\Activate.ps1
+
+# Confirm the SHARP CLI is on PATH:
+sharp --help
 
 # Then start the wrapper:
 uvicorn sharp_service:app --host 0.0.0.0 --port 7842
@@ -118,12 +162,16 @@ WantedBy=multi-user.target
 
 ## Troubleshooting
 
-- **`sharp executable not found`** &mdash; the wrapper could not run
-  `python -m sharp.infer`. Activate the SHARP venv, or set
-  `SHARP_PYTHON` to the venv's interpreter.
-- **`sharp exited 0 but no output file`** &mdash; SHARP ran but did
-  not write to the expected path. Check `SHARP_CHECKPOINT` and the
-  pipeline doc's notes on minimum input resolution (~1024 long edge).
+- **`sharp executable not found`** &mdash; the `sharp` console script
+  isn&rsquo;t on `PATH` in the active env. Activate the conda env / venv
+  where `apple/ml-sharp` is installed, or set `SHARP_BIN` to the
+  absolute path of the `sharp` binary.
+- **`sharp exited 0 but no .ply found in output dir`** &mdash; SHARP
+  ran but didn&rsquo;t write a splat. Most often: the checkpoint
+  download was interrupted (`sharp_2572gikvuh.pt` truncated). Delete
+  `~/.cache/torch/hub/checkpoints/sharp_2572gikvuh.pt` and re-run, or
+  pre-stage with `huggingface-cli` and point `SHARP_CHECKPOINT` at
+  the file. Also check the input image is readable + non-zero size.
 - **Browser fetches fail with a CORS error** &mdash; the origin is
   not in `SHARP_CORS_ORIGINS`. Add it and restart.
 - **`positionInQueue` is wrong** &mdash; the wrapper maintains job

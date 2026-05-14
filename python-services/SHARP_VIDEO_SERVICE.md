@@ -24,8 +24,11 @@ possible.
 
 Three pieces have to be installed and runnable on the bench:
 
-1. **SHARP** &mdash; same install as the photo service. The wrapper
-   shells out to `python -m sharp.infer` per keyframe.
+1. **SHARP** &mdash; same install as the photo service (per
+   `SHARP_SERVICE.md`). The wrapper shells out to
+   `sharp predict -i <frame> -o <out_dir>` per keyframe and picks
+   the largest `.ply` from `<out_dir>` as the canonical splat for
+   that frame.
 2. **4DGaussians** &mdash; `hustvl/4DGaussians` repo cloned and its
    environment runnable as `python -m four_dgs.fit ...`. Override
    the module path with `FOURDGS_MODULE` if upstream renames it.
@@ -46,8 +49,8 @@ C:/Users/dimon/AppData/Local/Programs/Python/Python312/python.exe ^
 | --- | --- | --- |
 | `SHARP_VIDEO_TMP_DIR` | `tmp/sharp-video` | Where uploaded videos, decoded frames, per-frame splats, and final bundles land. |
 | `FFMPEG_BIN` | `ffmpeg` | ffmpeg binary used for decode + stitch. |
-| `SHARP_PYTHON` / `SHARP_MODULE` / `SHARP_CHECKPOINT` / `SHARP_WORKING_DIR` | see `SHARP_SERVICE.md` | Inherited from the photo service's conventions. |
-| `FOURDGS_PYTHON` | `$SHARP_PYTHON` | Python binary used to call 4DGaussians (often the same venv). |
+| `SHARP_BIN` / `SHARP_CHECKPOINT` / `SHARP_WORKING_DIR` | see `SHARP_SERVICE.md` | Inherited from the photo service&rsquo;s conventions. |
+| `FOURDGS_PYTHON` | `python` | Python binary used to call 4DGaussians. Defaults to whatever `python` is on `PATH` in the active env. |
 | `FOURDGS_MODULE` | `four_dgs.fit` | The `-m` argument for the 4DGS fit step. |
 | `FOURDGS_WORKING_DIR` | `$SHARP_WORKING_DIR` | Working directory for the 4DGS subprocess. |
 | `SHARP_VIDEO_CORS_ORIGINS` | `http://localhost:3000,https://holoflow.co.uk` | Comma-separated allowed origins. |
@@ -61,8 +64,10 @@ The TS client reads `SHARP_VIDEO_SERVICE_URL` (default
 ```sh
 cd D:\.github\_3DPOV\python-services
 
-# Activate the SHARP venv (SHARP + 4DGS share it on the bench):
-D:\path\to\ml-sharp\.venv\Scripts\activate
+# Activate the SHARP env (SHARP + 4DGS share it on the bench):
+conda activate sharp
+# or: D:\path\to\.venv\Scripts\Activate.ps1
+sharp --help  # sanity-check that the apple/ml-sharp console script is on PATH
 
 # Then start the wrapper:
 uvicorn sharp_video_service:app --host 0.0.0.0 --port 7843
@@ -114,8 +119,13 @@ the service binds on the private studio interface only.
   count was below `keyframeStride`. Lower `keyframeStride` (the
   submit-time `meta.keyframeStride` field) or drop a longer clip.
 - **`sharp failed on frame N (rc=...)`** &mdash; SHARP died on a
-  particular keyframe. Check the input frame size (SHARP wants a
-  ~1024 long edge minimum) and the SHARP venv.
+  particular keyframe. Check the `sharp` CLI is on `PATH`
+  (`SHARP_BIN`), the `sharp_2572gikvuh.pt` checkpoint downloaded
+  successfully, and the frame is a readable RGB image.
+- **`sharp produced no .ply for frame N`** &mdash; SHARP exited zero
+  but its output directory has no `.ply`. Most common cause:
+  truncated checkpoint download. See `SHARP_SERVICE.md`
+  troubleshooting.
 - **`4DGaussians fit failed`** &mdash; the temporal-fit subprocess
   exited non-zero. Common cause: the per-frame `.ply` files have
   inconsistent splat counts. Re-run with a different

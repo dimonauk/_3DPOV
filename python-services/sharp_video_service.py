@@ -45,14 +45,13 @@ for d in (INPUT_DIR, FRAMES_DIR, SPLATS_DIR, OUTPUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 FFMPEG_BIN = os.environ.get("FFMPEG_BIN", "ffmpeg")
-SHARP_PYTHON = os.environ.get("SHARP_PYTHON", "python")
-SHARP_MODULE = os.environ.get("SHARP_MODULE", "sharp.infer")
-SHARP_CHECKPOINT = os.environ.get(
-    "SHARP_CHECKPOINT", "./checkpoints/sharp-base.pt"
-)
+# apple/ml-sharp installs a "sharp" console script; the per-keyframe
+# invocation is `sharp predict -i <frame> -o <out_dir>`.
+SHARP_BIN = os.environ.get("SHARP_BIN", "sharp")
+SHARP_CHECKPOINT = os.environ.get("SHARP_CHECKPOINT", "")
 SHARP_WORKING_DIR = os.environ.get("SHARP_WORKING_DIR", ".")
 
-FOURDGS_PYTHON = os.environ.get("FOURDGS_PYTHON", SHARP_PYTHON)
+FOURDGS_PYTHON = os.environ.get("FOURDGS_PYTHON", "python")
 FOURDGS_MODULE = os.environ.get("FOURDGS_MODULE", "four_dgs.fit")
 FOURDGS_WORKING_DIR = os.environ.get("FOURDGS_WORKING_DIR", SHARP_WORKING_DIR)
 
@@ -258,26 +257,40 @@ def _sharp_per_frame(job: VideoJob) -> bool:
     for idx, frame_path in enumerate(frames):
         if job.state == "cancelled":
             return False
-        splat_path = job.splats_dir / f"{frame_path.stem}.ply"
-        cmd = [
-            SHARP_PYTHON,
-            "-m",
-            SHARP_MODULE,
-            "--image",
-            str(frame_path),
-            "--output",
-            str(splat_path),
-            "--checkpoint",
-            SHARP_CHECKPOINT,
-        ]
+        # SHARP writes to a directory, so give each frame its own subdir
+        # then move/rename the .ply to <frame_stem>.ply in splats_dir.
+        per_frame_dir = job.splats_dir / frame_path.stem
+        per_frame_dir.mkdir(parents=True, exist_ok=True)
+        final_splat = job.splats_dir / f"{frame_path.stem}.ply"
+        cmd = [SHARP_BIN, "predict", "-i", str(frame_path), "-o", str(per_frame_dir)]
+        if SHARP_CHECKPOINT:
+            cmd.extend(["-c", SHARP_CHECKPOINT])
         rc = _run_subprocess(job, cmd, cwd=SHARP_WORKING_DIR, on_progress=None)
         if job.state == "cancelled":
             return False
-        if rc != 0 or not splat_path.exists():
+        if rc != 0:
             job.state = "error"
             job.error_message = f"sharp failed on frame {idx} (rc={rc})"
             job.error_code = "SHARP_FRAME_FAILED"
             return False
+        produced = sorted(
+            per_frame_dir.glob("*.ply"),
+            key=lambda p: p.stat().st_size,
+            reverse=True,
+        )
+        if not produced:
+            job.state = "error"
+            job.error_message = (
+                f"sharp produced no .ply for frame {idx} — check the "
+                "checkpoint download succeeded and the frame was readable"
+            )
+            job.error_code = "SHARP_FRAME_NO_OUTPUT"
+            return False
+        produced[0].replace(final_splat)
+        try:
+            per_frame_dir.rmdir()
+        except OSError:
+            pass
         job.frames_done = idx + 1
         # Per-frame progress: keyframes take 60% of the budget after decode.
         if job.frames_total:
