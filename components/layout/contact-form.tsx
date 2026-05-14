@@ -1,16 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-type Intent = "general" | "commission" | "bureau" | "aerial" | "press";
+type Intent =
+  | "general"
+  | "commission"
+  | "bureau"
+  | "aerial"
+  | "press"
+  | "speaking"
+  | "collaboration";
 
 const INTENT_OPTIONS: { value: Intent; label: string }[] = [
   { value: "general", label: "General enquiry" },
-  { value: "commission", label: "Commission / wall array" },
+  { value: "commission", label: "Commission" },
   { value: "bureau", label: "Print bureau" },
   { value: "aerial", label: "Aerial / drone work" },
-  { value: "press", label: "Press / feature" },
+  { value: "speaking", label: "Speaking or workshops" },
+  { value: "press", label: "Editorial / press" },
+  { value: "collaboration", label: "Collaboration" },
 ];
+
+const VALID_INTENTS = new Set<Intent>(INTENT_OPTIONS.map((o) => o.value));
+
+function parseIntentFromQuery(): Intent {
+  if (typeof window === "undefined") return "general";
+  try {
+    const raw = new URLSearchParams(window.location.search).get("intent");
+    if (raw && VALID_INTENTS.has(raw as Intent)) return raw as Intent;
+  } catch {
+    /* fall through */
+  }
+  return "general";
+}
 
 export function ContactForm() {
   const [intent, setIntent] = useState<Intent>("general");
@@ -21,6 +43,12 @@ export function ContactForm() {
     "idle",
   );
   const [errorText, setErrorText] = useState<string | null>(null);
+
+  // Preselect the dropdown from ?intent= when the page loads — the
+  // Services page links here with the relevant line preselected.
+  useEffect(() => {
+    setIntent(parseIntentFromQuery());
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -128,17 +156,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="w-full rounded-sm border border-warm-black-700 bg-warm-black-900 px-3 py-2.5 text-sm text-chrome-100 focus:border-pink-200 focus:outline-none"
-          placeholder={
-            intent === "commission"
-              ? "The room, the wall, the rough dimensions, what the space feels like. No need to be exact — that's what the conversation is for."
-              : intent === "bureau"
-                ? "Paper preference, size, quantity, deadline. Files welcome; rough scans fine."
-                : intent === "aerial"
-                  ? "Site, intent, deliverable, dates. Stills, motion, FPV, 360°, or aerial light painting — tell me which and I'll tell you which airframe."
-                  : intent === "press"
-                    ? "Publication, deadline, angle. The more specific, the faster I can answer usefully."
-                    : "Whatever it is. I read every one."
-          }
+          placeholder={placeholderFor(intent)}
         />
       </div>
 
@@ -155,4 +173,24 @@ export function ContactForm() {
       </button>
     </form>
   );
+}
+
+function placeholderFor(intent: Intent): string {
+  switch (intent) {
+    case "commission":
+      return "Single-exposure light-painting photograph, a waveguide object, a custom POV rig, or drone capture of a heritage site or worksite — tell me which, the room or location, the rough dimensions, the dates. No need to be exact — that's what the conversation is for.";
+    case "bureau":
+      return "Paper preference, size, quantity, deadline. Files welcome; rough scans fine.";
+    case "aerial":
+      return "Site, intent, deliverable, dates. Stills, motion, FPV, 360°, or aerial light painting — tell me which and I'll tell you which airframe.";
+    case "speaking":
+      return "Event, audience, format (talk, demo, hands-on workshop), date and place, budget if there is one. Topics: flow arts, immersive systems, AI agent orchestration, parametric manufacturing.";
+    case "press":
+      return "Publication, deadline, angle. The more specific, the faster I can answer usefully.";
+    case "collaboration":
+      return "What you're building, where it overlaps with the studio (AI, phygital pipelines, immersive media), and what shape you imagine the collaboration taking.";
+    case "general":
+    default:
+      return "Whatever it is. I read every one.";
+  }
 }

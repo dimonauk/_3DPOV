@@ -8,6 +8,8 @@ const INTENT_SET = new Set([
   "bureau",
   "aerial",
   "press",
+  "speaking",
+  "collaboration",
 ]);
 
 /**
