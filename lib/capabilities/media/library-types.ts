@@ -1,0 +1,190 @@
+/**
+ * lib/capabilities/media/library-types.ts — Media library type surface.
+ *
+ * One Media record per piece of operator-uploaded content (photograph,
+ * video, 360 pano, etc.). The record is the system of record; the file
+ * itself lives in Vercel Blob, and the metadata in Firestore. Other
+ * sources (Google Photos Picker, Google Drive, Sanity) all import INTO
+ * this same shape — once imported, the rest of the site doesn't care
+ * where it originally came from.
+ *
+ * Pure types + zod-style runtime narrows in this module. No imports of
+ * server packages here, so this module can be referenced from both
+ * client and server.
+ */
+
+export type MediaKind =
+  /** Single still image (JPEG, PNG, AVIF, WebP). */
+  | "photo"
+  /** Single-exposure light painting — same as photo but flagged. */
+  | "photo-single-exposure"
+  /** Looped video clip (MP4 / WebM / MOV). */
+  | "video"
+  /** Equirectangular 360° still photo. */
+  | "360-photo"
+  /** Equirectangular 360° video. */
+  | "360-video"
+  /** Side-by-side stereo MP4 (the spatial-video output). */
+  | "sbs-stereo-mp4"
+  /** USDZ spatial photo for Apple Vision / iOS AR Quick Look. */
+  | "usdz"
+  /** GLB mesh (InstantMesh / SHARP output). */
+  | "glb"
+  /** PLY point cloud / Gaussian splat. */
+  | "ply"
+  /** Audio (WAV / MP3 / OPUS / FLAC). */
+  | "audio"
+  /** PDF (proofs, contact sheets, certificates). */
+  | "pdf"
+  /** Fallback for kinds the system doesn't enumerate yet. */
+  | "other";
+
+export type MediaSource =
+  /** Uploaded directly through the admin UI; lives in Vercel Blob. */
+  | "vercel-blob"
+  /** Imported via the Google Photos Picker; downloaded into Blob. */
+  | "google-photos"
+  /** Imported via Google Drive; downloaded into Blob. */
+  | "google-drive"
+  /** Authored in Sanity Studio; URL resolves to Sanity's CDN. */
+  | "sanity"
+  /** Committed under `public/` in the repo; URL is the static path. */
+  | "public-static";
+
+/**
+ * Subject of the media — which surface of the site this belongs to.
+ * Determines the listing UI and the route the media appears on. Free-
+ * form `tag[]` lives on the record itself for finer slicing.
+ */
+export type MediaSubject =
+  | "photograph"
+  | "aerial"
+  | "holo-walk"
+  | "codex"
+  | "article"
+  | "journal"
+  | "tutorial"
+  | "product"
+  | "rookery"
+  | "press"
+  | "other";
+
+/** Variant sizes generated at (or after) upload. */
+export type MediaVariants = {
+  thumbnail?: string;
+  small?: string;
+  medium?: string;
+  large?: string;
+  /** Always present; the canonical original URL. */
+  original: string;
+};
+
+/** Source-specific stable references for re-fetching or sync. */
+export type MediaSourceRef = {
+  blob?: { pathname: string };
+  googlePhotos?: { mediaItemId: string };
+  googleDrive?: { fileId: string };
+  sanity?: { documentId: string };
+};
+
+export type MediaLocation = {
+  /** Optional slug linking to a HoloWalk / shoot / venue. */
+  slug?: string;
+  lat?: number;
+  lng?: number;
+  name?: string;
+};
+
+export type Media = {
+  /** Stable id — used in URLs and Firestore doc id. */
+  id: string;
+  kind: MediaKind;
+  subject: MediaSubject;
+  source: MediaSource;
+  /** Canonical reachable URL; what `<img src=…>` would use. */
+  url: string;
+  title?: string;
+  description?: string;
+  /** ISO date — when the media was captured (not uploaded). */
+  capturedAt?: string;
+  /** ISO date — when the record was created. */
+  uploadedAt: string;
+  /** Firebase auth uid of the operator who uploaded it. */
+  uploadedBy: string;
+  /** Pixel dimensions for images / videos. */
+  width?: number;
+  height?: number;
+  /** Seconds — for video / audio. */
+  durationSeconds?: number;
+  mimeType: string;
+  sizeBytes?: number;
+  /** SHA-256 of the original bytes; used for dedup. */
+  sha256?: string;
+  /** Free-form tags for filtering. */
+  tags?: string[];
+  location?: MediaLocation;
+  sourceRef?: MediaSourceRef;
+  variants?: MediaVariants;
+  /** Soft-retire flag — keeps the file but hides from public lists. */
+  retired?: boolean;
+};
+
+/** Query shape for `media.list`. */
+export type MediaQuery = {
+  kind?: MediaKind | MediaKind[];
+  subject?: MediaSubject | MediaSubject[];
+  source?: MediaSource | MediaSource[];
+  tag?: string;
+  locationSlug?: string;
+  uploadedBy?: string;
+  /** Include retired items. Default false. */
+  includeRetired?: boolean;
+  /** Order by uploadedAt desc by default. */
+  orderBy?: "uploadedAt" | "capturedAt";
+  limit?: number;
+  cursor?: string;
+};
+
+/** Pagination result. */
+export type MediaPage = {
+  items: Media[];
+  nextCursor?: string;
+};
+
+/** Input to `media.upload`. */
+export type MediaUploadInput = {
+  /** The bytes — `Blob`, `File`, or a `Buffer`-compatible reader. */
+  file: Blob | File | ArrayBuffer | Uint8Array;
+  /** Original filename — used to derive Blob pathname. */
+  filename: string;
+  mimeType: string;
+  kind: MediaKind;
+  subject: MediaSubject;
+  uploadedBy: string;
+  title?: string;
+  description?: string;
+  capturedAt?: string;
+  tags?: string[];
+  location?: MediaLocation;
+  /** Source-of-import marker. Defaults to vercel-blob. */
+  source?: MediaSource;
+  /** Source-specific reference (e.g. originating Google Photos mediaItemId). */
+  sourceRef?: MediaSourceRef;
+};
+
+/** Stable error class so callers can `instanceof` it. */
+export class MediaLibraryError extends Error {
+  constructor(
+    message: string,
+    public code:
+      | "not-configured"
+      | "not-authenticated"
+      | "upload-failed"
+      | "metadata-write-failed"
+      | "not-found"
+      | "import-failed",
+  ) {
+    super(message);
+    this.name = "MediaLibraryError";
+  }
+}
