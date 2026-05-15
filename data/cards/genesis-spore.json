@@ -1,0 +1,56 @@
+{
+  "slug": "genesis-spore",
+  "name": "Genesis Spore",
+  "role": "Generation 0001 · Biomech Seed",
+  "studio": "Holo-Flow Studio",
+  "tagline": "The first thing the evolution engine ever decided was alive",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#8FCD9E",
+    "secondary": "#C8E6C9",
+    "accent": "#4A7C59",
+    "font": "serif",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/evolution/gen0001-biomech-seed.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "A specimen from generation one of the studio's evolution engine. Notice how it doesn't quite know what it wants to be yet.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

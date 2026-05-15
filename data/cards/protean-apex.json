@@ -1,0 +1,56 @@
+{
+  "slug": "protean-apex",
+  "name": "Protean Apex",
+  "role": "Generation 1429 · Elite Mutation",
+  "studio": "Holo-Flow Studio",
+  "tagline": "Refuses to commit to a single shape",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#FF00FF",
+    "secondary": "#00FFFF",
+    "accent": "#FFFF00",
+    "font": "mono",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/evolution/gen1429-protean-elite.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "An elite from the protean lineage. The selection pressure here rewarded change for its own sake. Make of that what you will.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

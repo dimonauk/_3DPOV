@@ -1,0 +1,56 @@
+{
+  "slug": "mature-trace",
+  "name": "Mature Trace",
+  "role": "Generation 1429 · Choreographic Apex",
+  "studio": "Holo-Flow Studio",
+  "tagline": "What a thousand spinners would design if they could",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#3D2C8D",
+    "secondary": "#916BBF",
+    "accent": "#C996CC",
+    "font": "display",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/evolution/gen1429-choreographic-mature.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "The evolved descendant of First Trace. Same DNA, fifteen hundred selection rounds of being slightly more graceful than its siblings.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

@@ -1,0 +1,56 @@
+{
+  "slug": "dragon-scale-array",
+  "name": "Dragon Scale Array",
+  "role": "Biomimetic Specimen · Staggered Bricks 4-in-1",
+  "studio": "Holo-Flow Studio",
+  "tagline": "Wall art that thinks it's armour",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#663399",
+    "secondary": "#008B8B",
+    "accent": "#B87333",
+    "font": "display",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/biomimetic/dragon-scales-wall-art.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "Dragon-scale relief tiled at a 0.45/0.5 displacement offset. CR-30 belt printers love this geometry. So do dragons, presumably.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

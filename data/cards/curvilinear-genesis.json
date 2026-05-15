@@ -1,0 +1,56 @@
+{
+  "slug": "curvilinear-genesis",
+  "name": "Curvilinear Genesis",
+  "role": "Generation 0001 · Spline Ancestor",
+  "studio": "Holo-Flow Studio",
+  "tagline": "A spline waiting to find out what it is",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#FF7F50",
+    "secondary": "#FFB996",
+    "accent": "#FFFFE0",
+    "font": "serif",
+    "textOnBrand": "#FFFFFF"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/evolution/gen0001-curvilinear-spline.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "Generation one of the curvilinear lineage. Pure spline, no opinions yet about what makes a good curve.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

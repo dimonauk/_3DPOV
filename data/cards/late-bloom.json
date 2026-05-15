@@ -1,0 +1,56 @@
+{
+  "slug": "late-bloom",
+  "name": "Late Bloom",
+  "role": "Generation 1429 · Biomech Mature",
+  "studio": "Holo-Flow Studio",
+  "tagline": "Fifteen hundred generations of breeding for the same instinct",
+  "contact": {
+    "email": "hello@holoflow.co.uk",
+    "website": "https://holoflow.co.uk",
+    "handles": [
+      {
+        "platform": "instagram",
+        "handle": "@dimonauk"
+      }
+    ]
+  },
+  "brand": {
+    "primary": "#2D5F3F",
+    "secondary": "#6B3F2B",
+    "accent": "#E8C547",
+    "font": "display",
+    "textOnBrand": "#F5F0E8"
+  },
+  "ar": {
+    "targetImage": "/cards/dimona/card-front.png",
+    "targetMind": "/cards/dimona/target.mind",
+    "model": "/assets/meshes/evolution/gen1429-biomech-late.glb",
+    "modelUSDZ": "",
+    "modelScale": 1.0,
+    "modelRotation": [
+      0,
+      0,
+      0
+    ],
+    "modelPosition": [
+      0,
+      0.05,
+      0
+    ],
+    "description": "Same lineage as the Genesis Spore, fifteen hundred breedings later. Sharpened by selection but still recognisably the same idea.",
+    "autoRotate": true,
+    "lighting": {
+      "ambientIntensity": 1.0,
+      "directionalIntensity": 1.4,
+      "directionalAngle": 35
+    }
+  },
+  "print": {
+    "width_mm": 85,
+    "height_mm": 55,
+    "bleed_mm": 3,
+    "safe_mm": 4
+  },
+  "issuedAt": "2026-05-15T00:00:00.000Z",
+  "public": true
+}

@@ -15,7 +15,8 @@
     "cards:build": "node scripts/ar-build-card.mjs",
     "cards:mind": "node scripts/ar-compile-mind.mjs",
     "cards:qr": "node scripts/ar-generate-qr.mjs",
-    "cards:build:all": "node scripts/ar-build-all.mjs"
+    "cards:build:all": "node scripts/ar-build-all.mjs",
+    "cards:upload": "node scripts/cards-bulk-upload.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.2.0",
