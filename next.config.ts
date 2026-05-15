@@ -6,6 +6,21 @@ export default {
     // /media/<hash>.woff2 and gets 404. Re-enable when canary fixes it.
     useCache: true,
   },
+  // Heavy native-binary packages that webpack/turbopack cannot bundle.
+  // Listing them here keeps them as runtime `require`s in the server
+  // build (and skips them entirely for the client build via the webpack
+  // fallback below). These are pulled in transitively by the Aura voice
+  // stack (kokoro-js → @huggingface/transformers → onnxruntime-node) and
+  // by Apple Wallet pkpass generation (sharp, passkit-generator) — all
+  // of which need Node native bindings, not webpack-bundled JS.
+  serverExternalPackages: [
+    "onnxruntime-node",
+    "@huggingface/transformers",
+    "kokoro-js",
+    "sharp",
+    "passkit-generator",
+    "firebase-admin",
+  ],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -35,6 +50,18 @@ export default {
         https: false,
         net: false,
         tls: false,
+      };
+      // Same heavy packages — also exclude from CLIENT bundle. They're
+      // strictly server-side (Aura's voice worker is a separate web
+      // worker that pulls them from a CDN, not from our bundle).
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        "onnxruntime-node": false,
+        "@huggingface/transformers": false,
+        "kokoro-js": false,
+        sharp: false,
+        "passkit-generator": false,
+        "firebase-admin": false,
       };
     }
     return config;
