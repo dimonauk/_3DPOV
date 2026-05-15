@@ -8,6 +8,13 @@
  *   - Mobile non-iOS: MindAR by default, model-viewer as secondary tab
  *   - Desktop: model-viewer 3D preview only (no camera AR makes sense)
  *
+ * Additional modes appear conditionally if the card defines them:
+ *   - "splat" — Gaussian Splatting via @mkkellogg/gaussian-splats-3d.
+ *     Photoreal capture-based scenes. WebXR-AR when supported.
+ *   - "vrm"   — VRM humanoid avatar via @pixiv/three-vrm. Idle
+ *     breathing + head-tracking. Best for companion presenters
+ *     (Aura) or brand mascots.
+ *
  * Either mode is reachable via tabs at the top.
  */
 
@@ -17,8 +24,10 @@ import type { Card } from "lib/ar/types";
 
 const MindARScene = dynamic(() => import("./MindARScene"), { ssr: false });
 const ModelViewerNative = dynamic(() => import("./ModelViewerNative"), { ssr: false });
+const SplatViewer = dynamic(() => import("./SplatViewer"), { ssr: false });
+const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
 
-type Mode = "mindar" | "world" | "desktop";
+type Mode = "mindar" | "world" | "desktop" | "splat" | "vrm";
 
 function detectDefaultMode(): Mode {
   if (typeof navigator === "undefined") return "desktop";
@@ -42,6 +51,9 @@ export default function ARLandingClient({ card }: { card: Card }) {
   if (!mounted) {
     return <div style={{ minHeight: "60vh" }} aria-hidden />;
   }
+
+  const hasSplat = Boolean(card.ar.splat);
+  const hasVRM = Boolean(card.ar.vrm);
 
   return (
     <div className="ar-landing">
@@ -72,11 +84,33 @@ export default function ARLandingClient({ card }: { card: Card }) {
         >
           3D preview
         </button>
+        {hasSplat && (
+          <button
+            role="tab"
+            aria-selected={mode === "splat"}
+            className={mode === "splat" ? "active" : ""}
+            onClick={() => setMode("splat")}
+          >
+            Splat
+          </button>
+        )}
+        {hasVRM && (
+          <button
+            role="tab"
+            aria-selected={mode === "vrm"}
+            className={mode === "vrm" ? "active" : ""}
+            onClick={() => setMode("vrm")}
+          >
+            Avatar
+          </button>
+        )}
       </div>
 
       <div className="ar-stage">
         {mode === "mindar" && <MindARScene card={card} />}
         {(mode === "world" || mode === "desktop") && <ModelViewerNative card={card} />}
+        {mode === "splat" && hasSplat && <SplatViewer card={card} splatUrl={card.ar.splat!} />}
+        {mode === "vrm" && hasVRM && <VRMViewer card={card} vrmUrl={card.ar.vrm!} />}
       </div>
 
       <style jsx>{`
@@ -87,6 +121,7 @@ export default function ARLandingClient({ card }: { card: Card }) {
         }
         .ar-tabs {
           display: flex;
+          flex-wrap: wrap;
           gap: 0.5rem;
           padding: 0.5rem;
           margin-bottom: 1rem;

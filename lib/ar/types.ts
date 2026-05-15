@@ -38,6 +38,21 @@ export interface CardARConfig {
   model: string;
   /** USDZ path under public/ — generated from GLB for iOS Quick Look */
   modelUSDZ: string;
+  /**
+   * Gaussian Splat scene URL (.ply, .splat, or .ksplat). When set, the
+   * card landing offers a "Splat" tab that renders the scene via
+   * @mkkellogg/gaussian-splats-3d. Best for photoreal captures of
+   * physical scenes (sculptures, performance documentation, heritage
+   * spaces). Optional — leave undefined to skip the tab entirely.
+   */
+  splat?: string;
+  /**
+   * VRM 1.0 avatar URL. When set, the card landing offers an "Avatar"
+   * tab that renders the rigged humanoid via @pixiv/three-vrm, with
+   * subtle breathing + head-tracking idle. Use for Aura/companion
+   * presenters or branded mascots. Optional.
+   */
+  vrm?: string;
   /** Uniform scale applied to model when mounted on tracked image */
   modelScale: number;
   /** Rotation in radians [x, y, z] */
