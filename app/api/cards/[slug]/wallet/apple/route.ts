@@ -21,7 +21,6 @@ import {
  * If you want to disable wallet generation per-card (e.g. studio-only
  * pass type), gate on card.public or a card.appleWallet flag here.
  */
-export const runtime = "nodejs";
 
 type Params = { params: Promise<{ slug: string }> };
 

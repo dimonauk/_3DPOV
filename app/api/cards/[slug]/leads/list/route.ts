@@ -13,7 +13,6 @@ import { verifyIdToken } from "lib/firebase/admin";
  *
  * CSV columns: at_iso, name, email, message, src, country.
  */
-export const runtime = "nodejs";
 
 type Params = { params: Promise<{ slug: string }> };
 
