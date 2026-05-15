@@ -137,6 +137,19 @@ export default async function SearchPage(props: {
         </form>
 
         {q ? (
+          <p className="mt-4 text-sm text-chrome-400">
+            Or{" "}
+            <Link
+              href={`/search/ask?q=${encodeURIComponent(q)}`}
+              className="text-pink-200 underline underline-offset-4 hover:text-pink-100"
+            >
+              ask Aura
+            </Link>{" "}
+            to read the archive for you and synthesise an answer.
+          </p>
+        ) : null}
+
+        {q ? (
           <section className="mt-16">
             <div className="chrome-label">Results</div>
             <h2 className="mt-2 text-2xl text-chrome-100">

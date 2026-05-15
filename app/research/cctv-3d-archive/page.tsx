@@ -3,10 +3,11 @@ import { isFirebaseAdminConfigured } from "lib/firebase/admin";
 import { mediaList } from "lib/capabilities/media/library";
 import type { Media } from "lib/capabilities/media/library-types";
 
-// splat-viewer-spark.tsx is `"use client"` so the framework hydrates it
-// on the client. `dynamic({ssr:false})` would be redundant here and is
-// forbidden in Server Components from Next.js 15 onwards.
+// Both child components are `"use client"`; the framework handles the
+// hydration boundary automatically. `dynamic({ssr:false})` would be
+// redundant and is forbidden in Server Components from Next.js 15+.
 import SplatViewerSpark from "components/viewers/splat-viewer-spark";
+import DepthPlayground from "components/research/depth-playground";
 
 export const metadata = {
   title: "CCTV 3D Archive — Research",
@@ -123,6 +124,23 @@ export default async function CctvThreeDArchivePage() {
             })}
           </section>
         )}
+
+        <section className="mt-16">
+          <div className="chrome-label">Sample the pipeline</div>
+          <h2 className="mt-3 text-2xl">Try the depth model yourself.</h2>
+          <p className="mt-3 max-w-xl text-sm text-chrome-300">
+            SHARP isn&rsquo;t for visitors &mdash; the licence keeps it
+            on the bench. But the studio&rsquo;s{" "}
+            <em>free</em> in-browser depth estimator runs the same
+            question one notch shallower: it tells you how far away
+            each pixel is. Drop in your own image (a corner of London,
+            a memory, a photograph you took) and watch the depth
+            answer come back, no server involved.
+          </p>
+          <div className="mt-6">
+            <DepthPlayground />
+          </div>
+        </section>
       </article>
       <Footer />
     </>
