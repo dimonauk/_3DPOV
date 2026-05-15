@@ -1,6 +1,6 @@
 import Footer from "components/layout/footer";
 import Link from "next/link";
-import { listLocations } from "lib/holo-walk/locations";
+import { getAttractorParams, listLocations } from "lib/holo-walk/locations";
 import HoloWalkMapClient from "./holo-walk-map-client";
 
 export const metadata = {
@@ -88,7 +88,8 @@ export default function HoloWalkIndexPage() {
                         {loc.name}
                       </h3>
                       <span className="font-mono text-[10px] text-chrome-500">
-                        {loc.sculpture.engine}
+                        {getAttractorParams(loc.sculpture)?.engine ??
+                          (loc.sculpture.kind === "splat" ? "splat" : "—")}
                       </span>
                     </div>
                     <p className="mt-2 text-sm text-chrome-300">

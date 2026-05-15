@@ -17,7 +17,10 @@ import { OrbitControls } from "@react-three/drei";
 
 import { SculptureFigure } from "components/three/SculptureFigure";
 import PrintBar from "components/three/print-bar";
-import type { SculptureLocation } from "lib/holo-walk/locations";
+import {
+  getAttractorParams,
+  type SculptureLocation,
+} from "lib/holo-walk/locations";
 
 export default function SculpturePreviewClient({
   location,
@@ -44,7 +47,11 @@ export default function SculpturePreviewClient({
         </group>
       </Canvas>
       <div className="pointer-events-none absolute left-3 top-3 rounded-sm border border-warm-black-800 bg-warm-black-950/80 px-3 py-1 font-mono text-xs text-chrome-100">
-        engine: <span className="text-pink-200">{location.sculpture.engine}</span>
+        engine:{" "}
+        <span className="text-pink-200">
+          {getAttractorParams(location.sculpture)?.engine ??
+            (location.sculpture.kind === "splat" ? "splat" : "—")}
+        </span>
       </div>
       {lastOrderId && (
         <div className="absolute right-3 top-3 rounded-sm border border-pink-200/60 bg-warm-black-950/90 px-3 py-2 font-mono text-xs text-pink-100">

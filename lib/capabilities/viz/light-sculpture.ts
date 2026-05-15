@@ -15,7 +15,10 @@
 import { generateAttractor } from "lib/capabilities/viz/attractor";
 import type { AttractorEngine } from "lib/state/viz";
 import type { Vec3 } from "lib/state/vrm";
-import type { SculptureLocation } from "lib/holo-walk/locations";
+import {
+  getAttractorParams,
+  type SculptureLocation,
+} from "lib/holo-walk/locations";
 
 /** Result of one animated frame — the slice of the trajectory currently visible. */
 export type RenderFrame = {
@@ -53,21 +56,29 @@ const DEFAULT_COUNT = 50_000;
  */
 function pointCountFor(location: SculptureLocation, override?: number): number {
   if (typeof override === "number" && override > 0) return override;
-  if (typeof location.sculpture.particleCount === "number") {
-    return location.sculpture.particleCount;
-  }
+  const params = getAttractorParams(location.sculpture);
+  if (params) return params.particleCount;
   return DEFAULT_COUNT;
 }
 
-/** Generate the static full trajectory for a location's sculpture spec. */
+/** Generate the static full trajectory for a location's sculpture spec.
+ *  Returns null if the sculpture is splat-primary with no fallback
+ *  attractor (the caller should render the splat layer instead). */
 function trajectoryFor(
   location: SculptureLocation,
   options: LightSculptureOptions,
-): { positions: Float32Array; engine: AttractorEngine; count: number } {
-  const engine: AttractorEngine = location.sculpture.engine;
+):
+  | { positions: Float32Array; engine: AttractorEngine; count: number }
+  | null {
+  const params = getAttractorParams(location.sculpture);
+  if (!params) return null;
   const count = pointCountFor(location, options.count);
-  const result = generateAttractor(engine, { count });
-  return { positions: result.positions, engine: result.engine, count: result.count };
+  const result = generateAttractor(params.engine, { count });
+  return {
+    positions: result.positions,
+    engine: result.engine,
+    count: result.count,
+  };
 }
 
 /**
@@ -89,11 +100,16 @@ export function renderSculptureFrame(
 ): RenderFrame {
   const persistenceMs = options.persistenceMs ?? DEFAULT_PERSISTENCE_MS;
   const walkDurationMs = options.walkDurationMs ?? DEFAULT_WALK_DURATION_MS;
-  const { positions, engine, count } = trajectoryFor(location, options);
+  const traj = trajectoryFor(location, options);
 
-  if (count <= 0) {
-    return { positions: new Float32Array(0), opacities: new Float32Array(0), engine };
+  if (!traj || traj.count <= 0) {
+    return {
+      positions: new Float32Array(0),
+      opacities: new Float32Array(0),
+      engine: traj?.engine ?? "clifford",
+    };
   }
+  const { positions, engine, count } = traj;
 
   // The head cursor sweeps the index space `[0, count)` over the
   // walk duration. We clamp at the right edge so the trail holds
@@ -153,10 +169,11 @@ export function sculptureBoundingSphere(
   location: SculptureLocation,
   options: LightSculptureOptions = {},
 ): { center: Vec3; radius: number } {
-  const { positions, count } = trajectoryFor(location, options);
-  if (count <= 0) {
+  const traj = trajectoryFor(location, options);
+  if (!traj || traj.count <= 0) {
     return { center: [0, 0, 0], radius: 0 };
   }
+  const { positions, count } = traj;
 
   let sumX = 0;
   let sumY = 0;
@@ -185,7 +202,7 @@ export function sculptureBoundingSphere(
     if (sq > maxSq) maxSq = sq;
   }
 
-  const scale = location.sculpture.scale ?? 1;
+  const scale = getAttractorParams(location.sculpture)?.scale ?? 1;
   const center: Vec3 = [cx, cy, cz];
   return { center, radius: Math.sqrt(maxSq) * scale };
 }

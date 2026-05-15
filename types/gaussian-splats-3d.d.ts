@@ -76,4 +76,10 @@ declare module "@mkkellogg/gaussian-splats-3d" {
     dispose(): void;
     setRenderMode(mode: number): void;
   }
+
+  /** Three.js-native splat layer for embedding inside an existing
+   *  scene + renderer + camera. Used by the AR layer to overlay a
+   *  splat scene without taking over the renderer. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const DropInViewer: any;
 }

@@ -21,7 +21,10 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { Group } from "three";
 
 import { generateAttractor } from "lib/capabilities/viz/attractor";
-import type { SculptureLocation } from "lib/holo-walk/locations";
+import {
+  getAttractorParams,
+  type SculptureLocation,
+} from "lib/holo-walk/locations";
 
 import {
   cycleIndex,
@@ -157,16 +160,28 @@ export function SculptureFigure({
   // Generate the trajectory + bounding-sphere fit once per location.
   // Re-keying on the location's id keeps the buffer steady even if
   // the parent re-renders.
+  const params = getAttractorParams(location.sculpture);
   const { trajectory, fitScale, fitCentre } = useMemo(() => {
-    const count = location.sculpture.particleCount ?? DEFAULT_POINT_COUNT;
-    const result = generateAttractor(location.sculpture.engine, { count });
+    // splat-only sculptures with no fallback attractor: render an
+    // empty trajectory so the figure mounts cleanly; the caller's
+    // splat layer covers the visible surface.
+    if (!params) {
+      return {
+        trajectory: new Float32Array(0),
+        fitScale: 1,
+        fitCentre: [0, 0, 0] as [number, number, number],
+      };
+    }
+    const result = generateAttractor(params.engine, {
+      count: params.particleCount,
+    });
     const fit = fitToRadius(result.positions, DEFAULT_TARGET_RADIUS);
     return {
       trajectory: result.positions,
       fitScale: fit.scale,
       fitCentre: fit.center,
     };
-  }, [location.id, location.sculpture.engine, location.sculpture.particleCount]);
+  }, [location.id, params]);
 
   return (
     <>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Footer from "components/layout/footer";
 import LocationBanter from "components/holo-walk/location-banter";
 import {
+  getAttractorParams,
   getLocation,
   listLocations,
 } from "lib/holo-walk/locations";
@@ -68,7 +69,11 @@ export default async function HoloWalkLocationPage({
           <div className="rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-4">
             <div className="chrome-label">Engine</div>
             <div className="mt-2 font-mono text-chrome-200">
-              {loc.sculpture.engine}
+              {(() => {
+                const params = getAttractorParams(loc.sculpture);
+                if (params) return params.engine;
+                return loc.sculpture.kind === "splat" ? "splat" : "—";
+              })()}
             </div>
             <div className="mt-1 text-chrome-400">
               visible {loc.range.renderFromM}&ndash;{loc.range.renderToM}m
