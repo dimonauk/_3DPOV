@@ -33,6 +33,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import type * as THREE_TYPES from "three";
 import type { Card } from "lib/ar/types";
 
 type WebcamARSceneProps = { card: Card };
@@ -186,6 +187,28 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       anchor.position.set(0, 0, -1.5);
       anchor.add(model);
       scene.add(anchor);
+
+      // Hand-lock visual: soft glowing disc at the palm. Only shown
+      // when MediaPipe is actively returning landmarks. Gives users a
+      // clear signal that the tracker has them. Pulses gently while
+      // active so the user knows the system is alive even if their
+      // hand is held still.
+      const footprintGeom = new THREE.RingGeometry(0.04, 0.18, 48).rotateX(-Math.PI / 2);
+      const brandColor = (() => {
+        try { return new THREE.Color(card.brand.primary); } catch { return new THREE.Color(0xffffff); }
+      })();
+      const footprintMat = new THREE.MeshBasicMaterial({
+        color: brandColor,
+        transparent: true,
+        opacity: 0.3,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      const footprint = new THREE.Mesh(footprintGeom, footprintMat);
+      footprint.position.y = -0.12;
+      footprint.visible = false;
+      anchor.add(footprint);
 
       const shouldRotate = card.ar.autoRotate !== false;
 
@@ -342,11 +365,22 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
         if (handTrackingRef.current) {
           // Lazy-load on first frame after toggle.
-          if (!handHandle) void ensureHandLandmarker();
-          else updateAnchorToHand();
+          if (!handHandle) {
+            void ensureHandLandmarker();
+            footprint.visible = false;
+          } else {
+            const handFound = updateAnchorToHand();
+            footprint.visible = handFound;
+            if (handFound) {
+              // Pulse 1.0 -> 1.08 -> 1.0 every ~2s. Subtle but legible.
+              const pulse = 1 + Math.sin(t * 3) * 0.08;
+              footprint.scale.setScalar(pulse);
+              // Opacity also breathes — feels alive.
+              footprintMat.opacity = 0.22 + Math.sin(t * 3) * 0.08;
+            }
+          }
         } else {
-          // Drift back to default position when hand tracking stops,
-          // so the model doesn't snap.
+          footprint.visible = false;
           handSmoothed.set(0, 0, -1.5);
         }
 
@@ -381,6 +415,8 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         container.removeEventListener("wheel", handleWheel);
         container.removeEventListener("click", handleTap);
         if (handHandle) handHandle.dispose();
+        footprintGeom.dispose();
+        footprintMat.dispose();
         if (renderer.domElement.parentNode === container) {
           container.removeChild(renderer.domElement);
         }
@@ -437,6 +473,9 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         }
       ).xr.requestSession("immersive-ar", {
         requiredFeatures: ["hit-test", "local"],
+        // plane-detection is optional — Quest 3 + recent Chrome have
+        // it; older Android Chrome may not. Session still works without.
+        optionalFeatures: ["plane-detection"],
       });
     } catch (err) {
       console.error("XR session request failed", err);
@@ -506,9 +545,117 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       };
       session.addEventListener("select", onSelect);
 
+      // ----------------------------------------------------------------
+      // Plane visualisation — translucent quads on detected real-world
+      // surfaces. Helps the user see what the device has mapped before
+      // they tap to plant. Hidden once the model is placed.
+      // ----------------------------------------------------------------
+      type AnyXRPlane = {
+        planeSpace: XRReferenceSpace;
+        polygon: ReadonlyArray<{ x: number; y: number; z: number }>;
+        lastChangedTime: number;
+      };
+      const planeMaterial = new THREE.MeshBasicMaterial({
+        color: (() => {
+          try { return new THREE.Color(card.brand.primary); } catch { return new THREE.Color(0xffffff); }
+        })(),
+        transparent: true,
+        opacity: 0.18,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      });
+      const planeEdgeMaterial = new THREE.LineBasicMaterial({
+        color: planeMaterial.color,
+        transparent: true,
+        opacity: 0.65,
+      });
+      type PlaneEntry = {
+        mesh: THREE_TYPES.Mesh;
+        edges: THREE_TYPES.LineSegments;
+        lastChangedTime: number;
+      };
+      const planeEntries = new Map<AnyXRPlane, PlaneEntry>();
+
+      const updatePlanes = (frame: XRFrame) => {
+        // Hide entirely once model is planted — reduces visual noise.
+        if (model.visible) {
+          planeEntries.forEach(({ mesh, edges }) => {
+            mesh.visible = false;
+            edges.visible = false;
+          });
+          return;
+        }
+        const detected = (frame as unknown as { detectedPlanes?: ReadonlySet<AnyXRPlane> }).detectedPlanes;
+        if (!detected) return;
+
+        // Drop entries for planes the system has forgotten.
+        for (const [plane, entry] of planeEntries) {
+          if (!detected.has(plane)) {
+            scene.remove(entry.mesh);
+            scene.remove(entry.edges);
+            entry.mesh.geometry.dispose();
+            entry.edges.geometry.dispose();
+            planeEntries.delete(plane);
+          }
+        }
+
+        for (const plane of detected) {
+          let entry = planeEntries.get(plane);
+          if (!entry) {
+            const mesh = new THREE.Mesh(new THREE.BufferGeometry(), planeMaterial);
+            const edges = new THREE.LineSegments(new THREE.BufferGeometry(), planeEdgeMaterial);
+            mesh.matrixAutoUpdate = false;
+            edges.matrixAutoUpdate = false;
+            scene.add(mesh);
+            scene.add(edges);
+            entry = { mesh, edges, lastChangedTime: -1 };
+            planeEntries.set(plane, entry);
+          }
+
+          // Rebuild geometry only when the polygon actually changed.
+          if (entry.lastChangedTime !== plane.lastChangedTime) {
+            const points = plane.polygon;
+            if (points && points.length >= 3) {
+              // Triangle fan from first point for the filled quad.
+              const tri: number[] = [];
+              for (let i = 1; i < points.length - 1; i++) {
+                const p0 = points[0]; const pi = points[i]; const pi1 = points[i + 1];
+                if (!p0 || !pi || !pi1) continue;
+                tri.push(p0.x, p0.y, p0.z, pi.x, pi.y, pi.z, pi1.x, pi1.y, pi1.z);
+              }
+              entry.mesh.geometry.dispose();
+              entry.mesh.geometry = new THREE.BufferGeometry();
+              entry.mesh.geometry.setAttribute("position", new THREE.Float32BufferAttribute(tri, 3));
+              entry.mesh.geometry.computeVertexNormals();
+
+              // Boundary line loop.
+              const seg: number[] = [];
+              for (let i = 0; i < points.length; i++) {
+                const a = points[i]; const b = points[(i + 1) % points.length];
+                if (!a || !b) continue;
+                seg.push(a.x, a.y, a.z, b.x, b.y, b.z);
+              }
+              entry.edges.geometry.dispose();
+              entry.edges.geometry = new THREE.BufferGeometry();
+              entry.edges.geometry.setAttribute("position", new THREE.Float32BufferAttribute(seg, 3));
+            }
+            entry.lastChangedTime = plane.lastChangedTime;
+          }
+
+          const pose = (frame as unknown as { getPose: (sp: XRSpace, ref: XRReferenceSpace) => XRPose | null }).getPose(plane.planeSpace, referenceSpace);
+          if (pose) {
+            entry.mesh.matrix.fromArray(pose.transform.matrix);
+            entry.edges.matrix.fromArray(pose.transform.matrix);
+            entry.mesh.visible = true;
+            entry.edges.visible = true;
+          }
+        }
+      };
+
       const clock = new THREE.Clock();
       const xrAnimate = (_t: DOMHighResTimeStamp, frame?: XRFrame) => {
         if (frame) {
+          updatePlanes(frame);
           const hits = (
             frame as unknown as { getHitTestResults: (s: XRHitTestSource) => XRHitTestResult[] }
           ).getHitTestResults(hitTestSource);
@@ -560,6 +707,15 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         });
         reticleGeom.dispose();
         reticleMat.dispose();
+        planeEntries.forEach(({ mesh, edges }) => {
+          mesh.geometry.dispose();
+          edges.geometry.dispose();
+          scene.remove(mesh);
+          scene.remove(edges);
+        });
+        planeEntries.clear();
+        planeMaterial.dispose();
+        planeEdgeMaterial.dispose();
         disposeRef.current = null;
         setStatus("idle");
       };
