@@ -410,6 +410,7 @@ function CardDesignerInner() {
             <Fieldset legend="AR model (.glb)">
               <ModelUploadField
                 currentUrl={card.ar.model}
+                currentUsdzUrl={card.ar.modelUSDZ ?? ""}
                 isPlaceholder={card.ar.model === "/cards/dimona/model.glb"}
                 authReady={auth.configured}
                 user={auth.user}
@@ -417,6 +418,12 @@ function CardDesignerInner() {
                   setCard((c) => ({
                     ...c,
                     ar: { ...c.ar, model: url, modelUSDZ: "" },
+                  }))
+                }
+                onUsdzUploaded={(url) =>
+                  setCard((c) => ({
+                    ...c,
+                    ar: { ...c.ar, modelUSDZ: url },
                   }))
                 }
                 onReset={() =>
@@ -718,22 +725,28 @@ function HandlesField({
 
 function ModelUploadField({
   currentUrl,
+  currentUsdzUrl,
   isPlaceholder,
   authReady,
   user,
   onUploaded,
+  onUsdzUploaded,
   onReset,
 }: {
   currentUrl: string;
+  currentUsdzUrl: string;
   isPlaceholder: boolean;
   authReady: boolean;
   user: ReturnType<typeof useAuth>["user"];
   onUploaded: (url: string) => void;
+  onUsdzUploaded: (url: string) => void;
   onReset: () => void;
 }) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [converting, setConverting] = useState(false);
+  const [convertError, setConvertError] = useState<string | null>(null);
 
   const handlePick = () => fileInputRef.current?.click();
 
@@ -776,12 +789,59 @@ function ModelUploadField({
         throw new Error(data?.error ?? `Upload failed (${res.status})`);
       }
       onUploaded(data.url);
+      // Clear any stale USDZ URL - the new GLB invalidates it.
+      onUsdzUploaded("");
+      // Release the upload spinner so the user sees the GLB result
+      // immediately; USDZ conversion runs in the background as a
+      // best-effort second step.
+      setUploading(false);
+      void convertAndUploadUsdz(data.url, signedIn, file.name);
+      return;
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Upload failed.";
       setUploadError(message);
     } finally {
       setUploading(false);
+    }
+  };
+
+  const convertAndUploadUsdz = async (
+    glbUrl: string,
+    signedInUser: NonNullable<ReturnType<typeof useAuth>["user"]>,
+    originalFilename: string,
+  ) => {
+    setConvertError(null);
+    setConverting(true);
+    try {
+      // Lazy-load three.js + USDZExporter — they're heavy and we only
+      // want them in the bundle when the user actually uploads.
+      const { convertGlbUrlToUsdz } = await import("lib/cards/glb-to-usdz");
+      const usdzBlob = await convertGlbUrlToUsdz(glbUrl);
+
+      const idToken = await signedInUser.getIdToken();
+      const usdzName = originalFilename.replace(/\.(glb|gltf)$/i, "") + ".usdz";
+
+      const fd = new FormData();
+      fd.append("file", usdzBlob, usdzName);
+      fd.append("filename", usdzName);
+
+      const res = await fetch("/api/cards/upload-usdz", {
+        method: "POST",
+        headers: { Authorization: "Bearer " + idToken },
+        body: fd,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.error ?? "USDZ upload failed (" + res.status + ")");
+      }
+      onUsdzUploaded(data.url);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Couldn't generate iOS USDZ.";
+      setConvertError(message);
+    } finally {
+      setConverting(false);
     }
   };
 
@@ -811,6 +871,19 @@ function ModelUploadField({
           <code className="break-all text-[0.65rem] text-chrome-400">
             {currentUrl}
           </code>
+          {converting ? (
+            <p className="text-xs text-pink-100/80">
+              Converting to USDZ for iOS Quick Look…
+            </p>
+          ) : convertError ? (
+            <p className="text-xs text-amber-200/90">
+              {convertError} (iOS will fall back to the brand colour fallback)
+            </p>
+          ) : currentUsdzUrl ? (
+            <p className="text-xs text-pink-100">
+              ✓ iOS USDZ ready
+            </p>
+          ) : null}
         </div>
       )}
 
