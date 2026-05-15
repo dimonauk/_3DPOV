@@ -9,6 +9,7 @@
 
 import Link from "next/link";
 import { getAllCards } from "lib/ar/cards";
+import ScanCardButton from "components/ar/ScanCardButton";
 
 export const dynamic = "force-static";
 
@@ -58,6 +59,10 @@ export default async function CardsLandingPage() {
             >
               See a live card
             </Link>
+            <ScanCardButton
+              label="Scan a card →"
+              className="rounded-full border border-chrome-400/30 px-6 py-3 chrome-label text-chrome-200 transition-colors hover:border-chrome-300 hover:text-chrome-100 cursor-pointer"
+            />
             <Link
               href="/services#bespoke-ar-cards"
               className="text-chrome-300 underline underline-offset-4 hover:text-pink-200"

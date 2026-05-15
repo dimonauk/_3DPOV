@@ -66,7 +66,16 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
   const [status, setStatus] = useState<ARStatus>("idle");
   const [webXRSupported, setWebXRSupported] = useState(false);
   const [handTracking, setHandTracking] = useState(false);
+  const [recording, setRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Recording infrastructure — refs so we can start/stop from
+  // anywhere in the component without churning state.
+  const rendererCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const recorderChunksRef = useRef<Blob[]>([]);
+  const recorderRafRef = useRef<number>(0);
+  const compositeCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Mutable refs the render loop reads — avoids stale-closure issues
   // when state flips mid-frame.
@@ -84,7 +93,122 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       .catch(() => setWebXRSupported(false));
   }, []);
 
+  // ------------------------------------------------------------------
+  // Recording: composite the camera video + the three.js canvas to a
+  // hidden canvas at ~30fps, MediaRecorder over its captureStream(),
+  // download as .webm when stopped. No upload, no server — pure
+  // client-side, the user gets a file they can share or post.
+  // ------------------------------------------------------------------
+  const startRecording = async () => {
+    const video = videoRef.current;
+    const sceneCanvas = rendererCanvasRef.current;
+    if (!video || !sceneCanvas) return;
+    if (recorderRef.current) return; // already running
+
+    const w = video.videoWidth || sceneCanvas.width;
+    const h = video.videoHeight || sceneCanvas.height;
+    if (!w || !h) {
+      setError("Recording: camera video not ready yet, try again in a moment");
+      return;
+    }
+
+    // Composite target — hidden offscreen canvas.
+    const composite = document.createElement("canvas");
+    composite.width = w;
+    composite.height = h;
+    const ctx = composite.getContext("2d");
+    if (!ctx) {
+      setError("Recording: 2D canvas context unavailable");
+      return;
+    }
+    compositeCanvasRef.current = composite;
+
+    const drawFrame = () => {
+      try {
+        ctx.drawImage(video, 0, 0, w, h);
+        ctx.drawImage(sceneCanvas, 0, 0, w, h);
+      } catch {
+        // Frame draw can fail mid-teardown — ignore.
+      }
+      recorderRafRef.current = requestAnimationFrame(drawFrame);
+    };
+    drawFrame();
+
+    const stream = composite.captureStream(30);
+
+    // Pick the best supported codec — prefer VP9, fall back to VP8.
+    const Rec = (window as { MediaRecorder?: typeof MediaRecorder }).MediaRecorder;
+    if (!Rec) {
+      setError("Recording: MediaRecorder not supported on this browser");
+      cancelAnimationFrame(recorderRafRef.current);
+      compositeCanvasRef.current = null;
+      return;
+    }
+    const candidates = [
+      "video/webm;codecs=vp9",
+      "video/webm;codecs=vp8",
+      "video/webm",
+      "video/mp4;codecs=avc1",
+    ];
+    const mimeType = candidates.find((c) => Rec.isTypeSupported && Rec.isTypeSupported(c)) ?? "";
+
+    let recorder: MediaRecorder;
+    try {
+      recorder = mimeType ? new Rec(stream, { mimeType, videoBitsPerSecond: 4_000_000 }) : new Rec(stream);
+    } catch (err) {
+      console.error("MediaRecorder ctor failed", err);
+      setError("Recording: " + ((err as Error).message ?? "couldn't start"));
+      cancelAnimationFrame(recorderRafRef.current);
+      compositeCanvasRef.current = null;
+      return;
+    }
+
+    recorderChunksRef.current = [];
+    recorder.ondataavailable = (e) => {
+      if (e.data.size > 0) recorderChunksRef.current.push(e.data);
+    };
+    recorder.onstop = () => {
+      cancelAnimationFrame(recorderRafRef.current);
+      const blob = new Blob(recorderChunksRef.current, { type: mimeType || "video/webm" });
+      const url = URL.createObjectURL(blob);
+      const extension = mimeType.includes("mp4") ? "mp4" : "webm";
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `holoflow-ar-${card.slug}-${Date.now()}.${extension}`;
+      a.click();
+      // Revoke after a tick so the browser has time to start the download.
+      setTimeout(() => URL.revokeObjectURL(url), 5_000);
+      recorderChunksRef.current = [];
+      compositeCanvasRef.current = null;
+      recorderRef.current = null;
+    };
+
+    recorder.start(1_000); // 1s chunks — limits memory if the user records for a while
+    recorderRef.current = recorder;
+    setRecording(true);
+  };
+
+  const stopRecording = () => {
+    const rec = recorderRef.current;
+    if (rec && rec.state !== "inactive") {
+      rec.stop();
+    }
+    setRecording(false);
+  };
+
   const stopCamera = () => {
+    if (recorderRef.current) {
+      try {
+        recorderRef.current.stop();
+      } catch {
+        // ignore — was already stopped or torn down
+      }
+      recorderRef.current = null;
+    }
+    cancelAnimationFrame(recorderRafRef.current);
+    compositeCanvasRef.current = null;
+    setRecording(false);
+
     if (streamRef.current) {
       for (const track of streamRef.current.getTracks()) track.stop();
       streamRef.current = null;
@@ -157,12 +281,14 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 100);
       camera.position.set(0, 0, 0);
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(width, height);
       renderer.setClearColor(0x000000, 0);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
+      // Expose for the recorder — composites video bg + this canvas.
+      rendererCanvasRef.current = renderer.domElement;
 
       scene.add(new THREE.AmbientLight(0xffffff, 1.0));
       const key = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -817,6 +943,12 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
                 📍 Place on floor
               </button>
             )}
+            <button
+              className={`wc-toggle ${recording ? "wc-toggle-rec" : ""}`}
+              onClick={recording ? stopRecording : startRecording}
+            >
+              {recording ? "● Recording — tap to stop" : "● Record"}
+            </button>
           </div>
           <button className="wc-stop" onClick={stopCamera} aria-label="Stop AR">
             ✕
@@ -997,6 +1129,16 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
           background: ${card.brand.primary};
           color: ${card.brand.textOnBrand};
           border-color: ${card.brand.primary};
+        }
+        .wc-toggle-rec {
+          background: #d92626;
+          color: white;
+          border-color: #d92626;
+          animation: rec-pulse 1.4s ease-in-out infinite;
+        }
+        @keyframes rec-pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(217, 38, 38, 0.55); }
+          50%      { box-shadow: 0 0 0 8px rgba(217, 38, 38, 0); }
         }
         .wc-stop {
           position: absolute;
