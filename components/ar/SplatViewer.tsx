@@ -56,15 +56,19 @@ export default function SplatViewer({ card, splatUrl }: SplatViewerProps) {
       const height = container.clientHeight;
 
       // Detect WebXR-AR support so we can light up the AR button if available.
-      let webXRMode = GaussianSplats3D.WebXRMode.None;
+      // Computed up-front then `as number` to side-step a literal-type
+      // narrowing under the package's .d.ts shim where `None: 0` and
+      // `AR: 2` get treated as incompatible literal types.
+      let arSupported = false;
       try {
         const xr = (navigator as { xr?: { isSessionSupported: (m: string) => Promise<boolean> } }).xr;
-        if (xr && (await xr.isSessionSupported("immersive-ar"))) {
-          webXRMode = GaussianSplats3D.WebXRMode.AR;
-        }
+        arSupported = !!xr && (await xr.isSessionSupported("immersive-ar"));
       } catch {
-        // No WebXR available — fall through with WebXRMode.None.
+        // No WebXR available — leave arSupported false.
       }
+      const webXRMode: number = arSupported
+        ? GaussianSplats3D.WebXRMode.AR
+        : GaussianSplats3D.WebXRMode.None;
 
       const viewer = new GaussianSplats3D.Viewer({
         cameraUp: [0, 1, 0],

@@ -29,6 +29,9 @@ importers:
       '@mkkellogg/gaussian-splats-3d':
         specifier: ^0.4.7
         version: 0.4.7(three@0.171.0)
+      '@mlc-ai/web-llm':
+        specifier: ^0.2.83
+        version: 0.2.83
       '@pixiv/three-vrm':
         specifier: ^3.5.2
         version: 3.5.2(three@0.171.0)
@@ -1969,6 +1972,9 @@ packages:
     resolution: {integrity: sha512-0vy9/i9sJLFH/v3WJZ4axCsqjkToe8UsV3xY7bvK5EUC0akiRsWZODoCiSzpxhTLNyzSKTsyQKozIFeNA5RWRA==}
     peerDependencies:
       three: '>=0.160.0'
+
+  '@mlc-ai/web-llm@0.2.83':
+    resolution: {integrity: sha512-Ynuses0TM9CcSIs9PfX5+xwGOVFssQTXQaAwKFggfEw++shBbEr8fOjI7yJlY96wv0dwVFE+C2KGcO287+FuHw==}
 
   '@monogrid/gainmap-js@3.4.0':
     resolution: {integrity: sha512-2Z0FATFHaoYJ8b+Y4y4Hgfn3FRFwuU5zRrk+9dFWp4uGAdHGqVEdP7HP+gLA3X469KXHmfupJaUbKo1b/aDKIg==}
@@ -4898,6 +4904,10 @@ packages:
   log-symbols@7.0.1:
     resolution: {integrity: sha512-ja1E3yCr9i/0hmBVaM0bfwDjnGy8I/s6PP4DFp+yP+a+mrHO4Rm7DtmnqROTUkHIkqffC84YY7AeqX6oFk0WFg==}
     engines: {node: '>=18'}
+
+  loglevel@1.9.2:
+    resolution: {integrity: sha512-HgMmCqIJSAKqo68l0rS2AanEWfkxaZ5wNiEFb5ggm08lDs9Xl2KxBlX3PTcaD2chBM1gXAYf491/M2Rv8Jwayg==}
+    engines: {node: '>= 0.6.0'}
 
   long@4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
@@ -8829,6 +8839,10 @@ snapshots:
     dependencies:
       three: 0.171.0
 
+  '@mlc-ai/web-llm@0.2.83':
+    dependencies:
+      loglevel: 1.9.2
+
   '@monogrid/gainmap-js@3.4.0(three@0.171.0)':
     dependencies:
       promise-worker-transferable: 1.0.4
@@ -12167,6 +12181,8 @@ snapshots:
     dependencies:
       is-unicode-supported: 2.1.0
       yoctocolors: 2.1.2
+
+  loglevel@1.9.2: {}
 
   long@4.0.0: {}
 
