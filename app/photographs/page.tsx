@@ -40,6 +40,19 @@ export default async function PhotographsPage() {
           music if music mattered to the gesture.
         </p>
         <p className="mt-6 max-w-2xl text-sm text-chrome-400">
+          Got a Vision Pro / a newer iPhone?{" "}
+          <Link
+            href="/photographs/spatial"
+            className="text-pink-200 underline underline-offset-4"
+          >
+            Try the spatial version of any of these
+          </Link>{" "}
+          &mdash; your machine reads depth, warps to stereo, and wraps
+          the result as a USDZ you can open in AR Quick Look. No
+          server compute, no charge.
+        </p>
+
+        <p className="mt-6 max-w-2xl text-sm text-chrome-400">
           Curious how these are made? The studio writes a{" "}
           <Link
             href="/tutorials/your-first-long-exposure"
