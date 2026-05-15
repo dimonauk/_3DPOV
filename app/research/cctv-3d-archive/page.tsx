@@ -1,6 +1,7 @@
 import Footer from "components/layout/footer";
 import { isFirebaseAdminConfigured } from "lib/firebase/admin";
 import { mediaList } from "lib/capabilities/media/library";
+import type { Media } from "lib/capabilities/media/library-types";
 
 // splat-viewer-spark.tsx is `"use client"` so the framework hydrates it
 // on the client. `dynamic({ssr:false})` would be redundant here and is
@@ -13,11 +14,27 @@ export const metadata = {
     "An archive of public-CCTV stills across London, each one converted into a 3D Gaussian Splat via Apple SHARP on the studio's bench. Research-only by licence; published here as the studio's notebook, not as a catalogue.",
 };
 
-// Server component — reads from Firestore at request time. PPR-friendly.
+// Force per-request rendering — the page reads from Firestore live,
+// and the Firebase Admin env isn't available at build time on Vercel's
+// prerender pass, so any static-generation attempt would throw.
+export const dynamic = "force-dynamic";
+
+// Server component — reads from Firestore at request time.
 export default async function CctvThreeDArchivePage() {
-  const records = isFirebaseAdminConfigured()
-    ? (await mediaList({ kind: "ply", subject: "research", limit: 50 })).items
-    : [];
+  // Defence-in-depth: even with `force-dynamic`, wrap the fetch so a
+  // transient Firestore error or missing env in any environment falls
+  // through to the empty state rather than 500-ing the whole page.
+  let records: Media[] = [];
+  if (isFirebaseAdminConfigured()) {
+    try {
+      records = (
+        await mediaList({ kind: "ply", subject: "research", limit: 50 })
+      ).items;
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("cctv-3d-archive: mediaList failed", err);
+    }
+  }
 
   const splats = records.filter(
     (r) => r.sourceRef?.splat?.provider === "sharp-onnx",
