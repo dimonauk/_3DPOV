@@ -12,6 +12,7 @@ import ARLandingClient from "components/ar/ARLandingClient";
 import CardEventTracker from "components/ar/CardEventTracker";
 import LeadCaptureForm from "components/ar/LeadCaptureForm";
 import SaveToWalletButton from "components/ar/SaveToWalletButton";
+import AddToAppleWalletButton from "components/ar/AddToAppleWalletButton";
 
 interface PageProps {
   // Next 15: params is a Promise — must be awaited.
@@ -139,6 +140,7 @@ export default async function CardPage({ params }: PageProps) {
             primary={primary}
             textOnBrand={textOnBrand}
           />
+          <AddToAppleWalletButton slug={slug} primary={primary} />
         </div>
         <LeadCaptureForm
           slug={slug}

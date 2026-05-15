@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createCardLead, notifyOwnerOfLead } from "lib/cards/leads-server";
 import { getCardServer } from "lib/cards/firestore-server";
+import { fanOutWebhook } from "lib/cards/webhooks-server";
 
 /**
  * POST /api/cards/[slug]/leads — capture a visitor's contact details.
@@ -21,6 +22,8 @@ import { getCardServer } from "lib/cards/firestore-server";
  * On success the lead lands in Firestore at cards/<slug>/leads/<id>,
  * and if Resend is configured + the card has an owner email, a
  * notification email fires to the owner (best-effort, non-blocking).
+ * If the card has a webhook URL configured, the lead is also forwarded
+ * to that URL with an HMAC-signed payload.
  */
 export const runtime = "nodejs";
 
@@ -67,13 +70,12 @@ export async function POST(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: result.error }, { status: 400 });
   }
 
-  // Fire notification email in the background — never blocks the
-  // visitor's response. We still await so Vercel doesn't kill it
-  // mid-request, but errors are swallowed inside notifyOwnerOfLead.
+  // Email notification — best-effort, never blocks visitor.
   try {
     const card = await getCardServer(slug);
     const ownerEmail =
-      (card?.card as { contact?: { email?: string } } | undefined)?.contact?.email;
+      (card?.card as { contact?: { email?: string } } | undefined)?.contact
+        ?.email;
     const cardName =
       (card?.card as { name?: string } | undefined)?.name ?? slug;
     if (ownerEmail) {
@@ -88,6 +90,19 @@ export async function POST(req: NextRequest, { params }: Params) {
     }
   } catch {
     // Notification is best-effort; lead is already stored.
+  }
+
+  // Webhook fan-out — best-effort, never blocks visitor. Fires only
+  // when the card has webhookUrl + webhookSecret configured.
+  try {
+    await fanOutWebhook(slug, "lead_capture", {
+      name: body.name ?? null,
+      email: (body.email ?? "").trim().toLowerCase(),
+      message: body.message ?? null,
+      src: body.src ?? null,
+    });
+  } catch {
+    // Webhook is best-effort; lead is already stored.
   }
 
   return NextResponse.json({ ok: true, id: result.id });

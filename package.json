@@ -46,6 +46,7 @@
     "mind-ar": "^1.2.5",
     "next": "15.6.0-canary.60",
     "next-sanity": "^12.4.5",
+    "passkit-generator": "^3.5.7",
     "postprocessing": "^6.39.1",
     "qr-code-styling": "^1.9.2",
     "qr-scanner": "^1.4.2",
