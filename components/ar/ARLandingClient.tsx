@@ -3,19 +3,23 @@
 /**
  * Client-side device detection wrapper around the AR modes.
  *
- * Picks a sensible default based on user-agent:
- *   - iOS: model-viewer (Quick Look) — Safari has no WebXR, MindAR is glitchy
- *   - Mobile non-iOS: MindAR by default, model-viewer as secondary tab
- *   - Desktop: model-viewer 3D preview only (no camera AR makes sense)
+ * The default mode the user lands on:
+ *   - Mobile (iOS + Android): "room" — webcam-fed AR scene that
+ *     composites the model into the user's actual space using
+ *     getUserMedia + device orientation. The strongest immediate
+ *     impression and works on every modern mobile browser.
+ *   - Desktop: "desktop" — model-viewer 3D preview only (no
+ *     camera AR makes sense on a laptop without a rear cam).
  *
- * Additional modes appear conditionally if the card defines them:
- *   - "splat" — Gaussian Splatting via @mkkellogg/gaussian-splats-3d.
- *     Photoreal capture-based scenes. WebXR-AR when supported.
- *   - "vrm"   — VRM humanoid avatar via @pixiv/three-vrm. Idle
- *     breathing + head-tracking. Best for companion presenters
- *     (Aura) or brand mascots.
+ * Always-available tabs (where the device supports them):
+ *   - Room AR     — webcam passthrough + 3D overlay + parallax
+ *   - Card AR     — MindAR image-tracked AR (printed card scan)
+ *   - Place in space — model-viewer Quick Look / Scene Viewer
+ *   - 3D preview  — model-viewer canvas, no camera
  *
- * Either mode is reachable via tabs at the top.
+ * Conditional tabs (only when the card defines them):
+ *   - Splat       — Gaussian Splatting via @mkkellogg/gaussian-splats-3d
+ *   - Avatar      — VRM humanoid via @pixiv/three-vrm
  */
 
 import dynamic from "next/dynamic";
@@ -24,18 +28,17 @@ import type { Card } from "lib/ar/types";
 
 const MindARScene = dynamic(() => import("./MindARScene"), { ssr: false });
 const ModelViewerNative = dynamic(() => import("./ModelViewerNative"), { ssr: false });
+const WebcamARScene = dynamic(() => import("./WebcamARScene"), { ssr: false });
 const SplatViewer = dynamic(() => import("./SplatViewer"), { ssr: false });
 const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
 
-type Mode = "mindar" | "world" | "desktop" | "splat" | "vrm";
+type Mode = "room" | "mindar" | "world" | "desktop" | "splat" | "vrm";
 
 function detectDefaultMode(): Mode {
   if (typeof navigator === "undefined") return "desktop";
   const ua = navigator.userAgent;
-  const isIOS = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
-  const isAndroid = /Android/.test(ua);
-  if (isIOS) return "world"; // Quick Look + 3D preview, no MindAR
-  if (isAndroid) return "mindar";
+  const isMobile = /iPad|iPhone|iPod|Android/.test(ua) && !(window as any).MSStream;
+  if (isMobile) return "room"; // straight into webcam AR — the wow path
   return "desktop";
 }
 
@@ -52,13 +55,27 @@ export default function ARLandingClient({ card }: { card: Card }) {
     return <div style={{ minHeight: "60vh" }} aria-hidden />;
   }
 
+  const isMobile =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod|Android/.test(navigator.userAgent);
+
   const hasSplat = Boolean(card.ar.splat);
   const hasVRM = Boolean(card.ar.vrm);
 
   return (
     <div className="ar-landing">
       <div className="ar-tabs" role="tablist">
-        {mode !== "desktop" && (
+        {isMobile && (
+          <button
+            role="tab"
+            aria-selected={mode === "room"}
+            className={mode === "room" ? "active" : ""}
+            onClick={() => setMode("room")}
+          >
+            Room AR
+          </button>
+        )}
+        {isMobile && (
           <button
             role="tab"
             aria-selected={mode === "mindar"}
@@ -107,6 +124,7 @@ export default function ARLandingClient({ card }: { card: Card }) {
       </div>
 
       <div className="ar-stage">
+        {mode === "room" && <WebcamARScene card={card} />}
         {mode === "mindar" && <MindARScene card={card} />}
         {(mode === "world" || mode === "desktop") && <ModelViewerNative card={card} />}
         {mode === "splat" && hasSplat && <SplatViewer card={card} splatUrl={card.ar.splat!} />}
@@ -147,6 +165,7 @@ export default function ARLandingClient({ card }: { card: Card }) {
         }
         .ar-stage {
           min-height: 60vh;
+          position: relative;
         }
       `}</style>
     </div>

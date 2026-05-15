@@ -12,21 +12,21 @@
 
 declare module "@mkkellogg/gaussian-splats-3d" {
   export const WebXRMode: {
-    None: 0;
-    VR: 1;
-    AR: 2;
+    None: number;
+    VR: number;
+    AR: number;
   };
 
   export const SceneRevealMode: {
-    Default: 0;
-    Gradual: 1;
-    Instant: 2;
+    Default: number;
+    Gradual: number;
+    Instant: number;
   };
 
   export const RenderMode: {
-    Always: 0;
-    OnChange: 1;
-    Never: 2;
+    Always: number;
+    OnChange: number;
+    Never: number;
   };
 
   export interface ViewerOptions {
