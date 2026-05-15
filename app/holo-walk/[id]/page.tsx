@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
+import LocationBanter from "components/holo-walk/location-banter";
 import {
   getLocation,
   listLocations,
@@ -146,6 +147,8 @@ export default async function HoloWalkLocationPage({
             capabilities
           </Link>
         </div>
+
+        <LocationBanter locationId={id} />
       </article>
       <Footer />
     </>
