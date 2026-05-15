@@ -76,6 +76,14 @@ export default function ModelViewerNative({ card }: { card: Card }) {
         ar-modes={arModes}
         ar-scale="auto"
         camera-controls="true"
+        // Pull camera back to 145% of the bounding-sphere radius. The
+        // model-viewer default of 105% is too tight for dense geometry like
+        // the protean-elite lineage where ribbons reach the bounding-box
+        // corners — at 105% the camera frames the box itself, not the
+        // farthest visible features, so the bottom of the model clips
+        // below the viewer. 145% leaves comfortable margin without
+        // making sparser models look distant.
+        camera-orbit="0deg 75deg 145%"
         // Gentle auto-rotate — 12°/s is roughly a quarter of the default
         // 30°/s, reads as ambient rather than presentational.
         auto-rotate={shouldRotate ? "true" : undefined}
