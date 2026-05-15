@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import CodexRef from "components/codex/codex-ref";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -39,12 +41,19 @@ export default function LineageMareyToNow() {
       </p>
       <p>
         The chronophotographic plate is the direct ancestor of every
-        photograph the studio has ever taken. The body is decomposed
-        into ghosted overlapping positions; the gesture is integrated
-        across time onto a single surface; what comes out of the
-        camera is not a snapshot but a record. Marey understood the
-        physics he was inventing; he was a working scientist, not an
-        artist. The art comes later.
+        photograph the studio has ever taken &mdash; the same{" "}
+        <CodexRef slug="long-exposure-photography">
+          long-exposure
+        </CodexRef>{" "}
+        trick, the same use of{" "}
+        <CodexRef slug="persistence-of-vision">
+          persistence of vision
+        </CodexRef>
+        . The body is decomposed into ghosted overlapping positions;
+        the gesture is integrated across time onto a single surface;
+        what comes out of the camera is not a snapshot but a record.
+        Marey understood the physics he was inventing; he was a
+        working scientist, not an artist. The art comes later.
       </p>
 
       <p>

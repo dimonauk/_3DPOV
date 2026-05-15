@@ -117,6 +117,19 @@ function pathContext(pathname: string | null): string | undefined {
   const first = segments[0];
   if (!first) return "The visitor is on the home page.";
   const rest = segments.slice(1).join("/");
+
+  // Codex entries: produce a richer "you're reading about X" prompt so
+  // Aura grounds her answers in the specific topic. The slug is the
+  // topic — no codex-data import needed (avoids pulling 33 body
+  // components into the launcher bundle).
+  if (first === "codex" && segments.length > 1) {
+    const slug = segments[1] ?? "";
+    const topic = slug.replace(/-/g, " ").trim();
+    if (topic) {
+      return `The visitor is reading the studio's codex entry on "${topic}". Ground your replies in what you know about this topic. Where relevant, point them at the studio's own codex.`;
+    }
+  }
+
   const blurbs: Record<string, string> = {
     articles: "The visitor is reading an article",
     journal: "The visitor is reading a journal entry",
