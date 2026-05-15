@@ -1,0 +1,520 @@
+"use client";
+
+/**
+ * components/aura/aura-launcher.tsx — `<AuraLauncher />`.
+ *
+ * Floating bottom-right chat launcher mounted globally in the root
+ * layout, but ONLY visible on pages in the allow-list — Aura is a
+ * taster on a curated set of "complicated" pages, not on every
+ * surface. The full-access version lives behind a subscription.
+ *
+ * # Tiered backends
+ * - **WebGPU (default)**: zero server-side per-call cost. Visitor's
+ *   browser runs Llama-3.2-3B-Instruct via @mlc-ai/web-llm.
+ * - **Gemini (fallback)**: server-side `/api/aura/chat` when the
+ *   visitor's device can't run WebGPU. Paid per call.
+ *
+ * # Memory tiers
+ * - **Anonymous**: localStorage. Single device, single browser.
+ * - **Logged-in (free)**: Firestore via /api/aura/history. Cross-
+ *   device. Loaded on mount, written through on each turn.
+ * - **Subscribed (future)**: vector memory, longer context windows,
+ *   richer models. The launcher hints at it for anon visitors after
+ *   they've engaged.
+ *
+ * # Where Aura appears
+ * See `SHOW_ON_PATHS` below. Pages NOT in the list don't mount the
+ * launcher at all (returns null) — keeps her off the home page, the
+ * admin routes, the studio CMS, etc.
+ */
+
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { useAuth } from "components/auth/auth-provider";
+import { aura } from "lib/cast/aura";
+import {
+  DEFAULT_WEBGPU_MODEL,
+  probeWebGpuChatSupport,
+  respondWebGpu,
+  type WebGpuChatSupport,
+} from "lib/capabilities/agent/dialogue-webgpu";
+
+type Turn = { role: "user" | "model"; text: string };
+
+/** Paths where Aura shows. Match by prefix. */
+const SHOW_ON_PATHS = [
+  "/articles",
+  "/journal",
+  "/tutorials",
+  "/codex",
+  "/research",
+  "/atelier",
+  "/holo-walk",
+  "/aerial",
+  "/cast",
+  "/bureau",
+  "/play",
+  "/chrono-protocol",
+  "/aura",
+];
+
+/** Paths where Aura is explicitly hidden, even if prefix-matched. */
+const HIDE_ON_PATHS = [
+  "/admin",
+  "/api",
+  "/studio",
+  "/aura/web-llm", // the dedicated chat page has its own embedded UI
+];
+
+function shouldShow(pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (HIDE_ON_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`))) {
+    return false;
+  }
+  return SHOW_ON_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+}
+
+const STORAGE_KEY = "holoflow:aura-chat:v1";
+const OPEN_KEY = "holoflow:aura-chat:open";
+const MAX_HISTORY = 30;
+
+function loadLocalHistory(): Turn[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (t): t is Turn =>
+        typeof t === "object" &&
+        t !== null &&
+        ((t as Turn).role === "user" || (t as Turn).role === "model") &&
+        typeof (t as Turn).text === "string",
+    );
+  } catch {
+    return [];
+  }
+}
+
+function saveLocalHistory(history: Turn[]): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(history.slice(-MAX_HISTORY)),
+    );
+  } catch {
+    // quota / private mode — fall through
+  }
+}
+
+function pathContext(pathname: string | null): string | undefined {
+  if (!pathname) return undefined;
+  const segments = pathname.split("/").filter(Boolean);
+  const first = segments[0];
+  if (!first) return "The visitor is on the home page.";
+  const rest = segments.slice(1).join("/");
+  const blurbs: Record<string, string> = {
+    articles: "The visitor is reading an article",
+    journal: "The visitor is reading a journal entry",
+    tutorials: "The visitor is reading a tutorial",
+    codex: "The visitor is browsing the codex",
+    photographs: "The visitor is in the photograph gallery",
+    aerial: "The visitor is on the aerial / drone page",
+    atelier: "The visitor is in the atelier",
+    "holo-walk": "The visitor is on a HoloWalk page",
+    research: "The visitor is on the research notebook",
+    play: "The visitor is on the play page",
+    cast: "The visitor is meeting the cast",
+    bureau: "The visitor is at the bureau",
+    "chrono-protocol": "The visitor is in the chrono protocol",
+    aura: "The visitor is on an Aura-specific page",
+  };
+  const base = blurbs[first] ?? `The visitor is on /${first}`;
+  return rest ? `${base} (${rest}).` : `${base}.`;
+}
+
+async function loadServerHistory(idToken: string): Promise<Turn[]> {
+  try {
+    const res = await fetch("/api/aura/history", {
+      headers: { Authorization: `Bearer ${idToken}` },
+    });
+    if (!res.ok) return [];
+    const json = (await res.json()) as { turns?: unknown };
+    if (!Array.isArray(json.turns)) return [];
+    return json.turns.filter(
+      (t): t is Turn =>
+        typeof t === "object" &&
+        t !== null &&
+        ((t as Turn).role === "user" || (t as Turn).role === "model") &&
+        typeof (t as Turn).text === "string",
+    );
+  } catch {
+    return [];
+  }
+}
+
+async function saveServerTurns(
+  idToken: string,
+  turns: Turn[],
+): Promise<void> {
+  try {
+    await fetch("/api/aura/history", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ turns }),
+    });
+  } catch {
+    // best effort
+  }
+}
+
+async function clearServerHistory(idToken: string): Promise<void> {
+  try {
+    await fetch("/api/aura/history", {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${idToken}` },
+    });
+  } catch {
+    // best effort
+  }
+}
+
+async function callServerSideChat(
+  history: Turn[],
+  userText: string,
+  context: string | undefined,
+  idToken: string | null,
+): Promise<string> {
+  const res = await fetch("/api/aura/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
+    },
+    body: JSON.stringify({
+      history: history.slice(-MAX_HISTORY),
+      userText,
+      context: context ?? null,
+    }),
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`server chat ${res.status}: ${body.slice(0, 200)}`);
+  }
+  const json = (await res.json()) as { text?: string };
+  return typeof json.text === "string" ? json.text : "";
+}
+
+export default function AuraLauncher() {
+  const pathname = usePathname();
+  const { user, loading: authLoading } = useAuth();
+  const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [support, setSupport] = useState<WebGpuChatSupport | null>(null);
+  const [history, setHistory] = useState<Turn[]>([]);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
+  const [input, setInput] = useState("");
+  const [streaming, setStreaming] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [loadProgress, setLoadProgress] = useState<{
+    text: string;
+    progress: number;
+  } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+
+  // Hydrate on mount.
+  useEffect(() => {
+    setMounted(true);
+    try {
+      setOpen(window.localStorage.getItem(OPEN_KEY) === "1");
+    } catch {
+      // ignore
+    }
+    let cancelled = false;
+    probeWebGpuChatSupport().then((s) => {
+      if (!cancelled) setSupport(s);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Load history once auth state is known — Firestore for logged-in
+  // visitors, localStorage otherwise.
+  useEffect(() => {
+    if (!mounted || authLoading) return;
+    let cancelled = false;
+    (async () => {
+      if (user) {
+        try {
+          const idToken = await user.getIdToken();
+          const fromServer = await loadServerHistory(idToken);
+          if (!cancelled) {
+            // Merge any anonymous localStorage history that pre-dates
+            // sign-in (one-time-only — clear local after merge so
+            // sign-in/sign-out toggling doesn't duplicate).
+            const local = loadLocalHistory();
+            const merged = local.length > 0 ? [...fromServer, ...local] : fromServer;
+            setHistory(merged);
+            setHistoryLoaded(true);
+            if (local.length > 0) {
+              saveLocalHistory([]);
+              void saveServerTurns(idToken, local);
+            }
+          }
+        } catch {
+          if (!cancelled) {
+            setHistory(loadLocalHistory());
+            setHistoryLoaded(true);
+          }
+        }
+      } else {
+        setHistory(loadLocalHistory());
+        setHistoryLoaded(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [mounted, authLoading, user]);
+
+  // Persist open/closed.
+  useEffect(() => {
+    if (!mounted) return;
+    try {
+      window.localStorage.setItem(OPEN_KEY, open ? "1" : "0");
+    } catch {
+      // ignore
+    }
+  }, [open, mounted]);
+
+  // Auto-scroll on content change.
+  useEffect(() => {
+    if (scrollerRef.current) {
+      scrollerRef.current.scrollTop = scrollerRef.current.scrollHeight;
+    }
+  }, [history, streaming, open]);
+
+  const useWebGpu = support?.recommended === true;
+
+  const send = useCallback(async () => {
+    const text = input.trim();
+    if (!text || busy) return;
+    setInput("");
+    setError(null);
+    const userTurn: Turn = { role: "user", text };
+    const next = [...history, userTurn];
+    setHistory(next);
+    setBusy(true);
+    setStreaming("");
+
+    // Optimistic local persist; server persist after we have the reply.
+    if (!user) saveLocalHistory(next);
+
+    const ctx = pathContext(pathname);
+    const idToken = user ? await user.getIdToken().catch(() => null) : null;
+
+    try {
+      let full = "";
+      if (useWebGpu) {
+        await respondWebGpu({
+          bible: aura,
+          history,
+          userText: text,
+          model: DEFAULT_WEBGPU_MODEL,
+          onProgress: (p) => setLoadProgress(p),
+          onStream: (_chunk, acc) => {
+            full = acc;
+            setStreaming(acc);
+          },
+        });
+      } else {
+        full = await callServerSideChat(history, text, ctx, idToken);
+        setStreaming(full);
+      }
+      const modelTurn: Turn = { role: "model", text: full };
+      const final = [...next, modelTurn];
+      setHistory(final);
+      setStreaming(null);
+      setLoadProgress(null);
+
+      if (user && idToken) {
+        // WebGPU path: server hasn't seen the turn yet — persist both
+        // halves. Gemini path: /api/aura/chat already persisted them.
+        if (useWebGpu) {
+          void saveServerTurns(idToken, [userTurn, modelTurn]);
+        }
+      } else {
+        saveLocalHistory(final);
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message);
+      setStreaming(null);
+    } finally {
+      setBusy(false);
+    }
+  }, [input, busy, history, useWebGpu, pathname, user]);
+
+  const clearHistory = useCallback(async () => {
+    setHistory([]);
+    setError(null);
+    saveLocalHistory([]);
+    if (user) {
+      const idToken = await user.getIdToken().catch(() => null);
+      if (idToken) void clearServerHistory(idToken);
+    }
+  }, [user]);
+
+  // ---- Render gating ---------------------------------------------------
+
+  // Hide on non-allow-listed pages.
+  if (!mounted || !shouldShow(pathname)) return null;
+
+  return (
+    <>
+      {!open && (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Talk to Aura"
+          className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full border border-pink-200/40 bg-warm-black-950/90 px-4 py-2.5 text-sm text-pink-100 shadow-lg backdrop-blur-sm transition hover:border-pink-200/80 hover:text-pink-50"
+        >
+          <span className="h-2 w-2 animate-pulse rounded-full bg-pink-300" />
+          <span>Talk to Aura</span>
+        </button>
+      )}
+
+      {open && (
+        <div className="fixed bottom-0 right-0 z-50 flex h-[100dvh] w-full flex-col border-l border-warm-black-800 bg-warm-black-950/95 backdrop-blur-md md:bottom-5 md:right-5 md:h-[min(640px,80vh)] md:w-[400px] md:rounded-md md:border">
+          <header className="flex items-center justify-between border-b border-warm-black-800 px-4 py-3">
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-pink-300" />
+              <span className="font-display text-base text-pink-100">
+                Aura
+              </span>
+              <span className="text-[10px] uppercase tracking-wider text-chrome-500">
+                {useWebGpu ? "local" : "hosted"}
+                {user && " · synced"}
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              {history.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => void clearHistory()}
+                  className="text-xs text-chrome-400 hover:text-pink-200"
+                  aria-label="Clear conversation"
+                >
+                  clear
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close chat"
+                className="text-chrome-300 hover:text-pink-100"
+              >
+                ✕
+              </button>
+            </div>
+          </header>
+
+          <div ref={scrollerRef} className="flex-1 overflow-y-auto px-4 py-4">
+            {history.length === 0 && streaming === null && historyLoaded && (
+              <div className="text-sm text-chrome-400">
+                {support === null
+                  ? "Probing your device…"
+                  : support.recommended
+                    ? "Say hi. The first message fetches a model into your browser cache (~2 GB, one time, then she lives there)."
+                    : `Aura on this device runs through the studio's hosted backend.${
+                        support.reason ? ` ${support.reason}.` : ""
+                      }`}
+              </div>
+            )}
+            {history.map((t, i) => (
+              <div
+                key={i}
+                className={`mb-3 ${
+                  t.role === "user" ? "text-chrome-300" : "text-pink-100"
+                }`}
+              >
+                <div className="text-[10px] uppercase tracking-wider text-chrome-500">
+                  {t.role === "user" ? "you" : "aura"}
+                </div>
+                <div className="mt-1 whitespace-pre-wrap text-sm">{t.text}</div>
+              </div>
+            ))}
+            {streaming !== null && (
+              <div className="text-pink-100">
+                <div className="text-[10px] uppercase tracking-wider text-chrome-500">
+                  aura
+                </div>
+                <div className="mt-1 whitespace-pre-wrap text-sm">
+                  {streaming}
+                  <span className="animate-pulse">▊</span>
+                </div>
+              </div>
+            )}
+
+            {/* Subscription nudge: only when anon, only after some
+                engagement. Phrased as Aura herself for tone. */}
+            {!user && history.length >= 6 && history.length % 6 === 0 && (
+              <div className="my-3 rounded border border-pink-200/20 bg-pink-200/[0.03] px-3 py-2 text-xs text-pink-200/80">
+                If you sign in, I&rsquo;ll remember this conversation across
+                your devices. Subscribers get a brighter version of me.
+              </div>
+            )}
+          </div>
+
+          {loadProgress && (
+            <div className="border-t border-warm-black-800 px-4 py-2 text-[11px] text-chrome-400">
+              {loadProgress.text}
+              {loadProgress.progress > 0 && (
+                <span className="ml-2 text-pink-200">
+                  {(loadProgress.progress * 100).toFixed(0)}%
+                </span>
+              )}
+            </div>
+          )}
+          {error && (
+            <div className="border-t border-rose-900 bg-rose-950/40 px-4 py-2 text-[11px] text-rose-200">
+              {error}
+            </div>
+          )}
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void send();
+            }}
+            className="flex gap-2 border-t border-warm-black-800 p-3"
+          >
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Say something to Aura…"
+              disabled={busy}
+              className="flex-1 rounded border border-warm-black-800 bg-warm-black-950 px-3 py-2 text-sm focus:border-pink-200 focus:outline-none disabled:opacity-50"
+            />
+            <button
+              type="submit"
+              disabled={busy || !input.trim()}
+              className="rounded border border-pink-200/60 px-3 py-2 text-sm text-pink-100 hover:bg-pink-200/10 disabled:opacity-50"
+            >
+              {busy ? "…" : "→"}
+            </button>
+          </form>
+        </div>
+      )}
+    </>
+  );
+}

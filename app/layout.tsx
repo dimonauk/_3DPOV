@@ -6,6 +6,7 @@ import { PlausibleAnalytics } from "components/analytics/plausible";
 import { KlaviyoAnalytics } from "components/analytics/klaviyo";
 import { Analytics } from "@vercel/analytics/next";
 import { AuthProvider } from "components/auth/auth-provider";
+import AuraLauncher from "components/aura/aura-launcher";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import { getCart } from "lib/shopify";
 import { ReactNode } from "react";
@@ -87,6 +88,8 @@ export default async function RootLayout({
               <WelcomeToast />
             </WorkshopShell>
           </CartProvider>
+          {/* Floating Aura chat — visible only on allow-listed pages. */}
+          <AuraLauncher />
         </AuthProvider>
         <PlausibleAnalytics />
         <KlaviyoAnalytics />
