@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import CodexRef from "components/codex/codex-ref";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -13,9 +15,10 @@ export default function TheFleetFiveAirframes() {
         drone cannot honestly do all five. The Mavic does the
         photograph. The Neo and Neo&nbsp;2 do the close-quarters
         follow work. The Avata&nbsp;360 does the immersive cinewhoop
-        fly-through. The Mini&nbsp;5&nbsp;Pro is the sub-250-gram
-        travel airframe and the carrier for the unsynchronised LED
-        swarm. The LED-modified rigs &mdash; same hardware, different
+        fly-through. The{" "}
+        <CodexRef slug="dji-mini-5-pro">Mini&nbsp;5&nbsp;Pro</CodexRef>{" "}
+        is the sub-250-gram travel airframe and the carrier for the
+        unsynchronised LED swarm. The LED-modified rigs &mdash; same hardware, different
         payload &mdash; do the aerial light painting that{" "}
         <Link href="/aerial" className={ext}>
           /aerial

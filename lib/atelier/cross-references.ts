@@ -108,25 +108,7 @@ export const ATELIER_CROSS_REFS: Record<string, AtelierRef[]> = {
   ],
 
   // --- Algorithms -------------------------------------------------------
-  "algorithm:marching-cubes": [
-    {
-      kind: "codex",
-      label: "Marching Cubes",
-      href: "/codex/marching-cubes",
-    },
-    {
-      kind: "journal",
-      label: "Eleven mammoths in three hours",
-      href: "/journal/eleven-mammoths-in-three-hours",
-      context: "marching-cubes split into smaller siblings",
-    },
-    {
-      kind: "article",
-      label: "Nine seconds — prompt to printable",
-      href: "/articles/nine-seconds-prompt-to-printable",
-    },
-  ],
-  "algorithm:gyroid-tpms": [
+  "algorithm:gyroid": [
     {
       kind: "codex",
       label: "Gyroid Surfaces",
@@ -138,12 +120,66 @@ export const ATELIER_CROSS_REFS: Record<string, AtelierRef[]> = {
       href: "/journal/eleven-mammoths-in-three-hours",
       context: "gyroid-surfaces was the test scene for the marching-cubes split",
     },
+    {
+      kind: "article",
+      label: "Nine seconds — prompt to printable",
+      href: "/articles/nine-seconds-prompt-to-printable",
+    },
+  ],
+  "algorithm:spiral": [
+    {
+      kind: "article",
+      label: "Spiral cognition",
+      href: "/articles/spiral-cognition",
+    },
   ],
   "algorithm:dla": [
     {
       kind: "demo",
-      label: "Aura talks (algorithm context)",
+      label: "Aura talks",
       href: "/demo/aura-talks",
+    },
+  ],
+  "algorithm:fermat-spiral": [
+    {
+      kind: "article",
+      label: "Spiral cognition",
+      href: "/articles/spiral-cognition",
+    },
+  ],
+  "algorithm:lsystem": [
+    {
+      kind: "article",
+      label: "How the studio breeds sculptures",
+      href: "/articles/how-the-studio-breeds-sculptures",
+    },
+  ],
+  "algorithm:reaction-diffusion": [
+    {
+      kind: "article",
+      label: "The mathematics of morphing",
+      href: "/articles/the-mathematics-of-morphing",
+    },
+  ],
+  "algorithm:voronoi": [
+    {
+      kind: "article",
+      label: "The eight kingdoms",
+      href: "/articles/the-eight-kingdoms",
+    },
+  ],
+  "algorithm:auxetic": [
+    {
+      kind: "article",
+      label: "The mathematics of morphing",
+      href: "/articles/the-mathematics-of-morphing",
+    },
+  ],
+  "algorithm:tensegrity": [
+    {
+      kind: "article",
+      label: "Belt-printed wall reliefs",
+      href: "/articles/belt-printed-wall-reliefs",
     },
   ],
 
@@ -167,7 +203,46 @@ export const ATELIER_CROSS_REFS: Record<string, AtelierRef[]> = {
   ],
 
   // --- Brushes ----------------------------------------------------------
-  // (Add entries as the brushes registry matures.)
+  "brush:fire": [
+    {
+      kind: "journal",
+      label: "Year One, Fire",
+      href: "/journal/year-one-fire",
+    },
+    {
+      kind: "tutorial",
+      label: "Spinning fire poi safely",
+      href: "/tutorials/spinning-fire-poi-safely",
+    },
+  ],
+  "brush:rainbow": [
+    {
+      kind: "tutorial",
+      label: "Your first long exposure",
+      href: "/tutorials/your-first-long-exposure",
+    },
+  ],
+  "brush:lightwire": [
+    {
+      kind: "article",
+      label: "Why I build my own rigs",
+      href: "/articles/why-i-build-my-own-rigs",
+    },
+  ],
+  "brush:waveform": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:chromawave": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
 };
 
 /** Lookup helper — returns the list (possibly empty) for a given key. */

@@ -1,4 +1,5 @@
 import type { BrushAsset } from "lib/assets/brushes";
+import UsedIn from "components/atelier/used-in";
 
 export default function BrushCard({ brush }: { brush: BrushAsset }) {
   return (
@@ -30,6 +31,7 @@ export default function BrushCard({ brush }: { brush: BrushAsset }) {
           </div>
         ))}
       </div>
+      <UsedIn kind="brush" slug={brush.slug} />
     </article>
   );
 }

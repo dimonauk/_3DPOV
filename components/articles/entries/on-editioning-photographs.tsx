@@ -1,16 +1,20 @@
+import CodexRef from "components/codex/codex-ref";
+
 export default function OnEditioningPhotographs() {
   return (
     <>
       <p>
-        An edition is a promise. The promise is that the studio will
-        make a fixed number of prints of a photograph, sign and number
-        each one, and never make another. The number is declared in
-        advance. The buyer of edition 7 of 25 owns the seventh of
-        twenty-five prints that will ever exist on the agreed paper at
-        the agreed size. After 25 are sold, the edition closes. No
-        re-issue, no re-size, no re-paper, no &ldquo;collector&rsquo;s
-        edition&rdquo; ten years later when the photograph has become
-        famous and the studio has become weak-willed.<sup>1</sup>
+        An{" "}
+        <CodexRef slug="edition-size-conventions">edition</CodexRef> is
+        a promise. The promise is that the studio will make a fixed
+        number of prints of a photograph, sign and number each one,
+        and never make another. The number is declared in advance.
+        The buyer of edition 7 of 25 owns the seventh of twenty-five
+        prints that will ever exist on the agreed paper at the agreed
+        size. After 25 are sold, the edition closes. No re-issue, no
+        re-size, no re-paper, no &ldquo;collector&rsquo;s edition&rdquo;
+        ten years later when the photograph has become famous and the
+        studio has become weak-willed.<sup>1</sup>
       </p>
       <p>
         The promise is a marketing device, certainly. It is also the
@@ -66,7 +70,10 @@ export default function OnEditioningPhotographs() {
       </h2>
       <p>
         On top of the numbered edition, the convention is for the
-        artist to retain a small number of <strong>AP</strong> prints
+        artist to retain a small number of{" "}
+        <CodexRef slug="artists-proof">
+          <strong>AP</strong> prints
+        </CodexRef>{" "}
         &mdash; artist's proofs &mdash; typically two to four. These
         are functionally identical to the edition but marked
         differently (&ldquo;AP 1/2&rdquo; rather than &ldquo;7/25&rdquo;)

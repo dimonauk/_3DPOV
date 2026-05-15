@@ -2,6 +2,7 @@ import {
   algorithmFamilies,
   type AlgorithmCatalogueEntry,
 } from "lib/assets/algorithms";
+import UsedIn from "components/atelier/used-in";
 
 function familyColor(id: AlgorithmCatalogueEntry["family"]): string {
   const f = algorithmFamilies.find((x) => x.id === id);
@@ -35,6 +36,7 @@ export default function AlgorithmCard({
       <p className="mt-1 font-mono text-xs text-chrome-500">
         {algo.sourceFile}
       </p>
+      <UsedIn kind="algorithm" slug={algo.slug} />
     </article>
   );
 }
