@@ -168,6 +168,18 @@ export default function MyCardsPage() {
                     >
                       Edit
                     </Link>
+                    <Link
+                      href={`/cards/mine/${encodeURIComponent(doc.slug)}/analytics`}
+                      className="rounded-full border border-chrome-400/30 px-3 py-1 text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+                    >
+                      📊 Analytics
+                    </Link>
+                    <Link
+                      href={`/cards/mine/${encodeURIComponent(doc.slug)}/leads`}
+                      className="rounded-full border border-chrome-400/30 px-3 py-1 text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+                    >
+                      📬 Leads
+                    </Link>
                     <button
                       type="button"
                       onClick={() => onDelete(doc.slug)}

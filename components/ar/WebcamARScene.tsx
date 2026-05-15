@@ -183,6 +183,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       recorderRef.current = null;
     };
 
+    try { (window as { __holoflow_track?: (s: string, t: string) => void }).__holoflow_track?.(card.slug, "recording"); } catch {}
     recorder.start(1_000); // 1s chunks — limits memory if the user records for a while
     recorderRef.current = recorder;
     setRecording(true);
@@ -249,6 +250,9 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
     }
 
     streamRef.current = stream;
+
+    // Fire AR-launch analytics — visible to the card owner.
+    try { (window as { __holoflow_track?: (s: string, t: string) => void }).__holoflow_track?.(card.slug, "ar_launch"); } catch {}
 
     const video = videoRef.current;
     if (!video) {
@@ -586,6 +590,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
     // camera passthrough handled by the device.
     stopCamera();
     setError(null);
+    try { (window as { __holoflow_track?: (s: string, t: string) => void }).__holoflow_track?.(card.slug, "webxr"); } catch {}
     setStatus("loading-model");
 
     const container = containerRef.current;
@@ -934,7 +939,14 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
           <div className="wc-overlay">
             <button
               className={`wc-toggle ${handTracking ? "wc-toggle-on" : ""}`}
-              onClick={() => setHandTracking((v) => !v)}
+              onClick={() => {
+                setHandTracking((v) => {
+                  if (!v) {
+                    try { (window as { __holoflow_track?: (s: string, t: string) => void }).__holoflow_track?.(card.slug, "hand_lock"); } catch {}
+                  }
+                  return !v;
+                });
+              }}
             >
               {handTracking ? "✋ Holding (tap to release)" : "✋ Hold in hand"}
             </button>

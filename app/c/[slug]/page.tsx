@@ -9,6 +9,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCard, listCardSlugs } from "lib/ar/cards";
 import ARLandingClient from "components/ar/ARLandingClient";
+import CardEventTracker from "components/ar/CardEventTracker";
+import LeadCaptureForm from "components/ar/LeadCaptureForm";
+import SaveToWalletButton from "components/ar/SaveToWalletButton";
 
 interface PageProps {
   // Next 15: params is a Promise — must be awaited.
@@ -44,6 +47,7 @@ export default async function CardPage({ params }: PageProps) {
 
   return (
     <main className="card-main">
+      <CardEventTracker slug={slug} />
       <header className="card-hero">
         <h1>{card.name}</h1>
         <p className="role">{card.role}</p>
@@ -123,6 +127,25 @@ export default async function CardPage({ params }: PageProps) {
           font-weight: 700;
         }
       `}</style>
-    </main>
+            <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+          <SaveToWalletButton
+            card={{
+              slug,
+              name: card.name,
+              role: card.role,
+              primary,
+              secondary,
+            }}
+            primary={primary}
+            textOnBrand={textOnBrand}
+          />
+        </div>
+        <LeadCaptureForm
+          slug={slug}
+          ownerName={card.name}
+          primary={primary}
+          textOnBrand={textOnBrand}
+        />
+      </main>
   );
 }

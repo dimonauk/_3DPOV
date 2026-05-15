@@ -78,6 +78,24 @@ service cloud.firestore {
       allow delete: if
         request.auth != null
         && resource.data.ownerUid == request.auth.uid;
+
+      // Analytics events under each card. Anonymous visitor writes are
+      // mediated by the admin SDK from /api/cards/[slug]/events, so the
+      // client direct-write path is disabled here. Reads are restricted
+      // to the card owner.
+      match /events/{eventId} {
+        allow read: if request.auth != null
+          && get(/databases/$(database)/documents/cards/$(slug)).data.ownerUid == request.auth.uid;
+        allow create, update, delete: if false;
+      }
+
+      // Lead capture submissions. Same posture as events — admin SDK
+      // writes only, owner-only reads.
+      match /leads/{leadId} {
+        allow read: if request.auth != null
+          && get(/databases/$(database)/documents/cards/$(slug)).data.ownerUid == request.auth.uid;
+        allow create, update, delete: if false;
+      }
     }
 
     // The Rookery — public read, signed-in write, no edits, no
