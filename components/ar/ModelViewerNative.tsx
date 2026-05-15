@@ -7,8 +7,29 @@
  * On Android: launches Scene Viewer with the GLB.
  * On desktop: shows an interactive 3D preview.
  *
- * This is the iOS-safe fallback path because Safari has no WebXR. Users tap
- * the "Place in your space" button and their OS handles the rest natively.
+ * This is the iOS-safe fallback path because Safari has no WebXR. Users
+ * tap the "Place in your space" button and their OS handles the rest
+ * natively.
+ *
+ * # Animation defaults
+ *
+ * The card landings should feel alive. We compose three effects:
+ *
+ *   1. Gentle auto-rotation around Y (12°/s, immediate, no idle delay).
+ *      Falls back to no rotation if `card.ar.autoRotate === false`.
+ *   2. Autoplay for any baked-in GLTF animations — skeletal, morph,
+ *      transform tracks all play automatically if the GLB has them.
+ *      Static-mesh cards just rotate.
+ *   3. A subtle vertical float on the whole viewer (translateY ±6px
+ *      over 5s, ease-in-out, infinite). This is a CSS-only effect on
+ *      the host element; it doesn't change the model's local
+ *      transform so iOS Quick Look + Scene Viewer still see the
+ *      original geometry.
+ *
+ * Defaults are tuned for "ambient" presence in a card landing, not
+ * "look at me" presentation. The user can still drag to inspect; the
+ * camera returns to auto-rotate after the default 3s of no input
+ * (camera-controls behaviour).
  */
 
 import { useEffect, useRef } from "react";
@@ -39,9 +60,11 @@ export default function ModelViewerNative({ card }: { card: Card }) {
     });
   }, []);
 
-  // Build ar-modes: prefer WebXR where supported, then native (Scene Viewer / Quick Look)
+  // Build ar-modes: prefer WebXR where supported, then native Scene Viewer / Quick Look.
   // Order matters — model-viewer tries them left-to-right.
   const arModes = "scene-viewer webxr quick-look";
+
+  const shouldRotate = card.ar.autoRotate !== false;
 
   return (
     <div className="mv-root">
@@ -53,7 +76,19 @@ export default function ModelViewerNative({ card }: { card: Card }) {
         ar-modes={arModes}
         ar-scale="auto"
         camera-controls="true"
-        auto-rotate={card.ar.autoRotate ? "true" : undefined}
+        // Gentle auto-rotate — 12°/s is roughly a quarter of the default
+        // 30°/s, reads as ambient rather than presentational.
+        auto-rotate={shouldRotate ? "true" : undefined}
+        auto-rotate-delay={shouldRotate ? "0" : undefined}
+        rotation-per-second={shouldRotate ? "12deg" : undefined}
+        // Autoplay any baked-in GLTF animations (skeletal/morph/transform).
+        // No-op for static meshes; lights up rigged ones.
+        autoplay="true"
+        // Suppress the "drag to rotate" overlay — feels too prescriptive
+        // when the model is already moving on its own.
+        interaction-prompt="none"
+        // Smoother camera return after the user lets go.
+        interpolation-decay="200"
         shadow-intensity="0.9"
         environment-image="neutral"
         exposure="1.0"
@@ -74,6 +109,19 @@ export default function ModelViewerNative({ card }: { card: Card }) {
         .mv-root {
           width: 100%;
           padding: 0 1rem;
+        }
+        /* Subtle vertical float on the viewer itself. Doesn't affect the
+           model's transform inside Quick Look / Scene Viewer — purely
+           visual on the preview surface. */
+        @keyframes mv-float {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-6px); }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .mv-root :global(model-viewer) {
+            animation: mv-float 5s ease-in-out infinite;
+            will-change: transform;
+          }
         }
         :global(.mv-ar-btn) {
           position: absolute;
