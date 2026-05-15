@@ -21,7 +21,6 @@ import { recordCardEvent } from "lib/cards/analytics-server";
  * unnecessary at the per-card scale we expect (10s-100s scans/day);
  * if a card goes viral we'll revisit.
  */
-
 type Params = { params: Promise<{ slug: string }> };
 
 export async function POST(req: NextRequest, { params }: Params) {

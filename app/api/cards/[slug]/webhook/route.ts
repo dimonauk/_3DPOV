@@ -22,7 +22,6 @@ import { randomBytes } from "node:crypto";
  * further we'd encrypt with a KMS key at rest; not worth it for
  * a single-user-per-card model.
  */
-
 type Params = { params: Promise<{ slug: string }> };
 
 async function authOwnership(

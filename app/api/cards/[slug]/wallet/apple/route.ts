@@ -21,7 +21,6 @@ import {
  * If you want to disable wallet generation per-card (e.g. studio-only
  * pass type), gate on card.public or a card.appleWallet flag here.
  */
-
 type Params = { params: Promise<{ slug: string }> };
 
 export async function GET(_req: NextRequest, { params }: Params) {
