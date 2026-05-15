@@ -1,4 +1,5 @@
 import type { SculptureGenome } from "lib/assets/genomes";
+import UsedIn from "components/atelier/used-in";
 
 export default function GenomeCard({ genome }: { genome: SculptureGenome }) {
   const geneEntries = Object.entries(genome.geneVector).slice(0, 8);
@@ -33,6 +34,7 @@ export default function GenomeCard({ genome }: { genome: SculptureGenome }) {
           </div>
         ))}
       </dl>
+      <UsedIn kind="genome" slug={genome.slug} />
     </article>
   );
 }

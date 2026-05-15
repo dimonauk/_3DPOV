@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import type { MeshAsset } from "lib/assets/meshes";
+import UsedIn from "components/atelier/used-in";
 
 // Lazy-load the R3F preview client-only — GLTFLoader cannot SSR.
 const MeshPreview = dynamic(
@@ -48,6 +49,7 @@ export default function MeshCard({ mesh }: { mesh: MeshAsset }) {
         >
           Download .{mesh.format} &nearr;
         </a>
+        <UsedIn kind="mesh" slug={mesh.slug} />
       </div>
     </article>
   );
