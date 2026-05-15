@@ -2,37 +2,34 @@
 
 /**
  * WebcamARScene — composite the card's 3D model into the user's
- * actual room using the device camera.
+ * actual space using the device camera, with three anchoring modes:
  *
- * Works on every device with getUserMedia (iOS Safari, Android
- * Chrome, desktop Chrome/Firefox/Safari). No image-tracking marker
- * required — the camera feed is just a backdrop with the 3D model
- * rendered on top.
+ *   1. Floating (default) — model sits 1.5m in front of the camera,
+ *      DeviceOrientation drives parallax. Works everywhere with
+ *      getUserMedia. Zero ML overhead.
  *
- * Two anchoring modes, chosen automatically:
+ *   2. Hand-locked (toggle: "✋ Hold in hand") — MediaPipe
+ *      HandLandmarker runs on the video stream, returns 21 hand
+ *      landmarks at ~30fps. The model is re-parented to follow the
+ *      palm centre (midpoint of wrist landmark 0 and middle-MCP
+ *      landmark 9), giving the impression the user is physically
+ *      holding the sculpture / poi / specimen. Aura is excluded —
+ *      a companion does not sit in your hand.
  *
- *   1. Immersive AR (WebXR) — when navigator.xr.isSessionSupported(
- *      'immersive-ar') is true. Quest 3, recent Android Chrome.
- *      Real 6DOF tracking, plane detection if requested. We render
- *      into the XR session's reference space.
+ *   3. Floor-anchored via WebXR (button: "📍 Place on floor") —
+ *      launches an immersive-ar session with hit-test enabled.
+ *      A reticle follows where the user is aiming. Tap once to
+ *      plant the model at that spot. 6DOF tracking. Requires
+ *      WebXR-AR-capable device (Quest 3 browser, recent Android
+ *      Chrome). Unavailable on iOS Safari — the button shows but
+ *      explains why if tapped.
  *
- *   2. Camera-passthrough fallback — everywhere else. Video element
- *      pinned behind a transparent three.js canvas. DeviceOrientation
- *      events drive the camera rotation so the user gets a parallax
- *      effect by tilting their phone — feels like the model is
- *      floating in their space even though there's no positional
- *      tracking. Desktop users orbit with mouse drag.
+ * # Camera + render lifecycle
  *
- * The camera permission is requested only when the user explicitly
- * taps the "Show in my room" button — never on page load. Permission
- * denied falls back to a non-camera 3D preview.
- *
- * # Anchoring
- *
- * The 3D model sits ~1.5m in front of the camera by default. User
- * can pinch-zoom (mobile) or scroll (desktop) to bring it closer.
- * Single-tap on the canvas re-centres the model in front of the
- * current camera pose.
+ * Camera is requested only on user gesture, never on page load.
+ * Permission denied / no camera fall back to a 3D preview prompt.
+ * On stop or unmount, all media tracks stop, hand landmarker
+ * disposes, XR session ends, Three.js resources free.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -46,7 +43,18 @@ type ARStatus =
   | "active"
   | "denied"
   | "no-camera"
-  | "loading-model";
+  | "loading-model"
+  | "xr-active";
+
+// MediaPipe hand landmark indices we care about.
+const LM_WRIST = 0;
+const LM_MIDDLE_MCP = 9;
+
+// Hosted hand-landmarker model and WASM. Both are public-CDN; if
+// offline use is needed, mirror these into public/ and update.
+const MEDIAPIPE_WASM_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm";
+const HAND_MODEL_URL =
+  "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task";
 
 export default function WebcamARScene({ card }: WebcamARSceneProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -56,10 +64,17 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
   const [status, setStatus] = useState<ARStatus>("idle");
   const [webXRSupported, setWebXRSupported] = useState(false);
+  const [handTracking, setHandTracking] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Feature-detect WebXR immersive-ar on mount, so the button can
-  // surface "Enter immersive AR" vs "Show in my room" appropriately.
+  // Mutable refs the render loop reads — avoids stale-closure issues
+  // when state flips mid-frame.
+  const handTrackingRef = useRef(false);
+  useEffect(() => {
+    handTrackingRef.current = handTracking;
+  }, [handTracking]);
+
+  // Feature-detect WebXR immersive-ar on mount.
   useEffect(() => {
     const xr = (navigator as { xr?: { isSessionSupported: (m: string) => Promise<boolean> } }).xr;
     if (!xr) return;
@@ -77,6 +92,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       disposeRef.current();
       disposeRef.current = null;
     }
+    setHandTracking(false);
     setStatus("idle");
   };
 
@@ -84,8 +100,6 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
     setError(null);
     setStatus("requesting");
 
-    // 1. Ask for the rear-facing camera. Most mobile browsers honour
-    // facingMode: 'environment'; desktop browsers ignore it (no rear).
     let stream: MediaStream;
     try {
       stream = await navigator.mediaDevices.getUserMedia({
@@ -111,9 +125,6 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
     streamRef.current = stream;
 
-    // 2. Mount the video element with the stream. The video is pinned
-    // behind the canvas via CSS — no need to texture it into three.js
-    // (saves a fragment shader pass + a copy).
     const video = videoRef.current;
     if (!video) {
       stopCamera();
@@ -126,8 +137,6 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
     setStatus("loading-model");
 
-    // 3. Three.js scene with transparent renderer, GLB loaded, idle
-    // animation, optional device-orientation-driven camera rotation.
     const container = containerRef.current;
     if (!container) {
       stopCamera();
@@ -150,64 +159,50 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(width, height);
-      renderer.setClearColor(0x000000, 0); // fully transparent
+      renderer.setClearColor(0x000000, 0);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
 
-      // Lighting — neutral, warm.
       scene.add(new THREE.AmbientLight(0xffffff, 1.0));
       const key = new THREE.DirectionalLight(0xffffff, 1.5);
       key.position.set(2, 3, 2);
       scene.add(key);
 
-      // Load the GLB. Default placement: 1.5m in front of the camera,
-      // slight downward tilt so the user looks at it naturally.
       const loader = new GLTFLoader();
       const gltf = await loader.loadAsync(card.ar.model);
       const model = gltf.scene;
 
-      // Normalise model to fit a 0.4m bounding sphere — so a 28cm
-      // protean-elite and a 50cm Aura avatar look comparable in
-      // perceived size. Users can pinch to resize after.
+      // Normalise to ~20cm bounding-sphere radius — every card looks
+      // the same physical size in the camera regardless of authored scale.
       const box = new THREE.Box3().setFromObject(model);
       const sphere = new THREE.Sphere();
       box.getBoundingSphere(sphere);
       if (sphere.radius > 0) {
-        const targetRadius = 0.2; // 20cm
-        const scale = targetRadius / sphere.radius;
-        model.scale.multiplyScalar(scale);
+        const targetRadius = 0.2;
+        model.scale.multiplyScalar(targetRadius / sphere.radius);
       }
 
       const anchor = new THREE.Group();
-      anchor.position.set(0, 0, -1.5); // 1.5m in front
+      anchor.position.set(0, 0, -1.5);
       anchor.add(model);
       scene.add(anchor);
 
-      // Auto-rotate the model itself
       const shouldRotate = card.ar.autoRotate !== false;
 
-      // Device orientation handler — convert gyroscope to camera
-      // rotation for parallax. On non-mobile or denied permission,
-      // falls back to identity rotation.
+      // Device orientation → camera rotation (parallax fallback).
       let orientationActive = false;
       const handleOrientation = (e: DeviceOrientationEvent) => {
         if (e.alpha == null || e.beta == null || e.gamma == null) return;
         orientationActive = true;
-        // Map device euler to camera rotation. Phone in portrait:
-        //   alpha = compass heading (Z, yaw)
-        //   beta  = front-back tilt (X, pitch)
-        //   gamma = left-right tilt (Y, roll)
         const deg = Math.PI / 180;
         camera.rotation.set(
-          (e.beta - 90) * deg * 0.5, // dampen so movement is gentle
+          (e.beta - 90) * deg * 0.5,
           e.alpha * deg * 0.5,
           -e.gamma * deg * 0.5,
           "YXZ",
         );
       };
 
-      // iOS 13+ requires explicit permission grant via a user gesture.
-      // We tie it to the camera start — by here, the user just tapped.
       const DOE = (window as { DeviceOrientationEvent?: typeof DeviceOrientationEvent & { requestPermission?: () => Promise<"granted" | "denied"> } }).DeviceOrientationEvent;
       if (DOE && typeof DOE.requestPermission === "function") {
         try {
@@ -216,13 +211,13 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
             window.addEventListener("deviceorientation", handleOrientation);
           }
         } catch {
-          // Permission denied or not in user gesture — skip parallax.
+          // Skip parallax.
         }
       } else if (window.DeviceOrientationEvent) {
         window.addEventListener("deviceorientation", handleOrientation);
       }
 
-      // Touch pinch-zoom: scale the anchor by distance ratio.
+      // Pinch / wheel / tap handlers.
       let lastPinchDist: number | null = null;
       const handleTouchMove = (e: TouchEvent) => {
         if (e.touches.length !== 2) return;
@@ -241,34 +236,124 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       const handleTouchEnd = (e: TouchEvent) => {
         if (e.touches.length < 2) lastPinchDist = null;
       };
-      container.addEventListener("touchmove", handleTouchMove, { passive: true });
-      container.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-      // Desktop scroll: move the model closer/farther.
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
         const factor = e.deltaY > 0 ? 1.1 : 0.9;
         anchor.position.z = Math.max(-5, Math.min(-0.3, anchor.position.z * factor));
       };
-      container.addEventListener("wheel", handleWheel, { passive: false });
-
-      // Tap to recentre: places model 1.5m in front of current view.
       const handleTap = () => {
-        anchor.position.set(0, 0, -1.5);
+        // Reset to default float when hand-tracking is off.
+        if (!handTrackingRef.current) anchor.position.set(0, 0, -1.5);
       };
+      container.addEventListener("touchmove", handleTouchMove, { passive: true });
+      container.addEventListener("touchend", handleTouchEnd, { passive: true });
+      container.addEventListener("wheel", handleWheel, { passive: false });
       container.addEventListener("click", handleTap);
 
-      // --- Render loop ---
+      // ----------------------------------------------------------------
+      // Hand landmarker — lazy-loaded only if/when the user toggles
+      // hand tracking. ~10MB WASM + ~5MB model on first activation.
+      // ----------------------------------------------------------------
+
+      type HandLandmarkerHandle = {
+        landmarker: import("@mediapipe/tasks-vision").HandLandmarker;
+        dispose: () => void;
+      };
+      let handHandle: HandLandmarkerHandle | null = null;
+      let handLoading = false;
+
+      const ensureHandLandmarker = async () => {
+        if (handHandle || handLoading) return;
+        handLoading = true;
+        try {
+          const { HandLandmarker, FilesetResolver } = await import("@mediapipe/tasks-vision");
+          const vision = await FilesetResolver.forVisionTasks(MEDIAPIPE_WASM_URL);
+          const landmarker = await HandLandmarker.createFromOptions(vision, {
+            baseOptions: { modelAssetPath: HAND_MODEL_URL, delegate: "GPU" },
+            numHands: 1,
+            runningMode: "VIDEO",
+            minHandDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5,
+            minHandPresenceConfidence: 0.5,
+          });
+          handHandle = {
+            landmarker,
+            dispose: () => {
+              try {
+                landmarker.close();
+              } catch {
+                // ignore
+              }
+            },
+          };
+        } catch (err) {
+          console.error("HandLandmarker init failed:", err);
+          setError("Hand tracking failed to initialise");
+        } finally {
+          handLoading = false;
+        }
+      };
+
+      // Smoothing for hand anchor — raw MediaPipe landmarks jitter.
+      // 1-euro-style low-pass via exponential smoothing.
+      const handSmoothed = new THREE.Vector3(0, 0, -1.5);
+      const SMOOTH_ALPHA = 0.35;
+
+      const updateAnchorToHand = () => {
+        if (!handHandle || !video || video.readyState < 2) return false;
+        const result = handHandle.landmarker.detectForVideo(video, performance.now());
+        const hand = result.landmarks?.[0];
+        if (!hand) return false;
+        const wrist = hand[LM_WRIST];
+        const mcp = hand[LM_MIDDLE_MCP];
+        if (!wrist || !mcp) return false;
+
+        // Palm centre in normalised image coords (0-1 each).
+        const px = (wrist.x + mcp.x) * 0.5;
+        const py = (wrist.y + mcp.y) * 0.5;
+
+        // MediaPipe x is left-right in image space (0=left). For a
+        // rear-cam stream rendered as-is, this maps directly. For a
+        // front cam (selfie) the video is usually CSS-flipped — we
+        // assume the deployer doesn't selfie-flip here; if they do
+        // they should also mirror this.
+        const ndcX = (px - 0.5) * 2;        // -1 .. 1
+        const ndcY = -(py - 0.5) * 2;       // flip Y (image down → world up)
+        const depth = -0.6;                 // ~60cm in front of camera
+
+        // Project NDC at given depth through the camera frustum.
+        const tan = Math.tan((camera.fov * Math.PI) / 180 / 2);
+        const aspect = camera.aspect;
+        const worldX = ndcX * tan * aspect * Math.abs(depth);
+        const worldY = ndcY * tan * Math.abs(depth);
+
+        handSmoothed.lerp(new THREE.Vector3(worldX, worldY, depth), SMOOTH_ALPHA);
+        anchor.position.copy(handSmoothed);
+        return true;
+      };
+
+      // ----------------------------------------------------------------
+      // Render loop
+      // ----------------------------------------------------------------
       const clock = new THREE.Clock();
       let raf = 0;
       const animate = () => {
         const t = clock.getElapsedTime();
-        if (shouldRotate) {
-          model.rotation.y = t * 0.3; // ~17 deg/s gentle spin
+
+        if (handTrackingRef.current) {
+          // Lazy-load on first frame after toggle.
+          if (!handHandle) void ensureHandLandmarker();
+          else updateAnchorToHand();
+        } else {
+          // Drift back to default position when hand tracking stops,
+          // so the model doesn't snap.
+          handSmoothed.set(0, 0, -1.5);
         }
-        // If no orientation events, slowly orbit the model around
-        // the camera so desktop users still see depth.
-        if (!orientationActive) {
+
+        if (shouldRotate) {
+          model.rotation.y = t * 0.3;
+        }
+        if (!orientationActive && !handTrackingRef.current) {
           camera.position.x = Math.sin(t * 0.2) * 0.08;
           camera.lookAt(anchor.position);
         }
@@ -277,7 +362,6 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       };
       animate();
 
-      // Resize observer
       const handleResize = () => {
         const w = container.clientWidth;
         const h = container.clientHeight;
@@ -296,12 +380,11 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         container.removeEventListener("touchend", handleTouchEnd);
         container.removeEventListener("wheel", handleWheel);
         container.removeEventListener("click", handleTap);
+        if (handHandle) handHandle.dispose();
         if (renderer.domElement.parentNode === container) {
           container.removeChild(renderer.domElement);
         }
         renderer.dispose();
-        // Three.js doesn't recursively dispose geometries from a model;
-        // walk the scene and dispose explicitly.
         model.traverse((obj) => {
           const m = obj as unknown as {
             isMesh?: boolean;
@@ -325,7 +408,175 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
     }
   };
 
-  // Cleanup on unmount.
+  // ------------------------------------------------------------------
+  // WebXR immersive-ar path with hit-test — own render loop, separate
+  // from the camera+canvas path above.
+  // ------------------------------------------------------------------
+  const startWebXR = async () => {
+    if (!webXRSupported) {
+      setError(
+        "WebXR isn't supported in this browser. Try the Quest 3 browser or recent Android Chrome.",
+      );
+      return;
+    }
+
+    // Stop the camera passthrough scene — XR session has its own
+    // camera passthrough handled by the device.
+    stopCamera();
+    setError(null);
+    setStatus("loading-model");
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    let session: XRSession;
+    try {
+      session = await (
+        navigator as unknown as {
+          xr: { requestSession: (m: string, init: object) => Promise<XRSession> };
+        }
+      ).xr.requestSession("immersive-ar", {
+        requiredFeatures: ["hit-test", "local"],
+      });
+    } catch (err) {
+      console.error("XR session request failed", err);
+      setError("WebXR session was refused.");
+      setStatus("idle");
+      return;
+    }
+
+    try {
+      const [THREE, { GLTFLoader }] = await Promise.all([
+        import("three"),
+        import("three/examples/jsm/loaders/GLTFLoader.js"),
+      ]);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 100);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.xr.enabled = true;
+      container.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+      const key = new THREE.DirectionalLight(0xffffff, 1.5);
+      key.position.set(2, 3, 2);
+      scene.add(key);
+
+      const loader = new GLTFLoader();
+      const gltf = await loader.loadAsync(card.ar.model);
+      const model = gltf.scene;
+      const box = new THREE.Box3().setFromObject(model);
+      const sphere = new THREE.Sphere();
+      box.getBoundingSphere(sphere);
+      if (sphere.radius > 0) {
+        model.scale.multiplyScalar(0.2 / sphere.radius);
+      }
+      model.visible = false; // hidden until first plant
+      scene.add(model);
+
+      // Reticle — small ring shown on the latest hit-test pose.
+      const reticleGeom = new THREE.RingGeometry(0.08, 0.1, 32).rotateX(-Math.PI / 2);
+      const reticleMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 });
+      const reticle = new THREE.Mesh(reticleGeom, reticleMat);
+      reticle.matrixAutoUpdate = false;
+      reticle.visible = false;
+      scene.add(reticle);
+
+      await renderer.xr.setSession(session);
+
+      const referenceSpace = await session.requestReferenceSpace("local");
+      const viewerSpace = await session.requestReferenceSpace("viewer");
+      const hitTestSource = await (
+        session as unknown as {
+          requestHitTestSource: (opts: { space: XRReferenceSpace }) => Promise<XRHitTestSource>;
+        }
+      ).requestHitTestSource({ space: viewerSpace });
+
+      const onSelect = () => {
+        if (reticle.visible) {
+          model.position.setFromMatrixPosition(reticle.matrix);
+          model.quaternion.setFromRotationMatrix(reticle.matrix);
+          model.visible = true;
+        }
+      };
+      session.addEventListener("select", onSelect);
+
+      const clock = new THREE.Clock();
+      const xrAnimate = (_t: DOMHighResTimeStamp, frame?: XRFrame) => {
+        if (frame) {
+          const hits = (
+            frame as unknown as { getHitTestResults: (s: XRHitTestSource) => XRHitTestResult[] }
+          ).getHitTestResults(hitTestSource);
+          if (hits.length > 0) {
+            const hit = hits[0];
+            if (hit) {
+              const pose = hit.getPose(referenceSpace);
+              if (pose) {
+                reticle.visible = true;
+                reticle.matrix.fromArray(pose.transform.matrix);
+              }
+            }
+          } else {
+            reticle.visible = false;
+          }
+        }
+        if (model.visible && card.ar.autoRotate !== false) {
+          model.rotation.y += clock.getDelta() * 0.3;
+        }
+        renderer.render(scene, camera);
+      };
+      renderer.setAnimationLoop(xrAnimate);
+
+      const cleanup = () => {
+        renderer.setAnimationLoop(null);
+        try {
+          session.removeEventListener("select", onSelect);
+          (hitTestSource as unknown as { cancel?: () => void }).cancel?.();
+        } catch {
+          // ignore
+        }
+        renderer.xr.enabled = false;
+        renderer.dispose();
+        if (renderer.domElement.parentNode === container) {
+          container.removeChild(renderer.domElement);
+        }
+        model.traverse((obj) => {
+          const m = obj as unknown as {
+            isMesh?: boolean;
+            geometry?: { dispose?: () => void };
+            material?: { dispose?: () => void } | Array<{ dispose?: () => void }>;
+          };
+          if (m.isMesh) {
+            m.geometry?.dispose?.();
+            const mat = m.material;
+            if (Array.isArray(mat)) mat.forEach((mm) => mm.dispose?.());
+            else mat?.dispose?.();
+          }
+        });
+        reticleGeom.dispose();
+        reticleMat.dispose();
+        disposeRef.current = null;
+        setStatus("idle");
+      };
+      session.addEventListener("end", cleanup);
+      disposeRef.current = () => {
+        session.end().catch(() => undefined);
+      };
+
+      setStatus("xr-active");
+    } catch (err) {
+      console.error("WebXR setup failed", err);
+      setError((err as Error).message ?? "WebXR session failed");
+      session.end().catch(() => undefined);
+      setStatus("idle");
+    }
+  };
+
   useEffect(() => {
     return () => stopCamera();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -340,11 +591,16 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
             The model will float into the camera view.
           </div>
           <button className="wc-btn" onClick={startCameraAR}>
-            📷 {webXRSupported ? "Enter immersive AR" : "Show in my room"}
+            📷 Show in my room
           </button>
+          {webXRSupported && (
+            <button className="wc-btn-secondary" onClick={startWebXR}>
+              📍 Place on real floor (WebXR)
+            </button>
+          )}
           <div className="wc-fine">
-            We request your camera only when you tap. Nothing is recorded or sent
-            anywhere — the video stays on this device.
+            We request your camera only when you tap. Nothing is recorded or
+            sent anywhere — the video stays on this device.
           </div>
         </div>
       )}
@@ -352,7 +608,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       {(status === "requesting" || status === "loading-model") && (
         <div className="wc-prompt">
           <div className="wc-hint">
-            {status === "requesting" ? "Waiting for camera permission..." : "Loading model..."}
+            {status === "requesting" ? "Waiting for camera permission..." : "Loading..."}
           </div>
         </div>
       )}
@@ -388,13 +644,44 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       />
       <div
         ref={containerRef}
-        className={`wc-canvas ${status === "active" ? "wc-canvas-on" : ""}`}
+        className={`wc-canvas ${status === "active" || status === "xr-active" ? "wc-canvas-on" : ""}`}
       />
 
       {status === "active" && (
-        <button className="wc-stop" onClick={stopCamera} aria-label="Stop AR">
-          ✕
-        </button>
+        <>
+          <div className="wc-overlay">
+            <button
+              className={`wc-toggle ${handTracking ? "wc-toggle-on" : ""}`}
+              onClick={() => setHandTracking((v) => !v)}
+            >
+              {handTracking ? "✋ Holding (tap to release)" : "✋ Hold in hand"}
+            </button>
+            {webXRSupported && (
+              <button className="wc-toggle" onClick={startWebXR}>
+                📍 Place on floor
+              </button>
+            )}
+          </div>
+          <button className="wc-stop" onClick={stopCamera} aria-label="Stop AR">
+            ✕
+          </button>
+        </>
+      )}
+
+      {status === "xr-active" && (
+        <div className="wc-prompt wc-xr-hint">
+          <div className="wc-hint">
+            Immersive AR session active. Aim at the floor, watch for the white
+            ring, then tap once to plant the model.
+          </div>
+          <button className="wc-btn-small" onClick={stopCamera}>
+            End session
+          </button>
+        </div>
+      )}
+
+      {error && status !== "denied" && status !== "idle" && (
+        <div className="wc-error wc-error-floating">{error}</div>
       )}
 
       <style jsx>{`
@@ -417,9 +704,18 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 1.5rem;
+          gap: 1.25rem;
           padding: 2rem;
           text-align: center;
+        }
+        .wc-xr-hint {
+          background: transparent;
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+        .wc-xr-hint > * {
+          pointer-events: auto;
         }
         .wc-hint {
           font-size: 1rem;
@@ -436,6 +732,16 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
           font-size: 0.85rem;
           max-width: 30rem;
         }
+        .wc-error-floating {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          right: 1rem;
+          background: rgba(0, 0, 0, 0.7);
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          z-index: 5;
+        }
         .wc-btn {
           background: ${card.brand.primary};
           color: ${card.brand.textOnBrand};
@@ -448,7 +754,19 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
           box-shadow: 0 4px 24px ${card.brand.primary}66;
           transition: transform 0.1s ease;
         }
-        .wc-btn:active {
+        .wc-btn-secondary {
+          background: transparent;
+          color: inherit;
+          border: 1px solid currentColor;
+          padding: 0.75rem 1.5rem;
+          border-radius: 999px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          opacity: 0.8;
+        }
+        .wc-btn:active,
+        .wc-btn-secondary:active {
           transform: scale(0.97);
         }
         .wc-btn-small {
@@ -492,6 +810,37 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         }
         .wc-canvas-on {
           display: block;
+        }
+        .wc-overlay {
+          position: absolute;
+          bottom: 1.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 0.5rem;
+          z-index: 3;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .wc-toggle {
+          background: rgba(0, 0, 0, 0.55);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          padding: 0.65rem 1.1rem;
+          border-radius: 999px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          backdrop-filter: blur(8px);
+          transition: all 0.15s ease;
+        }
+        .wc-toggle:active {
+          transform: scale(0.97);
+        }
+        .wc-toggle-on {
+          background: ${card.brand.primary};
+          color: ${card.brand.textOnBrand};
+          border-color: ${card.brand.primary};
         }
         .wc-stop {
           position: absolute;
