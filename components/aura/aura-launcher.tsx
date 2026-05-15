@@ -32,6 +32,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAuth } from "components/auth/auth-provider";
+import { useVoice } from "components/aura/voice/use-voice";
 import { aura } from "lib/cast/aura";
 import {
   DEFAULT_WEBGPU_MODEL,
@@ -214,6 +215,7 @@ async function callServerSideChat(
 export default function AuraLauncher() {
   const pathname = usePathname();
   const { user, loading: authLoading } = useAuth();
+  const voice = useVoice();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [support, setSupport] = useState<WebGpuChatSupport | null>(null);
@@ -227,6 +229,7 @@ export default function AuraLauncher() {
     progress: number;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [speakerOn, setSpeakerOn] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   // Hydrate on mount.
@@ -345,6 +348,12 @@ export default function AuraLauncher() {
       setStreaming(null);
       setLoadProgress(null);
 
+      // Speak Aura's reply if the speaker toggle is on. Don't await —
+      // playback can take seconds and we don't want to block the input.
+      if (speakerOn && full) {
+        void voice.speak(full);
+      }
+
       if (user && idToken) {
         // WebGPU path: server hasn't seen the turn yet — persist both
         // halves. Gemini path: /api/aura/chat already persisted them.
@@ -361,7 +370,16 @@ export default function AuraLauncher() {
     } finally {
       setBusy(false);
     }
-  }, [input, busy, history, useWebGpu, pathname, user]);
+  }, [input, busy, history, useWebGpu, pathname, user, speakerOn, voice]);
+
+  // Mic: toggle recording, drop transcription into the input field
+  // when it returns.
+  const onMicClick = useCallback(async () => {
+    const transcript = await voice.toggleMic();
+    if (transcript !== null && transcript.trim()) {
+      setInput((cur) => (cur ? `${cur} ${transcript}` : transcript));
+    }
+  }, [voice]);
 
   const clearHistory = useCallback(async () => {
     setHistory([]);
@@ -406,6 +424,28 @@ export default function AuraLauncher() {
               </span>
             </div>
             <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setSpeakerOn((on) => {
+                    if (on && voice.speaking) voice.stopSpeaking();
+                    return !on;
+                  });
+                }}
+                aria-label={speakerOn ? "Mute Aura" : "Let Aura speak"}
+                title={
+                  speakerOn
+                    ? "Aura speaks her replies (Kokoro TTS)"
+                    : "Aura's replies are text-only"
+                }
+                className={`text-base leading-none transition ${
+                  speakerOn
+                    ? "text-pink-200 hover:text-pink-100"
+                    : "text-chrome-500 hover:text-pink-200"
+                }`}
+              >
+                {speakerOn ? "♪" : "♪̸"}
+              </button>
               {history.length > 0 && (
                 <button
                   type="button"
@@ -497,12 +537,38 @@ export default function AuraLauncher() {
             }}
             className="flex gap-2 border-t border-warm-black-800 p-3"
           >
+            <button
+              type="button"
+              onClick={() => void onMicClick()}
+              disabled={busy || voice.transcribing}
+              aria-label={voice.recording ? "Stop recording" : "Start recording"}
+              title={
+                voice.recording
+                  ? "Recording — tap to stop and transcribe"
+                  : voice.transcribing
+                    ? "Transcribing…"
+                    : "Speak to Aura (Whisper STT)"
+              }
+              className={`rounded border px-3 py-2 text-sm transition disabled:opacity-50 ${
+                voice.recording
+                  ? "border-rose-300 bg-rose-200/10 text-rose-100"
+                  : "border-warm-black-800 text-chrome-400 hover:border-pink-200/60 hover:text-pink-200"
+              }`}
+            >
+              {voice.recording ? "■" : voice.transcribing ? "…" : "🎙"}
+            </button>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Say something to Aura…"
-              disabled={busy}
+              placeholder={
+                voice.recording
+                  ? "Recording…"
+                  : voice.transcribing
+                    ? "Transcribing…"
+                    : "Say something to Aura…"
+              }
+              disabled={busy || voice.recording || voice.transcribing}
               className="flex-1 rounded border border-warm-black-800 bg-warm-black-950 px-3 py-2 text-sm focus:border-pink-200 focus:outline-none disabled:opacity-50"
             />
             <button

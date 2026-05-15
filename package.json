@@ -40,6 +40,7 @@
     "firebase": "^12.12.1",
     "firebase-admin": "^13.9.0",
     "googleapis": "^171.4.0",
+    "kokoro-js": "^1.2.1",
     "maplibre-gl": "^5.24.0",
     "mediabunny": "^1.44.2",
     "mind-ar": "^1.2.5",
