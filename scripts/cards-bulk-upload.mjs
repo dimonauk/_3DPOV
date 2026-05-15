@@ -11,6 +11,8 @@
  *   vercel env pull .env.local
  *
  *   # Upload + scaffold:
+ *   pnpm cards:upload <dir>
+ *   # or
  *   node scripts/cards-bulk-upload.mjs <dir>
  *
  * For each <file>.glb:
@@ -23,47 +25,59 @@
  * Idempotent on the JSON side, additive on the Blob side. The cards
  * appear on /cards automatically — that page reads getAllCards() and
  * filters on `public: true`.
+ *
+ * Env loading: uses dotenv to read .env.local first (overrides existing
+ * env), then .env.production.local as a fallback. Either file is
+ * produced by `vercel env pull`.
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, basename, extname, resolve } from "node:path";
+import { config as dotenvConfig } from "dotenv";
 import { put } from "@vercel/blob";
 
-// Tiny .env loader — no extra dependency. Only needs BLOB_READ_WRITE_TOKEN.
-async function loadEnvFile(path) {
-  try {
-    const text = await readFile(path, "utf8");
-    for (const rawLine of text.split(/\r?\n/)) {
-      const line = rawLine.trim();
-      if (!line || line.startsWith("#")) continue;
-      const eq = line.indexOf("=");
-      if (eq < 0) continue;
-      const key = line.slice(0, eq).trim();
-      let val = line.slice(eq + 1).trim();
-      const isDouble = val.startsWith('"') && val.endsWith('"');
-      const isSingle = val.startsWith("'") && val.endsWith("'");
-      if (isDouble || isSingle) val = val.slice(1, -1);
-      if (key && !(key in process.env)) process.env[key] = val;
-    }
-  } catch {
-    // File missing — caller fails later if BLOB_READ_WRITE_TOKEN unset.
-  }
+// Load env files in priority order. The first one found wins for each
+// key; we don't `override` because explicit shell env should beat both.
+dotenvConfig({ path: ".env.local", quiet: true });
+dotenvConfig({ path: ".env.production.local", quiet: true });
+
+// Token can come from --token CLI arg or BLOB_READ_WRITE_TOKEN env. The
+// --token form exists because Vercel marks auto-injected Blob tokens as
+// managed — `vercel env pull` returns them as empty strings and the
+// `vercel blob` CLI hits the same wall. Copying the token from the
+// dashboard once is the documented workaround.
+const argvTokenIdx = process.argv.findIndex((a) => a === "--token");
+let tokenFromArg = null;
+if (argvTokenIdx > 0 && process.argv[argvTokenIdx + 1]) {
+  tokenFromArg = process.argv[argvTokenIdx + 1];
+  // Strip the --token <value> pair so dir arg shifts back into argv[2].
+  process.argv.splice(argvTokenIdx, 2);
 }
 
-await loadEnvFile(".env.local");
-await loadEnvFile(".env.production.local");
-
-if (!process.env.BLOB_READ_WRITE_TOKEN) {
-  console.error(
-    "BLOB_READ_WRITE_TOKEN not in env. Run: vercel env pull .env.local",
-  );
+const blobToken = tokenFromArg || process.env.BLOB_READ_WRITE_TOKEN;
+if (!blobToken) {
+  console.error([
+    "Couldn't find a Vercel Blob read/write token.",
+    "",
+    "Vercel marks auto-injected blob tokens as managed — `vercel env pull`",
+    "returns them as empty strings. Workarounds:",
+    "",
+    "  1. Copy the token from the Vercel dashboard:",
+    "       Storage → holo-flow-studio-blob → Project Connections → token",
+    "     Then paste it as BLOB_READ_WRITE_TOKEN= in .env.local,",
+    "     or run: pnpm cards:upload --token vercel_blob_rw_... <dir>",
+    "",
+    "  2. Set the env var inline:",
+    "       $env:BLOB_READ_WRITE_TOKEN='vercel_blob_rw_...'",
+    "       pnpm cards:upload <dir>",
+  ].join("\n"));
   process.exit(1);
 }
 
 const argDir = process.argv[2];
 if (!argDir) {
-  console.error("Usage: node scripts/cards-bulk-upload.mjs <dir-of-glbs>");
+  console.error("Usage: pnpm cards:upload <dir-of-glbs>");
   process.exit(1);
 }
 
@@ -159,6 +173,7 @@ for (let i = 0; i < glbs.length; i++) {
       access: "public",
       contentType: "model/gltf-binary",
       addRandomSuffix: false,
+      token: blobToken,
     });
   } catch (err) {
     console.error(`[${i + 1}/${glbs.length}] fail ${slug} — upload failed: ${err.message}`);

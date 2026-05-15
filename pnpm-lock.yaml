@@ -129,6 +129,9 @@ importers:
       '@types/three':
         specifier: ^0.171.0
         version: 0.171.0
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
