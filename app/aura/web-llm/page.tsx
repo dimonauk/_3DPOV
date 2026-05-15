@@ -1,10 +1,7 @@
-import dynamic from "next/dynamic";
-
-// Client-only — web-llm allocates GPU buffers at construction time.
-const WebLLMChat = dynamic(
-  () => import("components/aura/web-llm-chat"),
-  { ssr: false },
-);
+// web-llm-chat.tsx is `"use client"` so the framework hydrates it on the
+// client. `dynamic({ssr:false})` would be redundant here and is forbidden
+// in Server Components from Next.js 15 onwards.
+import WebLLMChat from "components/aura/web-llm-chat";
 
 export const metadata = {
   title: "Aura — Local",

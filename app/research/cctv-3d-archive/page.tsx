@@ -1,14 +1,11 @@
-import dynamic from "next/dynamic";
-
 import Footer from "components/layout/footer";
 import { isFirebaseAdminConfigured } from "lib/firebase/admin";
 import { mediaList } from "lib/capabilities/media/library";
 
-// Spark uses WebGL + GPU buffers at construction time; never SSR.
-const SplatViewerSpark = dynamic(
-  () => import("components/viewers/splat-viewer-spark"),
-  { ssr: false },
-);
+// splat-viewer-spark.tsx is `"use client"` so the framework hydrates it
+// on the client. `dynamic({ssr:false})` would be redundant here and is
+// forbidden in Server Components from Next.js 15 onwards.
+import SplatViewerSpark from "components/viewers/splat-viewer-spark";
 
 export const metadata = {
   title: "CCTV 3D Archive — Research",
