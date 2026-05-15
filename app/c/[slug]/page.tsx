@@ -1,3 +1,7 @@
+// PPR + notFound() are caching with 200 status at the edge; opt this
+// route out so notFound() correctly returns a 404 HTTP status.
+export const experimental_ppr = false;
+
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCard, listCardSlugs } from "lib/ar/cards";
