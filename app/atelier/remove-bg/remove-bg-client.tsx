@@ -16,6 +16,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:remove-bg");
 
 type ModelChoice = "u2net" | "u2net_human_seg" | "isnet-general-use";
 
@@ -119,7 +122,7 @@ export default function RemoveBgClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/remove-bg] generation failed", err);
+      log.error("generation failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Generation failed.",

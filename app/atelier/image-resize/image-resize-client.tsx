@@ -12,6 +12,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:image-resize");
 
 type ResizeMode = "width" | "height" | "longest-edge";
 type FitMode = "contain" | "cover" | "stretch";
@@ -163,7 +166,7 @@ export default function ImageResizeClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/image-resize] resize failed", err);
+      log.error("resize failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Resize failed.",

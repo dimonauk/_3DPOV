@@ -71,6 +71,7 @@ export type MediaSubject =
   | "press"
   | "research"
   | "deploy"
+  | "thumbnail"
   | "other";
 
 /** Variant sizes generated at (or after) upload. */
@@ -96,16 +97,29 @@ export type MediaSourceRef = {
    * in `lib/capabilities/viz/splat-generate.ts`).
    */
   splat?: {
+    /** Keep in sync with `SplatProvider` in
+     *  `lib/capabilities/viz/splat-generate.ts`. Widened when the
+     *  splat ladder gained `hangar-gsplat` (pinhole video → 3D splat),
+     *  `hangar-4dgs` (monocular video → 4D dynamic splat), and
+     *  `hangar-compose` (multi-splat stitching). */
     provider:
       | "sharp-onnx"
       | "postshot"
       | "studio-rig-native"
-      | "luma-genie";
+      | "luma-genie"
+      | "hangar-gsplat"
+      | "hangar-4dgs"
+      | "hangar-compose";
     licence:
       | "research-only"
       | "commercial-ok"
       | "third-party-commercial";
-    plyFlavour: "standard-3dgs" | "sharp-onnx-raw";
+    /** Keep in sync with `SplatPlyFlavour` in splat-generate.ts. */
+    plyFlavour:
+      | "standard-3dgs"
+      | "sharp-onnx-raw"
+      | "4dgs-deformable-mlp"
+      | "4dgs-canonical-time";
     gaussianCount: number;
     sourceImageUrl?: string;
     durationSeconds?: number | null;
@@ -119,6 +133,17 @@ export type MediaSourceRef = {
     recordId: string;
     deployUrl: string;
     qrSizeCm?: number;
+  };
+  /**
+   * Thumbnail-of-a-splat metadata. Present when the media is a poster
+   * card or rendered preview for a `SplatRecord` / `Splat360Record`
+   * produced by `viz.thumbnail-splat`. The `recordId` points back at
+   * the source splat; `provider` records which thumbnail path drew it
+   * (the fast card vs the real WebGL screenshot).
+   */
+  thumbnailSplat?: {
+    recordId: string;
+    provider: "card-fast" | "splat-real";
   };
   /**
    * ComfyUI-specific metadata. Present when the media was produced by

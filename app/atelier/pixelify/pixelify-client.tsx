@@ -16,6 +16,9 @@ import {
   pixelate,
   type PixelateDither,
 } from "lib/image-to-pixel/pixelate";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:pixelify");
 
 const DITHER_OPTIONS: ReadonlyArray<PixelateDither> = [
   "none",
@@ -151,7 +154,7 @@ export default function PixelifyClient() {
           out.style.imageRendering = "pixelated";
         }
       } catch (err) {
-        console.error("[atelier/pixelify] pixelation failed", err);
+        log.error("pixelation failed", { err });
         setError(err instanceof Error ? err.message : "Pixelation failed.");
       } finally {
         setBusy(false);

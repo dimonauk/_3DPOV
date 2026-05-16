@@ -16,6 +16,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:lithophane");
 
 type OutputState =
   | { kind: "idle" }
@@ -92,7 +95,7 @@ export default function LithophaneClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/lithophane] generation failed", err);
+      log.error("generation failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Generation failed.",

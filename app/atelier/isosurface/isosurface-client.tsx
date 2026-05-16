@@ -14,7 +14,10 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { createLogger } from "lib/log";
 import type { IsosurfaceRunner } from "lib/webgpu-marching-cubes/runner";
+
+const log = createLogger("atelier:isosurface");
 
 type Support = "probing" | "yes" | "no";
 
@@ -106,7 +109,7 @@ export default function IsosurfaceClient() {
             await runner.frame();
             setStats(runner.getStats());
           } catch (err) {
-            console.error("[atelier/isosurface] frame error", err);
+            log.error("frame error", { err });
           }
           rafRef.current = requestAnimationFrame(() => {
             void loop();
@@ -116,7 +119,7 @@ export default function IsosurfaceClient() {
           void loop();
         });
       } catch (err) {
-        console.error("[atelier/isosurface] init failed", err);
+        log.error("init failed", { err });
         if (!cancelled) setSupported("no");
       }
     })();

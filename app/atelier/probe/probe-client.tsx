@@ -15,6 +15,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:probe");
 
 type ExifFields = Record<string, string | number>;
 
@@ -155,7 +158,7 @@ export default function ProbeClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/probe] probe failed", err);
+      log.error("probe failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Probe failed.",

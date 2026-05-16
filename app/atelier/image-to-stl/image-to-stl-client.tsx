@@ -19,6 +19,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:image-to-stl");
 
 type OutputState =
   | { kind: "idle" }
@@ -172,7 +175,7 @@ export default function ImageToStlClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/image-to-stl] generation failed", err);
+      log.error("generation failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Generation failed.",

@@ -15,6 +15,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:exif-strip");
 
 type OutputState =
   | { kind: "idle" }
@@ -112,7 +115,7 @@ export default function ExifStripClient() {
         cleanedSize: blob.size,
       });
     } catch (err) {
-      console.error("[atelier/exif-strip] strip failed", err);
+      log.error("strip failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Strip failed.",

@@ -16,6 +16,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
+import { createLogger } from "lib/log";
+
+const log = createLogger("atelier:pixeldetector");
 
 type DetectionResult = {
   nativeWidth: number;
@@ -86,7 +89,7 @@ export default function PixeldetectorClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
-      console.error("[atelier/pixeldetector] detection failed", err);
+      log.error("detection failed", { err });
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Detection failed.",
