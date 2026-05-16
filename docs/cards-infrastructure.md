@@ -43,13 +43,15 @@ Setup:
 
 ### IP-hashing salt — `IP_HASH_SALT`
 
-Optional salt mixed with visitor IPs before SHA-256 hashing. Without
-it the default constant is used, which is fine but predictable.
-Setting it to a long random string adds defence against rainbow-table
-correlation across deployments.
+**Required in production.** Salt mixed with visitor IPs before SHA-256
+hashing, so we can rate-limit and dedupe without storing raw IPs.
+`hashIp()` (in `lib/cards/ip-hash.ts`) throws when `NODE_ENV ===
+"production"` and the var is missing — the deploy fails fast instead
+of silently using a predictable salt. In development it falls back to
+`holoflow-dev-only-do-not-ship`.
 
 ```
-IP_HASH_SALT=<any 32+ char random string>
+IP_HASH_SALT=<long random string, e.g. `openssl rand -hex 32`>
 ```
 
 ### Apple Wallet pass — five env vars

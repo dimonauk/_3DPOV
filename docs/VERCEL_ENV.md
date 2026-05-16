@@ -282,7 +282,7 @@ Vercel's own runtime logs are accessed via the dashboard or
 
 | Name | Scope | Default | Used in | Notes |
 |---|---|---|---|---|
-| `IP_HASH_SALT` | server | `holoflow-default-salt` | `lib/cards/leads-server.ts`, `lib/cards/analytics-server.ts` | Salt for hashing visitor IPs in AR card analytics (privacy: we store the hash, not the IP). Override in production with a long random string. |
+| `IP_HASH_SALT` | server | **required in prod** (dev falls back to `holoflow-dev-only-do-not-ship`) | `lib/cards/ip-hash.ts` (shared by leads + analytics writers) | Salt for hashing visitor IPs in AR card analytics (privacy: store hash, not IP). **MUST be set in Vercel before deploy** — `hashIp()` now throws when `NODE_ENV === "production"` and the var is missing, so the deploy will fail-fast rather than silently use a predictable salt. Use a long random string (`openssl rand -hex 32`). |
 | `ROLLUP_WATCH` | build | unset | `services/softxels/rollup.config.js`, `services/softxels/example/rollup.config.js` | Rollup internal — toggles minification in the softxels sub-package. |
 | `SKIP_MIND` | script | unset | `scripts/ar-build-all.mjs` | When `1`, skips the mind-ar target compile in the AR build script. |
 | `SHARP_SERVICE_URL`, `SHARP_VIDEO_SERVICE_URL`, `MESH_SERVICE_URL` | server | declared in `lib/env.ts` | declared only, no server impl yet | Reserved for forthcoming SHARP-photo, SHARP-video, and InstantMesh bench bridges. |
