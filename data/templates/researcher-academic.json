@@ -1,0 +1,17 @@
+{
+  "id": "researcher-academic",
+  "name": "Researcher & Academic",
+  "description": "Library forest + cardinal red accent. For PhDs, postdocs, lab heads, public intellectuals.",
+  "tags": ["academic", "research", "professor"],
+  "palette": {
+    "primary": "#1B3A2D",
+    "secondary": "#2F5A47",
+    "accent": "#C13F3F",
+    "textOnBrand": "#FFFFFF",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Research scientist · cognitive neuroscience",
+    "tagline": "Working out how minds make sense of themselves."
+  }
+}

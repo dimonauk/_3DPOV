@@ -19,6 +19,7 @@
     "cards:upload": "node scripts/cards-bulk-upload.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.96.0",
     "@google/genai": "^2.2.0",
     "@google/model-viewer": "^4.2.0",
     "@headlessui/react": "^2.2.0",

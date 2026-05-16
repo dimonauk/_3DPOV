@@ -1,0 +1,17 @@
+{
+  "id": "indie-craft",
+  "name": "Indie Maker & Craftsperson",
+  "description": "Rust + cream + faded denim. For makers, ceramicists, leatherworkers, small-batch product builders.",
+  "tags": ["maker", "craft", "indie"],
+  "palette": {
+    "primary": "#B85C3C",
+    "secondary": "#E0D5C0",
+    "accent": "#4A6378",
+    "textOnBrand": "#FFFFFF",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Ceramicist · small-batch maker",
+    "tagline": "One studio, two hands, no shortcuts."
+  }
+}

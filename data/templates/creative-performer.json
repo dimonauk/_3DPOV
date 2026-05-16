@@ -1,0 +1,17 @@
+{
+  "id": "creative-performer",
+  "name": "Creative Performer",
+  "description": "Bold gradient + emoji-forward role. For flow artists, dancers, musicians, performance makers.",
+  "tags": ["performance", "creative", "stage"],
+  "palette": {
+    "primary": "#FF4F8B",
+    "secondary": "#7B61FF",
+    "accent": "#FFD166",
+    "textOnBrand": "#FFFFFF",
+    "font": "display"
+  },
+  "starter": {
+    "role": "Performance maker, flow artist",
+    "tagline": "Bodies of light, choreographed in motion."
+  }
+}

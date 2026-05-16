@@ -1,0 +1,17 @@
+{
+  "id": "tech-builder",
+  "name": "Tech Builder",
+  "description": "Sharp accent on a near-black base. For developers, engineers, product builders.",
+  "tags": ["technical", "engineering", "product"],
+  "palette": {
+    "primary": "#0E0E12",
+    "secondary": "#1F1F2A",
+    "accent": "#00E5A8",
+    "textOnBrand": "#FFFFFF",
+    "font": "mono"
+  },
+  "starter": {
+    "role": "Software engineer · ML infra",
+    "tagline": "Shipping production systems since the first commit."
+  }
+}
