@@ -114,7 +114,7 @@ Each chamber doubles as a dataset-prep tool:
 - **2026-05-16:** Endpoint architecture is conditional adapter (ControlNet-style), not text-to-image with style tokens.
 - **2026-05-16:** Default display mode for ANY uploaded image is silk-cloth ("flag") in WebGPU, not a thumbnail. Spheres are an alternative wrap for confirmed 360s.
 - **2026-05-16:** Flag display + manipulation built in **WebGPU TSL** (Three.js Shading Language). The website's display layer is WebGPU/TSL-first; this is the engine for all chamber display.
-- **2026-05-16:** Manipulation is controllable in **both 2D (mouse/touch) and VR (WebXR hand tracking + controllers)**. The cloth physics runs identically in both; only the input layer differs.
+- **2026-05-16:** Manipulation is controllable in **2D (mouse/touch/cursor), VR (WebXR hand tracking + controllers), eye-tracking (Aya / gaze), and face-tracking**. The cloth physics runs identically across all input modes; only the input layer differs. Existing bench trackers (eye / face / cursor) need to be ported across to the website's WebGPU TSL display layer. **Tracking library is MediaPipe** (Google's browser-native face/hand/pose/gaze toolkit) for face + eye + hand; WebXR-native hand tracking on Quest / Vision Pro; native browser events for cursor + touch.
 - **2026-05-16:** Recenter is a separate primitive from reframe: column-wrap of the flag, rotate the column, unwrap onto sphere. Distinct from yaw-pitch-FOV virtual camera (which is the reframe-to-flat path).
 
 ## Open decisions
