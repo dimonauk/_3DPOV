@@ -294,6 +294,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     category: "paint-and-draw",
     status: "live",
   },
+  {
+    slug: "lightpaint",
+    title: "Lightpaint",
+    blurb: "Animated light-painting editor. Drop long-exposure frames, scrub the timeline, export MP4. Phase 1 of the multi-frame compositor.",
+    category: "paint-and-draw",
+    status: "live",
+  },
 
   // ---------- Pattern + textile ----------
   {
