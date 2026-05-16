@@ -146,6 +146,31 @@ export type MediaSourceRef = {
     provider: "card-fast" | "splat-real";
   };
   /**
+   * Image-to-3D mesh metadata. Present when the media is a GLB minted
+   * by `viz.image-to-3d` (single-image LRM via TripoSR). Distinct from
+   * the broader `imageToMesh` shape so commerce surfaces can filter on
+   * "TripoSR-derived mesh" without inferring it from provider strings.
+   */
+  imageTo3D?: {
+    provider: "triposr";
+    format: "glb";
+    sourceImageUrl?: string | null;
+  };
+  /**
+   * Text-to-3D mesh metadata. Present when the media is a GLB minted
+   * by `viz.text-to-3d` (Microsoft TRELLIS). Carries the source prompt
+   * + optional reference image URL + seed for reproducibility. Distinct
+   * from the `imageTo3D` shape because commerce surfaces want to know
+   * "this mesh started from a prompt, not a photo".
+   */
+  textTo3D?: {
+    provider: "trellis";
+    format: "glb";
+    prompt: string;
+    sourceImageUrl?: string | null;
+    seed?: number | null;
+  };
+  /**
    * ComfyUI-specific metadata. Present when the media was produced by
    * `viz.generate-comfyui`. The workflow + seed pair is the closest thing
    * to a reproducibility key — the bench can rerun the same generation

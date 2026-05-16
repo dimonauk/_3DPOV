@@ -156,6 +156,14 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     benchSource: "engines/CubeComposer",
   },
   {
+    slug: "trellis",
+    title: "TRELLIS",
+    blurb: "Text (or text + image) to 3D mesh via Microsoft's TRELLIS. Type a prompt, get a GLB.",
+    category: "make-3d",
+    status: "live",
+    benchSource: "engines/TRELLIS",
+  },
+  {
     slug: "poi-sculptor",
     title: "Poi Sculptor",
     blurb: "Paint a poi-trail sculpture; export as printable mesh.",
@@ -332,6 +340,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     slug: "probe",
     title: "Probe",
     blurb: "Diagnostic probe for the atelier toolchain. Reads what's installed where.",
+    category: "image-tools",
+    status: "live",
+  },
+  {
+    slug: "print-check",
+    title: "Print Check",
+    blurb: "Drop a photo; the chamber tells you the largest print size that's safe on the studio's A2 fine-art pipeline, and flags 360 sources for reframing.",
     category: "image-tools",
     status: "live",
   },

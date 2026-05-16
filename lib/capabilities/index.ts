@@ -76,6 +76,18 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["vrm.load"],
   },
   {
+    id: "vrm.wardrobe",
+    kind: "vrm",
+    name: "Wardrobe swap",
+    summary:
+      "Replace the textures on a base VRM with a new outfit VRM's textures, in-place. Outfit transfer without bone/skinning surgery — fast, browser-only, no IndexedDB/worker dependencies. Powers /aura/wardrobe.",
+    status: "registered",
+    source: "Hangar: apps/aura-vrm wardrobe pipeline atomised; texture-swap-only subset.",
+    load: () => import("./vrm/wardrobe"),
+    stateSlices: ["vrm"],
+    dependsOn: ["vrm.load"],
+  },
+  {
     id: "audio.stt",
     kind: "audio",
     name: "Speech-to-text",
@@ -388,6 +400,17 @@ const auraAliveStubs: CapabilityRecord[] = [
       "Stability AI TripoSR (MIT) installed at D:/The_Hangar/engines/TripoSR/. Bench wrap at D:/The_Hangar/engines/splat360/src/splat360/api/triposr.py. Server seam at lib/capabilities/viz/image-to-3d.server.ts.",
     load: () => import("./viz/image-to-3d"),
     dependsOn: ["viz.depth-estimation"],
+  },
+  {
+    id: "viz.text-to-3d",
+    kind: "viz",
+    name: "Text to 3D",
+    summary:
+      "Text prompt (and optional reference image) → 3D printable mesh (GLB) via Microsoft TRELLIS on the bench. Sync round-trip (~2 min on a 3090) through the splat360 service at /trellis/generate. Sibling to viz.image-to-3d — same GLB-on-the-media-library output, different input shape. Fake mode auto-engages when the trellis venv python is missing so the round-trip works without the model installed.",
+    status: "registered",
+    source:
+      "Microsoft TRELLIS (MIT) installed at D:/The_Hangar/engines/TRELLIS/. Bench wrap at D:/The_Hangar/engines/splat360/src/splat360/api/trellis.py. Server seam at lib/capabilities/viz/text-to-3d.server.ts.",
+    load: () => import("./viz/text-to-3d"),
   },
   {
     id: "viz.particles",
