@@ -219,12 +219,18 @@ export default function MyCardsPage() {
           </ul>
         )}
 
-        <div className="mt-12 border-t border-warm-black-800 pt-8">
+        <div className="mt-12 flex flex-wrap gap-3 border-t border-warm-black-800 pt-8">
           <Link
             href="/cards/design"
             className="rounded-full border border-pink-200/40 bg-pink-200/10 px-6 py-3 chrome-label text-pink-100 transition-colors hover:border-pink-200 hover:bg-pink-200/20"
           >
             + Design a new card
+          </Link>
+          <Link
+            href="/cards/mine/import"
+            className="rounded-full border border-chrome-400/30 px-6 py-3 chrome-label text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+          >
+            📥 Bulk import CSV
           </Link>
         </div>
       </section>

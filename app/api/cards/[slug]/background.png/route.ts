@@ -3,34 +3,14 @@ import sharp from "sharp";
 import { getCard } from "lib/ar/cards";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { withRouteLogging, errToObject } from "lib/log";
 
 /**
- * GET /api/cards/[slug]/background.png
+ * GET /api/cards/[slug]/background.png — branded Zoom/Teams/Meet
+ * virtual background. See full docs in this file's previous header
+ * (variants, sizes, QR toggle).
  *
- * Returns a 1920×1080 branded PNG suitable for use as a Zoom / Teams
- * / Google Meet virtual background. Free feature, no auth needed —
- * card data is already public on the landing.
- *
- * Query params:
- *   ?variant=minimal | gradient | bottomBar     (default: bottomBar)
- *   ?size=1080p | 720p | 4k                     (default: 1080p)
- *   ?showQr=1 | 0                               (default: 1)
- *
- * Variants:
- *   • bottomBar — gradient background with a contrasting bottom
- *                 ribbon containing name + role + QR code. Most
- *                 useful for video calls where you want viewers to
- *                 know who you are without being able to read it
- *                 from across the room.
- *   • minimal   — pure brand gradient. Subtle.
- *   • gradient  — gradient + large semi-transparent logotype.
- *
- * The image is generated entirely server-side with sharp + SVG —
- * no GPU, no headless browser. ~80-200ms generation.
- *
- * Returns binary PNG with Cache-Control: public, max-age=3600.
- * If the card colours change, the cached version expires within an
- * hour. If you need it sooner, append ?cb=<timestamp>.
+ * Every response carries X-Request-Id for log correlation.
  */
 
 type Variant = "minimal" | "gradient" | "bottomBar";
@@ -42,86 +22,120 @@ const SIZES = {
   "4k": { w: 3840, h: 2160 },
 } as const;
 
-export async function GET(req: NextRequest, { params }: Params) {
-  const { slug } = await params;
-  const card = await getCard(slug);
-  if (!card) {
-    return NextResponse.json({ error: "not_found" }, { status: 404 });
-  }
+export const GET = withRouteLogging<Params>(
+  "cards.background.png",
+  async (req: NextRequest, { params }, log) => {
+    const { slug } = await params;
+    log.debug("slug", { slug });
 
-  const url = new URL(req.url);
-  const variant = (url.searchParams.get("variant") ?? "bottomBar") as Variant;
-  const sizeKey = (url.searchParams.get("size") ?? "1080p") as keyof typeof SIZES;
-  const showQr = url.searchParams.get("showQr") !== "0";
-  const size = SIZES[sizeKey] ?? SIZES["1080p"];
-
-  const primary = card.brand.primary;
-  const secondary = card.brand.secondary;
-  const accent = card.brand.accent;
-  const textOnBrand = card.brand.textOnBrand;
-
-  // Try to load the card's branded QR SVG for embedding. Optional —
-  // if it doesn't exist we just skip the QR slot.
-  let qrSvg = "";
-  if (showQr) {
+    let card;
     try {
-      const qrPath = path.join(
-        process.cwd(),
-        "public",
-        "cards",
-        slug,
-        "qr.svg",
+      card = await getCard(slug);
+    } catch (err) {
+      log.error("getCard:threw", { slug, err: errToObject(err) });
+      return NextResponse.json(
+        { error: "card_lookup_failed", message: (err as Error).message },
+        { status: 500 },
       );
-      qrSvg = await fs.readFile(qrPath, "utf8");
-    } catch {
-      qrSvg = "";
     }
-  }
+    if (!card) {
+      log.info("card:not_found", { slug });
+      return NextResponse.json({ error: "not_found" }, { status: 404 });
+    }
 
-  let svg: string;
-  if (variant === "minimal") {
-    svg = renderMinimal(size, primary, secondary, accent);
-  } else if (variant === "gradient") {
-    svg = renderGradient(
-      size,
-      primary,
-      secondary,
-      textOnBrand,
-      card.studio ?? card.name,
-    );
-  } else {
-    svg = renderBottomBar(
-      size,
-      primary,
-      secondary,
-      accent,
-      textOnBrand,
-      card.name,
-      card.role,
-      card.studio,
-      qrSvg,
-    );
-  }
+    const url = new URL(req.url);
+    const variant = (url.searchParams.get("variant") ?? "bottomBar") as Variant;
+    const sizeKey = (url.searchParams.get("size") ??
+      "1080p") as keyof typeof SIZES;
+    const showQr = url.searchParams.get("showQr") !== "0";
+    const size = SIZES[sizeKey] ?? SIZES["1080p"];
+    log.debug("params", { variant, sizeKey, showQr, w: size.w, h: size.h });
 
-  let png: Buffer;
-  try {
-    png = await sharp(Buffer.from(svg)).png().toBuffer();
-  } catch (e) {
-    return NextResponse.json(
-      { error: "render_failed", message: (e as Error).message },
-      { status: 500 },
-    );
-  }
+    const primary = card.brand.primary;
+    const secondary = card.brand.secondary;
+    const accent = card.brand.accent;
+    const textOnBrand = card.brand.textOnBrand;
 
-  return new NextResponse(new Uint8Array(png), {
-    status: 200,
-    headers: {
-      "Content-Type": "image/png",
-      "Content-Disposition": `inline; filename="${slug}-bg-${variant}-${sizeKey}.png"`,
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
-}
+    let qrSvg = "";
+    if (showQr) {
+      try {
+        const qrPath = path.join(
+          process.cwd(),
+          "public",
+          "cards",
+          slug,
+          "qr.svg",
+        );
+        qrSvg = await fs.readFile(qrPath, "utf8");
+      } catch (err) {
+        log.debug("qr:not_found_or_unreadable", {
+          slug,
+          err: errToObject(err),
+        });
+        qrSvg = "";
+      }
+    }
+
+    let svg: string;
+    try {
+      if (variant === "minimal") {
+        svg = renderMinimal(size, primary, secondary, accent);
+      } else if (variant === "gradient") {
+        svg = renderGradient(
+          size,
+          primary,
+          secondary,
+          textOnBrand,
+          card.studio ?? card.name,
+        );
+      } else {
+        svg = renderBottomBar(
+          size,
+          primary,
+          secondary,
+          accent,
+          textOnBrand,
+          card.name,
+          card.role,
+          card.studio,
+          qrSvg,
+        );
+      }
+    } catch (err) {
+      log.error("svg_render:failed", { variant, err: errToObject(err) });
+      return NextResponse.json(
+        { error: "svg_render_failed", message: (err as Error).message },
+        { status: 500 },
+      );
+    }
+
+    let png: Buffer;
+    try {
+      png = await sharp(Buffer.from(svg)).png().toBuffer();
+    } catch (err) {
+      log.error("sharp:failed", { variant, sizeKey, err: errToObject(err) });
+      return NextResponse.json(
+        { error: "render_failed", message: (err as Error).message },
+        { status: 500 },
+      );
+    }
+    log.info("background:ok", {
+      slug,
+      variant,
+      sizeKey,
+      pngBytes: png.length,
+    });
+
+    return new NextResponse(new Uint8Array(png), {
+      status: 200,
+      headers: {
+        "Content-Type": "image/png",
+        "Content-Disposition": `inline; filename="${slug}-bg-${variant}-${sizeKey}.png"`,
+        "Cache-Control": "public, max-age=3600",
+      },
+    });
+  },
+);
 
 function renderMinimal(
   size: { w: number; h: number },
@@ -182,8 +196,6 @@ function renderBottomBar(
   const roleSize = Math.round(barH * 0.22);
   const padding = Math.round(size.w * 0.04);
 
-  // Embed the QR SVG as an inline element. We strip the outer <?xml ?>
-  // and <svg> wrapper attrs and re-wrap so it sits at our chosen position.
   let qrEl = "";
   if (qrSvg) {
     const inner = qrSvg
