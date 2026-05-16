@@ -15,6 +15,11 @@ import GenomeCard from "components/atelier/genome-card";
 import LabanCorners from "components/atelier/laban-corners";
 import KataMoveList from "components/atelier/kata-move-list";
 import { portedSlugs } from "lib/algorithms";
+import {
+  CHAMBER_CATEGORIES,
+  CHAMBER_COUNT,
+  chambersByCategory,
+} from "lib/atelier/chambers";
 
 export const metadata = {
   title: "The atelier — the studio's working bench, online",
@@ -95,118 +100,61 @@ export default function AtelierPage() {
         {/* CHAMBERS ---------------------------------------------------- */}
         <section id="chambers" className="mt-16 scroll-mt-24">
           <div className="chrome-label text-pink-200 mb-2">
-            Interactive &mdash; tools the studio uses, that you can use too
+            Interactive &mdash; bench tools the studio uses, simplified
           </div>
-          <h2 className="text-3xl text-chrome-100">Chambers.</h2>
+          <h2 className="text-3xl text-chrome-100">
+            Chambers <span className="text-chrome-400 text-xl">· {CHAMBER_COUNT}</span>
+          </h2>
           <p className="mt-3 max-w-prose text-chrome-300">
-            Small rooms where one of the studio&rsquo;s bench tools is
-            ported into the browser. Drop something in; get something
-            out. No sign-up. The browser-only chambers run on your
-            machine; the Python-backed ones go through the studio&rsquo;s
-            Firebase Functions deployment (no cost to you).
+            Each chamber starts from a real working pipeline on the
+            studio&rsquo;s bench — the studio uses these for her own
+            print runs, splat captures, sculpture commissions. The
+            chamber here is the polished thin slice. Drop something
+            in, get something out. No sign-up. The browser-only
+            chambers run on your machine; the Python-backed ones go
+            through the studio&rsquo;s deployment at no cost to you.
           </p>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                slug: "pixelify",
-                title: "Pixelify",
-                kind: "Browser",
-                summary: "Drop an image, get pixel art back. Six dither modes, Lospec palette support.",
-              },
-              {
-                slug: "lithophane",
-                title: "Lithophane",
-                kind: "Function",
-                summary: "Image → printable STL. Backlight the print, the photograph appears.",
-              },
-              {
-                slug: "remove-bg",
-                title: "Remove background",
-                kind: "Function",
-                summary: "U²-Net background removal. PNG with alpha back, three model variants.",
-              },
-              {
-                slug: "pixeldetector",
-                title: "Pixel detector",
-                kind: "Function",
-                summary: "Find the native pixel-art resolution of an upscaled retro image.",
-              },
-              {
-                slug: "probe",
-                title: "Probe",
-                kind: "Function",
-                summary: "Every photograph carries a paperwork trail. EXIF, ICC, GPS, camera, lens.",
-              },
-              {
-                slug: "image-to-stl",
-                title: "Image → STL",
-                kind: "Function",
-                summary: "Contour-extruded printable plate. Cousin to the lithophane, but cut-outs not heightmap.",
-              },
-              {
-                slug: "image-resize",
-                title: "Resize",
-                kind: "Function",
-                summary: "The workhorse. Resize, transcode, strip metadata. Every image you ship passes through here.",
-              },
-              {
-                slug: "exif-strip",
-                title: "Strip metadata",
-                kind: "Function",
-                summary: "The inverse of Probe. Every byte of EXIF, ICC, XMP, IPTC goes away. The pixels stay.",
-              },
-              {
-                slug: "voxel-world",
-                title: "Voxel world",
-                kind: "Browser",
-                summary: "Left-click adds a cube, right-click removes one. The smallest unit of sculpture is one cube.",
-              },
-              {
-                slug: "isosurface",
-                title: "Isosurface",
-                kind: "Browser",
-                summary: "An equation becomes a surface. WebGPU marching cubes on three signed-distance fields.",
-              },
-              {
-                slug: "image-to-mesh",
-                title: "Image → Mesh",
-                kind: "Function",
-                summary: "A photograph becomes a 3D object. Four providers: TripoSR (fast), HY-WU (mid), Unique3D (high quality), InstantMesh (multi-view).",
-              },
-              {
-                slug: "imagen",
-                title: "Imagen",
-                kind: "Function",
-                summary: "Text → image with Google's Imagen 4. Free tier on the studio quota; paste your own AI Studio key for unbounded use.",
-              },
-              {
-                slug: "image-edit",
-                title: "Image edit",
-                kind: "Function",
-                summary: "Drop an image, write a prompt, Gemini edits it. Same BYO-key option as Imagen.",
-              },
-              {
-                slug: "veo",
-                title: "Veo",
-                kind: "Function",
-                summary: "Text → short video with Google's Veo 3. 4–8 second clips, optional audio. Async polling; usually returns in a minute.",
-              },
-            ].map((c) => (
-              <Link
-                key={c.slug}
-                href={`/atelier/${c.slug}`}
-                className="flex flex-col gap-2 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-4 transition-colors hover:border-pink-200/60"
-              >
-                <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-base text-chrome-100">{c.title}</h3>
+
+          {/* Categorised sub-grids — labelled by what you DO with them */}
+          {CHAMBER_CATEGORIES.map((cat) => {
+            const items = chambersByCategory(cat.id);
+            if (items.length === 0) return null;
+            return (
+              <div key={cat.id} className="mt-10">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="text-xl text-chrome-100">{cat.label}</h3>
                   <span className="chrome-label text-chrome-500">
-                    {c.kind}
+                    {items.length}
                   </span>
                 </div>
-                <p className="text-sm text-chrome-300">{c.summary}</p>
-              </Link>
-            ))}
-          </div>
+                <p className="mt-1 text-sm text-chrome-400">{cat.blurb}</p>
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {items.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/atelier/${c.slug}`}
+                      className="flex flex-col gap-2 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-4 transition-colors hover:border-pink-200/60"
+                    >
+                      <div className="flex items-baseline justify-between gap-2">
+                        <h4 className="text-base text-chrome-100">{c.title}</h4>
+                        {c.status === "placeholder" && (
+                          <span className="chrome-label text-chrome-500">
+                            placeholder
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-chrome-300">{c.blurb}</p>
+                      {c.benchSource && (
+                        <p className="font-mono text-[0.65rem] text-chrome-500">
+                          bench: {c.benchSource}
+                        </p>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </section>
 
         {/* MESHES ----------------------------------------------------- */}
