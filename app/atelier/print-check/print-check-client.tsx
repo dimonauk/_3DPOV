@@ -15,6 +15,7 @@
  */
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 
 import { createLogger } from "lib/log";
 import type {
@@ -22,6 +23,11 @@ import type {
   PrintSize,
 } from "lib/capabilities/image/print-check";
 import { useActiveChamber } from "lib/state/atelier-hooks";
+
+const FlagDisplay = dynamic(
+  () => import("components/atelier/flag-display/flag-display"),
+  { ssr: false },
+);
 
 const log = createLogger("atelier:print-check");
 
@@ -38,11 +44,17 @@ const SIZE_LABELS: Record<PrintSize, string> = {
 
 type State =
   | { kind: "idle" }
-  | { kind: "checking"; previewUrl: string; filename: string }
+  | {
+      kind: "checking";
+      previewUrl: string;
+      filename: string;
+      aspect: number;
+    }
   | {
       kind: "ready";
       previewUrl: string;
       filename: string;
+      aspect: number;
       verdict: PrintCheckVerdict;
     }
   | {
@@ -61,8 +73,8 @@ export default function PrintCheckClient() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const fileFieldId = useId();
 
-  const runCheck = useCallback(async (file: File, previewUrl: string) => {
-    setState({ kind: "checking", previewUrl, filename: file.name });
+  const runCheck = useCallback(async (file: File, previewUrl: string, aspect: number) => {
+    setState({ kind: "checking", previewUrl, filename: file.name, aspect });
     try {
       const fd = new FormData();
       fd.append("image", file, file.name);
@@ -105,6 +117,7 @@ export default function PrintCheckClient() {
         kind: "ready",
         previewUrl,
         filename: file.name,
+        aspect,
         verdict: json.verdict,
       });
     } catch (err) {
@@ -131,7 +144,20 @@ export default function PrintCheckClient() {
         return;
       }
       const previewUrl = URL.createObjectURL(file);
-      void runCheck(file, previewUrl);
+      // Measure aspect from the file before running the check; the
+      // FlagDisplay needs it to lay out the cloth correctly.
+      const probe = new Image();
+      probe.onload = () => {
+        const aspect =
+          probe.naturalWidth > 0 && probe.naturalHeight > 0
+            ? probe.naturalWidth / probe.naturalHeight
+            : 1.5;
+        void runCheck(file, previewUrl, aspect);
+      };
+      probe.onerror = () => {
+        void runCheck(file, previewUrl, 1.5);
+      };
+      probe.src = previewUrl;
     },
     [runCheck],
   );
@@ -209,6 +235,18 @@ export default function PrintCheckClient() {
             Reading dimensions, ICC profile, colour space, XMP metadata.
             Usually finishes in under a second.
           </p>
+        </section>
+      ) : null}
+
+      {/* Silk-flag preview — auto-switches to sphere for 360s */}
+      {state.kind === "ready" && state.previewUrl ? (
+        <section className="h-[480px] w-full overflow-hidden rounded-sm border border-warm-black-700 bg-warm-black-950">
+          <FlagDisplay
+            imageUrl={state.previewUrl}
+            mode={state.verdict.needsReframe ? "sphere" : "flag"}
+            aspect={state.aspect}
+            className="h-full w-full"
+          />
         </section>
       ) : null}
 

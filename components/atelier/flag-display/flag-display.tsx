@@ -35,8 +35,9 @@ import {
   useState,
 } from "react";
 
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, type ThreeEvent } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { XR, type XRStore } from "@react-three/xr";
 import * as THREE from "three";
 import { TextureLoader } from "three";
 
@@ -70,6 +71,11 @@ export type FlagDisplayProps = {
   background?: string;
   /** CSS class for the wrapping div. */
   className?: string;
+  /** Optional WebXR store from createXRStore(). When supplied, the scene
+   *  wraps in <XR store={store}> and the cloth becomes manipulable via
+   *  hand-tracking / controllers in VR or AR. The caller is responsible
+   *  for rendering the enter/exit bar over the canvas. */
+  xrStore?: XRStore;
   /** Called when the user grabs a vertex — useful for inverse-kata. */
   onVertexGrab?: (vertIdx: number, x: number, y: number, z: number) => void;
   /** Called continuously while a vertex is dragged. */
@@ -95,6 +101,37 @@ const FlagDisplay = forwardRef<FlagDisplayHandle, FlagDisplayProps>(
       className,
     } = props;
 
+    const xrStore = props.xrStore;
+
+    const sceneContents = (
+      <>
+        <ambientLight intensity={0.6} />
+        <directionalLight
+          position={[3, 4, 5]}
+          intensity={1.1}
+          castShadow={false}
+        />
+        <directionalLight
+          position={[-3, -2, 3]}
+          intensity={0.4}
+          castShadow={false}
+        />
+        {mode === "sphere" ? (
+          <SphereWrap imageUrl={imageUrl} />
+        ) : (
+          <FlagCloth
+            ref={ref as React.Ref<FlagDisplayHandle>}
+            imageUrl={imageUrl}
+            aspect={aspect}
+            resolution={props.resolution}
+            draggable={props.draggable}
+            onVertexGrab={props.onVertexGrab}
+            onVertexDrag={props.onVertexDrag}
+          />
+        )}
+      </>
+    );
+
     return (
       <div
         className={
@@ -110,37 +147,19 @@ const FlagDisplay = forwardRef<FlagDisplayHandle, FlagDisplayProps>(
             gl.setClearColor(background);
           }}
         >
-          <ambientLight intensity={0.6} />
-          <directionalLight
-            position={[3, 4, 5]}
-            intensity={1.1}
-            castShadow={false}
-          />
-          <directionalLight
-            position={[-3, -2, 3]}
-            intensity={0.4}
-            castShadow={false}
-          />
-          {mode === "sphere" ? (
-            <SphereWrap imageUrl={imageUrl} />
-          ) : (
-            <FlagCloth
-              ref={ref as React.Ref<FlagDisplayHandle>}
-              imageUrl={imageUrl}
-              aspect={aspect}
-              resolution={props.resolution}
-              draggable={props.draggable}
-              onVertexGrab={props.onVertexGrab}
-              onVertexDrag={props.onVertexDrag}
+          {xrStore ? <XR store={xrStore}>{sceneContents}</XR> : sceneContents}
+          {/* OrbitControls only render outside XR — they'd fight headset
+              pose otherwise. Inside XR, the headset's own pose IS the
+              camera; orbit is a flat-mode-only affordance. */}
+          {!xrStore ? (
+            <OrbitControls
+              enablePan={false}
+              autoRotate={props.autoRotate ?? mode === "sphere"}
+              autoRotateSpeed={mode === "sphere" ? 1.4 : 0.3}
+              minDistance={1.5}
+              maxDistance={8}
             />
-          )}
-          <OrbitControls
-            enablePan={false}
-            autoRotate={props.autoRotate ?? mode === "sphere"}
-            autoRotateSpeed={mode === "sphere" ? 1.4 : 0.3}
-            minDistance={1.5}
-            maxDistance={8}
-          />
+          ) : null}
         </Canvas>
       </div>
     );
@@ -177,7 +196,6 @@ const FlagCloth = forwardRef<FlagDisplayHandle, FlagClothProps>(
 
     const meshRef = useRef<THREE.Mesh | null>(null);
     const geometryRef = useRef<THREE.PlaneGeometry | null>(null);
-    const { camera, raycaster, pointer } = useThree();
 
     // Build cloth state once per (resolution, aspect) change.
     const cloth = useMemo<ClothState>(() => {
@@ -218,8 +236,9 @@ const FlagCloth = forwardRef<FlagDisplayHandle, FlagClothProps>(
       };
     }, [geometry]);
 
-    // Drag state
-    const dragRef = useRef<{ vertIdx: number } | null>(null);
+    // Drag state — vertIdx + pointerId so we only respect the pointer
+    // that started the drag (relevant for XR with hand+controller mixed).
+    const dragRef = useRef<{ vertIdx: number; pointerId: number } | null>(null);
 
     useImperativeHandle(
       ref,
@@ -243,31 +262,10 @@ const FlagCloth = forwardRef<FlagDisplayHandle, FlagClothProps>(
       stepCloth(cloth, performance.now() / 1000);
       stepCloth(cloth, performance.now() / 1000 + dt * 0.5);
 
-      // Drag override applies after physics
-      if (dragRef.current) {
-        raycaster.setFromCamera(pointer, camera);
-        // Drag plane is the camera-facing plane through the cloth's
-        // origin. Simple but works for the user-grab gesture.
-        const planeNormal = new THREE.Vector3();
-        camera.getWorldDirection(planeNormal);
-        const plane = new THREE.Plane(planeNormal.negate(), 0);
-        const target = new THREE.Vector3();
-        if (raycaster.ray.intersectPlane(plane, target)) {
-          dragVertex(
-            cloth,
-            dragRef.current.vertIdx,
-            target.x,
-            target.y,
-            target.z,
-          );
-          onVertexDrag?.(
-            dragRef.current.vertIdx,
-            target.x,
-            target.y,
-            target.z,
-          );
-        }
-      }
+      // Note: drag is applied directly in onPointerMove using the
+      // event's world-space point. Works identically for mouse, touch,
+      // and XR (hand pinch / controller ray) because r3f translates all
+      // input sources to the same pointer-event shape.
 
       // Write positions into geometry
       const attr = geometry.attributes.position as THREE.BufferAttribute;
@@ -277,44 +275,62 @@ const FlagCloth = forwardRef<FlagDisplayHandle, FlagClothProps>(
     });
 
     const onPointerDown = useCallback(
-      (e: React.PointerEvent<THREE.Mesh>) => {
+      (e: ThreeEvent<PointerEvent>) => {
         if (!draggable) return;
         e.stopPropagation();
-        const point = (e as unknown as { point: THREE.Vector3 }).point;
+        const { x, y, z } = e.point;
         const vertIdx = findClosestVertex(
           cloth,
-          point.x,
-          point.y,
-          point.z,
+          x,
+          y,
+          z,
           cloth.width * 0.1,
         );
         if (vertIdx < 0) return;
-        // Pin during drag, release after
         setPinned(cloth, vertIdx, true);
-        dragRef.current = { vertIdx };
-        onVertexGrab?.(vertIdx, point.x, point.y, point.z);
+        dragRef.current = { vertIdx, pointerId: e.pointerId };
+        onVertexGrab?.(vertIdx, x, y, z);
       },
       [cloth, draggable, onVertexGrab],
     );
 
-    const onPointerUp = useCallback(() => {
-      if (!dragRef.current) return;
-      const idx = dragRef.current.vertIdx;
-      // Re-unpin unless this was originally pinned (e.g. top-row).
-      const wasOriginallyPinned = idx < cloth.widthVertices;
-      if (!wasOriginallyPinned) setPinned(cloth, idx, false);
-      dragRef.current = null;
-    }, [cloth]);
+    const onPointerMove = useCallback(
+      (e: ThreeEvent<PointerEvent>) => {
+        const drag = dragRef.current;
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        e.stopPropagation();
+        const { x, y, z } = e.point;
+        dragVertex(cloth, drag.vertIdx, x, y, z);
+        onVertexDrag?.(drag.vertIdx, x, y, z);
+      },
+      [cloth, onVertexDrag],
+    );
 
-    const onPointerLeave = useCallback(() => {
-      onPointerUp();
-    }, [onPointerUp]);
+    const onPointerUp = useCallback(
+      (e: ThreeEvent<PointerEvent>) => {
+        const drag = dragRef.current;
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        const idx = drag.vertIdx;
+        const wasOriginallyPinned = idx < cloth.widthVertices;
+        if (!wasOriginallyPinned) setPinned(cloth, idx, false);
+        dragRef.current = null;
+      },
+      [cloth],
+    );
+
+    const onPointerLeave = useCallback(
+      (e: ThreeEvent<PointerEvent>) => {
+        onPointerUp(e);
+      },
+      [onPointerUp],
+    );
 
     return (
       <mesh
         ref={meshRef}
         geometry={geometry}
         onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerLeave={onPointerLeave}
       >

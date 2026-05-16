@@ -9,9 +9,11 @@
  * physics in the studio's WebGPU display stack starts here.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { createXRStore } from "@react-three/xr";
 
+import { ChamberXRBar } from "components/three/ChamberXRBar";
 import { useActiveChamber } from "lib/state/atelier-hooks";
 import type {
   FlagDisplayHandle,
@@ -35,6 +37,17 @@ export default function FlagLoomClient() {
   const [resolution, setResolution] = useState<number>(24);
   const flagRef = useRef<FlagDisplayHandle | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Stable XR store — hand tracking enabled by default so any of the
+  // four control modalities (mouse / touch / hand / controller) work.
+  const xrStore = useMemo(
+    () =>
+      createXRStore({
+        hand: true,
+        controller: true,
+      }),
+    [],
+  );
 
   // Revoke object URLs on unmount or replacement
   useEffect(() => {
@@ -94,8 +107,12 @@ export default function FlagLoomClient() {
           aspect={aspect}
           resolution={resolution}
           draggable={draggable}
+          xrStore={xrStore}
           className="absolute inset-0"
         />
+        <div className="absolute right-3 top-3 z-20">
+          <ChamberXRBar store={xrStore} />
+        </div>
       </section>
 
       {/* Controls */}
