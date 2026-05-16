@@ -30,9 +30,11 @@ import "server-only";
  *   types under an "other" bucket.
  */
 
-import { createHash } from "node:crypto";
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
 import { FieldValue, type Firestore } from "firebase-admin/firestore";
+import { hashIp } from "lib/cards/ip-hash";
+
+export { hashIp };
 
 export type CardEventType =
   | "view"
@@ -56,15 +58,6 @@ export type CardEvent = {
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 30;
 const rateLog = new Map<string, number[]>();
-
-function sha256(input: string): string {
-  return createHash("sha256").update(input).digest("hex");
-}
-
-export function hashIp(ip: string): string {
-  const salt = process.env.IP_HASH_SALT || "holoflow-default-salt";
-  return sha256(ip + ":" + salt).slice(0, 32);
-}
 
 function checkRate(ipHash: string): boolean {
   const now = Date.now();
