@@ -28,7 +28,7 @@
  * admin routes, the studio CMS, etc.
  */
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAuth } from "components/auth/auth-provider";
@@ -40,8 +40,28 @@ import {
   respondWebGpu,
   type WebGpuChatSupport,
 } from "lib/capabilities/agent/dialogue-webgpu";
+import {
+  parseAuraStream,
+  type AuraClientAction,
+  type AuraCardSummary,
+} from "lib/aura/parse-ui-stream";
 
-type Turn = { role: "user" | "model"; text: string };
+type ToolCallRecord = {
+  id: string;
+  name: string;
+  args: Record<string, unknown>;
+  status: "pending" | "complete" | "error";
+  summary?: string;
+  action?: AuraClientAction;
+  cards?: AuraCardSummary[];
+  card?: AuraCardSummary;
+};
+type Turn = {
+  role: "user" | "model";
+  text: string;
+  /** Agent-mode tool calls fired during this turn. Not persisted. */
+  toolCalls?: ToolCallRecord[];
+};
 
 /** Paths where Aura shows. Match by prefix (or by equality for "/"). */
 const SHOW_ON_PATHS = [
@@ -98,6 +118,7 @@ function shouldShow(pathname: string | null): boolean {
 
 const STORAGE_KEY = "holoflow:aura-chat:v1";
 const OPEN_KEY = "holoflow:aura-chat:open";
+const AGENT_KEY = "holoflow:aura-chat:agent";
 const MAX_HISTORY = 30;
 
 function loadLocalHistory(): Turn[] {
@@ -264,8 +285,172 @@ async function callServerSideChat(
   return typeof json.text === "string" ? json.text : "";
 }
 
+/**
+ * Call /api/aura/agent — the streaming endpoint with tool use. Yields
+ * raw AuraStreamEvents via the parser; caller drives UI updates.
+ *
+ * History shape difference: the agent endpoint expects OpenAI-style
+ * messages with role "user" | "assistant". Local Turn type uses
+ * "user" | "model". We map at the boundary.
+ */
+async function* callAuraAgent(
+  history: Turn[],
+  userText: string,
+  pathname: string,
+  idToken: string | null,
+) {
+  const messages = [...history, { role: "user", text: userText } as Turn].map(
+    (t) => ({
+      role: t.role === "user" ? ("user" as const) : ("assistant" as const),
+      content: t.text,
+    }),
+  );
+  const res = await fetch("/api/aura/agent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
+    },
+    body: JSON.stringify({ messages, pathname }),
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`agent ${res.status}: ${body.slice(0, 200)}`);
+  }
+  if (!res.body) throw new Error("agent: no response body");
+  yield* parseAuraStream(res.body);
+}
+
+/**
+ * ToolCallChip — visual badge for an Aura tool call rendered inline in
+ * the chat. Shows the tool name, the most important argument value,
+ * and a state indicator (pending, complete, error).
+ *
+ * For tools that return cards (find_cards, show_card), the cards
+ * render as clickable thumbnails below the chip header.
+ */
+function ToolCallChip({
+  call,
+  onCardClick,
+}: {
+  call: ToolCallRecord;
+  onCardClick: (slug: string) => void;
+}) {
+  const ICONS: Record<string, string> = {
+    navigate_to: "→",
+    find_cards: "⌕",
+    show_card: "▣",
+    capture_lead: "✉",
+    open_designer: "✎",
+    open_booking: "📅",
+  };
+  const LABELS: Record<string, string> = {
+    navigate_to: "Navigating",
+    find_cards: "Searching cards",
+    show_card: "Surfacing card",
+    capture_lead: "Saving lead",
+    open_designer: "Opening designer",
+    open_booking: "Booking",
+  };
+
+  const icon = ICONS[call.name] ?? "▸";
+  const label = LABELS[call.name] ?? call.name;
+  const stateGlyph =
+    call.status === "complete" ? "✓" : call.status === "error" ? "!" : "…";
+
+  // Argument preview — most distinctive arg per tool.
+  let argPreview = "";
+  const a = call.args as Record<string, unknown>;
+  if (call.name === "navigate_to" && typeof a["path"] === "string") {
+    argPreview = a["path"] as string;
+  } else if (call.name === "find_cards" && typeof a["query"] === "string") {
+    argPreview = `"${a["query"]}"`;
+  } else if (call.name === "show_card" && typeof a["slug"] === "string") {
+    argPreview = a["slug"] as string;
+  } else if (call.name === "capture_lead" && typeof a["email"] === "string") {
+    argPreview = a["email"] as string;
+  } else if (call.name === "open_booking" && typeof a["purpose"] === "string") {
+    argPreview = a["purpose"] as string;
+  }
+
+  return (
+    <div
+      className={`flex flex-col gap-1.5 rounded border px-2.5 py-1.5 text-xs ${
+        call.status === "complete"
+          ? "border-pink-300/30 bg-pink-200/[0.04]"
+          : call.status === "error"
+            ? "border-rose-300/40 bg-rose-200/[0.05]"
+            : "border-warm-black-700 bg-warm-black-900/40"
+      }`}
+    >
+      <div className="flex items-center gap-2">
+        <span className="text-pink-300">{icon}</span>
+        <span className="text-pink-100/80">{label}</span>
+        {argPreview && (
+          <span className="truncate text-chrome-400">— {argPreview}</span>
+        )}
+        <span
+          className={`ml-auto ${
+            call.status === "pending"
+              ? "animate-pulse text-chrome-500"
+              : call.status === "error"
+                ? "text-rose-300"
+                : "text-pink-300"
+          }`}
+        >
+          {stateGlyph}
+        </span>
+      </div>
+      {call.cards && call.cards.length > 0 && (
+        <div className="mt-1 flex flex-wrap gap-1.5">
+          {call.cards.map((card) => (
+            <button
+              key={card.slug}
+              type="button"
+              onClick={() => onCardClick(card.slug)}
+              className="flex items-center gap-2 rounded border border-warm-black-700 bg-warm-black-950/60 px-2 py-1 text-left text-[11px] hover:border-pink-300/50"
+            >
+              <span
+                className="h-3 w-3 rounded-full"
+                style={{ background: card.primary }}
+                aria-hidden
+              />
+              <span className="text-pink-100">{card.name}</span>
+              {card.tagline && (
+                <span className="text-chrome-500 truncate max-w-[200px]">
+                  — {card.tagline}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+      {call.card && (
+        <button
+          type="button"
+          onClick={() => call.card && onCardClick(call.card.slug)}
+          className="mt-1 flex items-center gap-2 rounded border border-warm-black-700 bg-warm-black-950/60 px-2 py-1 text-left text-[11px] hover:border-pink-300/50"
+        >
+          <span
+            className="h-3 w-3 rounded-full"
+            style={{ background: call.card.primary }}
+            aria-hidden
+          />
+          <span className="text-pink-100">{call.card.name}</span>
+          {call.card.tagline && (
+            <span className="text-chrome-500 truncate max-w-[220px]">
+              — {call.card.tagline}
+            </span>
+          )}
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function AuraLauncher() {
   const pathname = usePathname();
+  const router = useRouter();
   const { user, loading: authLoading } = useAuth();
   const voice = useVoice();
   const [mounted, setMounted] = useState(false);
@@ -275,7 +460,14 @@ export default function AuraLauncher() {
   const [historyLoaded, setHistoryLoaded] = useState(false);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState<string | null>(null);
+  const [streamingTools, setStreamingTools] = useState<ToolCallRecord[]>([]);
   const [busy, setBusy] = useState(false);
+  /**
+   * Agent mode: when on, /api/aura/agent (tool-enabled) is the server
+   * path. When off, /api/aura/chat (text-only). Default on — Aura is
+   * meant to act, not just talk.
+   */
+  const [agentMode, setAgentMode] = useState(true);
   const [loadProgress, setLoadProgress] = useState<{
     text: string;
     progress: number;
@@ -289,6 +481,10 @@ export default function AuraLauncher() {
     setMounted(true);
     try {
       setOpen(window.localStorage.getItem(OPEN_KEY) === "1");
+      // Agent mode: default on. Only off if user has explicitly turned
+      // it off (stored as "0"). Any other value (or absent) -> on.
+      const agentPref = window.localStorage.getItem(AGENT_KEY);
+      if (agentPref === "0") setAgentMode(false);
     } catch {
       // ignore
     }
@@ -378,7 +574,52 @@ export default function AuraLauncher() {
 
     try {
       let full = "";
-      if (useWebGpu) {
+      const turnToolCalls: ToolCallRecord[] = [];
+
+      if (agentMode) {
+        // Agent path: streaming with tool use.
+        setStreamingTools([]);
+        for await (const evt of callAuraAgent(history, text, pathname ?? "/", idToken)) {
+          if (evt.type === "text-delta") {
+            full += evt.text;
+            setStreaming(full);
+          } else if (evt.type === "tool-call") {
+            const rec: ToolCallRecord = {
+              id: evt.toolCallId,
+              name: evt.toolName,
+              args: evt.args,
+              status: "pending",
+            };
+            turnToolCalls.push(rec);
+            setStreamingTools([...turnToolCalls]);
+          } else if (evt.type === "tool-result") {
+            const idx = turnToolCalls.findIndex((r) => r.id === evt.toolCallId);
+            if (idx >= 0) {
+              const rec = turnToolCalls[idx]!;
+              const out =
+                evt.result && typeof evt.result === "object"
+                  ? (evt.result as { summary?: string })
+                  : undefined;
+              rec.status = "complete";
+              if (out?.summary) rec.summary = out.summary;
+              if (evt.action) rec.action = evt.action;
+              // Pull surfaced cards/card off the action for inline rendering.
+              if (evt.action?.kind === "showCards") rec.cards = evt.action.cards;
+              if (evt.action?.kind === "showCard") rec.card = evt.action.card;
+              setStreamingTools([...turnToolCalls]);
+
+              // Execute the client-side effect of the action.
+              if (evt.action?.kind === "navigate" && evt.action.path) {
+                // Defer so the visitor sees the tool chip flip to "done"
+                // before the page changes.
+                setTimeout(() => router.push(evt.action!.kind === "navigate" ? evt.action!.path : "/"), 600);
+              }
+            }
+          } else if (evt.type === "error") {
+            throw new Error(evt.message);
+          }
+        }
+      } else if (useWebGpu) {
         await respondWebGpu({
           bible: aura,
           history,
@@ -394,10 +635,15 @@ export default function AuraLauncher() {
         full = await callServerSideChat(history, text, ctx, idToken);
         setStreaming(full);
       }
-      const modelTurn: Turn = { role: "model", text: full };
+      const modelTurn: Turn = {
+        role: "model",
+        text: full,
+        ...(turnToolCalls.length > 0 ? { toolCalls: turnToolCalls } : {}),
+      };
       const final = [...next, modelTurn];
       setHistory(final);
       setStreaming(null);
+      setStreamingTools([]);
       setLoadProgress(null);
 
       // Speak Aura's reply if the speaker toggle is on. Don't await —
@@ -407,9 +653,9 @@ export default function AuraLauncher() {
       }
 
       if (user && idToken) {
-        // WebGPU path: server hasn't seen the turn yet — persist both
-        // halves. Gemini path: /api/aura/chat already persisted them.
-        if (useWebGpu) {
+        // WebGPU + agent paths: server hasn't already persisted the turn.
+        // Gemini chat path: /api/aura/chat persists itself.
+        if (useWebGpu || agentMode) {
           void saveServerTurns(idToken, [userTurn, modelTurn]);
         }
       } else {
@@ -422,7 +668,7 @@ export default function AuraLauncher() {
     } finally {
       setBusy(false);
     }
-  }, [input, busy, history, useWebGpu, pathname, user, speakerOn, voice]);
+  }, [input, busy, history, useWebGpu, pathname, user, speakerOn, voice, agentMode, router]);
 
   // Mic: toggle recording, drop transcription into the input field
   // when it returns.
@@ -476,6 +722,33 @@ export default function AuraLauncher() {
               </span>
             </div>
             <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setAgentMode((on) => {
+                    const next = !on;
+                    try {
+                      window.localStorage.setItem(AGENT_KEY, next ? "1" : "0");
+                    } catch {
+                      // ignore
+                    }
+                    return next;
+                  });
+                }}
+                aria-label={agentMode ? "Switch to plain chat (no tools)" : "Switch to smart mode (tools)"}
+                title={
+                  agentMode
+                    ? "Smart mode: Aura can navigate, find cards, capture leads"
+                    : "Chat mode: plain text replies only"
+                }
+                className={`text-base leading-none transition ${
+                  agentMode
+                    ? "text-pink-200 hover:text-pink-100"
+                    : "text-chrome-500 hover:text-pink-200"
+                }`}
+              >
+                {agentMode ? "⚡" : "·"}
+              </button>
               <button
                 type="button"
                 onClick={() => {
@@ -542,6 +815,13 @@ export default function AuraLauncher() {
                   {t.role === "user" ? "you" : "aura"}
                 </div>
                 <div className="mt-1 whitespace-pre-wrap text-sm">{t.text}</div>
+                {t.toolCalls && t.toolCalls.length > 0 && (
+                  <div className="mt-2 flex flex-col gap-1.5">
+                    {t.toolCalls.map((tc) => (
+                      <ToolCallChip key={tc.id} call={tc} onCardClick={(slug) => router.push(`/c/${slug}`)} />
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
             {streaming !== null && (
@@ -553,6 +833,13 @@ export default function AuraLauncher() {
                   {streaming}
                   <span className="animate-pulse">▊</span>
                 </div>
+                {streamingTools.length > 0 && (
+                  <div className="mt-2 flex flex-col gap-1.5">
+                    {streamingTools.map((tc) => (
+                      <ToolCallChip key={tc.id} call={tc} onCardClick={(slug) => router.push(`/c/${slug}`)} />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
