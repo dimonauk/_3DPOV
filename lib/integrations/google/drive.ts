@@ -20,6 +20,14 @@ import type { Auth, drive_v3 } from "googleapis";
 
 type OAuth2Client = Auth.OAuth2Client;
 
+export type DriveImageMediaMetadata = {
+  width?: number;
+  height?: number;
+  rotation?: number;
+  cameraMake?: string;
+  cameraModel?: string;
+};
+
 export type DriveFile = {
   id: string;
   name: string;
@@ -32,6 +40,10 @@ export type DriveFile = {
   modifiedTime?: string;
   parents?: string[];
   isFolder: boolean;
+  /** Drive's pre-extracted image metadata. Avoids downloading the file
+   *  bytes just to learn width/height — the printability filter rides
+   *  on this. Only present for images. */
+  imageMediaMetadata?: DriveImageMediaMetadata;
 };
 
 export type DriveFolder = DriveFile & { isFolder: true };
@@ -52,12 +64,14 @@ function makeDrive(accessToken: string): drive_v3.Drive {
 }
 
 const FOLDER_MIME = "application/vnd.google-apps.folder";
-/** Standard set of fields we ask for; keeps response payloads small. */
+/** Standard set of fields we ask for; keeps response payloads small.
+ *  `imageMediaMetadata` lets the print-check verdict ride on the list
+ *  call — width/height + camera make/model without downloading bytes. */
 const FILE_FIELDS =
-  "id, name, mimeType, size, thumbnailLink, webViewLink, iconLink, createdTime, modifiedTime, parents";
+  "id, name, mimeType, size, thumbnailLink, webViewLink, iconLink, createdTime, modifiedTime, parents, imageMediaMetadata(width, height, rotation, cameraMake, cameraModel)";
 
 function toDriveFile(f: drive_v3.Schema$File): DriveFile {
-  return {
+  const out: DriveFile = {
     id: f.id ?? "",
     name: f.name ?? "(untitled)",
     mimeType: f.mimeType ?? "application/octet-stream",
@@ -70,6 +84,17 @@ function toDriveFile(f: drive_v3.Schema$File): DriveFile {
     parents: f.parents ?? undefined,
     isFolder: f.mimeType === FOLDER_MIME,
   };
+  const meta = f.imageMediaMetadata;
+  if (meta) {
+    const imageMeta: DriveImageMediaMetadata = {};
+    if (typeof meta.width === "number") imageMeta.width = meta.width;
+    if (typeof meta.height === "number") imageMeta.height = meta.height;
+    if (typeof meta.rotation === "number") imageMeta.rotation = meta.rotation;
+    if (typeof meta.cameraMake === "string") imageMeta.cameraMake = meta.cameraMake;
+    if (typeof meta.cameraModel === "string") imageMeta.cameraModel = meta.cameraModel;
+    if (Object.keys(imageMeta).length > 0) out.imageMediaMetadata = imageMeta;
+  }
+  return out;
 }
 
 /**
