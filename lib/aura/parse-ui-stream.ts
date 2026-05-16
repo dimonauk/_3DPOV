@@ -56,9 +56,11 @@ export type AuraClientAction =
   | { kind: "navigate"; path: string; reason?: string }
   | { kind: "showCards"; cards: AuraCardSummary[] }
   | { kind: "showCard"; card: AuraCardSummary }
-  | { kind: "openBooking"; purpose?: string }
+  | { kind: "openBooking"; purpose?: string; url?: string }
   | { kind: "leadCaptured"; id: string; email: string }
-  | { kind: "scannerOpen" };
+  | { kind: "scannerOpen" }
+  | { kind: "showVcard"; slug: string; url: string; name: string }
+  | { kind: "saveToWallet"; slug: string; platforms: Array<"apple" | "google"> };
 
 export type AuraCardSummary = {
   slug: string;

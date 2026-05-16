@@ -35,16 +35,34 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import type { Card } from "lib/ar/types";
+import {
+  parseAuraStream,
+  type AuraClientAction,
+  type AuraCardSummary,
+} from "lib/aura/parse-ui-stream";
 
 const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
 
+type ToolCallRecord = {
+  id: string;
+  name: string;
+  args: Record<string, unknown>;
+  status: "pending" | "complete" | "error";
+  summary?: string;
+  action?: AuraClientAction;
+  cards?: AuraCardSummary[];
+  card?: AuraCardSummary;
+};
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
   /** True while the assistant message is still streaming */
   streaming?: boolean;
+  /** Tool calls fired during this assistant turn. Renders inline. */
+  toolCalls?: ToolCallRecord[];
 };
 
 type Props = {
@@ -52,10 +70,153 @@ type Props = {
   vrmUrl: string;
 };
 
+/**
+ * ToolCallChip — visual badge for an Aura tool call rendered inline in
+ * the per-card chat panel. Shows tool name, key argument, status glyph.
+ *
+ * For tool results that carry actions (cards, vCard link, wallet
+ * buttons, booking iframe), renders the actionable UI directly below
+ * the chip header.
+ */
+function ToolCallChip({
+  call,
+  onCardClick,
+}: {
+  call: ToolCallRecord;
+  onCardClick: (slug: string) => void;
+}) {
+  const ICONS: Record<string, string> = {
+    capture_lead: "✉",
+    find_related_cards: "⌕",
+    download_vcard: "↓",
+    book_a_call: "📅",
+    save_to_wallet: "💳",
+  };
+  const LABELS: Record<string, string> = {
+    capture_lead: "Saving lead",
+    find_related_cards: "Searching related",
+    download_vcard: "vCard ready",
+    book_a_call: "Booking",
+    save_to_wallet: "Wallet save",
+  };
+  const icon = ICONS[call.name] ?? "▸";
+  const label = LABELS[call.name] ?? call.name;
+  const stateGlyph =
+    call.status === "complete" ? "✓" : call.status === "error" ? "!" : "…";
+
+  // Argument preview.
+  let argPreview = "";
+  const a = call.args as Record<string, unknown>;
+  if (call.name === "capture_lead" && typeof a["email"] === "string") {
+    argPreview = a["email"] as string;
+  } else if (
+    call.name === "find_related_cards" &&
+    typeof a["query"] === "string"
+  ) {
+    argPreview = `"${a["query"]}"`;
+  } else if (call.name === "book_a_call" && typeof a["purpose"] === "string") {
+    argPreview = a["purpose"] as string;
+  }
+
+  return (
+    <div className={`tool-chip tool-chip-${call.status}`}>
+      <div className="tool-chip-header">
+        <span className="tool-chip-icon">{icon}</span>
+        <span className="tool-chip-label">{label}</span>
+        {argPreview && <span className="tool-chip-arg">— {argPreview}</span>}
+        <span className="tool-chip-state">{stateGlyph}</span>
+      </div>
+
+      {/* Related cards thumbnails */}
+      {call.cards && call.cards.length > 0 && (
+        <div className="tool-chip-cards">
+          {call.cards.map((c) => (
+            <button
+              key={c.slug}
+              type="button"
+              onClick={() => onCardClick(c.slug)}
+              className="tool-chip-card"
+            >
+              <span
+                className="tool-chip-swatch"
+                style={{ background: c.primary }}
+                aria-hidden
+              />
+              <span className="tool-chip-card-name">{c.name}</span>
+              {c.tagline && (
+                <span className="tool-chip-card-tagline">— {c.tagline}</span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* vCard download link */}
+      {call.action?.kind === "showVcard" && (
+        <a
+          href={call.action.url}
+          download
+          className="tool-chip-action-link"
+        >
+          ↓ Save {call.action.name} to your contacts
+        </a>
+      )}
+
+      {/* Booking flow — embedded iframe + external link */}
+      {call.action?.kind === "openBooking" && call.action.url && (
+        <div className="tool-chip-booking">
+          <a
+            href={call.action.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tool-chip-action-link"
+          >
+            📅 Open booking
+            {call.action.purpose ? ` — ${call.action.purpose}` : ""}
+          </a>
+        </div>
+      )}
+
+      {/* Wallet save options */}
+      {call.action?.kind === "saveToWallet" && (
+        <div className="tool-chip-wallet">
+          {call.action.platforms.includes("apple") && (
+            <a
+              href={`/api/cards/${call.action.slug}/wallet/apple`}
+              className="tool-chip-action-link"
+              download
+            >
+              ⌘ Apple Wallet
+            </a>
+          )}
+          {call.action.platforms.includes("google") && (
+            <a
+              href={`/api/cards/${call.action.slug}/wallet/google`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tool-chip-action-link"
+            >
+              G Google Wallet
+            </a>
+          )}
+        </div>
+      )}
+
+      {/* Lead captured confirmation */}
+      {call.action?.kind === "leadCaptured" && (
+        <div className="tool-chip-confirm">
+          ✓ Saved {call.action.email}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AuraCompanion({ card, vrmUrl }: Props) {
   const intro = card.ar.vrmIntro;
   const hasChat = Boolean(card.ar.vrmPersona);
   const slug = card.slug;
+  const router = useRouter();
 
   const [woken, setWoken] = useState(false);
   const [introPlayed, setIntroPlayed] = useState(false);
@@ -193,36 +354,73 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
         setBusy(false);
         return;
       }
-      const reader = res.body?.getReader();
-      if (!reader) {
+      if (!res.body) {
         setError("No response body");
         setMessages((m) => m.slice(0, assistantIndex));
         setBusy(false);
         return;
       }
-      const decoder = new TextDecoder();
       let acc = "";
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        acc += chunk;
-        // Update the streaming assistant message live.
+      const turnTools: ToolCallRecord[] = [];
+
+      const writeAssistant = () => {
         setMessages((m) => {
           const next = [...m];
           next[assistantIndex] = {
             role: "assistant",
             content: acc,
             streaming: true,
+            ...(turnTools.length > 0 ? { toolCalls: [...turnTools] } : {}),
           };
           return next;
         });
+      };
+
+      for await (const evt of parseAuraStream(res.body)) {
+        if (evt.type === "text-delta") {
+          acc += evt.text;
+          writeAssistant();
+        } else if (evt.type === "tool-call") {
+          turnTools.push({
+            id: evt.toolCallId,
+            name: evt.toolName,
+            args: evt.args,
+            status: "pending",
+          });
+          writeAssistant();
+        } else if (evt.type === "tool-result") {
+          const rec = turnTools.find((t) => t.id === evt.toolCallId);
+          if (rec) {
+            rec.status = "complete";
+            const out =
+              evt.result && typeof evt.result === "object"
+                ? (evt.result as { summary?: string })
+                : undefined;
+            if (out?.summary) rec.summary = out.summary;
+            if (evt.action) rec.action = evt.action;
+            if (evt.action?.kind === "showCards") rec.cards = evt.action.cards;
+            if (evt.action?.kind === "showCard") rec.card = evt.action.card;
+            writeAssistant();
+
+            // Client-side effects.
+            if (evt.action?.kind === "navigate" && evt.action.path) {
+              const path = evt.action.path;
+              setTimeout(() => router.push(path), 600);
+            }
+          }
+        } else if (evt.type === "error") {
+          throw new Error(evt.message);
+        }
       }
+
       // Finalise.
       setMessages((m) => {
         const next = [...m];
-        next[assistantIndex] = { role: "assistant", content: acc };
+        next[assistantIndex] = {
+          role: "assistant",
+          content: acc,
+          ...(turnTools.length > 0 ? { toolCalls: turnTools } : {}),
+        };
         return next;
       });
       // Speak the reply.
@@ -347,6 +545,17 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
                   {m.role === "user" ? "you" : "avatar"}
                 </div>
                 <div className="aura-msg-content">{m.content || (m.streaming ? "…" : "")}</div>
+                {m.toolCalls && m.toolCalls.length > 0 && (
+                  <div className="aura-tool-chips">
+                    {m.toolCalls.map((tc) => (
+                      <ToolCallChip
+                        key={tc.id}
+                        call={tc}
+                        onCardClick={(s) => router.push(`/c/${s}`)}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -567,6 +776,117 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
         .aura-send:disabled {
           opacity: 0.4;
           cursor: not-allowed;
+        }
+
+        /* ---- Tool chips ---- */
+        .aura-tool-chips {
+          margin-top: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+        .tool-chip {
+          border: 1px solid rgba(255, 111, 181, 0.2);
+          background: rgba(255, 111, 181, 0.06);
+          border-radius: 0.5rem;
+          padding: 0.4rem 0.55rem;
+          font-size: 0.78rem;
+        }
+        .tool-chip-pending {
+          border-color: rgba(255, 255, 255, 0.12);
+          background: rgba(255, 255, 255, 0.03);
+        }
+        .tool-chip-error {
+          border-color: rgba(255, 82, 82, 0.4);
+          background: rgba(255, 82, 82, 0.06);
+        }
+        .tool-chip-header {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        .tool-chip-icon { color: #ff6fb5; }
+        .tool-chip-label { color: rgba(255, 255, 255, 0.85); }
+        .tool-chip-arg {
+          color: rgba(255, 255, 255, 0.5);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 180px;
+        }
+        .tool-chip-state {
+          margin-left: auto;
+          color: #ff6fb5;
+        }
+        .tool-chip-pending .tool-chip-state {
+          color: rgba(255, 255, 255, 0.4);
+          animation: aura-tool-pulse 1s ease-in-out infinite;
+        }
+        @keyframes aura-tool-pulse {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 0.8; }
+        }
+        .tool-chip-cards {
+          margin-top: 0.45rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .tool-chip-card {
+          background: rgba(0, 0, 0, 0.35);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          color: white;
+          padding: 0.4rem 0.55rem;
+          border-radius: 0.4rem;
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          text-align: left;
+          font-family: inherit;
+          font-size: 0.75rem;
+          cursor: pointer;
+        }
+        .tool-chip-card:hover {
+          border-color: rgba(255, 111, 181, 0.5);
+        }
+        .tool-chip-swatch {
+          width: 0.65rem;
+          height: 0.65rem;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+        .tool-chip-card-name { color: white; font-weight: 600; }
+        .tool-chip-card-tagline {
+          color: rgba(255, 255, 255, 0.5);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .tool-chip-action-link {
+          display: inline-block;
+          margin-top: 0.4rem;
+          background: rgba(255, 111, 181, 0.15);
+          color: white;
+          border: 1px solid rgba(255, 111, 181, 0.35);
+          padding: 0.4rem 0.7rem;
+          border-radius: 0.4rem;
+          font-size: 0.78rem;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .tool-chip-action-link:hover {
+          background: rgba(255, 111, 181, 0.25);
+        }
+        .tool-chip-wallet {
+          margin-top: 0.4rem;
+          display: flex;
+          gap: 0.4rem;
+          flex-wrap: wrap;
+        }
+        .tool-chip-confirm {
+          margin-top: 0.4rem;
+          color: #b8e0a8;
+          font-size: 0.75rem;
         }
       `}</style>
     </div>

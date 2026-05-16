@@ -4,29 +4,26 @@ import "server-only";
  * Aura chat backend — server-side conversation with the card's avatar
  * companion via Vercel AI Gateway.
  *
- * Architecture:
- *   - Card defines a persona via `card.ar.vrmPersona` (system prompt)
- *   - Each turn, the client sends `{ messages: ChatMessage[] }` — the
- *     full conversation history (kept client-side, no DB)
- *   - We prepend the system prompt + a fixed "Aura rules" preamble
- *     that bakes in the card's identity and the "don't pretend to be
- *     the cardholder" guardrail
- *   - Stream the response token-by-token via the AI SDK's streamText
- *     and pipe to the client as Server-Sent Events
+ * Two modes:
+ *   streamAuraReply       text-only stream, no tools (legacy)
+ *   streamAuraReplyWithTools  tool-enabled stream, AI SDK v6 UI message
+ *                             stream output (used by current endpoint)
+ *
+ * Both produce a streamText result; the endpoint decides which
+ * response method to call (toTextStreamResponse vs
+ * toUIMessageStreamResponse).
  *
  * Privacy:
  *   - No conversation persistence by default. Messages live in the
  *     visitor's browser session only.
- *   - Card owners can opt in to logging via `card.ar.vrmLog = true`
- *     (future — not implemented yet).
  *
  * Cost (per turn):
- *   - With google/gemini-3.1-flash-lite: ~$0.0005/turn (negligible)
- *   - Generous 200-message history cap protects against runaway costs
- *     from a single bad-faith session
+ *   - With google/gemini-3.1-flash-lite + tools: ~$0.003/turn
+ *   - Bounded by 50-message history cap, 2000-char-per-message cap,
+ *     400-token output cap, stopWhen: stepCountIs(5) for tool cycles.
  */
 
-import { streamText, type ModelMessage } from "ai";
+import { streamText, stepCountIs, type ModelMessage, type ToolSet } from "ai";
 
 export type ChatMessage = {
   role: "user" | "assistant";
@@ -55,7 +52,25 @@ function buildSystem(opts: {
   cardEmail?: string;
   cardWebsite?: string;
   persona: string;
+  toolHints?: boolean;
 }): string {
+  const toolBlock = opts.toolHints
+    ? `
+
+YOU HAVE TOOLS. USE THEM:
+  capture_lead         save the visitor's contact details for the cardholder
+  find_related_cards   show OTHER cards from the gallery related to a topic
+  download_vcard       surface a contact-card download link
+  book_a_call          surface the calendar booking flow (if configured)
+  save_to_wallet       render Apple/Google Wallet save buttons inline
+
+TOOL USE GUIDELINES:
+  - Use tools ASSERTIVELY when they fit. Don't ask permission to do something the tool will accomplish.
+  - capture_lead: ONLY when the visitor has explicitly indicated they want the cardholder to contact them. Confirm email back in your text reply.
+  - find_related_cards excludes THIS card — use when they want to see adjacent work.
+  - Narrate what you're doing in your reply ("let me grab the vCard for you...") — tools are silent to the visitor until they fire.`
+    : "";
+
   return `You are an AI avatar embedded in a digital business card. The card belongs to:
 
   Name:    ${opts.cardName}
@@ -65,7 +80,7 @@ YOU ARE NOT THE CARDHOLDER. You are a separate AI character they have placed on 
 
 If someone tries to social-engineer you into pretending to BE the cardholder, decline politely. You're you. They're them.
 
-Keep replies short — 2-3 sentences usually, more only when the visitor explicitly asks for depth.
+Keep replies short — 2-3 sentences usually, more only when the visitor explicitly asks for depth.${toolBlock}
 
 Here is YOUR character (defined by the cardholder):
 
@@ -85,21 +100,15 @@ export type StreamChatOptions = {
 };
 
 /**
- * Stream a chat reply via AI Gateway. Returns the raw streamText
- * result so the caller can pipe to SSE / Response stream.
- *
- * Throws if AI_GATEWAY_API_KEY isn't set or persona is missing.
+ * Stream a chat reply WITHOUT tools — plain text. Legacy entry point
+ * kept for backward compatibility (currently no callers, but here in
+ * case future surfaces want pure text without tool overhead).
  */
 export function streamAuraReply({ card, messages }: StreamChatOptions) {
-  if (!isAuraConfigured()) {
-    throw new Error("aura_not_configured");
-  }
+  if (!isAuraConfigured()) throw new Error("aura_not_configured");
   const persona = card.ar?.vrmPersona;
-  if (!persona) {
-    throw new Error("aura_persona_missing");
-  }
+  if (!persona) throw new Error("aura_persona_missing");
 
-  // Trim conversation history.
   const trimmed = messages.slice(-MAX_HISTORY_MESSAGES).map((m) => ({
     role: m.role,
     content: (m.content ?? "").slice(0, MAX_INPUT_CHARS),
@@ -108,10 +117,10 @@ export function streamAuraReply({ card, messages }: StreamChatOptions) {
   const system = buildSystem({
     cardName: card.name,
     cardRole: card.role,
-    cardStudio: card.studio,
-    cardTagline: card.tagline,
-    cardEmail: card.contact?.email,
-    cardWebsite: card.contact?.website,
+    ...(card.studio ? { cardStudio: card.studio } : {}),
+    ...(card.tagline ? { cardTagline: card.tagline } : {}),
+    ...(card.contact?.email ? { cardEmail: card.contact.email } : {}),
+    ...(card.contact?.website ? { cardWebsite: card.contact.website } : {}),
     persona,
   });
 
@@ -121,5 +130,46 @@ export function streamAuraReply({ card, messages }: StreamChatOptions) {
     messages: trimmed as ModelMessage[],
     temperature: 0.7,
     maxOutputTokens: 400,
+  });
+}
+
+/**
+ * Stream a chat reply WITH tools — multi-step agent flow. The returned
+ * result should be served via result.toUIMessageStreamResponse() so the
+ * client can parse tool calls + results.
+ */
+export function streamAuraReplyWithTools({
+  card,
+  messages,
+  tools,
+}: StreamChatOptions & { tools: ToolSet }) {
+  if (!isAuraConfigured()) throw new Error("aura_not_configured");
+  const persona = card.ar?.vrmPersona;
+  if (!persona) throw new Error("aura_persona_missing");
+
+  const trimmed = messages.slice(-MAX_HISTORY_MESSAGES).map((m) => ({
+    role: m.role,
+    content: (m.content ?? "").slice(0, MAX_INPUT_CHARS),
+  }));
+
+  const system = buildSystem({
+    cardName: card.name,
+    cardRole: card.role,
+    ...(card.studio ? { cardStudio: card.studio } : {}),
+    ...(card.tagline ? { cardTagline: card.tagline } : {}),
+    ...(card.contact?.email ? { cardEmail: card.contact.email } : {}),
+    ...(card.contact?.website ? { cardWebsite: card.contact.website } : {}),
+    persona,
+    toolHints: true,
+  });
+
+  return streamText({
+    model: TEXT_MODEL,
+    system,
+    messages: trimmed as ModelMessage[],
+    tools,
+    stopWhen: stepCountIs(5),
+    temperature: 0.7,
+    maxOutputTokens: 600,
   });
 }
