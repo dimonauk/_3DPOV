@@ -22,6 +22,12 @@ import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:quilt-designer");
 
+// TODO(print-bar): chamber output is flat textile (SVG / PNG), not a
+// 3D printable. PrintBar's `source.kind` union is "stl" | "glb" | "ply"
+// — a fabric/textile vendor variant of the print-order capability would
+// be needed first (different scale bands, different materials, no
+// 3D-print-specific finishes). See PURPOSE.md for the gap note.
+
 // ---- Fabric palette ----------------------------------------------------
 // A small traditional-quilting palette; warm earthy tones, with one
 // "background" off-white. Hex values stay literal so SVG export is

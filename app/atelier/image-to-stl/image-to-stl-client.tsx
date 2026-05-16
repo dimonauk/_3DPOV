@@ -16,8 +16,9 @@
  * forgets.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import PrintBar from "components/commerce/print-bar";
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
@@ -203,6 +204,18 @@ export default function ImageToStlClient() {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }, [output]);
+
+  // Stable blob URL for the print-bar to quote against. Re-created on
+  // each new ready blob; revoked on unmount or next generation.
+  const stlBlobUrl = useMemo(() => {
+    if (output.kind !== "ready") return null;
+    return URL.createObjectURL(output.blob);
+  }, [output]);
+
+  useEffect(() => {
+    if (!stlBlobUrl) return;
+    return () => URL.revokeObjectURL(stlBlobUrl);
+  }, [stlBlobUrl]);
 
   // ---- Drop zone ---------------------------------------------------------
 
@@ -395,6 +408,16 @@ export default function ImageToStlClient() {
               </p>
             ) : null}
           </section>
+
+          {output.kind === "ready" && stlBlobUrl ? (
+            <PrintBar
+              source={{
+                kind: "stl",
+                url: stlBlobUrl,
+                label: output.filename,
+              }}
+            />
+          ) : null}
         </>
       ) : null}
     </div>

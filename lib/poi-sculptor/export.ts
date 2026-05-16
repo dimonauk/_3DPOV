@@ -11,12 +11,17 @@ import type { BufferGeometry, Group } from "three";
 
 import type { TrailMaterial } from "./materials";
 
+export type ExportResult = {
+  blob: Blob;
+  filename: string;
+} | null;
+
 export async function exportSTL(
   trailGroup: Group | null,
   moveLabel: string,
   matDef: TrailMaterial,
-): Promise<void> {
-  if (!trailGroup) return;
+): Promise<ExportResult> {
+  if (!trailGroup) return null;
   let stl = "solid poi_sculpture\n";
   trailGroup.children.forEach((child) => {
     const mesh = child as { geometry?: { attributes: { position?: { getX(i: number): number; getY(i: number): number; getZ(i: number): number } }; index?: { count: number; getX(i: number): number } } };
@@ -40,15 +45,17 @@ export async function exportSTL(
   });
   stl += "endsolid poi_sculpture";
   const blob = new Blob([stl], { type: "application/octet-stream" });
-  triggerDownload(blob, `poi_${moveLabel}_${matDef.id}.stl`);
+  const filename = `poi_${moveLabel}_${matDef.id}.stl`;
+  triggerDownload(blob, filename);
+  return { blob, filename };
 }
 
 export async function exportGLB(
   trailGroup: Group | null,
   moveLabel: string,
   matDef: TrailMaterial,
-): Promise<void> {
-  if (!trailGroup) return;
+): Promise<ExportResult> {
+  if (!trailGroup) return null;
   const THREE = await import("three");
   const { GLTFExporter } = await import("three/examples/jsm/exporters/GLTFExporter.js");
 
@@ -66,14 +73,15 @@ export async function exportGLB(
   });
 
   const exporter = new GLTFExporter();
-  await new Promise<void>((resolve, reject) => {
+  const filename = `poi_${moveLabel}_${matDef.id}.glb`;
+  return await new Promise<ExportResult>((resolve, reject) => {
     exporter.parse(
       exportGroup,
       (gltf: ArrayBuffer | object) => {
         const buf = gltf as ArrayBuffer;
         const blob = new Blob([buf], { type: "application/octet-stream" });
-        triggerDownload(blob, `poi_${moveLabel}_${matDef.id}.glb`);
-        resolve();
+        triggerDownload(blob, filename);
+        resolve({ blob, filename });
       },
       (err: ErrorEvent) => reject(err),
       { binary: true },

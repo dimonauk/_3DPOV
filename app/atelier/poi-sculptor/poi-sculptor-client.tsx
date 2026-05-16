@@ -14,11 +14,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import PrintBar from "components/commerce/print-bar";
 import { exportGLB, exportSTL } from "lib/poi-sculptor/export";
 
 import { Controls, type ControlsState } from "./controls";
 import { PrintDrawer } from "./print-drawer";
 import type { PoiSculptorScene, SceneStats } from "./scene";
+
+type LastExport = {
+  kind: "stl" | "glb";
+  url: string;
+  filename: string;
+};
 
 const INITIAL_STATE: ControlsState = {
   move: "butterfly",
@@ -41,8 +48,12 @@ export default function PoiSculptorClient() {
   const [state, setState] = useState<ControlsState>(INITIAL_STATE);
   const [stats, setStats] = useState<SceneStats>({
     vertexCount: 0,
+    particleCount: 0,
     fps: 0,
   });
+  // Most recent export, kept on a stable blob URL so the PrintBar can
+  // quote against it. Revoked on replacement + on unmount.
+  const [lastExport, setLastExport] = useState<LastExport | null>(null);
 
   useEffect(() => {
     if (typeof navigator === "undefined") return;
@@ -125,13 +136,48 @@ export default function PoiSculptorClient() {
   const onExportSTL = useCallback(() => {
     const scene = sceneRef.current;
     if (!scene) return;
-    void exportSTL(scene.getTrailGroup(), state.move, scene.getCurrentMaterial());
+    void (async () => {
+      const result = await exportSTL(
+        scene.getTrailGroup(),
+        state.move,
+        scene.getCurrentMaterial(),
+      );
+      if (!result) return;
+      const url = URL.createObjectURL(result.blob);
+      setLastExport((prev) => {
+        if (prev) URL.revokeObjectURL(prev.url);
+        return { kind: "stl", url, filename: result.filename };
+      });
+    })();
   }, [state.move]);
   const onExportGLB = useCallback(() => {
     const scene = sceneRef.current;
     if (!scene) return;
-    void exportGLB(scene.getTrailGroup(), state.move, scene.getCurrentMaterial());
+    void (async () => {
+      const result = await exportGLB(
+        scene.getTrailGroup(),
+        state.move,
+        scene.getCurrentMaterial(),
+      );
+      if (!result) return;
+      const url = URL.createObjectURL(result.blob);
+      setLastExport((prev) => {
+        if (prev) URL.revokeObjectURL(prev.url);
+        return { kind: "glb", url, filename: result.filename };
+      });
+    })();
   }, [state.move]);
+
+  // Revoke the last export's blob URL on unmount so the chamber doesn't
+  // leak a Blob URL into the browser's URL table.
+  useEffect(() => {
+    return () => {
+      if (lastExport) URL.revokeObjectURL(lastExport.url);
+    };
+    // Intentionally only on unmount — the replacement inside the export
+    // handlers handles mid-life swaps.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">
@@ -176,6 +222,16 @@ export default function PoiSculptorClient() {
           export GLB
         </button>
       </div>
+
+      {lastExport ? (
+        <PrintBar
+          source={{
+            kind: lastExport.kind,
+            url: lastExport.url,
+            label: lastExport.filename,
+          }}
+        />
+      ) : null}
 
       <PrintDrawer />
     </div>

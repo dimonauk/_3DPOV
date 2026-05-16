@@ -24,6 +24,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import PrintBar from "components/commerce/print-bar";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 import type { TextTo3DResult } from "lib/capabilities/viz/text-to-3d";
@@ -323,6 +324,16 @@ export default function TrellisClient() {
           </p>
         ) : null}
       </section>
+
+      {output.kind === "ready" ? (
+        <PrintBar
+          source={{
+            kind: "glb",
+            url: output.result.glbUrl,
+            label: output.filename,
+          }}
+        />
+      ) : null}
     </div>
   );
 }

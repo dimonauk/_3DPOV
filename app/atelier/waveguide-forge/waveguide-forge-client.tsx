@@ -41,6 +41,13 @@ import {
 
 const log = createLogger("atelier:waveguide-forge");
 
+// TODO(print-bar): chamber is render-only — no exported mesh artefact
+// yet. Wire <PrintBar source={{ kind: "glb", url, label }} /> at the
+// bottom once the parametric gyroid → SDF → marching-cubes export
+// lands. The SDF voxel grid is already in hand (sdf-loader.ts loads
+// `.sdf.bin`); the missing step is the marching-cubes mesh export and
+// `pushAtelierOutput` plumbing.
+
 type LightCfg = {
   origin: [number, number, number];
   direction: [number, number, number];

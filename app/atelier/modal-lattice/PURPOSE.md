@@ -54,6 +54,8 @@ static editor. The amplitude slider can drop to zero for inspection.
   edit mode on the lattice; this port substitutes a procedural
   sinusoidal animation. Manual drag handles are the obvious next add.
 - No mesh export. Lithophane and isosurface set the precedent
-  (`pushAtelierOutput` → drawer); modal-lattice should follow.
+  (`pushAtelierOutput` → drawer); modal-lattice should follow. Once
+  that lands, slot `<PrintBar source={{ kind: "glb", url, label }} />`
+  at the bottom — the rest of the atelier is wired the same way.
 - Lattice grid drawing is naive `LineSegments` — fine to ~512 CPs
   (the 8³ ceiling), wouldn't scale to a finer cage.

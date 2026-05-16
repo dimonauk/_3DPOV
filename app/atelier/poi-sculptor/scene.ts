@@ -5,6 +5,7 @@
  *   - the WebGPURenderer + WebGPU init
  *   - the THREE.Scene, perspective camera, OrbitControls
  *   - the trail group (rebuilt on move/material change)
+ *   - the 300k GPU compute particle field orbiting the trail
  *   - the post-processing pipeline (bloom + film grain)
  *   - the anchor-path runner that drives the trail group through space
  *   - the animate loop and the dispose path
@@ -13,10 +14,6 @@
  * and calls setMove / setMaterial / setFx / setAnchorPath through the
  * lifetime of the demo. Disposal is symmetric and the only path that
  * releases GPU buffers — the React unmount calls dispose().
- *
- * NOTE: compute particles are deferred until the project upgrades from
- * three 0.169 (no `instancedArray` / `time` API) to 0.171+. The trails
- * + bloom carry the visual on their own.
  */
 
 import * as THREE from "three/webgpu";
@@ -26,6 +23,11 @@ import { TRAIL_MATERIALS } from "lib/poi-sculptor/materials";
 import { genTrail, type Trail } from "lib/poi-sculptor/moves";
 
 import { AnchorPlayer } from "./anchor-player";
+import {
+  buildParticleSystem,
+  PARTICLE_COUNT,
+  type ParticleSystem,
+} from "./particles";
 import { buildPostPipeline, type FxState, type PostPipeline } from "./post";
 import {
   buildTrailGroup,
@@ -36,6 +38,7 @@ import {
 
 export type SceneStats = {
   vertexCount: number;
+  particleCount: number;
   fps: number;
 };
 
@@ -51,6 +54,7 @@ export class PoiSculptorScene {
   private trailUniforms: TrailUniforms;
   private trailMeshes: TrailMeshes | null = null;
   private trailGroup: THREE.Group | null = null;
+  private particles: ParticleSystem;
   private post: PostPipeline | null = null;
   private anchor: AnchorPlayer;
   private fx: FxState = { bloom: true, film: true };
@@ -96,6 +100,8 @@ export class PoiSculptorScene {
     this.scene.add(rim);
 
     this.trailUniforms = makeTrailUniforms();
+    this.particles = buildParticleSystem();
+    this.scene.add(this.particles.mesh);
     this.anchor = new AnchorPlayer("static");
   }
 
@@ -123,6 +129,7 @@ export class PoiSculptorScene {
     controls.maxDistance = 14;
     inst.controls = controls;
 
+    await renderer.computeAsync(inst.particles.computeInit);
     inst.rebuildTrails();
     inst.rebuildPost();
 
@@ -155,6 +162,10 @@ export class PoiSculptorScene {
     if (key === "uThick") this.rebuildTrails();
   }
 
+  setParticleCurl(value: number): void {
+    this.particles.uCurl.value = value;
+  }
+
   setFx(fx: FxState): void {
     this.fx = fx;
     this.rebuildPost();
@@ -185,6 +196,9 @@ export class PoiSculptorScene {
     this.rafId = null;
     this.statsCb = null;
     this.disposeTrail();
+    (this.particles.mesh.material as THREE.Material).dispose?.();
+    this.particles.mesh.geometry.dispose();
+    this.scene.remove(this.particles.mesh);
     this.controls?.dispose?.();
     this.renderer.dispose();
   }
@@ -198,6 +212,8 @@ export class PoiSculptorScene {
     this.trailMeshes = next;
     this.trailGroup = next.group;
     this.scene.add(next.group);
+    this.particles.uAtt0.value.set(...next.mid0);
+    this.particles.uAtt1.value.set(...next.mid1);
   }
 
   private cachedTrail(id: string): Trail {
@@ -242,6 +258,20 @@ export class PoiSculptorScene {
       this.trailGroup.rotation.x = Math.sin(t * 0.23) * 0.08;
     }
 
+    const orb = 0.5;
+    this.particles.uAtt0.value.set(
+      Math.cos(t * 0.8) * orb,
+      Math.sin(t * 0.4) * 0.3,
+      Math.sin(t * 0.8) * orb * 0.5,
+    );
+    this.particles.uAtt1.value.set(
+      -Math.cos(t * 0.9 + 1) * orb,
+      Math.sin(t * 0.35 + 1) * 0.3,
+      -Math.sin(t * 0.9) * orb * 0.5,
+    );
+    this.particles.uDt.value = 0.016;
+    void this.renderer.computeAsync(this.particles.computeUpdate);
+
     this.controls?.update();
     if (this.post) {
       void this.post.postProcessing.render();
@@ -255,6 +285,7 @@ export class PoiSculptorScene {
       const fps = Math.round((this.fpsFrames * 1000) / (now - this.fpsLastTime));
       this.statsCb({
         vertexCount: this.trailMeshes?.vertexCount ?? 0,
+        particleCount: PARTICLE_COUNT,
         fps,
       });
       this.fpsFrames = 0;

@@ -31,7 +31,9 @@ import { OrbitControls, Environment } from "@react-three/drei";
 import { createXRStore, XR } from "@react-three/xr";
 import * as THREE from "three";
 
+import { NarrationPlate } from "components/aura/narration-plate";
 import { useAuth } from "components/auth/auth-provider";
+import PrintBar from "components/commerce/print-bar";
 import { ChamberXRBar } from "components/three/ChamberXRBar";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
@@ -82,6 +84,14 @@ export default function SculptureGalleryClient() {
   const [scaleMm, setScaleMm] = useState(960);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // Stable blob URL of the most recent marching-cubes GLB export, so the
+  // PrintBar has something to quote against once the operator has hit
+  // export. Revoked on unmount + on replacement.
+  const [mcGlbExport, setMcGlbExport] = useState<{
+    url: string;
+    filename: string;
+    bytes: number;
+  } | null>(null);
 
   // Image → Hunyuan3D sibling pipeline.
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -227,13 +237,19 @@ export default function SculptureGalleryClient() {
       const blob = new Blob([new Uint8Array(bytes)], {
         type: "model/gltf-binary",
       });
+      const blobUrl = URL.createObjectURL(blob);
       pushAtelierOutput({
         chamberSlug: "sculpture-gallery",
         kind: "glb",
         label: filename,
-        blobUrl: URL.createObjectURL(blob),
+        blobUrl,
         mimeType: "model/gltf-binary",
         sizeBytes: blob.size,
+      });
+      // Hand a stable URL to the PrintBar; revoke the previous one.
+      setMcGlbExport((prev) => {
+        if (prev) URL.revokeObjectURL(prev.url);
+        return { url: blobUrl, filename, bytes: blob.size };
       });
     } catch (err) {
       log.error("glb export failed", { err });
@@ -243,6 +259,28 @@ export default function SculptureGalleryClient() {
     }
   }, [activeName, geometry, iso, scaleMm]);
 
+  // Revoke the marching-cubes export blob URL on unmount so the chamber
+  // doesn't leak the GLB blob into the browser's URL table.
+  useEffect(() => {
+    return () => {
+      if (mcGlbExport) URL.revokeObjectURL(mcGlbExport.url);
+    };
+    // Intentionally only on unmount — the swap inside onExport handles
+    // mid-life replacement.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Aura narration plate context — a small string that summarises the
+  // chamber's current state. Rounded enough to avoid burning LLM cycles
+  // on every drag of the iso slider (the slider updates 0.05 at a time;
+  // rounding to a single decimal keeps the summary stable across small
+  // tweaks). The plate refetches whenever this string changes.
+  const auraContext = useMemo(() => {
+    const tri = report.triangleCount;
+    const isoRounded = Math.round(iso * 10) / 10;
+    return `Sculpture gallery · ${activeName} at iso ${isoRounded.toFixed(1)} · ${tri.toLocaleString()} triangles · ${report.watertight ? "watertight" : "open mesh"} · stock posture: working`;
+  }, [activeName, iso, report.triangleCount, report.watertight]);
+
   return (
     <div className="flex flex-col gap-10">
     <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_18rem]">
@@ -250,6 +288,7 @@ export default function SculptureGalleryClient() {
         <div className="absolute right-3 top-3 z-20">
           <ChamberXRBar store={xrStore} />
         </div>
+        <NarrationPlate contextSummary={auraContext} />
         <Canvas camera={{ position: [3, 2, 3], fov: 35 }} dpr={[1, 2]}>
           <color attach="background" args={["#0e0e14"]} />
           <XR store={xrStore}>
@@ -415,6 +454,16 @@ export default function SculptureGalleryClient() {
       </div>
     </div>
 
+    {mcGlbExport ? (
+      <PrintBar
+        source={{
+          kind: "glb",
+          url: mcGlbExport.url,
+          label: mcGlbExport.filename,
+        }}
+      />
+    ) : null}
+
     {/* ---------------------------------------------------------------
         Image → Hunyuan3D sibling input. Same workshop, different on-ramp:
         a reference image goes to the bench's ComfyUI, comes back as a
@@ -542,6 +591,16 @@ export default function SculptureGalleryClient() {
         ) : null}
       </div>
     </section>
+
+    {imageState.kind === "ready" ? (
+      <PrintBar
+        source={{
+          kind: "glb",
+          url: imageState.glbUrl,
+          label: imageState.filename,
+        }}
+      />
+    ) : null}
     </div>
   );
 }

@@ -21,13 +21,11 @@ import {
   normalWorld,
   positionWorld,
   sin,
-  timerGlobal,
+  time,
   uniform,
   uv,
   vec3,
 } from "three/tsl";
-
-const time = timerGlobal();
 
 import type { TrailMaterial } from "lib/poi-sculptor/materials";
 import type { TrailPoint } from "lib/poi-sculptor/moves";

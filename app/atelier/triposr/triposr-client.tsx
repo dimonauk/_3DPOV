@@ -22,8 +22,10 @@
  * thing to do.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { NarrationPlate } from "components/aura/narration-plate";
+import PrintBar from "components/commerce/print-bar";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 import type { ImageTo3DResult } from "lib/capabilities/viz/image-to-3d";
@@ -163,6 +165,16 @@ export default function TriposrClient() {
     a.target = "_blank";
     a.rel = "noopener";
     a.click();
+  }, [output]);
+
+  // Aura narration plate context — fires once the bench returns a mesh.
+  // We use the filename + KB + seconds as the summary; that stays
+  // stable for a given generation so the plate doesn't refetch.
+  const auraContext = useMemo(() => {
+    if (output.kind !== "ready") return "";
+    const kb = (output.result.glbBytes / 1024).toFixed(0);
+    const seconds = (output.durationMs / 1000).toFixed(1);
+    return `TripoSR · mesh ready · ${output.filename} · ${kb} KB · generated in ${seconds}s · this is the visitor's freshly reconstructed 3D object`;
   }, [output]);
 
   // ---- drop zone --------------------------------------------------------
@@ -334,18 +346,21 @@ export default function TriposrClient() {
                   {(output.result.glbBytes / 1024).toFixed(0)} KB &middot;{" "}
                   {(output.durationMs / 1000).toFixed(1)}s
                 </span>
-                {/* @ts-expect-error — model-viewer is a web component */}
-                <model-viewer
-                  src={output.result.glbUrl}
-                  alt="Generated 3D mesh"
-                  camera-controls
-                  auto-rotate
-                  style={{
-                    width: "100%",
-                    height: "420px",
-                    backgroundColor: "#0d0d12",
-                  }}
-                />
+                <div className="relative overflow-hidden rounded-sm">
+                  {/* @ts-expect-error — model-viewer is a web component */}
+                  <model-viewer
+                    src={output.result.glbUrl}
+                    alt="Generated 3D mesh"
+                    camera-controls
+                    auto-rotate
+                    style={{
+                      width: "100%",
+                      height: "420px",
+                      backgroundColor: "#0d0d12",
+                    }}
+                  />
+                  <NarrationPlate contextSummary={auraContext} />
+                </div>
                 <button
                   type="button"
                   onClick={onDownload}
@@ -362,6 +377,16 @@ export default function TriposrClient() {
               </p>
             ) : null}
           </section>
+
+          {output.kind === "ready" ? (
+            <PrintBar
+              source={{
+                kind: "glb",
+                url: output.result.glbUrl,
+                label: output.filename,
+              }}
+            />
+          ) : null}
         </>
       ) : null}
     </div>

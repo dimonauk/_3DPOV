@@ -29,6 +29,14 @@ import {
 
 import { useActiveChamber } from "lib/state/atelier-hooks";
 
+// TODO(print-bar): chamber is render-only — voxels live as an
+// InstancedMesh array in browser state with no export path. The
+// stub-comment about `Matrix4` for "future bench helpers (export,
+// save)" flags the gap. Wire <PrintBar source={{ kind: "glb", url,
+// label }} /> at the bottom once a "voxels → cube-soup → GLB" export
+// affordance lands (sculpture-gallery's `exportGlb.ts` is the
+// blueprint).
+
 // ---- Voxel model ----------------------------------------------------------
 
 const PALETTE: ReadonlyArray<{ label: string; hex: string }> = [

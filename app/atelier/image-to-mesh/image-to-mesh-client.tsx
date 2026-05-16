@@ -14,6 +14,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import PrintBar from "components/commerce/print-bar";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 import type { ImageToMeshProvider } from "lib/capabilities/viz/image-to-mesh";
@@ -370,6 +371,16 @@ export default function ImageToMeshClient() {
             <p className="rounded-sm border border-pink-400/40 bg-pink-900/10 px-4 py-3 text-xs text-pink-200">
               {output.message}
             </p>
+          ) : null}
+
+          {output.kind === "ready" ? (
+            <PrintBar
+              source={{
+                kind: "glb",
+                url: output.meshUrl,
+                label: output.filename,
+              }}
+            />
           ) : null}
         </section>
       ) : null}

@@ -31,6 +31,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { createXRStore, XR } from "@react-three/xr";
 
+import { NarrationPlate } from "components/aura/narration-plate";
 import { ChamberXRBar } from "components/three/ChamberXRBar";
 import {
   GENE_NAMES,
@@ -44,6 +45,13 @@ import {
 import { createLogger } from "lib/log";
 
 const log = createLogger("atelier:breeding-floor");
+
+// TODO(print-bar): chamber cards are flat-tinted placeholder discs —
+// no real splat thumbnails, no per-genome printable artefact. The
+// PURPOSE.md "what's queued for later" already flags "Real splat
+// thumbnails" as the next pass. Wire <PrintBar source={{ kind: "glb"
+// | "ply", url, label }} /> per-card (or for a selected genome) once
+// the chamber's `Genome` is bound to a real splat / mesh render.
 
 const POPULATION_SIZE = 12;
 const LINEAGE_DEPTH = 5;
@@ -312,6 +320,13 @@ export default function BreedingFloorClient() {
     [favouriteCount],
   );
 
+  // Aura narration plate context — summarises the breeding floor's
+  // current state. Updates as the generation advances or the operator
+  // changes their favourites; the plate refetches on every change.
+  const auraContext = useMemo(() => {
+    return `Breeding floor · generation ${generation} · ${favouriteCount} favourite${favouriteCount === 1 ? "" : "s"} of ${population.length} · lineage depth ${Math.min(lineage.length, LINEAGE_DEPTH)}`;
+  }, [favouriteCount, generation, lineage.length, population.length]);
+
   return (
     <section
       aria-label="Breeding floor"
@@ -365,6 +380,7 @@ export default function BreedingFloorClient() {
         <div className="absolute right-3 top-3 z-20">
           <ChamberXRBar store={xrStore} />
         </div>
+        <NarrationPlate contextSummary={auraContext} />
         <Canvas camera={{ position: [0, 1.4, 2.4], fov: 45 }} dpr={[1, 2]}>
           <color attach="background" args={["#05030a"]} />
           <XR store={xrStore}>

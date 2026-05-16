@@ -20,6 +20,14 @@ import type { IsosurfaceRunner } from "lib/webgpu-marching-cubes/runner";
 
 const log = createLogger("atelier:isosurface");
 
+// TODO(print-bar): chamber is render-only — the WebGPU marching-cubes
+// runner generates a triangle buffer on the GPU and renders it
+// directly, with no readback or GLB export path. Wire <PrintBar
+// source={{ kind: "glb", url, label }} /> at the bottom once a "freeze
+// + export current frame" affordance lands (the runner's vertex buffer
+// would need a CPU readback + GLTFExporter pass, then push through
+// `pushAtelierOutput` like sculpture-gallery does).
+
 type Support = "probing" | "yes" | "no";
 
 type Shape = "sphere" | "torus" | "gyroid";

@@ -40,6 +40,13 @@ import { useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:modal-lattice");
 
+// TODO(print-bar): chamber is render-only — the deformed mesh lives
+// only as a live R3F buffer that mutates each frame. Wire <PrintBar
+// source={{ kind: "glb", url, label }} /> at the bottom once a "freeze
+// + export GLB" affordance lands. The current frame's positions buffer
+// is already in hand (`liveVerts`); the missing step is freezing,
+// indexing, GLTFExporter, and `pushAtelierOutput` plumbing.
+
 // --- Kernels -------------------------------------------------------------
 
 type Kernel = "linear" | "bspline" | "cardinal" | "catmull";

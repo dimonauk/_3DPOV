@@ -84,3 +84,9 @@ flat-coloured discs whose RGB comes from each genome's own
 - **Wildcard slot.** Add an "inject wildcard" button that uses the
   engine's `wildcardFactory` option to drop a fresh random genome
   into the population mid-walk.
+- **PrintBar per genome (gated on real splat thumbnails).** Cards are
+  flat-tinted discs today, so there is no printable artefact yet.
+  Once a genome resolves to a real GLB / PLY via
+  `viz.thumbnail-splat`, slot `<PrintBar source={{ kind: "glb" | "ply",
+  url, label }} />` per-card (or for a selected favourite) so each
+  genome can be ordered as a physical sculpture.

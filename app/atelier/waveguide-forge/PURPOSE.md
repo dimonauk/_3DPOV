@@ -47,3 +47,8 @@ caustic shift in real time, before committing to a print.
 - No exported STL / GLB yet. That's the next chamber milestone:
   marching-cubes the lattice and route it through `pushAtelierOutput`
   the way lithophane and isosurface do.
+- **PrintBar wiring is gated on the export above.** The chamber is
+  render-only today, so `<PrintBar>` would have no `source.url` to
+  quote against. Once marching-cubes export lands the wire-up is the
+  same one-liner lithophane uses (`<PrintBar source={{ kind: "glb",
+  url: blobUrl, label }} />` at the bottom of the chamber).

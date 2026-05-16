@@ -63,6 +63,14 @@ None. No env vars needed. No external service.
 - **Print bureau integration** — a "send to bureau" button that POSTs
   the SVG + colour map + dimensions as a fabric-print order. Waits on
   the fabric-calculator service.
+- **PrintBar (fabric variant).** Quilt output is flat textile, not a
+  3D printable. The site-wide `<PrintBar>` only takes `stl|glb|ply`
+  and quotes resin / FDM / SLS at a 3D-print vendor. To get a quilt
+  commerce strip we need a sibling fabric-vendor variant (different
+  scale bands — measured in inches square, different finishes — long-
+  arm vs hand-quilted, different materials — quilting cotton, linen).
+  v0 skips the bar here; document and revisit when the fabric vendor
+  ships.
 - **Upload-image-to-recolour** — sample the dominant palette from an
   uploaded inspiration image, snap it to the closest swatches in
   `PALETTE`. Browser-only via canvas pixel sampling; no AI needed.
