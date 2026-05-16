@@ -137,6 +137,18 @@ export default function AtelierPage() {
                 kind: "Function",
                 summary: "Every photograph carries a paperwork trail. EXIF, ICC, GPS, camera, lens.",
               },
+              {
+                slug: "image-to-stl",
+                title: "Image → STL",
+                kind: "Function",
+                summary: "Contour-extruded printable plate. Cousin to the lithophane, but cut-outs not heightmap.",
+              },
+              {
+                slug: "voxel-world",
+                title: "Voxel world",
+                kind: "Browser",
+                summary: "Left-click adds a cube, right-click removes one. The smallest unit of sculpture is one cube.",
+              },
             ].map((c) => (
               <Link
                 key={c.slug}

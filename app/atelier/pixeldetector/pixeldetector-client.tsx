@@ -86,6 +86,7 @@ export default function PixeldetectorClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
+      console.error("[atelier/pixeldetector] detection failed", err);
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Detection failed.",
@@ -141,6 +142,7 @@ export default function PixeldetectorClient() {
           ref={fileInputRef}
           type="file"
           accept="image/*"
+          aria-label="Choose a pixel-art image to inspect"
           className="hidden"
           onChange={(e) => {
             const file = e.target.files?.[0];

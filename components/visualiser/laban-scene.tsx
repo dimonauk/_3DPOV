@@ -129,12 +129,18 @@ function Trail({ effort }: Props) {
   // Each frame: rebuild a linear non-ring positions slice (oldest -> newest)
   // and update the geometry&rsquo;s draw range based on flow.
   useFrame(() => {
+    // geometryRef.current is initialised synchronously on first render
+    // above (line ~96-104), but TS doesn't track that through useFrame.
+    // Bind to a local so the strict-null checks don't bark on every use.
+    const geometry = geometryRef.current;
+    if (!geometry) return;
+
     const filled = filledRef.current;
     const buf = positionsRef.current;
     if (filled < 2) {
-      geometryRef.current.setDrawRange(0, 0);
+      geometry.setDrawRange(0, 0);
       drawCountRef.current = 0;
-      geometryRef.current.attributes.position!.needsUpdate = true;
+      geometry.attributes.position!.needsUpdate = true;
       return;
     }
 
@@ -169,13 +175,13 @@ function Trail({ effort }: Props) {
       segBuf[i * 6 + 5] = seq[(i + 1) * 3 + 2] ?? 0;
     }
 
-    geometryRef.current.setAttribute(
+    geometry.setAttribute(
       "position",
       new THREE.BufferAttribute(segBuf, 3),
     );
-    geometryRef.current.setDrawRange(0, segCount * 2);
+    geometry.setDrawRange(0, segCount * 2);
     drawCountRef.current = segCount * 2;
-    geometryRef.current.attributes.position!.needsUpdate = true;
+    geometry.attributes.position!.needsUpdate = true;
   });
 
   return (

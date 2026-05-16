@@ -155,6 +155,7 @@ export default function ProbeClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
+      console.error("[atelier/probe] probe failed", err);
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Probe failed.",
@@ -294,6 +295,7 @@ export default function ProbeClient() {
           ref={fileInputRef}
           type="file"
           accept="image/*"
+          aria-label="Choose an image to probe for metadata"
           className="hidden"
           onChange={(e) => {
             const file = e.target.files?.[0];

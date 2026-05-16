@@ -26,14 +26,22 @@ function's body is just the transform.
 
 from __future__ import annotations
 
+import functools
 import io
 import json
 import logging
-from typing import Any
+import time
+import uuid
+from typing import Any, Callable
 
 from firebase_functions import https_fn, options
 
-logger = logging.getLogger(__name__)
+# Module-level logger writes to Cloud Logging by default in the
+# Functions runtime. Each request also gets a short request-id printed
+# in front of every log line so the entries from one invocation can be
+# stitched back together in the dashboard.
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("chambers")
 
 
 # ---------------------------------------------------------------------------
@@ -107,6 +115,116 @@ def _error(message: str, status: int = 400) -> https_fn.Response:
     return _json_response({"error": message}, status=status)
 
 
+def _chamber(
+    name: str,
+) -> Callable[
+    [Callable[[https_fn.Request], https_fn.Response]],
+    Callable[[https_fn.Request], https_fn.Response],
+]:
+    """Wrap a chamber function with structured logging + safety net.
+
+    Every chamber endpoint goes through this. Responsibilities:
+
+    - Mint a short request-id and prefix every log line with it.
+    - Log a `start` line with content-type + content-length + method.
+    - Log a `done` line with response status + duration in ms.
+    - Catch any unhandled exception, log a stack trace via
+      `logger.exception`, and return a 500 JSON error to the caller
+      instead of the default Cloud Functions 500 HTML.
+    - Reject non-POST methods (and pass OPTIONS through to the CORS
+      preflight handler).
+
+    Place this BETWEEN `@https_fn.on_request(...)` and the function
+    body — the outer Firebase decorator handles routing + CORS, this
+    inner decorator handles logging + error capture.
+    """
+
+    def decorator(
+        fn: Callable[[https_fn.Request], https_fn.Response],
+    ) -> Callable[[https_fn.Request], https_fn.Response]:
+        @functools.wraps(fn)
+        def wrapper(req: https_fn.Request) -> https_fn.Response:
+            request_id = uuid.uuid4().hex[:8]
+            started_at = time.monotonic()
+            method = req.method or "?"
+            content_type = req.content_type or "?"
+            content_length = req.content_length or 0
+
+            logger.info(
+                "[%s] %s start method=%s content_type=%s bytes=%d",
+                request_id,
+                name,
+                method,
+                content_type,
+                content_length,
+            )
+
+            if method == "OPTIONS":
+                # CORS preflight — let the outer Firebase wrapper handle.
+                return https_fn.Response("", status=204)
+
+            if method != "POST":
+                logger.warning(
+                    "[%s] %s 405 wrong method=%s", request_id, name, method
+                )
+                return _error(f"method not allowed: {method}", status=405)
+
+            try:
+                response = fn(req)
+                duration_ms = (time.monotonic() - started_at) * 1000
+                status = getattr(response, "status_code", "?")
+                logger.info(
+                    "[%s] %s done status=%s duration=%dms",
+                    request_id,
+                    name,
+                    status,
+                    int(duration_ms),
+                )
+                return response
+            except ValueError as exc:
+                # Input validation errors land as 400 with the helper's
+                # original message (e.g. "missing multipart field 'file'").
+                duration_ms = (time.monotonic() - started_at) * 1000
+                logger.warning(
+                    "[%s] %s 400 ValueError after %dms: %s",
+                    request_id,
+                    name,
+                    int(duration_ms),
+                    exc,
+                )
+                return _error(str(exc), status=400)
+            except MemoryError as exc:
+                # Distinct from generic 500 — the operator can lift the
+                # function's memory ceiling in firebase.json.
+                duration_ms = (time.monotonic() - started_at) * 1000
+                logger.exception(
+                    "[%s] %s OOM after %dms", request_id, name, int(duration_ms)
+                )
+                return _error(
+                    "out of memory; try a smaller input",
+                    status=507,
+                )
+            except Exception as exc:  # noqa: BLE001 — last-line safety net
+                duration_ms = (time.monotonic() - started_at) * 1000
+                # logger.exception writes the full traceback to Cloud Logging.
+                logger.exception(
+                    "[%s] %s FAILED after %dms: %s: %s",
+                    request_id,
+                    name,
+                    int(duration_ms),
+                    type(exc).__name__,
+                    exc,
+                )
+                return _error(
+                    f"internal error: {type(exc).__name__}: {exc}",
+                    status=500,
+                )
+
+        return wrapper
+
+    return decorator
+
+
 # ---------------------------------------------------------------------------
 # /lithophane — image → printable lithophane STL
 # ---------------------------------------------------------------------------
@@ -118,6 +236,7 @@ def _error(message: str, status: int = 400) -> https_fn.Response:
     memory=options.MemoryOption.GB_1,
     timeout_sec=120,
 )
+@_chamber("lithophane")
 def lithophane(req: https_fn.Request) -> https_fn.Response:
     """Image (grayscale or RGB) → STL lithophane mesh.
 
@@ -224,6 +343,7 @@ def lithophane(req: https_fn.Request) -> https_fn.Response:
     memory=options.MemoryOption.MB_512,
     timeout_sec=60,
 )
+@_chamber("pixeldetector")
 def pixeldetector(req: https_fn.Request) -> https_fn.Response:
     """Image → detected native pixel-art resolution.
 
@@ -336,6 +456,7 @@ _REMOVE_BG_MAX_DIMENSION = 4096
     memory=options.MemoryOption.GB_2,
     timeout_sec=120,
 )
+@_chamber("remove_bg")
 def remove_bg(req: https_fn.Request) -> https_fn.Response:
     """Image (any Pillow-readable format) → PNG with background stripped.
 
@@ -506,6 +627,7 @@ def _clean_string(value: Any) -> Any:
     memory=options.MemoryOption.MB_256,
     timeout_sec=30,
 )
+@_chamber("probe")
 def probe(req: https_fn.Request) -> https_fn.Response:
     """Image → metadata JSON (dimensions, format, EXIF, ICC profile).
 
@@ -681,6 +803,421 @@ def probe(req: https_fn.Request) -> https_fn.Response:
         "exif": exif_out,
     }
     return _json_response(payload)
+
+
+# ---------------------------------------------------------------------------
+# /image_to_stl — image → contour-extruded STL plate
+# ---------------------------------------------------------------------------
+
+
+_IMAGE_TO_STL_MAX_DIMENSION = 2048
+_IMAGE_TO_STL_MIN_CONTOUR_AREA = 10.0  # pixels² — drop noise specks
+
+
+@https_fn.on_request(
+    region="us-central1",
+    cors=_DEFAULT_CORS,
+    memory=options.MemoryOption.GB_1,
+    timeout_sec=120,
+)
+@_chamber("image_to_stl")
+def image_to_stl(req: https_fn.Request) -> https_fn.Response:
+    """Image → STL plate built by thresholding + contour extrusion.
+
+    Different shape from lithophane: lithophane builds a smooth
+    heightmap where darker pixels are thicker. This one thresholds the
+    image into a binary mask, finds the outlines of every bright (or
+    dark, if inverted) region, and extrudes each region by a fixed
+    depth. The result is a flat plate of line-art shapes — the kind of
+    thing you print and backlight to read the photograph as cut-outs.
+
+    Body (multipart):
+        file: image bytes (any Pillow-readable format)
+        threshold: int 0–255 — anything brighter than this is "ink".
+            Default 128.
+        extrude_mm: float — extrusion depth of the ink regions in mm.
+            Default 3.0.
+        base_mm: float — base plate thickness. 0 means no base plate
+            (ink regions are free-floating shapes). Default 0.5.
+        scale: float — mm per source pixel. Default 0.3.
+        invert: 0 | 1 — flip dark/bright. Default 0.
+
+    Returns: binary STL with Content-Type model/stl.
+    """
+    try:
+        body, filename, _ = _read_uploaded_file(req)
+    except ValueError as exc:
+        return _error(str(exc))
+
+    threshold = _form_int(req, "threshold", 128)
+    extrude_mm = _form_float(req, "extrude_mm", 3.0)
+    base_mm = _form_float(req, "base_mm", 0.5)
+    scale = _form_float(req, "scale", 0.3)
+    invert = _form_int(req, "invert", 0) == 1
+
+    if extrude_mm <= 0:
+        return _error("extrude_mm must be > 0", status=400)
+    if base_mm < 0:
+        return _error("base_mm must be >= 0", status=400)
+    if scale <= 0:
+        return _error("scale must be > 0", status=400)
+    if threshold < 0 or threshold > 255:
+        return _error("threshold must be in 0–255", status=400)
+
+    # Heavy imports inside the function so cold-start time for OTHER
+    # functions in this deploy doesn't pay for these unless image_to_stl
+    # is the one being called.
+    import cv2
+    import numpy as np
+    from stl import mesh as stl_mesh
+
+    arr = np.frombuffer(body, dtype=np.uint8)
+    img = cv2.imdecode(arr, cv2.IMREAD_GRAYSCALE)
+    if img is None:
+        return _error("could not decode image", status=400)
+
+    rows, cols = img.shape
+    if rows > _IMAGE_TO_STL_MAX_DIMENSION or cols > _IMAGE_TO_STL_MAX_DIMENSION:
+        return _error(
+            f"image too large ({cols}x{rows}); max "
+            f"{_IMAGE_TO_STL_MAX_DIMENSION}x{_IMAGE_TO_STL_MAX_DIMENSION}",
+            status=400,
+        )
+
+    # Threshold → binary mask. THRESH_BINARY keeps "brighter than t" as
+    # ink; the invert flag flips that to "darker than t" by swapping
+    # the THRESH_BINARY_INV flag.
+    thresh_type = cv2.THRESH_BINARY_INV if invert else cv2.THRESH_BINARY
+    _, mask = cv2.threshold(img, threshold, 255, thresh_type)
+
+    # RETR_CCOMP groups contours into a two-level hierarchy: outer
+    # boundaries of ink regions are level 0, holes inside them are
+    # level 1. We extrude the outer boundaries and subtract the holes
+    # from each top/bottom face by polygon triangulation.
+    contours, hierarchy = cv2.findContours(
+        mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE
+    )
+
+    # Group: each outer contour with the list of hole contours nested
+    # inside it. hierarchy[i] = [next, prev, first_child, parent].
+    groups: list[tuple[Any, list[Any]]] = []
+    if hierarchy is not None and len(contours) > 0:
+        h = hierarchy[0]
+        # First pass: find outers (parent == -1).
+        for i, c in enumerate(contours):
+            if h[i][3] != -1:
+                continue  # this is a hole; handled by its parent
+            if cv2.contourArea(c) < _IMAGE_TO_STL_MIN_CONTOUR_AREA:
+                continue
+            holes: list[Any] = []
+            child = h[i][2]
+            while child != -1:
+                hc = contours[child]
+                if cv2.contourArea(hc) >= _IMAGE_TO_STL_MIN_CONTOUR_AREA:
+                    holes.append(hc)
+                child = h[child][0]
+            groups.append((c, holes))
+
+    if not groups and base_mm <= 0:
+        return _error(
+            "no extrudable regions detected; try a different threshold "
+            "or enable invert",
+            status=400,
+        )
+
+    # Y-axis flip: image rows go top→down; STL Y goes bottom→up. We
+    # mirror so the printed plate matches what the operator sees.
+    img_h_mm = rows * scale
+
+    def to_xy(px: float, py: float) -> tuple[float, float]:
+        return (px * scale, img_h_mm - py * scale)
+
+    # ----- Triangulate polygons with holes -------------------------------
+    # cv2.findContours returns concave polygons + nested holes. The
+    # robust route to flat-face triangulation without a heavy mesh dep
+    # is the ear-clipping classic: cut each hole into the outer polygon
+    # via a "bridge" segment, producing one merged simple polygon per
+    # group, then ear-clip that.
+    def shoelace(poly: list[tuple[float, float]]) -> float:
+        s = 0.0
+        n = len(poly)
+        for i in range(n):
+            x0, y0 = poly[i]
+            x1, y1 = poly[(i + 1) % n]
+            s += x0 * y1 - x1 * y0
+        return 0.5 * s
+
+    def ensure_ccw(poly: list[tuple[float, float]]) -> list[tuple[float, float]]:
+        return poly if shoelace(poly) > 0 else list(reversed(poly))
+
+    def ensure_cw(poly: list[tuple[float, float]]) -> list[tuple[float, float]]:
+        return poly if shoelace(poly) < 0 else list(reversed(poly))
+
+    def segments_intersect(
+        a: tuple[float, float],
+        b: tuple[float, float],
+        c: tuple[float, float],
+        d: tuple[float, float],
+    ) -> bool:
+        # Open-segment intersection check used to validate bridges.
+        def ccw(p: tuple[float, float], q: tuple[float, float], r: tuple[float, float]) -> float:
+            return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+
+        d1 = ccw(c, d, a)
+        d2 = ccw(c, d, b)
+        d3 = ccw(a, b, c)
+        d4 = ccw(a, b, d)
+        if ((d1 > 0 and d2 < 0) or (d1 < 0 and d2 > 0)) and (
+            (d3 > 0 and d4 < 0) or (d3 < 0 and d4 > 0)
+        ):
+            return True
+        return False
+
+    def merge_hole_into_outer(
+        outer: list[tuple[float, float]],
+        hole: list[tuple[float, float]],
+    ) -> list[tuple[float, float]]:
+        # Pick the hole vertex with max x; connect it to a visible
+        # outer vertex by a bridge that doesn't cross any other edge.
+        h_idx = max(range(len(hole)), key=lambda k: hole[k][0])
+        h_pt = hole[h_idx]
+        # Sort outer vertices by descending x (greedy: closer to hole's
+        # rightmost vertex first), test bridge validity.
+        candidate_order = sorted(
+            range(len(outer)), key=lambda k: -outer[k][0]
+        )
+        for o_idx in candidate_order:
+            o_pt = outer[o_idx]
+            ok = True
+            # Check against every outer edge except those touching o_idx
+            n_o = len(outer)
+            for k in range(n_o):
+                if k == o_idx or (k + 1) % n_o == o_idx:
+                    continue
+                p, q = outer[k], outer[(k + 1) % n_o]
+                if segments_intersect(o_pt, h_pt, p, q):
+                    ok = False
+                    break
+            if not ok:
+                continue
+            n_h = len(hole)
+            for k in range(n_h):
+                if k == h_idx or (k + 1) % n_h == h_idx:
+                    continue
+                p, q = hole[k], hole[(k + 1) % n_h]
+                if segments_intersect(o_pt, h_pt, p, q):
+                    ok = False
+                    break
+            if not ok:
+                continue
+            # Splice: outer[0..o_idx] + bridge to hole[h_idx] + hole
+            # walked from h_idx (CW for hole) back to h_idx + bridge
+            # back to outer[o_idx..end].
+            rotated_hole = hole[h_idx:] + hole[:h_idx]
+            return (
+                outer[: o_idx + 1]
+                + rotated_hole
+                + [rotated_hole[0]]
+                + outer[o_idx:]
+            )
+        # No valid bridge — drop the hole rather than crash.
+        return outer
+
+    def is_convex(
+        a: tuple[float, float],
+        b: tuple[float, float],
+        c: tuple[float, float],
+    ) -> bool:
+        return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) > 0
+
+    def point_in_triangle(
+        p: tuple[float, float],
+        a: tuple[float, float],
+        b: tuple[float, float],
+        c: tuple[float, float],
+    ) -> bool:
+        d1 = (p[0] - b[0]) * (a[1] - b[1]) - (a[0] - b[0]) * (p[1] - b[1])
+        d2 = (p[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (p[1] - c[1])
+        d3 = (p[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (p[1] - a[1])
+        has_neg = d1 < 0 or d2 < 0 or d3 < 0
+        has_pos = d1 > 0 or d2 > 0 or d3 > 0
+        return not (has_neg and has_pos)
+
+    def ear_clip(poly: list[tuple[float, float]]) -> list[tuple[int, int, int]]:
+        # Returns triangle index triples into poly.
+        n = len(poly)
+        if n < 3:
+            return []
+        indices = list(range(n))
+        tris: list[tuple[int, int, int]] = []
+        guard = 0
+        max_guard = 3 * n * n  # bail-out for degenerate inputs
+        while len(indices) > 3 and guard < max_guard:
+            guard += 1
+            ear_found = False
+            m = len(indices)
+            for i in range(m):
+                ia = indices[(i - 1) % m]
+                ib = indices[i]
+                ic = indices[(i + 1) % m]
+                a, b, c = poly[ia], poly[ib], poly[ic]
+                if not is_convex(a, b, c):
+                    continue
+                contains = False
+                for j in indices:
+                    if j in (ia, ib, ic):
+                        continue
+                    if point_in_triangle(poly[j], a, b, c):
+                        contains = True
+                        break
+                if contains:
+                    continue
+                tris.append((ia, ib, ic))
+                indices.pop(i)
+                ear_found = True
+                break
+            if not ear_found:
+                # Degenerate; emit a fan as a last resort and stop.
+                for k in range(1, len(indices) - 1):
+                    tris.append((indices[0], indices[k], indices[k + 1]))
+                return tris
+        if len(indices) == 3:
+            tris.append((indices[0], indices[1], indices[2]))
+        return tris
+
+    # ----- Assemble triangles --------------------------------------------
+    # Each ink region contributes: top face (extruded plane), bottom
+    # face (same shape, reversed winding), and side walls (quads
+    # between top and bottom around every boundary loop — outer +
+    # holes).
+    top_z = base_mm + extrude_mm
+    bottom_z = base_mm  # ink sits on top of the base, if one exists
+
+    triangles: list[list[list[float]]] = []
+
+    def add_tri(
+        v0: tuple[float, float, float],
+        v1: tuple[float, float, float],
+        v2: tuple[float, float, float],
+    ) -> None:
+        triangles.append([list(v0), list(v1), list(v2)])
+
+    def add_quad(
+        v0: tuple[float, float, float],
+        v1: tuple[float, float, float],
+        v2: tuple[float, float, float],
+        v3: tuple[float, float, float],
+    ) -> None:
+        add_tri(v0, v1, v2)
+        add_tri(v0, v2, v3)
+
+    for outer_contour, hole_contours in groups:
+        outer_xy = [to_xy(float(p[0][0]), float(p[0][1])) for p in outer_contour]
+        # Drop duplicate consecutive points
+        outer_xy = [
+            pt
+            for i, pt in enumerate(outer_xy)
+            if i == 0 or pt != outer_xy[i - 1]
+        ]
+        if len(outer_xy) < 3:
+            continue
+        outer_xy = ensure_ccw(outer_xy)
+
+        holes_xy: list[list[tuple[float, float]]] = []
+        for hc in hole_contours:
+            hxy = [to_xy(float(p[0][0]), float(p[0][1])) for p in hc]
+            hxy = [pt for i, pt in enumerate(hxy) if i == 0 or pt != hxy[i - 1]]
+            if len(hxy) < 3:
+                continue
+            holes_xy.append(ensure_cw(hxy))
+
+        # Walls: one quad per edge of every loop. Outer walls face
+        # outward; hole walls face into the cavity.
+        def add_walls(loop: list[tuple[float, float]], outward: bool) -> None:
+            n = len(loop)
+            for i in range(n):
+                x0, y0 = loop[i]
+                x1, y1 = loop[(i + 1) % n]
+                a = (x0, y0, bottom_z)
+                b = (x1, y1, bottom_z)
+                c = (x1, y1, top_z)
+                d = (x0, y0, top_z)
+                if outward:
+                    add_quad(a, b, c, d)
+                else:
+                    add_quad(a, d, c, b)
+
+        add_walls(outer_xy, outward=True)
+        for h in holes_xy:
+            add_walls(h, outward=False)
+
+        # Triangulate the top + bottom by merging holes into the outer
+        # via bridges, then ear-clipping. Same triangle indices serve
+        # both faces with opposite winding.
+        merged = list(outer_xy)
+        for h in holes_xy:
+            merged = merge_hole_into_outer(merged, h)
+        tri_indices = ear_clip(merged)
+        for ia, ib, ic in tri_indices:
+            a2 = merged[ia]
+            b2 = merged[ib]
+            c2 = merged[ic]
+            # Top — CCW from above for +Z normal
+            add_tri(
+                (a2[0], a2[1], top_z),
+                (b2[0], b2[1], top_z),
+                (c2[0], c2[1], top_z),
+            )
+            # Bottom — reverse for −Z normal
+            add_tri(
+                (a2[0], a2[1], bottom_z),
+                (c2[0], c2[1], bottom_z),
+                (b2[0], b2[1], bottom_z),
+            )
+
+    # ----- Base plate, if requested --------------------------------------
+    if base_mm > 0:
+        w_mm = cols * scale
+        h_mm = rows * scale
+        b00 = (0.0, 0.0, 0.0)
+        b10 = (w_mm, 0.0, 0.0)
+        b11 = (w_mm, h_mm, 0.0)
+        b01 = (0.0, h_mm, 0.0)
+        t00 = (0.0, 0.0, base_mm)
+        t10 = (w_mm, 0.0, base_mm)
+        t11 = (w_mm, h_mm, base_mm)
+        t01 = (0.0, h_mm, base_mm)
+        # Top of base (+Z)
+        add_quad(t00, t10, t11, t01)
+        # Bottom of base (−Z): reverse winding
+        add_quad(b00, b01, b11, b10)
+        # Sides
+        add_quad(b00, b10, t10, t00)  # front (−Y)
+        add_quad(b10, b11, t11, t10)  # right (+X)
+        add_quad(b11, b01, t01, t11)  # back (+Y)
+        add_quad(b01, b00, t00, t01)  # left (−X)
+
+    if not triangles:
+        return _error(
+            "no geometry produced; try a different threshold or invert",
+            status=400,
+        )
+
+    tri_array = np.asarray(triangles, dtype=np.float32)
+    out = stl_mesh.Mesh(np.zeros(tri_array.shape[0], dtype=stl_mesh.Mesh.dtype))
+    for i in range(tri_array.shape[0]):
+        out.vectors[i] = tri_array[i]
+
+    buf = io.BytesIO()
+    out.save(buf, mode=stl_mesh.Mode.BINARY)
+    buf.seek(0)
+
+    base = filename.rsplit(".", 1)[0] if "." in filename else filename
+    return _bytes_response(
+        buf.getvalue(),
+        mimetype="model/stl",
+        filename=f"{base}_image_to_stl.stl",
+    )
 
 
 # ---------------------------------------------------------------------------

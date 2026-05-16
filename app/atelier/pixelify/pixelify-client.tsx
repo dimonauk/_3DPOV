@@ -151,6 +151,7 @@ export default function PixelifyClient() {
           out.style.imageRendering = "pixelated";
         }
       } catch (err) {
+        console.error("[atelier/pixelify] pixelation failed", err);
         setError(err instanceof Error ? err.message : "Pixelation failed.");
       } finally {
         setBusy(false);
@@ -217,6 +218,7 @@ export default function PixelifyClient() {
           ref={fileInputRef}
           type="file"
           accept="image/*"
+          aria-label="Choose an image to pixelify"
           className="hidden"
           onChange={onFileChange}
         />

@@ -119,6 +119,7 @@ export default function RemoveBgClient() {
         durationMs: Date.now() - startedAt,
       });
     } catch (err) {
+      console.error("[atelier/remove-bg] generation failed", err);
       setOutput({
         kind: "error",
         message: err instanceof Error ? err.message : "Generation failed.",
@@ -193,6 +194,7 @@ export default function RemoveBgClient() {
           ref={fileInputRef}
           type="file"
           accept="image/*"
+          aria-label="Choose an image to remove the background from"
           className="hidden"
           onChange={(e) => {
             const file = e.target.files?.[0];
