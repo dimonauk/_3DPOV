@@ -71,6 +71,19 @@ export interface CardARConfig {
   };
 }
 
+export interface CardCalendar {
+  /** Booking URL (Cal.com, Calendly, SavvyCal, TidyCal, etc.). HTTPS only. */
+  url: string;
+  /** Optional display label, e.g. "Book a 30-min discovery call" */
+  label?: string;
+  /**
+   * Whether to inline-embed via iframe (true) or just show a button
+   * link (false). Some providers (Calendly) block iframes from domains
+   * not on their allow-list; if embeds fail visually, set false.
+   */
+  embed?: boolean;
+}
+
 export interface CardPrintSpec {
   /** Width in mm — UK standard is 85 */
   width_mm: number;
@@ -96,6 +109,11 @@ export interface Card {
   contact: CardContact;
   brand: CardBrand;
   ar: CardARConfig;
+  /**
+   * Optional booking integration. When set, the card landing shows a
+   * "Book a meeting" embed pointing at the configured URL.
+   */
+  calendar?: CardCalendar;
   print: CardPrintSpec;
   /** ISO timestamp when card was created/issued */
   issuedAt: string;

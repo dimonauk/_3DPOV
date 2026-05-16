@@ -180,6 +180,24 @@ export default function MyCardsPage() {
                     >
                       📬 Leads
                     </Link>
+                    <Link
+                      href={`/cards/mine/${encodeURIComponent(doc.slug)}/settings`}
+                      className="rounded-full border border-chrome-400/30 px-3 py-1 text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+                    >
+                      ⚙️ Settings
+                    </Link>
+                    <Link
+                      href={`/cards/mine/${encodeURIComponent(doc.slug)}/embed`}
+                      className="rounded-full border border-chrome-400/30 px-3 py-1 text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+                    >
+                      🖼 Embed
+                    </Link>
+                    <Link
+                      href={`/cards/mine/${encodeURIComponent(doc.slug)}/signature`}
+                      className="rounded-full border border-chrome-400/30 px-3 py-1 text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+                    >
+                      ✉️ Signature
+                    </Link>
                     <button
                       type="button"
                       onClick={() => onDelete(doc.slug)}

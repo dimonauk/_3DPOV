@@ -13,6 +13,8 @@ import CardEventTracker from "components/ar/CardEventTracker";
 import LeadCaptureForm from "components/ar/LeadCaptureForm";
 import SaveToWalletButton from "components/ar/SaveToWalletButton";
 import AddToAppleWalletButton from "components/ar/AddToAppleWalletButton";
+import ShareCardButtons from "components/ar/ShareCardButtons";
+import CalendarEmbed from "components/ar/CalendarEmbed";
 
 interface PageProps {
   // Next 15: params is a Promise — must be awaited.
@@ -148,6 +150,10 @@ export default async function CardPage({ params }: PageProps) {
           primary={primary}
           textOnBrand={textOnBrand}
         />
+        <ShareCardButtons card={card} slug={slug} />
+        {card.calendar && (
+          <CalendarEmbed slug={slug} calendar={card.calendar} brand={card.brand} />
+        )}
       </main>
   );
 }
