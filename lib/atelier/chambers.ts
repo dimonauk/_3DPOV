@@ -287,6 +287,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     category: "ai-generation",
     status: "live",
   },
+  {
+    slug: "flag-loom",
+    title: "Flag Loom",
+    blurb: "Hang any image as a silk cloth flag; reshape it by dragging vertices. The studio's default image-display surface.",
+    category: "paint-and-draw",
+    status: "live",
+  },
 
   // ---------- Pattern + textile ----------
   {
