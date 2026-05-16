@@ -38,7 +38,9 @@
  *   - Logs entry / exit + duration on every request
  */
 
-import { randomBytes } from "node:crypto";
+// Uses the Web Crypto API (globalThis.crypto) instead of node:crypto so
+// this module stays isomorphic — `withRouteLogging` is server-only but
+// the file is also imported from client components for createLogger.
 
 // ---------------------------------------------------------------------
 // Types
@@ -254,7 +256,11 @@ export function withRouteLogging<TContext = unknown>(
   handler: RouteHandler<TContext>,
 ) {
   return async (req: NextRequest, context: TContext): Promise<Response> => {
-    const requestId = randomBytes(4).toString("hex");
+    const bytes = new Uint8Array(4);
+    globalThis.crypto.getRandomValues(bytes);
+    const requestId = Array.from(bytes)
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
     const log = makeLogger(scope, requestId);
     const start = Date.now();
     const method = req.method;
