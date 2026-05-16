@@ -40,8 +40,20 @@ function useIsMobile(): boolean {
 }
 
 function DesktopShell({ children }: { children: ReactNode }) {
-  const { state } = useShell();
-  const { left, right, terminal } = state.open;
+  const { state, hydrated } = useShell();
+  // The shell store uses zustand persist (localStorage). On SSR + the
+  // very first client render, the store reports its default state
+  // (all panels closed). After mount, persist rehydrates and any panels
+  // the visitor previously had open snap to the persisted state — which
+  // diverges from the SSR render and triggers a hydration warning on
+  // every page that mounts the shell (~20 routes site-wide).
+  //
+  // Fix: force the effective open-state to all-closed until `hydrated`
+  // flips true. SSR + first client paint match; the user's saved layout
+  // applies on the next re-render with no warning.
+  const left = hydrated ? state.open.left : false;
+  const right = hydrated ? state.open.right : false;
+  const terminal = hydrated ? state.open.terminal : false;
 
   const leftWidth = left
     ? "var(--shell-panel-width, 280px)"
@@ -131,8 +143,11 @@ function DesktopShell({ children }: { children: ReactNode }) {
 }
 
 function MobileShell({ children }: { children: ReactNode }) {
-  const { state, setOpen } = useShell();
-  const { left, right, terminal } = state.open;
+  const { state, setOpen, hydrated } = useShell();
+  // Same persist-vs-SSR mismatch as DesktopShell — see comment there.
+  const left = hydrated ? state.open.left : false;
+  const right = hydrated ? state.open.right : false;
+  const terminal = hydrated ? state.open.terminal : false;
 
   return (
     <div className="relative w-full">
