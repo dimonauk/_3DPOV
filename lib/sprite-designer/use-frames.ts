@@ -29,10 +29,12 @@ export function useFrames(
   width: number,
   height: number,
 ): FramesApi {
-  // `ImageData` doesn't exist in Node; defer construction to the client.
-  const [frames, setFrames] = useState<ImageData[]>(() =>
-    typeof window === "undefined" ? [] : [blank(width, height)],
-  );
+  // `ImageData` doesn't exist in Node, and even on the client we MUST start
+  // empty so the first client render matches the SSR markup byte-for-byte
+  // (otherwise React escalates to a hard hydration failure: "tree will be
+  // regenerated on the client"). The mount-time effect below fills the first
+  // frame after hydration completes.
+  const [frames, setFrames] = useState<ImageData[]>(() => []);
   const [current, setCurrent] = useState(0);
   const [fps, setFps] = useState(8);
   const [isPlaying, setIsPlaying] = useState(false);
