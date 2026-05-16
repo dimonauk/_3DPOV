@@ -12,8 +12,8 @@ export const dynamic = "force-dynamic";
 export const experimental_ppr = false;
 
 import Link from "next/link";
-import { useRouter, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { use, useEffect, useState } from "react";
 import { useAuth } from "components/auth/auth-provider";
 
 type Lead = {
@@ -26,11 +26,15 @@ type Lead = {
   at: number;
 };
 
-export default function CardLeadsPage() {
+export default function CardLeadsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const auth = useAuth();
   const router = useRouter();
-  const params = useParams<{ slug: string }>();
-  const slug = params.slug;
+  // See cards/mine/[slug]/analytics/page.tsx for the React.use() rationale.
+  const { slug } = use(params);
 
   const [leads, setLeads] = useState<Lead[] | null>(null);
   const [truncated, setTruncated] = useState(false);

@@ -12,8 +12,8 @@ export const dynamic = "force-dynamic";
 export const experimental_ppr = false;
 
 import Link from "next/link";
-import { useRouter, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { use, useEffect, useState } from "react";
 import { useAuth } from "components/auth/auth-provider";
 
 type StatsResponse = {
@@ -49,11 +49,17 @@ const TYPE_ICONS: Record<string, string> = {
   lead_capture: "📬",
 };
 
-export default function CardAnalyticsPage() {
+export default function CardAnalyticsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const auth = useAuth();
   const router = useRouter();
-  const params = useParams<{ slug: string }>();
-  const slug = params.slug;
+  // Next 15 passes params as a Promise even to "use client" pages; React.use
+  // unwraps it synchronously. Reading it via useParams() instead triggers
+  // the "params is a Promise" enumeration warning at the framework boundary.
+  const { slug } = use(params);
 
   const [data, setData] = useState<StatsResponse | null>(null);
   const [error, setError] = useState<string | null>(null);

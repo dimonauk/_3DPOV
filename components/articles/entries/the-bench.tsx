@@ -402,7 +402,7 @@ export default function TheBench() {
         line gets pulled.
       </p>
       <p>
-        The avatar (nanny.vrm) is authored in VRoid Studio, runs
+        The avatar (dimona.vrm) is authored in VRoid Studio, runs
         in three.js with @pixiv/three-vrm, and the viseme blend-
         shapes drive lip sync from the TTS phoneme stream.
       </p>

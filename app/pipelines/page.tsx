@@ -62,14 +62,26 @@ function PipelineCard({ pipeline }: { pipeline: Pipeline }) {
         <span className="font-mono text-chrome-300">
           {pipeline.slices.join(", ")}
         </span>
-        {pipeline.surface && (
-          <Link
-            href={pipeline.surface}
-            className="ml-auto rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-300 hover:border-pink-200/60 hover:text-pink-200"
-          >
-            surface &rarr;
-          </Link>
-        )}
+        {pipeline.surface &&
+          (pipeline.surface.includes("[")
+            ? (
+              // Pattern surface (e.g. /holo-walk/[id]/ar) — render as text;
+              // App Router rejects dynamic brackets inside next/link href.
+              <span
+                className="ml-auto rounded-sm border border-warm-black-800 px-3 py-1 font-mono text-chrome-400"
+                title="Pattern route — surface depends on a record id"
+              >
+                {pipeline.surface}
+              </span>
+            )
+            : (
+              <Link
+                href={pipeline.surface}
+                className="ml-auto rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-300 hover:border-pink-200/60 hover:text-pink-200"
+              >
+                surface &rarr;
+              </Link>
+            ))}
       </div>
     </div>
   );

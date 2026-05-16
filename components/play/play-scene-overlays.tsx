@@ -8,6 +8,8 @@
  * sync HUD and pass/fail confirmations.
  */
 
+import { useEffect, useState } from "react";
+
 import { TrailLine } from "./trail-line";
 
 import type { Brush } from "./play-scene-brush";
@@ -55,10 +57,17 @@ export function FloorReference() {
 }
 
 export function XRSessionButton() {
-  const supported =
-    typeof navigator !== "undefined" &&
-    "xr" in navigator &&
-    typeof (navigator as Navigator & { xr?: unknown }).xr !== "undefined";
+  // SSR has no `navigator`; reading it at render time produces server/client
+  // text mismatch (server says "Desktop", client says "WebXR"). Initialise
+  // false and detect after mount so first paint matches the server's markup.
+  const [supported, setSupported] = useState(false);
+  useEffect(() => {
+    setSupported(
+      typeof navigator !== "undefined" &&
+        "xr" in navigator &&
+        typeof (navigator as Navigator & { xr?: unknown }).xr !== "undefined",
+    );
+  }, []);
 
   return (
     <div className="pointer-events-none absolute right-3 top-3 z-10">

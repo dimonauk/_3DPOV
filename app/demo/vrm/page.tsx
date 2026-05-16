@@ -8,7 +8,8 @@ export const metadata = {
     "End-to-end test of the capability stack: vrm.load + vrm.bones.pose + VRMAvatar wired through the vrm zustand slice. Drops Aura into her hostess-superheroine-brat held default pose.",
 };
 
-const DEFAULT_URL = "/nanny.vrm";
+const DEFAULT_URL = "/dimona.vrm";
+
 
 export default function VRMDemoPage() {
   return (
@@ -35,7 +36,7 @@ export default function VRMDemoPage() {
         </p>
         <p className="mt-4 max-w-2xl text-chrome-300">
           If you don&rsquo;t see Aura below, drop{" "}
-          <span className="font-mono text-chrome-200">nanny.vrm</span>{" "}
+          <span className="font-mono text-chrome-200">dimona.vrm</span>{" "}
           into <span className="font-mono text-chrome-200">/public/</span>{" "}
           and reload &mdash; the demo expects{" "}
           <span className="font-mono text-chrome-200">{DEFAULT_URL}</span>{" "}

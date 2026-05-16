@@ -8,7 +8,7 @@ export const metadata = {
     "Eight bricks composing live: vrm.load + vrm.bones.pose (auraDefault) + motion.idle + audio.tts + audio.visemes + vrm.expressions.blend + VRMAvatar. Aura stands in her brat stance, breathes, and her mouth moves as she speaks.",
 };
 
-const DEFAULT_URL = "/nanny.vrm";
+const DEFAULT_URL = "/dimona.vrm";
 const DEFAULT_LINE =
   "Hello there. I'm Aura. This is the studio I made. Welcome in.";
 
@@ -35,7 +35,7 @@ export default function AuraTalksPage() {
         </p>
         <p className="mt-4 max-w-2xl text-chrome-300">
           Drop{" "}
-          <span className="font-mono text-chrome-200">nanny.vrm</span>{" "}
+          <span className="font-mono text-chrome-200">dimona.vrm</span>{" "}
           into <span className="font-mono text-chrome-200">/public/</span>{" "}
           to see Aura. v0.1 routes TTS through the browser&rsquo;s
           Web Speech API &mdash; volume up, voice quality varies by OS.
@@ -69,7 +69,7 @@ export default function AuraTalksPage() {
           <ol className="mt-3 list-decimal space-y-2 pl-5">
             <li>
               <span className="font-mono text-chrome-100">vrm.load</span>{" "}
-              parses <span className="font-mono">/nanny.vrm</span>,
+              parses <span className="font-mono">/dimona.vrm</span>,
               registers a handle in the{" "}
               <span className="font-mono">vrm</span> slice.
             </li>

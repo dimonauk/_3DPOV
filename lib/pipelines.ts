@@ -64,7 +64,7 @@ export const pipelines: Pipeline[] = [
     summary:
       "Aura's hostess-superheroine-brat default. Baseline pose + slow breath + periodic blink + micro hip-shift, mood-scaled.",
     stages: [
-      { capability: "vrm.load", note: "load nanny.vrm into the slice" },
+      { capability: "vrm.load", note: "load dimona.vrm into the slice" },
       { capability: "vrm.bones.pose", note: "set POSES.auraDefault as baseline" },
       { capability: "motion.idle", note: "rAF loop writes idle offsets + blink, modulated by aura.mood" },
     ],

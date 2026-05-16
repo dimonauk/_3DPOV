@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import type { SplatZone } from "lib/neo-london/types";
 
 import { LondonMapLegend } from "./london-map-legend";
@@ -34,13 +32,16 @@ import {
 export function LondonMap({ zones }: { zones: SplatZone[] }) {
   return (
     <div className="relative rounded-sm border border-warm-black-800 bg-[#0c0a12] p-2">
+      {/* No role="img" — the SVG contains interactive <a> pins, so it is
+          not a single static image. The accessible label moves to <title>
+          as the first child of <svg>, which screen readers announce. */}
       <svg
         viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
         xmlns="http://www.w3.org/2000/svg"
         className="block h-auto w-full"
-        role="img"
         aria-label="Stylised map of London showing splat zones along the Thames and the canal spines"
       >
+        <title>London splat-zone map</title>
         <defs>
           <pattern
             id="neo-london-grid"
@@ -162,7 +163,12 @@ export function LondonMap({ zones }: { zones: SplatZone[] }) {
           const y = latToY(zone.lat);
           const style = PIN_STYLE[zone.status];
           return (
-            <Link
+            // SVG <a> instead of next/link — Next.js Link renders an HTML <a>
+            // which, when nested directly inside <svg>, breaks namespace
+            // inheritance and produces a hydration HTML mismatch. SVG <a>
+            // navigates the same way; we lose client-side prefetching on
+            // pin clicks, which is acceptable for a 20-pin map.
+            <a
               key={zone.slug}
               href={`/play/neo-london/zone/${zone.slug}`}
               aria-label={`${zone.name} — status ${zone.status}`}
@@ -185,11 +191,9 @@ export function LondonMap({ zones }: { zones: SplatZone[] }) {
                   strokeWidth={1.2}
                   className="transition-transform"
                 />
-                <title>
-                  {zone.name} &mdash; {zone.status}
-                </title>
+                <title>{`${zone.name} — ${zone.status}`}</title>
               </g>
-            </Link>
+            </a>
           );
         })}
       </svg>

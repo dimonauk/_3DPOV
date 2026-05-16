@@ -206,7 +206,7 @@ export default function AuraTheBody() {
         using the @pixiv/three-vrm wrapper. The model itself is
         authored in VRoid Studio, exported as a standard VRM with
         the canonical blend-shape preset names, and dropped onto the
-        bench&rsquo;s viewer as <code className="text-pink-200">nanny.vrm</code>{" "}
+        bench&rsquo;s viewer as <code className="text-pink-200">dimona.vrm</code>{" "}
         &mdash; the single file the{" "}
         <code className="text-pink-200">vrm.load</code> capability
         parses into a typed handle on the{" "}

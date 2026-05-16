@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 import {
@@ -87,18 +87,22 @@ function Trail({ effort }: Props) {
   );
   const writeIndexRef = useRef(0);
   const filledRef = useRef(0);
-  const geometryRef = useRef<THREE.BufferGeometry>(new THREE.BufferGeometry());
-  const drawCountRef = useRef(0);
-
-  // Initialise the geometry attribute once.
-  useEffect(() => {
-    const g = geometryRef.current;
+  // Initialise the geometry + position attribute synchronously on first
+  // render. A useEffect-based setup races useFrame on the very first
+  // frame — the frame loop fires before effects run, so `attributes.position`
+  // is undefined when the body tries to set `needsUpdate`, throwing
+  // "Cannot set properties of undefined (setting 'needsUpdate')".
+  const geometryRef = useRef<THREE.BufferGeometry | null>(null);
+  if (!geometryRef.current) {
+    const g = new THREE.BufferGeometry();
     g.setAttribute(
       "position",
       new THREE.BufferAttribute(positionsRef.current, 3),
     );
     g.setDrawRange(0, 0);
-  }, []);
+    geometryRef.current = g;
+  }
+  const drawCountRef = useRef(0);
 
   // Track effort changes; push the new sample into the ring on every render
   // that the effort actually changed. We avoid `useFrame` for sampling so

@@ -24,8 +24,14 @@ import { type Firestore, getFirestore } from "firebase/firestore";
  * initialised with reCAPTCHA Enterprise once per session. This makes
  * Firestore + Auth refuse requests that didn't pass the reCAPTCHA
  * challenge (drive-by abuse with stolen keys becomes useless).
- * Localhost development auto-uses the debug-token bypass; production
- * uses the live key.
+ *
+ * Localhost development uses the debug-token bypass, but ONLY when
+ * NEXT_PUBLIC_FIREBASE_APPCHECK_DEBUG_TOKEN is also set (to a token
+ * registered in Firebase Console → App Check → Apps → Debug tokens).
+ * Without that variable we skip App Check entirely in dev — otherwise
+ * the SDK generates a fresh unregistered token on every page load,
+ * tries to exchange it, and the exchange returns 403, drowning every
+ * other console message in noise.
  */
 
 const config = {
@@ -66,9 +72,13 @@ function initAppCheck(app: FirebaseApp): void {
   if (typeof window === "undefined") return;
 
   if (process.env.NODE_ENV === "development") {
+    const debugToken = process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_DEBUG_TOKEN;
+    // Without a registered debug token, the SDK would mint a fresh token,
+    // try to exchange it, and 403 on every page load. Skip init entirely.
+    if (!debugToken) return;
     // The debug-token flag must be set before initializeAppCheck.
     // See https://firebase.google.com/docs/app-check/web/debug-provider
-    (globalThis as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string }).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    (globalThis as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string }).FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken;
   }
 
   try {

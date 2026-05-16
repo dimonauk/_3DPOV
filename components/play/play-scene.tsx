@@ -21,10 +21,11 @@
  */
 
 import { Canvas } from "@react-three/fiber";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import * as THREE from "three";
 
 import {
+  BRUSHES,
   loadBrushFromModulePass,
   type Brush,
 } from "./play-scene-brush";
@@ -60,7 +61,15 @@ export function PlayScene() {
   const [passed, setPassed] = useState(false);
   const [lastFailReason, setLastFailReason] = useState<string | null>(null);
 
-  const [brush] = useState<Brush>(() => loadBrushFromModulePass());
+  // Initial state must match SSR (deterministic). The real choice lives in
+  // localStorage; reading it inside the initial useState would render the
+  // server's default brush first, then swap on client hydration — a text-
+  // level mismatch in HudPanel's brush name. Hydrate from storage in an
+  // effect after mount instead.
+  const [brush, setBrush] = useState<Brush>(BRUSHES.thin);
+  useEffect(() => {
+    setBrush(loadBrushFromModulePass());
+  }, []);
 
   const appendPoint = useCallback((p: THREE.Vector3) => {
     setLiveTrail((prev) => {

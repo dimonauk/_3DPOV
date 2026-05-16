@@ -457,7 +457,7 @@ export const stack: StackSection[] = [
       {
         name: "VRM (Three.js)",
         href: "https://vrm.dev/en/",
-        note: "Format the avatar (nanny.vrm) is authored in. The viseme blend-shapes drive the lip sync from the TTS phoneme stream.",
+        note: "Format the avatar (dimona.vrm) is authored in. The viseme blend-shapes drive the lip sync from the TTS phoneme stream.",
         status: "current",
       },
     ],
@@ -563,7 +563,7 @@ export const stack: StackSection[] = [
         status: "current",
       },
       {
-        name: "nanny.vrm (the avatar)",
+        name: "dimona.vrm (the avatar)",
         href: "https://vroid.com/en",
         note: "Aura's body. Authored in VRoid Studio; runs in three.js / @pixiv/three-vrm. The lip-sync target for the TTS step.",
         status: "current",
