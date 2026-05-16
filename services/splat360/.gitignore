@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# Job working dirs and outputs — never commit
+runs/
+work/
+out/
+*.ply
+*.splat
+*.ksplat
+*.colmap/
+*.db
+
+# Local secrets
+.env
+.env.local
