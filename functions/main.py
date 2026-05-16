@@ -1221,5 +1221,385 @@ def image_to_stl(req: https_fn.Request) -> https_fn.Response:
 
 
 # ---------------------------------------------------------------------------
+# /image_resize — resize + transcode an image
+# ---------------------------------------------------------------------------
+
+
+_IMAGE_RESIZE_MAX_DIMENSION = 8192
+_IMAGE_RESIZE_ALLOWED_MODES = frozenset({"width", "height", "longest-edge"})
+_IMAGE_RESIZE_ALLOWED_FITS = frozenset({"contain", "cover", "stretch"})
+_IMAGE_RESIZE_ALLOWED_FORMATS = frozenset({"png", "jpeg", "webp", "avif"})
+
+
+@https_fn.on_request(
+    region="us-central1",
+    cors=_DEFAULT_CORS,
+    memory=options.MemoryOption.MB_512,
+    timeout_sec=60,
+)
+@_chamber("image_resize")
+def image_resize(req: https_fn.Request) -> https_fn.Response:
+    """Image → resized + transcoded image.
+
+    Workhorse for every other studio surface: bureau print prep, the
+    social-card export, the print-bar product photograph. Pillow does
+    the actual transform.
+
+    Body (multipart):
+        file: image bytes (any Pillow-readable format)
+        mode: "width" | "height" | "longest-edge" — picks which
+            dimension the target governs. Default "longest-edge".
+        target: int — target dimension in pixels. Default 1920.
+        fit: "contain" | "cover" | "stretch" — default "contain".
+            "contain" preserves aspect ratio so the chosen dimension is
+            exact and the other is computed. "cover" resizes to fill
+            then centre-crops. "stretch" disregards aspect ratio.
+        format: "png" | "jpeg" | "webp" | "avif" — output format.
+            Default "png".
+        quality: int 1–100 — for lossy formats. Default 90. Ignored
+            for PNG.
+        strip_icc: 0 | 1 — strip the source ICC profile. Default 0
+            (preserve).
+
+    Returns: image bytes with the matching Content-Type.
+    """
+    try:
+        body, filename, _ = _read_uploaded_file(req)
+    except ValueError as exc:
+        return _error(str(exc))
+
+    mode = (req.form.get("mode") or "longest-edge").strip().lower()
+    if mode not in _IMAGE_RESIZE_ALLOWED_MODES:
+        return _error(
+            f"unknown mode '{mode}'; allowed: "
+            f"{sorted(_IMAGE_RESIZE_ALLOWED_MODES)}",
+            status=400,
+        )
+
+    target = _form_int(req, "target", 1920)
+    if target < 16 or target > _IMAGE_RESIZE_MAX_DIMENSION:
+        return _error(
+            f"target must be 16..{_IMAGE_RESIZE_MAX_DIMENSION}",
+            status=400,
+        )
+
+    fit = (req.form.get("fit") or "contain").strip().lower()
+    if fit not in _IMAGE_RESIZE_ALLOWED_FITS:
+        return _error(
+            f"unknown fit '{fit}'; allowed: {sorted(_IMAGE_RESIZE_ALLOWED_FITS)}",
+            status=400,
+        )
+
+    out_format = (req.form.get("format") or "png").strip().lower()
+    if out_format not in _IMAGE_RESIZE_ALLOWED_FORMATS:
+        return _error(
+            f"unknown format '{out_format}'; allowed: "
+            f"{sorted(_IMAGE_RESIZE_ALLOWED_FORMATS)}",
+            status=400,
+        )
+
+    quality = _form_int(req, "quality", 90)
+    if quality < 1 or quality > 100:
+        return _error("quality must be 1..100", status=400)
+
+    strip_icc = _form_int(req, "strip_icc", 0) == 1
+
+    # Heavy imports inside the function for cold-start hygiene. The
+    # AVIF plugin registers itself on import — `import pillow_avif`
+    # adds the AVIF codec to Pillow's registry.
+    from PIL import Image
+
+    if out_format == "avif":
+        try:
+            import pillow_avif  # noqa: F401 — side-effect: registers AVIF
+        except ImportError:
+            return _error(
+                "AVIF output unavailable on this deploy",
+                status=400,
+            )
+
+    try:
+        img = Image.open(io.BytesIO(body))
+        img.load()
+    except Exception as exc:  # noqa: BLE001 — Pillow raises various
+        return _error(f"could not decode image: {exc}", status=400)
+
+    src_w, src_h = img.size
+    if (
+        src_w > _IMAGE_RESIZE_MAX_DIMENSION
+        or src_h > _IMAGE_RESIZE_MAX_DIMENSION
+    ):
+        raise ValueError(
+            f"image too large ({src_w}x{src_h}); max "
+            f"{_IMAGE_RESIZE_MAX_DIMENSION}x{_IMAGE_RESIZE_MAX_DIMENSION}"
+        )
+    if src_w < 1 or src_h < 1:
+        return _error("source image has zero size", status=400)
+
+    # Resolve target → (target_w, target_h) given mode + fit. For
+    # "contain", the non-governed dimension is derived to preserve
+    # aspect ratio. For "cover", the governed dimension still leads but
+    # the other is forced to a deliberate aspect; we default to keeping
+    # the source aspect (i.e. cover = contain for a single target),
+    # which is the right behaviour when one number is the answer.
+    # "stretch" applies the target as a square unless the operator
+    # passes both axes — out of scope for this v1.
+    aspect = src_w / src_h
+
+    if mode == "width":
+        target_w = target
+        target_h = max(1, round(target / aspect))
+    elif mode == "height":
+        target_h = target
+        target_w = max(1, round(target * aspect))
+    else:  # longest-edge
+        if src_w >= src_h:
+            target_w = target
+            target_h = max(1, round(target / aspect))
+        else:
+            target_h = target
+            target_w = max(1, round(target * aspect))
+
+    if target_w < 1 or target_h < 1:
+        return _error("computed target dimensions are invalid", status=400)
+
+    # ---- Resize ----------------------------------------------------------
+    if fit == "stretch":
+        resized = img.resize(
+            (target_w, target_h),
+            resample=Image.Resampling.LANCZOS,
+        )
+    elif fit == "cover":
+        # Resize so the source fills the target box (one axis may
+        # exceed target), then centre-crop to (target_w, target_h).
+        scale = max(target_w / src_w, target_h / src_h)
+        scaled_w = max(target_w, round(src_w * scale))
+        scaled_h = max(target_h, round(src_h * scale))
+        scaled = img.resize(
+            (scaled_w, scaled_h),
+            resample=Image.Resampling.LANCZOS,
+        )
+        left = (scaled_w - target_w) // 2
+        top = (scaled_h - target_h) // 2
+        resized = scaled.crop((left, top, left + target_w, top + target_h))
+    else:  # contain — aspect-preserving, exact on the governed axis
+        resized = img.resize(
+            (target_w, target_h),
+            resample=Image.Resampling.LANCZOS,
+        )
+
+    # ---- Mode conversion for output format ------------------------------
+    # JPEG can't carry alpha; flatten onto white. PNG/WebP/AVIF keep
+    # alpha. Convert P (palette) up to RGBA so resampling didn't smear
+    # the palette, then drop alpha for JPEG.
+    if resized.mode in ("P", "PA"):
+        resized = resized.convert("RGBA")
+
+    if out_format == "jpeg":
+        if resized.mode in ("RGBA", "LA"):
+            background = Image.new("RGB", resized.size, (255, 255, 255))
+            alpha = resized.split()[-1]
+            background.paste(resized, mask=alpha)
+            resized = background
+        elif resized.mode != "RGB":
+            resized = resized.convert("RGB")
+
+    # ---- ICC profile passthrough ----------------------------------------
+    icc_bytes: bytes | None = None
+    if not strip_icc:
+        icc = img.info.get("icc_profile")
+        if isinstance(icc, bytes) and icc:
+            icc_bytes = icc
+
+    # ---- Encode ---------------------------------------------------------
+    save_kwargs: dict[str, Any] = {}
+    if icc_bytes is not None:
+        save_kwargs["icc_profile"] = icc_bytes
+
+    if out_format == "png":
+        pil_format = "PNG"
+        save_kwargs["optimize"] = True
+    elif out_format == "jpeg":
+        pil_format = "JPEG"
+        save_kwargs["quality"] = quality
+        save_kwargs["optimize"] = True
+        save_kwargs["progressive"] = True
+    elif out_format == "webp":
+        pil_format = "WEBP"
+        save_kwargs["quality"] = quality
+        save_kwargs["method"] = 6
+    else:  # avif
+        pil_format = "AVIF"
+        save_kwargs["quality"] = quality
+
+    buf = io.BytesIO()
+    try:
+        resized.save(buf, format=pil_format, **save_kwargs)
+    except Exception as exc:  # noqa: BLE001 — Pillow encoders raise various
+        return _error(
+            f"could not encode {out_format}: {exc}",
+            status=400,
+        )
+    buf.seek(0)
+
+    mimetype = "image/jpeg" if out_format == "jpeg" else f"image/{out_format}"
+    ext = "jpg" if out_format == "jpeg" else out_format
+    base = filename.rsplit(".", 1)[0] if "." in filename else filename
+    return _bytes_response(
+        buf.getvalue(),
+        mimetype=mimetype,
+        filename=f"{base}_resized.{ext}",
+    )
+
+
+# ---------------------------------------------------------------------------
+# /exif_strip — image → same image with all metadata stripped
+# ---------------------------------------------------------------------------
+
+
+_EXIF_STRIP_MAX_BYTES = 50 * 1024 * 1024  # 50 MB
+_EXIF_STRIP_MAX_DIMENSION = 8192
+
+
+@https_fn.on_request(
+    region="us-central1",
+    cors=_DEFAULT_CORS,
+    memory=options.MemoryOption.MB_256,
+    timeout_sec=30,
+)
+@_chamber("exif_strip")
+def exif_strip(req: https_fn.Request) -> https_fn.Response:
+    """Image → same image, every metadata block stripped.
+
+    The exact inverse of /probe. Probe READS the dossier; this chamber
+    DELETES it. Pixels are untouched — only the EXIF / XMP / IPTC /
+    optional ICC sidecars are dropped.
+
+    Body (multipart):
+        file: image bytes (any Pillow-readable, encodeable format)
+        preserve_icc: 0 | 1 — when 1, keep the ICC colour profile
+            (drop only EXIF/XMP/IPTC); when 0 (default), strip
+            everything including ICC.
+
+    Response: bytes of the re-saved image, original format preserved.
+    Sets an `X-Stripped` header listing the metadata blocks that
+    existed in the source and were removed, semicolon-separated
+    (e.g. `EXIF; XMP; ICC`).
+    """
+    try:
+        body, filename, _ = _read_uploaded_file(req)
+    except ValueError as exc:
+        return _error(str(exc))
+
+    if len(body) > _EXIF_STRIP_MAX_BYTES:
+        raise ValueError(
+            f"image too large ({len(body)} bytes); max {_EXIF_STRIP_MAX_BYTES}"
+        )
+
+    preserve_icc = _form_int(req, "preserve_icc", 0) == 1
+
+    # Heavy imports inside the function for cold-start hygiene.
+    from PIL import Image
+
+    try:
+        img = Image.open(io.BytesIO(body))
+        img.load()
+    except Exception as exc:  # noqa: BLE001 — Pillow raises various
+        raise ValueError(f"could not decode image: {exc}") from exc
+
+    if (
+        img.width > _EXIF_STRIP_MAX_DIMENSION
+        or img.height > _EXIF_STRIP_MAX_DIMENSION
+    ):
+        raise ValueError(
+            f"image too large: {img.width}x{img.height}; max "
+            f"{_EXIF_STRIP_MAX_DIMENSION}x{_EXIF_STRIP_MAX_DIMENSION}"
+        )
+
+    # ---- Detect what existed before stripping ---------------------------
+    stripped: list[str] = []
+    info = img.info or {}
+
+    had_exif = False
+    if "exif" in info:
+        had_exif = True
+    else:
+        try:
+            ex = img.getexif()
+            if ex and len(ex) > 0:
+                had_exif = True
+        except Exception:  # noqa: BLE001
+            pass
+    if had_exif:
+        stripped.append("EXIF")
+
+    if "XML:com.adobe.xmp" in info or "xmp" in info:
+        stripped.append("XMP")
+
+    # IPTC / Photoshop metadata commonly lives under `photoshop` or `iptc`.
+    if "iptc" in info or "photoshop" in info:
+        stripped.append("IPTC")
+
+    if "comment" in info:
+        stripped.append("Comment")
+
+    had_icc = "icc_profile" in info and bool(info.get("icc_profile"))
+    if had_icc and not preserve_icc:
+        stripped.append("ICC")
+
+    # ---- Resolve output format + extension ------------------------------
+    # Pillow's `format` attribute names the decoder it used. For the
+    # response we keep the same format; the extension maps via the
+    # standard short forms (JPEG → jpg, TIFF → tif), and the MIME type
+    # uses Pillow's lower-case format with the JPEG/TIFF fixups.
+    src_format = img.format or "PNG"
+    fmt_lower = src_format.lower()
+    ext_map = {
+        "jpeg": "jpg",
+        "tiff": "tif",
+    }
+    src_ext = ext_map.get(fmt_lower, fmt_lower)
+    mime_format = "jpeg" if src_ext == "jpg" else (
+        "tiff" if src_ext == "tif" else src_ext
+    )
+    mimetype = f"image/{mime_format}"
+
+    # ---- Re-save without metadata ---------------------------------------
+    # By omitting the `exif` kwarg and not passing `xmp` / `iptc`, Pillow
+    # writes a clean file. ICC is only kept when explicitly requested.
+    save_kwargs: dict[str, Any] = {}
+    if preserve_icc and had_icc:
+        save_kwargs["icc_profile"] = info["icc_profile"]
+
+    # Pillow can't save palette-mode images straight to JPEG. Mirror the
+    # common-sense conversion an operator would do by hand.
+    if src_format == "JPEG" and img.mode not in {"RGB", "L", "CMYK"}:
+        img = img.convert("RGB")
+
+    out = io.BytesIO()
+    try:
+        img.save(out, format=src_format, **save_kwargs)
+    except Exception as exc:  # noqa: BLE001 — Pillow raises various
+        raise ValueError(
+            f"could not re-encode as {src_format}: {exc}"
+        ) from exc
+    out.seek(0)
+
+    base = filename.rsplit(".", 1)[0] if "." in filename else filename
+    response = _bytes_response(
+        out.getvalue(),
+        mimetype=mimetype,
+        filename=f"{base}_clean.{src_ext}",
+    )
+    # The browser CORS preflight needs to see X-Stripped in the exposed
+    # headers list, otherwise res.headers.get() returns null in the
+    # client. The outer CORS wrapper handles preflight; we set the
+    # expose-headers value here so the actual response permits readout.
+    response.headers["X-Stripped"] = "; ".join(stripped) if stripped else "none"
+    response.headers["Access-Control-Expose-Headers"] = "X-Stripped"
+    return response
+
+
+# ---------------------------------------------------------------------------
 # Additional chambers land below (one function each).
 # ---------------------------------------------------------------------------

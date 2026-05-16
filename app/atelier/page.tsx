@@ -144,10 +144,28 @@ export default function AtelierPage() {
                 summary: "Contour-extruded printable plate. Cousin to the lithophane, but cut-outs not heightmap.",
               },
               {
+                slug: "image-resize",
+                title: "Resize",
+                kind: "Function",
+                summary: "The workhorse. Resize, transcode, strip metadata. Every image you ship passes through here.",
+              },
+              {
+                slug: "exif-strip",
+                title: "Strip metadata",
+                kind: "Function",
+                summary: "The inverse of Probe. Every byte of EXIF, ICC, XMP, IPTC goes away. The pixels stay.",
+              },
+              {
                 slug: "voxel-world",
                 title: "Voxel world",
                 kind: "Browser",
                 summary: "Left-click adds a cube, right-click removes one. The smallest unit of sculpture is one cube.",
+              },
+              {
+                slug: "isosurface",
+                title: "Isosurface",
+                kind: "Browser",
+                summary: "An equation becomes a surface. WebGPU marching cubes on three signed-distance fields.",
               },
             ].map((c) => (
               <Link
