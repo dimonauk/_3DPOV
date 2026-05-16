@@ -401,9 +401,9 @@ export async function splatGenerateServer(
       throw asError(
         "provider-unavailable",
         "hangar-gsplat: bench-side video → 3D splat training pipeline not " +
-          "yet wired. Lives at D:/The_Hangar/engines/splat360/ — currently " +
-          "foundation-phase. See splat-generate.server.ts for the job " +
-          "contract this route expects.",
+          "yet wired. Source lives at `services/splat360/` in this repo; " +
+          "currently foundation-phase. See splat-generate.server.ts for " +
+          "the job contract this route expects.",
       );
     case "hangar-4dgs":
       // Bench-side contract (TODO — choose one of: 4D-GS, Deformable-GS,

@@ -1,0 +1,38 @@
+# Python virtual environments — bench-local, not shipped
+.venv/
+**/.venv/
+venv/
+**/venv/
+.env
+
+# Python build cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ML model weights — large, often licence-restricted (apple-amlr SHARP,
+# proprietary depth models, etc.). Operators download separately.
+*.onnx
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.bin
+!**/standard-3dgs.bin
+*.ckpt
+
+# Run artefacts — beta-test screenshots, render outputs, batch logs
+artifacts/
+test-captures/
+run-logs/
+batch-*.log
+*.log
+
+# IDE / OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

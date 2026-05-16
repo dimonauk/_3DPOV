@@ -1,0 +1,14 @@
+# Model weights — too big for git. Download from Hugging Face:
+# pearsonkyle/Sharp-onnx → sharp_fp16.onnx (~1.3 GB)
+sharp_fp16.onnx
+*.onnx
+
+# Local venv (covers .venv/ which the root .gitignore misses).
+.venv/
+
+# Batch run logs.
+batch-run-*.log
+*.log
+
+# Python cache.
+__pycache__/
