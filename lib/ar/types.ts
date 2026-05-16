@@ -53,6 +53,31 @@ export interface CardARConfig {
    * presenters or branded mascots. Optional.
    */
   vrm?: string;
+  /**
+   * Optional intro line the avatar speaks on first mount of the Avatar
+   * tab. Delivered via the browser's Web Speech API — zero server cost,
+   * voice quality varies by platform but is decent on macOS/iOS.
+   *
+   * Example: "Hi! I'm Aura. Dimona built me into this card so you'd
+   * have someone to talk to while she's not around. What brings you?"
+   */
+  vrmIntro?: string;
+  /**
+   * Optional system prompt that defines the avatar's persona for chat.
+   * When set together with `vrm`, the Avatar tab gains a chat overlay
+   * powered by AI Gateway (same key as the scanner / enrichment).
+   *
+   * Use this to encode tone, voice, knowledge boundaries — the avatar
+   * answers in this voice, never pretending to be the card holder
+   * themselves.
+   */
+  vrmPersona?: string;
+  /**
+   * Optional voice identifier for Web Speech API. Browser-dependent —
+   * "en-GB", "en-US", or specific voice names like "Daniel" on macOS.
+   * Defaults to the browser's preferred voice for the page locale.
+   */
+  vrmVoice?: string;
   /** Uniform scale applied to model when mounted on tracked image */
   modelScale: number;
   /** Rotation in radians [x, y, z] */

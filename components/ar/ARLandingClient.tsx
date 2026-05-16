@@ -31,6 +31,7 @@ const ModelViewerNative = dynamic(() => import("./ModelViewerNative"), { ssr: fa
 const WebcamARScene = dynamic(() => import("./WebcamARScene"), { ssr: false });
 const SplatViewer = dynamic(() => import("./SplatViewer"), { ssr: false });
 const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
+const AuraCompanion = dynamic(() => import("./AuraCompanion"), { ssr: false });
 
 type Mode = "room" | "mindar" | "world" | "desktop" | "splat" | "vrm";
 
@@ -128,7 +129,10 @@ export default function ARLandingClient({ card }: { card: Card }) {
         {mode === "mindar" && <MindARScene card={card} />}
         {(mode === "world" || mode === "desktop") && <ModelViewerNative card={card} />}
         {mode === "splat" && hasSplat && <SplatViewer card={card} splatUrl={card.ar.splat!} />}
-        {mode === "vrm" && hasVRM && <VRMViewer card={card} vrmUrl={card.ar.vrm!} />}
+        {mode === "vrm" && hasVRM && (card.ar.vrmPersona || card.ar.vrmIntro
+            ? <AuraCompanion card={card} vrmUrl={card.ar.vrm!} />
+            : <VRMViewer card={card} vrmUrl={card.ar.vrm!} />
+          )}
       </div>
 
       <style jsx>{`
