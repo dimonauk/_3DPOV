@@ -11,13 +11,23 @@ import Link from "next/link";
 import {
   useCallback,
   useEffect,
-  useId,
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 
 import type { NavGroup } from "./navbar-config";
+
+// Deterministic, stable across SSR/CSR. Earlier we used useId(); under
+// streaming SSR (PPR is on in next.config.ts) the React tree position of
+// these dropdowns could shift between the prerendered shell and the
+// hydrated tree, producing different useId outputs and a hydration warning
+// on every navbar render. Group labels are already unique across the navbar
+// (Studio, Read, Work, Play, Community) so derive the panel id from the
+// label and skip the race entirely.
+function slugify(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
 
 export function DesktopGroup({
   group,
@@ -30,7 +40,7 @@ export function DesktopGroup({
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const panelId = useId();
+  const panelId = `nav-group-${slugify(group.label)}`;
 
   const cancelClose = useCallback(() => {
     if (closeTimer.current) {
