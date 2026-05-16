@@ -82,7 +82,7 @@ export type JobStatus = {
 };
 
 export type PollOptions = {
-  /** How often to GET /jobs/{id}. Default 1500 ms. */
+  /** How often to GET {jobsPath}/{id}. Default 1500 ms. */
   intervalMs?: number;
   /** Hard deadline. Default 5 minutes. */
   timeoutMs?: number;
@@ -90,6 +90,13 @@ export type PollOptions = {
   token?: string;
   /** Provider name used in error messages. */
   providerLabel?: string;
+  /**
+   * Route prefix where the bench exposes jobs. Default "/jobs".
+   * splat360's hangar-gsplat exposes "/video3d/jobs"; splat360's
+   * hangar-4dgs will expose "/video4d/jobs". sharp-onnx-bench uses the
+   * default. The provider passes this so the helpers stay generic.
+   */
+  jobsPath?: string;
 };
 
 const DEFAULT_POLL_INTERVAL_MS = 1_500;
@@ -108,6 +115,7 @@ export async function pollUntilDone(
   const intervalMs = opts.intervalMs ?? DEFAULT_POLL_INTERVAL_MS;
   const timeoutMs = opts.timeoutMs ?? DEFAULT_POLL_TIMEOUT_MS;
   const label = opts.providerLabel ?? "splat";
+  const jobsPath = opts.jobsPath ?? "/jobs";
   const headers = opts.token ? authHeaders(opts.token) : {};
   const started = Date.now();
 
@@ -118,7 +126,7 @@ export async function pollUntilDone(
         `${label} job ${jobId} timed out after ${timeoutMs / 1000}s`,
       );
     }
-    const res = await fetch(`${serviceUrl}/jobs/${jobId}`, { headers });
+    const res = await fetch(`${serviceUrl}${jobsPath}/${jobId}`, { headers });
     if (!res.ok) {
       throw asError(
         "provider-unavailable",
@@ -148,12 +156,13 @@ export async function downloadResultBytes(
   serviceUrl: string,
   jobId: string,
   resultPath: string,
-  opts: { token?: string; providerLabel?: string } = {},
+  opts: { token?: string; providerLabel?: string; jobsPath?: string } = {},
 ): Promise<Uint8Array> {
   const label = opts.providerLabel ?? "splat";
+  const jobsPath = opts.jobsPath ?? "/jobs";
   const headers = opts.token ? authHeaders(opts.token) : {};
   const res = await fetch(
-    `${serviceUrl}/jobs/${jobId}/result/${resultPath}`,
+    `${serviceUrl}${jobsPath}/${jobId}/result/${resultPath}`,
     { headers },
   );
   if (!res.ok) {

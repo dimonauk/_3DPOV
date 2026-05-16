@@ -102,7 +102,7 @@ async function postJob(
     videoFilename,
   );
   form.set("params", JSON.stringify(params));
-  const res = await fetch(`${SERVICE_URL}/jobs`, {
+  const res = await fetch(`${SERVICE_URL}/video3d/jobs`, {
     method: "POST",
     body: form,
     headers: authHeaders(SERVICE_AUTH_TOKEN),
@@ -110,7 +110,7 @@ async function postJob(
   if (res.status === 404 || res.status === 405) {
     throw asError(
       "provider-unavailable",
-      `hangar-gsplat: bench endpoint ${SERVICE_URL}/jobs returned ${res.status}. ` +
+      `hangar-gsplat: bench endpoint ${SERVICE_URL}/video3d/jobs returned ${res.status}. ` +
         `The splat360 service has not yet been extended with the video→3D entry point. ` +
         `See lib/capabilities/viz/splat-providers/hangar-gsplat.server.ts for the contract.`,
     );
@@ -161,11 +161,13 @@ export async function generateViaHangarGsplat(
     token: SERVICE_AUTH_TOKEN,
     providerLabel: "hangar-gsplat",
     timeoutMs: HANGAR_GSPLAT_TIMEOUT_MS,
+    jobsPath: "/video3d/jobs",
   });
 
   const plyBytes = await downloadResultBytes(SERVICE_URL, jobId, "std", {
     token: SERVICE_AUTH_TOKEN,
     providerLabel: "hangar-gsplat",
+    jobsPath: "/video3d/jobs",
   });
 
   const filenameRoot = source.filename.replace(/\.[^.]+$/, "");

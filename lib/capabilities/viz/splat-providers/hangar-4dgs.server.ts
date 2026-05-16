@@ -99,7 +99,7 @@ async function postJob(
     videoFilename,
   );
   form.set("params", JSON.stringify(params));
-  const res = await fetch(`${SERVICE_URL}/jobs`, {
+  const res = await fetch(`${SERVICE_URL}/video4d/jobs`, {
     method: "POST",
     body: form,
     headers: authHeaders(SERVICE_AUTH_TOKEN),
@@ -107,7 +107,7 @@ async function postJob(
   if (res.status === 404 || res.status === 405) {
     throw asError(
       "provider-unavailable",
-      `hangar-4dgs: bench endpoint ${SERVICE_URL}/jobs returned ${res.status}. ` +
+      `hangar-4dgs: bench endpoint ${SERVICE_URL}/video4d/jobs returned ${res.status}. ` +
         `The 4D-GS service has not yet been built. ` +
         `See lib/capabilities/viz/splat-providers/hangar-4dgs.server.ts for the contract.`,
     );
@@ -157,6 +157,7 @@ export async function generateViaHangar4dgs(
     token: SERVICE_AUTH_TOKEN,
     providerLabel: "hangar-4dgs",
     timeoutMs: HANGAR_4DGS_TIMEOUT_MS,
+    jobsPath: "/video4d/jobs",
   });
 
   // Result path depends on encoding. Canonical-time has the time-coded
@@ -167,6 +168,7 @@ export async function generateViaHangar4dgs(
   const plyBytes = await downloadResultBytes(SERVICE_URL, jobId, resultPath, {
     token: SERVICE_AUTH_TOKEN,
     providerLabel: "hangar-4dgs",
+    jobsPath: "/video4d/jobs",
   });
 
   const plyFlavour: SplatPlyFlavour =
