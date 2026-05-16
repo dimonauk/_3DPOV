@@ -14,7 +14,7 @@
  * per hour per uid; this component shows the remaining count after
  * each scan so the user knows where they stand.
  *
- * When ANTHROPIC_API_KEY isn't configured in production, the
+ * When AI_GATEWAY_API_KEY isn't configured in production, the
  * endpoint returns 503 and the UI surfaces a "scanner unavailable"
  * fallback with a clear path to the manual entry form. The button
  * itself stays visible — clicking it produces the friendly message,

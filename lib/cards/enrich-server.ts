@@ -1,83 +1,93 @@
 import "server-only";
 
 /**
- * AI Contact Enrichment — given an email + name, infer company,
- * likely role, industry, and talking points using Claude's
- * general-knowledge reasoning.
+ * AI Contact Enrichment — given an email + name + optional message,
+ * infer company, industry, likely role, and talking points using
+ * Vercel AI Gateway.
  *
- * Unlike commercial enrichment services (Clearbit / Apollo / People
- * Data Labs) we don't query an enrichment DB — we lean entirely on
- * Claude's training data + reasoning. Pros:
- *   • No extra vendor or API key
- *   • No per-lead cost beyond Claude usage
- *   • Works for any email domain instantly
- * Cons:
- *   • No real-time signals (job changes, funding events, etc.)
- *   • Can hallucinate — we capture confidence + label uncertain
- *     enrichments so the user knows whether to trust them
+ * One env var (`AI_GATEWAY_API_KEY`) replaces per-provider keys.
+ * `generateObject` from the AI SDK enforces the Zod schema so we
+ * never hand-parse JSON.
  *
- * Activates only when ANTHROPIC_API_KEY is set (same env var that
- * powers the AI Universal Scanner). Without it the endpoint returns
- * 503 and the dashboard hides the Enrich button.
+ * Unlike commercial enrichment services (Clearbit / Apollo / PDL)
+ * we lean on the LLM's general-knowledge reasoning. Pros: no extra
+ * vendor, no per-lead cost beyond LLM usage, works on any domain.
+ * Cons: no real-time signals (job changes, funding) — we capture
+ * confidence + notes so users know when to double-check.
+ *
+ * Model selection:
+ *   AI_GATEWAY_MODEL_TEXT  e.g. "openai/gpt-5.4" (default)
  *
  * Privacy:
- *   - The enrichment prompt sends only what we already have on the
- *     lead (name + email + optional message). Nothing else.
- *   - Result is stored on the lead doc in Firestore for re-display
- *     without re-querying Claude.
- *   - Owner can clear enrichment via UI to remove from Firestore.
+ *   - The enrichment prompt sends only the lead's name + email +
+ *     optional message. Nothing else from our DB.
+ *   - Result is persisted on the lead doc so we don't re-query the
+ *     model on every dashboard load.
+ *   - Owner can clear enrichment from the dashboard.
  */
 
-import Anthropic from "@anthropic-ai/sdk";
+import { generateObject } from "ai";
+import { z } from "zod";
 
-export type EnrichmentResult = {
-  /** Inferred company name based on email domain or context. */
-  company?: string;
-  /** Inferred industry (e.g. "FinTech", "Healthcare", "Creative Agency"). */
-  industry?: string;
-  /** Likely seniority + role function (e.g. "Senior Software Engineer"). */
-  likelyRole?: string;
-  /** One-sentence description of the company, if recognised. */
-  companyDescription?: string;
-  /** Best-guess company website. */
-  companyWebsite?: string;
-  /** Suggested talking points for the follow-up message. */
-  talkingPoints?: string[];
-  /** Confidence in the overall enrichment. */
-  confidence: "high" | "medium" | "low";
-  /** Any caveats the model wants to flag. */
-  notes?: string;
-}
+export const EnrichmentResultSchema = z.object({
+  company: z
+    .string()
+    .optional()
+    .describe("Inferred company name from email domain or context"),
+  industry: z
+    .string()
+    .optional()
+    .describe(
+      "Inferred industry (e.g. 'FinTech', 'Healthcare', 'Creative Agency')",
+    ),
+  likelyRole: z
+    .string()
+    .optional()
+    .describe(
+      "Likely seniority + role function (e.g. 'Senior Software Engineer')",
+    ),
+  companyDescription: z
+    .string()
+    .optional()
+    .describe("One-sentence description of the company if recognised"),
+  companyWebsite: z
+    .string()
+    .optional()
+    .describe("Best-guess company website URL"),
+  talkingPoints: z
+    .array(z.string())
+    .max(5)
+    .optional()
+    .describe("2-3 short conversation hooks for the follow-up"),
+  confidence: z
+    .enum(["high", "medium", "low"])
+    .describe("Confidence in the overall enrichment"),
+  notes: z
+    .string()
+    .optional()
+    .describe("Caveats the model wants to flag"),
+});
+
+export type EnrichmentResult = z.infer<typeof EnrichmentResultSchema>;
 
 export function isEnrichmentConfigured(): boolean {
-  return Boolean(process.env.ANTHROPIC_API_KEY);
+  return Boolean(process.env.AI_GATEWAY_API_KEY);
 }
+
+const TEXT_MODEL =
+  process.env.AI_GATEWAY_MODEL_TEXT ?? "openai/gpt-5.4";
 
 const SYSTEM_PROMPT = `You enrich business-card leads by inferring company / role / industry from a name + email + optional message.
 
-Return ONLY a JSON object matching this TypeScript type:
-
-{
-  company?: string;
-  industry?: string;
-  likelyRole?: string;
-  companyDescription?: string;
-  companyWebsite?: string;
-  talkingPoints?: string[];
-  confidence: "high" | "medium" | "low";
-  notes?: string;
-}
-
 Guidance:
-- Use the email domain as the primary signal for company identification.
+- Use the email domain as the PRIMARY signal for company identification.
 - For well-known companies (large brands, recognisable startups), populate company / industry / description with high confidence.
-- For obscure domains, set confidence "low" and skip company description rather than guess.
+- For obscure domains, set confidence "low" and SKIP company description rather than guess.
 - For generic email providers (gmail, outlook, yahoo, hotmail, icloud, proton): set company = undefined, confidence = "low".
-- "likelyRole" should pull from the message context (if any) OR from the name (e.g., "Dr. X" suggests medical/academic) OR be omitted.
-- "talkingPoints" should be 2-3 short conversation hooks based on the company / industry / context. Skip when confidence is low.
-- "notes" is optional — use to flag specific ambiguities or possible mistakes.
-- DO NOT invent contact details, URLs, or facts you don't have evidence for.
-- DO NOT include any text outside the JSON object. No prose, no markdown fences.`;
+- "likelyRole" should pull from the message context (if any) OR from the name (e.g. "Dr. X" → medical/academic) OR be omitted.
+- "talkingPoints" should be 2-3 short conversation hooks. SKIP when confidence is low.
+- "notes" is optional — use to flag specific ambiguities.
+- DO NOT invent contact details, URLs, or facts you don't have evidence for.`;
 
 export async function enrichLead({
   name,
@@ -92,8 +102,6 @@ export async function enrichLead({
     throw new Error("enrichment_not_configured");
   }
 
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
   const userPrompt = [
     name ? `Name: ${name}` : null,
     `Email: ${email}`,
@@ -102,77 +110,12 @@ export async function enrichLead({
     .filter(Boolean)
     .join("\n");
 
-  const response = await client.messages.create({
-    model: "claude-sonnet-4-5",
-    max_tokens: 600,
+  const { object } = await generateObject({
+    model: TEXT_MODEL,
+    schema: EnrichmentResultSchema,
     system: SYSTEM_PROMPT,
-    messages: [
-      {
-        role: "user",
-        content: [
-          {
-            type: "text",
-            text: `Enrich this lead. Return ONLY the JSON object — no other text.\n\n${userPrompt}`,
-          },
-        ],
-      },
-    ],
+    prompt: `Enrich this lead:\n\n${userPrompt}`,
   });
 
-  const textBlock = response.content.find(
-    (b): b is Anthropic.TextBlock => b.type === "text",
-  );
-  if (!textBlock) {
-    throw new Error("no_text_response");
-  }
-  let text = textBlock.text.trim();
-  text = text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
-
-  let parsed: EnrichmentResult;
-  try {
-    parsed = JSON.parse(text) as EnrichmentResult;
-  } catch {
-    throw new Error("invalid_json_response: " + text.slice(0, 200));
-  }
-
-  // Validate + sanitise.
-  const clean: EnrichmentResult = {
-    confidence:
-      parsed.confidence === "high" ||
-      parsed.confidence === "medium" ||
-      parsed.confidence === "low"
-        ? parsed.confidence
-        : "low",
-  };
-  if (typeof parsed.company === "string" && parsed.company.trim()) {
-    clean.company = parsed.company.trim();
-  }
-  if (typeof parsed.industry === "string" && parsed.industry.trim()) {
-    clean.industry = parsed.industry.trim();
-  }
-  if (typeof parsed.likelyRole === "string" && parsed.likelyRole.trim()) {
-    clean.likelyRole = parsed.likelyRole.trim();
-  }
-  if (
-    typeof parsed.companyDescription === "string" &&
-    parsed.companyDescription.trim()
-  ) {
-    clean.companyDescription = parsed.companyDescription.trim();
-  }
-  if (
-    typeof parsed.companyWebsite === "string" &&
-    parsed.companyWebsite.trim()
-  ) {
-    clean.companyWebsite = parsed.companyWebsite.trim();
-  }
-  if (Array.isArray(parsed.talkingPoints)) {
-    clean.talkingPoints = parsed.talkingPoints
-      .filter((p): p is string => typeof p === "string" && p.trim().length > 0)
-      .slice(0, 5);
-  }
-  if (typeof parsed.notes === "string" && parsed.notes.trim()) {
-    clean.notes = parsed.notes.trim();
-  }
-
-  return clean;
+  return object;
 }

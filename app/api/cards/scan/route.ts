@@ -25,7 +25,7 @@ import { withRouteLogging, errToObject } from "lib/log";
  *   401 → not authenticated
  *   413 → image too large (>5 MB after decode)
  *   429 → rate limit exceeded
- *   503 → ANTHROPIC_API_KEY not configured
+ *   503 → AI_GATEWAY_API_KEY not configured
  *   502 → upstream Anthropic API error
  *   500 → internal error (uncaught throw — request id in body)
  */
@@ -55,7 +55,7 @@ export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx
       {
         error: "scanner_not_configured",
         message:
-          "The AI scanner needs ANTHROPIC_API_KEY in Vercel env vars. Set it and the scanner activates everywhere.",
+          "The AI scanner needs AI_GATEWAY_API_KEY in Vercel env vars. Set it and the scanner activates everywhere.",
       },
       { status: 503 },
     );

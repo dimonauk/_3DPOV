@@ -24,23 +24,41 @@ required for the platform to function — every endpoint returns a
 friendly 503 with setup instructions when its env vars aren't set,
 and the UI hides the corresponding buttons.
 
-### Anthropic AI — `ANTHROPIC_API_KEY`
+### Vercel AI Gateway — `AI_GATEWAY_API_KEY`
 
-Single env var unlocks four features:
+A single env var unlocks both AI features. The AI Gateway is Vercel's
+unified router for LLMs — one credential routes to any provider
+(OpenAI, Anthropic, Google, Mistral etc.) with built-in failover,
+caching, observability, and per-token billing.
 
 - **AI Universal Scanner** — photo of a paper card → autofill the
   designer form (`/cards/design`).
 - **AI Contact Enrichment** — click 🪄 on any lead in
   `/cards/mine/<slug>/leads` to infer company / industry / role /
   talking points from the email + name.
-- Activates the moment the env var lands; no other config needed.
 
 ```
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxx
+AI_GATEWAY_API_KEY=vck_xxxxxxxxxxxxxxxxxxxxxxxx
+AI_GATEWAY_MODEL_VISION=openai/gpt-5.4        # optional, default openai/gpt-5.4
+AI_GATEWAY_MODEL_TEXT=openai/gpt-5.4          # optional, default openai/gpt-5.4
 ```
 
-Setup: console.anthropic.com → API Keys → create. Holo-Flow Studio
-has credits provisioned from 17 May 2026.
+Setup (5 minutes):
+1. Open https://vercel.com/dashboard/ai-gateway
+2. **Create API Key** → copy the `vck_...` value (shown once)
+3. Add to Vercel env vars: Settings → Environment Variables → `AI_GATEWAY_API_KEY` → paste → tick Production + Preview + Development → Save
+4. Redeploy to pick up the new env var
+
+Why AI Gateway over direct provider keys:
+- One credential covers every provider
+- No leaked-key panic per provider
+- Built-in spend caps and per-key observability in Vercel
+- Model switch happens via env var, not code change
+- Free tier covers development; paid tiers unlock higher rate limits
+
+Model swap: set `AI_GATEWAY_MODEL_VISION` or `AI_GATEWAY_MODEL_TEXT`
+to any model the Gateway supports — e.g. `anthropic/claude-sonnet-4-5`,
+`google/gemini-2.5-pro`, `openai/gpt-4o`. No code changes needed.
 
 ### Resend — `RESEND_API_KEY`
 
@@ -129,22 +147,13 @@ Setup (~20 min, free):
 5. Generate a JSON key for the service account, paste the
    `client_email` and `private_key` into Vercel env vars.
 
-Note: when pasting the private key into Vercel, newlines are usually
-shown as `\n` escape sequences in the JSON export. The Wallet
-library auto-converts those to real newlines before signing.
-
 ## Webhook receiver targets
 
 Set per-card from `/cards/mine/<slug>/settings`. No global env vars
 needed — each card has its own webhook URL and HMAC secret in
 Firestore at `cards/<slug>.webhook`.
 
-Compatible receivers:
-- **Zapier** — "Webhooks by Zapier" → "Catch Hook" trigger
-- **Make.com** — Webhooks module → custom webhook
-- **n8n** — Webhook node, POST
-- **IFTTT** — Webhooks service, "make a web request" trigger
-- **Custom** — anywhere that accepts HTTPS POST + JSON body
+Compatible receivers: Zapier, Make.com, n8n, IFTTT, custom HTTPS.
 
 Receivers verify the signature:
 ```js
@@ -154,6 +163,32 @@ if (constantTimeEquals(req.headers["x-holoflow-signature"], expected)) {
 }
 ```
 
+## Logging + observability
+
+All API routes are wrapped in `withRouteLogging()` (`lib/log.ts`).
+Each response carries:
+
+- `X-Request-Id` — 8-char hex, also written to every server-side log
+  entry for that request
+
+Server logs flow to Vercel's stdout (Functions → Logs in the
+dashboard, or `vercel logs <url>` from the CLI). Each entry is:
+
+```
+2026-05-16T15:43:18.461Z INFO cards.scan [a0494bf2]: scan:ok {"uid":"...","confidence":"high"}
+```
+
+Filter syntax in Vercel logs:
+- All errors: `level:error`
+- A specific feature: `scope:cards.scan`
+- A specific request: `requestId:a0494bf2`
+- Client-side React errors: `scope:client.error-boundary`
+
+The Next.js global error boundary (`app/error.tsx`) auto-fires a
+structured POST to `/api/log` whenever a React error occurs. That
+endpoint re-emits the report server-side at error level, with the
+last 20 client-side log entries attached for context.
+
 ## Firestore composite indexes
 
 Required for the analytics + leads queries:
@@ -162,13 +197,11 @@ Required for the analytics + leads queries:
 cards/{slug}/events       orderBy: at DESC
 cards/{slug}/leads        orderBy: at DESC
 cards/{slug}/webhook-log  orderBy: at DESC
-cards/{slug}/audit        orderBy: at DESC
 ```
 
-Subcollection single-field indexes are auto-created. The composite
-on `(ownerUid ASC, updatedAt DESC)` for the main `cards/{slug}` doc
-is in `firestore.indexes.json` and was deployed via
-`firebase deploy --only firestore:indexes`.
+The composite on `(ownerUid ASC, updatedAt DESC)` for the main
+`cards/{slug}` doc is in `firestore.indexes.json` and was deployed
+via `firebase deploy --only firestore:indexes`.
 
 ## Deployment commands
 
@@ -200,11 +233,14 @@ firebase deploy --only firestore:rules --project gen-lang-client-0149679024
    you scroll `/c/<slug>` in another tab.
 6. `/cards/mine/<your-slug>/leads` — fill the form once at
    `/c/<slug>`, see it appear, click 🪄 Enrich (works once
-   `ANTHROPIC_API_KEY` is set).
+   `AI_GATEWAY_API_KEY` is set).
 7. `/cards/mine/<your-slug>/backgrounds` — three variants × three
    resolutions, all download as PNG.
 8. `/cards/mine/import` — drop a CSV with name+role columns,
    import creates N cards.
+
+Every response carries `X-Request-Id` — use it to grep Vercel logs
+when something fails.
 
 ## Feature ↔ pricing map (May 2026)
 
@@ -226,10 +262,12 @@ firebase deploy --only firestore:rules --project gen-lang-client-0149679024
 | Embed widget                          | Blinq feature                    | ✓ /c/[slug]/embed |
 | Email signature generator             | Blinq Free / V1CE Premium        | ✓ /signature      |
 | Calendar embed                        | Universal feature                | ✓ optional field  |
-| AI Universal Scanner                  | Blinq Premium → $7.33/mo         | ✓ env-gated       |
-| AI Contact Enrichment                 | Blinq Premium → $7.33/mo         | ✓ env-gated       |
+| AI Universal Scanner                  | Blinq Premium → $7.33/mo         | ✓ AI Gateway      |
+| AI Contact Enrichment                 | Blinq Premium → $7.33/mo         | ✓ AI Gateway      |
 | Card templates library                | Blinq Premium                    | ✓ 9 templates     |
 | Virtual backgrounds                   | Blinq Free / V1CE Premium        | ✓ 3 variants × 3 resolutions |
+| Centralised structured logging        | n/a (enterprise feature)         | ✓ withRouteLogging |
+| Global React error boundary           | n/a                              | ✓ /api/log ingest |
 | WebXR hit-test AR                     | No commercial competitor         | ✓ unique          |
 | Hand-locked MediaPipe AR              | No commercial competitor         | ✓ unique          |
 | AR scene recording                    | No commercial competitor         | ✓ MediaRecorder   |

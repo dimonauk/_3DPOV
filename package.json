@@ -19,7 +19,6 @@
     "cards:upload": "node scripts/cards-bulk-upload.mjs"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.96.0",
     "@google/genai": "^2.2.0",
     "@google/model-viewer": "^4.2.0",
     "@headlessui/react": "^2.2.0",
@@ -37,6 +36,7 @@
     "@sparkjsdev/spark": "^0.1.10",
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.3.3",
+    "ai": "^6.0.184",
     "clsx": "^2.1.1",
     "firebase": "^12.12.1",
     "firebase-admin": "^13.9.0",
@@ -60,6 +60,7 @@
     "sonner": "^2.0.1",
     "styled-components": "^6.4.1",
     "three": "^0.171.0",
+    "zod": "^4.4.3",
     "zustand": "^5.0.13"
   },
   "devDependencies": {

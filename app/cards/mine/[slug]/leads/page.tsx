@@ -124,7 +124,7 @@ export default function CardLeadsPage() {
       if (!res.ok || !body.enrichment) {
         if (body.error === "enrichment_not_configured") {
           flashToast(
-            "AI enrichment needs ANTHROPIC_API_KEY in Vercel env vars.",
+            "AI enrichment needs AI_GATEWAY_API_KEY in Vercel env vars.",
           );
         } else {
           flashToast(body.message ?? "Enrichment failed.");

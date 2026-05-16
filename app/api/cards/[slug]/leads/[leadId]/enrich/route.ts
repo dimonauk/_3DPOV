@@ -29,7 +29,7 @@ export const POST = withRouteLogging<Params>(
         {
           error: "enrichment_not_configured",
           message:
-            "AI enrichment needs ANTHROPIC_API_KEY in Vercel env vars. Set it and the feature activates everywhere.",
+            "AI enrichment needs AI_GATEWAY_API_KEY in Vercel env vars. Set it and the feature activates everywhere.",
         },
         { status: 503 },
       );
