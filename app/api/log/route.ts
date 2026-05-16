@@ -1,99 +1,117 @@
+import { NextResponse, type NextRequest } from "next/server";
+import { withRouteLogging, errToObject, type LogLevel } from "lib/log";
+
 /**
- * app/api/log/route.ts — Client-log forwarding endpoint.
+ * POST /api/log — receive client-side error reports.
  *
- * Receives JSON batches from the browser logger (lib/log) and writes
- * each entry to the server-side logger so production-only client
- * errors land in Vercel Runtime Logs.
+ * Used by the React error boundary (app/error.tsx) and by any
+ * client component that wants to surface an error to the server
+ * logs. Anyone can post — but rate-limited to 10 reports / min /
+ * IP, and bounded size to prevent spam.
  *
- * Wire-up: in a top-level Client Component (e.g. app/layout.tsx via
- * a small Client Component child), call
+ * Body:
+ *   {
+ *     level: "warn" | "error" | "fatal",
+ *     scope: string,        // e.g. "client.error-boundary"
+ *     message: string,
+ *     meta?: object,        // serialisable, <= ~16 KB stringified
+ *     recentLogs?: array,   // tail of the client's ring buffer
+ *     pathname?: string,
+ *     ua?: string,
+ *   }
  *
- *     enableRemoteLogging({ url: "/api/log" });
+ * Response:
+ *   200 { ok: true, requestId }
+ *   400 invalid body
+ *   413 payload too large
+ *   429 rate-limited
  *
- * Defaults forward `warn` and `error` only.
- *
- * The endpoint is intentionally permissive (no auth, no rate limit
- * at the route level) because:
- *   - It never echoes input back to the client
- *   - It does not write to any persistent store
- *   - It only flows into Vercel's existing runtime logs
- *
- * If the studio later wants to keep client logs around (Sentry-style),
- * swap the body of POST() to write to a real store.
+ * The server-side log entry is tagged with `client:` prefix in the
+ * scope so it's easy to filter in Vercel logs.
  */
 
-import { NextResponse } from "next/server";
+const MAX_BODY_BYTES = 32 * 1024; // 32 KB hard cap
+const RATE_LIMIT_PER_MIN = 10;
+type Counter = { count: number; resetAt: number };
+const counters = new Map<string, Counter>();
 
-import { createLogger, type LogEntry, type LogLevel } from "lib/log";
-
-const log = createLogger("api:log");
-
-// Cap how much we accept per request so a runaway client can't fill
-// a Vercel log line with megabytes of garbage.
-const MAX_ENTRIES_PER_BATCH = 100;
-const MAX_MESSAGE_LENGTH = 4000;
-const MAX_FIELDS_BYTES = 8000;
-
-function isLogLevel(v: unknown): v is LogLevel {
-  return v === "debug" || v === "info" || v === "warn" || v === "error";
+function checkRate(ip: string): boolean {
+  const now = Date.now();
+  const c = counters.get(ip);
+  if (!c || c.resetAt < now) {
+    counters.set(ip, { count: 1, resetAt: now + 60_000 });
+    return true;
+  }
+  if (c.count >= RATE_LIMIT_PER_MIN) return false;
+  c.count += 1;
+  return true;
 }
 
-function clean(entry: unknown): LogEntry | null {
-  if (!entry || typeof entry !== "object") return null;
-  const e = entry as Record<string, unknown>;
-  if (!isLogLevel(e.level)) return null;
-  if (typeof e.namespace !== "string") return null;
-  if (typeof e.message !== "string") return null;
-  return {
-    ts: typeof e.ts === "number" ? e.ts : Date.now(),
-    level: e.level,
-    namespace: e.namespace.slice(0, 200),
-    message: e.message.slice(0, MAX_MESSAGE_LENGTH),
-    fields:
-      e.fields && typeof e.fields === "object"
-        ? truncateFields(e.fields as Record<string, unknown>)
-        : undefined,
-    server: false,
+export const POST = withRouteLogging("api.log", async (req: NextRequest, _ctx, log) => {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "0.0.0.0";
+
+  if (!checkRate(ip)) {
+    log.info("client_log:rate_limited", { ip });
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  // Read raw body to enforce the size cap before parsing.
+  const raw = await req.text();
+  if (raw.length > MAX_BODY_BYTES) {
+    log.info("client_log:too_large", { ip, bytes: raw.length });
+    return NextResponse.json({ error: "payload_too_large" }, { status: 413 });
+  }
+
+  let body: {
+    level?: string;
+    scope?: string;
+    message?: string;
+    meta?: Record<string, unknown>;
+    recentLogs?: Array<Record<string, unknown>>;
+    pathname?: string;
+    ua?: string;
   };
-}
-
-function truncateFields(
-  fields: Record<string, unknown>,
-): Record<string, unknown> {
-  // If the serialised fields object is too big, replace it with a
-  // marker. We don't try to recursively trim — the client should be
-  // sending shaped, small payloads.
   try {
-    const json = JSON.stringify(fields);
-    if (json.length > MAX_FIELDS_BYTES) {
-      return { _truncated: true, _bytes: json.length };
-    }
-    return fields;
-  } catch {
-    return { _unserialisable: true };
-  }
-}
-
-export async function POST(request: Request): Promise<NextResponse> {
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ ok: false, reason: "invalid-json" }, { status: 400 });
+    body = JSON.parse(raw);
+  } catch (err) {
+    log.warn("client_log:invalid_json", { err: errToObject(err) });
+    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  if (!body || typeof body !== "object" || !Array.isArray((body as { entries?: unknown[] }).entries)) {
-    return NextResponse.json({ ok: false, reason: "shape" }, { status: 400 });
+  const level = (body.level ?? "error") as LogLevel;
+  const scope = `client:${(body.scope ?? "unknown").slice(0, 64)}`;
+  const message = (body.message ?? "client_error").slice(0, 1000);
+  const childLog = log.child({
+    ip,
+    ua: body.ua?.slice(0, 200),
+    pathname: body.pathname?.slice(0, 500),
+  });
+
+  // Re-emit on the server side at the requested level.
+  switch (level) {
+    case "warn":
+      childLog.warn(`[${scope}] ${message}`, {
+        meta: body.meta,
+        recentLogs: body.recentLogs,
+      });
+      break;
+    case "fatal":
+      childLog.fatal(`[${scope}] ${message}`, {
+        meta: body.meta,
+        recentLogs: body.recentLogs,
+      });
+      break;
+    case "error":
+    default:
+      childLog.error(`[${scope}] ${message}`, {
+        meta: body.meta,
+        recentLogs: body.recentLogs,
+      });
+      break;
   }
 
-  const raw = (body as { entries: unknown[] }).entries.slice(0, MAX_ENTRIES_PER_BATCH);
-  const entries = raw.map(clean).filter((e): e is LogEntry => e !== null);
-
-  for (const entry of entries) {
-    const child = createLogger(`client:${entry.namespace}`);
-    child[entry.level](entry.message, entry.fields);
-  }
-
-  log.debug("ingested batch", { count: entries.length, dropped: raw.length - entries.length });
-  return NextResponse.json({ ok: true, count: entries.length });
-}
+  return NextResponse.json({ ok: true });
+});

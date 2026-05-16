@@ -13,6 +13,21 @@ export default {
     // /media/<hash>.woff2 and gets 404. Re-enable when canary fixes it.
     useCache: true,
   },
+  // Heavy native-binary packages that webpack/turbopack cannot bundle.
+  // Listing them here keeps them as runtime `require`s in the server
+  // build (and skips them entirely for the client build via the webpack
+  // fallback below). These are pulled in transitively by the Aura voice
+  // stack (kokoro-js → @huggingface/transformers → onnxruntime-node) and
+  // by Apple Wallet pkpass generation (sharp, passkit-generator) — all
+  // of which need Node native bindings, not webpack-bundled JS.
+  serverExternalPackages: [
+    "onnxruntime-node",
+    "@huggingface/transformers",
+    "kokoro-js",
+    "sharp",
+    "passkit-generator",
+    "firebase-admin",
+  ],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -59,9 +74,26 @@ export default {
         net: false,
         tls: false,
       };
+      // Strip `node` from conditionNames so transformers's conditional
+      // exports map resolves to the browser bundle, not the Node one
+      // (which would pull in onnxruntime-node). Documented in the
+      // holoflow-deploy-gotchas skill, gotcha #14.
       config.resolve.conditionNames = (
         config.resolve.conditionNames ?? ["browser", "module", "import", "require", "default"]
       ).filter((c: string) => c !== "node");
+      // Belt-and-braces: also alias the heavy server-only packages to
+      // `false` for the client bundle. Aura's voice worker pulls
+      // transformers + kokoro from a CDN as a Web Worker, NOT from
+      // the page bundle, so excluding them here is safe.
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        "onnxruntime-node": false,
+        "@huggingface/transformers": false,
+        "kokoro-js": false,
+        sharp: false,
+        "passkit-generator": false,
+        "firebase-admin": false,
+      };
     }
     return config;
   },
