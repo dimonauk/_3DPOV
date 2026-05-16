@@ -73,8 +73,9 @@ export default function AtelierPage() {
           colour chart, or a typefoundry&rsquo;s specimen book.
         </p>
 
-        <nav className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-5">
+        <nav className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-6">
           {[
+            { slug: "chambers", title: "Chambers" },
             { slug: "meshes", title: "Meshes" },
             { slug: "brushes", title: "Brushes" },
             { slug: "flow-arts", title: "Flow-arts" },
@@ -90,6 +91,69 @@ export default function AtelierPage() {
             </a>
           ))}
         </nav>
+
+        {/* CHAMBERS ---------------------------------------------------- */}
+        <section id="chambers" className="mt-16 scroll-mt-24">
+          <div className="chrome-label text-pink-200 mb-2">
+            Interactive &mdash; tools the studio uses, that you can use too
+          </div>
+          <h2 className="text-3xl text-chrome-100">Chambers.</h2>
+          <p className="mt-3 max-w-prose text-chrome-300">
+            Small rooms where one of the studio&rsquo;s bench tools is
+            ported into the browser. Drop something in; get something
+            out. No sign-up. The browser-only chambers run on your
+            machine; the Python-backed ones go through the studio&rsquo;s
+            Firebase Functions deployment (no cost to you).
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                slug: "pixelify",
+                title: "Pixelify",
+                kind: "Browser",
+                summary: "Drop an image, get pixel art back. Six dither modes, Lospec palette support.",
+              },
+              {
+                slug: "lithophane",
+                title: "Lithophane",
+                kind: "Function",
+                summary: "Image → printable STL. Backlight the print, the photograph appears.",
+              },
+              {
+                slug: "remove-bg",
+                title: "Remove background",
+                kind: "Function",
+                summary: "U²-Net background removal. PNG with alpha back, three model variants.",
+              },
+              {
+                slug: "pixeldetector",
+                title: "Pixel detector",
+                kind: "Function",
+                summary: "Find the native pixel-art resolution of an upscaled retro image.",
+              },
+              {
+                slug: "probe",
+                title: "Probe",
+                kind: "Function",
+                summary: "Every photograph carries a paperwork trail. EXIF, ICC, GPS, camera, lens.",
+              },
+            ].map((c) => (
+              <Link
+                key={c.slug}
+                href={`/atelier/${c.slug}`}
+                className="flex flex-col gap-2 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-4 transition-colors hover:border-pink-200/60"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3 className="text-base text-chrome-100">{c.title}</h3>
+                  <span className="chrome-label text-chrome-500">
+                    {c.kind}
+                  </span>
+                </div>
+                <p className="text-sm text-chrome-300">{c.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* MESHES ----------------------------------------------------- */}
         <section id="meshes" className="mt-16 scroll-mt-24">
