@@ -1,4 +1,11 @@
 export default {
+  // Pin the workspace root to this directory. Without it, Next walks up
+  // looking for the nearest lockfile and finds an unrelated package-lock.json
+  // at D:\, which produces a wrong outputFileTracing root on the build host
+  // and risks shipping the wrong file set in the Vercel deploy bundle.
+  // process.cwd() resolves to the project directory because Next runs the
+  // config from the project root.
+  outputFileTracingRoot: process.cwd(),
   experimental: {
     ppr: true,
     // inlineCss disabled: on Next 15.6 canary it emits next/font @font-face
