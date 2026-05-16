@@ -280,6 +280,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     status: "live",
     benchSource: "apps/prototypes/dollhouse-1",
   },
+  {
+    slug: "inverse-kata",
+    title: "Inverse Kata",
+    blurb: "Sketch a trail; the chamber matches it against the named-kata library and the eight Laban Basic Efforts.",
+    category: "ai-generation",
+    status: "live",
+  },
 
   // ---------- Pattern + textile ----------
   {
