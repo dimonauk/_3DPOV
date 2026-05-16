@@ -13,6 +13,10 @@ import {
 } from "firebase/auth";
 import { type Firestore, getFirestore } from "firebase/firestore";
 
+import { createLogger } from "lib/log";
+
+const log = createLogger("service:firebase");
+
 /**
  * Firebase client-side initialisation. Lazy + tolerant: if the env
  * vars aren't set (e.g. local dev without .env.local) the exports
@@ -89,7 +93,9 @@ function initAppCheck(app: FirebaseApp): void {
   } catch (err) {
     // Safe to swallow: App Check init failure should never block the
     // auth/firestore code paths. Surfaces in dev console for debugging.
-    console.warn("[firebase] App Check init failed; continuing without it.", err);
+    log.warn("App Check init failed; continuing without it", {
+      err: err instanceof Error ? err.message : String(err),
+    });
   }
 }
 
