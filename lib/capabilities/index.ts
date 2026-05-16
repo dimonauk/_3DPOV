@@ -378,6 +378,18 @@ const auraAliveStubs: CapabilityRecord[] = [
     stateSlices: ["viz", "aura"],
   },
   {
+    id: "viz.image-to-3d",
+    kind: "viz",
+    name: "Image to 3D",
+    summary:
+      "Single image → 3D printable mesh (GLB) via TripoSR on the bench. Sync round-trip (~30s on a 3090) through the splat360 service at /triposr/generate. Focused TripoSR-only seam; viz.image-to-mesh remains the broader four-provider router. Falls back to the free in-browser viz.depth-estimation when the bench is offline (chamber chooses).",
+    status: "registered",
+    source:
+      "Stability AI TripoSR (MIT) installed at D:/The_Hangar/engines/TripoSR/. Bench wrap at D:/The_Hangar/engines/splat360/src/splat360/api/triposr.py. Server seam at lib/capabilities/viz/image-to-3d.server.ts.",
+    load: () => import("./viz/image-to-3d"),
+    dependsOn: ["viz.depth-estimation"],
+  },
+  {
     id: "viz.particles",
     kind: "viz",
     name: "Particle field",
