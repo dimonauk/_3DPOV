@@ -241,6 +241,17 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["geo.position"],
   },
   {
+    id: "ar.compile-target",
+    kind: "ar",
+    name: "AR target compiler",
+    summary:
+      "Compile a reference image into a mind-ar .mind feature-point bundle. Server-only — fetches image, decodes via sharp, runs mind-ar's lower-level CompilerBase + extractTrackingFeatures with a hand-rolled FakeCanvas (sidesteps the broken native canvas package entirely), uploads via media-library. The seam that turns a HoloWalk plaque photo into a scannable AR target. In-process; replaced the OfflineCompiler+canvas-shim attempt with the proven script's algorithm.",
+    status: "registered",
+    source: "mind-ar 1.2.5 lower-level modules (compiler-base + image-list + extract-utils + cpu kernels) + sharp 0.34 for image decoding. Pattern lifted from scripts/ar-compile-mind.mjs.",
+    load: () => import("./ar/compile-target"),
+    dependsOn: ["ar.window"],
+  },
+  {
     id: "media.capture",
     kind: "media",
     name: "Photo + video capture",
@@ -296,9 +307,9 @@ const auraAliveStubs: CapabilityRecord[] = [
     kind: "viz",
     name: "Splat generate",
     summary:
-      "Source-agnostic 3D Gaussian Splat synthesis. Provider union (sharp-onnx | postshot | studio-rig-native | luma-genie); every record carries a licence field that commerce surfaces filter on. Foundation-phase stub — router exists, providers wire in one at a time.",
-    status: "stub",
-    source: "Studio composite over apple-amlr (research-only) + Jawset Postshot (commercial) + studio POV-rig (owned) + Luma API.",
+      "Source-agnostic 3D Gaussian Splat synthesis. Router live; sharp-onnx provider wired end-to-end via the SHARP-ONNX bench service (POST job, poll done, download converted PLY, persist via media library). Other providers (postshot | studio-rig-native | luma-genie | hangar-gsplat | hangar-4dgs) throw provider-unavailable until their runtime paths land. Every record carries a licence field that commerce surfaces filter on.",
+    status: "registered",
+    source: "Studio composite over apple-amlr (research-only) + Jawset Postshot (commercial) + studio POV-rig (owned) + Luma API. Server router at lib/capabilities/viz/splat-generate.server.ts.",
     load: () => import("./viz/splat-generate"),
   },
   {
@@ -306,10 +317,21 @@ const auraAliveStubs: CapabilityRecord[] = [
     kind: "viz",
     name: "Splat render",
     summary:
-      "Viewer-agnostic .ply gaussian-splat embedding. Renderer union (spark-js | gsplat-js | postshot-binary); web side single-engine on three.js so the site keeps one WebGL context. Flavour-gates SHARP raw PLYs out of web targets (must pass through convert_sharp_ply.py first). Foundation-phase stub — props surface only, no concrete viewers wired.",
-    status: "stub",
+      "Viewer-agnostic .ply gaussian-splat embedding. spark-js renderer wired via components/viewers/splat-viewer-spark.tsx (currently implemented on @mkkellogg/gaussian-splats-3d while @sparkjsdev/spark webpack-asset-module-generator config blocks the build). Web side stays single-engine on three.js so the site keeps one WebGL context. Flavour-gates SHARP raw PLYs out of web targets (must pass through convert_sharp_ply.py first).",
+    status: "registered",
     source: "Studio composite over sparkjsdev/spark (MIT) + @mkkellogg/gaussian-splats-3d (MIT) + Jawset Postshot binary.",
     load: () => import("./viz/splat-render"),
+    dependsOn: ["viz.splat-generate"],
+  },
+  {
+    id: "viz.thumbnail-splat",
+    kind: "viz",
+    name: "Splat thumbnail",
+    summary:
+      "Server-side splat preview. card-fast provider wired end-to-end: Skia poster card on @napi-rs/canvas (Vercel-safe, sub-second, default for placeholders + link previews). splat-real (headless WebGL screenshot on HoloFlow Desktop) returns provider-unavailable until the /api/thumbnails/splat endpoint lands on the bench. Same ThumbnailSplatResult shape from either path; surface code only ever asks for 'a thumbnail of this splat'.",
+    status: "registered",
+    source: "Studio — @napi-rs/canvas (Apache-2.0, Skia bindings) + planned HoloFlow Desktop headless Chromium screenshot worker.",
+    load: () => import("./viz/thumbnail-splat"),
     dependsOn: ["viz.splat-generate"],
   },
   {

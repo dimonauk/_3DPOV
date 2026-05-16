@@ -7,6 +7,9 @@
  * (e.g. /research/cctv-3d-archive). Renders a `.ply` in a self-driven
  * three.js scene with built-in controls.
  *
+ * Most surfaces should import the renderer-agnostic <SplatViewer>
+ * from "./SplatViewer", not this file directly.
+ *
  * # Why not actually Spark
  * The file is named for `@sparkjsdev/spark` (our `viz.splat-render`
  * default renderer) because that's the renderer-union id we standardise
@@ -23,7 +26,10 @@
 
 import { useEffect, useRef } from "react";
 
+import { createLogger } from "lib/log";
 import type { SplatViewerProps } from "lib/capabilities/viz/splat-render";
+
+const log = createLogger("capability:viz.splat-render:spark");
 
 export default function SplatViewerSpark({
   record,
@@ -71,8 +77,10 @@ export default function SplatViewerSpark({
         }
         viewer.start();
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error("SplatViewerSpark: failed to load scene", err);
+        log.error("failed to load splat scene", {
+          plyUrl: record.plyUrl,
+          err: err instanceof Error ? err.message : String(err),
+        });
       }
 
       dispose = () => {
