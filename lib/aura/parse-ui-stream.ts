@@ -60,7 +60,8 @@ export type AuraClientAction =
   | { kind: "leadCaptured"; id: string; email: string }
   | { kind: "scannerOpen" }
   | { kind: "showVcard"; slug: string; url: string; name: string }
-  | { kind: "saveToWallet"; slug: string; platforms: Array<"apple" | "google"> };
+  | { kind: "saveToWallet"; slug: string; platforms: Array<"apple" | "google"> }
+  | { kind: "playAnimation"; name: string };
 
 export type AuraCardSummary = {
   slug: string;

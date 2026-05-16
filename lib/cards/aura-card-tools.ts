@@ -27,6 +27,10 @@ import { getAllCards } from "lib/ar/cards";
 import { createCardLead } from "lib/cards/leads-server";
 import { isAppleWalletConfigured } from "lib/wallet/apple-pkpass";
 import { isGoogleWalletConfigured } from "lib/wallet/google-wallet";
+import {
+  ALL_ANIMATIONS,
+  type AnimationName,
+} from "lib/vrm/animationMap";
 
 type CardSummary = {
   slug: string;
@@ -256,6 +260,44 @@ export function getCardAuraTools(opts: {
             kind: "saveToWallet" as const,
             slug,
             platforms,
+          },
+        };
+      },
+    }),
+
+    // ---------------------------------------------------------------
+    play_animation: tool({
+      description: `Trigger an emote/pose animation on ${card.name}'s VRM avatar. Use this WHENEVER you want to express something physically — clapping when you've found something good, looking around when searching, thinking when you need a moment, jumping for surprise, blushing when complimented, waving goodbye when the visitor leaves. The animation plays for ~3 seconds then auto-returns to idle. Choose from: Angry, Blush, Clapping, Goodbye, Jump, LookAround, Relax, Sad, Sleepy, Thinking. Be expressive — use this often, not sparingly.`,
+      inputSchema: z.object({
+        name: z
+          .enum([
+            "Angry",
+            "Blush",
+            "Clapping",
+            "Goodbye",
+            "Jump",
+            "LookAround",
+            "Relax",
+            "Sad",
+            "Sleepy",
+            "Thinking",
+          ])
+          .describe(
+            "Animation name — must match exactly one of the 10 emotes",
+          ),
+      }),
+      execute: async ({ name }) => {
+        if (!(ALL_ANIMATIONS as string[]).includes(name)) {
+          return {
+            summary: `Unknown animation "${name}". Valid: ${ALL_ANIMATIONS.join(", ")}.`,
+            action: null,
+          };
+        }
+        return {
+          summary: `Playing the ${name} animation on ${card.name}'s avatar. Crossfades back to idle after the clip finishes.`,
+          action: {
+            kind: "playAnimation" as const,
+            name: name as AnimationName,
           },
         };
       },

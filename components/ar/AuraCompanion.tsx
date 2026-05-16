@@ -43,6 +43,7 @@ import {
   type AuraClientAction,
   type AuraCardSummary,
 } from "lib/aura/parse-ui-stream";
+import { resolveAnimationFromText } from "lib/vrm/animationMap";
 
 const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
 
@@ -91,6 +92,7 @@ function ToolCallChip({
     download_vcard: "↓",
     book_a_call: "📅",
     save_to_wallet: "💳",
+    play_animation: "🎭",
   };
   const LABELS: Record<string, string> = {
     capture_lead: "Saving lead",
@@ -98,6 +100,7 @@ function ToolCallChip({
     download_vcard: "vCard ready",
     book_a_call: "Booking",
     save_to_wallet: "Wallet save",
+    play_animation: "Posing",
   };
   const icon = ICONS[call.name] ?? "▸";
   const label = LABELS[call.name] ?? call.name;
@@ -116,6 +119,8 @@ function ToolCallChip({
     argPreview = `"${a["query"]}"`;
   } else if (call.name === "book_a_call" && typeof a["purpose"] === "string") {
     argPreview = a["purpose"] as string;
+  } else if (call.name === "play_animation" && typeof a["name"] === "string") {
+    argPreview = a["name"] as string;
   }
 
   return (
@@ -406,6 +411,13 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
             if (evt.action?.kind === "navigate" && evt.action.path) {
               const path = evt.action.path;
               setTimeout(() => router.push(path), 600);
+            } else if (evt.action?.kind === "playAnimation") {
+              // VRMViewer (mounted above the chat) listens on the window.
+              window.dispatchEvent(
+                new CustomEvent("aura:play-animation", {
+                  detail: { name: evt.action.name },
+                }),
+              );
             }
           }
         } else if (evt.type === "error") {
@@ -423,6 +435,25 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
         };
         return next;
       });
+
+      // Keyword-based auto-animation: if Aura's reply contains words
+      // like "interesting", "well done", "goodbye", trigger the
+      // matching emote. Skip if the agent already called play_animation
+      // this turn (don't double up).
+      const triggeredAnimation = turnTools.some(
+        (t) => t.name === "play_animation",
+      );
+      if (!triggeredAnimation && acc.trim()) {
+        const auto = resolveAnimationFromText(acc);
+        if (auto) {
+          window.dispatchEvent(
+            new CustomEvent("aura:play-animation", {
+              detail: { name: auto },
+            }),
+          );
+        }
+      }
+
       // Speak the reply.
       if (acc.trim()) speak(acc);
     } catch (e) {
