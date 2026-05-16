@@ -37,6 +37,27 @@ import { useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:inverse-kata");
 
+type OrchestratedSegment = {
+  kataSlug: string;
+  labanEffort: string;
+  durationMs: number;
+  confidence: number;
+  rationale: string;
+};
+
+type OrchestratorResult = {
+  sequence: OrchestratedSegment[];
+  agreementWithPhaseA: "confirms" | "refines" | "disagrees";
+  overallReasoning: string;
+  uncertainSegments: number[];
+};
+
+type OrchestratorState =
+  | { kind: "idle" }
+  | { kind: "thinking" }
+  | { kind: "ready"; result: OrchestratorResult }
+  | { kind: "error"; message: string };
+
 type State =
   | { kind: "idle" }
   | { kind: "drawing"; points: Vec2[]; timing: number[]; startMs: number }
@@ -58,6 +79,7 @@ export default function InverseKataClient() {
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [state, setState] = useState<State>({ kind: "idle" });
+  const [orch, setOrch] = useState<OrchestratorState>({ kind: "idle" });
   const sketchIdHelp = useId();
 
   // Resize canvas DPR-aware so strokes stay crisp.
@@ -231,7 +253,55 @@ export default function InverseKataClient() {
 
   const onClear = useCallback(() => {
     setState({ kind: "idle" });
+    setOrch({ kind: "idle" });
   }, []);
+
+  // Reset orchestrator whenever a fresh phase-A result lands.
+  useEffect(() => {
+    if (state.kind === "drawing" || state.kind === "matching") {
+      setOrch({ kind: "idle" });
+    }
+  }, [state.kind]);
+
+  const onAskLlm = useCallback(async () => {
+    if (state.kind !== "ready") return;
+    setOrch({ kind: "thinking" });
+    try {
+      const res = await fetch("/api/inverse-kata/orchestrate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          points: state.points,
+          timing: state.timing,
+          phaseAResult: state.result,
+        }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        let message = `HTTP ${res.status}`;
+        try {
+          const parsed = JSON.parse(text) as { error?: string };
+          if (parsed.error) message = parsed.error;
+        } catch {
+          if (text.length > 0 && text.length < 300) message = text;
+        }
+        setOrch({ kind: "error", message });
+        return;
+      }
+      const json = (await res.json()) as { result?: OrchestratorResult };
+      if (!json.result) {
+        setOrch({ kind: "error", message: "Empty LLM result." });
+        return;
+      }
+      setOrch({ kind: "ready", result: json.result });
+    } catch (err) {
+      log.error("orchestrate failed", { err });
+      setOrch({
+        kind: "error",
+        message: err instanceof Error ? err.message : "LLM call failed.",
+      });
+    }
+  }, [state]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -286,6 +356,47 @@ export default function InverseKataClient() {
           )}
         </aside>
       </section>
+
+      {/* Phase B — LLM orchestrator */}
+      {state.kind === "ready" ? (
+        <section className="flex flex-col gap-3 rounded-sm border border-warm-black-700 bg-warm-black-900/40 p-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <span className="chrome-label text-chrome-400">
+              Phase B &middot; LLM orchestrator (Claude)
+            </span>
+            <button
+              type="button"
+              onClick={onAskLlm}
+              disabled={orch.kind === "thinking"}
+              className="rounded-sm border border-pink-200/60 bg-pink-900/40 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
+            >
+              {orch.kind === "thinking"
+                ? "Thinking…"
+                : orch.kind === "ready"
+                  ? "Ask again"
+                  : "Ask the LLM"}
+            </button>
+          </div>
+          {orch.kind === "idle" ? (
+            <p className="text-xs leading-relaxed text-chrome-400">
+              Phase A is heuristic feature-matching — fast but brittle on
+              edge cases. Phase B reads the trail in plain language, uses
+              the kata-notes context (what each move actually means), and
+              suggests transitions Phase A&rsquo;s pure-geometry view can&rsquo;t
+              see. Rate-limited 8/hr.
+            </p>
+          ) : orch.kind === "thinking" ? (
+            <p className="text-xs leading-relaxed text-chrome-300">
+              Claude is reading the kata library + Laban canon + your
+              trail. Usually back in ~5-10s.
+            </p>
+          ) : orch.kind === "error" ? (
+            <p className="text-xs leading-relaxed text-pink-200">{orch.message}</p>
+          ) : (
+            <OrchestratorPanel result={orch.result} />
+          )}
+        </section>
+      ) : null}
 
       {/* Laban canon strip — the 8 corners */}
       <section className="flex flex-col gap-3">
@@ -385,6 +496,72 @@ function ReadyResult({ result }: { result: InverseKataResult }) {
           ))}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function OrchestratorPanel({ result }: { result: OrchestratorResult }) {
+  const totalSec = (
+    result.sequence.reduce((acc, s) => acc + s.durationMs, 0) / 1000
+  ).toFixed(1);
+  const agreementTone = {
+    confirms: "border-emerald-400/40 bg-emerald-900/20 text-emerald-100",
+    refines: "border-amber-400/40 bg-amber-900/20 text-amber-100",
+    disagrees: "border-pink-400/40 bg-pink-900/20 text-pink-100",
+  } as const;
+  const tone =
+    agreementTone[result.agreementWithPhaseA] ?? agreementTone.refines;
+  return (
+    <div className="flex flex-col gap-3 text-sm text-chrome-200">
+      <div className="flex flex-wrap items-baseline gap-2">
+        <span
+          className={`rounded-sm border px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-[0.15em] ${tone}`}
+        >
+          {result.agreementWithPhaseA} Phase A
+        </span>
+        <span className="font-mono text-[0.6rem] uppercase tracking-[0.15em] text-chrome-500">
+          {result.sequence.length} segments &middot; {totalSec}s
+        </span>
+      </div>
+      <p className="text-xs leading-relaxed text-chrome-300">
+        {result.overallReasoning}
+      </p>
+      <ol className="flex flex-col gap-2">
+        {result.sequence.map((s, i) => {
+          const corner = labanCorners.find((c) => c.name === s.labanEffort);
+          const isUncertain = result.uncertainSegments.includes(i);
+          return (
+            <li
+              key={i}
+              className={`flex flex-col gap-1 rounded-sm border px-3 py-2 ${
+                isUncertain
+                  ? "border-amber-400/40 bg-amber-900/10"
+                  : "border-warm-black-800 bg-warm-black-950"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className="inline-block h-2.5 w-2.5 rounded-full"
+                  style={{ backgroundColor: corner?.hexColor ?? "#ffffff" }}
+                />
+                <span className="text-chrome-100">{s.kataSlug}</span>
+                <span className="ml-auto font-mono text-[0.55rem] uppercase tracking-[0.12em] text-chrome-500">
+                  {s.labanEffort} · {Math.round(s.durationMs)}ms · {asPct(s.confidence)}
+                </span>
+              </div>
+              <p className="text-[11px] leading-snug text-chrome-400">
+                {s.rationale}
+              </p>
+              {isUncertain ? (
+                <span className="font-mono text-[0.55rem] uppercase tracking-[0.12em] text-amber-300">
+                  flagged uncertain
+                </span>
+              ) : null}
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }
