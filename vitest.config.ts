@@ -34,6 +34,11 @@ export default defineConfig({
       lib: path.resolve(root, "lib"),
       components: path.resolve(root, "components"),
       app: path.resolve(root, "app"),
+      // server-only is a Next.js build-time marker that throws when
+      // imported outside a server context. Vitest doesn't run inside
+      // Next so the throw fires unconditionally; alias to an empty
+      // shim so .server.ts files can be unit-tested in the node env.
+      "server-only": path.resolve(root, "tests/server-only-shim.ts"),
     },
   },
   test: {
