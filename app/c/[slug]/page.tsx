@@ -13,6 +13,7 @@ import CardEventTracker from "components/ar/CardEventTracker";
 import LeadCaptureForm from "components/ar/LeadCaptureForm";
 import SaveToWalletButton from "components/ar/SaveToWalletButton";
 import AddToAppleWalletButton from "components/ar/AddToAppleWalletButton";
+import AddToGoogleWalletButton from "components/ar/AddToGoogleWalletButton";
 import ShareCardButtons from "components/ar/ShareCardButtons";
 import CalendarEmbed from "components/ar/CalendarEmbed";
 
@@ -143,6 +144,7 @@ export default async function CardPage({ params }: PageProps) {
             textOnBrand={textOnBrand}
           />
           <AddToAppleWalletButton slug={slug} primary={primary} />
+          <AddToGoogleWalletButton slug={slug} primary={primary} />
         </div>
         <LeadCaptureForm
           slug={slug}
