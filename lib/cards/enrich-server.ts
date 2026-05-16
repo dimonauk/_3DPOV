@@ -16,7 +16,7 @@ import "server-only";
  * confidence + notes so users know when to double-check.
  *
  * Model selection:
- *   AI_GATEWAY_MODEL_TEXT  e.g. "openai/gpt-5.4" (default)
+ *   AI_GATEWAY_MODEL_TEXT  e.g. "openai/gpt-5.5" (default)
  *
  * Privacy:
  *   - The enrichment prompt sends only the lead's name + email +
@@ -75,7 +75,7 @@ export function isEnrichmentConfigured(): boolean {
 }
 
 const TEXT_MODEL =
-  process.env.AI_GATEWAY_MODEL_TEXT ?? "openai/gpt-5.4";
+  process.env.AI_GATEWAY_MODEL_TEXT ?? "openai/gpt-5.5";
 
 const SYSTEM_PROMPT = `You enrich business-card leads by inferring company / role / industry from a name + email + optional message.
 
