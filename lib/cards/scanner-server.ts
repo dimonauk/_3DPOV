@@ -4,7 +4,7 @@ import "server-only";
  * AI Universal Scanner — extract contact fields from a photo of a
  * paper business card using the Vercel AI SDK + AI Gateway.
  *
- * The AI Gateway routes our `model` string ("openai/gpt-5.5" by
+ * The AI Gateway routes our `model` string ("google/gemini-3.1-flash-lite" by
  * default) to whichever underlying provider is configured upstream.
  * One credential (`AI_GATEWAY_API_KEY`) replaces per-provider keys,
  * adds failover, caching, observability, and lets us swap models
@@ -16,7 +16,7 @@ import "server-only";
  * throws — caught by the route's withRouteLogging wrapper.
  *
  * Model selection:
- *   AI_GATEWAY_MODEL_VISION  e.g. "openai/gpt-5.5" (default)
+ *   AI_GATEWAY_MODEL_VISION  e.g. "google/gemini-3.1-flash-lite" (default)
  *   AI_GATEWAY_MODEL_TEXT    used by enrichment (not here)
  *
  * Models can be swapped via env without redeploy code — useful for
@@ -89,7 +89,7 @@ export function isScannerConfigured(): boolean {
 }
 
 const VISION_MODEL =
-  process.env.AI_GATEWAY_MODEL_VISION ?? "openai/gpt-5.5";
+  process.env.AI_GATEWAY_MODEL_VISION ?? "google/gemini-3.1-flash-lite";
 
 const SYSTEM_PROMPT = `You extract structured contact data from a photograph of a business card.
 

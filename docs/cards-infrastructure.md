@@ -39,8 +39,8 @@ caching, observability, and per-token billing.
 
 ```
 AI_GATEWAY_API_KEY=vck_xxxxxxxxxxxxxxxxxxxxxxxx
-AI_GATEWAY_MODEL_VISION=openai/gpt-5.5        # optional, default openai/gpt-5.5
-AI_GATEWAY_MODEL_TEXT=openai/gpt-5.5          # optional, default openai/gpt-5.5
+AI_GATEWAY_MODEL_VISION=google/gemini-3.1-flash-lite        # optional, default google/gemini-3.1-flash-lite
+AI_GATEWAY_MODEL_TEXT=google/gemini-3.1-flash-lite          # optional, default google/gemini-3.1-flash-lite
 ```
 
 Setup (5 minutes):
