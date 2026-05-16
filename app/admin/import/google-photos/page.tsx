@@ -42,6 +42,8 @@ export default function GooglePhotosImportPage() {
   const [items, setItems] = useState<PickedItemRow[]>([]);
   const [subject, setSubject] = useState<MediaSubject>("photograph");
   const [tags, setTags] = useState("");
+  const [splatTarget, setSplatTarget] =
+    useState<"vercel-blob" | "google-drive">("google-drive");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [outcomes, setOutcomes] = useState<Record<string, ImportOutcome>>({});
@@ -139,6 +141,68 @@ export default function GooglePhotosImportPage() {
       rows.map((r) => (r.raw.id === id ? { ...r, picked: !r.picked } : r)),
     );
   }, []);
+
+  const onSplatify = useCallback(async () => {
+    if (!session) return;
+    const token = await getToken();
+    if (!token) {
+      setError("Sign in first.");
+      return;
+    }
+    const toSplat = items
+      .filter((r) => r.picked)
+      .map((r) => r.raw.id);
+    if (!toSplat.length) {
+      setError("Tick at least one photo to splat.");
+      return;
+    }
+    if (
+      !window.confirm(
+        `Send ${toSplat.length} photo${toSplat.length === 1 ? "" : "s"} ` +
+          `through SHARP? ~90s per photo on the bench GPU. The output ` +
+          `lands as a research-licence splat on /research/cctv-3d-archive.`,
+      )
+    ) {
+      return;
+    }
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await fetch(
+        "/api/admin/import/google-photos/to-splat",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sessionId: session.id,
+            mediaItemIds: toSplat,
+            target: splatTarget,
+          }),
+        },
+      );
+      const data = (await res.json()) as {
+        outcomes: Array<{
+          mediaItemId: string;
+          ok: boolean;
+          error?: string;
+        }>;
+      };
+      const next: Record<string, ImportOutcome> = {};
+      for (const o of data.outcomes ?? []) {
+        next[o.mediaItemId] = o.ok
+          ? { status: "ok" }
+          : { status: "error", message: o.error ?? "Splat failed." };
+      }
+      setOutcomes(next);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Splat failed.");
+    } finally {
+      setBusy(false);
+    }
+  }, [getToken, items, session, splatTarget]);
 
   const onImportAll = useCallback(async () => {
     if (!session) return;
@@ -248,6 +312,22 @@ export default function GooglePhotosImportPage() {
                   ))}
                 </select>
               </label>
+              <label className="flex flex-col gap-1 text-[10px] uppercase tracking-[0.18em] text-chrome-400">
+                SHARP output
+                <select
+                  value={splatTarget}
+                  onChange={(e) =>
+                    setSplatTarget(
+                      e.target.value as "vercel-blob" | "google-drive",
+                    )
+                  }
+                  title="Where the resulting splat .ply file lands. google-drive uses your Drive's quota; vercel-blob uses the studio's 1GB Hobby cap."
+                  className="rounded-sm border border-warm-black-700 bg-warm-black-900 px-2 py-1 text-xs text-chrome-100"
+                >
+                  <option value="google-drive">→ Drive (your quota)</option>
+                  <option value="vercel-blob">→ Vercel Blob</option>
+                </select>
+              </label>
               <label className="flex flex-1 flex-col gap-1 text-[10px] uppercase tracking-[0.18em] text-chrome-400">
                 Tags (comma-separated)
                 <input
@@ -302,14 +382,25 @@ export default function GooglePhotosImportPage() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={onImportAll}
-              disabled={busy}
-              className="self-start rounded-sm border border-pink-200/40 bg-pink-900/20 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
-            >
-              {busy ? "Importing…" : "Import ticked items"}
-            </button>
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={onImportAll}
+                disabled={busy}
+                className="rounded-sm border border-pink-200/40 bg-pink-900/20 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
+              >
+                {busy ? "Working…" : "Import ticked items"}
+              </button>
+              <button
+                type="button"
+                onClick={onSplatify}
+                disabled={busy}
+                className="rounded-sm border border-pink-200/60 bg-pink-900/40 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
+                title="Pipe each ticked photo through Apple SHARP on the studio bench. Outputs a 1.18M-gaussian splat per photo on /research/cctv-3d-archive. Research-licence only."
+              >
+                {busy ? "Working…" : "→ Splat-ify via SHARP"}
+              </button>
+            </div>
           </section>
         ) : null}
 

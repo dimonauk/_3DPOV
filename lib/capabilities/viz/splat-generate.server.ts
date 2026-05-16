@@ -30,6 +30,16 @@
 
 import "server-only";
 
+import { randomUUID } from "node:crypto";
+
+import { requireFirebaseAdminDb } from "lib/firebase/admin";
+import {
+  ensureFolder,
+  publicDriveUrl,
+  shareFilePublic,
+  uploadFileToDrive,
+} from "lib/integrations/google/drive";
+import type { Media } from "../media/library-types";
 import { mediaUpload } from "../media/library";
 
 import {
@@ -185,9 +195,162 @@ async function fetchSourceImage(
 }
 
 /**
- * The only provider currently wired. Calls the SHARP-ONNX FastAPI
- * service, uploads the result via the media library, and assembles a
- * SplatRecord.
+ * Output-storage target for a freshly-minted splat.
+ *
+ * - `vercel-blob` (default) — small files, studio-controlled CDN, paid
+ *   egress. Hits the 1 GB Hobby cap fast for splat-scale media.
+ * - `google-drive` — file lands in the operator's Drive (anyone-with-link
+ *   readable). Browser fetches Drive directly via the API key URL; zero
+ *   Vercel egress. Requires the operator's drive.file scope token.
+ */
+export type SplatOutputTarget =
+  | { kind: "vercel-blob" }
+  | { kind: "google-drive"; operatorAccessToken: string; folderName?: string };
+
+const DEFAULT_DRIVE_FOLDER = "Holoflow / splats";
+const SHARP_GAUSSIAN_DEFAULT = 1_179_648;
+
+/**
+ * Inner SHARP-ONNX driver — takes raw image bytes (no source URL
+ * required) and lands a SplatRecord. Used by both the URL-based
+ * `generateViaSharpOnnx` (which fetches first) and the Photos /
+ * Drive orchestrators (which download bytes with Bearer auth and would
+ * otherwise have nowhere public to point SHARP at).
+ *
+ * `sourceImageUrl` is recorded on the resulting splat for provenance
+ * when the caller has one; null when the source was a transient byte
+ * stream that never had a public URL.
+ *
+ * `target` controls where the resulting PLY is persisted. Defaults to
+ * Vercel Blob; pass `google-drive` to land on the operator's Drive.
+ */
+export async function generateViaSharpOnnxFromBytes(
+  args: {
+    bytes: Uint8Array;
+    mimeType: string;
+    filename: string;
+    uploadedBy: string;
+    sourceImageUrl?: string | null;
+    recordId?: string;
+    target?: SplatOutputTarget;
+  },
+): Promise<SplatRecord> {
+  const serviceUrl = DEFAULT_SERVICE_URL;
+  const target: SplatOutputTarget = args.target ?? { kind: "vercel-blob" };
+
+  const { jobId } = await postSharpOnnxJob(
+    serviceUrl,
+    args.bytes,
+    args.mimeType,
+    args.filename,
+    {},
+  );
+  const status = await pollUntilDone(serviceUrl, jobId);
+  const plyBytes = await downloadResult(serviceUrl, jobId);
+
+  const filename = args.filename.replace(/\.[^.]+$/, "") + "_std.ply";
+  const gaussianCount = status.gaussianCount ?? SHARP_GAUSSIAN_DEFAULT;
+  const splatRef = {
+    provider: "sharp-onnx" as const,
+    licence: "research-only" as const,
+    plyFlavour: "standard-3dgs" as const,
+    gaussianCount,
+    ...(args.sourceImageUrl ? { sourceImageUrl: args.sourceImageUrl } : {}),
+    durationSeconds: status.durationSeconds ?? null,
+  };
+
+  if (target.kind === "vercel-blob") {
+    const media = await mediaUpload({
+      file: plyBytes,
+      filename,
+      mimeType: "application/octet-stream",
+      kind: "ply",
+      subject: "research",
+      uploadedBy: args.uploadedBy,
+      source: "vercel-blob",
+      sourceRef: { splat: splatRef },
+    });
+    return {
+      id: args.recordId ?? media.id,
+      provider: "sharp-onnx",
+      licence: PROVIDER_LICENCE["sharp-onnx"],
+      plyFlavour: "standard-3dgs",
+      plyUrl: media.url,
+      plyBytes: media.sizeBytes ?? plyBytes.byteLength,
+      gaussianCount,
+      generatedAt: media.uploadedAt,
+      meta: {
+        mediaId: media.id,
+        sourceImageUrl: args.sourceImageUrl ?? null,
+        durationSeconds: status.durationSeconds ?? null,
+        jobId,
+        target: "vercel-blob",
+      },
+    };
+  }
+
+  // ---- google-drive output ------------------------------------------
+  const folderId = await ensureFolder(
+    target.operatorAccessToken,
+    target.folderName ?? DEFAULT_DRIVE_FOLDER,
+  );
+  const { fileId } = await uploadFileToDrive(target.operatorAccessToken, {
+    bytes: plyBytes,
+    mimeType: "application/octet-stream",
+    filename,
+    parentFolderId: folderId,
+  });
+  await shareFilePublic(target.operatorAccessToken, fileId);
+  const url = publicDriveUrl(fileId);
+  const mediaId = args.recordId ?? randomUUID();
+  const generatedAt = new Date().toISOString();
+  const record: Media = {
+    id: mediaId,
+    kind: "ply",
+    subject: "research",
+    source: "google-drive",
+    url,
+    mimeType: "application/octet-stream",
+    uploadedAt: generatedAt,
+    uploadedBy: args.uploadedBy,
+    sizeBytes: plyBytes.byteLength,
+    sourceRef: {
+      googleDrive: { fileId },
+      splat: splatRef,
+    },
+    variants: { original: url },
+  };
+  // Strip undefined fields — Firestore rejects them.
+  const cleaned: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(record)) {
+    if (v !== undefined) cleaned[k] = v;
+  }
+  const db = requireFirebaseAdminDb();
+  await db.collection("media").doc(mediaId).set(cleaned);
+
+  return {
+    id: mediaId,
+    provider: "sharp-onnx",
+    licence: PROVIDER_LICENCE["sharp-onnx"],
+    plyFlavour: "standard-3dgs",
+    plyUrl: url,
+    plyBytes: plyBytes.byteLength,
+    gaussianCount,
+    generatedAt,
+    meta: {
+      mediaId,
+      driveFileId: fileId,
+      sourceImageUrl: args.sourceImageUrl ?? null,
+      durationSeconds: status.durationSeconds ?? null,
+      jobId,
+      target: "google-drive",
+    },
+  };
+}
+
+/**
+ * URL-based SHARP-ONNX entry: fetches the source image bytes and
+ * delegates to {@link generateViaSharpOnnxFromBytes}.
  */
 async function generateViaSharpOnnx(
   input: SplatGenerateInput,
@@ -200,56 +363,15 @@ async function generateViaSharpOnnx(
     );
   }
   const sourceUrl = input.source.url;
-  const serviceUrl = DEFAULT_SERVICE_URL;
-
   const source = await fetchSourceImage(sourceUrl);
-  const { jobId } = await postSharpOnnxJob(
-    serviceUrl,
-    source.bytes,
-    source.mimeType,
-    source.filename,
-    {},
-  );
-  const status = await pollUntilDone(serviceUrl, jobId);
-  const plyBytes = await downloadResult(serviceUrl, jobId);
-
-  const filename = source.filename.replace(/\.[^.]+$/, "") + "_std.ply";
-  const media = await mediaUpload({
-    file: plyBytes,
-    filename,
-    mimeType: "application/octet-stream",
-    kind: "ply",
-    subject: "research",
+  return generateViaSharpOnnxFromBytes({
+    bytes: source.bytes,
+    mimeType: source.mimeType,
+    filename: source.filename,
     uploadedBy,
-    source: "vercel-blob",
-    sourceRef: {
-      splat: {
-        provider: "sharp-onnx",
-        licence: "research-only",
-        plyFlavour: "standard-3dgs",
-        gaussianCount: status.gaussianCount ?? 1_179_648,
-        sourceImageUrl: sourceUrl,
-        durationSeconds: status.durationSeconds ?? null,
-      },
-    },
+    sourceImageUrl: sourceUrl,
+    ...(input.recordId ? { recordId: input.recordId } : {}),
   });
-
-  return {
-    id: input.recordId ?? media.id,
-    provider: "sharp-onnx",
-    licence: PROVIDER_LICENCE["sharp-onnx"],
-    plyFlavour: "standard-3dgs",
-    plyUrl: media.url,
-    plyBytes: media.sizeBytes ?? plyBytes.byteLength,
-    gaussianCount: status.gaussianCount ?? 1_179_648,
-    generatedAt: media.uploadedAt,
-    meta: {
-      mediaId: media.id,
-      sourceImageUrl: sourceUrl,
-      durationSeconds: status.durationSeconds ?? null,
-      jobId,
-    },
-  };
 }
 
 /**
@@ -264,6 +386,51 @@ export async function splatGenerateServer(
   switch (input.provider) {
     case "sharp-onnx":
       return generateViaSharpOnnx(input, ctx.uploadedBy);
+    case "hangar-gsplat":
+      // Bench-side contract (TODO — splat360 service extension):
+      //   POST {SPLAT_VIDEO_SERVICE_URL}/jobs
+      //     multipart: { video: <bytes>, params: JSON }
+      //     params: { frameStride: number, trainer: "gsplat" | "brush",
+      //               sfm: "colmap" | "glomap", iterations: number }
+      //   Returns: { jobId, etaSeconds }
+      //   Status: GET {SPLAT_VIDEO_SERVICE_URL}/jobs/{jobId}
+      //     -> { state, gaussianCount, frameCount, registeredImages,
+      //          sfmDurationSeconds, trainDurationSeconds }
+      //   Result: GET {SPLAT_VIDEO_SERVICE_URL}/jobs/{jobId}/result/std
+      //     -> standard-3DGS PLY bytes
+      throw asError(
+        "provider-unavailable",
+        "hangar-gsplat: bench-side video → 3D splat training pipeline not " +
+          "yet wired. Lives at D:/The_Hangar/engines/splat360/ — currently " +
+          "foundation-phase. See splat-generate.server.ts for the job " +
+          "contract this route expects.",
+      );
+    case "hangar-4dgs":
+      // Bench-side contract (TODO — choose one of: 4D-GS, Deformable-GS,
+      // SC-GS, Apple SHARP 4D if available; all share roughly the same
+      // pipeline shape):
+      //   POST {SPLAT_4D_SERVICE_URL}/jobs
+      //     multipart: { video: <bytes>, params: JSON }
+      //     params: { encoding: "deformable-mlp" | "canonical-time",
+      //               keyframes: number, sfm: "colmap" | "glomap" }
+      //   Returns: { jobId, etaSeconds }
+      //   Status: GET {SPLAT_4D_SERVICE_URL}/jobs/{jobId}
+      //     -> { state, gaussianCount, frameCount, durationSeconds,
+      //          encoding, trainDurationSeconds }
+      //   Result: depends on encoding:
+      //     deformable-mlp -> /result/canonical.ply + /result/deform.bin
+      //     canonical-time -> /result/4d.ply (with time-stride attributes)
+      //   The 4D PLY flavour is non-standard and needs a matching
+      //   browser-side viewer; static splat viewers will render a single
+      //   timestamp.
+      throw asError(
+        "provider-unavailable",
+        "hangar-4dgs: 4D dynamic splat training is not yet wired. The aim " +
+          "is monocular video → 4D-GS / Deformable-GS / SC-GS bench " +
+          "pipeline (Apache/MIT) or Apple SHARP 4D (research-only) once " +
+          "an ONNX export ships. Renderer requires 4D-aware viewer; the " +
+          "current @mkkellogg/gaussian-splats-3d shows one timestamp only.",
+      );
     case "postshot":
     case "studio-rig-native":
     case "luma-genie":

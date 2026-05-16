@@ -48,3 +48,7 @@ next-env.d.ts
 # splat pipeline (staging frames, SHARP outputs, run logs, per-machine config)
 tmp/
 scripts/cctv-fetch.config.json
+
+# Google Drive OAuth — bench-only creds, never commit
+.gdrive-oauth.json
+.gdrive-token.json

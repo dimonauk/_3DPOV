@@ -43,8 +43,11 @@ export default async function ConnectGooglePage({
           </h1>
           <p className="text-sm leading-relaxed text-chrome-300">
             Authorise the studio to pull bytes from your Google Photos picker
-            sessions and from your Google Drive. The studio never sees your
-            library in bulk — only the items you pick or the files you select.
+            sessions, read from your Google Drive, and write files the studio
+            creates (SHARP splat outputs) back to your Drive. The studio
+            never sees your library in bulk &mdash; only the items you pick,
+            the files you tick, and the files the studio creates on your
+            behalf.
           </p>
           <p className="text-xs leading-relaxed text-chrome-400">
             Scopes requested:{" "}
@@ -52,8 +55,11 @@ export default async function ConnectGooglePage({
               photospicker.mediaitems.readonly
             </code>
             ,{" "}
-            <code className="text-pink-200">drive.readonly</code>. Both are
-            read-only.
+            <code className="text-pink-200">drive.readonly</code>,{" "}
+            <code className="text-pink-200">drive.file</code>. The first
+            two are read-only; the third lets the studio land
+            SHARP-generated splats in your Drive but cannot touch any
+            file it didn&rsquo;t create.
           </p>
         </header>
 
@@ -95,6 +101,19 @@ export default async function ConnectGooglePage({
             </span>
             <span className="text-xs leading-relaxed text-chrome-400">
               Walk a folder tree. Tick the files to ingest. Optional watch.
+            </span>
+          </a>
+          <a
+            href="/admin/import/video-to-splat"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">C</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Video &rarr; Splat
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              The three-stage ladder: single-frame today, full gsplat
+              training pending, 4D dynamic as the aim.
             </span>
           </a>
         </nav>

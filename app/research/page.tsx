@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Footer from "components/layout/footer";
 
 export const metadata = {
@@ -33,7 +35,14 @@ export default function ResearchIndexPage() {
         <section className="mt-16 space-y-10">
           <div>
             <div className="chrome-label">In progress</div>
-            <h2 className="mt-3 text-2xl">CCTV 3D Archive</h2>
+            <h2 className="mt-3 text-2xl">
+              <Link
+                href="/research/cctv-3d-archive"
+                className="text-chrome-100 underline-offset-4 hover:text-pink-200 hover:underline"
+              >
+                CCTV 3D Archive
+              </Link>
+            </h2>
             <p className="mt-3 max-w-xl text-sm text-chrome-300">
               90 stills from public CCTV across London, each run
               through Apple SHARP via ONNX on the studio bench, each
@@ -44,6 +53,24 @@ export default function ResearchIndexPage() {
             <p className="mt-3 max-w-xl text-xs text-chrome-500">
               Public viewer not wired yet. Outputs are landing in the
               studio archive while the surface is built.
+            </p>
+          </div>
+
+          <div>
+            <div className="chrome-label">Reference</div>
+            <h2 className="mt-3 text-2xl">
+              <Link
+                href="/research/engines"
+                className="text-chrome-100 underline-offset-4 hover:text-pink-200 hover:underline"
+              >
+                Engines
+              </Link>
+            </h2>
+            <p className="mt-3 max-w-xl text-sm text-chrome-300">
+              The Python under the bench. Three working engines &mdash;
+              splat360, sharp-onnx, mesh-to-sdf &mdash; with what each
+              does, the math underneath, and which licence track its
+              outputs feed into.
             </p>
           </div>
         </section>

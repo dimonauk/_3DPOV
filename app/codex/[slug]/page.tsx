@@ -7,6 +7,7 @@ import {
   getCodexEntry,
   getCodexReferencedBy,
 } from "lib/codex";
+import CodexReadAloud from "components/codex/read-aloud";
 
 export function generateStaticParams() {
   return codex.map((e) => ({ slug: e.slug }));
@@ -77,6 +78,7 @@ export default async function CodexEntryPage({
               {entry.status}
             </p>
           )}
+          <CodexReadAloud title={entry.title} summary={entry.summary} />
         </header>
 
         <div className="mt-12 prose-gallery text-chrome-200 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:text-chrome-100 [&_h3]:mt-10 [&_h3]:mb-3 [&_h3]:text-lg [&_h3]:text-chrome-100 [&_p]:leading-relaxed [&_strong]:text-pink-200 [&_a]:text-pink-200 [&_a]:underline [&_a]:underline-offset-4 [&_ul]:my-4 [&_ol]:my-4 [&_li]:my-1.5 [&_sup]:text-pink-200 [&_sup]:font-mono">

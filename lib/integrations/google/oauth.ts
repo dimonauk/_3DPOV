@@ -31,15 +31,29 @@ type OAuth2Client = Auth.OAuth2Client;
 
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
 
-/** Scopes we ever request. Photos Picker + Drive read-only. */
+/**
+ * Scopes we ever request.
+ *
+ * - `photosPicker` — operator picks items in Google's own modal; we
+ *   never see anything they didn't pick.
+ * - `driveReadonly` — read access to the operator's Drive (listing /
+ *   browsing / downloading).
+ * - `driveFile` — write access, but only to files the app creates or
+ *   opens. Required for landing SHARP-generated splats back on the
+ *   operator's Drive instead of paying for Vercel Blob storage. Crucially
+ *   narrower than full `drive` scope: we cannot touch the operator's
+ *   existing files.
+ */
 export const GOOGLE_SCOPES = {
   photosPicker: "https://www.googleapis.com/auth/photospicker.mediaitems.readonly",
   driveReadonly: "https://www.googleapis.com/auth/drive.readonly",
+  driveFile: "https://www.googleapis.com/auth/drive.file",
 } as const;
 
 export const DEFAULT_GOOGLE_SCOPES = [
   GOOGLE_SCOPES.photosPicker,
   GOOGLE_SCOPES.driveReadonly,
+  GOOGLE_SCOPES.driveFile,
 ];
 
 export type OperatorGoogleTokens = {

@@ -36,7 +36,24 @@ export type SplatProvider =
   | "sharp-onnx"
   | "postshot"
   | "studio-rig-native"
-  | "luma-genie";
+  | "luma-genie"
+  /**
+   * Bench-side gsplat training pipeline. Pinhole-video input,
+   * COLMAP/GLOMAP SfM, then gsplat or Brush as the trainer. Apache-2.0
+   * / MIT throughout — commerce-safe. The bench endpoint is the
+   * planned `splat360` service extended with a non-360 entry point;
+   * see `splat-generate.server.ts` for the job contract.
+   */
+  | "hangar-gsplat"
+  /**
+   * Bench-side 4D gaussian-splatting training pipeline. Monocular
+   * video input, deformable-MLP 4D-GS encoding. Either via the open
+   * 4D-GS / Deformable-GS / SC-GS research codebases on the bench,
+   * or via Apple SHARP 4D if/when that ONNX export lands. The latter
+   * inherits SHARP's research-only licence; the former is commerce-
+   * safe Apache/MIT.
+   */
+  | "hangar-4dgs";
 
 /**
  * Licence that travels with every generated splat record. Downstream
@@ -57,7 +74,25 @@ export type SplatLicence =
  */
 export type SplatPlyFlavour =
   | "standard-3dgs" // x,y,z, nx,ny,nz, f_dc_0..2, f_rest_0..44, opacity, scale_0..2, rot_0..3
-  | "sharp-onnx-raw"; // SHARP's superset format — convert before generic viewing
+  | "sharp-onnx-raw" // SHARP's superset format — convert before generic viewing
+  | "4dgs-deformable-mlp" // canonical 3DGS + a deformation MLP that maps (x, t) → Δ
+  | "4dgs-canonical-time"; // per-timestep canonical attributes (heavier on disk)
+
+/**
+ * Encoding of time for a 4D splat. `null` means the record is a static
+ * 3D splat (the historical case). Present + > 1 means a 4D record.
+ */
+export type Splat4DEncoding = {
+  /** `deformable-mlp` (compact, needs runtime evaluator) or `canonical-time`
+   *  (heavier, but renderable by stepping a static viewer). */
+  kind: "deformable-mlp" | "canonical-time";
+  /** Number of keyframes / training timestamps. */
+  frameCount: number;
+  /** Real-world seconds the recording spans. */
+  durationSeconds: number;
+  /** Frames per second of the source video, if applicable. */
+  sourceFps?: number;
+};
 
 export type SplatGenerateInput = {
   provider: SplatProvider;
@@ -93,6 +128,19 @@ export type SplatRecord = {
   gaussianCount: number;
   /** ISO-8601 timestamp of when generation completed. */
   generatedAt: string;
+  /**
+   * Present when the record is a 4D / dynamic splat. Static 3D splats
+   * leave this absent. Downstream renderers branch on this to decide
+   * whether to step time or render once.
+   */
+  fourD?: Splat4DEncoding;
+  /**
+   * Composition lineage. Present on splats produced by
+   * `viz.splat-compose` (i.e. stitched scenes). Lists the source splat
+   * ids that contributed; commerce gating is the most-restrictive
+   * licence across them.
+   */
+  composedFrom?: ReadonlyArray<string>;
   /** Provider-specific diagnostic blob (depth range, training iters,
    *  inference time, etc.). Opaque to consumers. */
   meta: Record<string, unknown>;
@@ -131,12 +179,20 @@ export async function splatGenerate(
 }
 
 /** Licence mapping by provider. Stable surface — commerce code reads
- *  from this directly when deciding what to show. */
+ *  from this directly when deciding what to show.
+ *
+ *  `hangar-4dgs` defaults to commercial-ok because the open 4D-GS
+ *  research codebases on the bench (4D-GS, Deformable-GS, SC-GS) are
+ *  all permissive (Apache / MIT). When/if Apple SHARP 4D weights enter
+ *  the pipeline the provider should be renamed (`sharp-onnx-4d`) so the
+ *  research-only licence travels with the record. */
 export const PROVIDER_LICENCE: Readonly<Record<SplatProvider, SplatLicence>> = {
   "sharp-onnx": "research-only",
   postshot: "commercial-ok",
   "studio-rig-native": "commercial-ok",
   "luma-genie": "third-party-commercial",
+  "hangar-gsplat": "commercial-ok",
+  "hangar-4dgs": "commercial-ok",
 };
 
 /** Convenience predicate: does this record's licence allow it on

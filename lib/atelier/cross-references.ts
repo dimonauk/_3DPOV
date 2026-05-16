@@ -182,23 +182,98 @@ export const ATELIER_CROSS_REFS: Record<string, AtelierRef[]> = {
       href: "/articles/belt-printed-wall-reliefs",
     },
   ],
+  "algorithm:lsystem-tube": [
+    {
+      kind: "article",
+      label: "The jewellery algorithms",
+      href: "/articles/the-jewellery-algorithms",
+    },
+  ],
+  "algorithm:wing-venation": [
+    {
+      kind: "article",
+      label: "The jewellery algorithms",
+      href: "/articles/the-jewellery-algorithms",
+    },
+  ],
+  "algorithm:non-euclidean": [
+    {
+      kind: "article",
+      label: "The mathematics of morphing",
+      href: "/articles/the-mathematics-of-morphing",
+    },
+  ],
+  "algorithm:penrose-tiling": [
+    {
+      kind: "article",
+      label: "The jewellery algorithms",
+      href: "/articles/the-jewellery-algorithms",
+    },
+  ],
+  "algorithm:celtic-knot": [
+    {
+      kind: "article",
+      label: "The jewellery algorithms",
+      href: "/articles/the-jewellery-algorithms",
+    },
+  ],
 
   // --- Kata moves -------------------------------------------------------
-  "kata-move:weave": [
+  "kata-move:weave-three-beat": [
     {
       kind: "codex",
       label: "Poi",
       href: "/codex/poi",
-    },
-    {
-      kind: "journal",
-      label: "Year One, Fire",
-      href: "/journal/year-one-fire",
+      context: "the three-beat weave is the standard 4-petal flower",
     },
     {
       kind: "tutorial",
       label: "Spinning fire poi safely",
       href: "/tutorials/spinning-fire-poi-safely",
+    },
+    {
+      kind: "article",
+      label: "Choreographing with Laban",
+      href: "/articles/choreographing-with-laban",
+    },
+  ],
+  "kata-move:cross-low": [
+    {
+      kind: "tutorial",
+      label: "Spinning fire poi safely",
+      href: "/tutorials/spinning-fire-poi-safely",
+    },
+    {
+      kind: "article",
+      label: "Choreographing with Laban",
+      href: "/articles/choreographing-with-laban",
+    },
+  ],
+  "kata-move:cross-high": [
+    {
+      kind: "tutorial",
+      label: "Spinning fire poi safely",
+      href: "/tutorials/spinning-fire-poi-safely",
+    },
+  ],
+  "kata-move:cross-buzzsaw": [
+    {
+      kind: "journal",
+      label: "Year One, Fire",
+      href: "/journal/year-one-fire",
+      context: "buzzsaw was the first move I burned a glove on",
+    },
+  ],
+  "kata-move:windmill-forward": [
+    {
+      kind: "tutorial",
+      label: "Spinning fire poi safely",
+      href: "/tutorials/spinning-fire-poi-safely",
+    },
+    {
+      kind: "article",
+      label: "Choreographing with Laban",
+      href: "/articles/choreographing-with-laban",
     },
   ],
 
@@ -241,6 +316,60 @@ export const ATELIER_CROSS_REFS: Record<string, AtelierRef[]> = {
       kind: "article",
       label: "Colour without pigment",
       href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:poi": [
+    {
+      kind: "article",
+      label: "Why I build my own rigs",
+      href: "/articles/why-i-build-my-own-rigs",
+    },
+    {
+      kind: "journal",
+      label: "Year One, Fire",
+      href: "/journal/year-one-fire",
+    },
+  ],
+  "brush:plasma": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:silk": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:silkbloom": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:silkplasma": [
+    {
+      kind: "article",
+      label: "Colour without pigment",
+      href: "/articles/colour-without-pigment",
+    },
+  ],
+  "brush:neonpulse": [
+    {
+      kind: "article",
+      label: "Why I build my own rigs",
+      href: "/articles/why-i-build-my-own-rigs",
+    },
+  ],
+  "brush:embers": [
+    {
+      kind: "journal",
+      label: "Year One, Fire",
+      href: "/journal/year-one-fire",
     },
   ],
 };

@@ -9,6 +9,7 @@ import Caustics from "components/codex/entries/caustics";
 import CertificateOfAuthenticity from "components/codex/entries/certificate-of-authenticity";
 import DjiMini5Pro from "components/codex/entries/dji-mini-5-pro";
 import EditionSizeConventions from "components/codex/entries/edition-size-conventions";
+import EquirectangularProjection from "components/codex/entries/equirectangular-projection";
 import FdmPrinting from "components/codex/entries/fdm-printing";
 import GaussianSplatting from "components/codex/entries/gaussian-splatting";
 import GyroidSurfaces from "components/codex/entries/gyroid-surfaces";
@@ -18,6 +19,7 @@ import LabanMovementAnalysis from "components/codex/entries/laban-movement-analy
 import LongExposurePhotography from "components/codex/entries/long-exposure-photography";
 import MarchingCubes from "components/codex/entries/marching-cubes";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
+import OnnxRuntime from "components/codex/entries/onnx-runtime";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
 import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
 import Photogrammetry from "components/codex/entries/photogrammetry";
@@ -25,6 +27,7 @@ import Pixelstick from "components/codex/entries/pixelstick";
 import Poi from "components/codex/entries/poi";
 import PovLedArray from "components/codex/entries/pov-led-array";
 import PtguiHuginLightroomStitching from "components/codex/entries/ptgui-hugin-lightroom-stitching";
+import SignedDistanceFields from "components/codex/entries/signed-distance-fields";
 import SlicerSoftware from "components/codex/entries/slicer-software";
 import SpatialAudioExplained from "components/codex/entries/spatial-audio-explained";
 import Teensy from "components/codex/entries/teensy";
@@ -76,6 +79,7 @@ const ENTRIES: CodexEntry[] = [
       "ptgui-hugin-lightroom-stitching",
       "virtual-reality",
       "augmented-reality",
+      "equirectangular-projection",
     ],
     sources: [
       {
@@ -707,6 +711,8 @@ const ENTRIES: CodexEntry[] = [
       "one-press-three-sixty-capture",
       "marching-cubes",
       "virtual-reality",
+      "equirectangular-projection",
+      "onnx-runtime",
     ],
     sources: [
       {
@@ -743,6 +749,7 @@ const ENTRIES: CodexEntry[] = [
       "gyroid-surfaces",
       "gaussian-splatting",
       "long-exposure-photography",
+      "signed-distance-fields",
     ],
     sources: [
       {
@@ -798,6 +805,113 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: GyroidSurfaces,
+  },
+  {
+    slug: "signed-distance-fields",
+    title: "Signed distance fields (SDF)",
+    category: "Production",
+    date: "2026-05-16",
+    summary:
+      "A 3D shape stored as the scalar distance to its nearest surface, with negative inside and positive outside. The intermediate representation the studio uses between a captured shape and a printable mesh, and the texture the waveguide-object fragment shaders sample.",
+    seeAlso: ["marching-cubes", "waveguide-object", "gyroid-surfaces"],
+    sources: [
+      {
+        label:
+          "Íñigo Quílez: Distance functions — analytical SDF primitives",
+        url: "https://iquilezles.org/articles/distfunctions/",
+      },
+      {
+        label: "Wikipedia: Signed distance function",
+        url: "https://en.wikipedia.org/wiki/Signed_distance_function",
+      },
+      {
+        label:
+          "Felzenszwalb & Huttenlocher: Distance Transforms of Sampled Functions",
+        url: "https://cs.brown.edu/people/pfelzens/dt/",
+      },
+      {
+        label:
+          "SciPy distance_transform_edt — separable Euclidean distance transform",
+        url: "https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.distance_transform_edt.html",
+      },
+      {
+        label: "trimesh — Python triangle-mesh + voxelisation library",
+        url: "https://trimesh.org/",
+      },
+    ],
+    Body: SignedDistanceFields,
+  },
+  {
+    slug: "equirectangular-projection",
+    title: "Equirectangular projection",
+    category: "Capture (Immersive)",
+    date: "2026-05-16",
+    summary:
+      "Marinus of Tyre's 100 AD sphere-to-rectangle map, the projection every 360 camera writes to disk. The math underneath, the pole-distortion problem, and how the studio's splat360 engine picks between equirect, fisheye-pair, and cubemap input to keep the stitch seam out of the final splat.",
+    seeAlso: [
+      "three-sixty-photography",
+      "gaussian-splatting",
+      "one-press-three-sixty-capture",
+    ],
+    sources: [
+      {
+        label: "Wikipedia: Equirectangular projection",
+        url: "https://en.wikipedia.org/wiki/Equirectangular_projection",
+      },
+      {
+        label: "COLMAP camera models documentation",
+        url: "https://colmap.github.io/cameras.html",
+      },
+      {
+        label: "OpenMVG — open multiple-view geometry",
+        url: "https://openmvg.readthedocs.io/",
+      },
+      {
+        label: "hloc — hierarchical localisation toolbox",
+        url: "https://github.com/cvg/Hierarchical-Localization",
+      },
+      {
+        label: "Brush — Rust gaussian-splat trainer",
+        url: "https://github.com/ArthurBrussee/brush",
+      },
+      {
+        label: "gsplat — differentiable rasterisation for gaussian splatting",
+        url: "https://github.com/nerfstudio-project/gsplat",
+      },
+    ],
+    Body: EquirectangularProjection,
+  },
+  {
+    slug: "onnx-runtime",
+    title: "ONNX Runtime",
+    category: "Apparatus",
+    date: "2026-05-16",
+    summary:
+      "The cross-platform inference engine that runs the studio's exported ML models. Same .onnx file from bench RTX 4090 (CUDA) to laptop (DirectML) to browser (WebGPU/WASM) to iOS (CoreML). What runs Apple SHARP on the bench and Depth Anything V2 in /photographs/spatial.",
+    seeAlso: ["gaussian-splatting", "equirectangular-projection"],
+    sources: [
+      {
+        label: "ONNX Runtime official site",
+        url: "https://onnxruntime.ai/",
+      },
+      {
+        label: "Open Neural Network Exchange (ONNX) format",
+        url: "https://onnx.ai/",
+      },
+      {
+        label: "Apple Machine Learning Research — SHARP",
+        url: "https://machinelearning.apple.com/research",
+      },
+      {
+        label: "Depth Anything V2",
+        url: "https://depth-anything-v2.github.io/",
+      },
+      {
+        label: "onnxruntime-web — browser inference (WebGPU + WASM)",
+        url: "https://onnxruntime.ai/docs/tutorials/web/",
+      },
+    ],
+    Body: OnnxRuntime,
   },
   {
     slug: "laban-movement-analysis",

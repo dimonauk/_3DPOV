@@ -16,13 +16,29 @@ export default {
       },
     ],
   },
-  // mind-ar's image-three bundle has a guarded `require("fs")` (and a few
-  // other Node-only refs) for Node-side usage that webpack can't statically
-  // resolve when bundling for the browser. The runtime IS_NODE check skips
-  // those branches in the client; stub them out so the build succeeds.
+  // The `onnxruntime-node` package ships native `.node` binding binaries
+  // that webpack cannot parse. It gets pulled in via the
+  // `@huggingface/transformers` package's conditional `node` export,
+  // which kokoro-js (used by `components/aura/voice/kokoro-worker.ts`)
+  // imports. That worker runs in the BROWSER, so the Node entry of
+  // transformers is the wrong build anyway. Two-pronged fix below:
+  //
+  //   1. Alias `onnxruntime-node` to `false` everywhere — no bundle
+  //      should ever try to embed those .node files.
+  //   2. Pin `@huggingface/transformers` to its browser bundle on the
+  //      client / worker side so kokoro-js gets the WebGPU + WASM
+  //      ONNX-Web build instead of the native one.
+  //
+  // The mind-ar `fs` fallbacks below are a separate, pre-existing fix
+  // for the same family of "client bundle pulls in Node-only branches"
+  // problem.
   webpack: (config: any, { isServer }: { isServer: boolean }) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "onnxruntime-node": false,
+    };
     if (!isServer) {
-      config.resolve = config.resolve || {};
       config.resolve.fallback = {
         ...(config.resolve.fallback || {}),
         fs: false,
@@ -36,6 +52,9 @@ export default {
         net: false,
         tls: false,
       };
+      config.resolve.conditionNames = (
+        config.resolve.conditionNames ?? ["browser", "module", "import", "require", "default"]
+      ).filter((c: string) => c !== "node");
     }
     return config;
   },
