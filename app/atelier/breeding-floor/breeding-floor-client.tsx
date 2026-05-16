@@ -27,7 +27,11 @@
  */
 
 import { useCallback, useMemo, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { createXRStore, XR } from "@react-three/xr";
 
+import { ChamberXRBar } from "components/three/ChamberXRBar";
 import {
   GENE_NAMES,
   cloneGenome,
@@ -120,6 +124,47 @@ function genomeToColour(g: Genome): string {
 // The component
 // ------------------------------------------------------------------
 
+// ------------------------------------------------------------------
+// Floor3D — a small R3F visualisation of the current population as
+// a 4x3 grid of glowing spheres. Wraps inside <XR> so a visitor can
+// walk the floor in a headset; flat-mode is the default desktop view.
+// ------------------------------------------------------------------
+
+function Floor3D({ population }: { population: ChamberGenome[] }) {
+  const cols = 4;
+  const spacing = 0.6;
+  return (
+    <>
+      <ambientLight intensity={0.3} />
+      <pointLight position={[3, 3, 3]} intensity={0.8} />
+      <pointLight position={[-3, 2, -3]} intensity={0.5} color="#ff66cc" />
+      {/* Floor plane */}
+      <mesh rotation-x={-Math.PI / 2} position={[0, -0.4, 0]} receiveShadow>
+        <planeGeometry args={[6, 6]} />
+        <meshStandardMaterial color="#0a0a12" roughness={0.9} />
+      </mesh>
+      {population.map((g, i) => {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const x = (col - (cols - 1) / 2) * spacing;
+        const z = (row - 1) * spacing;
+        const colour = genomeToColour(g);
+        return (
+          <mesh key={g.uid} position={[x, 0, z]}>
+            <sphereGeometry args={[0.18, 24, 24]} />
+            <meshStandardMaterial
+              color={colour}
+              emissive={colour}
+              emissiveIntensity={1.4}
+              toneMapped={false}
+            />
+          </mesh>
+        );
+      })}
+    </>
+  );
+}
+
 export default function BreedingFloorClient() {
   const [seed, setSeed] = useState<number>(0xc0ffee);
   const [generation, setGeneration] = useState<number>(0);
@@ -132,6 +177,9 @@ export default function BreedingFloorClient() {
   const [population, setPopulation] =
     useState<ChamberGenome[]>(initialPopulation);
   const [favourites, setFavourites] = useState<Set<string>>(new Set());
+
+  // Stable XR store — recreating it would tear down any live session.
+  const xrStore = useMemo(() => createXRStore(), []);
   const [lineage, setLineage] = useState<LineageEntry[]>(() => [
     {
       generation: 0,
@@ -308,6 +356,29 @@ export default function BreedingFloorClient() {
           </button>
         </div>
       </header>
+
+      {/* 3D floor view --------------------------------------------
+          Twelve genomes laid out as a 4x3 grid of glowing spheres.
+          WebXR wrap lets a visitor walk the floor in a headset; flat
+          mode is the default desktop view. */}
+      <div className="relative aspect-[2/1] w-full overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950">
+        <div className="absolute right-3 top-3 z-20">
+          <ChamberXRBar store={xrStore} />
+        </div>
+        <Canvas camera={{ position: [0, 1.4, 2.4], fov: 45 }} dpr={[1, 2]}>
+          <color attach="background" args={["#05030a"]} />
+          <XR store={xrStore}>
+            <Floor3D population={population} />
+          </XR>
+          <OrbitControls enablePan={false} target={[0, 0, 0]} />
+        </Canvas>
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex items-baseline justify-between gap-3 bg-gradient-to-t from-warm-black-950/90 to-transparent px-3 py-2 font-mono text-[0.65rem] text-chrome-300">
+          <span>floor &middot; generation {generation}</span>
+          <span className="text-chrome-500">
+            {population.length} genomes &middot; walkable in VR
+          </span>
+        </div>
+      </div>
 
       {/* Population grid ----------------------------------------- */}
       <div

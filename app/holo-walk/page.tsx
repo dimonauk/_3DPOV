@@ -1,6 +1,8 @@
 import Footer from "components/layout/footer";
 import Link from "next/link";
 import { getAttractorParams, listLocations } from "lib/holo-walk/locations";
+import { listDynamicSculptures } from "lib/holo-walk/dynamic-sculptures";
+import { createLogger } from "lib/log";
 import HoloWalkMapClient from "./holo-walk-map-client";
 
 export const metadata = {
@@ -10,8 +12,15 @@ export const metadata = {
     "Light sculptures reanchored at the spots they were photographed. Manchester and London as outdoor galleries. Open the AR view at the spot; the sculpture reappears in your phone. Photograph it, record it, share it.",
 };
 
-export default function HoloWalkIndexPage() {
+const log = createLogger("route:/holo-walk");
+
+export default async function HoloWalkIndexPage() {
   const all = listLocations();
+  const dynamic = await listDynamicSculptures();
+  log.info("rendering gallery", {
+    staticCount: all.length,
+    dynamicCount: dynamic.length,
+  });
   const byCity = new Map<string, typeof all>();
   for (const loc of all) {
     const bucket = byCity.get(loc.city) ?? [];
@@ -63,6 +72,12 @@ export default function HoloWalkIndexPage() {
           >
             article: London 360 walking
           </Link>
+          <Link
+            href="/holo-walk/new"
+            className="rounded-sm border border-pink-200/40 px-3 py-1 text-pink-200 hover:border-pink-200 hover:bg-pink-200/10"
+          >
+            + add a sculpture
+          </Link>
         </div>
 
         <div className="mt-12 aspect-[16/10] w-full overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950">
@@ -110,6 +125,72 @@ export default function HoloWalkIndexPage() {
             </ul>
           </section>
         ))}
+
+        {dynamic.length > 0 && (
+          <section className="mt-16">
+            <div className="chrome-label">Operator additions</div>
+            <h2 className="mt-3 text-2xl text-chrome-100">
+              {dynamic.length} splat sculpture{dynamic.length === 1 ? "" : "s"}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-chrome-300">
+              Trained from operator-uploaded 360 video via the
+              hangar-gsplat pipeline. Newest first.
+            </p>
+            <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+              {dynamic.map((s) => (
+                <li key={s.id}>
+                  <div className="block rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="text-lg text-chrome-100">{s.label}</h3>
+                      <span className="font-mono text-[10px] text-chrome-500">
+                        {s.status === "done"
+                          ? "splat · done"
+                          : s.status === "error"
+                            ? "splat · error"
+                            : `splat · ${s.status}`}
+                      </span>
+                    </div>
+                    {s.status === "done" && typeof s.gaussianCount === "number" && (
+                      <p className="mt-2 text-sm text-chrome-300">
+                        {s.gaussianCount.toLocaleString()} gaussians,{" "}
+                        {typeof s.plyBytes === "number"
+                          ? `${(s.plyBytes / (1024 * 1024)).toFixed(1)} MB`
+                          : "—"}
+                      </p>
+                    )}
+                    {s.status === "error" && s.errorMessage && (
+                      <p className="mt-2 text-sm text-pink-300">
+                        {s.errorMessage}
+                      </p>
+                    )}
+                    <div className="mt-4 flex items-center justify-between text-[11px] text-chrome-400">
+                      <span className="font-mono">
+                        {s.lat !== undefined && s.lon !== undefined
+                          ? `${s.lat.toFixed(4)}, ${s.lon.toFixed(4)}`
+                          : "no GPS"}
+                      </span>
+                      {s.plyUrl ? (
+                        <a
+                          href={s.plyUrl}
+                          className="text-chrome-400 hover:text-pink-200"
+                        >
+                          open .ply &rarr;
+                        </a>
+                      ) : (
+                        <span className="text-chrome-500">{s.jobId ?? "—"}</span>
+                      )}
+                    </div>
+                    {s.jobId && (
+                      <div className="mt-1 font-mono text-[10px] text-chrome-500">
+                        bench job: {s.jobId}
+                      </div>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className="mt-16 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-8 text-sm text-chrome-300">
           <div className="chrome-label">How it works</div>

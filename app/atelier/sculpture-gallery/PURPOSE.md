@@ -21,10 +21,49 @@ you whether the result is watertight before you waste resin on it.
 ## Files
 
 - `page.tsx` — server component, metadata, hero copy, the wall.
-- `sculpture-gallery-client.tsx` — client component, the workshop.
+- `sculpture-gallery-client.tsx` — client component, the workshop
+  (marching-cubes + Image → Hunyuan3D sibling input).
 - `voxels.ts` / `marching.ts` / `mc-tables.ts` / `npy.ts` / `exportGlb.ts`
   — the pure-TS marching-cubes pipeline, ported from the source app.
+- `../../api/atelier/sculpture-gallery/image-to-glb/route.ts` —
+  operator-only multipart route. Uploads the image to ComfyUI's
+  `/upload/image`, dispatches `hunyuan3d-2mv-turbo` via
+  `comfyUIGenerateServer`, returns `{ glbUrl, glbBytes }`. Admin-guarded
+  via `requireAdminUser` (Hunyuan3D burns bench VRAM; no anonymous
+  traffic).
 - `PURPOSE.md` — this file.
+
+## Image → Hunyuan3D pipeline
+
+The workshop has a second on-ramp alongside the voxel-upload path.
+A reference image goes to the Hangar's ComfyUI bench; ~53 s later, a
+~15 MB textured GLB renders in `<model-viewer>` and gets pushed to
+the recent-outputs drawer.
+
+The route's contract with the workflow JSON:
+
+- Node `"2"` (LoadImage) — overridden with the uploaded filename.
+- Node `"5"` (Hunyuan3dImageTo3D) — overridden with a per-call random
+  seed (the workflow's seed is constant; `Hunyuan3dImageTo3D` isn't a
+  `KSampler*` so the server's auto-seed-mutation does not fire).
+- The prompt field is metadata-only — Hunyuan3D conditions on the
+  image, not text. Stored in `sourceRef.comfyui.prompt` for archive.
+
+Env required for production (Vercel): `COMFYUI_SERVICE_URL` pointing at
+the tailnet-Funnel hostname and `COMFYUI_AUTH_TOKEN` matching the
+bench's shared bearer. Local dev on the bench works without either set
+(localhost:8188, no auth).
+
+## Thumbnail-splat — skipped (no splat records on the wall)
+
+Part 2 of the original ticket — swapping `<MeshCard>` thumbnails to
+`viz.thumbnail-splat` for splat-flavour records — does not apply here.
+Every entry in `lib/assets/meshes.ts` is a GLB (`format: "glb"`) with
+no splat source kind; there are 22 meshes and zero of them are splat
+records. When the genome catalogue grows a `splatRef` or a sibling
+splat catalogue lands, revisit MeshCard with a SplatCard variant that
+fetches `card-fast` thumbnails server-side and respects the existing
+IntersectionObserver gate.
 
 ## Source
 

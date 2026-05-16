@@ -35,6 +35,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import { GoogleGenAI } from "@google/genai";
 
 import GoogleAiSettings from "components/atelier/google-ai-settings";
+import { useAuth } from "components/auth/auth-provider";
 import { createLogger } from "lib/log";
 import { useActiveChamber, pushAtelierOutput } from "lib/state/atelier-hooks";
 import {
@@ -43,10 +44,26 @@ import {
 } from "lib/state/google-ai-key";
 
 const log = createLogger("atelier:pattern-prototype");
+const textileLog = createLogger("atelier:pattern-prototype:textile");
 
 // ---------------- Types ----------------
 
-type AppMode = "editorial" | "blueprint" | "playroom" | "archive";
+type AppMode = "editorial" | "blueprint" | "playroom" | "archive" | "textile";
+
+// Textile generation lifecycle — distinct from the Gemini SVG draft
+// because Flux1-dev runs on the studio bench (10-30s) rather than
+// browser→Google.
+type TextileState =
+  | { kind: "idle" }
+  | { kind: "loading"; startedAt: number; prompt: string }
+  | {
+      kind: "ready";
+      url: string;
+      prompt: string;
+      bytes: number;
+      durationMs: number;
+    }
+  | { kind: "error"; message: string };
 
 type MeasurementSet = {
   bust: number;
@@ -257,9 +274,12 @@ export default function PatternPrototypeClient() {
     fullness: 0.2,
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [textilePrompt, setTextilePrompt] = useState("");
+  const [textile, setTextile] = useState<TextileState>({ kind: "idle" });
 
   const mode_key = useGoogleAiKeyStore((s) => s.mode);
   const hasKey = useGoogleAiKeyStore((s) => s.key.trim().length > 0);
+  const { user } = useAuth();
 
   const handleDraft = useCallback(async () => {
     const visitorKey = activeVisitorKey(useGoogleAiKeyStore.getState());
@@ -310,6 +330,77 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
     }
   }, [outfit.jacket, outfit.bottom, measurements, options]);
 
+  const handleGenerateTextile = useCallback(async () => {
+    const trimmed = textilePrompt.trim();
+    if (!trimmed) {
+      setTextile({ kind: "error", message: "type a prompt first." });
+      return;
+    }
+    if (!user) {
+      setTextile({
+        kind: "error",
+        message: "sign in as an operator to generate on the bench.",
+      });
+      return;
+    }
+    const startedAt = Date.now();
+    setTextile({ kind: "loading", startedAt, prompt: trimmed });
+    textileLog.info("generate requested", {
+      promptPreview: trimmed.slice(0, 80),
+    });
+    try {
+      const idToken = await user.getIdToken();
+      const res = await fetch(
+        "/api/atelier/pattern-prototype/generate-textile",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({ prompt: trimmed }),
+        },
+      );
+      const data = (await res.json()) as {
+        url?: string;
+        bytes?: number;
+        generatedAt?: string;
+        durationMs?: number;
+        error?: string;
+        code?: string;
+      };
+      if (!res.ok || !data.url) {
+        throw new Error(data.error ?? `bench returned HTTP ${res.status}.`);
+      }
+      const durationMs = data.durationMs ?? Date.now() - startedAt;
+      setTextile({
+        kind: "ready",
+        url: data.url,
+        prompt: trimmed,
+        bytes: data.bytes ?? 0,
+        durationMs,
+      });
+      const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+      pushAtelierOutput({
+        chamberSlug: "pattern-prototype",
+        kind: "image",
+        label: `textile-${stamp}.png`,
+        blobUrl: data.url,
+        mimeType: "image/png",
+        sizeBytes: data.bytes ?? 0,
+      });
+      textileLog.info("generate done", {
+        durationMs,
+        bytes: data.bytes ?? 0,
+      });
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "unknown generation error.";
+      textileLog.error("generate failed", { err });
+      setTextile({ kind: "error", message });
+    }
+  }, [textilePrompt, user]);
+
   return (
     <div className="flex flex-col gap-6">
       {/* Quota badge + settings */}
@@ -354,7 +445,9 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
                 ? "bg-[#fffcf9] text-rose-950"
                 : mode === "archive"
                   ? "bg-[#f4ebe0] text-rose-950"
-                  : "bg-[#fff1f2] text-rose-950"
+                  : mode === "textile"
+                    ? "bg-warm-black-950 text-chrome-100"
+                    : "bg-[#fff1f2] text-rose-950"
           }`}
         >
           <header className="mb-4 flex items-center justify-between">
@@ -363,7 +456,9 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
                 className={`flex h-10 w-10 items-center justify-center rounded-2xl shadow-lg ${
                   mode === "blueprint"
                     ? "bg-cyan-500 text-slate-900"
-                    : "bg-rose-500 text-white"
+                    : mode === "textile"
+                      ? "bg-pink-200 text-warm-black-950"
+                      : "bg-rose-500 text-white"
                 }`}
               >
                 {mode === "editorial" ? <Icon d={ICON_WAND} size={16} /> : null}
@@ -376,11 +471,18 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
                 {mode === "archive" ? (
                   <Icon d={ICON_ARCHIVE} size={16} />
                 ) : null}
+                {mode === "textile" ? (
+                  <Icon d={ICON_PALETTE} size={16} />
+                ) : null}
               </div>
               <div>
                 <h2
                   className={`text-2xl leading-none tracking-tight ${
-                    mode === "blueprint" ? "text-white" : "text-rose-900"
+                    mode === "blueprint"
+                      ? "text-white"
+                      : mode === "textile"
+                        ? "text-chrome-100"
+                        : "text-rose-900"
                   }`}
                   style={{ fontFamily: "Georgia, serif" }}
                 >
@@ -390,7 +492,9 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
                       ? "Petit Playroom"
                       : mode === "blueprint"
                         ? "Logic Terminal"
-                        : "Historical Archive"}
+                        : mode === "textile"
+                          ? "Textile (Flux)"
+                          : "Historical Archive"}
                 </h2>
                 <p className="mt-1 text-[8px] font-black uppercase tracking-[0.4em] opacity-60">
                   Dimension: {mode} // Engine: ThreadLogic v2.0
@@ -398,19 +502,21 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={handleDraft}
-              disabled={isGenerating}
-              className={`flex items-center gap-2 rounded-xl px-5 py-2 text-[10px] font-black uppercase tracking-widest shadow-xl transition-all active:scale-95 disabled:opacity-50 ${
-                mode === "blueprint"
-                  ? "bg-cyan-500 text-slate-900"
-                  : "bg-rose-900 text-white"
-              }`}
-            >
-              <Icon d={ICON_SPARKLES} size={12} />{" "}
-              {isGenerating ? "drafting…" : "Inverse Graph"}
-            </button>
+            {mode === "textile" ? null : (
+              <button
+                type="button"
+                onClick={handleDraft}
+                disabled={isGenerating}
+                className={`flex items-center gap-2 rounded-xl px-5 py-2 text-[10px] font-black uppercase tracking-widest shadow-xl transition-all active:scale-95 disabled:opacity-50 ${
+                  mode === "blueprint"
+                    ? "bg-cyan-500 text-slate-900"
+                    : "bg-rose-900 text-white"
+                }`}
+              >
+                <Icon d={ICON_SPARKLES} size={12} />{" "}
+                {isGenerating ? "drafting…" : "Inverse Graph"}
+              </button>
+            )}
           </header>
 
           {error ? (
@@ -426,6 +532,14 @@ Logic: Extract Bezier curves for a stylized silhouette.`;
                 measurements={measurements}
                 options={options}
                 setOptions={setOptions}
+              />
+            ) : mode === "textile" ? (
+              <TextileView
+                prompt={textilePrompt}
+                setPrompt={setTextilePrompt}
+                textile={textile}
+                onGenerate={handleGenerateTextile}
+                hasUser={Boolean(user)}
               />
             ) : (
               <StudioView outfit={outfit} mode={mode} />
@@ -515,7 +629,7 @@ function SidebarPanel({
 
       <div className="flex flex-1 flex-col space-y-6 px-6 pb-6">
         <div
-          className={`grid grid-cols-4 gap-1 rounded-2xl border p-1 ${
+          className={`grid grid-cols-5 gap-1 rounded-2xl border p-1 ${
             isDark
               ? "border-white/10 bg-black/40"
               : "border-rose-100 bg-rose-50/80"
@@ -526,6 +640,11 @@ function SidebarPanel({
               { id: "editorial" as AppMode, icon: ICON_WAND, label: "Style" },
               { id: "playroom" as AppMode, icon: ICON_SHIRT, label: "Dolly" },
               { id: "blueprint" as AppMode, icon: ICON_RULER, label: "Draft" },
+              {
+                id: "textile" as AppMode,
+                icon: ICON_PALETTE,
+                label: "Textile",
+              },
               {
                 id: "archive" as AppMode,
                 icon: ICON_ARCHIVE,
@@ -872,6 +991,144 @@ function StudioView({ outfit, mode }: { outfit: OutfitState; mode: AppMode }) {
               ? "Little Dolly"
               : "Vintage Engraving"}
         </span>
+      </div>
+    </div>
+  );
+}
+
+// ---------------- Textile view ----------------
+//
+// Second creation mode for the chamber. Visitor types a textile/fabric
+// prompt; the page POSTs to `/api/atelier/pattern-prototype/generate-textile`
+// which calls `viz.generate-comfyui` with the `flux1-dev-fp8` workflow on
+// the studio bench; the resulting raster comes back as a Vercel-Blob URL
+// and we render it as both a wall-art preview (full-bleed) and a tile
+// preview (CSS `background-size: 25%`) so the visitor sees how the
+// pattern repeats across a surface.
+
+function TextileView({
+  prompt,
+  setPrompt,
+  textile,
+  onGenerate,
+  hasUser,
+}: {
+  prompt: string;
+  setPrompt: (s: string) => void;
+  textile: TextileState;
+  onGenerate: () => void;
+  hasUser: boolean;
+}) {
+  const isLoading = textile.kind === "loading";
+  const buttonLabel = isLoading ? "generating…" : "Generate textile";
+
+  return (
+    <div className="grid h-full grid-cols-1 gap-6 lg:grid-cols-2">
+      {/* Left column: prompt + wall-art preview */}
+      <div className="flex flex-col gap-4">
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-chrome-400">
+            Textile prompt
+          </span>
+          <textarea
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="e.g. tessellated honeycomb in copper and ink"
+            rows={3}
+            className="w-full rounded-sm border border-warm-black-700 bg-warm-black-900 px-3 py-2 font-mono text-xs text-chrome-100 placeholder:text-chrome-500 focus:border-pink-200 focus:outline-none"
+          />
+        </label>
+
+        {hasUser ? null : (
+          <p className="rounded-sm border border-warm-black-700 bg-warm-black-900/50 px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-chrome-400">
+            sign in as an operator to generate on the bench.
+          </p>
+        )}
+
+        <button
+          type="button"
+          onClick={onGenerate}
+          disabled={isLoading || !prompt.trim()}
+          className="flex items-center justify-center gap-2 rounded-sm border border-pink-200/60 bg-pink-200/10 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-pink-200 transition-colors hover:border-pink-200 hover:bg-pink-200/20 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <Icon d={ICON_SPARKLES} size={12} />
+          {buttonLabel}
+        </button>
+
+        {textile.kind === "loading" ? (
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-chrome-400">
+            generating on the bench… ~10-30s
+          </p>
+        ) : null}
+
+        {textile.kind === "error" ? (
+          <p className="rounded-sm border border-pink-400/50 bg-pink-900/20 px-3 py-2 font-mono text-[0.7rem] text-pink-200">
+            {textile.message}
+          </p>
+        ) : null}
+
+        <div className="flex flex-1 flex-col gap-1.5">
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-chrome-400">
+            Wall-art preview
+          </span>
+          <div className="relative flex min-h-[280px] flex-1 items-center justify-center overflow-hidden rounded-sm border border-warm-black-700 bg-warm-black-900">
+            {textile.kind === "ready" ? (
+              // The bench-hosted URL is intentionally rendered as a raw
+              // <img>; we don't need next/image's optimizer for a
+              // generated artefact and `unoptimized` would still go
+              // through the loader.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={textile.url}
+                alt={textile.prompt}
+                className="max-h-[420px] w-full object-contain"
+              />
+            ) : (
+              <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-chrome-500">
+                {textile.kind === "loading"
+                  ? "waiting on bench…"
+                  : "no textile yet."}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Right column: tile preview */}
+      <div className="flex flex-col gap-1.5">
+        <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-chrome-400">
+          Tile preview
+        </span>
+        <div
+          className="min-h-[420px] flex-1 rounded-sm border border-warm-black-700 bg-warm-black-900"
+          style={
+            textile.kind === "ready"
+              ? {
+                  backgroundImage: `url(${textile.url})`,
+                  backgroundSize: "25%",
+                  backgroundRepeat: "repeat",
+                }
+              : undefined
+          }
+          aria-label="tile preview"
+        >
+          {textile.kind === "ready" ? null : (
+            <div className="flex h-full items-center justify-center">
+              <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-chrome-500">
+                tile preview appears here.
+              </span>
+            </div>
+          )}
+        </div>
+        <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-chrome-500">
+          this is how it repeats
+        </span>
+        {textile.kind === "ready" ? (
+          <div className="mt-2 flex flex-wrap gap-3 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-chrome-500">
+            <span>{(textile.bytes / 1024).toFixed(0)} kB</span>
+            <span>{(textile.durationMs / 1000).toFixed(1)} s</span>
+          </div>
+        ) : null}
       </div>
     </div>
   );

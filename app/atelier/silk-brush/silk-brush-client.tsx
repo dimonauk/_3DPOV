@@ -29,10 +29,11 @@ import {
   shaderMaterial,
   Text,
 } from "@react-three/drei";
-import { createXRStore, XR, type XRStore } from "@react-three/xr";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { createXRStore, XR } from "@react-three/xr";
+import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
+import { ChamberXRBar } from "components/three/ChamberXRBar";
 import { createLogger } from "lib/log";
 import { useActiveChamber } from "lib/state/atelier-hooks";
 
@@ -260,98 +261,6 @@ function Scene({
 }
 
 // ---------------------------------------------------------------------------
-// XR bar — enter/exit VR. Patterned on components/stage/StageXRBar.tsx.
-// ---------------------------------------------------------------------------
-
-function SilkBrushXRBar({ store }: { store: XRStore }) {
-  const [vrSupported, setVrSupported] = useState(false);
-  const [arSupported, setArSupported] = useState(false);
-  const [active, setActive] = useState<"vr" | "ar" | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    const nav = navigator as Navigator & {
-      xr?: { isSessionSupported: (mode: string) => Promise<boolean> };
-    };
-    if (!nav.xr) return;
-    Promise.all([
-      nav.xr.isSessionSupported("immersive-vr").catch(() => false),
-      nav.xr.isSessionSupported("immersive-ar").catch(() => false),
-    ]).then(([vr, ar]) => {
-      if (cancelled) return;
-      setVrSupported(vr);
-      setArSupported(ar);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  useEffect(() => {
-    const unsub = store.subscribe((s) => {
-      if (s.session) {
-        setActive(s.mode === "immersive-ar" ? "ar" : "vr");
-      } else {
-        setActive(null);
-      }
-    });
-    return () => unsub();
-  }, [store]);
-
-  if (!vrSupported && !arSupported) {
-    return (
-      <span
-        className="pointer-events-none rounded-sm border border-warm-black-700 bg-warm-black-900/80 px-3 py-1.5 font-mono text-[0.6rem] text-chrome-500"
-        title="WebXR is not available in this browser. Try the Quest browser, or Chrome with a headset connected."
-      >
-        XR &middot; unavailable
-      </span>
-    );
-  }
-
-  if (active) {
-    return (
-      <button
-        type="button"
-        onClick={() => store.getState().session?.end()}
-        className="rounded-sm border border-pink-200/60 bg-pink-200/10 px-3 py-1.5 font-mono text-[0.6rem] text-pink-100 transition-colors hover:bg-pink-200/20"
-      >
-        Exit {active.toUpperCase()}
-      </button>
-    );
-  }
-
-  return (
-    <div className="flex items-center gap-2">
-      {vrSupported ? (
-        <button
-          type="button"
-          onClick={() => {
-            log.info("enter vr");
-            store.enterVR();
-          }}
-          className="rounded-sm border border-chrome-400/40 bg-warm-black-900/80 px-3 py-1.5 font-mono text-[0.6rem] text-chrome-200 transition-colors hover:border-pink-200 hover:text-pink-200"
-        >
-          Enter VR
-        </button>
-      ) : null}
-      {arSupported ? (
-        <button
-          type="button"
-          onClick={() => {
-            log.info("enter ar");
-            store.enterAR();
-          }}
-          className="rounded-sm border border-chrome-400/40 bg-warm-black-900/80 px-3 py-1.5 font-mono text-[0.6rem] text-chrome-200 transition-colors hover:border-pink-200 hover:text-pink-200"
-        >
-          Enter AR
-        </button>
-      ) : null}
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Inline icons — replaces `lucide-react` so we don't pull a new dep.
 // ---------------------------------------------------------------------------
 
@@ -430,7 +339,7 @@ export default function SilkBrushClient() {
     <div className="relative h-[70vh] w-full overflow-hidden rounded-sm border border-warm-black-800 bg-black">
       {/* XR bar — top-right. */}
       <div className="absolute right-3 top-3 z-20">
-        <SilkBrushXRBar store={xrStore} />
+        <ChamberXRBar store={xrStore} />
       </div>
 
       {/* Stroke count + active brush — top-left. */}

@@ -21,18 +21,25 @@ import { OrbitControls } from "@react-three/drei";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BackSide,
+  ClampToEdgeWrapping,
   type Group,
+  LinearFilter,
   type Mesh,
   MathUtils,
   PerspectiveCamera,
   Quaternion,
+  RepeatWrapping,
+  type Texture,
+  TextureLoader,
   Vector3,
 } from "three";
 
 import { createLogger } from "lib/log";
-import { useActiveChamber } from "lib/state/atelier-hooks";
+import { useActiveChamber, pushAtelierOutput } from "lib/state/atelier-hooks";
+import { useAuth } from "components/auth/auth-provider";
 
 const log = createLogger("atelier:cube-composer");
+const panoLog = createLogger("atelier:cube-composer:panorama");
 
 // ---- Trajectory ---------------------------------------------------------
 
@@ -215,13 +222,107 @@ function FrustumGizmo({ frame, playing, onAdvance }: FrustumProps) {
   );
 }
 
+// ---- Equirect → cube-face projection shader ----------------------------
+
+/**
+ * Each face plane samples an equirectangular texture by reconstructing a
+ * unit world-space direction from the face's local UVs.
+ *
+ * Convention nailed down (subtle gotchas):
+ *  - We render the planes with `side: BackSide` so the visitor inside
+ *    the cube sees them. The vertex shader runs in the plane's local
+ *    space — UV (0..1) maps to (-1..+1) on the face. We pass per-face
+ *    basis vectors so the same shader covers all six faces.
+ *  - World ray dir = right * u + up * v + forward  (then normalised).
+ *  - Equirect mapping uses the OpenGL/three convention: longitude
+ *    runs around +X-forward / -Z by convention, latitude is asin(y).
+ *    We use atan2(dir.z, dir.x) for longitude so a panorama whose
+ *    centre column is "front" sits at -Z (which is what three's
+ *    default camera looks at, and what our `front` face occupies).
+ *    The +0.5 offset rotates the seam to the back face — equirects
+ *    conventionally put the seam at lon = ±π, which is exactly behind.
+ *  - We flip latitude because the texture's +V is "down" in image
+ *    space but we want "up" in world space.
+ */
+const FACE_VERT_SHADER = /* glsl */ `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const FACE_FRAG_SHADER = /* glsl */ `
+  precision highp float;
+
+  uniform sampler2D uEquirect;
+  uniform vec3 uRight;
+  uniform vec3 uUp;
+  uniform vec3 uForward;
+  uniform float uTint;
+  uniform vec3 uTintColor;
+  uniform float uOpacity;
+
+  varying vec2 vUv;
+
+  void main() {
+    // UV 0..1 → -1..+1 on the face plane.
+    vec2 s = vUv * 2.0 - 1.0;
+    vec3 dir = normalize(uRight * s.x + uUp * s.y + uForward);
+
+    // Equirect sampling. lon ∈ [-π, π], lat ∈ [-π/2, π/2].
+    float lon = atan(dir.z, dir.x);
+    float lat = asin(clamp(dir.y, -1.0, 1.0));
+
+    // Map to UV. +0.5 places the seam at the back face. The 0.25
+    // rotation aligns the panorama centre with -Z (our front face).
+    vec2 uv = vec2(
+      0.5 + lon / (2.0 * 3.14159265359) + 0.25,
+      0.5 - lat / 3.14159265359
+    );
+    // Wrap longitude (texture wraps in U).
+    uv.x = fract(uv.x);
+
+    vec4 col = texture2D(uEquirect, uv);
+    // Optional tint mixes the autoregressive face colour in slightly
+    // when this face is "active", so the operator can still read the
+    // ordering even after the panorama lands.
+    vec3 rgb = mix(col.rgb, col.rgb * uTintColor, uTint);
+    gl_FragColor = vec4(rgb, col.a * uOpacity);
+  }
+`;
+
+// Per-face basis vectors used by the projection shader. These describe
+// the face's local (u, v, forward) frame in WORLD space — i.e. what
+// "right" and "up" mean on each face when the face is rendered with
+// BackSide so the visitor inside sees it. Hand-derived from
+// FACE_TRANSFORMS; commented to make the next debugger's life easier.
+const FACE_BASIS: Record<
+  CubeFace,
+  { right: [number, number, number]; up: [number, number, number]; forward: [number, number, number] }
+> = {
+  // Front face sits at -Z, the visitor looks toward -Z. The face plane
+  // is oriented so its +U runs left→right in screen space and +V runs
+  // bottom→top. Because we render BackSide, the "outside" forward (i.e.
+  // the world ray we want to look up in the equirect) is also -Z.
+  // But the FacePanel mirrors U when BackSide — so we flip U here.
+  front: { right: [-1, 0, 0], up: [0, 1, 0], forward: [0, 0, -1] },
+  back: { right: [1, 0, 0], up: [0, 1, 0], forward: [0, 0, 1] },
+  right: { right: [0, 0, 1], up: [0, 1, 0], forward: [1, 0, 0] },
+  left: { right: [0, 0, -1], up: [0, 1, 0], forward: [-1, 0, 0] },
+  // Top face: looking up, +U world-x, +V world-z (into the back of room).
+  up: { right: [-1, 0, 0], up: [0, 0, -1], forward: [0, 1, 0] },
+  down: { right: [-1, 0, 0], up: [0, 0, 1], forward: [0, -1, 0] },
+};
+
 // ---- Cubemap shell -----------------------------------------------------
 
 type CubeShellProps = {
   faceStatus: Record<CubeFace, "active" | "done" | "pending">;
+  equirect: Texture | null;
 };
 
-function CubeShell({ faceStatus }: CubeShellProps) {
+function CubeShell({ faceStatus, equirect }: CubeShellProps) {
   return (
     <group>
       {FACE_ORDER.map((face) => {
@@ -233,15 +334,19 @@ function CubeShell({ faceStatus }: CubeShellProps) {
             : status === "done"
               ? FACE_COLOR_DONE
               : FACE_COLOR_PENDING;
-        const opacity = status === "active" ? 0.55 : status === "done" ? 0.4 : 0.15;
+        const opacity = status === "active" ? 0.85 : status === "done" ? 0.7 : 0.4;
+        const placeholderOpacity =
+          status === "active" ? 0.55 : status === "done" ? 0.4 : 0.15;
         return (
           <FacePanel
             key={face}
+            face={face}
             position={xf.position}
             rotation={xf.rotation}
             color={color}
-            opacity={opacity}
-            label={face}
+            opacity={equirect ? opacity : placeholderOpacity}
+            equirect={equirect}
+            isActive={status === "active"}
           />
         );
       })}
@@ -250,28 +355,66 @@ function CubeShell({ faceStatus }: CubeShellProps) {
 }
 
 function FacePanel({
+  face,
   position,
   rotation,
   color,
   opacity,
-  label,
+  equirect,
+  isActive,
 }: {
+  face: CubeFace;
   position: [number, number, number];
   rotation: [number, number, number];
   color: string;
   opacity: number;
-  label: string;
+  equirect: Texture | null;
+  isActive: boolean;
 }) {
   const ref = useRef<Mesh>(null);
+
+  // Build uniforms once per (face, equirect) pair. The shader is created
+  // lazily so the colour-only path still works when no panorama has
+  // landed yet.
+  const uniforms = useMemo(() => {
+    const basis = FACE_BASIS[face];
+    return {
+      uEquirect: { value: equirect },
+      uRight: { value: new Vector3(...basis.right) },
+      uUp: { value: new Vector3(...basis.up) },
+      uForward: { value: new Vector3(...basis.forward) },
+      uTint: { value: isActive ? 0.35 : 0.0 },
+      uTintColor: { value: new Vector3(1, 1, 1) },
+      uOpacity: { value: opacity },
+    };
+  }, [face, equirect, isActive, opacity]);
+
+  // Keep uniforms live without re-mounting the material.
+  useEffect(() => {
+    uniforms.uEquirect.value = equirect;
+    uniforms.uTint.value = isActive ? 0.35 : 0.0;
+    uniforms.uOpacity.value = opacity;
+  }, [uniforms, equirect, isActive, opacity]);
+
   return (
-    <mesh ref={ref} position={position} rotation={rotation} name={label}>
+    <mesh ref={ref} position={position} rotation={rotation} name={face}>
       <planeGeometry args={[CUBE_RADIUS * 2, CUBE_RADIUS * 2]} />
-      <meshBasicMaterial
-        color={color}
-        transparent
-        opacity={opacity}
-        side={BackSide}
-      />
+      {equirect ? (
+        <shaderMaterial
+          vertexShader={FACE_VERT_SHADER}
+          fragmentShader={FACE_FRAG_SHADER}
+          uniforms={uniforms}
+          transparent
+          side={BackSide}
+        />
+      ) : (
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={opacity}
+          side={BackSide}
+        />
+      )}
     </mesh>
   );
 }
@@ -283,11 +426,13 @@ function Scene({
   playing,
   onAdvance,
   faceStatus,
+  equirect,
 }: {
   frame: number;
   playing: boolean;
   onAdvance: () => void;
   faceStatus: Record<CubeFace, "active" | "done" | "pending">;
+  equirect: Texture | null;
 }) {
   return (
     <>
@@ -298,7 +443,7 @@ function Scene({
       {/* Tiny world-axis tripod at the origin for orientation. */}
       <axesHelper args={[0.4]} />
 
-      <CubeShell faceStatus={faceStatus} />
+      <CubeShell faceStatus={faceStatus} equirect={equirect} />
       <FrustumGizmo frame={frame} playing={playing} onAdvance={onAdvance} />
 
       <OrbitControls
@@ -313,13 +458,152 @@ function Scene({
 
 // ---- Client component --------------------------------------------------
 
+type PanoramaState =
+  | { status: "idle" }
+  | { status: "loading"; prompt: string; startedAt: number }
+  | { status: "ready"; url: string; prompt: string; durationMs: number }
+  | { status: "error"; message: string };
+
 export default function CubeComposerClient() {
   useActiveChamber("cube-composer");
+  const { user } = useAuth();
 
   const [frame, setFrame] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [windowStart, setWindowStart] = useState(0);
   const [autoregressiveStep, setAutoregressiveStep] = useState(0);
+
+  // Panorama state + the loaded three Texture mapped onto the cube faces.
+  const [panorama, setPanorama] = useState<PanoramaState>({ status: "idle" });
+  const [panoramaPrompt, setPanoramaPrompt] = useState("");
+  const [equirectTexture, setEquirectTexture] = useState<Texture | null>(null);
+
+  // Load the equirect URL into a three Texture as soon as it lands.
+  // The TextureLoader handles cross-origin Blob URLs fine; we configure
+  // the wrap modes so the projection shader's `fract(u)` produces a
+  // seamless wrap at the back face.
+  useEffect(() => {
+    if (panorama.status !== "ready") return;
+    let cancelled = false;
+    const loader = new TextureLoader();
+    loader.setCrossOrigin("anonymous");
+    loader.load(
+      panorama.url,
+      (tex) => {
+        if (cancelled) {
+          tex.dispose();
+          return;
+        }
+        tex.wrapS = RepeatWrapping;
+        tex.wrapT = ClampToEdgeWrapping;
+        tex.minFilter = LinearFilter;
+        tex.magFilter = LinearFilter;
+        tex.needsUpdate = true;
+        setEquirectTexture((prev) => {
+          if (prev) prev.dispose();
+          return tex;
+        });
+        panoLog.info("texture loaded", { url: panorama.url });
+      },
+      undefined,
+      (err) => {
+        if (cancelled) return;
+        panoLog.error("texture load failed", { err, url: panorama.url });
+        setPanorama({
+          status: "error",
+          message: "Loaded panorama URL but failed to decode the image.",
+        });
+      },
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [panorama]);
+
+  // Dispose the texture on unmount so the GPU doesn't keep it alive.
+  useEffect(() => {
+    return () => {
+      setEquirectTexture((prev) => {
+        if (prev) prev.dispose();
+        return null;
+      });
+    };
+  }, []);
+
+  const onGeneratePanorama = useCallback(async () => {
+    const prompt = panoramaPrompt.trim();
+    if (!prompt) {
+      setPanorama({
+        status: "error",
+        message: "Type a prompt before hitting Generate.",
+      });
+      return;
+    }
+    if (!user) {
+      setPanorama({
+        status: "error",
+        message: "Sign in as an operator to generate on the bench.",
+      });
+      return;
+    }
+    const startedAt = Date.now();
+    setPanorama({ status: "loading", prompt, startedAt });
+    panoLog.info("generate requested", {
+      promptPreview: prompt.slice(0, 80),
+    });
+    try {
+      const idToken = await user.getIdToken();
+      const res = await fetch(
+        "/api/atelier/cube-composer/generate-panorama",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({ prompt }),
+        },
+      );
+      const data = (await res.json()) as {
+        url?: string;
+        bytes?: number;
+        generatedAt?: string;
+        durationMs?: number;
+        error?: string;
+        code?: string;
+      };
+      if (!res.ok || !data.url) {
+        throw new Error(
+          data.error ?? `Bench returned HTTP ${res.status}.`,
+        );
+      }
+      const durationMs = data.durationMs ?? Date.now() - startedAt;
+      setPanorama({
+        status: "ready",
+        url: data.url,
+        prompt,
+        durationMs,
+      });
+      const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+      pushAtelierOutput({
+        chamberSlug: "cube-composer",
+        kind: "image",
+        label: `cube-composer-panorama-${stamp}.png`,
+        blobUrl: data.url,
+        mimeType: "image/png",
+        sizeBytes: data.bytes ?? 0,
+      });
+      panoLog.info("generate done", {
+        durationMs,
+        bytes: data.bytes ?? 0,
+      });
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unknown generation error.";
+      panoLog.error("generate failed", { err });
+      setPanorama({ status: "error", message });
+    }
+  }, [panoramaPrompt, user]);
 
   // Each "temporal window" of WINDOW_LENGTH frames cycles through the
   // six faces in FACE_ORDER one at a time. Once all six are generated
@@ -406,8 +690,61 @@ export default function CubeComposerClient() {
             playing={playing}
             onAdvance={onAdvance}
             faceStatus={faceStatus}
+            equirect={equirectTexture}
           />
         </Canvas>
+
+        {/* Panorama generator — top-left, so it doesn't fight the trajectory panel. */}
+        <div className="pointer-events-auto absolute left-3 top-3 flex w-[280px] flex-col gap-2 rounded-sm border border-warm-black-700 bg-warm-black-950/85 p-3 backdrop-blur-sm">
+          <div className="flex items-center justify-between">
+            <span className="chrome-label text-chrome-400">
+              Source material
+            </span>
+            <span className="font-mono text-[10px] text-chrome-500">
+              flux-equirect-lora-v3
+            </span>
+          </div>
+          <label
+            className="flex flex-col gap-1"
+            htmlFor="cube-composer-panorama-prompt"
+          >
+            <span className="sr-only">Panorama prompt</span>
+            <textarea
+              id="cube-composer-panorama-prompt"
+              value={panoramaPrompt}
+              onChange={(e) => setPanoramaPrompt(e.target.value)}
+              placeholder="e.g. abandoned warehouse interior at dawn"
+              rows={2}
+              disabled={panorama.status === "loading"}
+              className="w-full resize-none rounded-sm border border-warm-black-700 bg-warm-black-950 px-2 py-1.5 font-mono text-[11px] text-chrome-200 placeholder:text-chrome-600 focus:border-pink-200 focus:outline-none disabled:opacity-50"
+            />
+          </label>
+          <button
+            type="button"
+            onClick={onGeneratePanorama}
+            disabled={panorama.status === "loading"}
+            className="rounded-sm border border-pink-200/60 bg-pink-200/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-pink-200 transition-colors hover:bg-pink-200/20 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {panorama.status === "loading"
+              ? "Generating…"
+              : "Generate panorama"}
+          </button>
+          {panorama.status === "loading" ? (
+            <p className="font-mono text-[10px] leading-relaxed text-chrome-400">
+              generating 360° on the bench… ~45-90s
+            </p>
+          ) : null}
+          {panorama.status === "ready" ? (
+            <p className="font-mono text-[10px] leading-relaxed text-chrome-500">
+              Mapped onto six faces &middot; {Math.round(panorama.durationMs / 1000)}s
+            </p>
+          ) : null}
+          {panorama.status === "error" ? (
+            <p className="font-mono text-[10px] leading-relaxed text-pink-300">
+              {panorama.message}
+            </p>
+          ) : null}
+        </div>
 
         {/* Floating control panel — bottom-right. */}
         <div className="pointer-events-auto absolute bottom-3 right-3 flex w-[260px] flex-col gap-3 rounded-sm border border-warm-black-700 bg-warm-black-950/85 p-3 backdrop-blur-sm">

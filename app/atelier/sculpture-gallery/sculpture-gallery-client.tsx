@@ -3,11 +3,19 @@
 /**
  * app/atelier/sculpture-gallery/sculpture-gallery-client.tsx
  *
- * The workshop side of the Sculpture Gallery chamber. Generates a
- * voxel scalar field (synthetic by default; .npy / .json upload
- * supported), marches it to a triangle soup at the selected iso level,
- * renders the result in R3F with a glassy pink material, and exports
- * a watertight GLB sized to millimetres for the slicer.
+ * The workshop side of the Sculpture Gallery chamber. Two parallel
+ * paths from "thing on disk" to "GLB you can download":
+ *
+ *  1. Marching cubes — voxel scalar field (synthetic by default;
+ *     .npy / .json upload supported), marched to a triangle soup at
+ *     the selected iso level, rendered in R3F, exported as a
+ *     watertight GLB sized to millimetres for the slicer.
+ *  2. Image → Hunyuan3D — operator-only sibling input. Uploads a
+ *     reference image to the Hangar's ComfyUI bench via the
+ *     /api/atelier/sculpture-gallery/image-to-glb route; the bench
+ *     runs Hunyuan3D-2mv-turbo (~53 s on a 3080 Ti) and the resulting
+ *     GLB renders in <model-viewer> alongside the marching-cubes
+ *     preview.
  *
  * The marching-cubes pipeline is pure-TS — see ./marching, ./voxels,
  * ./npy, ./exportGlb. Good up to ~96^3 in the browser. The WebGPU
@@ -17,11 +25,14 @@
  * Ported from D:/The_Hangar/apps/sculpture-gallery/src/App.tsx.
  */
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
+import { createXRStore, XR } from "@react-three/xr";
 import * as THREE from "three";
 
+import { useAuth } from "components/auth/auth-provider";
+import { ChamberXRBar } from "components/three/ChamberXRBar";
 import { createLogger } from "lib/log";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
@@ -35,6 +46,7 @@ import {
 } from "./exportGlb";
 
 const log = createLogger("atelier:sculpture-gallery");
+const imageLog = createLogger("atelier:sculpture-gallery:image-to-glb");
 
 const RES_OPTIONS = [24, 48, 64, 96] as const;
 type Resolution = (typeof RES_OPTIONS)[number];
@@ -47,8 +59,22 @@ function buildGeometry(field: Field, iso: number): THREE.BufferGeometry {
   return g;
 }
 
+type ImageToGlbState =
+  | { kind: "idle" }
+  | { kind: "running"; startedAt: number }
+  | {
+      kind: "ready";
+      glbUrl: string;
+      glbBytes: number;
+      filename: string;
+      durationMs: number;
+    }
+  | { kind: "error"; message: string };
+
 export default function SculptureGalleryClient() {
   useActiveChamber("sculpture-gallery");
+
+  const { user } = useAuth();
 
   const [field, setField] = useState<Field>(() => syntheticSphere(48));
   const [iso, setIso] = useState(0);
@@ -57,10 +83,119 @@ export default function SculptureGalleryClient() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  // Image → Hunyuan3D sibling pipeline.
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  const [imageState, setImageState] = useState<ImageToGlbState>({ kind: "idle" });
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
+  const modelViewerLoadedRef = useRef(false);
+
   const geometry = useMemo(() => buildGeometry(field, iso), [field, iso]);
   const report: MeshReport = useMemo(() => analyseMesh(geometry), [geometry]);
 
+  // Stable XR store — recreating it would tear down any live session.
+  const xrStore = useMemo(() => createXRStore(), []);
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Pull the model-viewer custom element in once — it's a side-effect
+  // import that registers `<model-viewer>` as a custom element.
+  useEffect(() => {
+    if (modelViewerLoadedRef.current) return;
+    modelViewerLoadedRef.current = true;
+    import("@google/model-viewer").catch((err) => {
+      imageLog.warn("model-viewer load failed", { err });
+    });
+  }, []);
+
+  // Free the preview object URL on swap / unmount.
+  useEffect(() => {
+    return () => {
+      if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+    };
+  }, [imagePreviewUrl]);
+
+  const onImagePicked = useCallback(
+    (file: File) => {
+      if (!file.type.startsWith("image/")) {
+        setImageState({
+          kind: "error",
+          message: "That doesn't look like an image.",
+        });
+        return;
+      }
+      if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+      const url = URL.createObjectURL(file);
+      setImagePreviewUrl(url);
+      setImageFile(file);
+      setImageState({ kind: "idle" });
+    },
+    [imagePreviewUrl],
+  );
+
+  const onGenerateGlb = useCallback(async () => {
+    if (!imageFile) return;
+    if (!user) {
+      setImageState({
+        kind: "error",
+        message:
+          "Sign in as an operator — Hunyuan3D burns bench VRAM, so the route is gated.",
+      });
+      return;
+    }
+    const startedAt = Date.now();
+    setImageState({ kind: "running", startedAt });
+    try {
+      const idToken = await user.getIdToken();
+      const fd = new FormData();
+      fd.append("image", imageFile, imageFile.name);
+      const res = await fetch(
+        "/api/atelier/sculpture-gallery/image-to-glb",
+        {
+          method: "POST",
+          headers: { Authorization: `Bearer ${idToken}` },
+          body: fd,
+        },
+      );
+      if (!res.ok) {
+        let detail = `HTTP ${res.status}`;
+        try {
+          const body = (await res.json()) as { error?: string };
+          if (body?.error) detail = body.error;
+        } catch {
+          /* ignore */
+        }
+        throw new Error(detail);
+      }
+      const body = (await res.json()) as {
+        glbUrl: string;
+        glbBytes: number;
+      };
+      const base = imageFile.name.replace(/\.[^.]+$/, "") || "mesh";
+      const filename = `${base}_hunyuan3d.glb`;
+      setImageState({
+        kind: "ready",
+        glbUrl: body.glbUrl,
+        glbBytes: body.glbBytes,
+        filename,
+        durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "sculpture-gallery",
+        kind: "glb",
+        label: filename,
+        blobUrl: body.glbUrl,
+        mimeType: "model/gltf-binary",
+        sizeBytes: body.glbBytes,
+      });
+    } catch (err) {
+      imageLog.error("image-to-glb failed", { err });
+      setImageState({
+        kind: "error",
+        message: err instanceof Error ? err.message : "Generation failed.",
+      });
+    }
+  }, [imageFile, user]);
 
   const onResolutionChange = useCallback((res: Resolution) => {
     setField(syntheticSphere(res));
@@ -109,23 +244,29 @@ export default function SculptureGalleryClient() {
   }, [activeName, geometry, iso, scaleMm]);
 
   return (
+    <div className="flex flex-col gap-10">
     <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_18rem]">
       <div className="relative aspect-square w-full max-w-2xl overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950">
+        <div className="absolute right-3 top-3 z-20">
+          <ChamberXRBar store={xrStore} />
+        </div>
         <Canvas camera={{ position: [3, 2, 3], fov: 35 }} dpr={[1, 2]}>
           <color attach="background" args={["#0e0e14"]} />
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[5, 10, 5]} intensity={1.2} />
-          <mesh geometry={geometry}>
-            <meshPhysicalMaterial
-              color="#ff66cc"
-              roughness={0.25}
-              metalness={0.1}
-              transmission={0.4}
-              thickness={0.6}
-            />
-          </mesh>
+          <XR store={xrStore}>
+            <ambientLight intensity={0.4} />
+            <directionalLight position={[5, 10, 5]} intensity={1.2} />
+            <mesh geometry={geometry}>
+              <meshPhysicalMaterial
+                color="#ff66cc"
+                roughness={0.25}
+                metalness={0.1}
+                transmission={0.4}
+                thickness={0.6}
+              />
+            </mesh>
+            <Environment preset="city" />
+          </XR>
           <OrbitControls enablePan={false} />
-          <Environment preset="city" />
         </Canvas>
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex items-baseline justify-between gap-3 bg-gradient-to-t from-warm-black-950/90 to-transparent px-3 py-2 font-mono text-[0.65rem] text-chrome-300">
           <span>
@@ -272,6 +413,135 @@ export default function SculptureGalleryClient() {
           </dl>
         </div>
       </div>
+    </div>
+
+    {/* ---------------------------------------------------------------
+        Image → Hunyuan3D sibling input. Same workshop, different on-ramp:
+        a reference image goes to the bench's ComfyUI, comes back as a
+        GLB rendered in <model-viewer>. Operator-only — the route is
+        admin-guarded because Hunyuan3D burns bench VRAM.
+        --------------------------------------------------------------- */}
+    <section className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_18rem]">
+      <div className="relative aspect-square w-full max-w-2xl overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950">
+        {imageState.kind === "ready" ? (
+          /* @ts-expect-error — model-viewer is a web component */
+          <model-viewer
+            src={imageState.glbUrl}
+            alt="Hunyuan3D mesh"
+            camera-controls
+            auto-rotate
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#0e0e14",
+            }}
+          />
+        ) : imagePreviewUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={imagePreviewUrl}
+            alt="Reference for Hunyuan3D"
+            className="h-full w-full object-contain opacity-80"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <p className="max-w-xs text-center font-mono text-[0.65rem] uppercase tracking-[0.2em] text-chrome-500">
+              {"Pick an image →\nbench returns a GLB"}
+            </p>
+          </div>
+        )}
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex items-baseline justify-between gap-3 bg-gradient-to-t from-warm-black-950/90 to-transparent px-3 py-2 font-mono text-[0.65rem] text-chrome-300">
+          <span>Hunyuan3D-2mv-turbo · ComfyUI bench</span>
+          <span className="text-chrome-500">
+            {imageState.kind === "ready"
+              ? `${(imageState.glbBytes / (1024 * 1024)).toFixed(1)} MB · ${(imageState.durationMs / 1000).toFixed(0)}s`
+              : "GLB → here"}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-5 rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-5 font-mono text-xs text-chrome-200">
+        <div>
+          <div className="chrome-label text-chrome-400">Image → mesh</div>
+          <p className="mt-2 text-[0.65rem] leading-relaxed text-chrome-500">
+            One reference image becomes a textured GLB on the bench.
+            Operator-only — Hunyuan3D-2mv-turbo runs ~53 s on a 3080
+            Ti.
+          </p>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            onClick={() => imageInputRef.current?.click()}
+            className="w-full rounded-sm border border-pink-200/60 bg-pink-200/10 px-3 py-2 text-[0.7rem] uppercase tracking-[0.2em] text-pink-200 transition-colors hover:bg-pink-200/20"
+          >
+            Upload image
+          </button>
+          <p className="mt-1 text-[0.65rem] text-chrome-500">
+            Hunyuan3D &rarr; GLB (~53s)
+          </p>
+          <input
+            ref={imageInputRef}
+            type="file"
+            accept="image/*"
+            aria-label="Upload an image for Hunyuan3D"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) onImagePicked(file);
+              if (imageInputRef.current) imageInputRef.current.value = "";
+            }}
+          />
+          {imageFile ? (
+            <p className="mt-2 truncate text-[0.65rem] text-chrome-300">
+              ref: {imageFile.name}
+            </p>
+          ) : null}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => void onGenerateGlb()}
+          disabled={!imageFile || imageState.kind === "running"}
+          className="rounded-sm border border-pink-200/60 bg-pink-900/40 px-3 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
+        >
+          {imageState.kind === "running"
+            ? "generating mesh on the bench…"
+            : "→ Generate GLB"}
+        </button>
+
+        {imageState.kind === "running" ? (
+          <p className="text-[0.65rem] leading-relaxed text-chrome-500">
+            Round-trip to the bench: upload → workflow queue →
+            Hunyuan3D → Vercel Blob. ~53 s nominal; cold GPU adds a
+            few seconds.
+          </p>
+        ) : null}
+
+        {imageState.kind === "ready" ? (
+          <a
+            href={imageState.glbUrl}
+            download={imageState.filename}
+            className="self-start rounded-sm border border-pink-200/60 bg-pink-200/10 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-pink-200 transition-colors hover:bg-pink-200/20"
+          >
+            Download {imageState.filename}
+          </a>
+        ) : null}
+
+        {imageState.kind === "error" ? (
+          <p className="rounded-sm border border-rose-400/40 bg-rose-900/20 px-2 py-1 text-[0.65rem] text-rose-200">
+            {imageState.message}
+          </p>
+        ) : null}
+
+        {!user ? (
+          <p className="rounded-sm border border-amber-400/40 bg-amber-900/10 px-2 py-1 text-[0.65rem] text-amber-200">
+            Operator-only. Sign in to dispatch the bench.
+          </p>
+        ) : null}
+      </div>
+    </section>
     </div>
   );
 }

@@ -20,11 +20,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { createXRStore, XR } from "@react-three/xr";
 import * as THREE from "three";
 
+import { ChamberXRBar } from "components/three/ChamberXRBar";
 import { createLogger } from "lib/log";
-import { useActiveChamber } from "lib/state/atelier-hooks";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
+import { useAuth } from "components/auth/auth-provider";
 
 import { fragmentShader, vertexShader } from "./caustic-shaders";
 import { type LoadedSdf, loadSdfBin } from "./sdf-loader";
@@ -254,6 +257,96 @@ export default function WaveguideForgeClient() {
   const [webgpuErr, setWebgpuErr] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Stable XR store — recreating it would tear down any live session.
+  // The XR wrap only feeds the GLSL backend; the bare WebGPU canvas
+  // can't enter WebXR via @react-three/xr.
+  const xrStore = useMemo(() => createXRStore(), []);
+
+  // ---- HDRI background generation -------------------------------------
+  // Calls `viz.generate-comfyui` with the `flux-equirect-lora-v3`
+  // workflow via /api/atelier/waveguide-forge/generate-hdri, then drapes
+  // the resulting equirect over the GLSL canvas as both lighting envmap
+  // and background. The WebGPU photon-mapper backend keeps its own dark
+  // void; the HDRI only feeds the GLSL backend (drei <Environment/>).
+  const { user } = useAuth();
+  const [hdriPrompt, setHdriPrompt] = useState("");
+  const [hdriUrl, setHdriUrl] = useState<string | null>(null);
+  const [hdriBusy, setHdriBusy] = useState(false);
+  const [hdriErr, setHdriErr] = useState<string | null>(null);
+
+  const onGenerateHdri = useCallback(async () => {
+    const prompt = hdriPrompt.trim();
+    if (!prompt) {
+      setHdriErr("Type a short prompt first.");
+      return;
+    }
+    if (!user) {
+      setHdriErr(
+        "Sign in as an operator first — the bench is admin-guarded.",
+      );
+      return;
+    }
+    setHdriErr(null);
+    setHdriBusy(true);
+    try {
+      const idToken = await user.getIdToken();
+      const res = await fetch(
+        "/api/atelier/waveguide-forge/generate-hdri",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({ prompt }),
+        },
+      );
+      const body = (await res.json().catch(() => ({}))) as {
+        url?: string;
+        error?: string;
+        code?: string;
+      };
+      if (!res.ok || !body.url) {
+        // Map the capability's typed codes to plain-English copy.
+        let detail = body.error ?? `HTTP ${res.status}`;
+        if (body.code === "service-unavailable") {
+          detail =
+            "ComfyUI is offline — start the bench at port 8188 (or check the Tailscale tunnel).";
+        } else if (body.code === "queue-rejected") {
+          detail =
+            "The bench rejected the workflow — usually the Flux equirect model isn't loaded.";
+        } else if (body.code === "execution-failed") {
+          detail = "ComfyUI choked mid-render — check the bench logs.";
+        } else if (body.code === "output-missing") {
+          detail = "The bench finished but produced no image.";
+        } else if (body.code === "blob-write-failed") {
+          detail =
+            "Couldn't park the result in Vercel Blob — check BLOB_READ_WRITE_TOKEN.";
+        } else if (res.status === 401 || res.status === 403) {
+          detail =
+            "Operator allow-list rejected the request — sign in with the studio account.";
+        }
+        throw new Error(detail);
+      }
+      const url = body.url;
+      setHdriUrl(url);
+      pushAtelierOutput({
+        chamberSlug: "waveguide-forge",
+        kind: "image",
+        label: `HDRI · ${prompt.slice(0, 48)}${prompt.length > 48 ? "…" : ""}`,
+        blobUrl: url,
+        mimeType: "image/png",
+      });
+      log.info("hdri ready", { promptPreview: prompt.slice(0, 40) });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Generation failed.";
+      log.warn("hdri generation failed", { err });
+      setHdriErr(message);
+    } finally {
+      setHdriBusy(false);
+    }
+  }, [hdriPrompt, user]);
+
   useEffect(() => {
     void detectWebGPU().then((s) => setWebgpuAvailable(s.available));
   }, []);
@@ -309,24 +402,37 @@ export default function WaveguideForgeClient() {
           />
         ) : (
           <div className="relative aspect-square w-full max-w-2xl overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950">
+            <div className="absolute right-3 top-3 z-20">
+              <ChamberXRBar store={xrStore} />
+            </div>
             <Canvas
               className="block h-full w-full"
               camera={{ position: [3, 2.5, 3] }}
             >
-              <color attach="background" args={["#0e0e14"]} />
-              <CausticPlane
-                ior={ior}
-                density={density}
-                thickness={thickness}
-                lights={lights}
-                sdf={sdf}
-              />
+              {hdriUrl ? (
+                // Drei's <Environment files=...> loads the equirect,
+                // converts to a PMREM, and binds it to scene.environment.
+                // `background` also drapes it as scene.background.
+                <Environment files={hdriUrl} background />
+              ) : (
+                <color attach="background" args={["#0e0e14"]} />
+              )}
+              <XR store={xrStore}>
+                <CausticPlane
+                  ior={ior}
+                  density={density}
+                  thickness={thickness}
+                  lights={lights}
+                  sdf={sdf}
+                />
+              </XR>
               <OrbitControls />
             </Canvas>
             <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex items-baseline justify-between gap-3 bg-gradient-to-t from-warm-black-950/90 to-transparent px-3 py-2 font-mono text-[0.65rem] text-chrome-300">
               <span>{sdf ? "loaded SDF" : "parametric gyroid"}</span>
               <span className="text-chrome-500">
                 GLSL backend &middot; WebGL2
+                {hdriUrl && " · HDRI on"}
               </span>
             </div>
           </div>
@@ -334,6 +440,56 @@ export default function WaveguideForgeClient() {
 
         {/* --- Controls ---------------------------------------------------- */}
         <div className="flex flex-col gap-4">
+          <section className="flex flex-col gap-3 rounded-sm border border-warm-black-800 bg-warm-black-950/60 p-4">
+            <div className="chrome-label text-chrome-400">
+              Background HDRI
+            </div>
+            <input
+              type="text"
+              value={hdriPrompt}
+              onChange={(e) => setHdriPrompt(e.target.value)}
+              placeholder="e.g. warm sunset over a glass beach"
+              aria-label="HDRI prompt"
+              disabled={hdriBusy}
+              className="rounded-sm border border-warm-black-700 bg-warm-black-900 px-2 py-1.5 font-mono text-[0.7rem] text-chrome-100 placeholder:text-chrome-600 focus:border-pink-200/60 focus:outline-none disabled:opacity-50"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !hdriBusy) void onGenerateHdri();
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => void onGenerateHdri()}
+              disabled={hdriBusy || !hdriPrompt.trim()}
+              className="self-start rounded-sm border border-pink-200/60 bg-pink-200/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-pink-200 transition-colors hover:bg-pink-200/20 disabled:opacity-40"
+            >
+              {hdriBusy ? "generating…" : "Generate HDRI"}
+            </button>
+            {hdriBusy && (
+              <p className="font-mono text-[0.65rem] text-chrome-400">
+                generating background, ~30-60s on the bench…
+              </p>
+            )}
+            {hdriErr && (
+              <p className="font-mono text-[0.7rem] text-pink-200">
+                {hdriErr}
+              </p>
+            )}
+            {hdriUrl && !hdriBusy && (
+              <div className="flex items-center justify-between gap-2">
+                <p className="font-mono text-[0.65rem] text-emerald-200">
+                  HDRI live in chamber
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setHdriUrl(null)}
+                  className="font-mono text-[10px] uppercase tracking-[0.15em] text-chrome-500 transition-colors hover:text-pink-200"
+                >
+                  clear
+                </button>
+              </div>
+            )}
+          </section>
+
           <section className="flex flex-col gap-3 rounded-sm border border-warm-black-800 bg-warm-black-950/60 p-4">
             <div className="chrome-label text-chrome-400">SDF source</div>
             <button

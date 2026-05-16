@@ -30,8 +30,12 @@ flat-coloured discs whose RGB comes from each genome's own
   user control, one press at a time. The engine in
   `lib/evolution/engine.ts` could drive an autonomous walk, but
   this chamber is the manual studio.
-- **Not a renderer.** No three.js, no R3F, no splats. The
-  thumbnails are 2D divs with a background colour and a soft glow.
+- **Not a real splat renderer.** Thumbnails are still 2D tinted
+  discs. A small R3F floor preview sits at the top of the chamber —
+  twelve genomes as glowing spheres on a 4x3 grid, walkable in VR
+  via the shared `ChamberXRBar` — but those spheres are placeholder
+  geometry, not the real per-genome splat. The full splat-renderer
+  lands in a later pass.
 - **Not bound to `SculptureGenome` from `lib/assets/genomes.ts`.**
   The chamber uses the engine's normalised `Genome` type (every
   numeric gene in `[0..1]`). The catalogue's denormalised
