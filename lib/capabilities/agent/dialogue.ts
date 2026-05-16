@@ -11,13 +11,22 @@
 
 import { GoogleGenAI, Type, type Schema } from "@google/genai";
 
-import { envOrThrow, isConfigured } from "lib/env";
+import { envOrThrow, envOrUndefined, isConfigured } from "lib/env";
+import {
+  defaultModelForProvider,
+  gatewayChat,
+  GatewayUnavailableError,
+  type GatewayMessage,
+} from "lib/llm/gateway";
+import { createLogger } from "lib/log";
 import { agentStore } from "lib/state/agent";
 import { castStore } from "lib/state/cast";
 import { auraStore } from "lib/state/aura";
 import type { CharacterBible } from "lib/cast/aura";
 
-export type AgentProvider = "gemini" | "openai" | "anthropic";
+const log = createLogger("capability:agent.dialogue");
+
+export type AgentProvider = "gemini" | "openai" | "anthropic" | "zai";
 
 export type RespondOptions = {
   /** Cast-member ID — the speaker. */
@@ -86,6 +95,48 @@ const DIALOGUE_RESPONSE_SCHEMA: Schema = {
   required: ["text", "intent", "mode"],
 };
 
+const JSON_INSTRUCTION_SUFFIX = `
+
+Your reply MUST be a single JSON object on one line, no markdown
+fence, no surrounding text. Schema:
+
+  {
+    "text": "<your spoken reply, in your voice>",
+    "intent": "greet" | "answer" | "redirect" | "refuse" | "tease" | "reflect" | "invite",
+    "mode":   "amber" | "azure" | "amethyst" | "crimson" | "veridian"
+  }`;
+
+/**
+ * Dispatch via Vercel AI Gateway (Anthropic / Z.ai / OpenAI). Builds
+ * the OpenAI-compatible message list and appends a JSON-shape
+ * instruction to the system prompt — gateway providers don't have
+ * Gemini's `responseSchema` knob, so we coerce via prompt + parse on
+ * return.
+ */
+async function callViaGateway(
+  provider: "anthropic" | "zai" | "openai",
+  systemPrompt: string,
+  history: { role: "user" | "model"; text: string }[],
+  userText: string,
+): Promise<string> {
+  const model = defaultModelForProvider(provider);
+  const messages: GatewayMessage[] = [
+    { role: "system", content: systemPrompt + JSON_INSTRUCTION_SUFFIX },
+    ...history.map<GatewayMessage>((h) => ({
+      role: h.role === "model" ? "assistant" : "user",
+      content: h.text,
+    })),
+    { role: "user", content: userText },
+  ];
+  const result = await gatewayChat({
+    model,
+    messages,
+    temperature: 0.75,
+    maxTokens: 1024,
+  });
+  return result.text;
+}
+
 async function callGemini(
   systemPrompt: string,
   history: { role: "user" | "model"; text: string }[],
@@ -149,7 +200,8 @@ function offlineResult(): RespondResult {
  * before the user-facing button is enabled.
  */
 export async function respond(options: RespondOptions): Promise<RespondResult> {
-  const provider: AgentProvider = options.provider ?? "gemini";
+  const provider: AgentProvider =
+    options.provider ?? resolveDefaultProvider();
   if (!isProviderAvailable(provider)) {
     return offlineResult();
   }
@@ -178,12 +230,26 @@ export async function respond(options: RespondOptions): Promise<RespondResult> {
         case "gemini":
           raw = await callGemini(systemPrompt, history, options.userText);
           break;
-        case "openai":
         case "anthropic":
-          throw new Error(`agent.dialogue: provider "${provider}" not implemented yet`);
+        case "zai":
+        case "openai":
+          raw = await callViaGateway(
+            provider,
+            systemPrompt,
+            history,
+            options.userText,
+          );
+          break;
       }
     } catch (err) {
-      console.error("agent.dialogue: Gemini call failed", err);
+      if (err instanceof GatewayUnavailableError) {
+        log.warn("gateway unavailable, falling back to offline", {
+          provider,
+          code: err.code,
+        });
+      } else {
+        log.error("provider call failed", { provider, err });
+      }
       return offlineResult();
     }
 
@@ -217,12 +283,32 @@ export function isProviderAvailable(provider: AgentProvider = "gemini"): boolean
   switch (provider) {
     case "gemini":
       return isConfigured("GOOGLE_AI_API_KEY");
-    case "openai":
     case "anthropic":
-      return false;
+      return (
+        isConfigured("AI_GATEWAY_API_KEY") || isConfigured("ANTHROPIC_API_KEY")
+      );
+    case "zai":
+      return isConfigured("AI_GATEWAY_API_KEY") || isConfigured("ZAI_API_KEY");
+    case "openai":
+      // No direct OpenAI env wired yet; OpenAI works ONLY through the
+      // gateway. Visitors can BYO their OpenAI key in the future.
+      return isConfigured("AI_GATEWAY_API_KEY");
   }
 }
 
 export function listProviders(): AgentProvider[] {
-  return ["gemini", "openai", "anthropic"];
+  return ["gemini", "anthropic", "zai", "openai"];
+}
+
+/**
+ * Resolve the default provider when the caller doesn't pin one.
+ * Reads `LLM_DEFAULT_AGENT_PROVIDER` env; falls back to "gemini" for
+ * back-compat. Validates the value; an unknown string falls back too.
+ */
+function resolveDefaultProvider(): AgentProvider {
+  const raw = envOrUndefined("LLM_DEFAULT_AGENT_PROVIDER");
+  if (raw === "anthropic" || raw === "zai" || raw === "openai" || raw === "gemini") {
+    return raw;
+  }
+  return "gemini";
 }

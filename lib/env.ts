@@ -25,6 +25,21 @@ export type EnvKey =
   | "SHARP_SERVICE_URL"
   | "SHARP_VIDEO_SERVICE_URL"
   | "MESH_SERVICE_URL"
+  /** Vercel AI Gateway team key. Single auth header for any model
+   *  reachable via the gateway (Anthropic, Z.ai, OpenAI, Groq, etc).
+   *  When set, `lib/llm/gateway.ts` routes calls through the gateway
+   *  URL. When absent, the helper falls back to direct provider APIs
+   *  using `ANTHROPIC_API_KEY` / `ZAI_API_KEY`. */
+  | "AI_GATEWAY_API_KEY"
+  | "ANTHROPIC_API_KEY"
+  | "ZAI_API_KEY"
+  /** Default agent provider for `agent.dialogue`. One of
+   *  "gemini" | "anthropic" | "zai". Aura's chat picks this on every
+   *  turn unless the caller passes `provider:` explicitly. */
+  | "LLM_DEFAULT_AGENT_PROVIDER"
+  | "LLM_ANTHROPIC_MODEL"
+  | "LLM_ZAI_MODEL"
+  | "LLM_OPENAI_MODEL"
   /** Workload Identity Federation explicit project id — required when
    *  Firebase Admin is initialised via ADC (no JSON service-account
    *  key). Defaults to deriving from the credentials when that data
