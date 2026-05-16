@@ -1,0 +1,19 @@
+# holoflow-services deps
+# Core web framework (already installed)
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+
+# Agent + tool surface
+fastmcp>=3.2.0          # MCP server with tool decorators
+mcp>=1.26.0             # Anthropic MCP SDK (FastMCP depends on this)
+crewai>=1.14.0          # Multi-agent orchestration
+
+# Messaging bus
+paho-mqtt>=2.1.0        # V2 callback API
+
+# Optional but recommended for crew LLM calls
+# Set one of these env vars before running crews:
+#   ANTHROPIC_API_KEY=...     (for claude models via litellm)
+#   OPENAI_API_KEY=...        (for gpt-4o-mini default)
+#   OLLAMA_API_BASE=http://localhost:11434  (for local models)

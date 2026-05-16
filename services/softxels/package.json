@@ -1,0 +1,41 @@
+{
+  "name": "softxels",
+  "author": "Daniel Esteban Nombela",
+  "license": "MIT",
+  "watch": {
+    "compile:mesher": {
+      "extensions": "c",
+      "patterns": [
+        "src/workers/mesher.c"
+      ],
+      "runOnChangeOnly": true
+    },
+    "compile:worldgen": {
+      "extensions": "c",
+      "patterns": [
+        "src/workers/worldgen.c"
+      ],
+      "runOnChangeOnly": true
+    }
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "compile:mesher": "sh src/workers/compile.sh mesher",
+    "compile:worldgen": "sh src/workers/compile.sh worldgen",
+    "watch:build": "npm run build -- -w",
+    "watch:mesher": "npm-watch compile:mesher",
+    "watch:worldgen": "npm-watch compile:worldgen",
+    "serve:example": "cd example && npm start",
+    "postinstall": "cd example && npm install",
+    "start": "run-p watch:build watch:mesher watch:worldgen serve:example"
+  },
+  "devDependencies": {
+    "@rollup/plugin-wasm": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.11.0",
+    "rollup": "^2.75.7",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-web-worker-loader": "^1.6.1"
+  }
+}

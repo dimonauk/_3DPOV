@@ -6,10 +6,10 @@ operator's GPU host); the **contract** lives here so it travels with
 the Vercel site source.
 
 This is the unified home. Previously these lived under
-`D:/The_Hangar/engines/*` on the bench; they've been migrated here so
-the contract sides (Vercel-side capability stub + bench-side FastAPI
-route) live next to each other. The bench still RUNS the service; only
-the source moved.
+`D:/The_Hangar/engines/*` and `D:/The_Hangar/tools/*` on the bench;
+they've been migrated here so the contract sides (Vercel-side
+capability stub + bench-side FastAPI route) live next to each other.
+The bench still RUNS the service; only the source moved.
 
 ## Migration criterion
 
@@ -32,10 +32,18 @@ point at a path in the same repo.
 ## What's here
 
 | Service | Contract on Vercel side | Status |
-|---|---|---|
+| --- | --- | --- |
 | [`splat360/`](./splat360/) | `viz.splat-generate-360` + `hangar-gsplat` provider | Foundation phase; pipeline stages stubbed |
 | [`sharp-onnx/`](./sharp-onnx/) | `viz.splat-generate` `sharp-onnx` provider | Live; running the CCTV-to-3D batch |
 | [`mesh-to-sdf/`](./mesh-to-sdf/) | (Vercel side TBD — small Python, could run as a Vercel Function) | Operational bench tool |
+| [`lithophane/`](./lithophane/) | (Vercel side TBD — pairs with print-bar) | Operational bench tool |
+
+## Migration backlog
+
+See [`MIGRATION_BACKLOG.md`](./MIGRATION_BACKLOG.md) for the full
+catalogue of bench services that satisfy the criterion above but
+haven't been pulled in yet. 25+ candidates inventoried by an
+exhaustive walk of `D:/The_Hangar/` on 2026-05-16.
 
 ## What's not migrating
 
