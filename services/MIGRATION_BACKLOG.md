@@ -14,6 +14,12 @@ Last surveyed: 2026-05-16 by exhaustive walk of `D:/The_Hangar/`.
 - `splat360/` — 360-camera-first gaussian splat service
 - `sharp-onnx/` — Apple SHARP single-image inference
 - `mesh-to-sdf/` — mesh → Float32 SDF binary for browser shaders
+- `lithophane/` — image → printable lithophane STL (also `/atelier/lithophane`)
+- `image-to-pixel/` — pure JS pixel-art converter (drives `/atelier/pixelify`)
+- `softxels/` — three.js voxel renderer library
+- `webgpu-marching-cubes/` — WebGPU isosurface (drives `/atelier/isosurface`)
+- `holoflow-services/` — bench mesh-ops bundle (lithophane / voxelize / Pixelorama bridge)
+- `triposr/`, `hy-wu/`, `unique3d/`, `instantmesh/` — image-to-mesh provider quartet (drives `/atelier/image-to-mesh`; bench wrapper pending — see `lib/capabilities/viz/image-to-mesh.server.ts` docstring)
 
 ## High value — migrate next
 

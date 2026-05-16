@@ -168,6 +168,12 @@ export default function AtelierPage() {
                 summary: "An equation becomes a surface. WebGPU marching cubes on three signed-distance fields.",
               },
               {
+                slug: "image-to-mesh",
+                title: "Image → Mesh",
+                kind: "Function",
+                summary: "A photograph becomes a 3D object. Four providers: TripoSR (fast), HY-WU (mid), Unique3D (high quality), InstantMesh (multi-view).",
+              },
+              {
                 slug: "imagen",
                 title: "Imagen",
                 kind: "Function",
