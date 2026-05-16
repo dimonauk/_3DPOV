@@ -5,13 +5,28 @@
  * Firestore + verify Auth tokens, separate from the public Firebase
  * client config (which lives in `./client.ts`).
  *
- * # Configuration
- * Reads `FIREBASE_ADMIN_SERVICE_ACCOUNT` as a JSON-encoded service-
- * account key from Vercel env (one variable, not split across three).
- * Project ID is inferred from the service account; no extra env needed.
+ * # Two configuration paths
+ *
+ * 1. **JSON service-account key (legacy).** Set
+ *    `FIREBASE_ADMIN_SERVICE_ACCOUNT` to the JSON-encoded
+ *    service-account key in Vercel env. Project ID is read from the
+ *    JSON. Long-lived secret in env; rotate periodically.
+ *
+ * 2. **Application Default Credentials / Workload Identity Federation.**
+ *    Set `GOOGLE_APPLICATION_CREDENTIALS` (Vercel's Google Cloud
+ *    integration writes a WIF config file at deploy + sets this env
+ *    automatically). No long-lived secret in Vercel env; each function
+ *    invocation exchanges a short-lived Vercel OIDC token for a
+ *    GCP credential via Workload Identity Federation. Add
+ *    `FIREBASE_ADMIN_PROJECT_ID` for the project id (ADC creds don't
+ *    always carry one).
+ *
+ * Path 1 takes precedence when both are set — useful for incident
+ * recovery when you want a known-good service-account JSON to override
+ * a misconfigured WIF pool.
  *
  * # Posture
- * Lazy + tolerant: when the env var isn't set, the helpers return
+ * Lazy + tolerant: when neither path is configured, the helpers return
  * `null` rather than throwing, so a local dev without admin creds can
  * still build and render public pages. Server code that genuinely
  * needs admin (e.g. `/admin/upload`) calls `requireFirebaseAdmin()`
@@ -21,6 +36,7 @@
 import "server-only";
 
 import {
+  applicationDefault,
   cert,
   getApp,
   getApps,
@@ -35,7 +51,10 @@ let _adminAuth: Auth | null = null;
 let _adminDb: Firestore | null = null;
 
 export function isFirebaseAdminConfigured(): boolean {
-  return Boolean(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT);
+  return (
+    Boolean(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT) ||
+    Boolean(process.env.GOOGLE_APPLICATION_CREDENTIALS)
+  );
 }
 
 function loadCredential(): { projectId: string; clientEmail: string; privateKey: string } | null {
@@ -56,21 +75,64 @@ function loadCredential(): { projectId: string; clientEmail: string; privateKey:
   return { projectId, clientEmail, privateKey };
 }
 
+/**
+ * Look up the project id from any of the conventional env vars when
+ * we don't have it in the JSON credential. Order:
+ *
+ *   1. FIREBASE_ADMIN_PROJECT_ID — explicit; the canonical knob.
+ *   2. GOOGLE_CLOUD_PROJECT — gcloud-style.
+ *   3. GCP_PROJECT — older convention.
+ *   4. GCLOUD_PROJECT — older convention.
+ *
+ * Returns null when nothing's set, which causes Firebase Admin's
+ * initialise call to fail with its own helpful error.
+ */
+function adcProjectId(): string | null {
+  return (
+    process.env.FIREBASE_ADMIN_PROJECT_ID ??
+    process.env.GOOGLE_CLOUD_PROJECT ??
+    process.env.GCP_PROJECT ??
+    process.env.GCLOUD_PROJECT ??
+    null
+  );
+}
+
 export function getFirebaseAdminApp(): App | null {
   if (_adminApp) return _adminApp;
+
+  // Path 1: JSON service-account key. Takes precedence so an operator
+  // can override a broken WIF setup by pasting a key into env.
   const creds = loadCredential();
-  if (!creds) return null;
-  _adminApp = getApps().length
-    ? getApp()
-    : initializeApp({
-        credential: cert({
+  if (creds) {
+    _adminApp = getApps().length
+      ? getApp()
+      : initializeApp({
+          credential: cert({
+            projectId: creds.projectId,
+            clientEmail: creds.clientEmail,
+            privateKey: creds.privateKey,
+          }),
           projectId: creds.projectId,
-          clientEmail: creds.clientEmail,
-          privateKey: creds.privateKey,
-        }),
-        projectId: creds.projectId,
-      });
-  return _adminApp;
+        });
+    return _adminApp;
+  }
+
+  // Path 2: Application Default Credentials (Workload Identity
+  // Federation via Vercel's Google Cloud integration, gcloud auth on
+  // local dev, GCE metadata server in other Google environments).
+  // The presence of GOOGLE_APPLICATION_CREDENTIALS is the trigger.
+  if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    const projectId = adcProjectId();
+    _adminApp = getApps().length
+      ? getApp()
+      : initializeApp({
+          credential: applicationDefault(),
+          ...(projectId ? { projectId } : {}),
+        });
+    return _adminApp;
+  }
+
+  return null;
 }
 
 export function getFirebaseAdminAuth(): Auth | null {
@@ -95,8 +157,11 @@ export function requireFirebaseAdminDb(): Firestore {
   const db = getFirebaseAdminDb();
   if (!db) {
     throw new Error(
-      "firebase-admin: FIREBASE_ADMIN_SERVICE_ACCOUNT env not set. " +
-        "Set the JSON service-account key in Vercel project env (Production + Preview + Development).",
+      "firebase-admin: no credential path configured. Either set " +
+        "FIREBASE_ADMIN_SERVICE_ACCOUNT (JSON service-account key) or " +
+        "GOOGLE_APPLICATION_CREDENTIALS + FIREBASE_ADMIN_PROJECT_ID " +
+        "(Workload Identity Federation via Vercel's Google Cloud " +
+        "integration) in the Vercel project env.",
     );
   }
   return db;
@@ -106,8 +171,11 @@ export function requireFirebaseAdminAuth(): Auth {
   const auth = getFirebaseAdminAuth();
   if (!auth) {
     throw new Error(
-      "firebase-admin: FIREBASE_ADMIN_SERVICE_ACCOUNT env not set. " +
-        "Set the JSON service-account key in Vercel project env (Production + Preview + Development).",
+      "firebase-admin: no credential path configured. Either set " +
+        "FIREBASE_ADMIN_SERVICE_ACCOUNT (JSON service-account key) or " +
+        "GOOGLE_APPLICATION_CREDENTIALS + FIREBASE_ADMIN_PROJECT_ID " +
+        "(Workload Identity Federation via Vercel's Google Cloud " +
+        "integration) in the Vercel project env.",
     );
   }
   return auth;

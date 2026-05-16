@@ -36,7 +36,7 @@ import { NextResponse } from "next/server";
 
 import { GoogleGenAI } from "@google/genai";
 
-import { envOrUndefined } from "lib/env";
+import { envOrUndefined, googleGenApiKey } from "lib/env";
 import { createLogger } from "lib/log";
 
 const log = createLogger("api:ai-google-imagen");
@@ -173,15 +173,18 @@ export async function POST(req: Request) {
   // log the value, even partially.
   const visitorKey = req.headers.get("X-Visitor-Google-Key") ?? null;
   const usingVisitorKey = visitorKey !== null && visitorKey.trim().length > 0;
+  // Studio key picks: GOOGLE_AI_API_KEY_GEN (the dedicated AI-gen
+  // project's key) first, then GOOGLE_AI_API_KEY (Aura's chat key)
+  // as fallback. Visitor's BYO key still overrides both.
   const apiKey = usingVisitorKey
     ? visitorKey.trim()
-    : envOrUndefined("GOOGLE_AI_API_KEY");
+    : googleGenApiKey();
 
   if (!apiKey) {
     return NextResponse.json(
       {
         error:
-          "No Google AI key configured. Open the settings dialog and paste your AI Studio key, or ask the studio to set GOOGLE_AI_API_KEY.",
+          "No Google AI key configured. Open the settings dialog and paste your AI Studio key, or ask the studio to set GOOGLE_AI_API_KEY_GEN (or GOOGLE_AI_API_KEY as fallback).",
         code: "no_key",
       },
       { status: 503 },

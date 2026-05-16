@@ -35,7 +35,7 @@ import { NextResponse } from "next/server";
 
 import { GoogleGenAI, Modality } from "@google/genai";
 
-import { envOrUndefined } from "lib/env";
+import { envOrUndefined, googleGenApiKey } from "lib/env";
 import { createLogger } from "lib/log";
 
 const log = createLogger("api:ai-google-edit");
@@ -130,18 +130,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "prompt is required" }, { status: 400 });
   }
 
-  // Visitor key wins. Never log the value.
+  // Visitor key wins. Never log the value. Studio key picks:
+  // GOOGLE_AI_API_KEY_GEN (dedicated AI-gen project) first, then
+  // GOOGLE_AI_API_KEY (Aura's chat key) as fallback.
   const visitorKey = req.headers.get("X-Visitor-Google-Key") ?? null;
   const usingVisitorKey = visitorKey !== null && visitorKey.trim().length > 0;
   const apiKey = usingVisitorKey
     ? visitorKey.trim()
-    : envOrUndefined("GOOGLE_AI_API_KEY");
+    : googleGenApiKey();
 
   if (!apiKey) {
     return NextResponse.json(
       {
         error:
-          "No Google AI key configured. Open the settings dialog and paste your AI Studio key, or ask the studio to set GOOGLE_AI_API_KEY.",
+          "No Google AI key configured. Open the settings dialog and paste your AI Studio key, or ask the studio to set GOOGLE_AI_API_KEY_GEN (or GOOGLE_AI_API_KEY as fallback).",
         code: "no_key",
       },
       { status: 503 },
