@@ -16,6 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:exif-strip");
 
@@ -57,6 +58,8 @@ export default function ExifStripClient() {
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useActiveChamber("exif-strip");
 
   const loadFile = useCallback(
     (file: File) => {
@@ -113,6 +116,14 @@ export default function ExifStripClient() {
         durationMs: Date.now() - startedAt,
         stripped,
         cleanedSize: blob.size,
+      });
+      pushAtelierOutput({
+        chamberSlug: "exif-strip",
+        kind: "image",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: blob.type || `image/${ext}`,
+        sizeBytes: blob.size,
       });
     } catch (err) {
       log.error("strip failed", { err });

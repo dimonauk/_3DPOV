@@ -27,6 +27,8 @@ import {
   Vector3,
 } from "three";
 
+import { useActiveChamber } from "lib/state/atelier-hooks";
+
 // ---- Voxel model ----------------------------------------------------------
 
 const PALETTE: ReadonlyArray<{ label: string; hex: string }> = [
@@ -234,6 +236,8 @@ function Scene({
 // ---- Client component ------------------------------------------------------
 
 export default function VoxelWorldClient() {
+  useActiveChamber("voxel-world");
+
   const [selectedHex, setSelectedHex] = useState<string>("#67e8f9");
 
   const [voxels, setVoxels] = useState<Voxel[]>(() =>

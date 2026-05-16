@@ -16,6 +16,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:probe");
 
@@ -110,6 +111,8 @@ export default function ProbeClient() {
   const [copyState, setCopyState] = useState<"idle" | "copied">("idle");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  useActiveChamber("probe");
+
   const loadFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
@@ -156,6 +159,12 @@ export default function ProbeClient() {
         kind: "ready",
         result,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "probe",
+        kind: "json",
+        label: `${sourceFile.name.replace(/\.[^.]+$/, "")}_metadata.json`,
+        payload: result,
       });
     } catch (err) {
       log.error("probe failed", { err });

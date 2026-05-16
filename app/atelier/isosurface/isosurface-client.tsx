@@ -15,6 +15,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { createLogger } from "lib/log";
+import { useActiveChamber } from "lib/state/atelier-hooks";
 import type { IsosurfaceRunner } from "lib/webgpu-marching-cubes/runner";
 
 const log = createLogger("atelier:isosurface");
@@ -40,6 +41,8 @@ type Stats = {
 };
 
 export default function IsosurfaceClient() {
+  useActiveChamber("isosurface");
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const runnerRef = useRef<IsosurfaceRunner | null>(null);
   const rafRef = useRef<number | null>(null);

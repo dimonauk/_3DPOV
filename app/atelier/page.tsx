@@ -167,6 +167,18 @@ export default function AtelierPage() {
                 kind: "Browser",
                 summary: "An equation becomes a surface. WebGPU marching cubes on three signed-distance fields.",
               },
+              {
+                slug: "imagen",
+                title: "Imagen",
+                kind: "Function",
+                summary: "Text → image with Google's Imagen 4. Free tier on the studio quota; paste your own AI Studio key for unbounded use.",
+              },
+              {
+                slug: "image-edit",
+                title: "Image edit",
+                kind: "Function",
+                summary: "Drop an image, write a prompt, Gemini edits it. Same BYO-key option as Imagen.",
+              },
             ].map((c) => (
               <Link
                 key={c.slug}

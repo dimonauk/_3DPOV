@@ -17,6 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:pixeldetector");
 
@@ -39,6 +40,8 @@ export default function PixeldetectorClient() {
 
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
+
+  useActiveChamber("pixeldetector");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const loadFile = useCallback(
@@ -87,6 +90,12 @@ export default function PixeldetectorClient() {
         kind: "ready",
         result,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "pixeldetector",
+        kind: "json",
+        label: `${sourceFile.name.replace(/\.[^.]+$/, "")}_native-resolution.json`,
+        payload: result,
       });
     } catch (err) {
       log.error("detection failed", { err });

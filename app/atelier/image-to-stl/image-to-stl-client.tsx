@@ -20,6 +20,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:image-to-stl");
 
@@ -44,6 +45,8 @@ export default function ImageToStlClient() {
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useActiveChamber("image-to-stl");
 
   // Off-screen ImageData of the original — once decoded, the threshold
   // preview just remaps pixels rather than re-decoding the file.
@@ -173,6 +176,14 @@ export default function ImageToStlClient() {
         blob,
         filename,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "image-to-stl",
+        kind: "stl",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: "model/stl",
+        sizeBytes: blob.size,
       });
     } catch (err) {
       log.error("generation failed", { err });

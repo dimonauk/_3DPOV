@@ -13,6 +13,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:image-resize");
 
@@ -80,6 +81,8 @@ export default function ImageResizeClient() {
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useActiveChamber("image-resize");
 
   const loadFile = useCallback(
     (file: File) => {
@@ -164,6 +167,14 @@ export default function ImageResizeClient() {
         previewUrl,
         filename,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "image-resize",
+        kind: "image",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: `image/${format === "jpeg" ? "jpeg" : format}`,
+        sizeBytes: blob.size,
       });
     } catch (err) {
       log.error("resize failed", { err });

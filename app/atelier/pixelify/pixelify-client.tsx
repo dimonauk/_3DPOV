@@ -17,6 +17,7 @@ import {
   type PixelateDither,
 } from "lib/image-to-pixel/pixelate";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:pixelify");
 
@@ -62,6 +63,8 @@ export default function PixelifyClient() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isDragOver, setIsDragOver] = useState(false);
+
+  useActiveChamber("pixelify");
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const outputContainerRef = useRef<HTMLDivElement | null>(null);
@@ -173,11 +176,24 @@ export default function PixelifyClient() {
     if (!outputCanvas) return;
     outputCanvas.toBlob((blob) => {
       if (!blob) return;
+      const filename = `${sourceFilename}_pixelified_w${pixelWidth}.png`;
+      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `${sourceFilename}_pixelified_w${pixelWidth}.png`;
+      link.href = url;
+      link.download = filename;
       link.click();
-      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+      // Push to the recent-outputs drawer; the drawer doesn't revoke
+      // the URL, so we keep this one alive for the session and let the
+      // download link's URL get GC'd separately.
+      pushAtelierOutput({
+        chamberSlug: "pixelify",
+        kind: "image",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: "image/png",
+        sizeBytes: blob.size,
+      });
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     }, "image/png");
   }, [outputCanvas, pixelWidth, sourceFilename]);
 

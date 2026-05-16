@@ -17,6 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:lithophane");
 
@@ -38,6 +39,8 @@ export default function LithophaneClient() {
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useActiveChamber("lithophane");
 
   const loadFile = useCallback(
     (file: File) => {
@@ -93,6 +96,14 @@ export default function LithophaneClient() {
         blob,
         filename,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "lithophane",
+        kind: "stl",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: "model/stl",
+        sizeBytes: blob.size,
       });
     } catch (err) {
       log.error("generation failed", { err });

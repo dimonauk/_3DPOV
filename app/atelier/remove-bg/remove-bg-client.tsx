@@ -17,6 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { functionUrl } from "lib/firebase/functions";
 import { createLogger } from "lib/log";
+import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:remove-bg");
 
@@ -60,6 +61,8 @@ export default function RemoveBgClient() {
 
   const [output, setOutput] = useState<OutputState>({ kind: "idle" });
   const [isDragOver, setIsDragOver] = useState(false);
+
+  useActiveChamber("remove-bg");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const loadFile = useCallback(
@@ -120,6 +123,14 @@ export default function RemoveBgClient() {
         previewUrl,
         filename,
         durationMs: Date.now() - startedAt,
+      });
+      pushAtelierOutput({
+        chamberSlug: "remove-bg",
+        kind: "image",
+        label: filename,
+        blobUrl: URL.createObjectURL(blob),
+        mimeType: "image/png",
+        sizeBytes: blob.size,
       });
     } catch (err) {
       log.error("generation failed", { err });
