@@ -301,6 +301,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     category: "paint-and-draw",
     status: "live",
   },
+  {
+    slug: "voxel-image",
+    title: "Voxel Image",
+    blurb: "Each pixel becomes one voxel in 3D space. Plane or sphere layout. Optional pixel-stream animation makes voxels travel to the opposite edge and back.",
+    category: "paint-and-draw",
+    status: "live",
+  },
 
   // ---------- Pattern + textile ----------
   {
