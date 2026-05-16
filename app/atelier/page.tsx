@@ -185,6 +185,12 @@ export default function AtelierPage() {
                 kind: "Function",
                 summary: "Drop an image, write a prompt, Gemini edits it. Same BYO-key option as Imagen.",
               },
+              {
+                slug: "veo",
+                title: "Veo",
+                kind: "Function",
+                summary: "Text → short video with Google's Veo 3. 4–8 second clips, optional audio. Async polling; usually returns in a minute.",
+              },
             ].map((c) => (
               <Link
                 key={c.slug}
