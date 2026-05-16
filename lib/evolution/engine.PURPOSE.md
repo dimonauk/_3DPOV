@@ -1,5 +1,16 @@
 # `engine.ts` — purpose twin
 
+## What this is
+
+The breeding loop, plain and simple. Hand it a starting population,
+two operators (mutate and crossover), a fitness function, and a
+selector for parents — it runs N generations and gives you back the
+best subject plus the full final population and a per-generation
+history. Generic over its subject type: a `Genome` is the studio's
+primary use, but anything typed works (parameter vectors, numbers,
+test-only shapes). One seed in, one walk out — the same seed
+replays the same evolution.
+
 ## Role
 
 The generational walk. Composes mutate / crossover / fitness /

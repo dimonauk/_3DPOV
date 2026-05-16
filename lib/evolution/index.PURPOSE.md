@@ -1,5 +1,13 @@
 # `index.ts` — purpose twin
 
+## What this is
+
+One import path for the whole evolution library. Re-exports the
+engine, the genome model, the fitness axes, the selection
+operators, and the 14-station catalogue. Lets a caller do
+`import { evolve, mutateGenome, defaultFitness } from "lib/evolution"`
+without knowing which sub-file each symbol came from.
+
 ## Role
 
 Public surface of the evolution library. Re-exports the engine's

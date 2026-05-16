@@ -80,6 +80,20 @@ export const GENE_NAMES = [
   "tube_smoothness",
   "network_density",
   "murray_exponent",
+  // Canon extension — the Blender-pipeline `SculptureGenome` fields
+  // documented in the skill `sculpture-genome-evolution`. Kept at the
+  // end of the alphabet so the 28-gene Hangar core above stays the
+  // canonical anchor; these are added so a `Genome` can round-trip
+  // the Blender lineage without dropping fields. All normalised to
+  // [0..1] like every other numeric gene.
+  "angle_spread", // branch cone half-angle
+  "length_decay", // child / parent length ratio
+  "branch_n", // children per Murray node
+  "bevel_depth", // tube bevel depth
+  "gem_count", // gem distribution count
+  "gem_radius", // gem sphere radius
+  "gem_hue", // gem HSV hue
+  "hue_drift", // accumulated lineage hue drift
 ] as const;
 
 export type GeneName = (typeof GENE_NAMES)[number];
@@ -116,6 +130,18 @@ export const GENE_RANGES: Readonly<Record<GeneName, readonly [number, number]>> 
   tube_smoothness: [0.0, 1.0],
   network_density: [3.0, 20.0],
   murray_exponent: [0.25, 0.45],
+  // Canon-extension ranges (Blender-pipeline genome). Physical units
+  // mirror the dataclass defaults in the skill canon — angle_spread in
+  // radians, length_decay unitless, branch_n integer-rounded by the
+  // caller, gem_* matching the Blender script defaults.
+  angle_spread: [0.05, 1.2],
+  length_decay: [0.3, 0.9],
+  branch_n: [1.0, 5.0],
+  bevel_depth: [0.0, 0.05],
+  gem_count: [0.0, 60.0],
+  gem_radius: [0.005, 0.05],
+  gem_hue: [0.0, 1.0],
+  hue_drift: [0.0, 1.0],
 } as const;
 
 /** Look up a numeric gene by symbolic name. Returns `undefined` when

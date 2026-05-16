@@ -1,11 +1,28 @@
 # `genome.ts` — purpose twin
 
+## What this is
+
+The DNA model the breeding engine works on. A `Genome` is a small
+record of named genes (numbers between 0 and 1) plus its family
+tree — who its parents were, which generation it belongs to, what
+sculpture kingdom it claims. The two pure operators in this file —
+`mutateGenome` (jitter every gene a little) and `crossover` (blend
+two parents into a child) — are the only ways the engine ever
+makes a new genome. Everything stays serialisable so a population
+can be stored, walked, replayed, and shown on a card without
+needing the renderer.
+
 ## Role
 
 Defines the typed genome model that the evolution engine operates
 over. Carries the 28-gene alphabet from the Hangar Python source as
-a typed constant, plus pure helpers for cloning, mutation, and
-crossover. The data side of the evolution loop.
+a typed constant, plus a small canon extension that adds the
+Blender-pipeline fields (angle_spread, length_decay, branch_n,
+bevel_depth, gem_count, gem_radius, gem_hue, hue_drift) so a
+`Genome` can round-trip the lineage documented in the
+`sculpture-genome-evolution` skill. Pure helpers for cloning,
+mutation, and crossover live here too. The data side of the
+evolution loop.
 
 ## Public surface
 
@@ -13,8 +30,11 @@ crossover. The data side of the evolution loop.
 - `Genome` — ordered list of `Gene<unknown>` with `sequenceId`,
   `kingdom`, `generation`, `parentIds`, `parentageChain`, optional
   `score`. Read-only.
-- `GENE_NAMES` — 28-entry `as const` tuple (form / material / optics /
-  waveguide).
+- `GENE_NAMES` — 28-entry Hangar core (form / material / optics /
+  waveguide) plus 8 canon-extension entries
+  (`angle_spread`, `length_decay`, `branch_n`, `bevel_depth`,
+  `gem_count`, `gem_radius`, `gem_hue`, `hue_drift`). Exported as a
+  single `as const` tuple.
 - `GeneName` — literal-union derived from `GENE_NAMES`.
 - `GENE_RANGES` — per-name `[lo, hi]` denormalisation ranges.
 - `getGene(genome, id)` — single lookup.

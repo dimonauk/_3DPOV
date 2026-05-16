@@ -1,5 +1,15 @@
 # `fitness.ts` — purpose twin
 
+## What this is
+
+How the engine decides which genomes are good. Five named scoring
+axes (optical, coherence, novelty, complexity, printability), each
+returning a number between 0 and 1, plus a `compose` helper that
+weights them into one combined score. The default five-axis weighted
+total mirrors the Hangar Python source. None of these look at a
+mesh — they all read genes only — so a generation can be scored
+without leaving the breeding loop.
+
 ## Role
 
 The scoring side of the evolution loop. Defines `FitnessFunction<T>`,

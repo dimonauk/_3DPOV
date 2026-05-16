@@ -1,5 +1,14 @@
 # `selection.ts` — purpose twin
 
+## What this is
+
+Three named ways to pick parents from a population of N candidates:
+**tournament** (best-of-k random draws — the default), **topK**
+(elitist sort + slice — used for keeping the strongest survivors),
+and **roulette** (fitness-proportionate). All pure, all RNG-injected
+by the engine, all returning a fresh array. The engine never asks
+"which parent should breed next?" — it asks the selector.
+
 ## Role
 
 Selection operators for the evolution engine. Pure, RNG-injected,

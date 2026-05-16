@@ -23,8 +23,11 @@
  */
 
 import { seededRng } from "../algorithms/_base";
+import { createLogger } from "../log";
 import type { FitnessFunction } from "./fitness";
 import type { SelectionOperator } from "./selection";
+
+const log = createLogger("evolution:engine");
 
 /** Per-generation summary. Pushed once per generation step. */
 export type GenerationSnapshot = {
@@ -100,6 +103,8 @@ export function evolve<T>(options: EvolveOptions<T>): EvolutionResult<T> {
     throw new Error("evolve: wildcardFactory required when wildcardCount > 0");
   }
 
+  log.info("evolve start", { generations, populationSize, seed });
+
   const rng = seededRng(seed);
 
   // Initial population: pad or truncate to `populationSize`.
@@ -154,12 +159,18 @@ export function evolve<T>(options: EvolveOptions<T>): EvolutionResult<T> {
       best = subject;
     }
   }
-  return {
+  const result = {
     best,
     bestFitness: Math.max(0, bestScore),
     finalPopulation: population,
     history,
   };
+  log.info("evolve complete", {
+    generations,
+    bestFitness: result.bestFitness,
+    finalSize: result.finalPopulation.length,
+  });
+  return result;
 }
 
 /** Clamp the elite count into [1, populationSize - 1] with a default
