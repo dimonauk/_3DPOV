@@ -1,4 +1,19 @@
+// BOM-strip BLOB_READ_WRITE_TOKEN at module load so del() can use it.
+// Vercel's env-var UI prepended a U+FEFF when the token was first
+// pasted; @vercel/blob reads process.env directly, so we have to mutate
+// before the SDK gets to it.
+if (
+  typeof process !== "undefined" &&
+  process.env.BLOB_READ_WRITE_TOKEN &&
+  process.env.BLOB_READ_WRITE_TOKEN.charCodeAt(0) === 0xfeff
+) {
+  process.env.BLOB_READ_WRITE_TOKEN = process.env.BLOB_READ_WRITE_TOKEN.slice(
+    1,
+  ).trim();
+}
+
 import { NextResponse, type NextRequest } from "next/server";
+import { del as deleteBlob } from "@vercel/blob";
 import {
   isScannerConfigured,
   scanCardImage,
@@ -94,6 +109,9 @@ export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx
   let mediaType: "image/jpeg" | "image/png" | "image/webp" | "image/gif" =
     "image/jpeg";
   let imageBytes = 0;
+  // If the client used the Blob upload path, this holds the temp URL
+  // we need to delete after the scan completes (success or failure).
+  let blobUrlToDelete: string | null = null;
 
   try {
     if (contentType.includes("multipart/form-data")) {
@@ -121,34 +139,106 @@ export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx
     } else {
       const body = (await req.json()) as {
         imageBase64?: string;
+        blobUrl?: string;
         mediaType?: string;
       };
-      if (!body.imageBase64) {
-        log.info("body:missing_imageBase64");
+
+      // Preferred path: blobUrl from a browser-direct Vercel Blob
+      // upload. The function fetches the bytes once, then deletes
+      // the temp blob.
+      if (body.blobUrl) {
+        // Refuse anything that isn't our own scan-temp/ prefix on the
+        // public Blob store — defence against an attacker passing a
+        // 10 GB URL or a URL that lives somewhere expensive to fetch.
+        const url = body.blobUrl;
+        const isVercelBlob = /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\//.test(
+          url,
+        );
+        if (!isVercelBlob || !url.includes("/scan-temp/")) {
+          log.warn("body:invalid_blob_url", { url });
+          return NextResponse.json(
+            { error: "invalid_blob_url" },
+            { status: 400 },
+          );
+        }
+        blobUrlToDelete = url;
+
+        let fetched: Response;
+        try {
+          fetched = await fetch(url);
+        } catch (err) {
+          log.warn("blob:fetch_failed", { err: errToObject(err), url });
+          return NextResponse.json(
+            { error: "blob_fetch_failed" },
+            { status: 502 },
+          );
+        }
+        if (!fetched.ok) {
+          log.warn("blob:fetch_status", { status: fetched.status, url });
+          return NextResponse.json(
+            { error: "blob_fetch_failed", status: fetched.status },
+            { status: 502 },
+          );
+        }
+
+        // Read the response with a hard byte ceiling. Vercel Blob serves
+        // Content-Length headers so we can short-circuit oversized files
+        // before allocating the buffer.
+        const lenHeader = fetched.headers.get("content-length");
+        if (lenHeader && Number(lenHeader) > MAX_IMAGE_BYTES) {
+          log.info("blob:too_large", { size: Number(lenHeader) });
+          return NextResponse.json(
+            { error: "image_too_large", maxBytes: MAX_IMAGE_BYTES },
+            { status: 413 },
+          );
+        }
+        const buf = Buffer.from(await fetched.arrayBuffer());
+        if (buf.length > MAX_IMAGE_BYTES) {
+          log.info("blob:too_large_post", { size: buf.length });
+          return NextResponse.json(
+            { error: "image_too_large", maxBytes: MAX_IMAGE_BYTES },
+            { status: 413 },
+          );
+        }
+        imageBytes = buf.length;
+        imageBase64 = buf.toString("base64");
+
+        // Pick mediaType: client hint > Content-Type > jpeg default.
+        const ct = (body.mediaType || fetched.headers.get("content-type") || "")
+          .toLowerCase();
+        if (ct.includes("png")) mediaType = "image/png";
+        else if (ct.includes("webp")) mediaType = "image/webp";
+        else if (ct.includes("gif")) mediaType = "image/gif";
+        else mediaType = "image/jpeg";
+      } else if (body.imageBase64) {
+        // Legacy path: full base64 in the JSON body. Kept for backward
+        // compatibility with any pre-Step-4 client.
+        imageBytes = Math.round(body.imageBase64.length * 0.75);
+        if (imageBytes > MAX_IMAGE_BYTES) {
+          log.info("body:image_too_large", { size: imageBytes, max: MAX_IMAGE_BYTES });
+          return NextResponse.json(
+            { error: "image_too_large" },
+            { status: 413 },
+          );
+        }
+        imageBase64 = body.imageBase64;
+        if (body.mediaType === "image/png") mediaType = "image/png";
+        else if (body.mediaType === "image/webp") mediaType = "image/webp";
+        else if (body.mediaType === "image/gif") mediaType = "image/gif";
+      } else {
+        log.info("body:missing_image_source");
         return NextResponse.json(
-          { error: "missing_imageBase64" },
+          { error: "missing_image_source", message: "expected blobUrl or imageBase64" },
           { status: 400 },
         );
       }
-      imageBytes = Math.round(body.imageBase64.length * 0.75);
-      if (imageBytes > MAX_IMAGE_BYTES) {
-        log.info("body:image_too_large", { size: imageBytes, max: MAX_IMAGE_BYTES });
-        return NextResponse.json(
-          { error: "image_too_large" },
-          { status: 413 },
-        );
-      }
-      imageBase64 = body.imageBase64;
-      if (body.mediaType === "image/png") mediaType = "image/png";
-      else if (body.mediaType === "image/webp") mediaType = "image/webp";
-      else if (body.mediaType === "image/gif") mediaType = "image/gif";
     }
   } catch (err) {
     log.warn("body:invalid", { err: errToObject(err) });
     return NextResponse.json({ error: "invalid_body" }, { status: 400 });
   }
 
-  log.info("scan:start", { uid, mediaType, imageBytes });
+  log.info("scan:start", { uid, mediaType, imageBytes, source: blobUrlToDelete ? "blob" : "inline" });
   try {
     const extracted: ExtractedCardFields = await scanCardImage(
       imageBase64,
@@ -180,5 +270,21 @@ export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx
       { error: "scan_failed", message: msg },
       { status: 502 },
     );
+  } finally {
+    // Best-effort: delete the temp blob so we don't accumulate
+    // visitor scan images. A failed delete just leaves a stranded
+    // blob that we can sweep later — never block the visitor
+    // response on this.
+    if (blobUrlToDelete) {
+      try {
+        await deleteBlob(blobUrlToDelete);
+        log.debug("blob:deleted", { url: blobUrlToDelete });
+      } catch (err) {
+        log.warn("blob:delete_failed", {
+          err: errToObject(err),
+          url: blobUrlToDelete,
+        });
+      }
+    }
   }
 });

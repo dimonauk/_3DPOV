@@ -22,6 +22,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { upload as blobUpload } from "@vercel/blob/client";
 import { useAuth } from "components/auth/auth-provider";
 
 export type ExtractedCardFields = {
@@ -45,7 +46,8 @@ type Props = {
 
 type Status =
   | { kind: "idle" }
-  | { kind: "uploading"; preview: string }
+  | { kind: "uploading"; preview: string; pct: number }
+  | { kind: "scanning"; preview: string }
   | { kind: "ok"; preview: string; fields: ExtractedCardFields; remaining: number }
   | { kind: "error"; message: string };
 
@@ -57,7 +59,11 @@ export default function CardScanner({ onExtracted, accent = "#ff6fb5" }: Props) 
   // Clean up object-URL previews to avoid leaking blob handles.
   useEffect(() => {
     return () => {
-      if (status.kind === "uploading" || status.kind === "ok") {
+      if (
+        status.kind === "uploading" ||
+        status.kind === "scanning" ||
+        status.kind === "ok"
+      ) {
         try {
           URL.revokeObjectURL(status.preview);
         } catch {
@@ -90,17 +96,58 @@ export default function CardScanner({ onExtracted, accent = "#ff6fb5" }: Props) 
       return;
     }
     const preview = URL.createObjectURL(file);
-    setStatus({ kind: "uploading", preview });
+    setStatus({ kind: "uploading", preview, pct: 0 });
 
     try {
-      const token = await auth.user.getIdToken();
-      const form = new FormData();
-      form.append("image", file);
+      const firebaseToken = await auth.user.getIdToken();
+
+      // 1. Browser-direct upload to Vercel Blob at scan-temp/<uuid>.<ext>.
+      //    Bytes go straight from the user's device to the Vercel edge,
+      //    bypassing our serverless function entirely.
+      const ext = (file.name.match(/\.[a-z0-9]+$/i)?.[0] || ".jpg").toLowerCase();
+      const uuid =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+      const pathname = `scan-temp/${uuid}${ext}`;
+
+      let blob: { url: string; pathname: string };
+      try {
+        blob = await blobUpload(pathname, file, {
+          access: "public",
+          handleUploadUrl: "/api/cards/scan/upload-token",
+          clientPayload: JSON.stringify({ firebaseToken }),
+          contentType: file.type || undefined,
+          onUploadProgress: ({ percentage }) => {
+            setStatus((prev) =>
+              prev.kind === "uploading"
+                ? { ...prev, pct: percentage }
+                : prev,
+            );
+          },
+        });
+      } catch (e) {
+        setStatus({
+          kind: "error",
+          message: `Upload failed: ${(e as Error).message ?? "network error"}`,
+        });
+        return;
+      }
+
+      // 2. Scan: send just the Blob URL. Function fetches the bytes
+      //    from Blob, runs the AI vision pass, then deletes the blob.
+      setStatus({ kind: "scanning", preview });
 
       const res = await fetch("/api/cards/scan", {
         method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: form,
+        headers: {
+          Authorization: `Bearer ${firebaseToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          blobUrl: blob.url,
+          mediaType: file.type || undefined,
+        }),
       });
       const body = (await res.json()) as {
         ok?: boolean;
@@ -130,7 +177,6 @@ export default function CardScanner({ onExtracted, accent = "#ff6fb5" }: Props) 
         fields: body.extracted,
         remaining: body.remaining ?? 0,
       });
-      // Push extracted fields up to the editor immediately.
       onExtracted(body.extracted);
     } catch (e) {
       setStatus({
@@ -173,8 +219,21 @@ export default function CardScanner({ onExtracted, accent = "#ff6fb5" }: Props) 
         <div className="cs-state">
           <img src={status.preview} alt="" className="cs-preview" />
           <div className="cs-msg">
+            <strong>Uploading photo…</strong>
+            <p>Sending straight to the edge — bypassing our servers.</p>
+            <div className="cs-bar">
+              <div className="cs-bar-fill" style={{ width: `${status.pct}%` }} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {status.kind === "scanning" && (
+        <div className="cs-state">
+          <img src={status.preview} alt="" className="cs-preview" />
+          <div className="cs-msg">
             <strong>Reading the card…</strong>
-            <p>Claude is parsing the fields — usually 3-6 seconds.</p>
+            <p>Gemini is parsing the fields — usually 3-6 seconds.</p>
           </div>
         </div>
       )}
@@ -310,6 +369,18 @@ export default function CardScanner({ onExtracted, accent = "#ff6fb5" }: Props) 
         .cs-remaining {
           font-size: 0.8rem;
           opacity: 0.65;
+        }
+        .cs-bar {
+          margin-top: 0.5rem;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 999px;
+          overflow: hidden;
+        }
+        .cs-bar-fill {
+          height: 100%;
+          background: ${accent};
+          transition: width 0.2s ease;
         }
         .cs-error {
           padding: 1rem;
