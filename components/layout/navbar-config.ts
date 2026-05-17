@@ -23,6 +23,8 @@ export const GROUPS: NavGroup[] = [
       { label: "About", href: "/about" },
       { label: "The Loop", href: "/the-loop" },
       { label: "Practice", href: "/practice" },
+      { label: "Capabilities", href: "/capabilities" },
+      { label: "Pipelines", href: "/pipelines" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -39,6 +41,7 @@ export const GROUPS: NavGroup[] = [
   {
     label: "Work",
     links: [
+      { label: "Atelier", href: "/atelier" },
       { label: "Photographs", href: "/photographs" },
       { label: "Aerial", href: "/aerial" },
       { label: "Print bureau", href: "/bureau" },
@@ -51,8 +54,11 @@ export const GROUPS: NavGroup[] = [
     label: "Play",
     links: [
       { label: "Play", href: "/play" },
+      { label: "Apps", href: "/apps" },
       { label: "Neo-London", href: "/play/neo-london" },
       { label: "The Sphere", href: "/sphere" },
+      { label: "Shader Station", href: "/atelier/shader-station" },
+      { label: "Gaze Heatmap", href: "/atelier/gaze-heatmap" },
       { label: "CCTV cross-ref", href: "/atelier/cctv-cross-reference" },
       { label: "Rig simulator", href: "/atelier/rig-simulator" },
       // The visualiser index doesn't exist yet — point to the only one shipped.

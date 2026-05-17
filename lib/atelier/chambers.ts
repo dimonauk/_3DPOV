@@ -415,6 +415,24 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     category: "scene-and-camera",
     status: "live",
   },
+  {
+    slug: "shader-station",
+    title: "Shader Station",
+    blurb:
+      "Author GLSL on a textured sphere. 28 seed presets, audio-reactive uniforms, share-via-QR between devices, 2048×1024 equirect PNG export.",
+    category: "paint-and-draw",
+    status: "live",
+    benchSource: "D:/.github/Shadrerapp ShaderEditor (Apache-2.0)",
+  },
+  {
+    slug: "gaze-heatmap",
+    title: "Gaze Heatmap",
+    blurb:
+      "Replay recorded gaze JSON on an equirect canvas. Heatmap / foveal-mask / scanpath modes, dwell-zone clustering, scanpath statistics.",
+    category: "image-tools",
+    status: "live",
+    benchSource: "D:/.github/Shadrerapp GazeHeatmap (Apache-2.0)",
+  },
 ];
 
 // ---------- Helpers ----------

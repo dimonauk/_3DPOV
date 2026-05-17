@@ -25,8 +25,25 @@ import {
   getFirebaseAdminAuth,
   getFirebaseAdminDb,
 } from "lib/firebase/admin";
+import { createLogger, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
+import { rememberVectorServer } from "lib/capabilities/agent/memory-vector.server";
 
 export const dynamic = "force-dynamic";
+
+const log = createLogger("api.aura.history");
+
+// Per-uid write quota. The route appends to a per-user Firestore doc;
+// without a cap a single uid can hammer writes and burn quota / cost.
+// 120 appends/hour comfortably covers an active conversation (one turn
+// every 30 seconds non-stop) while shutting down scripted abuse.
+// Auto-upgrades to Upstash Redis when env is set.
+const WRITE_HOURLY_CAP = 120;
+const writeLimiter = createFixedWindowLimiter({
+  scope: "api.aura.history.write",
+  limit: WRITE_HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
 
 type Turn = { role: "user" | "model"; text: string };
 
@@ -88,9 +105,9 @@ export async function GET(req: Request) {
       updatedAt: typeof data["updatedAt"] === "string" ? data["updatedAt"] : null,
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    log.error("firestore read failed", { uid, err: errToObject(err) });
     return NextResponse.json(
-      { error: `firestore read failed: ${message}` },
+      { error: "firestore_read_failed" },
       { status: 500 },
     );
   }
@@ -102,6 +119,26 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { error: "auth required" },
       { status: 401 },
+    );
+  }
+  const slot = await writeLimiter.consume(`uid:${uid}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.info("rate_limited", {
+      uid,
+      retryAfterSec,
+      backend: writeLimiter.backend,
+    });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `History write cap: ${WRITE_HOURLY_CAP}/hour/user.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
     );
   }
   let body: unknown;
@@ -155,11 +192,43 @@ export async function POST(req: Request) {
       },
       { merge: true },
     );
+
+    // Fire-and-forget vector-memory embed of each new turn. We don't
+    // await — vector embedding shouldn't slow the history write. We
+    // also don't error on failure — the capability raises typed errors
+    // for missing-index / missing-api-key / quota; log + carry on so a
+    // misconfigured embedding pipeline never breaks the chat sync.
+    void Promise.allSettled(
+      newTurns.map((t) =>
+        rememberVectorServer({
+          uid,
+          turn: {
+            at: now,
+            speaker: t.role === "user" ? "user" : "aura",
+            text: t.text,
+          },
+        }),
+      ),
+    ).then((results) => {
+      const failed = results.filter((r) => r.status === "rejected");
+      if (failed.length > 0) {
+        log.info("vector-memory: some turns failed to embed", {
+          uid,
+          failed: failed.length,
+          total: newTurns.length,
+          firstReason:
+            failed[0] && failed[0].status === "rejected"
+              ? String(failed[0].reason)
+              : undefined,
+        });
+      }
+    });
+
     return NextResponse.json({ ok: true, appended: newTurns.length });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    log.error("firestore write failed", { uid, err: errToObject(err) });
     return NextResponse.json(
-      { error: `firestore write failed: ${message}` },
+      { error: "firestore_write_failed" },
       { status: 500 },
     );
   }
@@ -184,9 +253,9 @@ export async function DELETE(req: Request) {
     await db.collection("auraConversations").doc(uid).delete();
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+    log.error("firestore delete failed", { uid, err: errToObject(err) });
     return NextResponse.json(
-      { error: `firestore delete failed: ${message}` },
+      { error: "firestore_delete_failed" },
       { status: 500 },
     );
   }

@@ -97,6 +97,27 @@ export default function AtelierPage() {
           ))}
         </nav>
 
+        <div className="mt-6 flex flex-wrap gap-3 text-xs text-chrome-300">
+          <Link
+            href="/capabilities"
+            className="rounded-sm border border-pink-200/40 px-3 py-1.5 text-pink-200 hover:border-pink-200 hover:text-pink-100"
+          >
+            ↳ the substrate · 41 capabilities the chambers compose from
+          </Link>
+          <Link
+            href="/pipelines"
+            className="rounded-sm border border-warm-black-700 px-3 py-1.5 hover:border-pink-200/60 hover:text-pink-200"
+          >
+            ↳ named compositions · pipelines
+          </Link>
+          <Link
+            href="/apps"
+            className="rounded-sm border border-warm-black-700 px-3 py-1.5 hover:border-pink-200/60 hover:text-pink-200"
+          >
+            ↳ launcher · every callable surface
+          </Link>
+        </div>
+
         {/* CHAMBERS ---------------------------------------------------- */}
         <section id="chambers" className="mt-16 scroll-mt-24">
           <div className="chrome-label text-pink-200 mb-2">
