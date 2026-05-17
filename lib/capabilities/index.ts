@@ -135,6 +135,17 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["audio.tts"],
   },
   {
+    id: "audio.spectrum",
+    kind: "audio",
+    name: "Microphone spectrum bands",
+    summary:
+      "Real-time meyda FFT → low/mid/high/volume scalar bands from the mic. Substrate for audio-reactive shader uniforms (u_audio_low/mid/high/volume) and any visualiser that wants to breathe with the room. Headless — caller owns start/stop lifecycle and polls getBands() or wires the onBands callback.",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/ShaderEditor/hooks/useAudio.ts (Apache-2.0). Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./audio/spectrum"),
+  },
+  {
     id: "motion.idle",
     kind: "motion",
     name: "Idle motion",
