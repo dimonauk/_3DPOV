@@ -11,6 +11,12 @@
  * different Laban-corner colours over the source sketch — the user
  * can see WHERE the matcher cut the trail and which Laban corner
  * each piece belongs to.
+ *
+ * Orchestrator only. State machine (Phase A + Phase B) in
+ * inverse-kata/use-match.ts; canvas draw helpers in canvas-draw.ts;
+ * result panels (Phase A + Phase B + ConfidenceBar) in
+ * result-panels.tsx; constants + state types in types.ts. Per
+ * ARCHITECTURE.md Rule 1.
  */
 
 import {
@@ -19,68 +25,28 @@ import {
   useId,
   useLayoutEffect,
   useRef,
-  useState,
 } from "react";
 
-import { createLogger } from "lib/log";
-import {
-  type InverseKataResult,
-  type Vec2,
-  summariseSegment,
-} from "lib/capabilities/inverse-kata/match";
-import {
-  type LabanCorner,
-  getLabanCorner,
-  labanCorners,
-} from "lib/assets/flow-arts";
+import { getLabanCorner, labanCorners } from "lib/assets/flow-arts";
+import type { Vec2 } from "lib/capabilities/inverse-kata/match";
 import { useActiveChamber } from "lib/state/atelier-hooks";
 
-const log = createLogger("atelier:inverse-kata");
-
-type OrchestratedSegment = {
-  kataSlug: string;
-  labanEffort: string;
-  durationMs: number;
-  confidence: number;
-  rationale: string;
-};
-
-type OrchestratorResult = {
-  sequence: OrchestratedSegment[];
-  agreementWithPhaseA: "confirms" | "refines" | "disagrees";
-  overallReasoning: string;
-  uncertainSegments: number[];
-};
-
-type OrchestratorState =
-  | { kind: "idle" }
-  | { kind: "thinking" }
-  | { kind: "ready"; result: OrchestratorResult }
-  | { kind: "error"; message: string };
-
-type State =
-  | { kind: "idle" }
-  | { kind: "drawing"; points: Vec2[]; timing: number[]; startMs: number }
-  | { kind: "matching"; points: Vec2[]; timing: number[] }
-  | {
-      kind: "ready";
-      points: Vec2[];
-      timing: number[];
-      result: InverseKataResult;
-    }
-  | { kind: "error"; message: string };
-
-const CANVAS_WIDTH = 720;
-const CANVAS_HEIGHT = 480;
-const POINT_SAMPLE_PIXEL_THRESHOLD = 4;
+import { drawDot, drawPolyline } from "./inverse-kata/canvas-draw";
+import { OrchestratorPanel, ReadyResult } from "./inverse-kata/result-panels";
+import {
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  POINT_SAMPLE_PIXEL_THRESHOLD,
+} from "./inverse-kata/types";
+import { useMatch } from "./inverse-kata/use-match";
 
 export default function InverseKataClient() {
   useActiveChamber("inverse-kata");
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [state, setState] = useState<State>({ kind: "idle" });
-  const [orch, setOrch] = useState<OrchestratorState>({ kind: "idle" });
   const sketchIdHelp = useId();
+
+  const { state, setState, orch, runMatch, onAskLlm, onClear } = useMatch();
 
   // Resize canvas DPR-aware so strokes stay crisp.
   useLayoutEffect(() => {
@@ -147,11 +113,14 @@ export default function InverseKataClient() {
 
   // ---- Pointer handlers ----
 
-  const getCanvasPoint = useCallback((e: React.PointerEvent<HTMLCanvasElement>): Vec2 => {
-    const canvas = canvasRef.current!;
-    const rect = canvas.getBoundingClientRect();
-    return [e.clientX - rect.left, e.clientY - rect.top];
-  }, []);
+  const getCanvasPoint = useCallback(
+    (e: React.PointerEvent<HTMLCanvasElement>): Vec2 => {
+      const canvas = canvasRef.current!;
+      const rect = canvas.getBoundingClientRect();
+      return [e.clientX - rect.left, e.clientY - rect.top];
+    },
+    [],
+  );
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
@@ -166,7 +135,7 @@ export default function InverseKataClient() {
         startMs: now,
       });
     },
-    [getCanvasPoint],
+    [getCanvasPoint, setState],
   );
 
   const onPointerMove = useCallback(
@@ -185,58 +154,8 @@ export default function InverseKataClient() {
         };
       });
     },
-    [getCanvasPoint],
+    [getCanvasPoint, setState],
   );
-
-  const runMatch = useCallback(async (points: Vec2[], timing: number[]) => {
-    if (points.length < 4) {
-      setState({
-        kind: "error",
-        message: "Trail too short — draw a longer line (at least 4 sample points).",
-      });
-      return;
-    }
-    setState({ kind: "matching", points, timing });
-    try {
-      // Pass a default trailScale of 0.005 metres-per-pixel (i.e. the
-      // canvas represents a ~3.6m × 2.4m volume). This is only used when
-      // the matcher needs to infer duration from length; we always pass
-      // timing here so it's mostly informational.
-      const res = await fetch("/api/inverse-kata", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          points,
-          timing,
-          trailScale: 0.005,
-        }),
-      });
-      if (!res.ok) {
-        const text = await res.text();
-        let message = `HTTP ${res.status}`;
-        try {
-          const parsed = JSON.parse(text) as { error?: string };
-          if (parsed.error) message = parsed.error;
-        } catch {
-          if (text.length > 0 && text.length < 300) message = text;
-        }
-        setState({ kind: "error", message });
-        return;
-      }
-      const json = (await res.json()) as { result?: InverseKataResult };
-      if (!json.result) {
-        setState({ kind: "error", message: "Server replied without a result." });
-        return;
-      }
-      setState({ kind: "ready", points, timing, result: json.result });
-    } catch (err) {
-      log.error("match failed", { err });
-      setState({
-        kind: "error",
-        message: err instanceof Error ? err.message : "Match failed.",
-      });
-    }
-  }, []);
 
   const onPointerUp = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
@@ -248,60 +167,8 @@ export default function InverseKataClient() {
         return { kind: "matching", points: cur.points, timing: cur.timing };
       });
     },
-    [runMatch],
+    [runMatch, setState],
   );
-
-  const onClear = useCallback(() => {
-    setState({ kind: "idle" });
-    setOrch({ kind: "idle" });
-  }, []);
-
-  // Reset orchestrator whenever a fresh phase-A result lands.
-  useEffect(() => {
-    if (state.kind === "drawing" || state.kind === "matching") {
-      setOrch({ kind: "idle" });
-    }
-  }, [state.kind]);
-
-  const onAskLlm = useCallback(async () => {
-    if (state.kind !== "ready") return;
-    setOrch({ kind: "thinking" });
-    try {
-      const res = await fetch("/api/inverse-kata/orchestrate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          points: state.points,
-          timing: state.timing,
-          phaseAResult: state.result,
-        }),
-      });
-      if (!res.ok) {
-        const text = await res.text();
-        let message = `HTTP ${res.status}`;
-        try {
-          const parsed = JSON.parse(text) as { error?: string };
-          if (parsed.error) message = parsed.error;
-        } catch {
-          if (text.length > 0 && text.length < 300) message = text;
-        }
-        setOrch({ kind: "error", message });
-        return;
-      }
-      const json = (await res.json()) as { result?: OrchestratorResult };
-      if (!json.result) {
-        setOrch({ kind: "error", message: "Empty LLM result." });
-        return;
-      }
-      setOrch({ kind: "ready", result: json.result });
-    } catch (err) {
-      log.error("orchestrate failed", { err });
-      setOrch({
-        kind: "error",
-        message: err instanceof Error ? err.message : "LLM call failed.",
-      });
-    }
-  }, [state]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -319,7 +186,10 @@ export default function InverseKataClient() {
             aria-describedby={sketchIdHelp}
             className="touch-none rounded-sm border border-warm-black-700 bg-warm-black-950"
           />
-          <p id={sketchIdHelp} className="text-xs leading-relaxed text-chrome-500">
+          <p
+            id={sketchIdHelp}
+            className="text-xs leading-relaxed text-chrome-500"
+          >
             Drag to draw a trail. On release, the chamber matches it
             against the kata library. Press Clear to start over.
           </p>
@@ -366,7 +236,7 @@ export default function InverseKataClient() {
             </span>
             <button
               type="button"
-              onClick={onAskLlm}
+              onClick={() => void onAskLlm()}
               disabled={orch.kind === "thinking"}
               className="rounded-sm border border-pink-200/60 bg-pink-900/40 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-pink-100 transition-colors hover:border-pink-200 disabled:opacity-60"
             >
@@ -382,8 +252,8 @@ export default function InverseKataClient() {
               Phase A is heuristic feature-matching — fast but brittle on
               edge cases. Phase B reads the trail in plain language, uses
               the kata-notes context (what each move actually means), and
-              suggests transitions Phase A&rsquo;s pure-geometry view can&rsquo;t
-              see. Rate-limited 8/hr.
+              suggests transitions Phase A&rsquo;s pure-geometry view
+              can&rsquo;t see. Rate-limited 8/hr.
             </p>
           ) : orch.kind === "thinking" ? (
             <p className="text-xs leading-relaxed text-chrome-300">
@@ -391,7 +261,9 @@ export default function InverseKataClient() {
               trail. Usually back in ~5-10s.
             </p>
           ) : orch.kind === "error" ? (
-            <p className="text-xs leading-relaxed text-pink-200">{orch.message}</p>
+            <p className="text-xs leading-relaxed text-pink-200">
+              {orch.message}
+            </p>
           ) : (
             <OrchestratorPanel result={orch.result} />
           )}
@@ -427,198 +299,4 @@ export default function InverseKataClient() {
       </section>
     </div>
   );
-}
-
-// ---------- Sub-components ----------
-
-function ReadyResult({ result }: { result: InverseKataResult }) {
-  if (result.segments.length === 0) {
-    return (
-      <div className="flex flex-col gap-2 text-sm text-chrome-300">
-        <p>No segments classified.</p>
-        {result.notes.map((n, i) => (
-          <p key={i} className="text-xs text-chrome-500">
-            {n}
-          </p>
-        ))}
-      </div>
-    );
-  }
-  const totalSec = (result.totalDurationMs / 1000).toFixed(1);
-  const meanPct = Math.round(result.meanConfidence * 100);
-  return (
-    <div className="flex flex-col gap-3 text-sm text-chrome-200">
-      <div className="flex flex-wrap items-baseline gap-3">
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-pink-200">
-          {result.segments.length} segments &middot; {totalSec}s &middot; {meanPct}% mean conf
-        </span>
-      </div>
-      <ol className="flex flex-col gap-2">
-        {result.segments.map((s, i) => (
-          <li
-            key={i}
-            className="flex flex-col gap-1 rounded-sm border border-warm-black-800 bg-warm-black-950 p-2"
-          >
-            <div className="flex items-center gap-2">
-              <span
-                aria-hidden
-                className="inline-block h-2.5 w-2.5 rounded-full"
-                style={{
-                  backgroundColor:
-                    getLabanCorner(s.labanEffort)?.hexColor ?? "#ffffff",
-                }}
-              />
-              <span className="text-chrome-100">{s.kata.name}</span>
-              <span className="ml-auto font-mono text-[0.6rem] uppercase tracking-[0.15em] text-chrome-500">
-                {s.labanEffort}
-              </span>
-            </div>
-            <ConfidenceBar
-              label={`Laban ${asPct(s.labanConfidence)}`}
-              value={s.labanConfidence}
-            />
-            <ConfidenceBar
-              label={`Kata ${asPct(s.kataConfidence)}`}
-              value={s.kataConfidence}
-            />
-            <p className="text-[11px] leading-snug text-chrome-500">
-              {summariseSegment(s, i)}
-            </p>
-          </li>
-        ))}
-      </ol>
-      {result.notes.length > 0 ? (
-        <div className="flex flex-col gap-1 border-t border-warm-black-800 pt-2">
-          {result.notes.map((n, i) => (
-            <p key={i} className="text-[11px] leading-snug text-chrome-500">
-              {n}
-            </p>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function OrchestratorPanel({ result }: { result: OrchestratorResult }) {
-  const totalSec = (
-    result.sequence.reduce((acc, s) => acc + s.durationMs, 0) / 1000
-  ).toFixed(1);
-  const agreementTone = {
-    confirms: "border-emerald-400/40 bg-emerald-900/20 text-emerald-100",
-    refines: "border-amber-400/40 bg-amber-900/20 text-amber-100",
-    disagrees: "border-pink-400/40 bg-pink-900/20 text-pink-100",
-  } as const;
-  const tone =
-    agreementTone[result.agreementWithPhaseA] ?? agreementTone.refines;
-  return (
-    <div className="flex flex-col gap-3 text-sm text-chrome-200">
-      <div className="flex flex-wrap items-baseline gap-2">
-        <span
-          className={`rounded-sm border px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-[0.15em] ${tone}`}
-        >
-          {result.agreementWithPhaseA} Phase A
-        </span>
-        <span className="font-mono text-[0.6rem] uppercase tracking-[0.15em] text-chrome-500">
-          {result.sequence.length} segments &middot; {totalSec}s
-        </span>
-      </div>
-      <p className="text-xs leading-relaxed text-chrome-300">
-        {result.overallReasoning}
-      </p>
-      <ol className="flex flex-col gap-2">
-        {result.sequence.map((s, i) => {
-          const corner = labanCorners.find((c) => c.name === s.labanEffort);
-          const isUncertain = result.uncertainSegments.includes(i);
-          return (
-            <li
-              key={i}
-              className={`flex flex-col gap-1 rounded-sm border px-3 py-2 ${
-                isUncertain
-                  ? "border-amber-400/40 bg-amber-900/10"
-                  : "border-warm-black-800 bg-warm-black-950"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span
-                  aria-hidden
-                  className="inline-block h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: corner?.hexColor ?? "#ffffff" }}
-                />
-                <span className="text-chrome-100">{s.kataSlug}</span>
-                <span className="ml-auto font-mono text-[0.55rem] uppercase tracking-[0.12em] text-chrome-500">
-                  {s.labanEffort} · {Math.round(s.durationMs)}ms · {asPct(s.confidence)}
-                </span>
-              </div>
-              <p className="text-[11px] leading-snug text-chrome-400">
-                {s.rationale}
-              </p>
-              {isUncertain ? (
-                <span className="font-mono text-[0.55rem] uppercase tracking-[0.12em] text-amber-300">
-                  flagged uncertain
-                </span>
-              ) : null}
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-function ConfidenceBar({ label, value }: { label: string; value: number }) {
-  const pct = Math.max(0, Math.min(1, value));
-  return (
-    <div className="flex items-center gap-2">
-      <span className="w-24 shrink-0 font-mono text-[0.55rem] uppercase tracking-[0.12em] text-chrome-500">
-        {label}
-      </span>
-      <span className="flex-1 overflow-hidden rounded-sm bg-warm-black-800">
-        <span
-          className={`block h-1.5 ${
-            pct > 0.6
-              ? "bg-emerald-300"
-              : pct > 0.35
-                ? "bg-amber-300"
-                : "bg-pink-300"
-          }`}
-          style={{ width: `${pct * 100}%` }}
-        />
-      </span>
-    </div>
-  );
-}
-
-function asPct(v: number): string {
-  return `${Math.round(v * 100)}%`;
-}
-
-// ---------- Drawing helpers ----------
-
-function drawPolyline(
-  ctx: CanvasRenderingContext2D,
-  points: Vec2[],
-  colour: string,
-  width: number,
-) {
-  if (points.length === 0) return;
-  ctx.strokeStyle = colour;
-  ctx.lineWidth = width;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  ctx.beginPath();
-  const first = points[0]!;
-  ctx.moveTo(first[0], first[1]);
-  for (let i = 1; i < points.length; i++) {
-    const p = points[i]!;
-    ctx.lineTo(p[0], p[1]);
-  }
-  ctx.stroke();
-}
-
-function drawDot(ctx: CanvasRenderingContext2D, point: Vec2, colour: string) {
-  ctx.fillStyle = colour;
-  ctx.beginPath();
-  ctx.arc(point[0], point[1], 4, 0, Math.PI * 2);
-  ctx.fill();
 }
