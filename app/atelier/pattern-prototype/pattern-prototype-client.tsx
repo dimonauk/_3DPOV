@@ -16,11 +16,17 @@
  *   a standalone app, overkill for one chamber.
  * - lucide-react isn't installed on the site, so the handful of
  *   icons are inline SVGs.
- * - The original Gemini calls referenced `process.env.API_KEY`
- *   which never resolves in a Next.js client bundle. The chamber
- *   now uses the visitor's BYO AI Studio key (already wired into
- *   the imagen chamber via `lib/state/google-ai-key`); if absent
- *   the page surfaces a settings prompt.
+ * - The original Hangar prototype made Gemini calls direct from the
+ *   browser using `process.env.API_KEY` baked into the Vite build —
+ *   that pattern never resolves in a Next.js client bundle (which
+ *   ignores non-NEXT_PUBLIC env vars on the client side) and would
+ *   leak the key if it did. This port uses the visitor's BYO AI
+ *   Studio key (already wired into the imagen chamber via
+ *   `lib/state/google-ai-key`) for the Gemini-direct path, and a
+ *   server-side admin-gated route (`/api/atelier/pattern-prototype/
+ *   generate-textile`) for the bench-backed Flux1-dev path. No env
+ *   var is read on the client. If neither key is configured the
+ *   page surfaces a settings prompt.
  * - The mock FreeSewing executor (Point/Path classes inside a
  *   `new Function(...)` sandbox) is inlined verbatim — it's tiny
  *   and load-bearing for the demo.
@@ -32,8 +38,6 @@
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 
-import { GoogleGenAI } from "@google/genai";
-
 import GoogleAiSettings from "components/atelier/google-ai-settings";
 import { useAuth } from "components/auth/auth-provider";
 import { createLogger } from "lib/log";
@@ -43,203 +47,37 @@ import {
   activeVisitorKey,
 } from "lib/state/google-ai-key";
 
+import ChatBot from "./chat-bot";
+import {
+  Icon,
+  ICON_ARCHIVE,
+  ICON_CHAT,
+  ICON_HEART,
+  ICON_LAYERS,
+  ICON_PALETTE,
+  ICON_PRINTER,
+  ICON_RULER,
+  ICON_SEND,
+  ICON_SHIRT,
+  ICON_SPARKLES,
+  ICON_WAND,
+  ICON_X,
+} from "./icons";
+import {
+  executePatternLogic,
+  generatePattern,
+} from "./pattern-logic";
+import type {
+  AppMode,
+  ChatMessage,
+  MeasurementSet,
+  OutfitState,
+  PatternGenerationResult,
+  TextileState,
+} from "./types";
+
 const log = createLogger("atelier:pattern-prototype");
 const textileLog = createLogger("atelier:pattern-prototype:textile");
-
-// ---------------- Types ----------------
-
-type AppMode = "editorial" | "blueprint" | "playroom" | "archive" | "textile";
-
-// Textile generation lifecycle — distinct from the Gemini SVG draft
-// because Flux1-dev runs on the studio bench (10-30s) rather than
-// browser→Google.
-type TextileState =
-  | { kind: "idle" }
-  | { kind: "loading"; startedAt: number; prompt: string }
-  | {
-      kind: "ready";
-      url: string;
-      prompt: string;
-      bytes: number;
-      durationMs: number;
-    }
-  | { kind: "error"; message: string };
-
-type MeasurementSet = {
-  bust: number;
-  waist: number;
-  hips: number;
-  height: number;
-};
-
-type OutfitState = {
-  jacket: string;
-  bottom: string;
-  accessories: string[];
-  color: string;
-  pattern: "solid" | "dots" | "floral";
-};
-
-type PatternGenerationResult = {
-  code: string;
-  garmentType: string;
-  baseDesign: string;
-};
-
-type ChatMessage = { role: "user" | "model"; text: string };
-
-// ---------------- Mock FreeSewing ----------------
-//
-// Sandboxed pattern executor. AI returns a draftPattern(measurements,
-// options) function as a raw JS string; we instantiate it inside a
-// `new Function(...)` and hand it Point + Path classes. The output
-// is an SVG path-data string the editor renders.
-
-class Point {
-  constructor(
-    public x: number,
-    public y: number,
-  ) {}
-  shift(angle: number, distance: number): Point {
-    const rad = (angle * Math.PI) / 180;
-    return new Point(
-      this.x + Math.cos(rad) * distance,
-      this.y + Math.sin(rad) * distance,
-    );
-  }
-}
-
-class Path {
-  private ops: string[] = [];
-  move(p: Point): Path {
-    this.ops.push(`M ${p.x} ${p.y}`);
-    return this;
-  }
-  line(p: Point): Path {
-    this.ops.push(`L ${p.x} ${p.y}`);
-    return this;
-  }
-  curve(cp1: Point, cp2: Point, p: Point): Path {
-    this.ops.push(`C ${cp1.x} ${cp1.y} ${cp2.x} ${cp2.y} ${p.x} ${p.y}`);
-    return this;
-  }
-  close(): Path {
-    this.ops.push("Z");
-    return this;
-  }
-  asPathstring(): string {
-    return this.ops.join(" ");
-  }
-}
-
-function executePatternLogic(
-  code: string,
-  measurements: MeasurementSet,
-  options: Record<string, number>,
-): string {
-  if (!code) return "";
-  try {
-    const fullCode = `
-      ${code}
-      if (typeof draftPattern === 'function') {
-        return draftPattern(measurements, options);
-      }
-      return "";
-    `;
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
-    const fn = new Function(
-      "measurements",
-      "options",
-      "Point",
-      "Path",
-      fullCode,
-    );
-    const out = fn(measurements, options, Point, Path);
-    return typeof out === "string" ? out : "";
-  } catch (err) {
-    log.warn("pattern execution failed", { err: String(err) });
-    return "";
-  }
-}
-
-// ---------------- Gemini ----------------
-
-const PATTERN_SYSTEM_INSTRUCTION = `ROLE: You are the Pattern Logic Engine.
-OBJECTIVE: Translate user inputs into executable pattern logic using a simplified FreeSewing mock.
-OUTPUT FORMAT: Output ONLY raw JavaScript. No markdown. One function named draftPattern(measurements, options).
-CLASSES AVAILABLE:
-- Point(x, y) with method .shift(angle, distance)
-- Path() with methods .move(Point), .line(Point), .curve(cp1, cp2, p), .close(), .asPathstring()
-TEMPLATE:
-function draftPattern(measurements, options) {
-  const part = { points: {}, paths: {} };
-  const waistRadius = (measurements.waist / (2 * Math.PI)) * (options.waistFit || 1.0);
-  part.points.center = new Point(0, 0);
-  part.points.waist = part.points.center.shift(90, waistRadius);
-  part.points.hem = part.points.waist.shift(90, 100 * (options.length || 0.5));
-  part.paths.seam = new Path().move(part.points.waist).line(part.points.hem).close();
-  return part.paths.seam.asPathstring();
-}
-CONSTRAINTS: Valid ES6. No markdown fences. Tailor curves to the garment type.`;
-
-async function generatePattern(
-  prompt: string,
-  apiKey: string,
-): Promise<PatternGenerationResult> {
-  const ai = new GoogleGenAI({ apiKey });
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: prompt,
-    config: {
-      systemInstruction: PATTERN_SYSTEM_INSTRUCTION,
-      temperature: 0.1,
-    },
-  });
-  let code = response.text ?? "";
-  code = code.replace(/```javascript|```js|```/g, "").trim();
-  return { code, baseDesign: "Custom", garmentType: "Ensemble" };
-}
-
-// ---------------- Inline icons ----------------
-// (lucide-react isn't installed on the site; these match the
-// originals at 14-20px stroke=2 line-cap=round.)
-
-function Icon({
-  d,
-  size = 14,
-}: {
-  d: string;
-  size?: number;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d={d} />
-    </svg>
-  );
-}
-
-const ICON_WAND = "M15 4V2 M15 16v-2 M8 9h2 M20 9h2 M17.8 11.8 19 13 M15 9h0 M17.8 6.2 19 5 M3 21l9-9 M12.2 6.2 11 5";
-const ICON_SHIRT = "M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z";
-const ICON_RULER = "M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z M14.5 12.5 12 15 M11 9.5 8.5 12 M7.5 6.5 5 9 M18 16l-2 2";
-const ICON_ARCHIVE = "M20 9v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9 M22 5H2v4h20V5 M10 13h4";
-const ICON_SPARKLES = "M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z";
-const ICON_PRINTER = "M6 9V2h12v7 M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2 M6 14h12v8H6z";
-const ICON_PALETTE = "M12 22a1 1 0 0 1-1-1v-3a1 1 0 0 0-2 0v3a1 1 0 0 1-1 1 9 9 0 1 1 9-9 4 4 0 0 1-4 4h-2.5a.5.5 0 0 0-.5.5v.5a2 2 0 0 1-2 2z M13.5 6.5h.01 M17.5 10.5h.01 M6.5 12.5h.01 M8.5 7.5h.01";
-const ICON_LAYERS = "m12 2 8 4-8 4-8-4 8-4z m-8 10 8 4 8-4 m-16 4 8 4 8-4";
-const ICON_CHAT = "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z";
-const ICON_X = "M18 6 6 18 M6 6l12 12";
-const ICON_SEND = "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z M22 2 11 13";
-const ICON_HEART = "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z";
 
 // ---------------- Client root ----------------
 
@@ -1258,180 +1096,3 @@ function PatternEditor({
   );
 }
 
-// ---------------- ChatBot ----------------
-
-function ChatBot() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: "model",
-      text: "Bonjour. ask me for design advice — fabric pairings, silhouette notes, anything atelier-shaped.",
-    },
-  ]);
-  const [isTyping, setIsTyping] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const inputId = useId();
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages, isTyping]);
-
-  const handleSend = useCallback(async () => {
-    const userMessage = input.trim();
-    if (!userMessage || isTyping) return;
-
-    const visitorKey = activeVisitorKey(useGoogleAiKeyStore.getState());
-    setInput("");
-    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
-
-    if (!visitorKey) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "model",
-          text: "no key set. paste an AI Studio key in settings to enable chat.",
-        },
-      ]);
-      return;
-    }
-
-    setIsTyping(true);
-    setMessages((prev) => [...prev, { role: "model", text: "" }]);
-    try {
-      const ai = new GoogleGenAI({ apiKey: visitorKey });
-      const stream = await ai.models.generateContentStream({
-        model: "gemini-2.5-flash",
-        contents: userMessage,
-        config: {
-          systemInstruction:
-            "ROLE: Master Atelier Assistant for ThreadLogic. Expert in fashion design, historical 1950s styles, computational tailoring. TONE: elegant, encouraging, sophisticated. Light French fashion terms (très chic). Concise.",
-          temperature: 0.7,
-        },
-      });
-
-      let fullResponse = "";
-      for await (const chunk of stream) {
-        const text = chunk.text ?? "";
-        if (text) {
-          fullResponse += text;
-          setMessages((prev) => {
-            const last = prev[prev.length - 1];
-            if (!last) return prev;
-            return [...prev.slice(0, -1), { ...last, text: fullResponse }];
-          });
-        }
-      }
-    } catch (err) {
-      log.error("chat failed", { err: String(err) });
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "model",
-          text: "pardon, the chat engine stalled. retry.",
-        },
-      ]);
-    } finally {
-      setIsTyping(false);
-    }
-  }, [input, isTyping]);
-
-  return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-      {isOpen ? (
-        <div className="mb-3 flex h-[440px] w-80 flex-col overflow-hidden rounded-3xl border border-rose-200 bg-white/80 shadow-2xl backdrop-blur">
-          <div className="flex items-center justify-between bg-rose-500 p-4 text-white shadow-lg">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/20 backdrop-blur">
-                <Icon d={ICON_SPARKLES} size={14} />
-              </div>
-              <div>
-                <h4
-                  className="text-base font-bold leading-none"
-                  style={{ fontFamily: "Georgia, serif" }}
-                >
-                  Atelier AI
-                </h4>
-                <p className="mt-1 text-[8px] font-black uppercase tracking-widest opacity-70">
-                  Design Consultant
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              aria-label="close chat"
-              className="transition-transform hover:rotate-90"
-            >
-              <Icon d={ICON_X} size={16} />
-            </button>
-          </div>
-
-          <div
-            ref={scrollRef}
-            className="flex-1 space-y-3 overflow-y-auto bg-white/30 p-4"
-          >
-            {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`flex ${
-                  msg.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`max-w-[85%] rounded-2xl px-3 py-2 text-[11px] leading-relaxed shadow-sm ${
-                    msg.role === "user"
-                      ? "rounded-tr-none bg-rose-500 text-white"
-                      : "rounded-tl-none border border-rose-50 bg-white text-rose-900"
-                  }`}
-                >
-                  {msg.text ||
-                    (isTyping && idx === messages.length - 1 ? "…" : "")}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="border-t border-rose-100 bg-white/60 p-3">
-            <div className="relative flex items-center">
-              <label htmlFor={inputId} className="sr-only">
-                ask the atelier
-              </label>
-              <input
-                id={inputId}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="ask for design advice…"
-                className="w-full rounded-2xl border border-rose-100 bg-white py-2 pl-3 pr-10 text-xs text-rose-900 placeholder:text-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-200"
-              />
-              <button
-                type="button"
-                onClick={handleSend}
-                disabled={!input.trim() || isTyping}
-                aria-label="send"
-                className="absolute right-1.5 flex h-7 w-7 items-center justify-center rounded-xl bg-rose-500 text-white transition-all hover:bg-rose-600 disabled:opacity-30"
-              >
-                <Icon d={ICON_SEND} size={12} />
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      <button
-        type="button"
-        onClick={() => setIsOpen((v) => !v)}
-        aria-label={isOpen ? "close chat" : "open chat"}
-        className={`flex h-12 w-12 items-center justify-center rounded-3xl shadow-2xl transition-all hover:scale-110 active:scale-95 ${
-          isOpen ? "bg-white text-rose-500" : "bg-rose-500 text-white"
-        }`}
-      >
-        {isOpen ? <Icon d={ICON_X} size={20} /> : <Icon d={ICON_CHAT} size={20} />}
-      </button>
-    </div>
-  );
-}
