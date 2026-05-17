@@ -147,7 +147,8 @@ export default function LightpaintingForgeClient() {
     const tctx = tmp.getContext("2d")!;
     const img = tctx.createImageData(depthMap.width, depthMap.height);
     for (let i = 0; i < depthMap.data.length; i++) {
-      const d = depthMap.data[i];
+      // Float32Array index bounded by loop length.
+      const d = depthMap.data[i]!;
       img.data[i * 4 + 0] = 255 * d;
       img.data[i * 4 + 1] = 102 * (1 - d);
       img.data[i * 4 + 2] = 204;

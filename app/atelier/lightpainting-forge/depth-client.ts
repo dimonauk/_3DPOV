@@ -50,7 +50,8 @@ export async function estimateDepth(
     const img = dctx.getImageData(0, 0, dc.width, dc.height);
     const out = new Float32Array(dc.width * dc.height);
     for (let i = 0; i < out.length; i++) {
-      out[i] = img.data[i * 4] / 255;
+      // img.data is Uint8ClampedArray of length 4*width*height; in-bounds.
+      out[i] = img.data[i * 4]! / 255;
     }
     return {
       data: out,
@@ -69,9 +70,10 @@ function fallbackDepth(srcCanvas: HTMLCanvasElement): DepthResult {
   const img = ctx.getImageData(0, 0, srcCanvas.width, srcCanvas.height);
   const out = new Float32Array(srcCanvas.width * srcCanvas.height);
   for (let i = 0; i < out.length; i++) {
-    const r = img.data[i * 4 + 0];
-    const g = img.data[i * 4 + 1];
-    const b = img.data[i * 4 + 2];
+    // RGBA stride; indices in-bounds by loop length.
+    const r = img.data[i * 4 + 0]!;
+    const g = img.data[i * 4 + 1]!;
+    const b = img.data[i * 4 + 2]!;
     out[i] = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
   }
   return {

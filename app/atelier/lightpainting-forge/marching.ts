@@ -2,6 +2,13 @@
 // Pure TS, no GPU. Adequate for the chamber scaffold; the WebGPU
 // `lib/webgpu-marching-cubes/` runner is the path forward once the
 // chamber needs live re-meshing per frame.
+//
+// Strict-mode notes (noUncheckedIndexedAccess): every table access
+// below is bounded by either a fixed loop (0..N where N matches the
+// table size) or by a cubeIndex / edge-mask value clipped to the
+// table's domain by construction. The `!` assertions are correctness
+// markers, not silencers — when the marching-cubes algorithm is
+// invariant-correct, none of these accesses can return undefined.
 
 import type { Field } from "./field";
 import {
@@ -18,8 +25,8 @@ export function marchingCubes(
   const { data, res } = field;
   const verts: number[] = [];
 
-  const sample = (x: number, y: number, z: number) =>
-    data[z * res * res + y * res + x];
+  const sample = (x: number, y: number, z: number): number =>
+    data[z * res * res + y * res + x]!;
 
   for (let z = 0; z < res - 1; z++) {
     for (let y = 0; y < res - 1; y++) {
@@ -27,22 +34,25 @@ export function marchingCubes(
         let cubeIndex = 0;
         const corners: number[] = new Array(8);
         for (let i = 0; i < 8; i++) {
-          const [ox, oy, oz] = CORNER_OFFSETS[i];
-          corners[i] = sample(x + ox, y + oy, z + oz);
-          if (corners[i] < iso) cubeIndex |= 1 << i;
+          // CORNER_OFFSETS has 8 entries; i bounded 0..7.
+          const [ox, oy, oz] = CORNER_OFFSETS[i]!;
+          const v = sample(x + ox, y + oy, z + oz);
+          corners[i] = v;
+          if (v < iso) cubeIndex |= 1 << i;
         }
-        const edgeMask = EDGE_TABLE[cubeIndex];
+        // EDGE_TABLE has 256 entries; cubeIndex is 8 bits = 0..255.
+        const edgeMask = EDGE_TABLE[cubeIndex]!;
         if (edgeMask === 0) continue;
 
         const edgeVerts: number[][] = new Array(12);
         for (let e = 0; e < 12; e++) {
           if ((edgeMask & (1 << e)) === 0) continue;
-          const [a, b] = EDGE_CORNERS[e];
-          const va = corners[a];
-          const vb = corners[b];
+          const [a, b] = EDGE_CORNERS[e]!;
+          const va = corners[a]!;
+          const vb = corners[b]!;
           const t = (iso - va) / (vb - va);
-          const [ax, ay, az] = CORNER_OFFSETS[a];
-          const [bx, by, bz] = CORNER_OFFSETS[b];
+          const [ax, ay, az] = CORNER_OFFSETS[a]!;
+          const [bx, by, bz] = CORNER_OFFSETS[b]!;
           edgeVerts[e] = [
             x + ax + t * (bx - ax),
             y + ay + t * (by - ay),
@@ -50,11 +60,14 @@ export function marchingCubes(
           ];
         }
 
-        const tris = TRI_TABLE[cubeIndex];
+        const tris = TRI_TABLE[cubeIndex]!;
         for (let i = 0; tris[i] !== -1; i += 3) {
-          verts.push(...edgeVerts[tris[i]]);
-          verts.push(...edgeVerts[tris[i + 1]]);
-          verts.push(...edgeVerts[tris[i + 2]]);
+          const i0 = tris[i]!;
+          const i1 = tris[i + 1]!;
+          const i2 = tris[i + 2]!;
+          verts.push(...edgeVerts[i0]!);
+          verts.push(...edgeVerts[i1]!);
+          verts.push(...edgeVerts[i2]!);
         }
       }
     }
@@ -64,9 +77,9 @@ export function marchingCubes(
   // Centre + normalize to +/- 1.
   const half = res / 2;
   for (let i = 0; i < positions.length; i += 3) {
-    positions[i + 0] = (positions[i + 0] - half) / half;
-    positions[i + 1] = (positions[i + 1] - half) / half;
-    positions[i + 2] = (positions[i + 2] - half) / half;
+    positions[i + 0] = (positions[i + 0]! - half) / half;
+    positions[i + 1] = (positions[i + 1]! - half) / half;
+    positions[i + 2] = (positions[i + 2]! - half) / half;
   }
 
   const normals = computeFlatNormals(positions);
@@ -76,12 +89,13 @@ export function marchingCubes(
 function computeFlatNormals(positions: Float32Array): Float32Array {
   const normals = new Float32Array(positions.length);
   for (let i = 0; i < positions.length; i += 9) {
-    const ax = positions[i + 3] - positions[i + 0];
-    const ay = positions[i + 4] - positions[i + 1];
-    const az = positions[i + 5] - positions[i + 2];
-    const bx = positions[i + 6] - positions[i + 0];
-    const by = positions[i + 7] - positions[i + 1];
-    const bz = positions[i + 8] - positions[i + 2];
+    // 9-stride loop; nine consecutive Float32Array slots in-bounds.
+    const ax = positions[i + 3]! - positions[i + 0]!;
+    const ay = positions[i + 4]! - positions[i + 1]!;
+    const az = positions[i + 5]! - positions[i + 2]!;
+    const bx = positions[i + 6]! - positions[i + 0]!;
+    const by = positions[i + 7]! - positions[i + 1]!;
+    const bz = positions[i + 8]! - positions[i + 2]!;
     const nx = ay * bz - az * by;
     const ny = az * bx - ax * bz;
     const nz = ax * by - ay * bx;

@@ -29,9 +29,10 @@ export function analyseMesh(geometry: THREE.BufferGeometry): MeshReport {
 
   const edges = new Map<string, number>();
   for (let i = 0; i < vertexCount; i += 3) {
-    const a = vertexMap[i + 0];
-    const b = vertexMap[i + 1];
-    const c = vertexMap[i + 2];
+    // vertexMap is Int32Array allocated to `count`; in-bounds by loop.
+    const a = vertexMap[i + 0]!;
+    const b = vertexMap[i + 1]!;
+    const c = vertexMap[i + 2]!;
     bumpEdge(edges, a, b);
     bumpEdge(edges, b, c);
     bumpEdge(edges, c, a);
@@ -63,8 +64,9 @@ function dedupeVertices(
   pos: THREE.BufferAttribute | THREE.InterleavedBufferAttribute,
 ): { vertexMap: Int32Array; dedupCount: number } {
   const count = pos.count;
-  const min = [Infinity, Infinity, Infinity];
-  const max = [-Infinity, -Infinity, -Infinity];
+  // Fixed-size 3-tuples; indices 0/1/2 are always defined.
+  const min: [number, number, number] = [Infinity, Infinity, Infinity];
+  const max: [number, number, number] = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < count; i++) {
     const x = pos.getX(i),
       y = pos.getY(i),

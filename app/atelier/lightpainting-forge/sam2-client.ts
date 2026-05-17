@@ -81,10 +81,11 @@ export async function segment(
 function luminanceFallback(img: ImageData): ImageData {
   const out = new Uint8ClampedArray(img.data.length);
   for (let i = 0; i < img.data.length; i += 4) {
+    // RGBA stride matched to loop step; in-bounds by construction.
     const lum =
-      0.2126 * img.data[i] +
-      0.7152 * img.data[i + 1] +
-      0.0722 * img.data[i + 2];
+      0.2126 * img.data[i]! +
+      0.7152 * img.data[i + 1]! +
+      0.0722 * img.data[i + 2]!;
     const alpha = lum > 80 ? 255 : 0;
     out[i] = 255;
     out[i + 1] = 255;

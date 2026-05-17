@@ -9,6 +9,9 @@
 // depth-driven placement (1). Useful when the depth estimate is
 // unreliable (very dark trail, no scene context) — the operator can
 // dial back without losing the rest of the pipeline.
+//
+// Strict-mode notes: every typed-array index below is bounded by the
+// surrounding loop or by mask.data's RGBA stride.
 
 import type { Field } from "./field";
 
@@ -32,7 +35,7 @@ export function maskAndDepthToField(
     for (let x = 0; x < res; x++) {
       const sx = Math.floor((x / res) * mw);
       const sy = Math.floor((y / res) * mh);
-      alpha[y * res + x] = mask.data[(sy * mw + sx) * 4 + 3] / 255;
+      alpha[y * res + x] = mask.data[(sy * mw + sx) * 4 + 3]! / 255;
       depthVal[y * res + x] = depth
         ? sampleBilinear(depth, x / res, y / res)
         : 0.5;
@@ -43,10 +46,10 @@ export function maskAndDepthToField(
 
   for (let y = 0; y < res; y++) {
     for (let x = 0; x < res; x++) {
-      const a = alpha[y * res + x];
+      const a = alpha[y * res + x]!;
       if (a < 0.05) continue;
 
-      const d = depthVal[y * res + x];
+      const d = depthVal[y * res + x]!;
       const zCentreDepth = d * (res - 1);
       // Low confidence -> recentre to slab middle (mimics flat extrusion).
       const zCentre =
@@ -59,7 +62,7 @@ export function maskAndDepthToField(
         if (dz > thicknessHere) continue;
         const profile = a * (1 - dz / thicknessHere);
         const idx = z * res * res + y * res + x;
-        if (profile > data[idx]) data[idx] = profile;
+        if (profile > data[idx]!) data[idx] = profile;
       }
     }
   }
@@ -81,10 +84,12 @@ function sampleBilinear(map: DepthMap, u: number, v: number): number {
   const y1 = Math.min(map.height - 1, y0 + 1);
   const tx = fx - x0;
   const ty = fy - y0;
-  const a = map.data[y0 * map.width + x0];
-  const b = map.data[y0 * map.width + x1];
-  const c = map.data[y1 * map.width + x0];
-  const d = map.data[y1 * map.width + x1];
+  // Float32Array indices are in-bounds: x0/x1 clipped to [0, width-1],
+  // y0/y1 to [0, height-1], so each access stays within data's length.
+  const a = map.data[y0 * map.width + x0]!;
+  const b = map.data[y0 * map.width + x1]!;
+  const c = map.data[y1 * map.width + x0]!;
+  const d = map.data[y1 * map.width + x1]!;
   return (
     a * (1 - tx) * (1 - ty) +
     b * tx * (1 - ty) +
