@@ -32,7 +32,11 @@ import {
   getFirebaseAdminAuth,
   getFirebaseAdminDb,
 } from "lib/firebase/admin";
-import { rememberVectorServer } from "lib/capabilities/agent/memory-vector.server";
+import { formatForPrompt } from "lib/capabilities/agent/memory";
+import {
+  rememberVectorServer,
+  recallVectorServer,
+} from "lib/capabilities/agent/memory-vector.server";
 import { createLogger, errToObject } from "lib/log";
 
 export const dynamic = "force-dynamic";
@@ -163,6 +167,41 @@ export async function POST(req: Request) {
 
   const uid = await resolveUid(req);
 
+  // Recall: for signed-in visitors, fetch the K most-relevant prior
+  // turns from agent.memory-vector and prepend them as context. The
+  // vector index may not be STATE_READY yet (raises
+  // vector-index-missing) or the Gemini key may be absent — either
+  // case logs and falls through to no-recall context so the chat
+  // works regardless.
+  let recalledContext: string | undefined;
+  if (uid) {
+    try {
+      const recall = await recallVectorServer({
+        uid,
+        query: userText,
+        k: 6,
+      });
+      if (recall.turns.length > 0) {
+        recalledContext = `Prior conversation excerpts (most-relevant first):\n${formatForPrompt(
+          recall.turns,
+        )}`;
+      }
+    } catch (err) {
+      log.info("recall skipped", {
+        uid,
+        reason: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+
+  // Merge the caller-supplied context with the recalled excerpts.
+  // Recalled excerpts go first so the LLM weighs them as background;
+  // the live context (current page, etc.) goes after.
+  const mergedContext =
+    recalledContext && context
+      ? `${recalledContext}\n\n${context}`
+      : recalledContext ?? context;
+
   // Aura's existing `agent.dialogue` capability requires a speakerId
   // (used for slice writes). For the public chat we don't care about
   // the cast/agent slices — pass a sentinel that won't collide.
@@ -173,7 +212,7 @@ export async function POST(req: Request) {
       bible: aura,
       userText,
       provider: "gemini",
-      ...(context ? { contextSuffix: context } : {}),
+      ...(mergedContext ? { contextSuffix: mergedContext } : {}),
     });
     text = typeof result.text === "string" ? result.text : "";
   } catch (err) {

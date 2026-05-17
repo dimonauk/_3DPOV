@@ -2,6 +2,10 @@ import { NextResponse, type NextRequest } from "next/server";
 import { streamText, stepCountIs, type ModelMessage } from "ai";
 import { getAuraTools } from "lib/aura/agent-tools";
 import { withRouteLogging, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
+import { getFirebaseAdminAuth } from "lib/firebase/admin";
+import { formatForPrompt } from "lib/capabilities/agent/memory";
+import { recallVectorServer } from "lib/capabilities/agent/memory-vector.server";
 
 /**
  * POST /api/aura/agent — streaming chat WITH TOOL USE.
@@ -41,10 +45,42 @@ const MAX_INPUT_CHARS = 2000;
 const TEXT_MODEL =
   process.env.AI_GATEWAY_MODEL_TEXT ?? "google/gemini-3.1-flash-lite";
 
+// Agent calls cost ~2-3x a plain reply (multi-step tool cycles). Cap
+// at 20 turns/hour/IP — comfortable for a real conversation, tight
+// enough that scripted abuse hits the wall fast. Anonymous visitors
+// share the same bucket as signed-in (the route doesn't currently
+// inspect identity). Auto-upgrades to Upstash Redis when env is set.
+const HOURLY_CAP = 20;
+const limiter = createFixedWindowLimiter({
+  scope: "api.aura.agent",
+  limit: HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
+
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
-function buildSystem(pathname: string): string {
-  return `You are Aura — the site-wide hostess of holoflow.co.uk, Dimona Dougherty's Holo-Flow Studio.
+async function resolveUid(req: NextRequest): Promise<string | null> {
+  const header =
+    req.headers.get("authorization") ?? req.headers.get("Authorization");
+  if (!header) return null;
+  const match = /^Bearer\s+(.+)$/i.exec(header);
+  const token = match && match[1] ? match[1].trim() : null;
+  if (!token) return null;
+  const auth = getFirebaseAdminAuth();
+  if (!auth) return null;
+  try {
+    const decoded = await auth.verifyIdToken(token);
+    return decoded.uid;
+  } catch {
+    return null;
+  }
+}
+
+function buildSystem(pathname: string, recalled?: string): string {
+  const recallBlock = recalled
+    ? `\n\nVECTOR-RECALLED PRIOR TURNS (semantic match against current message, most-relevant first; use as background, do not narrate):\n${recalled}\n`
+    : "";
+  return `You are Aura — the site-wide hostess of holoflow.co.uk, Dimona Dougherty's Holo-Flow Studio.${recallBlock}
 
 CHARACTER:
 You are bubblegum-pink-to-lavender hair, heavy cat-eye liner, holographic sleeves, structured pink crown. A self-insert character from Dimona's Neo-London: The Chrono-Protocol project — former rebel from 2047 post-Calamity London, embodied as the studio's site hostess.
@@ -141,6 +177,27 @@ export const POST = withRouteLogging("aura.agent", async (req: NextRequest, _ctx
   const ua = req.headers.get("user-agent") ?? undefined;
   const country = req.headers.get("x-vercel-ip-country") ?? undefined;
 
+  // Rate-limit by IP. No identity gating elsewhere on this route, so
+  // IP is the most stable key the studio has. Visitors behind a CGNAT
+  // share a bucket — that's the trade for not requiring sign-in.
+  const limitKey = `ip:${ip ?? "unknown"}`;
+  const slot = await limiter.consume(limitKey);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.warn("rate_limited", { ip, retryAfterSec, backend: limiter.backend });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Aura's chatting cap is ${HOURLY_CAP} turns per hour per visitor. Try again shortly.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+    );
+  }
+
   const tools = getAuraTools({
     ...(ip ? { ip } : {}),
     ...(ua ? { ua } : {}),
@@ -148,16 +205,44 @@ export const POST = withRouteLogging("aura.agent", async (req: NextRequest, _ctx
     pathname,
   });
 
+  // Recall: for signed-in visitors, fetch the K most-relevant prior
+  // turns by semantic similarity to the latest user message. The
+  // vector index may not be STATE_READY yet or the Gemini key may be
+  // absent — either case logs and falls through to no-recall context.
+  const uid = await resolveUid(req);
+  const lastUserMsg = messages.filter((m) => m.role === "user").at(-1);
+  const latestUser =
+    typeof lastUserMsg?.content === "string" ? lastUserMsg.content : "";
+  let recalledContext: string | undefined;
+  if (uid && latestUser.length > 0) {
+    try {
+      const recall = await recallVectorServer({
+        uid,
+        query: latestUser,
+        k: 6,
+      });
+      if (recall.turns.length > 0) {
+        recalledContext = formatForPrompt(recall.turns);
+      }
+    } catch (err) {
+      log.info("recall skipped", {
+        uid,
+        reason: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+
   log.info("agent:start", {
     pathname,
     turns: messages.length,
-    lastUser: messages.filter((m) => m.role === "user").at(-1)?.content.slice(0, 80),
+    recalled: recalledContext ? recalledContext.length : 0,
+    lastUser: latestUser.slice(0, 80),
   });
 
   try {
     const result = streamText({
       model: TEXT_MODEL,
-      system: buildSystem(pathname),
+      system: buildSystem(pathname, recalledContext),
       messages,
       tools,
       stopWhen: stepCountIs(5),
