@@ -38,6 +38,39 @@ attribution adjusted, please open an issue.
 - Wired engine selection to `aura.mood` via the
   `engineFromMood()` canon mapping — original was UI-only.
 
+### Shader presets, examples, and snippets — `lib/algorithms/shaders/`
+
+**Source:** `D:\.github\Shadrerapp\src\apps\ShaderEditor\constants.ts`
+(PRESETS, EXAMPLES, PRESET_DESCRIPTIONS, EXAMPLE_DESCRIPTIONS) and
+`...\components\SnippetLibrary.tsx` (DEFAULT_SNIPPETS) — same "DollyOS
+Diagnostic & Shader Suite" AI Studio app (SPDX: Apache-2.0).
+
+**Lifted:**
+
+- 28 preset GLSL shader sources (MANDALA, AURORA, STARFIELD, RAYMARCH,
+  MORPH_SCENE, CYBER_GRID, PLASMA_FIELD, FRACTAL_PYRAMID, VORTEX_NEBULA,
+  LIQUID_METALS, NEON_WAVES, FIRE_STORM, DIGITAL_RAIN, DISCO_BALL,
+  VOLUMETRIC_CORE, BENDING_SPACE, GLITCH_CORE, NORMAL_VIZ, MANDELBULB,
+  REACTION_DIFFUSION, NEBULA_CLOUD, BIOLUMINESCENCE, GRAVITY_WELL,
+  DATASCAPE, HYPERSPACE, CAUSTICS, FRACTAL_FLAME, SONIC_TEMPEST).
+- 3 examples (BASIC_NOISE, SIMPLE_LIGHTING, COORDINATE_TRANSFORMS).
+- 7 insertable snippets across 4 categories (Noise & Random, SDF
+  Primitives, Space & Math, Color).
+- Their human-readable descriptions.
+
+**Modified:**
+
+- Sources land verbatim under `lib/algorithms/shaders/_data.ts`
+  (registry-style file; exempt from the 300-line cap per Rule 1).
+  Underscore prefix marks it internal — callers import the typed
+  accessors from `index.ts`.
+- Snippets atomised into `lib/algorithms/shaders/snippets.ts` with the
+  `ShaderSnippet` record type + `snippetsByCategory()` helper. React
+  component shell entirely removed.
+- Typed `PresetRecord` / `ExampleRecord` accessors (`listPresets()`,
+  `listExamples()`) added to mirror the `lib/algorithms/index.ts`
+  pattern.
+
 ### GLSL Foundation Library — `lib/math/glsl/`
 
 **Source:** `D:\.github\Shadrerapp\src\libs\glsl-utils.ts` —
