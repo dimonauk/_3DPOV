@@ -82,12 +82,19 @@ export const POST = withRouteLogging(
       destinationPath,
     });
 
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    let blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+    if (!blobToken) {
       return NextResponse.json(
         { error: "BLOB_READ_WRITE_TOKEN env not set" },
         { status: 503 },
       );
     }
+    // The BLOB_READ_WRITE_TOKEN value pasted into Vercel's env-var UI
+    // has a UTF-8 BOM at byte 0 (same issue as FIREBASE_ADMIN_SERVICE_ACCOUNT).
+    // fetch() chokes on it when setting the Authorization header with
+    // "Cannot convert argument to a ByteString". Strip it before use.
+    if (blobToken.charCodeAt(0) === 0xfeff) blobToken = blobToken.slice(1);
+    blobToken = blobToken.trim();
 
     // 1. Fetch the source file as a Buffer.
     const srcResp = await fetch(body.sourceUrl);
@@ -111,6 +118,7 @@ export const POST = withRouteLogging(
         addRandomSuffix: false,
         allowOverwrite: true,
         cacheControlMaxAge: 31536000, // 1 year — CDN edge cache
+        token: blobToken, // explicit override, BOM stripped
       });
 
       log.info("upload complete", {
@@ -155,9 +163,12 @@ export const GET = withRouteLogging(
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
+    const tok = process.env.BLOB_READ_WRITE_TOKEN;
     return NextResponse.json({
-      blobTokenPresent: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-      blobTokenLength: process.env.BLOB_READ_WRITE_TOKEN?.length ?? 0,
+      blobTokenPresent: Boolean(tok),
+      blobTokenLength: tok?.length ?? 0,
+      blobTokenHasBOM: tok ? tok.charCodeAt(0) === 0xfeff : false,
+      blobTokenFirstByteCode: tok?.charCodeAt(0) ?? null,
       migrateTokenPresent: Boolean(process.env.MIGRATE_TOKEN),
     });
   },
