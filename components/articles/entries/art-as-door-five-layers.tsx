@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 
 export default function ArtAsDoorFiveLayers() {
@@ -204,3 +206,75 @@ export default function ArtAsDoorFiveLayers() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "art-as-door-five-layers",
+    title: "Art as Door — Five Layers",
+    date: "2025-07-29",
+    kind: "article",
+    excerpt:
+      "The waveguide pieces carry more than they look like they should. A pretty object on a plinth at layer one; physics, movement, system, and the maker at layers two through five. An honest account of why the work is built to reward curiosity without requiring it.",
+    Body: ArtAsDoorFiveLayers,
+    related: [
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "The two-handed studio that runs the bench. The other piece on the studio's operating model.",
+      },
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "The catechism the layered architecture coexists with.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "Layer two in full — the optical engineering inside the waveguide pieces.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows From the Inside",
+        note: "Layer two, the other half. Why the lit object glows throughout instead of just at the LED.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "Layer four in full — the genetic-algorithm system that produces the candidate sculptures.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "The smallest scale at which the doors open.",
+      },
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+        note: "The studio's longer self-description. Layer five named in plain order.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Biomimetics",
+        label: "Biomimetics — Wikipedia",
+        note: "The discipline of borrowing biological solutions, named in full.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Structural_coloration",
+        label: "Structural coloration — Wikipedia",
+        note: "Background on the optical mechanism the layer-two writeup unpacks.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Genetic_algorithm",
+        label: "Genetic algorithms — Wikipedia",
+        note: "The breeding loop named at layer four, summarised.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Stereolithography",
+        label: "Stereolithography (SLA) — Wikipedia",
+        note: "The print process that produces the waveguide objects in the first place.",
+      },
+    ],
+  };

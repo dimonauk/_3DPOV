@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function SellotapeAndTiltBrush() {
   return (
     <>
@@ -187,3 +189,59 @@ export default function SellotapeAndTiltBrush() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "sellotape-and-tilt-brush",
+    title: "Sellotape and Tilt Brush",
+    date: "2024-06-18",
+    kind: "article",
+    excerpt:
+      "The poi-into-sculpture line started in a small flat fifteen years ago, with a roll of sellotape wrapped round a prototype VR controller and a trail of light I wanted to hold in my hand. It took the rest of the world fifteen years to ship the tools that catch up to it.",
+    Body: SellotapeAndTiltBrush,
+    related: [
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "The shippable version of the sellotape insight.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The current pipeline that finally lets the trail become an object.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The technical walkthrough of the pipeline.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://openbrush.app/",
+        label: "Open Brush",
+        note: "Open-source successor to Tilt Brush; the toolchain that finally let strokes be exported.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Oculus_Rift_CV1",
+        label: "Oculus Rift CV1 — Wikipedia",
+        note: "The first mass-market consumer VR headset; the era this article is set just before.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "What makes the trail visible to a long-exposure camera in the first place.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Marching_cubes",
+        label: "Marching cubes — Wikipedia",
+        note: "The 1987 algorithm that does the volume-to-mesh work.",
+      },
+    ],
+  };

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -274,3 +276,75 @@ export default function ProvenanceAsDisciplineArticle() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "provenance-as-discipline",
+    title: "Provenance as Discipline",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Provenance is not a marketing artefact — it is a discipline. Every editioned piece ships with a typed JSON record alongside the paper certificate: edition, capture, processing chain, reference-light photograph of the actual print, COA hash, contextual articles, algorithm lineage. The typed contract for the physical artefact, type-checked the same way the rest of the studio's substrate is.",
+    Body: ProvenanceAsDisciplineArticle,
+    related: [
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "Where the discipline becomes visible to the buyer.",
+      },
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Calibrating the imagePROGRAF PRO-1100",
+        note: "The viewing booth and reference-light context the provenance record anchors against.",
+      },
+      {
+        href: "/articles/the-right-paper-for-a-light-painting",
+        label: "The Right Paper for a Light Painting",
+        note: "The paper field of the processing chain, in long form.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The wider working bench the bureau queue lives at the back of.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The structural cousin — typed interfaces, frozen long enough to be useful, the same instinct applied one layer up.",
+      },
+      {
+        href: "/articles/the-sieve-and-the-oracle",
+        label: "The Sieve and the Oracle",
+        note: "The human-judgement layer the typed record cannot replace.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Provenance",
+        label: "Provenance — Wikipedia",
+        note: "The art-world definition of the term, and why the gallery norm of a paper COA is the visible half of a longer chain.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/SHA-2",
+        label: "SHA-2 — Wikipedia",
+        note: "The hashing family the COA hash is drawn from. SHA-256 specifically.",
+      },
+      {
+        href: "https://www.typescriptlang.org/",
+        label: "TypeScript",
+        note: "The language the schema is written in; the rules that keep a missing field from shipping a record.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/JSON",
+        label: "JSON — Wikipedia",
+        note: "The serialisation format the record is canonicalised against before hashing.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Certificate_of_authenticity",
+        label: "Certificate of authenticity — Wikipedia",
+        note: "Background on the paper-COA convention the JSON record extends rather than replaces.",
+      },
+    ],
+  };

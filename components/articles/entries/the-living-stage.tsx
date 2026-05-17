@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -311,3 +313,95 @@ export default function TheLivingStage() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-living-stage",
+    title: "The Living Stage",
+    date: "2025-09-12",
+    kind: "article",
+    excerpt:
+      "Laban Movement Analysis as gesture vocabulary. Hall's proxemics as spatial grammar. Song structure as dramatic scaffold. How the studio's evolution engine extends from breeding sculptures to breeding complete performances — body in space, song in time, audience in the room.",
+    Body: TheLivingStage,
+    related: [
+      {
+        href: "/visualiser/laban-dial",
+        label: "Visualiser — Laban Effort dial",
+        note: "Interactive — drag the four sliders, find the eight Basic Efforts at the corners of the cube. The kinematic layer of this piece, made playable.",
+      },
+      {
+        href: "/articles/vr-as-psychological-system",
+        label: "VR as a Psychological System",
+        note: "The cognitive-systems companion. Both pieces treat the body as the load-bearing data source.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The instrument side of the same body. The bench tradition the gesture library is captured on.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — body discipline",
+        note: "The twelve-year arc the gesture vocabulary is built from.",
+      },
+      {
+        href: "/journal/year-one-fire",
+        label: "Journal — Year One, fire",
+        note: "Where the gesture library begins in honest order.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop — body in space, position one",
+        note: "Where this article sits in the studio's overall architecture.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The same evolution engine, applied to objects rather than performances. The sister piece.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Laban_movement_analysis",
+        label: "Laban Movement Analysis — Wikipedia",
+        note: "The full vocabulary: Body, Effort, Shape, Space. The system the choreography genome rests on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Rudolf_von_Laban",
+        label: "Rudolf Laban — Wikipedia",
+        note: "Biography of the dance theorist whose 1920s work is the load-bearing reference of this piece.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Effort_(Laban)",
+        label: "Effort (Laban) — Wikipedia",
+        note: "The four sub-spectra (Weight, Space, Time, Flow) that the studio uses as gene axes for movement quality.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Proxemics",
+        label: "Proxemics — Wikipedia",
+        note: "Edward Hall's 1966 framework for the spatial dimension of human communication. Intimate, personal, social, public.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Kinesphere",
+        label: "Kinesphere — Wikipedia",
+        note: "Laban's term for the personal space within reach of the body. The unit of measurement for movement extension.",
+      },
+      {
+        href: "https://librosa.org/doc/latest/index.html",
+        label: "librosa — Python audio analysis library",
+        note: "The offline tool the studio uses to extract song structure: beat tracking, onset detection, section segmentation.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Edward_T._Hall",
+        label: "Edward T. Hall — Wikipedia",
+        note: "Cultural anthropologist who formalised proxemics. The Hidden Dimension (1966) is the seminal text.",
+      },
+      {
+        href: "https://google.github.io/aichoreographer/",
+        label: "Google AIST++ dataset — AI Choreographer project",
+        note: "1,408 3D dance sequences across 10 genres, music-conditioned. The reference dataset for music-to-movement research.",
+      },
+    ],
+  };

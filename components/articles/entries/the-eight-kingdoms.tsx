@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -419,3 +421,115 @@ export default function TheEightKingdoms() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-eight-kingdoms",
+    title: "The Eight Kingdoms",
+    date: "2026-05-16",
+    kind: "article",
+    excerpt:
+      "Behind the thirty drawers of the jewellery atelier sit eight rooms — the aesthetic kingdoms the breeding engine works inside. Techno-Industrial, Expressive, Motion, Biomechanical, Thermal, Protean, Assemblage, Curvilinear. Each room is a register of form-finding; underneath all eight sits the twenty-eight-letter genetic alphabet the studio breeds with.",
+    Body: TheEightKingdoms,
+    related: [
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The genetic-algorithm cousin. The breeding loop that walks the 28-letter alphabet through generations; this article names the eight rooms the loop runs inside.",
+      },
+      {
+        href: "/articles/the-jewellery-algorithms",
+        label: "The Jewellery Algorithms",
+        note: "The atelier and its thirty drawers. The kingdoms are the rooms the drawers sit in; the drawers are the generators; the alphabet is what the generators sample from.",
+      },
+      {
+        href: "/articles/art-as-door-five-layers",
+        label: "Art as Door — Five Layers",
+        note: "The architectural frame the kingdoms sit inside. Layer four is the breeding engine; this article is the taxonomy underneath it.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "The optical layer the kingdoms inherit. Several kingdoms — Biomechanical, Curvilinear, Thermal — commit to specific optical strategies inside their family resemblance.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows from the Inside",
+        note: "The total-internal-reflection physics the Curvilinear and Biomechanical kingdoms rely on. The mechanism behind the optical commitment of two whole rooms.",
+      },
+      {
+        href: "/articles/morphing-things-together",
+        label: "Morphing Things Together",
+        note: "The unifying operation across substrates. Crossing kingdoms is a morph; the gene-vector crossover is the same operation as the LED-wall morph and the choreography drift.",
+      },
+      {
+        href: "/articles/the-practice-in-eight-threads",
+        label: "The Practice in Eight Threads",
+        note: "The philosophical companion. Eight threads in the practice, eight kingdoms in the cabinet — the same commitment to a small complete vocabulary.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The closed circuit the kingdoms sit inside. Body to light to capture to reified object; every kingdom shapes the reified-object step.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "The bench inventory the kingdoms live on. The breeding engine and its workstation listed dispassionately.",
+      },
+      {
+        href: "/atelier/evolution",
+        label: "The evolution suite",
+        note: "The fourteen-station architecture that sorts specimens into kingdoms. The taxonomy lives in the prose; the operations live in the suite.",
+      },
+      {
+        href: "/atelier#meshes",
+        label: "Atelier — Meshes",
+        note: "Sample meshes from every kingdom. Two per kingdom across early and late generations of the breeding engine&rsquo;s evolution renders.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Biomimicry",
+        label: "Biomimicry — Wikipedia",
+        note: "The design principle behind the Biomechanical kingdom. Borrowing structural strategies from biology because the biology has run the optimisation already.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Taxonomy_(biology)",
+        label: "Taxonomy (biology) — Wikipedia",
+        note: "The classification system the kingdom vocabulary borrows from. Kingdom as a top-level category, narrowing downward through finer family resemblances.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Pattern_formation",
+        label: "Pattern formation — Wikipedia",
+        note: "The mathematical field underneath several kingdoms — reaction-diffusion in Thermal, phyllotaxis in Techno-Industrial, branching in Biomechanical.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Aesthetics",
+        label: "Aesthetics — Wikipedia",
+        note: "The philosophical field the kingdoms commit to. Each kingdom is an aesthetic register the studio inhabits rather than every register at once.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Cladistics",
+        label: "Cladistics — Wikipedia",
+        note: "The taxonomic method of grouping by shared derived characters. The kingdom model is cladistic in spirit — siblings within a kingdom share a high-gene profile.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/L-system",
+        label: "L-system — Wikipedia",
+        note: "Aristid Lindenmayer's grammar for branching growth. Used by drawers in multiple kingdoms — the same generator, different rooms.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Diatom",
+        label: "Diatom — Wikipedia",
+        note: "The marine algae whose silicate lattices inform the Biomechanical kingdom. Nature's hexagonal-lattice waveguide; the studio uses its grammar.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Genetic_algorithm",
+        label: "Genetic algorithm — Wikipedia",
+        note: "The optimisation method the breeding engine implements. The kingdoms set the high-gene profiles the genetic algorithm explores around.",
+      },
+    ],
+  };

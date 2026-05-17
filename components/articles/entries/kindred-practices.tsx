@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -180,3 +182,79 @@ export default function KindredPractices() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "kindred-practices",
+    title: "Kindred Practices",
+    date: "2024-11-29",
+    kind: "article",
+    excerpt:
+      "A curated room of practitioners whose work the studio watches — Reuben Wu, Janne Parviainen, Hannu Huhtamo, Dariustwin, Patrick Rochon, Vicki DaSilva, Brian Hart, Sola. Eight different answers to the same question of how to make a gesture last.",
+    Body: KindredPractices,
+    related: [
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The historical line back from these contemporaries.",
+      },
+      {
+        href: "/articles/from-picasso-forward",
+        label: "From Picasso, Forward",
+        note: "The chronological companion. The same eight practitioners, placed on the seventy-five-year line from Vallauris to now.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — drone-mounted light painting",
+        note: "The studio's parallel to Reuben Wu's work.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the studio's twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://reubenwu.com/",
+        label: "Reuben Wu",
+        note: "Lux Noctis and Aeroglyphs — drone LEDs over remote terrain.",
+      },
+      {
+        href: "https://www.flickr.com/people/jannepaint/",
+        label: "Janne Parviainen",
+        note: "Topographic LED long-exposures from Finland.",
+      },
+      {
+        href: "https://www.hannuhuhtamo.com/",
+        label: "Hannu Huhtamo",
+        note: "Organic light sculpture in Finnish forests.",
+      },
+      {
+        href: "https://dariustwin.com/",
+        label: "Darren Pearson / Dariustwin",
+        note: "Hand-drawn light skeletons; National Geographic, Apple, Disney.",
+      },
+      {
+        href: "https://lightpaintingphotography.com/light-painting-artist/featured-artist-2/patrick-rochon/",
+        label: "Patrick Rochon",
+        note: "Kinetic light kata portraits with custom Liteblade swords.",
+      },
+      {
+        href: "https://www.vickidasilva.com/",
+        label: "Vicki DaSilva",
+        note: "Fluorescent-tube light graffiti since 1980.",
+      },
+      {
+        href: "https://lightbombing.com/",
+        label: "Sola / Peter Medlicott",
+        note: "Lightbombing in the UK; coined the term, featured by CNN and Vanity Fair.",
+      },
+      {
+        href: "https://lightpaintinghub.com/",
+        label: "Light Painting Hub",
+        note: "Broader community gallery and reference.",
+      },
+    ],
+  };

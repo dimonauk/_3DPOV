@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -375,3 +377,115 @@ export default function HowTheStudioBreedsSculptures() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "how-the-studio-breeds-sculptures",
+    title: "How the Studio Breeds Sculptures",
+    date: "2025-10-08",
+    kind: "article",
+    excerpt:
+      "The long version of layer four of Art as Door. A 28-gene genome, twenty-five candidates per generation, tournament selection, uniform crossover, Gaussian mutation, optional LLM advisor, SQLite lineage. The genetic algorithm that breeds the waveguide pieces, named in full.",
+    Body: HowTheStudioBreedsSculptures,
+    related: [
+      {
+        href: "/visualiser/marching-cubes",
+        label: "Visualiser — Marching cubes",
+        note: "Interactive — the algorithm that turns every candidate genome into a watertight mesh, made stepwise.",
+      },
+      {
+        href: "/visualiser/laban-dial",
+        label: "Visualiser — Laban Effort dial",
+        note: "Interactive — the Effort cube, where one of the four named morphing operations of this engine lives.",
+      },
+      {
+        href: "/articles/art-as-door-five-layers",
+        label: "Art as Door — Five Layers",
+        note: "The parent article. This piece is the long version of its layer four.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The AI-pipeline cousin. Different mechanism, same studio, same bench, same printer.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "The optics the breeding engine produces forms for. Layer two of the architecture.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The kit inventory the breeding sessions run on.",
+      },
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "The two-handed studio model. The same human-plus-machine pattern, applied at a different layer.",
+      },
+      {
+        href: "/articles/the-living-stage",
+        label: "The Living Stage",
+        note: "The same engine, extended from sculpture to performance. The sister piece on the choreography side.",
+      },
+      {
+        href: "/atelier/evolution",
+        label: "The evolution suite",
+        note: "The fourteen-station architecture this article describes, rendered as a directed-graph diagram with per-station notes.",
+      },
+      {
+        href: "/atelier#genomes",
+        label: "Atelier — Genomes",
+        note: "The canonical specimens the breeding engine has accepted. Twelve now in the manifest; the lineage continues on the bench.",
+      },
+      {
+        href: "/atelier/algorithms",
+        label: "The algorithm cabinet",
+        note: "The thirty generators the engine samples from. The breeding loop addresses these by name when it needs to fill a kingdom slot.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Genetic_algorithm",
+        label: "Genetic algorithm — Wikipedia",
+        note: "The textbook foundation: selection, crossover, mutation. The studio's engine sits squarely in this tradition.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Interactive_evolutionary_computation",
+        label: "Interactive evolutionary computation — Wikipedia",
+        note: "The sub-discipline where the fitness function is a human. The exact pattern the studio's loop implements.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Karl_Sims",
+        label: "Karl Sims — Wikipedia",
+        note: "Evolved Virtual Creatures (1994), Genetic Images (1993). The canonical ancestor of every interactive aesthetic evolution system since.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Neuroevolution_of_augmenting_topologies",
+        label: "NEAT — Wikipedia",
+        note: "Stanley and Miikkulainen (2002). The structural-genome ancestor whose speciation-via-similarity ideas inform diversity preservation in the studio's engine.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Tournament_selection",
+        label: "Tournament selection — Wikipedia",
+        note: "The selection mechanism the studio's engine uses. Size three, moderate pressure, no aggressive convergence.",
+      },
+      {
+        href: "https://ollama.com/",
+        label: "Ollama — local LLM runtime",
+        note: "The local inference engine the optional LLM advisor runs on. Qwen 2.5 14B at Q4_K_M for 10GB VRAM.",
+      },
+      {
+        href: "https://trimesh.org/",
+        label: "trimesh — Python mesh library",
+        note: "The validation library used to check every generated mesh for watertightness and minimum dimension before rendering.",
+      },
+      {
+        href: "https://www.blender.org/",
+        label: "Blender",
+        note: "The headless renderer the generator drives. Cycles, 64 samples, GPU, 3 seconds per candidate.",
+      },
+    ],
+  };

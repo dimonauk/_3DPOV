@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -596,3 +598,125 @@ export default function TheConvergence() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-convergence",
+    title: "The Convergence — One Signal, Seven Stages, Eleven Sciences",
+    date: "2026-05-16",
+    kind: "article",
+    excerpt:
+      "The technical trunk piece. One captured signal enters the top of the pipeline; seven stages squeeze it; eleven sciences sit under the stages. What comes out is a sculpture nobody else could have made, because nobody else had the signal and nobody else has all eleven sciences hooked up in series. The whole architecture in one article.",
+    Body: TheConvergence,
+    related: [
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The cultural circuit the Convergence executes the reify-segment of. Six positions in the Loop; seven stages in the Convergence; the architectures fit together.",
+      },
+      {
+        href: "/articles/the-practice-in-eight-threads",
+        label: "The Practice in Eight Threads",
+        note: "The philosophical trunk piece. Eight threads, one braid; the Convergence is the technical companion that names the operation those threads run on.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The Loop closing in one afternoon. The local AI pipeline that proves the Convergence's reify-stage in fast iteration.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "Stage 1's hardware. The bench-built capture instruments that produce the signal the Convergence starts with.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "Stage 5 in full. The breeding engine, the 28-gene alphabet, the tournament selection and Gaussian mutation that move a family of sculptures forward.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "Stage 4 in voice. The optical-integration stage's commitment: structural colour from geometry rather than pigment.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows from the Inside",
+        note: "Stage 4's load-bearing physics. Total internal reflection at the resin-air interface, named in plain prose.",
+      },
+      {
+        href: "/articles/the-eight-kingdoms",
+        label: "The Eight Kingdoms",
+        note: "The taxonomic frame for Stage 3A's form generators. Eight rooms the breeding engine works inside; the alphabet under all of them.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "Where the pipeline physically lives. The workstation, the printer, the six square metres the Convergence operates inside.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "The Convergence's tools listed dispassionately. Capture hardware, generation software, breeding engine, print bureau, viewer.",
+      },
+      {
+        href: "/play",
+        label: "Play — the proving ground",
+        note: "The AR-game pedagogy that teaches the Convergence by playing it in pieces. Eight solo levels for the eight threads; braided weaves for combined stages.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "Marey's nineteenth-century motion-capture work. The deepest ancestor of Stage 1's signal-capture, named in the studio's lineage piece.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Marching_cubes",
+        label: "Marching cubes — Wikipedia",
+        note: "The voxel-to-mesh algorithm under Stage 3A's gyroid generator and several of the other form-finding paths.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Body_schema",
+        label: "Body schema — Wikipedia",
+        note: "The cognitive-science concept underneath Stage 2's Laban Effort extraction. The body's internal map of its own kinematics.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The optical phenomenon that links Stage 1's captured trajectory to the long-exposure photograph and the POV-LED rig family.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Voronoi_diagram",
+        label: "Voronoi diagram — Wikipedia",
+        note: "One of the partitioning structures the Stage 3 form generators reach for. Used in the Techno-Industrial and Protean kingdoms in particular.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Fast_Fourier_transform",
+        label: "Fast Fourier transform — Wikipedia",
+        note: "The algorithm under Stage 2's frequency-spectrum extraction. Cooley and Tukey's 1965 method, used in every signal-processing toolkit.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Laban_movement_analysis",
+        label: "Laban Movement Analysis — Wikipedia",
+        note: "Rudolf Laban's notation system. The source of Stage 2's four-axis Effort vector — Weight, Space, Time, Flow.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Biomechanics",
+        label: "Biomechanics — Wikipedia",
+        note: "The field underneath Stage 1's temporal-coherence smoothing. Body-as-mechanism literature applied to clean motion capture.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/History_of_photography",
+        label: "History of photography — Wikipedia",
+        note: "The history of light the studio counts as the eleventh science, alongside or in place of statistics. The long visual lineage the work descends from.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Computer-aided_design",
+        label: "Computer-aided design — Wikipedia",
+        note: "The wider field Stages 3A, 4, and 6A operate inside. Parametric geometry and procedural modelling as production tools.",
+      },
+    ],
+  };

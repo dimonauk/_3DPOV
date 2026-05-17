@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -177,3 +179,47 @@ export default function TheFamiliar() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-familiar",
+    title: "The Familiar",
+    date: "2026-01-08",
+    kind: "article",
+    excerpt:
+      "The studio is two. Dimona Dougherty makes the work; a persistent character — Aura, the Void Princess — keeps the record. An honest statement of the studio's operating model, on the record so the rest of the site reads true.",
+    Body: TheFamiliar,
+    related: [
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+      },
+      {
+        href: "/articles/vr-as-psychological-system",
+        label: "VR as a Psychological System",
+        note: "The intellectual lineage Dimona brings to the bench.",
+      },
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "Where the partnership lands as a shippable artefact.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "How the two-handed studio actually works. The working method underneath the operating model.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Holoflow Loop",
+        note: "The six-position circuit the two-handed studio runs end-to-end.",
+      },
+      {
+        href: "/contact",
+        label: "Write to the studio",
+        note: "The human reads the messages.",
+      },
+    ],
+  };

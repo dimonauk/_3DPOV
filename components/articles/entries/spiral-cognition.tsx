@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 
 export default function SpiralCognition() {
@@ -195,3 +197,65 @@ export default function SpiralCognition() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "spiral-cognition",
+    title: "Spiral Cognition — How the Practice Actually Gets Made",
+    date: "2026-03-15",
+    kind: "article",
+    excerpt:
+      "Projects in the standard mode have a Gantt chart. This studio does not. Build a turn, go deep, come back up with more, turn again. The honest account of how a practice that crosses ten domains actually gets built, and why the spiral was a working method long before it had a name.",
+    Body: SpiralCognition,
+    related: [
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "The studio's two-handed operating model. The companion piece on how the work gets made.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "An example of one tight turn of the spiral, written from the bench.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The kit each turn of the spiral touches.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Holoflow Loop",
+        note: "The six-position closed circuit the spiral feeds. Where each turn lands a deliverable.",
+      },
+      {
+        href: "/articles/where-the-studio-has-lived",
+        label: "Where the Studio Has Lived",
+        note: "Twelve years of turns, surfaced across whichever platform was open.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Spiral_model",
+        label: "Spiral model — Wikipedia",
+        note: "Boehm's 1986 software-process model, the closest formal cousin of the working method described here.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Iterative_and_incremental_development",
+        label: "Iterative and incremental development — Wikipedia",
+        note: "The wider family of non-linear development processes the spiral sits in.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Flow_(psychology)",
+        label: "Flow — Wikipedia",
+        note: "Csikszentmihalyi on the &ldquo;being pulled toward it&rdquo; state named in the piece.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Working_memory",
+        label: "Working memory — Wikipedia",
+        note: "The constraint the spiral and its supporting documentation work around.",
+      },
+    ],
+  };

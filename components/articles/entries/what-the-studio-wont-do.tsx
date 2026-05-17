@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 
 export default function WhatTheStudioWontDo() {
@@ -282,3 +284,75 @@ export default function WhatTheStudioWontDo() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "what-the-studio-wont-do",
+    title: "What the Studio Won't Do",
+    date: "2024-11-18",
+    kind: "article",
+    excerpt:
+      "On the record: the lines the studio holds. Single-exposure photographs, no invented teachers, no AI-generated imagery sold as the studio's work, no NFTs, no edition inflation, no fake scarcity, no paywall on the writing, no platform dependency the studio can't replace.",
+    Body: WhatTheStudioWontDo,
+    related: [
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "Who runs the studio, and who writes the writing.",
+      },
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+        note: "The studio's longer self-description.",
+      },
+      {
+        href: "/shop/certificate",
+        label: "Certificate of Authenticity",
+        note: "What ships with every print and sculpture, and what the edition numbers mean.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The catalogue. Every image a single long exposure of a real body in a real room.",
+      },
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The studio's actual genealogy, named in full.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The maintainers whose code the rigs depend on; the ladder the studio refuses to pull up.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "The photographic tradition the single-exposure discipline descends from.",
+      },
+      {
+        href: "https://www.homeofpoi.com/lessons/teach",
+        label: "Home of Poi — free lesson library",
+        note: "The free public source that taught a generation of flow artists, this studio included.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "NeoPixel Überguide — Adafruit Learn",
+        note: "An example of the free, complete, well-written documentation the studio's tutorials try to honour.",
+      },
+      {
+        href: "https://creativecommons.org/about/cclicenses/",
+        label: "Creative Commons licences — overview",
+        note: "The licensing family the studio's writing is published under.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Artist%27s_proof",
+        label: "Artist's proof — Wikipedia",
+        note: "Background on the print-edition convention the studio uses for retained APs.",
+      },
+    ],
+  };

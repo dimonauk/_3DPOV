@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -155,3 +157,64 @@ export default function WallArraysGeometryOfRooms() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "wall-arrays-geometry-of-rooms",
+    title: "Wall Arrays — the Geometry of Rooms",
+    date: "2024-07-18",
+    kind: "article",
+    excerpt:
+      "Wall arrays are not made of bigger sculptures. They are compositions of palm-scale pieces in deliberate layouts, with the dark pieces as load-bearing as the lit ones. Scale, light budget, interaction, install.",
+    Body: WallArraysGeometryOfRooms,
+    related: [
+      {
+        href: "/journal/the-first-wall-array",
+        label: "Field record — The First Wall Array",
+        note: "The commission that worked out how to do this properly.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "Scaling the same pipeline down to the wrist.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows From the Inside",
+        note: "The optical mechanism inside every array element, named in full.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "Why the array elements read coloured. Structural colour at room scale.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The per-piece optical engineering inside each array element.",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a wall array",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Installation_art",
+        label: "Installation art — Wikipedia",
+        note: "Critical context for the genre this work sits in.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Passive_infrared_sensor",
+        label: "Passive infrared sensors — Wikipedia",
+        note: "How the studio's interactive arrays detect viewer proximity.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/DMX512",
+        label: "DMX512 — Wikipedia",
+        note: "The lighting-control protocol the arrays speak to controllers.",
+      },
+    ],
+  };

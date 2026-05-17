@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -394,3 +396,100 @@ export default function WhyIBuildModular() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "why-i-build-modular",
+    title: "Why I Build Modular",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "At consumer scale, modularity is a tax — SKU explosion, QA combinatorics, support hours, backward-compatibility breaks. Insta360 ONE R, the DJI Osmo Action 2, the GoPro mods all retreated to fixed form. At this studio's scale the arithmetic flips: the buyer is the operator, QA is per-unit, each module is a revenue surface, and the firmware family is the spine.",
+    Body: WhyIBuildModular,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The spirit cousin. The architectural argument for the rigs underneath.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The inventory companion. Every layer this article references in one place.",
+      },
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "Mission-shape modularity on the air-side. Five airframes, one pipeline.",
+      },
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "The bezel article in full. The modular product this piece names.",
+      },
+      {
+        href: "/bezel",
+        label: "Bezel — the pre-order page",
+        note: "The product the philosophy underneath this article points at.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack — the data version",
+        note: "Every module on the bench with vendor links and version numbers.",
+      },
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "The sovereignty companion. The lines the studio holds for the same reasons.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The local AI pipeline as a modular graph; swap the diffusion node, the spine keeps working.",
+      },
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The vendor-side companion. Insta360's modular ONE R was the camera that started this article; the move to DJI is where the modular-or-rigorous diagnosis hardened.",
+      },
+      {
+        href: "/play",
+        label: "Play — the proving ground",
+        note: "Solo level one (The Module) is this article played, not read.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.insta360.com/product/insta360-oner",
+        label: "Insta360 ONE R — product page",
+        note: "The magnetic-modular action camera that started the studio thinking about this. Replaced by the fixed-form ONE RS in 2021.",
+      },
+      {
+        href: "https://www.dji.com/uk/osmo-action-2",
+        label: "DJI Osmo Action 2 — product page",
+        note: "The magnetic stacking-module action camera. The Action 3 went back to a single-piece body inside one product cycle.",
+      },
+      {
+        href: "https://frame.work/",
+        label: "Framework laptops",
+        note: "The structural survivor. Modular hardware that ships to a self-selecting audience that actually wants the modularity.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Modular_design",
+        label: "Modular design — Wikipedia",
+        note: "Broad overview of the design discipline, with the trade-offs across industries.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Right_to_repair",
+        label: "Right to repair — Wikipedia",
+        note: "The adjacent movement. The audience that overlaps the modular-hardware buyer.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/",
+        label: "Teensy microcontrollers — PJRC",
+        note: "The firmware substrate the studio's modular rig family rests on. The spine, in microcontroller form.",
+      },
+    ],
+  };

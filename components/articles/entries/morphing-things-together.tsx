@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -381,3 +383,100 @@ export default function MorphingThingsTogether() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "morphing-things-together",
+    title: "Morphing Things Together",
+    date: "2026-05-15",
+    kind: "article",
+    excerpt:
+      "The bench uses the word morphing for four different operations — the LED wall pattern, Aura's face, the sculpture-engine crossover, the choreography's Laban Effort drift. They are the same operation, dressed differently. Two endpoints, a parameter, a curve. Morphing is what closes the Loop.",
+    Body: MorphingThingsTogether,
+    related: [
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The closed circuit the article ends on. Every arrow in the Loop is a morph between two states.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The genetic-algorithm crossover named in this article as the third morph.",
+      },
+      {
+        href: "/articles/the-living-stage",
+        label: "The Living Stage",
+        note: "The Laban Effort drift named in this article as the fourth morph. The choreography engine and the easing library.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "The working method that brings the four morphs into one frame. How a practice notices it has been using one word for four things.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The local AI pipeline. The marching-cubes step is itself a morph from voxel grid to mesh.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — The Same Trace, Wearable",
+        note: "The pendant scale of the same morph chain. Gesture → photograph → sculpture → wearable.",
+      },
+      {
+        href: "/articles/the-jewellery-algorithms",
+        label: "The Jewellery Algorithms",
+        note: "The atelier where the seed-to-form morph happens on the jewellery side.",
+      },
+      {
+        href: "/play/loop",
+        label: "Play — Loop",
+        note: "The proving-ground level that practises the body's circular path. The kinetic version of the morph this article names.",
+      },
+      {
+        href: "/play/the-2-braid",
+        label: "Play — The 2-Braid",
+        note: "The braided level. Two threads morphing across each other in time.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Easing_function",
+        label: "Easing function — Wikipedia",
+        note: "The catalogue every game developer reaches for. Linear, quad, cubic, elastic, bounce, custom Bezier.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Linear_interpolation",
+        label: "Linear interpolation — Wikipedia",
+        note: "The baseline. The straight-line interpolation under every easing curve.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/B%C3%A9zier_curve",
+        label: "Bézier curve — Wikipedia",
+        note: "Pierre Bézier's parametric curve family. Most production easing functions are cubic Beziers under the hood.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Inbetweening",
+        label: "Tweening (inbetweening) — Wikipedia",
+        note: "The animation term for what the studio calls morphing. The maths is identical.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline",
+        label: "Catmull-Rom spline — Wikipedia",
+        note: "The multi-endpoint interpolation curve. Used when a morph has to walk through several intermediate states without losing continuity.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Smoothstep",
+        label: "Smoothstep — Wikipedia",
+        note: "The zero-derivative-at-endpoints curve every shader ships with. The cheap, well-behaved morph.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Slerp",
+        label: "Slerp (spherical linear interpolation) — Wikipedia",
+        note: "Rotation-aware interpolation along the shortest arc on a unit sphere. The right tool when the substrate is angular.",
+      },
+    ],
+  };

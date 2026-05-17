@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -598,3 +600,115 @@ export default function NeoLondonChronoProtocol() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "neo-london-chrono-protocol",
+    title: "Neo-London: Chrono-Protocol — the game the ladder graduates into",
+    date: "2026-05-14",
+    kind: "article",
+    excerpt:
+      "The proving ground at /play is the curriculum; Neo-London: Chrono-Protocol is the game it graduates into. WebXR rhythm-action runner in a wireframe London, dual-Poi controls, three zones built from the same SHARP gaussian-splat library the bench is filling, four Poi modes (Amber, Crimson, Azure, Veridian) mapped to the studio's own practice, three AI constructs (Aura, Yow, Purp) reading the run together. The prototype is in the Hangar; this is the bridge piece that names what it is.",
+    Body: NeoLondonChronoProtocol,
+    related: [
+      {
+        href: "/play",
+        label: "Play — the proving ground",
+        note: "The eight solo levels and four braided levels that prepare the player for Chrono-Protocol.",
+      },
+      {
+        href: "/articles/the-practice-in-eight-threads",
+        label: "The Practice in Eight Threads",
+        note: "The trunk article that names the eight threads the ladder teaches and the game braids.",
+      },
+      {
+        href: "/play/the-full-weave",
+        label: "The Full Weave",
+        note: "Solo eight braided together. The level whose pass-condition unlocks Chrono-Protocol's HUB.",
+      },
+      {
+        href: "/play/neo-london",
+        label: "Neo-London — the splat map",
+        note: "The SHARP-generated gaussian-splat library that shares its geography with the runner's zones.",
+      },
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The walked routes that become the canal fast-travel between zones in the long-form game vision.",
+      },
+      {
+        href: "/articles/ungrounded",
+        label: "Ungrounded",
+        note: "The move off the plane. The runner is the same move applied to a wireframe city.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The kit list every layer of the game's pipeline rests on.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The brush-module architecture the game's Poi modes are the playable proof of.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Holoflow Loop",
+        note: "The six-position framework the runner is the outer surface of.",
+      },
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The photographic genealogy the runner's persistence-of-vision trail inherits from.",
+      },
+      {
+        href: "/watch",
+        label: "/watch — Aura's eyes",
+        note: "The cold-eye watching prototype Aura's in-game narration is the runner's version of.",
+      },
+      {
+        href: "/bezel",
+        label: "The bezel — the clip-on product",
+        note: "The firmware family the runner's controller-as-bezel mode is the software simulation of.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/WebXR",
+        label: "WebXR — Wikipedia",
+        note: "The browser-native XR standard the runner deploys against. No installer, no app store, headset-optional.",
+      },
+      {
+        href: "https://www.meta.com/gb/quest/quest-3/",
+        label: "Meta Quest 3 — product page",
+        note: "The reference WebXR headset the studio writes against. Inside-out tracking, hand tracking, colour passthrough.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gaussian_splatting",
+        label: "Gaussian splatting — Wikipedia",
+        note: "The volumetric rendering technique the splat library underneath the runner is built from.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Dystopia",
+        label: "Dystopia — Wikipedia",
+        note: "The genre register the wireframe London draws on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Mario_Kart",
+        label: "Mario Kart — Wikipedia",
+        note: "Reference point for the long-form canal-route fast-travel mechanic between zones.",
+      },
+      {
+        href: "https://www.mightycoconut.com/minigolf",
+        label: "Walkabout Mini Golf — Mighty Coconut",
+        note: "Reference point for pacing — a body in a traversable space rather than teleported between menus.",
+      },
+      {
+        href: "https://github.com/apple/ml-sharp",
+        label: "Apple SHARP — single-image to gaussian splat",
+        note: "The model the studio runs locally to convert source frames into the runner's splat library.",
+      },
+    ],
+  };

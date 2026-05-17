@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -279,3 +281,80 @@ export default function ColourWithoutPigment() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "colour-without-pigment",
+    title: "Colour Without Pigment",
+    date: "2025-08-21",
+    kind: "article",
+    excerpt:
+      "The waveguide pieces are blue, green, and oil-slick magenta without paint. The colour is in the geometry — structural colour, the trick biology has used for hundreds of millions of years. Thin-film interference, diffraction gratings, photonic crystals; what the studio can print today and what waits for the next generation of resin printers.",
+    Body: ColourWithoutPigment,
+    related: [
+      {
+        href: "/visualiser/total-internal-reflection",
+        label: "Visualiser — Total Internal Reflection",
+        note: "Interactive — drag the angle slider, watch TIR engage. The one-boundary optical engine underneath thin-film, gratings, and photonic crystals.",
+      },
+      {
+        href: "/articles/art-as-door-five-layers",
+        label: "Art as Door — Five Layers",
+        note: "The companion piece. Where the optics live inside the larger architecture of the work.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "The wearable pieces these mechanisms power.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Structural colour at room scale.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "How to actually light the resulting piece so the optics read.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Structural_coloration",
+        label: "Structural coloration — Wikipedia",
+        note: "The umbrella term covering all three mechanisms in the piece.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Thin-film_interference",
+        label: "Thin-film interference — Wikipedia",
+        note: "The soap-bubble mechanism, formal version.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Diffraction_grating",
+        label: "Diffraction grating — Wikipedia",
+        note: "The CD-rainbow mechanism, with the grating equation.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Photonic_crystal",
+        label: "Photonic crystals — Wikipedia",
+        note: "The volumetric version of the same family of ideas.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Morpho",
+        label: "Morpho butterflies — Wikipedia",
+        note: "The most-studied biological example, with electron-microscope structural references.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gyroid",
+        label: "Gyroid — Wikipedia",
+        note: "The triply-periodic minimal surface the Green Hairstreak builds inside its wing scales.",
+      },
+      {
+        href: "https://www.nature.com/articles/nphoton.2010.244",
+        label: "Vukusic & Sambles — Photonic structures in biology (Nature Photonics)",
+        note: "The reference review paper of the biological structural-colour literature.",
+      },
+    ],
+  };

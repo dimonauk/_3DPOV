@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -376,3 +378,85 @@ export default function TheRightPaperForALightPainting() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-right-paper-for-a-light-painting",
+    title: "The Right Paper for a Light Painting",
+    date: "2026-05-05",
+    kind: "article",
+    excerpt:
+      "The papers in current rotation on the bench are Canon — Pro Platinum, Pro Lustre, super-glossy, and metallic. I chose them on instinct. Here is the research that says the instinct was right, the soft-proof discipline that makes them produce, and the baryta upgrade path the bureau will move to after the studio move.",
+    Body: TheRightPaperForALightPainting,
+    related: [
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "The working line the paper rotation runs through.",
+      },
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Calibrating the imagePROGRAF PRO-1100",
+        note: "The procedure the bureau runs against the studio's standard viewing light.",
+      },
+      {
+        href: "/stack",
+        label: "The stack — papers in current rotation",
+        note: "The bench inventory, named honestly.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The wider working bench this paper choice is one shelf of.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.northlight-images.co.uk/",
+        label: "Northlight Images — Keith Cooper",
+        note: "Where the bureau learned how to calibrate the PRO-1100 and how to soft-proof against a paper profile. Full credit.",
+      },
+      {
+        href: "https://blog.dominey.photography/2024/03/17/hahnemuhle-fine-art-papers-compared/",
+        label: "Hahnemühle fine art paper comparison — David Dominey",
+        note: "Side-by-side of the Hahnemühle fine-art line; the reference for the baryta upgrade path.",
+      },
+      {
+        href: "https://www.francescogola.net/review/best-papers-for-fine-art-prints/",
+        label: "Best papers for Fine Art prints — Francesco Gola",
+        note: "Working photographer's review naming baryta as the surface for stronger blacks and more vibrant colour.",
+      },
+      {
+        href: "https://fotospeed.com/blog/post/what-is-baryta-photo-paper-and-why-should-it-be-your-paper-of-choice/",
+        label: "What is baryta photo paper — Fotospeed",
+        note: "Practical explainer on the barium-sulphate coat and why baryta papers hit darkroom-era D-max under inkjet pigments.",
+      },
+      {
+        href: "https://www.dpreview.com/forums/threads/canon-pro-platinum-vs-hahnemuhle-fine-art-baryta.4601957/",
+        label: "Canon Pro Platinum vs Hahnemühle FineArt Baryta — DPReview Forums",
+        note: "Community discussion placing Canon Pro Platinum in the 'as close as RC gets to baryta' tier.",
+      },
+      {
+        href: "https://forum.luminous-landscape.com/index.php?topic=67975.0",
+        label: "Canson Platine vs Baryta vs Hahnemühle Photo Rag Baryta — Luminous Landscape",
+        note: "Detailed paper-on-paper comparison for fine-art photography work.",
+      },
+      {
+        href: "https://www.ronmartblog.com/2014/11/review-epson-metallic-photo-paper.html",
+        label: "Epson Metallic Photo Paper review — Ron Martinsen",
+        note: "Working review of metallic photo paper; names the bright-light viewing condition that makes or breaks the print.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/ICC_profile",
+        label: "ICC profile — Wikipedia",
+        note: "The colour-management standard the soft-proof workflow rests on.",
+      },
+      {
+        href: "https://www.canon.co.uk/ink-paper-media/papers/",
+        label: "Canon ink paper and media — UK",
+        note: "Vendor page for the Canon paper line currently on the bench.",
+      },
+    ],
+  };

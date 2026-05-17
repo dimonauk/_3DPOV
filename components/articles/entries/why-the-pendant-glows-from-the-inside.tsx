@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -393,3 +395,80 @@ export default function WhyThePendantGlowsFromTheInside() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "why-the-pendant-glows-from-the-inside",
+    title: "Why the Pendant Glows From the Inside",
+    date: "2025-09-25",
+    kind: "article",
+    excerpt:
+      "Total internal reflection, evanescent fields, and the geometry of light trapping. Why a resin pendant lit by a single LED appears to glow throughout its body rather than just at the source. The optics tutorial companion to Colour Without Pigment.",
+    Body: WhyThePendantGlowsFromTheInside,
+    related: [
+      {
+        href: "/visualiser/total-internal-reflection",
+        label: "Visualiser — Total Internal Reflection",
+        note: "Interactive — drag the angle slider, watch TIR engage. The maths of this article, made tangible at the one-boundary level.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "The structural-colour cousin. That piece is about wavelength steering; this one is about light trapping.",
+      },
+      {
+        href: "/articles/art-as-door-five-layers",
+        label: "Art as Door — Five Layers",
+        note: "Layer two of the architecture — the physics layer, named in brief. This piece is the long version of one half of it.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The practical step-by-step on LED choice, optical gel, and bezel design.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "The wearable form the physics in this piece serves.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Total_internal_reflection",
+        label: "Total internal reflection — Wikipedia",
+        note: "The umbrella article. Covers the principle, the critical angle, the evanescent wave, and the major engineering applications.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Snell%27s_law",
+        label: "Snell's Law — Wikipedia",
+        note: "The fundamental refraction equation. The single most-used formula in waveguide design.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Optical_fiber",
+        label: "Optical fibre — Wikipedia",
+        note: "TIR in the engineering register. The cabled internet runs on the principle behind every waveguide pendant.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Refractive_index",
+        label: "Refractive index — Wikipedia",
+        note: "The single material property that drives critical angle, bend radius, and trapping efficiency for every waveguide.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Evanescent_field",
+        label: "Evanescent field — Wikipedia",
+        note: "The near-field leakage that makes a TIR-trapped sculpture glow on the outside rather than appear opaque.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Biomimetics",
+        label: "Biomimetics — Wikipedia",
+        note: "The discipline of borrowing tricks from biology. Fish and deep-sea squid have used TIR-based light channels for hundreds of millions of years.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Fresnel_equations",
+        label: "Fresnel equations — Wikipedia",
+        note: "The full equations for how much light reflects vs transmits at every angle. The compound-loss arithmetic for multi-interface designs lives here.",
+      },
+    ],
+  };

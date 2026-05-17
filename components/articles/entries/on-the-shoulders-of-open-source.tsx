@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -302,3 +304,105 @@ export default function OnTheShouldersOfOpenSource() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "on-the-shoulders-of-open-source",
+    title: "On the Shoulders of Open Source",
+    date: "2025-08-04",
+    kind: "article",
+    excerpt:
+      "The studio's rigs would not exist without an enormous amount of free code maintained by strangers. FastLED, NeoPixel, OctoWS2811, WLED, Pixelblaze, Open Pixel Control, LedFx, Open Pixel Poi. An acknowledgement, a recommendation, a working bibliography.",
+    Body: OnTheShouldersOfOpenSource,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "What the studio adds on top of the open-source base.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "Where the libraries below land in practice.",
+      },
+      {
+        href: "/tutorials/programming-pov-frames",
+        label: "Tutorial — Programming Frames for a POV Rig",
+        note: "How the libraries get used to actually write images.",
+      },
+      {
+        href: "/play",
+        label: "Play — solo level five, Sovereignty",
+        note: "The local-first architecture this article rests on, demonstrated by cutting the visitor's router.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack — the data version",
+        note: "The bench inventory. Every open-source library named below sits on a line of the stack.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://github.com/FastLED/FastLED",
+        label: "FastLED",
+        note: "The canvas for addressable LEDs on Arduino-class microcontrollers.",
+      },
+      {
+        href: "https://github.com/adafruit/Adafruit_NeoPixel",
+        label: "Adafruit NeoPixel library",
+        note: "The on-ramp library by Phil Burgess.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "Adafruit NeoPixel Überguide",
+        note: "The single best teach-yourself resource in the field.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/td_libs_OctoWS2811.html",
+        label: "OctoWS2811 (PJRC)",
+        note: "Paul Stoffregen's DMA-based library; drives eight strips in parallel.",
+      },
+      {
+        href: "https://github.com/wled/WLED",
+        label: "WLED",
+        note: "The drop-in pixel-engine firmware for ESP32/ESP8266.",
+      },
+      {
+        href: "https://electromage.com/pixelblaze/",
+        label: "Pixelblaze",
+        note: "Ben Hencke's purpose-built LED-art controller with live-coding IDE.",
+      },
+      {
+        href: "http://openpixelcontrol.org/",
+        label: "Open Pixel Control",
+        note: "Simple TCP protocol for distributed pixel installations.",
+      },
+      {
+        href: "https://github.com/LedFx/LedFx",
+        label: "LedFx",
+        note: "Real-time audio → pixel effects bridge.",
+      },
+      {
+        href: "https://github.com/Mitchlol/Open-Pixel-Poi",
+        label: "Open Pixel Poi",
+        note: "Open-source 3D-printable ESP32+WS2812 pixel-poi reference design.",
+      },
+      {
+        href: "https://quinled.info/",
+        label: "QuinLED",
+        note: "Quindor's open-hardware ESP32 LED controller PCBs.",
+      },
+      {
+        href: "https://kno.wled.ge/",
+        label: "WLED Knowledge Base",
+        note: "Community-maintained docs for installation-scale work.",
+      },
+      {
+        href: "https://forum.pjrc.com/",
+        label: "PJRC Forum",
+        note: "Where serious Teensy POV builders trade schematics.",
+      },
+    ],
+  };

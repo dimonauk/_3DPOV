@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 import CodexRef from "components/codex/codex-ref";
 
 const ext = "underline underline-offset-4 hover:text-pink-200";
@@ -227,3 +229,78 @@ export default function LineageMareyToNow() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "lineage-marey-to-now",
+    title: "The Lineage — Marey to Now",
+    date: "2025-02-19",
+    kind: "article",
+    excerpt:
+      "The genealogy of light-painted photographs: Marey's chronophotographic plate, Gilbreth's chronocyclegraphs, Edgerton's instrument-build attitude, Mili photographing Picasso, the contemporary flow-arts scene. The line back is the work.",
+    Body: LineageMareyToNow,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The technical companion. What the studio adds to the inherited line.",
+      },
+      {
+        href: "/articles/from-picasso-forward",
+        label: "From Picasso, Forward",
+        note: "The forward half of the same chronology. Where the ancestral line picks up in 1949 and walks to the present bench.",
+      },
+      {
+        href: "/articles/kindred-practices",
+        label: "Kindred Practices",
+        note: "The contemporary practitioner survey. Where the line continues today.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the history of the studio's stages",
+      },
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/%C3%89tienne-Jules_Marey",
+        label: "Étienne-Jules Marey — Wikipedia",
+        note: "Founder of chronophotography; the technical ancestor of every long-exposure light photograph.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Frank_Bunker_Gilbreth_Sr.",
+        label: "Frank Bunker Gilbreth Sr — Wikipedia",
+        note: "Industrial engineer whose chronocyclegraphs are the first light-painted records of human gesture.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Harold_Eugene_Edgerton",
+        label: "Harold Edgerton — Wikipedia",
+        note: "Inventor of high-speed flash; the instrument-build attitude underwrites everything on the studio bench.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gjon_Mili",
+        label: "Gjon Mili — Wikipedia",
+        note: "The 1949 Picasso light-painting photographs. The moment the technique becomes art.",
+      },
+      {
+        href: "https://lightpaintinghub.com/",
+        label: "Light Painting Hub",
+        note: "Contemporary community entry point: practitioners, tutorials, gallery.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "Broad overview of the genre this work descends from.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Light_painting",
+        label: "Light painting — Wikipedia",
+        note: "Contemporary technique and major practitioners.",
+      },
+    ],
+  };

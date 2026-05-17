@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -251,3 +253,60 @@ export default function OceanAsWardrobe() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "ocean-as-wardrobe",
+    title: "OCEAN as Wardrobe",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Five personality numbers, eight wardrobe profiles, one function that resolves a vector to a starting palette. The studio's typed mapping from OCEAN to garment shape — generative, not predictive; a starting kit, not a verdict.",
+    Body: OceanAsWardrobe,
+    related: [
+      {
+        href: "/articles/the-eight-kingdoms",
+        label: "The Eight Kingdoms",
+        note: "The companion register. Eight kingdoms for sculpture, eight profiles for wardrobe — the same commitment to a small complete vocabulary the operator can hold in one head.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The system-as-generative-not-predictive companion. The breeding engine proposes candidates the human edits; the wardrobe catalogue proposes profiles the wearer edits. Same two-handed pattern.",
+      },
+      {
+        href: "/articles/aura-the-body",
+        label: "Aura the Body",
+        note: "The cast-banter pipeline that picks gesture and speech-register from mood. Wardrobe picks fit; the body picks motion; the two compose without knowing about each other.",
+      },
+      {
+        href: "/articles/the-practice-in-eight-threads",
+        label: "The Practice in Eight Threads",
+        note: "The philosophical trunk. Eight threads in the practice, eight profiles in the wardrobe — the same operator-scale commitment.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Big_Five_personality_traits",
+        label: "Big Five personality traits — Wikipedia",
+        note: "The OCEAN model in full. The five-axis psychology the catalogue uses as input — and the long literature behind each axis.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Openness_to_experience",
+        label: "Openness to experience — Wikipedia",
+        note: "The first axis. The wardrobe correlate is layering complexity — transparency, mixed weights, willingness to surprise.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Conscientiousness",
+        label: "Conscientiousness — Wikipedia",
+        note: "The second axis. The wardrobe correlate is structural stiffness — pressed seams, held creases, deliberate finishes.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Trait_theory",
+        label: "Trait theory — Wikipedia",
+        note: "The wider psychological frame OCEAN sits inside. The studio uses trait theory the way it uses Laban — as a coarse-grained vocabulary, not as a portrait.",
+      },
+    ],
+  };

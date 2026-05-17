@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 import Link from "next/link";
 
 const ext = "underline underline-offset-4 hover:text-pink-200";
@@ -587,3 +589,150 @@ export default function TheBench() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-bench",
+    title: "The Bench",
+    date: "2026-05-01",
+    kind: "article",
+    excerpt:
+      "Thirteen layers of the studio's working bench, named honestly. Five drones, two printers, one workstation, one holographic display, one headset, the rigs on the wall — the prose companion to /stack, and the constraint behind every choice on the list.",
+    Body: TheBench,
+    related: [
+      {
+        href: "/stack",
+        label: "The Stack — the data version",
+        note: "Every tool on the bench with vendor links, version numbers, and status flags.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "The local AI pipeline layer, in full detail.",
+      },
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The aerial-capture layer; the studio's five-airframe fleet in full.",
+      },
+      {
+        href: "/journal/the-fleet-update-mini-five-pro",
+        label: "Field record — Mini 5 Pro and the Bluetooth LEDs",
+        note: "The fifth airframe coming home from the shop. The bench was five-deep by the time this piece landed.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The POV-LED-rig layer's architectural argument.",
+      },
+      {
+        href: "/articles/belt-printed-wall-reliefs",
+        label: "Belt-Printed Wall Reliefs",
+        note: "The CR-30 layer of the fabrication section, named in full.",
+      },
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The 360-capture layer's working history. Where the Osmo 360 on top of the pole came from.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "How the bench is actually used. The working method that touches every layer above.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The open-source maintainers the bench rests on.",
+      },
+      {
+        href: "/articles/where-the-studio-has-lived",
+        label: "Where the Studio Has Lived",
+        note: "Why the bench is the sovereign version of the writing.",
+      },
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "The architectural commitment named in full: no platform the studio cannot replace.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The figurative side of the fabrication layer, walked through.",
+      },
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Tutorial — Calibrating the imagePROGRAF PRO-1100",
+        note: "The print-bureau calibration discipline this article names.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The per-piece optical engineering inside the fabrication layer's output.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.pjrc.com/teensy/",
+        label: "Teensy microcontrollers — PJRC",
+        note: "Vendor home for the Teensy 4.1 boards that drive the studio's POV LED rigs.",
+      },
+      {
+        href: "https://fastled.io/",
+        label: "FastLED library",
+        note: "The open-source library the rig firmware lives in.",
+      },
+      {
+        href: "https://www.creality.com/products/cr-30-3dprintmill-belt-3d-printer",
+        label: "Creality CR-30 3DPrintMill",
+        note: "The belt printer the parametric wall reliefs run on.",
+      },
+      {
+        href: "https://lookingglassfactory.com/portrait",
+        label: "Looking Glass Portrait",
+        note: "Light-field display for the volumetric work.",
+      },
+      {
+        href: "https://github.com/comfyanonymous/ComfyUI",
+        label: "ComfyUI",
+        note: "Node-graph orchestrator for the local diffusion pipeline.",
+      },
+      {
+        href: "https://github.com/facebookresearch/sam2",
+        label: "SAM2 — Segment Anything Model 2",
+        note: "Meta's click-to-mask segmentation model in the local AI layer.",
+      },
+      {
+        href: "https://ollama.com/",
+        label: "Ollama",
+        note: "Local LLM runtime; the inference engine the orchestrator depends on.",
+      },
+      {
+        href: "https://www.blackmagicdesign.com/products/davinciresolve",
+        label: "DaVinci Resolve Studio",
+        note: "The video and grade ecosystem; one paid licence, full pipeline.",
+      },
+      {
+        href: "https://tailscale.com/",
+        label: "Tailscale",
+        note: "Zero-config mesh VPN across the studio's machines.",
+      },
+      {
+        href: "https://qdrant.tech/",
+        label: "Qdrant",
+        note: "Vector database for the companion's long-term memory.",
+      },
+      {
+        href: "https://www.canon.co.uk/business-printers-and-faxes/imageprograf-pro-1100/",
+        label: "Canon imagePROGRAF PRO-1100",
+        note: "The A2 archival pigment printer the studio bureau runs on.",
+      },
+      {
+        href: "https://www.hahnemuehle.com/en/digital-fineart.html",
+        label: "Hahnemühle Digital FineArt papers",
+        note: "Manufacturer reference for the studio's default print papers.",
+      },
+    ],
+  };

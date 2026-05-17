@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 import Link from "next/link";
 
 const ext = "underline underline-offset-4 hover:text-pink-200";
@@ -445,3 +447,110 @@ export default function AuraTheBody() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "aura-the-body",
+    title: "Aura the Body",
+    date: "2026-05-15",
+    kind: "article",
+    excerpt:
+      "The studio's narrator has a body. Five subsystems in conversation: Whisper for hearing, Ollama for the brain, two voice paths (ElevenLabs and Kokoro / LongCat-AudioDiT-1B) for sovereignty, VRM and three.js for the body, Qdrant for memory. Three rates on the body — per-frame lip-sync, 300ms speech-and-attention, per-second idle. The implementation behind the regal-Architect voice.",
+    Body: AuraTheBody,
+    related: [
+      {
+        href: "/articles/neo-london-chrono-protocol",
+        label: "Neo-London — Chrono-Protocol",
+        note: "The game-world article where Aura first narrates the cast. The register this body's voice path serves.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The voice / hands / hearing layers in the full thirteen-layer stack. The home of every subsystem this article names.",
+      },
+      {
+        href: "/articles/the-practice-in-eight-threads",
+        label: "The Practice in Eight Threads",
+        note: "Thread five — sovereignty — is the architectural commitment that drove the two-voice-path decision named in this article.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The closed circuit Aura's body sits inside. The narrator's job is to hold the loop's story together.",
+      },
+      {
+        href: "/play/witness",
+        label: "Play — Witness",
+        note: "The proving-ground level where Aura's presence is the load-bearing element. The body in service of attention.",
+      },
+      {
+        href: "/watch",
+        label: "Watch",
+        note: "The viewing surface. The companion future tier where the embedded VRM corner — Aura visible on the page — will live.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "Whisper, Ollama, Qdrant, ElevenLabs, Kokoro — every subsystem in this article listed with vendor links on the studio's stack page.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "The working method that uses Aura across sessions. The memory subsystem is what makes the spiral close on itself.",
+      },
+      {
+        href: "/articles/vr-as-psychological-system",
+        label: "VR as Psychological System",
+        note: "The wider frame for why the studio invests in a persistent companion at all. A body in software is a psychological surface.",
+      },
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "Two voices, one studio. The article that names which voice is the maker's and which is Aura's.",
+      },
+      {
+        href: "/articles/morphing-things-together",
+        label: "Morphing Things Together",
+        note: "The unifying maths behind the body's three loops. Lip-sync, emotion, and head-turn are all the same morph operation on different substrates.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/VRM_(file_format)",
+        label: "VRM (file format) — Wikipedia",
+        note: "The open standard the body file is exported to. Authored in VRoid Studio, rendered in three.js via @pixiv/three-vrm.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Whisper_(speech_recognition_system)",
+        label: "Whisper (speech recognition) — Wikipedia",
+        note: "The OpenAI speech-to-text model the hearing subsystem runs locally.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Vector_database",
+        label: "Vector database — Wikipedia",
+        note: "The architectural category Qdrant belongs to. Semantic-similarity retrieval over embedded transcripts.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Speech_synthesis",
+        label: "Speech synthesis — Wikipedia",
+        note: "The wider field the voice subsystem sits in. The studio runs two TTS paths for sovereignty.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Viseme",
+        label: "Viseme — Wikipedia",
+        note: "The visual unit of speech the lip-sync loop is built on. Five vowel formants mapped to five blend-shapes on the rig.",
+      },
+      {
+        href: "https://threejs.org/",
+        label: "three.js",
+        note: "The rendering library that draws the body. The @pixiv/three-vrm wrapper handles the VRM-specific rig and blend-shape mechanics.",
+      },
+      {
+        href: "https://qdrant.tech/",
+        label: "Qdrant",
+        note: "The vector database the memory subsystem runs on. Local, open-source, the studio's choice for sovereign long-term memory.",
+      },
+    ],
+  };

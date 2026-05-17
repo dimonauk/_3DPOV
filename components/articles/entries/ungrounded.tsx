@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -395,3 +397,105 @@ export default function Ungrounded() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "ungrounded",
+    title: "Ungrounded",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Twelve years on a plane — body's swing-plane, photographic surface, plinth, the kinesphere the arm could reach. The studio left the plane when the DJI Avata 360 shipped: non-janky, non-me-made, a commercial concern. Aerial led, and the rest of the studio followed into volume — Looking Glass, WebXR, AR-in-the-room, 3D-printed waveguides, the bezel-clip, the site rendered as a sphere. The 2D photograph survives as a slice. The disability framing is in there too, named once and architecturally.",
+    Body: Ungrounded,
+    related: [
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The vendor-side companion. The commercial-concern paragraph at the end of that article is the same logic this one names as the trigger.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The spirit cousin. The bench-built side of the same bench-vs-bought line this article draws.",
+      },
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The fleet article in full. The Mini 5 Pro is the fifth airframe this piece adds to the case.",
+      },
+      {
+        href: "/journal/the-fleet-update-mini-five-pro",
+        label: "Journal — Fleet update, the Mini 5 Pro lands",
+        note: "The field-notes companion. The Mini 5 Pro, the Insta360 ONE R, and the commercial-vs-bench framing in the wider context.",
+      },
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The 360 kit evolution at chest height. The home-built rig is the 2014 ancestor of the build-vs-buy pattern this article rests on.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The architectural diagram. Position four — trail reified — is the step where the studio leaves the plane.",
+      },
+      {
+        href: "/play",
+        label: "Play — the proving ground",
+        note: "Where the loop operates in 3D. The WebXR scenes the studio renders the gesture vocabulary into.",
+      },
+      {
+        href: "/bezel",
+        label: "Bezel — the pre-order page",
+        note: "The same augmentation logic for VR. A controller already in the player's hand, extended through a clip-on bezel.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "The bookable aerial commissions line this article describes the trigger for.",
+      },
+      {
+        href: "/about",
+        label: "About",
+        note: "Where the disability framing lives at length. This article names it once and architecturally; /about is the longer version.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://store.dji.com/uk/product/dji-avata-360",
+        label: "DJI Avata 360 — product page",
+        note: "The airframe that triggered the move. Two square 1-inch-area sensors, 8K/60 HDR 360, O4+ transmission, propeller protection.",
+      },
+      {
+        href: "https://www.dji.com/uk/mavic-2/info",
+        label: "DJI Mavic 2 Pro",
+        note: "The editorial photography platform. Hasselblad L1D-20c, adjustable aperture, D-log-M. The first airframe in the case.",
+      },
+      {
+        href: "https://www.dji.com/uk/avata",
+        label: "DJI Avata — original",
+        note: "Context for the Avata line: the cinewhoop FPV platform the 360 variant inherits its airframe engineering from.",
+      },
+      {
+        href: "https://lookingglassfactory.com/portrait",
+        label: "Looking Glass Portrait",
+        note: "Forty-eight parallax views rendered into a physical hologram on the desk. The volumetric output side of the move off the plane.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Equirectangular_projection",
+        label: "Equirectangular projection — Wikipedia",
+        note: "The flattened-sphere format the 360 camera writes to the SD card. A 2D rectangle storing a 3D volume.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Multirotor",
+        label: "Multirotor — Wikipedia",
+        note: "The flight platform engineering the studio chose to buy rather than build. Twelve years of vendor expertise the bench cannot replicate.",
+      },
+      {
+        href: "https://www.caa.co.uk/drones/",
+        label: "UK CAA — drones",
+        note: "The Civil Aviation Authority guidance the studio operates under. Operator registration, flyer ID, the rules of the airspace.",
+      },
+    ],
+  };

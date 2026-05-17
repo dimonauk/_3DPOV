@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -360,3 +362,85 @@ export default function London360WalkingTheCameraEvolution() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "london-360-walking",
+    title: "Ten Years of 360 Cameras, One Pole",
+    date: "2025-09-15",
+    kind: "article",
+    excerpt:
+      "Hours of London walking with a trekking pole, a selfie stick, and a 360 camera on top of that. From the 2016 Samsung Gear 360 eyeball through the Ricoh Theta and the long Insta360 middle to the current DJI Osmo 360. Why glass and sensor beat AI processing, and why ending up inside the DJI ecosystem was the calculation flipping.",
+    Body: London360WalkingTheCameraEvolution,
+    related: [
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The aerial counterpart. The DJI ecosystem on the air-side.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "Where the 360 walks meet the drones over the same sites.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The single-frame deliverables that come out of the equirectangulars.",
+      },
+      {
+        href: "/articles/sellotape-and-tilt-brush",
+        label: "Sellotape and Tilt Brush",
+        note: "The other origin-walk piece. The drawer the Samsung eyeball lives in.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The photographic side of the bench-built pattern. The home-built 360 rig is its 2014 ancestor.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The vendor-side diagnosis. Why Insta360 lost the studio to DJI when the modular line stopped being serious.",
+      },
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+        note: "The studio's longer self-description. Where the framework the home-built rig came out of is named.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Samsung_Gear_360",
+        label: "Samsung Gear 360 — Wikipedia",
+        note: "Full spec history of the spherical eyeball that started the studio's 360 walks.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Ricoh_Theta",
+        label: "Ricoh Theta — Wikipedia",
+        note: "The Theta line, including the Z1 with its 1-inch sensors. The first consumer 360 with files you could treat as photographs.",
+      },
+      {
+        href: "https://www.insta360.com/",
+        label: "Insta360 — manufacturer site",
+        note: "The catalogue the studio walked through for several years. Their AI Reframe and Studio software are the architectural choice this article argues against; the cameras genuinely earned their generation.",
+      },
+      {
+        href: "https://www.insta360.com/blog/tips/invisible-selfie-stick-how-to-use.html",
+        label: "How to use the invisible selfie stick — Insta360",
+        note: "Official explanation of the stitching trick that hides a monopod from an equirectangular.",
+      },
+      {
+        href: "https://www.dji.com/360",
+        label: "DJI Osmo 360 — product page",
+        note: "Current studio camera. Two 1/1.1-inch square CMOS, f/1.9, 8K/30 360 video, 13.5 stops dynamic range, 120 MP stills.",
+      },
+      {
+        href: "https://gopro.com/en/us/shop/cameras/max/CHDHZ-202-master.html",
+        label: "GoPro MAX — product page",
+        note: "The action-camera detour. Rugged, honest, not the answer for printable photographs.",
+      },
+    ],
+  };

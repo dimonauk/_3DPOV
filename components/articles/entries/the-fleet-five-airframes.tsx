@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 import Link from "next/link";
 
 import CodexRef from "components/codex/codex-ref";
@@ -299,3 +301,95 @@ export default function TheFleetFiveAirframes() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-fleet-five-airframes",
+    title: "The Fleet — Five Airframes, Honestly Reviewed",
+    date: "2025-04-09",
+    kind: "article",
+    excerpt:
+      "Five DJI airframes in the studio case — Mavic 2 Pro, Neo, Neo 2, Avata 360, Mini 5 Pro — plus the LED-modified rigs in first-flight testing. Real specs, honest limitations, and the FPV pipeline (Goggles + RC 2 + InAir head-tracking pod + Xreal One Pro) that ties them together.",
+    Body: TheFleetFiveAirframes,
+    related: [
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "The commissions page this fleet exists to serve.",
+      },
+      {
+        href: "/journal/the-fleet-update-mini-five-pro",
+        label: "Field record — Mini 5 Pro and the Bluetooth LEDs",
+        note: "The field-notes companion. The fifth airframe coming home from the shop and the unsynchronised LED swarm it carries.",
+      },
+      {
+        href: "/journal/first-light",
+        label: "Field record — First Light",
+        note: "The first proper flight of the LED-modified airframes.",
+      },
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The ground-side counterpart. The DJI ecosystem on the walk-side.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Where the Mavic's recce and documentation footage ends up serving a commission.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The bench tradition the LED-modified airframes come out of.",
+      },
+      {
+        href: "/contact?intent=aerial",
+        label: "Brief the studio — aerial",
+        note: "Commission a flight.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.dji.com/uk/mavic-2/info",
+        label: "DJI Mavic 2 — official product page",
+        note: "The Hasselblad L1D-20c platform; 1-inch sensor, adjustable aperture.",
+      },
+      {
+        href: "https://www.dji.com/uk/neo/specs",
+        label: "DJI Neo — specifications",
+        note: "135 g, single-axis gimbal, 4K/30.",
+      },
+      {
+        href: "https://www.dji.com/uk/neo-2/specs",
+        label: "DJI Neo 2 — specifications",
+        note: "151 g, two-axis gimbal, 4K/100 slow motion, omnidirectional vision with forward LiDAR.",
+      },
+      {
+        href: "https://store.dji.com/uk/product/dji-avata-360",
+        label: "DJI Avata 360 — product page",
+        note: "Dual 1-inch-equivalent CMOS sensors, 8K/60 360° video, O4+ transmission.",
+      },
+      {
+        href: "https://www.dji.com/uk/goggles-3",
+        label: "DJI Goggles 3 — product page",
+        note: "The FPV headset used for Avata 360 and head-tracked Neo work.",
+      },
+      {
+        href: "https://www.xreal.com/us/one-pro",
+        label: "Xreal One Pro — product page",
+        note: "57° FOV AR glasses worn under the Goggles to keep external line of sight to the airframe.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/First-person_view_(radio_control)",
+        label: "First-person view (radio control) — Wikipedia",
+        note: "The broader tradition the FPV pipeline sits in.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "What lets the LED-modified airframes paint a trail into a long-exposure photograph.",
+      },
+    ],
+  };

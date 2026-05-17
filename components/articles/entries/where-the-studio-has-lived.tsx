@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -234,3 +236,69 @@ export default function WhereTheStudioHasLived() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "where-the-studio-has-lived",
+    title: "Where the Studio Has Lived",
+    date: "2025-06-12",
+    kind: "article",
+    excerpt:
+      "A practice accumulates its writing on whatever platform was open in another tab. Make:, CodePen, GitHub, Instructables, the forums, the gists, the Reddit threads. The retelling on this site is the consolidation — in one voice, cross-referenced, on infrastructure the studio owns.",
+    Body: WhereTheStudioHasLived,
+    related: [
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "Including the line on no platform the studio can't replace.",
+      },
+      {
+        href: "/articles/the-familiar",
+        label: "The Familiar",
+        note: "How the studio is actually run, two minds keeping it whole.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "The wider gratitude — the free code the rigs rest on.",
+      },
+      {
+        href: "/tutorials",
+        label: "Tutorials — the current canonical surface",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://makezine.com/",
+        label: "Make: — DIY projects and ideas for makers",
+        note: "The maker-community ecosystem that taught a generation how to write a build log.",
+      },
+      {
+        href: "https://www.instructables.com/",
+        label: "Instructables",
+        note: "Long-form step-by-step maker tutorials with photographs and parts lists.",
+      },
+      {
+        href: "https://codepen.io/",
+        label: "CodePen",
+        note: "Front-end code sketchpad.",
+      },
+      {
+        href: "https://github.com/",
+        label: "GitHub",
+        note: "Where the code has to live because it's code.",
+      },
+      {
+        href: "https://hackaday.com/",
+        label: "Hackaday",
+        note: "Daily hardware-hacking writing.",
+      },
+      {
+        href: "https://web.archive.org/",
+        label: "Internet Archive — Wayback Machine",
+        note: "Where older versions of the studio's writing on dead or renamed platforms can sometimes still be recovered.",
+      },
+    ],
+  };

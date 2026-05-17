@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -262,3 +264,80 @@ export default function TheCausticDiscArticle() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-caustic-disc",
+    title: "The Caustic Disc",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "The studio's first production-ready artefact: a palm-sized acrylic or resin disc with a precisely-computed refractive surface that, held over a torch, projects a specific image as a focused caustic on the wall. The inverse optics, the optimiser at python-services/caustic_optimizer.py, the polishing pass, the calibrated torch, the provenance record. The pair piece to the bezel — both are objects that translate light into image by geometry.",
+    Body: TheCausticDiscArticle,
+    related: [
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "The sibling hardware artefact. The bezel adds light to a gesture; the disc reshapes light into an image.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows From the Inside",
+        note: "The optics-of-mechanism companion. Same refractive bench, different geometry register.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "Geometry doing the work a coating would. The caustic disc is the same trick at the macroscopic scale.",
+      },
+      {
+        href: "/articles/provenance-as-discipline",
+        label: "Provenance as Discipline",
+        note: "The typed JSON record every editioned disc ships with, alongside the calibrated torch.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "The operational philosophy that underwrites the hardware line. One disc per target, one torch per disc, swappable parts.",
+      },
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "The calibration-and-provenance route the discs ship through.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Caustic_(optics)",
+        label: "Caustic (optics) — Wikipedia",
+        note: "The umbrella article. Mathematical definition, examples, and the link out to the inverse-problem literature.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Snell%27s_law",
+        label: "Snell's Law — Wikipedia",
+        note: "The refraction equation applied at every grid point of the height field.",
+      },
+      {
+        href: "https://www.mitsuba-renderer.org/",
+        label: "Mitsuba renderer",
+        note: "Open-source physically-based renderer with caustic-optimisation extensions. The reference implementation the field benchmarks against.",
+      },
+      {
+        href: "https://rgl.epfl.ch/publications/Schwartzburg2014HighContrast",
+        label: "Schwartzburg et al. — High-contrast computational caustic design (EPFL, 2014)",
+        note: "The foundational paper on inverse-caustic surface design. The shape of every caustic-disc optimiser since.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Diamond_turning",
+        label: "Diamond turning — Wikipedia",
+        note: "Sub-micron single-point CNC machining. The acrylic-disc production route.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Digital_light_processing",
+        label: "Digital light processing — Wikipedia",
+        note: "DLP photopolymer printing. The optical-resin production route on the studio's own bench.",
+      },
+    ],
+  };

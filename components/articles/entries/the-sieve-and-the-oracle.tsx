@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function TheSieveAndTheOracleArticle() {
   const ext = "underline underline-offset-4 hover:text-pink-200";
 
@@ -222,3 +224,60 @@ export default function TheSieveAndTheOracleArticle() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-sieve-and-the-oracle",
+    title: "The Sieve and the Oracle",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "Editioned work crosses two gates before it leaves the bench. The Sieve is mechanical — paper profile, edition number, COA fields, reference-light photograph, file hash. The Oracle is considered — me, under the studio's reference light, deciding whether the print belongs in the line. The Sieve runs first; the Oracle has refusal authority; they do not collapse into one pass.",
+    Body: TheSieveAndTheOracleArticle,
+    related: [
+      {
+        href: "/articles/provenance-as-discipline",
+        label: "Provenance as Discipline",
+        note: "The typed record the Sieve produces; the structural cousin to this piece.",
+      },
+      {
+        href: "/bureau",
+        label: "Print bureau",
+        note: "Where the two-pass discipline runs every print through.",
+      },
+      {
+        href: "/articles/the-right-paper-for-a-light-painting",
+        label: "The Right Paper for a Light Painting",
+        note: "The soft-proof procedure the Sieve checks against.",
+      },
+      {
+        href: "/articles/what-the-studio-wont-do",
+        label: "What the Studio Won't Do",
+        note: "The refusals register, at higher altitude. The Oracle is what that register looks like at the bench.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The wider working environment the two passes sit inside.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Quality_control",
+        label: "Quality control — Wikipedia",
+        note: "Background on the two-stage inspection pattern this discipline is a domain-specific case of.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Inter-rater_reliability",
+        label: "Inter-rater reliability — Wikipedia",
+        note: "Why subjective judgement needs anchoring against a known-good reference, and why the Oracle works against an exemplar from the same line.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Edition_(printmaking)",
+        label: "Edition (printmaking) — Wikipedia",
+        note: "Why edition-numbering integrity is load-bearing on value, and why the Sieve protects the ledger before charisma can talk past it.",
+      },
+    ],
+  };

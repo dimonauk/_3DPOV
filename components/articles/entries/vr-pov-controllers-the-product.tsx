@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -219,3 +221,74 @@ export default function VrPovControllersTheProduct() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "vr-pov-controllers-the-product",
+    title: "VR POV Controllers — the Studio's Product",
+    date: "2026-02-08",
+    kind: "article",
+    excerpt:
+      "The thing twelve years of practice was rehearsal for: clip-on POV LED bezels for Meta Quest 3 and Valve Steam Frame controllers. Real-world light painting and VR-mirrored gesture at the same time. The Princess hands you the instrument.",
+    Body: VrPovControllersTheProduct,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The bench tradition the product comes out of.",
+      },
+      {
+        href: "/tutorials/programming-pov-frames",
+        label: "Tutorial — Programming Frames for a POV Rig",
+        note: "The same firmware runs on the consumer bezels.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "If you want to keep building your own instead.",
+      },
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — the Same Trace, Wearable",
+        note: "The other small-scale product line.",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The output the bezels feed back into.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.meta.com/quest/quest-3/",
+        label: "Meta Quest 3",
+        note: "The first headset the bezels are fitted to.",
+      },
+      {
+        href: "https://www.valvesoftware.com/en/steam-frame",
+        label: "Valve Steam Frame",
+        note: "The second headset the bezels are fitted to.",
+      },
+      {
+        href: "https://immersiveweb.dev/",
+        label: "Immersive Web — WebXR development",
+        note: "The standard the companion app is built against.",
+      },
+      {
+        href: "https://github.com/pmndrs/xr",
+        label: "@react-three/xr",
+        note: "The library the WebXR companion runs on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The principle the bezels rely on.",
+      },
+    ],
+  };

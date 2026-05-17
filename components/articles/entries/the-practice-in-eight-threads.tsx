@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -544,3 +546,155 @@ export default function ThePracticeInEightThreads() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-practice-in-eight-threads",
+    title: "The Practice in Eight Threads",
+    date: "2026-05-14",
+    kind: "article",
+    excerpt:
+      "Eight threads, one trunk article. Modularity at small scale; persistence of vision as angle, not clock; the Loop closing in one session; cold-eye watching; sovereignty as local-first architecture; self-taught learnability; trans-led community and dignified gating; augmentation of reach on terms the body can sustain. The eight solo levels of the AR game named in prose. A reader who reads only this piece knows what the studio actually argues before they read any other.",
+    Body: ThePracticeInEightThreads,
+    related: [
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+        note: "The framing-page companion. This article is the long-form argument; /about is the short-form positioning.",
+      },
+      {
+        href: "/play",
+        label: "Play — the proving ground",
+        note: "The AR game has eight solo levels named after these eight threads. The game proves the philosophy by being it.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop — six positions, one closed circuit",
+        note: "Thread three's architectural diagram. The Loop is the position the whole practice returns to.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack — the bench inventory",
+        note: "The dispassionate data version of threads one, two, five and eight. Every layer named with vendor and version.",
+      },
+      {
+        href: "/articles/why-i-build-modular",
+        label: "Why I Build Modular",
+        note: "Thread one in long form. Why modular kit is a tax at consumer scale and a feature at studio scale.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "Thread two in long form. Angular-sync as the architectural choice that makes the photograph land sharp.",
+      },
+      {
+        href: "/articles/nine-seconds-prompt-to-printable",
+        label: "Nine Seconds from Prompt to Printable",
+        note: "Thread three made tractable. The Loop closing in one afternoon, prompt to STL in the time it takes to make a cup of tea.",
+      },
+      {
+        href: "/watch",
+        label: "Watch — Aura's eyes",
+        note: "Thread four's working surface. The video-reading prototype turned inward; cold-eye watching as a process.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "Thread four's working-method companion. The cold-eye applied to the studio's own process.",
+      },
+      {
+        href: "/articles/on-the-shoulders-of-open-source",
+        label: "On the Shoulders of Open Source",
+        note: "Thread five in long form. The open-source bibliography the sovereignty argument rests on.",
+      },
+      {
+        href: "/learn",
+        label: "Learn — the seven ladders",
+        note: "Thread six made into a curriculum. Seven self-taught ladders, each with concrete rungs.",
+      },
+      {
+        href: "/journal/year-one-fire",
+        label: "Journal — Year One, Fire",
+        note: "Thread six's bottom rung, written honestly. Where the self-taught ladder actually starts.",
+      },
+      {
+        href: "/rookery/about",
+        label: "About the Rookery",
+        note: "Thread seven in long form. The trans-led community and the subscription-as-door policy.",
+      },
+      {
+        href: "/rookery/tiers",
+        label: "Rookery — tiers",
+        note: "Thread seven's pricing. The actual door, with prices on it.",
+      },
+      {
+        href: "/articles/ungrounded",
+        label: "Ungrounded",
+        note: "Thread eight in long form. Drones and the bezel-clip as the same augmentation pattern applied to two volumes.",
+      },
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "Thread eight's kit version. The five-airframe fleet as the augmentation of reach into airspace.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "The prose version of /stack. Every layer named in the order a poi photograph travels through the studio.",
+      },
+      {
+        href: "/bezel",
+        label: "The bezel — the clip-on product",
+        note: "Threads one, two, and eight running through one object. Modular, angular-sync, augmentation-of-reach in scene-space.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Modular_design",
+        label: "Modular design — Wikipedia",
+        note: "Thread one's reference. The design principle the studio's instruments are built on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "Thread two's optical foundation. What makes the eye assemble a smear of frames into a single image.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Sovereignty",
+        label: "Sovereignty — Wikipedia",
+        note: "Thread five's word, used in its honest sense. The studio owns the instruments of its own production.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Body_schema",
+        label: "Body schema — Wikipedia",
+        note: "Thread eight's psychological reference. How a body's working envelope is represented internally, and how kit extends it.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Right_to_repair",
+        label: "Right to repair — Wikipedia",
+        note: "Thread one's political cousin. The audience for whom modular kit is a feature, not a tax.",
+      },
+      {
+        href: "https://sfconservancy.org/",
+        label: "Software Freedom Conservancy",
+        note: "Thread five's institutional cousin. The legal architecture that makes open-source-as-sovereignty actually work.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Free_and_open-source_software",
+        label: "Free and open-source software — Wikipedia",
+        note: "Thread five's broader context. The category the bench's software layer is built from.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Autodidacticism",
+        label: "Autodidacticism — Wikipedia",
+        note: "Thread six's older name. Self-teaching as a structured discipline; the studio's whole curriculum is one.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Augmentative_and_alternative_communication",
+        label: "Augmentation — Wikipedia",
+        note: "Thread eight's wider field. Augmentation as a category of practice for bodies with variable working envelopes.",
+      },
+    ],
+  };

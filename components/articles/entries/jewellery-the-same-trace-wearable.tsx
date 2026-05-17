@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -159,3 +161,53 @@ export default function JewelleryTheSameTraceWearable() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "jewellery-the-same-trace-wearable",
+    title: "Jewellery — the Same Trace, Wearable",
+    date: "2025-05-31",
+    kind: "article",
+    excerpt:
+      "The same photograph that becomes a sculpture can become a pendant. Pendants, earrings, brooches, bangles — same source, smaller body, the gesture carried into rooms the sculpture will never see.",
+    Body: JewelleryTheSameTraceWearable,
+    related: [
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The other end of the same trace, scaled up.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "Optical engineering of the per-piece waveguide.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs — the source material",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a piece",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Light_pipe",
+        label: "Light pipe / waveguide — Wikipedia",
+        note: "The optical principle the wearable channels rely on.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Inductive_charging",
+        label: "Inductive charging — Wikipedia",
+        note: "The Qi-adjacent system the studio's pieces charge through.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Lithium_polymer_battery",
+        label: "Lithium-polymer batteries — Wikipedia",
+        note: "What sits inside the bezel; replaceable, standard part.",
+      },
+    ],
+  };

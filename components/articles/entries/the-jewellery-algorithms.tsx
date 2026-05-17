@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -395,3 +397,135 @@ export default function TheJewelleryAlgorithms() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-jewellery-algorithms",
+    title: "The Jewellery Algorithms",
+    date: "2026-05-15",
+    kind: "article",
+    excerpt:
+      "Behind the pendant line is the atelier — a cabinet of thirty algorithmic drawers, each named after the structure it produces. Spiral, Gyroid, Voronoi, Penrose, Celtic Knot, Diatom Hex, Wigner-Seitz, Enneper, Sigil, L-System and twenty more. A commission opens a drawer; the cabinet does the form-finding.",
+    Body: TheJewelleryAlgorithms,
+    related: [
+      {
+        href: "/articles/jewellery-the-same-trace-wearable",
+        label: "Jewellery — The Same Trace, Wearable",
+        note: "The product side of the pendant line. The article this one sits behind.",
+      },
+      {
+        href: "/articles/how-the-studio-breeds-sculptures",
+        label: "How the Studio Breeds Sculptures",
+        note: "The sculpture-scale cousin of the atelier — same generator-plus-operator logic, larger objects.",
+      },
+      {
+        href: "/articles/colour-without-pigment",
+        label: "Colour Without Pigment",
+        note: "The optical companion. Why the pieces from the cabinet glow without dye.",
+      },
+      {
+        href: "/articles/art-as-door-five-layers",
+        label: "Art as Door — Five Layers",
+        note: "The architectural frame the atelier sits inside. Layer four is the breeding engine; the atelier is its wearable scale.",
+      },
+      {
+        href: "/articles/why-the-pendant-glows-from-the-inside",
+        label: "Why the Pendant Glows from the Inside",
+        note: "The total-internal-reflection physics behind every piece the cabinet outputs.",
+      },
+      {
+        href: "/articles/the-bench",
+        label: "The Bench",
+        note: "Where the atelier physically lives — the same workstation, the same SLA printer, the same six square metres.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "The atelier's tools listed dispassionately on the studio's stack page.",
+      },
+      {
+        href: "/the-loop",
+        label: "The Loop",
+        note: "The closed circuit the atelier sits inside. Commission to seed to algorithm to candidate to bezel to print.",
+      },
+      {
+        href: "/atelier/algorithms",
+        label: "The algorithm cabinet",
+        note: "The thirty drawers as a browsable index. Live R3F preview on the ported subset; catalogue entry for the rest.",
+      },
+      {
+        href: "/atelier/algorithms/spiral",
+        label: "Algorithm — Spiral",
+        note: "The logarithmic / Fermat spiral drawer. Live preview with seed, complexity, density sliders.",
+      },
+      {
+        href: "/atelier/algorithms/gyroid",
+        label: "Algorithm — Gyroid",
+        note: "Schoen&rsquo;s 1970 triply-periodic minimal surface, sampled as a height-field patch. The diffuse-glow drawer.",
+      },
+      {
+        href: "/atelier/algorithms/celtic-knot",
+        label: "Algorithm — Celtic Knot",
+        note: "Multi-strand torus-braid with Z-oscillation. The Irish-monastic idiom formalised.",
+      },
+      {
+        href: "/atelier/algorithms/penrose-tiling",
+        label: "Algorithm — Penrose Tiling",
+        note: "The aperiodic two-tile rhombus deflation. Catalogue entry; runnable source queued.",
+      },
+      {
+        href: "/atelier/algorithms/diatom-hex",
+        label: "Algorithm — Diatom Hex",
+        note: "The hexagonal-pore frustule pattern. Catalogue entry; runnable source queued.",
+      },
+      {
+        href: "/atelier/evolution",
+        label: "The evolution suite",
+        note: "Fourteen stations the breeding engine threads the algorithm cabinet through. The cabinet supplies the generators; the suite supplies the lineage.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Voronoi_diagram",
+        label: "Voronoi diagram — Wikipedia",
+        note: "The boundary-network drawer. Drop seeds, draw the regions of nearest-point assignment.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Penrose_tiling",
+        label: "Penrose tiling — Wikipedia",
+        note: "The aperiodic-lattice drawer. Two rhombi, a fivefold symmetry, no repeats.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gyroid",
+        label: "Gyroid — Wikipedia",
+        note: "The triply periodic minimal surface Alan Schoen described in 1970. The cabinet's diffuse-glow drawer.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Wigner%E2%80%93Seitz_cell",
+        label: "Wigner-Seitz cell — Wikipedia",
+        note: "The primitive-cell-of-a-lattice drawer. A gemstone-cut surface derived from solid-state physics.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Celtic_knot",
+        label: "Celtic knot — Wikipedia",
+        note: "The unbroken-weave family. Triquetra, plait, Book of Kells initials.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/L-system",
+        label: "L-system — Wikipedia",
+        note: "Aristid Lindenmayer's 1968 formal grammar for branching growth. The botanical drawer.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Diffusion-limited_aggregation",
+        label: "Diffusion-limited aggregation — Wikipedia",
+        note: "The crystalline-branching drawer. Frost on glass, lichen on stone, the dendrite under the microscope.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Enneper_surface",
+        label: "Enneper surface — Wikipedia",
+        note: "Alfred Enneper's 1864 self-intersecting minimal surface. The fold-back-on-itself drawer.",
+      },
+    ],
+  };

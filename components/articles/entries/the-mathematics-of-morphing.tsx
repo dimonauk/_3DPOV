@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -298,3 +300,60 @@ export default function TheMathematicsOfMorphingArticle() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-mathematics-of-morphing",
+    title: "The Mathematics of Morphing",
+    date: "2026-05-13",
+    kind: "article",
+    excerpt:
+      "The thirty-one named easing curves the studio uses for every animation in its kit — from the LED-wall pieces to Aura's breath cycle to the baseline → peak → baseline swing of a gesture. The curve is the load-bearing aesthetic choice; the endpoints are usually obvious. Penner's catalogue, where it lives in the studio, and the bench refusals.",
+    Body: TheMathematicsOfMorphingArticle,
+    related: [
+      {
+        href: "/articles/morphing-things-together",
+        label: "Morphing Things Together",
+        note: "Companion piece. That one names the four substrates the studio morphs; this one names the maths that shapes the morph.",
+      },
+      {
+        href: "/articles/the-living-stage",
+        label: "The Living Stage",
+        note: "The choreography engine reaches into the same easing catalogue for the Laban Effort drift across a song's structure.",
+      },
+      {
+        href: "/articles/aura-the-body",
+        label: "Aura the Body",
+        note: "Where the breath cycle and the wave gesture live. The catalogue's busiest customer on the bench.",
+      },
+      {
+        href: "/articles/spiral-cognition",
+        label: "Spiral Cognition",
+        note: "How a practice notices it has been using one library across four substrates without quite naming the operation.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://easings.net/",
+        label: "easings.net",
+        note: "The canonical visual reference — every named curve with its equation and an interactive preview.",
+      },
+      {
+        href: "https://www.w3.org/TR/css-easing-1/",
+        label: "CSS Easing Functions Level 1 — W3C",
+        note: "The standardised subset. Cubic-bezier, steps, the named keywords. The bit every browser ships.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Easing_function",
+        label: "Easing function — Wikipedia",
+        note: "The catalogue overview. The same dozen curves keep being re-derived because they sit at honest places in the design space.",
+      },
+      {
+        href: "https://robertpenner.com/easing/",
+        label: "Robert Penner — Easing Equations",
+        note: "The 1998-2002 originals. ActionScript first, then everywhere else.",
+      },
+    ],
+  };

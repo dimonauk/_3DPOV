@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -224,3 +226,79 @@ export default function VrAsPsychologicalSystem() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "vr-as-psychological-system",
+    title: "VR as a Psychological System",
+    date: "2025-10-14",
+    kind: "article",
+    excerpt:
+      "Twenty-two years of thinking about VR not as a graphics problem but as a psychological system: presence (Slater), embodiment (Ehrsson), attention (Kahneman), telepresence and its losses. How those ideas underwrite a flow-arts photography practice, and where they're heading next.",
+    Body: VrAsPsychologicalSystem,
+    related: [
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "Where the theoretical arc lands as a shippable instrument.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year movement arc",
+      },
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "Attentional-architecture ideas applied at room scale.",
+      },
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The historical line back from which all this descends.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Immersion_(virtual_reality)",
+        label: "Immersion (VR) — Wikipedia",
+        note: "Overview of immersion, presence, and place illusion.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Body_transfer_illusion",
+        label: "Body transfer / rubber-hand illusion — Wikipedia",
+        note: "The classic embodiment experiments and their VR descendants.",
+      },
+      {
+        href: "https://www.ucl.ac.uk/computer-science/people/mel-slater",
+        label: "Mel Slater — UCL",
+        note: "Canonical presence-theory researcher; the Place Illusion / Plausibility Illusion framework.",
+      },
+      {
+        href: "https://www.karolinska.se/en/research/research-areas-centra/centers/perceptual-sensory-experimentation/",
+        label: "Henrik Ehrsson — Karolinska Institute",
+        note: "Embodiment and body-ownership research; the modern home of the rubber-hand and full-body illusions.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Attention",
+        label: "Attention — Wikipedia",
+        note: "Starting point for attention theory; Kahneman's Attention and Effort is the load-bearing book.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Telepresence",
+        label: "Telepresence — Wikipedia",
+        note: "The mediation losses that motivate the studio's body-first design instinct.",
+      },
+      {
+        href: "https://ieeevr.org/",
+        label: "IEEE VR conference",
+        note: "Annual proceedings; the densest source of current immersive-systems research.",
+      },
+      {
+        href: "https://www.frontiersin.org/journals/virtual-reality",
+        label: "Frontiers in Virtual Reality",
+        note: "Open-access journal covering psychological, clinical, and design research.",
+      },
+    ],
+  };

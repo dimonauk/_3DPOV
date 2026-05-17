@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -487,3 +489,94 @@ export default function FromPicassoForward() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "from-picasso-forward",
+    title: "From Picasso, Forward",
+    date: "2025-11-21",
+    kind: "article",
+    excerpt:
+      "The course of light-painting photography from Picasso's 1949 penlight centaurs to the present studio bench. Mili, DaSilva, the Flickr decade, Rochon and Pearson and Huhtamo and Parviainen, Wu's drone halos, and the angular-synced rigs in Salford that turn the photograph into an object.",
+    Body: FromPicassoForward,
+    related: [
+      {
+        href: "/articles/lineage-marey-to-now",
+        label: "The Lineage — Marey to Now",
+        note: "The ancestral half of the same chronology.",
+      },
+      {
+        href: "/articles/kindred-practices",
+        label: "Kindred Practices",
+        note: "Contemporary practitioner survey in full.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The technical argument for angular sync over time sync.",
+      },
+      {
+        href: "/articles/sellotape-and-tilt-brush",
+        label: "Sellotape and Tilt Brush",
+        note: "Where the photograph-to-object instinct originally came from.",
+      },
+      {
+        href: "/articles/vr-pov-controllers-the-product",
+        label: "VR POV Controllers — the Studio's Product",
+        note: "The forward bet named at the end of this piece.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the twelve-year arc",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Gjon_Mili",
+        label: "Gjon Mili — Wikipedia",
+        note: "Edgerton student, Life staff photographer; set the camera in Vallauris in 1949.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Pablo_Picasso",
+        label: "Pablo Picasso — Wikipedia",
+        note: "The artist who treated the long exposure as a sheet of paper.",
+      },
+      {
+        href: "https://www.life.com/arts-entertainment/behind-the-picture-picasso-draws-with-light/",
+        label: "Behind the Picture: Picasso 'Draws' With Light — LIFE",
+        note: "The magazine's own archived account of the 1949 shoot.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Light_painting",
+        label: "Light painting — Wikipedia",
+        note: "Discipline overview; chronology of major practitioners and techniques.",
+      },
+      {
+        href: "https://www.vickidasilva.com/",
+        label: "Vicki DaSilva",
+        note: "Fluorescent-tube light graffiti since 1980; coined the term.",
+      },
+      {
+        href: "https://reubenwu.com/",
+        label: "Reuben Wu",
+        note: "Lux Noctis and Aeroglyphs — drone-LED long exposures at architectural scale.",
+      },
+      {
+        href: "https://thepixelstick.com/",
+        label: "Pixelstick",
+        note: "The 2013 Kickstarter that made the commercial time-synced pixel rig mainstream.",
+      },
+      {
+        href: "https://lightpaintinghub.com/",
+        label: "Light Painting Hub",
+        note: "Contemporary community entry point; practitioner directory.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Chronophotography",
+        label: "Chronophotography — Wikipedia",
+        note: "The photographic tradition the entire chronology descends from.",
+      },
+    ],
+  };
