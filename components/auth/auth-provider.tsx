@@ -1,8 +1,13 @@
 "use client";
 
-import { onAuthStateChanged, type User } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  signOut as firebaseSignOut,
+  type User,
+} from "firebase/auth";
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -14,12 +19,14 @@ type AuthContextValue = {
   user: User | null;
   loading: boolean;
   configured: boolean;
+  signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue>({
   user: null,
   loading: true,
   configured: false,
+  signOut: async () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -43,8 +50,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, [configured]);
 
+  const signOut = useCallback(async () => {
+    const auth = getFirebaseAuth();
+    if (!auth) return;
+    await firebaseSignOut(auth);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, loading, configured }}>
+    <AuthContext.Provider value={{ user, loading, configured, signOut }}>
       {children}
     </AuthContext.Provider>
   );

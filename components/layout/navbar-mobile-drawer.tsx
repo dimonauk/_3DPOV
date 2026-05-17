@@ -14,6 +14,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
+import { useAuth } from "components/auth/auth-provider";
 import LogoSquare from "components/logo-square";
 
 import { GROUPS, isLinkActive } from "./navbar-config";
@@ -26,6 +27,7 @@ export function MobileDrawer({
   onClose: () => void;
 }) {
   const pathname = usePathname();
+  const { user, signOut } = useAuth();
 
   return (
     <Transition show={isOpen}>
@@ -91,6 +93,25 @@ export function MobileDrawer({
                   <ul className="flex flex-col">
                     {group.links.map((link) => {
                       const active = isLinkActive(pathname, link.href);
+                      // Auth-aware swap: /signin → "Sign out" button when
+                      // the user is logged in. Matches the desktop nav
+                      // behaviour in navbar-desktop-group.tsx.
+                      if (link.href === "/signin" && user) {
+                        return (
+                          <li key={link.href}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onClose();
+                                void signOut();
+                              }}
+                              className="block w-full py-2 text-left text-base text-chrome-200 transition-colors hover:text-pink-200"
+                            >
+                              Sign out
+                            </button>
+                          </li>
+                        );
+                      }
                       return (
                         <li key={link.href}>
                           <Link
