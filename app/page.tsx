@@ -4,6 +4,12 @@ import Footer from "components/layout/footer";
 import { HolofoilHypercube } from "components/holofoil-hypercube";
 import Link from "next/link";
 
+// Force dynamic rendering — the Shopify product fetch in Carousel / 
+// ThreeItemGrid was intermittently failing during static prerender 
+// (see digest 265885447). Rendering at request time avoids it 
+// without forcing us to handle Shopify outage edge cases at build.
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   description:
     "Holo-Flow Studio — long-exposure light-painting photographs translated into 3D-printed objects with embedded ambient-light waveguides. Poi practice, persistence-of-vision LED arrays, drone-mounted LED systems. Salford, UK.",

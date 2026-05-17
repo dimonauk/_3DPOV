@@ -1,0 +1,17 @@
+{
+  "id": "event-host",
+  "name": "Event Host & Producer",
+  "description": "Hot pink + chrome. For conference hosts, festival producers, event marketers.",
+  "tags": ["event", "producer", "marketing"],
+  "palette": {
+    "primary": "#FF1F8B",
+    "secondary": "#C9C9D4",
+    "accent": "#1A1A1A",
+    "textOnBrand": "#FFFFFF",
+    "font": "display"
+  },
+  "starter": {
+    "role": "Festival producer · creative director",
+    "tagline": "Bringing the room together since the first invite."
+  }
+}

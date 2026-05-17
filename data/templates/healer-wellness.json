@@ -1,0 +1,17 @@
+{
+  "id": "healer-wellness",
+  "name": "Healer & Wellness Practitioner",
+  "description": "Soft sage + forest. For therapists, coaches, bodyworkers, breathwork facilitators.",
+  "tags": ["wellness", "therapy", "healing"],
+  "palette": {
+    "primary": "#7BA382",
+    "secondary": "#A4C2A8",
+    "accent": "#D8B98B",
+    "textOnBrand": "#FFFFFF",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Somatic therapist · breathwork facilitator",
+    "tagline": "Slowing down enough to be felt."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "studio-executive",
+  "name": "Studio Executive",
+  "description": "Restrained, confident, neutral. For founders, principals, directors, leadership.",
+  "tags": ["leadership", "professional", "minimal"],
+  "palette": {
+    "primary": "#1A1A1A",
+    "secondary": "#3A3A3A",
+    "accent": "#C9A671",
+    "textOnBrand": "#FFFFFF",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Founder & Principal",
+    "tagline": ""
+  }
+}

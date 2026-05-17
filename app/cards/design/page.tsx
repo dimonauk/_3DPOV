@@ -31,6 +31,8 @@ import {
   type CardErrorCode,
 } from "lib/cards/firestore-client";
 import { signInWithGoogle } from "lib/firebase/client";
+import CardScanner, { type ExtractedCardFields } from "components/cards/CardScanner";
+import TemplatePicker, { type CardTemplate } from "components/cards/TemplatePicker";
 
 // Sensible defaults so the page is never empty.
 const STARTER: Card = {
@@ -217,6 +219,62 @@ function CardDesignerInner() {
     val: Card["contact"][K],
   ) => setCard((c) => ({ ...c, contact: { ...c.contact, [key]: val } }));
 
+  /**
+   * AI scanner result handler — merges extracted fields into the card.
+   * Skips empty values so manual entries already in the form are not
+   * blown away.
+   */
+  const applyExtracted = (fields: ExtractedCardFields) => {
+    setCard((c) => {
+      const next: Card = {
+        ...c,
+        name: fields.name?.trim() || c.name,
+        role: fields.role?.trim() || c.role,
+        studio: fields.studio?.trim() || c.studio,
+        tagline: fields.tagline?.trim() || c.tagline,
+        contact: {
+          ...c.contact,
+          email: fields.email?.trim() || c.contact.email,
+          phone: fields.phone?.trim() || c.contact.phone,
+          website: fields.website?.trim() || c.contact.website,
+          handles:
+            fields.handles && fields.handles.length > 0
+              ? fields.handles.map((h) => ({
+                  platform: h.platform,
+                  handle: h.handle,
+                  url: h.url,
+                }))
+              : c.contact.handles,
+        },
+      };
+      if (next.name && (c.slug === "you" || c.slug === slugify(c.name) || !c.slug)) {
+        next.slug = slugify(next.name) || c.slug;
+      }
+      return next;
+    });
+  };
+
+  /**
+   * Apply a template: sets brand palette + starter role / tagline.
+   * Does NOT touch the user-typed identity (name, contact) so picking
+   * a template mid-edit only restyles, never erases.
+   */
+  const applyTemplate = (t: CardTemplate) => {
+    setCard((c) => ({
+      ...c,
+      role: c.role && c.role !== "What you do" ? c.role : t.starter.role,
+      tagline: c.tagline || t.starter.tagline,
+      brand: {
+        ...c.brand,
+        primary: t.palette.primary,
+        secondary: t.palette.secondary,
+        accent: t.palette.accent,
+        textOnBrand: t.palette.textOnBrand,
+        font: t.palette.font,
+      },
+    }));
+  };
+
   const handleCopy = async () => {
     if (!previewUrl) return;
     try {
@@ -272,6 +330,11 @@ function CardDesignerInner() {
             className="flex flex-col gap-10"
             onSubmit={(e) => e.preventDefault()}
           >
+            <TemplatePicker onPick={applyTemplate} />
+            <CardScanner
+              onExtracted={applyExtracted}
+              accent={card.brand.primary || "#ff6fb5"}
+            />
             <Fieldset legend="Identity">
               <Field label="Name" hint="As it appears on the card.">
                 <input

@@ -13,7 +13,6 @@ import { verifyIdToken } from "lib/firebase/admin";
  * Response: aggregateCardEvents result — totals + breakdowns by type,
  * source, country, day. Capped at 5000 events for the bucket scan.
  */
-
 type Params = { params: Promise<{ slug: string }> };
 
 export async function GET(req: NextRequest, { params }: Params) {

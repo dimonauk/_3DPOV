@@ -25,7 +25,6 @@ import { fanOutWebhook } from "lib/cards/webhooks-server";
  * If the card has a webhook URL configured, the lead is also forwarded
  * to that URL with an HMAC-signed payload.
  */
-
 type Params = { params: Promise<{ slug: string }> };
 
 export async function POST(req: NextRequest, { params }: Params) {

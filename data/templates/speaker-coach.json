@@ -1,0 +1,17 @@
+{
+  "id": "speaker-coach",
+  "name": "Speaker & Coach",
+  "description": "Confident gold-on-navy. For keynote speakers, executive coaches, consultants.",
+  "tags": ["speaker", "coach", "thought-leadership"],
+  "palette": {
+    "primary": "#0B1E3A",
+    "secondary": "#1E3A6E",
+    "accent": "#D4A24C",
+    "textOnBrand": "#FFFFFF",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Keynote speaker · executive coach",
+    "tagline": "Helping leaders think out loud, then act on it."
+  }
+}

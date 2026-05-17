@@ -1,0 +1,17 @@
+{
+  "id": "visual-artist",
+  "name": "Visual Artist",
+  "description": "Hand-mixed pastel + warm cream. For painters, illustrators, sculptors, photographers.",
+  "tags": ["artist", "creative", "visual"],
+  "palette": {
+    "primary": "#C9A0DC",
+    "secondary": "#F2C6A8",
+    "accent": "#5F4E76",
+    "textOnBrand": "#3A2F4F",
+    "font": "serif"
+  },
+  "starter": {
+    "role": "Artist · painter & printmaker",
+    "tagline": "Pieces in conversation with the body."
+  }
+}

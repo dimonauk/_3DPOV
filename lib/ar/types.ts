@@ -54,21 +54,28 @@ export interface CardARConfig {
    */
   vrm?: string;
   /**
-   * Persona / system-prompt for the in-card chat agent. When set, the
-   * /c/[slug]/chat endpoint streams an LLM response shaped by this
-   * persona via lib/cards/aura-server.streamAuraReply. Absent →
-   * /api/cards/[slug]/chat returns 422 and the chat affordance hides.
-   */
-  vrmPersona?: string;
-  /**
-   * Greeting line the avatar speaks once after the visitor wakes it.
-   * Plain text; rendered via Web Speech synthesis. Optional.
+   * Optional intro line the avatar speaks on first mount of the Avatar
+   * tab. Delivered via the browser's Web Speech API — zero server cost,
+   * voice quality varies by platform but is decent on macOS/iOS.
+   *
+   * Example: "Hi! I'm Aura. Dimona built me into this card so you'd
+   * have someone to talk to while she's not around. What brings you?"
    */
   vrmIntro?: string;
   /**
-   * Preferred TTS voice. Matched against
-   * `SpeechSynthesisVoice.{name,lang,voiceURI}` — first hit wins.
-   * Optional; falls back to the platform default voice.
+   * Optional system prompt that defines the avatar's persona for chat.
+   * When set together with `vrm`, the Avatar tab gains a chat overlay
+   * powered by AI Gateway (same key as the scanner / enrichment).
+   *
+   * Use this to encode tone, voice, knowledge boundaries — the avatar
+   * answers in this voice, never pretending to be the card holder
+   * themselves.
+   */
+  vrmPersona?: string;
+  /**
+   * Optional voice identifier for Web Speech API. Browser-dependent —
+   * "en-GB", "en-US", or specific voice names like "Daniel" on macOS.
+   * Defaults to the browser's preferred voice for the page locale.
    */
   vrmVoice?: string;
   /** Uniform scale applied to model when mounted on tracked image */
@@ -87,6 +94,19 @@ export interface CardARConfig {
     directionalIntensity?: number;
     directionalAngle?: number; // degrees from vertical
   };
+}
+
+export interface CardCalendar {
+  /** Booking URL (Cal.com, Calendly, SavvyCal, TidyCal, etc.). HTTPS only. */
+  url: string;
+  /** Optional display label, e.g. "Book a 30-min discovery call" */
+  label?: string;
+  /**
+   * Whether to inline-embed via iframe (true) or just show a button
+   * link (false). Some providers (Calendly) block iframes from domains
+   * not on their allow-list; if embeds fail visually, set false.
+   */
+  embed?: boolean;
 }
 
 export interface CardPrintSpec {
@@ -133,6 +153,11 @@ export interface Card {
   contact: CardContact;
   brand: CardBrand;
   ar: CardARConfig;
+  /**
+   * Optional booking integration. When set, the card landing shows a
+   * "Book a meeting" embed pointing at the configured URL.
+   */
+  calendar?: CardCalendar;
   print: CardPrintSpec;
   /** Optional booking surface */
   calendar?: CardCalendar;
