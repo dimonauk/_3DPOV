@@ -185,6 +185,83 @@ export const apps: AppEntry[] = [
     gate: "open",
     mode: "crimson",
   },
+  {
+    id: "wall-piece-designer",
+    name: "Wall Piece Designer",
+    kind: "tool",
+    href: "/atelier/wall-piece-designer",
+    summary:
+      "Breed a single waveguide wall sculpture via the studio's evolution loop. 12 candidates per generation; mutate, breed, keep one to commission.",
+    tag: "Studio",
+    gate: "open",
+    mode: "amber",
+  },
+  {
+    id: "wall-array-designer",
+    name: "Wall Array Designer",
+    kind: "tool",
+    href: "/atelier/wall-array-designer",
+    summary:
+      "Breed a 9-piece wall array. Shared parent lineage means the tiles read as a rhythm; commissioned as one belt-printed slot.",
+    tag: "Studio",
+    gate: "open",
+    mode: "amber",
+  },
+  {
+    id: "jewellery-designer",
+    name: "Jewellery Designer",
+    kind: "tool",
+    href: "/atelier/jewellery-designer",
+    summary:
+      "Breed a wearable waveguide. Same engine as the wall designers, biased for gem-rich genomes + wearable scale.",
+    tag: "Studio",
+    gate: "open",
+    mode: "amber",
+  },
+  {
+    id: "shader-station",
+    name: "Shader Station",
+    kind: "tool",
+    href: "/atelier/shader-station",
+    summary:
+      "Author GLSL on a textured sphere. 28 seed presets, audio-reactive uniforms, QR transfer between devices, 2048×1024 equirect PNG export.",
+    tag: "Visualiser",
+    gate: "open",
+    mode: "azure",
+  },
+  {
+    id: "gaze-heatmap",
+    name: "Gaze Heatmap",
+    kind: "tool",
+    href: "/atelier/gaze-heatmap",
+    summary:
+      "Replay recorded gaze JSON on an equirect canvas. Heatmap / foveal-mask / scanpath modes, dwell-zone clustering, scanpath statistics.",
+    tag: "Visualiser",
+    gate: "open",
+    mode: "veridian",
+  },
+  {
+    id: "aura-tron",
+    name: "Aura-Tron",
+    kind: "visualiser",
+    href: "/atelier/aura-tron",
+    summary:
+      "Neon-grid landscape with a mood-tinted backdrop. Synthwave aesthetic, large screen behind the avatar — vertex shader + aurora compositor.",
+    tag: "Visualiser",
+    gate: "open",
+    mode: "amethyst",
+  },
+  {
+    id: "procedural-city",
+    name: "Procedural City",
+    kind: "visualiser",
+    href: "/atelier/procedural-city",
+    summary:
+      "Generated urban environments — buildings, ground, traffic. Seed + style controls, R3F preview.",
+    tag: "Visualiser",
+    gate: "open",
+    mode: "veridian",
+  },
 ];
 
 export function listApps(): AppEntry[] {
