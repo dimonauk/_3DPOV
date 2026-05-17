@@ -38,6 +38,36 @@ attribution adjusted, please open an issue.
 - Wired engine selection to `aura.mood` via the
   `engineFromMood()` canon mapping — original was UI-only.
 
+### GLSL Foundation Library — `lib/math/glsl/`
+
+**Source:** `D:\.github\Shadrerapp\src\libs\glsl-utils.ts` —
+"DollyOS GLSL Foundation Library" from the AI Studio app
+"DollyOS Diagnostic & Shader Suite" (SPDX: Apache-2.0).
+
+**Lifted:**
+
+- Five named GLSL fragment strings (HASH, NOISE, VORONOI, COLOR, SDF)
+  with their canonical implementations: Inigo-Quilez-style hashes,
+  Perlin / fBm noise, signed-distance primitives, domain manipulators,
+  the Mandelbulb fractal, and HSV / cosPalette colour helpers.
+- The `detectUsedLibs()` regex scanner.
+- The `injectLibs()` dependency-ordered prepend helper.
+
+**Modified:**
+
+- Split the single 214-line `GLSL_LIBS` object into one file per
+  topic under `lib/math/glsl/` per Rule 1 (300-line cap, and to make
+  individual fragments importable in isolation).
+- Tightened types: `GlslLibKey` named union, `GLSL_LIBS` typed
+  `Record<GlslLibKey, string>`, `detectUsedLibs` returns ordered
+  `GlslLibKey[]`.
+- Pre-compiled `SDF_REGEX` once at module load instead of constructing
+  it on every detection call.
+- Replaced `for ... in` accumulation with `Set` for clarity.
+- Stripped the AI-Studio shell furniture entirely.
+
+Full plan: `docs/SHADRERAPP_MIGRATION.md`.
+
 ## Box 3 — bibliography (consulted, not lifted)
 
 These influenced design decisions or are tracked as future
