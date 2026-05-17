@@ -1,11 +1,10 @@
 /**
  * One-shot migration route: uploads VRMs from public/cards/<slug>/aura.vrm
- * (committed to git) to Firebase Storage at cards/<slug>/aura.vrm
- * (CDN-hosted, no longer in the repo).
+ * (committed to git) to Vercel Blob at cards/<slug>/aura.vrm (CDN-hosted,
+ * no longer in the repo).
  *
- * REMOVE THIS FILE AFTER THE MIGRATION COMPLETES. It is bearer-token
- * protected, but a route that writes to Storage doesn't need to outlive
- * its purpose.
+ * REMOVE THIS FILE AFTER THE MIGRATION COMPLETES. Bearer-token gated,
+ * but a route that writes to Blob doesn't need to outlive its purpose.
  *
  * Usage:
  *   curl -X POST https://holoflow.co.uk/api/admin/migrate-vrm \
@@ -13,15 +12,23 @@
  *     -H "Content-Type: application/json" \
  *     -d '{"slug":"dimona","sourceUrl":"https://holoflow.co.uk/cards/dimona/aura.vrm"}'
  *
- * Fetches the VRM from the same domain (zero-cost, edge-cached), uploads
- * it to Firebase Storage with a permanent download token, and returns
- * the public URL.
+ * Why Vercel Blob and not Firebase Storage:
+ *   The Firebase service account in this project's env is from a
+ *   different GCP project (`gen-lang-client-...`) than the Firebase
+ *   Storage bucket (`holoflow-studio`). Cross-project IAM hasn't
+ *   been granted. Vercel Blob is already configured for this project
+ *   (BLOB_READ_WRITE_TOKEN is set) and serves identical needs: public
+ *   CDN-hosted binary assets with permanent URLs. Same outcome, none
+ *   of the IAM friction.
+ *
+ *   The BOM-strip fix in lib/firebase/admin.ts still lands — that
+ *   resurrects Firestore writes (leads, conversation history) which
+ *   were previously failing silently due to invalid JSON.
  */
 
 import { NextResponse, type NextRequest } from "next/server";
 import { withRouteLogging } from "lib/log";
-import { randomUUID } from "node:crypto";
-import { getFirebaseAdminStorage } from "lib/firebase/admin";
+import { put } from "@vercel/blob";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -29,7 +36,7 @@ export const maxDuration = 60;
 interface MigrateBody {
   slug: string;
   sourceUrl: string;
-  /** Storage path override. Defaults to `cards/<slug>/aura.vrm`. */
+  /** Blob path override. Defaults to `cards/<slug>/aura.vrm`. */
   destinationPath?: string;
   contentType?: string;
 }
@@ -37,7 +44,7 @@ interface MigrateBody {
 export const POST = withRouteLogging(
   "admin.migrate-vrm",
   async (req: NextRequest, _ctx, log) => {
-    // Bearer auth — uses an env var we'll set on Vercel before invocation.
+    // Bearer auth.
     const auth = req.headers.get("authorization") ?? "";
     const token = auth.replace(/^Bearer\s+/i, "").trim();
     const expected = process.env.MIGRATE_TOKEN;
@@ -75,6 +82,13 @@ export const POST = withRouteLogging(
       destinationPath,
     });
 
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json(
+        { error: "BLOB_READ_WRITE_TOKEN env not set" },
+        { status: 503 },
+      );
+    }
+
     // 1. Fetch the source file as a Buffer.
     const srcResp = await fetch(body.sourceUrl);
     if (!srcResp.ok) {
@@ -87,74 +101,49 @@ export const POST = withRouteLogging(
     const buf = Buffer.from(arrayBuf);
     log.info("source fetched", { bytes: buf.length });
 
-    // 2. Upload to Firebase Storage with a permanent download token.
-    const storage = getFirebaseAdminStorage();
-    if (!storage) {
-      return NextResponse.json(
-        { error: "firebase admin not configured" },
-        { status: 503 },
-      );
-    }
-
-    const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
-    if (!bucketName) {
-      return NextResponse.json(
-        { error: "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET env not set" },
-        { status: 503 },
-      );
-    }
-    const bucket = storage.bucket(bucketName);
-
-    const downloadToken = randomUUID();
-    const file = bucket.file(destinationPath);
-
+    // 2. Upload to Vercel Blob with public access.
+    //    addRandomSuffix:false → predictable pathname (no UUID suffix);
+    //    allowOverwrite:true   → re-running the migration replaces in place.
     try {
-      await file.save(buf, {
+      const blob = await put(destinationPath, buf, {
+        access: "public",
         contentType,
-        resumable: false,
-        metadata: {
-          contentType,
-          cacheControl: "public, max-age=31536000, immutable",
-          metadata: {
-            firebaseStorageDownloadTokens: downloadToken,
-          },
-        },
+        addRandomSuffix: false,
+        allowOverwrite: true,
+        cacheControlMaxAge: 31536000, // 1 year — CDN edge cache
+      });
+
+      log.info("upload complete", {
+        destinationPath,
+        bytes: buf.length,
+        url: blob.url,
+      });
+
+      return NextResponse.json({
+        ok: true,
+        slug: body.slug,
+        destinationPath,
+        bytes: buf.length,
+        contentType,
+        cacheControl: "public, max-age=31536000, immutable",
+        publicUrl: blob.url,
+        downloadUrl: blob.downloadUrl,
+        note: "Update data/cards/<slug>.json ar.vrm to publicUrl, then `git rm` the local file.",
       });
     } catch (e) {
       const message = e instanceof Error ? e.message : String(e);
       log.error("upload failed", { destinationPath, error: message });
       return NextResponse.json(
-        { error: "upload_failed", message, destinationPath, bucket: bucket.name },
+        { error: "upload_failed", message, destinationPath },
         { status: 502 },
       );
     }
-
-    log.info("upload complete", { destinationPath, bytes: buf.length });
-
-    // 3. Build the canonical public URL.
-    const encodedPath = encodeURIComponent(destinationPath);
-    const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodedPath}?alt=media&token=${downloadToken}`;
-
-    return NextResponse.json({
-      ok: true,
-      slug: body.slug,
-      bucket: bucket.name,
-      destinationPath,
-      bytes: buf.length,
-      contentType,
-      cacheControl: "public, max-age=31536000, immutable",
-      publicUrl,
-      note: "Update data/cards/<slug>.json ar.vrm to this publicUrl, then `git rm` the local file.",
-    });
   },
 );
 
-
 /**
- * Diagnostic GET handler — bearer-token gated. Reports whether the env
- * vars Firebase Admin needs are present and parse correctly. Use this
- * to debug "firebase admin not configured" errors without exposing the
- * secrets themselves.
+ * Diagnostic GET handler — bearer-token gated. Reports whether the
+ * env vars Vercel Blob needs are present.
  */
 export const GET = withRouteLogging(
   "admin.migrate-vrm.diag",
@@ -166,95 +155,10 @@ export const GET = withRouteLogging(
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
-    const sa = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
-    const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
-
-    const diag: Record<string, unknown> = {
-      saPresent: Boolean(sa),
-      saLength: sa?.length ?? 0,
-      bucketPresent: Boolean(bucket),
-      bucketValue: bucket ?? null,
-      saJsonValid: false,
-      saHasProjectId: false,
-      saHasClientEmail: false,
-      saHasPrivateKey: false,
-      saProjectId: null as string | null,
-    };
-
-    if (sa) {
-      diag.saFirst60 = sa.slice(0, 60);
-      diag.saLast60 = sa.slice(-60);
-      diag.saCountLF = (sa.match(/\n/g) ?? []).length;
-      diag.saCountCR = (sa.match(/\r/g) ?? []).length;
-      diag.saCountEscapedN = (sa.match(/\\n/g) ?? []).length;
-      diag.saCountUnescapedQuotes = sa.split('"').length - 1;
-
-      // Try direct parse first.
-      try {
-        const parsed = JSON.parse(sa) as Record<string, unknown>;
-        diag.saJsonValid = true;
-        diag.saHasProjectId = typeof parsed["project_id"] === "string";
-        diag.saHasClientEmail = typeof parsed["client_email"] === "string";
-        diag.saHasPrivateKey = typeof parsed["private_key"] === "string";
-        diag.saProjectId = (parsed["project_id"] as string) ?? null;
-      } catch (e) {
-        diag.saJsonValid = false;
-        diag.saParseError = e instanceof Error ? e.message : String(e);
-      }
-
-      // Try the multiline-tolerant parser (same logic as loadCredential).
-      const fixSa = (raw: string) => {
-        let result = "";
-        let inString = false;
-        let escapeNext = false;
-        for (const ch of raw) {
-          if (escapeNext) { result += ch; escapeNext = false; continue; }
-          if (ch === "\\") { result += ch; escapeNext = true; continue; }
-          if (ch === '"') { result += ch; inString = !inString; continue; }
-          if (inString) {
-            if (ch === "\n") { result += "\\n"; continue; }
-            if (ch === "\r") { result += "\\r"; continue; }
-            if (ch === "\t") { result += "\\t"; continue; }
-          }
-          result += ch;
-        }
-        return result;
-      };
-      try {
-        const fixed = fixSa(sa);
-        const parsed = JSON.parse(fixed) as Record<string, unknown>;
-        diag.fixedParseValid = true;
-        diag.fixedHasProjectId = typeof parsed["project_id"] === "string";
-        diag.fixedProjectId = (parsed["project_id"] as string) ?? null;
-      } catch (e) {
-        diag.fixedParseValid = false;
-        diag.fixedParseError = e instanceof Error ? e.message : String(e);
-      }
-    }
-
-    // Try the actual admin getter — should be null if anything above is wrong.
-    const storage = getFirebaseAdminStorage();
-    diag.storageInitialised = storage !== null;
-
-    // Use the working loadCredential (with BOM strip) to get the real project_id
-    // and test bucket access.
-    if (storage && bucket) {
-      try {
-        const bucketHandle = storage.bucket(bucket);
-        const [exists] = await bucketHandle.exists();
-        diag.bucketExists = exists;
-        diag.bucketName = bucketHandle.name;
-        if (exists) {
-          // Try to list a single file to confirm read access.
-          const [files] = await bucketHandle.getFiles({ maxResults: 1 });
-          diag.bucketReadable = true;
-          diag.bucketSampleFile = files[0]?.name ?? "(empty bucket)";
-        }
-      } catch (e) {
-        diag.bucketError = e instanceof Error ? e.message : String(e);
-      }
-    }
-
-    return NextResponse.json(diag);
+    return NextResponse.json({
+      blobTokenPresent: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      blobTokenLength: process.env.BLOB_READ_WRITE_TOKEN?.length ?? 0,
+      migrateTokenPresent: Boolean(process.env.MIGRATE_TOKEN),
+    });
   },
 );
