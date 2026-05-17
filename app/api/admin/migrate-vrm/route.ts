@@ -28,7 +28,7 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { withRouteLogging } from "lib/log";
-import { put } from "@vercel/blob";
+import { put, list } from "@vercel/blob";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -163,13 +163,44 @@ export const GET = withRouteLogging(
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
-    const tok = process.env.BLOB_READ_WRITE_TOKEN;
-    return NextResponse.json({
-      blobTokenPresent: Boolean(tok),
-      blobTokenLength: tok?.length ?? 0,
-      blobTokenHasBOM: tok ? tok.charCodeAt(0) === 0xfeff : false,
-      blobTokenFirstByteCode: tok?.charCodeAt(0) ?? null,
+    let tok = process.env.BLOB_READ_WRITE_TOKEN;
+    if (tok && tok.charCodeAt(0) === 0xfeff) tok = tok.slice(1);
+    tok = tok?.trim();
+
+    const url = new URL(req.url);
+    const wantList = url.searchParams.get("list") === "1";
+
+    const base: Record<string, unknown> = {
+      blobTokenPresent: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      blobTokenLength: process.env.BLOB_READ_WRITE_TOKEN?.length ?? 0,
+      blobTokenHasBOM:
+        process.env.BLOB_READ_WRITE_TOKEN
+          ? process.env.BLOB_READ_WRITE_TOKEN.charCodeAt(0) === 0xfeff
+          : false,
       migrateTokenPresent: Boolean(process.env.MIGRATE_TOKEN),
-    });
+    };
+
+    if (wantList && tok) {
+      try {
+        const { blobs, cursor, hasMore } = await list({ token: tok, limit: 100 });
+        let totalBytes = 0;
+        for (const b of blobs) totalBytes += b.size;
+        base["blobCount"] = blobs.length;
+        base["totalBytes"] = totalBytes;
+        base["totalMB"] = +(totalBytes / 1_000_000).toFixed(2);
+        base["hasMore"] = hasMore;
+        base["cursor"] = cursor;
+        base["blobs"] = blobs.map((b) => ({
+          pathname: b.pathname,
+          size: b.size,
+          uploadedAt: b.uploadedAt,
+          url: b.url,
+        }));
+      } catch (e) {
+        base["listError"] = e instanceof Error ? e.message : String(e);
+      }
+    }
+
+    return NextResponse.json(base);
   },
 );
