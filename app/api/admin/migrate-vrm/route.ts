@@ -23,7 +23,6 @@ import { withRouteLogging } from "lib/log";
 import { randomUUID } from "node:crypto";
 import { getFirebaseAdminStorage } from "lib/firebase/admin";
 
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
