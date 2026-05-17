@@ -40,6 +40,55 @@ export function isFirebaseAdminConfigured(): boolean {
   return Boolean(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT);
 }
 
+/**
+ * Escape unescaped control characters that appear INSIDE JSON string
+ * literals. Vercel's env-var UI accepts literal multiline pastes, so
+ * a service-account JSON pasted as-is from a downloaded keyfile has
+ * real CR/LF inside the private_key value — which is invalid JSON.
+ *
+ * Walks the string char-by-char tracking string boundaries and
+ * backslash escapes; escapes only the characters that need it. Safe
+ * even on already-valid JSON.
+ */
+function fixMultilineJson(raw: string): string {
+  let result = "";
+  let inString = false;
+  let escapeNext = false;
+  for (const ch of raw) {
+    if (escapeNext) {
+      result += ch;
+      escapeNext = false;
+      continue;
+    }
+    if (ch === "\\") {
+      result += ch;
+      escapeNext = true;
+      continue;
+    }
+    if (ch === '"') {
+      result += ch;
+      inString = !inString;
+      continue;
+    }
+    if (inString) {
+      if (ch === "\n") {
+        result += "\\n";
+        continue;
+      }
+      if (ch === "\r") {
+        result += "\\r";
+        continue;
+      }
+      if (ch === "\t") {
+        result += "\\t";
+        continue;
+      }
+    }
+    result += ch;
+  }
+  return result;
+}
+
 function loadCredential(): { projectId: string; clientEmail: string; privateKey: string } | null {
   const raw = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
   if (!raw) return null;
@@ -47,7 +96,13 @@ function loadCredential(): { projectId: string; clientEmail: string; privateKey:
   try {
     parsed = JSON.parse(raw) as Record<string, unknown>;
   } catch {
-    return null;
+    // Vercel UI lets you paste service-account JSON with literal
+    // newlines. Escape them and try again.
+    try {
+      parsed = JSON.parse(fixMultilineJson(raw)) as Record<string, unknown>;
+    } catch {
+      return null;
+    }
   }
   const projectId = typeof parsed["project_id"] === "string" ? parsed["project_id"] : "";
   const clientEmail = typeof parsed["client_email"] === "string" ? parsed["client_email"] : "";
