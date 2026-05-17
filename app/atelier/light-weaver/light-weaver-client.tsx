@@ -362,7 +362,7 @@ function WeaveScene({
   autoplay,
   clearSignal,
   driver,
-}: WeaveSceneProps): JSX.Element {
+}: WeaveSceneProps) {
   const { camera, scene, mouse, viewport } = useThree();
   const tipRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
@@ -497,7 +497,7 @@ function WeaveScene({
 // ROOT CLIENT — controls, canvas wrapper, snapshot.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export default function LightWeaverClient(): JSX.Element {
+export default function LightWeaverClient() {
   useActiveChamber("light-weaver");
 
   const [shaderKey, setShaderKey] = useState<ShaderKey>("flame");

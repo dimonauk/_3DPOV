@@ -53,6 +53,24 @@ export interface CardARConfig {
    * presenters or branded mascots. Optional.
    */
   vrm?: string;
+  /**
+   * Persona / system-prompt for the in-card chat agent. When set, the
+   * /c/[slug]/chat endpoint streams an LLM response shaped by this
+   * persona via lib/cards/aura-server.streamAuraReply. Absent →
+   * /api/cards/[slug]/chat returns 422 and the chat affordance hides.
+   */
+  vrmPersona?: string;
+  /**
+   * Greeting line the avatar speaks once after the visitor wakes it.
+   * Plain text; rendered via Web Speech synthesis. Optional.
+   */
+  vrmIntro?: string;
+  /**
+   * Preferred TTS voice. Matched against
+   * `SpeechSynthesisVoice.{name,lang,voiceURI}` — first hit wins.
+   * Optional; falls back to the platform default voice.
+   */
+  vrmVoice?: string;
   /** Uniform scale applied to model when mounted on tracked image */
   modelScale: number;
   /** Rotation in radians [x, y, z] */
@@ -82,6 +100,25 @@ export interface CardPrintSpec {
   safe_mm: number;
 }
 
+/**
+ * Calendar / booking surface attached to the card. When set, the card
+ * landing offers a CalendarEmbed iframe (or fallback link) and the
+ * `book_a_call` Aura tool surfaces the URL when a visitor wants to
+ * schedule a call.
+ */
+export interface CardCalendar {
+  /** Public booking URL — Cal.com, Calendly, SavvyCal, etc. Must be https. */
+  url: string;
+  /** Button/label copy. Defaults to "Book a meeting". */
+  label?: string;
+  /**
+   * Whether to render the booking page in an iframe (true, default) or
+   * as a button-style outbound link (false — useful for providers like
+   * Calendly that block iframes via X-Frame-Options).
+   */
+  embed?: boolean;
+}
+
 export interface Card {
   /** URL slug — must be lowercase a-z, 0-9, hyphens. Used in /c/<slug> */
   slug: string;
@@ -97,6 +134,8 @@ export interface Card {
   brand: CardBrand;
   ar: CardARConfig;
   print: CardPrintSpec;
+  /** Optional booking surface */
+  calendar?: CardCalendar;
   /** ISO timestamp when card was created/issued */
   issuedAt: string;
   /** Set true if this card should appear on the public /cards index */
