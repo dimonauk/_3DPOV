@@ -29,6 +29,13 @@ export default {
         hostname: "cdn.shopify.com",
         pathname: "/s/files/**",
       },
+      {
+        // Vercel Blob — VRMs, future wardrobe outfit previews, AI
+        // scanner uploads. Blob URLs are <store-id>.public.blob.vercel-storage.com.
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+        pathname: "/**",
+      },
     ],
   },
   // mind-ar's image-three bundle has a guarded `require("fs")` (and a few
