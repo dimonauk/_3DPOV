@@ -193,7 +193,8 @@ export default function ComfyLayeredClient() {
         setChains(c.chains ?? []);
         setPresets(p.presets ?? []);
         if ((c.chains ?? []).length > 0 && !chainId) {
-          setChainId(c.chains[0].id);
+          // Length > 0 guard above.
+          setChainId(c.chains[0]!.id);
         }
         setBenchReachable(true);
       } catch (err) {

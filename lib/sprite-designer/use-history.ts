@@ -64,8 +64,9 @@ export function useHistory(
     future.current.push(current);
     if (future.current.length > MAX) future.current.shift();
     past.current.pop();
-    const prev = past.current[past.current.length - 1];
-    restore(prev);
+    // past may be empty after pop; nothing to restore in that case.
+    const prev = past.current[past.current.length - 1] ?? null;
+    if (prev) restore(prev);
     bump();
     return prev;
   }, [bump, getCanvas, restore]);

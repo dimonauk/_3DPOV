@@ -102,10 +102,11 @@ export default function SpriteDesignerClient() {
     };
 
     if (onionPrev && frames.current > 0) {
-      drawFrame(frames.frames[frames.current - 1], 0.25);
+      // current > 0 → frames[current - 1] is defined.
+      drawFrame(frames.frames[frames.current - 1]!, 0.25);
     }
     if (onionNext && frames.current < frames.frames.length - 1) {
-      drawFrame(frames.frames[frames.current + 1], 0.25);
+      drawFrame(frames.frames[frames.current + 1]!, 0.25);
     }
     ctx.drawImage(src, 0, 0, dst.width, dst.height);
 
@@ -168,7 +169,8 @@ export default function SpriteDesignerClient() {
     const y = Math.floor(((clientY - rect.top) / rect.height) * height);
     if (x < 0 || y < 0 || x >= width || y >= height) return;
     const ctx = canvasRef.current.getContext("2d")!;
-    ctx.fillStyle = tool === "pen" ? palette.colors[colorIndex] : "#0e0e14";
+    // colorIndex bounded by palette UI to [0, palette.colors.length).
+    ctx.fillStyle = tool === "pen" ? palette.colors[colorIndex]! : "#0e0e14";
     ctx.fillRect(x, y, 1, 1);
     paintPreview();
   };
@@ -264,8 +266,9 @@ export default function SpriteDesignerClient() {
     requestAnimationFrame(() => {
       frames.replaceAll(parsed.frames, 0);
       paintPreview();
-      history.reset(parsed.frames[0]);
-      setActiveData(parsed.frames[0]);
+      // parsed.frames is non-empty (replaceAll early-returns otherwise).
+      history.reset(parsed.frames[0]!);
+      setActiveData(parsed.frames[0]!);
     });
   };
 

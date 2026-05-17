@@ -31,10 +31,8 @@ export async function detectWebGPU(): Promise<WebGPUSupport> {
   if (typeof navigator === "undefined") {
     return { available: false, reason: "no navigator (SSR)" };
   }
-  // @ts-expect-error navigator.gpu isn't in default lib.dom.d.ts yet.
   if (!navigator.gpu) return { available: false, reason: "navigator.gpu missing" };
   try {
-    // @ts-expect-error
     const adapter = await navigator.gpu.requestAdapter();
     if (!adapter) return { available: false, reason: "no GPU adapter" };
     return { available: true };
@@ -130,7 +128,8 @@ export async function buildPhotonKernel(opts: {
   function packLights(arr: LightUniform[]) {
     lightsPacked.fill(0);
     for (let i = 0; i < arr.length && i < MAX_LIGHTS; i++) {
-      const L = arr[i];
+      // i bounded by arr.length; arr[i] is defined.
+      const L = arr[i]!;
       const base = i * 12;
       lightsPacked[base + 0] = L.origin.x;
       lightsPacked[base + 1] = L.origin.y;
@@ -337,12 +336,17 @@ export async function buildPhotonMapScene(args: {
     uFrame: kernel.uFrame,
     uIor: kernel.uIor,
     packLights: kernel.packLights,
+    // Reference the closed-over `scene` / `camera` rather than `this.*`.
+    // `this` on an async object-literal method is inferred as the union of
+    // the returned object with its PromiseLike completion, which is what
+    // tripped the typechecker. The closure references are identical at
+    // runtime and unambiguous to TS.
     async step(renderer: any, _dt: number) {
       frame += 1;
       kernel.uFrame.value = frame;
       await renderer.computeAsync(kernel.decayCompute);
       await renderer.computeAsync(kernel.photonCompute);
-      await renderer.renderAsync(this.scene, this.camera);
+      await renderer.renderAsync(scene, camera);
     },
     dispose() {
       ground.geometry.dispose();

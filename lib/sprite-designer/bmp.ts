@@ -43,9 +43,10 @@ export function encodeBmp24(img: ImageData): Uint8Array {
   for (let y = height - 1; y >= 0; y--) {
     for (let x = 0; x < width; x++) {
       const i = (y * width + x) * 4;
-      out[p++] = data[i + 2]; // B
-      out[p++] = data[i + 1]; // G
-      out[p++] = data[i + 0]; // R
+      // data is RGBA Uint8ClampedArray; (y, x) inside width × height bounds.
+      out[p++] = data[i + 2]!; // B
+      out[p++] = data[i + 1]!; // G
+      out[p++] = data[i + 0]!; // R
     }
     for (let pad = 0; pad < padPerRow; pad++) out[p++] = 0;
   }

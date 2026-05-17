@@ -255,7 +255,8 @@ class TrailRibbon {
   clear(): void {
     this.points = [];
     this.ages.fill(1);
-    this.geometry.attributes.age.needsUpdate = true;
+    // age attribute is added in the constructor; always present.
+    this.geometry.attributes.age!.needsUpdate = true;
   }
 
   update(headPos: THREE.Vector3, speed: number, camera: THREE.Camera): void {
@@ -301,9 +302,10 @@ class TrailRibbon {
       }
     }
 
-    this.geometry.attributes.position.needsUpdate = true;
-    this.geometry.attributes.uv.needsUpdate = true;
-    this.geometry.attributes.age.needsUpdate = true;
+    // position / uv / age attributes are all added in the constructor.
+    this.geometry.attributes.position!.needsUpdate = true;
+    this.geometry.attributes.uv!.needsUpdate = true;
+    this.geometry.attributes.age!.needsUpdate = true;
   }
 
   tick(time: number, resonance: number, speed: number): void {

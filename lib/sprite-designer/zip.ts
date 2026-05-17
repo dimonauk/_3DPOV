@@ -104,7 +104,10 @@ const CRC_TABLE = (() => {
 
 function crc32(bytes: Uint8Array): number {
   let c = 0xffffffff;
-  for (let i = 0; i < bytes.length; i++)
-    c = CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
+  for (let i = 0; i < bytes.length; i++) {
+    // CRC_TABLE has 256 entries; `(c ^ bytes[i]) & 0xff` is 0..255.
+    // bytes[i] is in-bounds by loop length.
+    c = CRC_TABLE[(c ^ bytes[i]!) & 0xff]! ^ (c >>> 8);
+  }
   return (c ^ 0xffffffff) >>> 0;
 }

@@ -53,24 +53,28 @@ function snapToPalette(img: ImageData, paletteHex: string[]): ImageData {
   const pal = paletteHex.map(hexToRgb);
   const out = new Uint8ClampedArray(img.data.length);
   for (let i = 0; i < img.data.length; i += 4) {
-    const r = img.data[i];
-    const g = img.data[i + 1];
-    const b = img.data[i + 2];
+    // RGBA stride matched to loop step; in-bounds by construction.
+    const r = img.data[i]!;
+    const g = img.data[i + 1]!;
+    const b = img.data[i + 2]!;
     let best = 0;
     let bestD = Infinity;
     for (let p = 0; p < pal.length; p++) {
-      const dr = r - pal[p][0];
-      const dg = g - pal[p][1];
-      const db = b - pal[p][2];
+      // pal[p] is a [r,g,b] tuple; p bounded by pal.length.
+      const entry = pal[p]!;
+      const dr = r - entry[0];
+      const dg = g - entry[1];
+      const db = b - entry[2];
       const d = dr * dr + dg * dg + db * db;
       if (d < bestD) {
         bestD = d;
         best = p;
       }
     }
-    out[i] = pal[best][0];
-    out[i + 1] = pal[best][1];
-    out[i + 2] = pal[best][2];
+    const winner = pal[best]!;
+    out[i] = winner[0];
+    out[i + 1] = winner[1];
+    out[i + 2] = winner[2];
     out[i + 3] = 255;
   }
   return new ImageData(out, img.width, img.height);

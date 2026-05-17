@@ -67,7 +67,8 @@ export function useFrames(
       const next = [...frames];
       next[current] = live;
       setFrames(next);
-      pushToCanvas(next[index]);
+      // Bounds-checked at function entry — index in [0, frames.length).
+      pushToCanvas(next[index]!);
       setCurrent(index);
     },
     [frames, current, grabCanvas, pushToCanvas],
@@ -81,7 +82,8 @@ export function useFrames(
     next.splice(current + 1, 0, blank(width, height));
     setFrames(next);
     setCurrent(current + 1);
-    pushToCanvas(next[current + 1]);
+    // We just spliced a blank at current + 1, so it's defined.
+    pushToCanvas(next[current + 1]!);
   }, [frames, current, width, height, grabCanvas, pushToCanvas]);
 
   const duplicate = useCallback(() => {
@@ -92,7 +94,7 @@ export function useFrames(
     next.splice(current + 1, 0, clone(live));
     setFrames(next);
     setCurrent(current + 1);
-    pushToCanvas(next[current + 1]);
+    pushToCanvas(next[current + 1]!);
   }, [frames, current, grabCanvas, pushToCanvas]);
 
   const remove = useCallback(() => {
@@ -101,7 +103,8 @@ export function useFrames(
     setFrames(next);
     const newIdx = Math.min(current, next.length - 1);
     setCurrent(newIdx);
-    pushToCanvas(next[newIdx]);
+    // length > 1 guarded above, so next has at least 1 entry, newIdx is valid.
+    pushToCanvas(next[newIdx]!);
   }, [frames, current, pushToCanvas]);
 
   const reorder = useCallback(
@@ -111,13 +114,14 @@ export function useFrames(
       if (!live) return;
       const next = [...frames];
       next[current] = live;
-      const [moved] = next.splice(from, 1);
+      // splice(from, 1) returns a 1-element array — moved is defined.
+      const [moved] = next.splice(from, 1) as [ImageData];
       next.splice(to, 0, moved);
       setFrames(next);
       if (current === from) setCurrent(to);
       else if (from < current && to >= current) setCurrent(current - 1);
       else if (from > current && to <= current) setCurrent(current + 1);
-      pushToCanvas(next[current]);
+      pushToCanvas(next[current]!);
     },
     [frames, current, grabCanvas, pushToCanvas],
   );
@@ -135,7 +139,8 @@ export function useFrames(
       setFrames(newFrames);
       const idx = Math.max(0, Math.min(initial, newFrames.length - 1));
       setCurrent(idx);
-      pushToCanvas(newFrames[idx]);
+      // length > 0 guard; idx clamped to [0, length-1].
+      pushToCanvas(newFrames[idx]!);
     },
     [pushToCanvas],
   );
@@ -167,7 +172,8 @@ export function useFrames(
     playRef.current = window.setInterval(
       () => {
         idx = (idx + 1) % frames.length;
-        pushToCanvas(frames[idx]);
+        // Modulo against length; idx always inside frames.
+        pushToCanvas(frames[idx]!);
         setCurrent(idx);
       },
       1000 / Math.max(1, fps),
