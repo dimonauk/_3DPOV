@@ -142,3 +142,94 @@ export const POST = withRouteLogging(
     });
   },
 );
+
+
+/**
+ * Diagnostic GET handler — bearer-token gated. Reports whether the env
+ * vars Firebase Admin needs are present and parse correctly. Use this
+ * to debug "firebase admin not configured" errors without exposing the
+ * secrets themselves.
+ */
+export const GET = withRouteLogging(
+  "admin.migrate-vrm.diag",
+  async (req: NextRequest, _ctx, _log) => {
+    const auth = req.headers.get("authorization") ?? "";
+    const token = auth.replace(/^Bearer\s+/i, "").trim();
+    const expected = process.env.MIGRATE_TOKEN;
+    if (!expected || !token || token !== expected) {
+      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+    }
+
+    const sa = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+    const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+
+    const diag: Record<string, unknown> = {
+      saPresent: Boolean(sa),
+      saLength: sa?.length ?? 0,
+      bucketPresent: Boolean(bucket),
+      bucketValue: bucket ?? null,
+      saJsonValid: false,
+      saHasProjectId: false,
+      saHasClientEmail: false,
+      saHasPrivateKey: false,
+      saProjectId: null as string | null,
+    };
+
+    if (sa) {
+      diag.saFirst60 = sa.slice(0, 60);
+      diag.saLast60 = sa.slice(-60);
+      diag.saCountLF = (sa.match(/\n/g) ?? []).length;
+      diag.saCountCR = (sa.match(/\r/g) ?? []).length;
+      diag.saCountEscapedN = (sa.match(/\\n/g) ?? []).length;
+      diag.saCountUnescapedQuotes = sa.split('"').length - 1;
+
+      // Try direct parse first.
+      try {
+        const parsed = JSON.parse(sa) as Record<string, unknown>;
+        diag.saJsonValid = true;
+        diag.saHasProjectId = typeof parsed["project_id"] === "string";
+        diag.saHasClientEmail = typeof parsed["client_email"] === "string";
+        diag.saHasPrivateKey = typeof parsed["private_key"] === "string";
+        diag.saProjectId = (parsed["project_id"] as string) ?? null;
+      } catch (e) {
+        diag.saJsonValid = false;
+        diag.saParseError = e instanceof Error ? e.message : String(e);
+      }
+
+      // Try the multiline-tolerant parser (same logic as loadCredential).
+      const fixSa = (raw: string) => {
+        let result = "";
+        let inString = false;
+        let escapeNext = false;
+        for (const ch of raw) {
+          if (escapeNext) { result += ch; escapeNext = false; continue; }
+          if (ch === "\\") { result += ch; escapeNext = true; continue; }
+          if (ch === '"') { result += ch; inString = !inString; continue; }
+          if (inString) {
+            if (ch === "\n") { result += "\\n"; continue; }
+            if (ch === "\r") { result += "\\r"; continue; }
+            if (ch === "\t") { result += "\\t"; continue; }
+          }
+          result += ch;
+        }
+        return result;
+      };
+      try {
+        const fixed = fixSa(sa);
+        const parsed = JSON.parse(fixed) as Record<string, unknown>;
+        diag.fixedParseValid = true;
+        diag.fixedHasProjectId = typeof parsed["project_id"] === "string";
+        diag.fixedProjectId = (parsed["project_id"] as string) ?? null;
+      } catch (e) {
+        diag.fixedParseValid = false;
+        diag.fixedParseError = e instanceof Error ? e.message : String(e);
+      }
+    }
+
+    // Try the actual admin getter — should be null if anything above is wrong.
+    const storage = getFirebaseAdminStorage();
+    diag.storageInitialised = storage !== null;
+
+    return NextResponse.json(diag);
+  },
+);
