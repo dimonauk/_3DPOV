@@ -108,20 +108,26 @@ export const POST = withRouteLogging(
     const downloadToken = randomUUID();
     const file = bucket.file(destinationPath);
 
-    await file.save(buf, {
-      contentType,
-      resumable: false,
-      metadata: {
+    try {
+      await file.save(buf, {
         contentType,
-        cacheControl: "public, max-age=31536000, immutable",
+        resumable: false,
         metadata: {
-          // This token makes the file publicly fetchable via the
-          // firebasestorage.googleapis.com download URL pattern. No
-          // CORS config needed — Firebase serves the right headers.
-          firebaseStorageDownloadTokens: downloadToken,
+          contentType,
+          cacheControl: "public, max-age=31536000, immutable",
+          metadata: {
+            firebaseStorageDownloadTokens: downloadToken,
+          },
         },
-      },
-    });
+      });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      log.error("upload failed", { destinationPath, error: message });
+      return NextResponse.json(
+        { error: "upload_failed", message, destinationPath, bucket: bucket.name },
+        { status: 502 },
+      );
+    }
 
     log.info("upload complete", { destinationPath, bytes: buf.length });
 
@@ -229,6 +235,25 @@ export const GET = withRouteLogging(
     // Try the actual admin getter — should be null if anything above is wrong.
     const storage = getFirebaseAdminStorage();
     diag.storageInitialised = storage !== null;
+
+    // Use the working loadCredential (with BOM strip) to get the real project_id
+    // and test bucket access.
+    if (storage && bucket) {
+      try {
+        const bucketHandle = storage.bucket(bucket);
+        const [exists] = await bucketHandle.exists();
+        diag.bucketExists = exists;
+        diag.bucketName = bucketHandle.name;
+        if (exists) {
+          // Try to list a single file to confirm read access.
+          const [files] = await bucketHandle.getFiles({ maxResults: 1 });
+          diag.bucketReadable = true;
+          diag.bucketSampleFile = files[0]?.name ?? "(empty bucket)";
+        }
+      } catch (e) {
+        diag.bucketError = e instanceof Error ? e.message : String(e);
+      }
+    }
 
     return NextResponse.json(diag);
   },
