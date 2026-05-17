@@ -8,9 +8,11 @@ export function isWalkable(
   blockedTiles: Set<string>,
 ): boolean {
   const rows = tileMap.length
-  const cols = rows > 0 ? tileMap[0].length : 0
+  // tileMap[0] exists when rows > 0 by the guard.
+  const cols = rows > 0 ? tileMap[0]!.length : 0
   if (row < 0 || row >= rows || col < 0 || col >= cols) return false
-  const t = tileMap[row][col]
+  // Bounds-checked above; (row, col) maps to a defined cell.
+  const t = tileMap[row]![col]
   if (t === TileType.WALL || t === TileType.VOID) return false
   if (blockedTiles.has(`${col},${row}`)) return false
   return true
@@ -22,7 +24,7 @@ export function getWalkableTiles(
   blockedTiles: Set<string>,
 ): Array<{ col: number; row: number }> {
   const rows = tileMap.length
-  const cols = rows > 0 ? tileMap[0].length : 0
+  const cols = rows > 0 ? tileMap[0]!.length : 0
   const tiles: Array<{ col: number; row: number }> = []
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -79,7 +81,8 @@ export function findPath(
       const path: Array<{ col: number; row: number }> = []
       let k = endKey
       while (k !== startKey) {
-        const [c, r] = k.split(',').map(Number)
+        // Key shape "col,row" — both parts always parse to a number.
+        const [c, r] = k.split(',').map(Number) as [number, number]
         path.unshift({ col: c, row: r })
         k = parent.get(k)!
       }

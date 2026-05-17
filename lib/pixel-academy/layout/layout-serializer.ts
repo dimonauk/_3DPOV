@@ -9,7 +9,8 @@ export function layoutToTileMap(layout: OfficeLayout): TileTypeVal[][] {
   for (let r = 0; r < layout.rows; r++) {
     const row: TileTypeVal[] = []
     for (let c = 0; c < layout.cols; c++) {
-      row.push(layout.tiles[r * layout.cols + c])
+      // layout.tiles is a flat rows*cols array; (r,c) inside bounds.
+      row.push(layout.tiles[r * layout.cols + c]!)
     }
     map.push(row)
   }

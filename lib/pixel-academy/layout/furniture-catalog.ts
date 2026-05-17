@@ -190,7 +190,8 @@ export function buildDynamicCatalog(assets: LoadedAssetData): boolean {
           // Build an equivalent group for the "on" state
           const onMembers: Record<string, string> = {}
           for (const orient of offGroup.orientations) {
-            const offId = offGroup.members[orient]
+            // members keyed by every orientation in offGroup.orientations.
+            const offId = offGroup.members[orient]!
             const onId = stateGroups.get(offId)
             // Use on-state variant if available, otherwise fall back to off-state
             onMembers[orient] = onId ?? offId
@@ -282,12 +283,13 @@ export const FURNITURE_CATEGORIES: Array<{ id: FurnitureCategory; label: string 
 export function getRotatedType(currentType: string, direction: 'cw' | 'ccw'): string | null {
   const group = rotationGroups.get(currentType)
   if (!group) return null
-  const order = group.orientations.map((o) => group.members[o])
+  // Every orientation in `group.orientations` has a `members[o]` entry by construction.
+  const order = group.orientations.map((o) => group.members[o]!)
   const idx = order.indexOf(currentType)
   if (idx === -1) return null
   const step = direction === 'cw' ? 1 : -1
   const nextIdx = (idx + step + order.length) % order.length
-  return order[nextIdx]
+  return order[nextIdx]!
 }
 
 /** Returns the toggled state variant (on↔off), or null if no state variant exists. */

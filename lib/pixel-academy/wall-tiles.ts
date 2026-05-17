@@ -38,15 +38,19 @@ export function getWallSprite(
   if (!wallSprites) return null
 
   const tmRows = tileMap.length
-  const tmCols = tmRows > 0 ? tileMap[0].length : 0
+  // Bounds checks guarded by tmRows / tmCols below; tileMap[0] safe when rows > 0.
+  const tmCols = tmRows > 0 ? tileMap[0]!.length : 0
 
-  // Build 4-bit neighbor bitmask
+  // Build 4-bit neighbor bitmask. Each cardinal probe gates on its own
+  // bounds check (row > 0, col < tmCols - 1, etc.), so the neighbour
+  // access is in-bounds.
   let mask = 0
-  if (row > 0 && tileMap[row - 1][col] === TileType.WALL) mask |= 1            // N
-  if (col < tmCols - 1 && tileMap[row][col + 1] === TileType.WALL) mask |= 2   // E
-  if (row < tmRows - 1 && tileMap[row + 1][col] === TileType.WALL) mask |= 4   // S
-  if (col > 0 && tileMap[row][col - 1] === TileType.WALL) mask |= 8            // W
+  if (row > 0 && tileMap[row - 1]![col] === TileType.WALL) mask |= 1            // N
+  if (col < tmCols - 1 && tileMap[row]![col + 1] === TileType.WALL) mask |= 2   // E
+  if (row < tmRows - 1 && tileMap[row + 1]![col] === TileType.WALL) mask |= 4   // S
+  if (col > 0 && tileMap[row]![col - 1] === TileType.WALL) mask |= 8            // W
 
+  // 4-bit mask is 0..15; wallSprites has 16 entries by contract.
   const sprite = wallSprites[mask]
   if (!sprite) return null
 
@@ -68,14 +72,14 @@ export function getColorizedWallSprite(
   if (!wallSprites) return null
 
   const tmRows = tileMap.length
-  const tmCols = tmRows > 0 ? tileMap[0].length : 0
+  const tmCols = tmRows > 0 ? tileMap[0]!.length : 0
 
   // Build 4-bit neighbor bitmask (same as getWallSprite)
   let mask = 0
-  if (row > 0 && tileMap[row - 1][col] === TileType.WALL) mask |= 1            // N
-  if (col < tmCols - 1 && tileMap[row][col + 1] === TileType.WALL) mask |= 2   // E
-  if (row < tmRows - 1 && tileMap[row + 1][col] === TileType.WALL) mask |= 4   // S
-  if (col > 0 && tileMap[row][col - 1] === TileType.WALL) mask |= 8            // W
+  if (row > 0 && tileMap[row - 1]![col] === TileType.WALL) mask |= 1            // N
+  if (col < tmCols - 1 && tileMap[row]![col + 1] === TileType.WALL) mask |= 2   // E
+  if (row < tmRows - 1 && tileMap[row + 1]![col] === TileType.WALL) mask |= 4   // S
+  if (col > 0 && tileMap[row]![col - 1] === TileType.WALL) mask |= 8            // W
 
   const sprite = wallSprites[mask]
   if (!sprite) return null
@@ -97,12 +101,12 @@ export function getWallInstances(
 ): FurnitureInstance[] {
   if (!wallSprites) return []
   const tmRows = tileMap.length
-  const tmCols = tmRows > 0 ? tileMap[0].length : 0
+  const tmCols = tmRows > 0 ? tileMap[0]!.length : 0
   const layoutCols = cols ?? tmCols
   const instances: FurnitureInstance[] = []
   for (let r = 0; r < tmRows; r++) {
     for (let c = 0; c < tmCols; c++) {
-      if (tileMap[r][c] !== TileType.WALL) continue
+      if (tileMap[r]![c] !== TileType.WALL) continue
       const colorIdx = r * layoutCols + c
       const wallColor = tileColors?.[colorIdx]
       const wallInfo = wallColor

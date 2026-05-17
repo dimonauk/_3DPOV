@@ -129,7 +129,8 @@ export class OfficeState {
   /** Move a character to a random walkable tile */
   private relocateCharacterToWalkable(ch: Character): void {
     if (this.walkableTiles.length === 0) return
-    const spawn = this.walkableTiles[Math.floor(Math.random() * this.walkableTiles.length)]
+    // Math.floor(Math.random() * length) bounded to [0, length-1] given length > 0.
+    const spawn = this.walkableTiles[Math.floor(Math.random() * this.walkableTiles.length)]!
     ch.tileCol = spawn.col
     ch.tileRow = spawn.row
     ch.x = spawn.col * TILE_SIZE + TILE_SIZE / 2
@@ -176,7 +177,8 @@ export class OfficeState {
     const counts = new Array(PALETTE_COUNT).fill(0) as number[]
     for (const ch of this.characters.values()) {
       if (ch.isSubagent) continue
-      counts[ch.palette]++
+      // counts sized PALETTE_COUNT; ch.palette bounded 0..PALETTE_COUNT-1.
+      counts[ch.palette]!++
     }
     const minCount = Math.min(...counts)
     // Available = palettes at the minimum count (least used)
@@ -184,7 +186,8 @@ export class OfficeState {
     for (let i = 0; i < PALETTE_COUNT; i++) {
       if (counts[i] === minCount) available.push(i)
     }
-    const palette = available[Math.floor(Math.random() * available.length)]
+    // available is non-empty (at least one palette hits minCount).
+    const palette = available[Math.floor(Math.random() * available.length)]!
     // First round (minCount === 0): no hue shift. Subsequent rounds: random ≥45°.
     let hueShift = 0
     if (minCount > 0) {
@@ -225,9 +228,9 @@ export class OfficeState {
       seat.assigned = true
       ch = createCharacter(id, palette, seatId, seat, hueShift)
     } else {
-      // No seats — spawn at random walkable tile
+      // No seats — spawn at random walkable tile, falling back to (1,1).
       const spawn = this.walkableTiles.length > 0
-        ? this.walkableTiles[Math.floor(Math.random() * this.walkableTiles.length)]
+        ? this.walkableTiles[Math.floor(Math.random() * this.walkableTiles.length)]!
         : { col: 1, row: 1 }
       ch = createCharacter(id, palette, null, null, hueShift)
       ch.x = spawn.col * TILE_SIZE + TILE_SIZE / 2
@@ -391,15 +394,17 @@ export class OfficeState {
       seat.assigned = true
       ch = createCharacter(id, palette, bestSeatId, seat, hueShift)
     } else {
-      // No seats — spawn at closest walkable tile to parent
+      // No seats — spawn at closest walkable tile to parent.
       let spawn = { col: 1, row: 1 }
       if (this.walkableTiles.length > 0) {
-        let closest = this.walkableTiles[0]
+        // Length > 0 guard means [0] is defined; loop bounded i < length.
+        let closest = this.walkableTiles[0]!
         let closestDist = dist(closest.col, closest.row)
         for (let i = 1; i < this.walkableTiles.length; i++) {
-          const d = dist(this.walkableTiles[i].col, this.walkableTiles[i].row)
+          const tile = this.walkableTiles[i]!
+          const d = dist(tile.col, tile.row)
           if (d < closestDist) {
-            closest = this.walkableTiles[i]
+            closest = tile
             closestDist = d
           }
         }

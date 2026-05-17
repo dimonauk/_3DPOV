@@ -1,5 +1,11 @@
 import type { SpriteData } from "../types";
 
+// Strict-mode notes: SpriteData is `string[][]` — a 2D pixel grid.
+// Every access below is bounded by the rows/cols read off the sprite
+// itself (or off the +2 outline buffer we allocate). `!` markers
+// document the invariant: every (r, c) we touch is inside the buffer
+// we just sized.
+
 const zoomCaches = new Map<number, WeakMap<SpriteData, HTMLCanvasElement>>()
 
 // ── Outline sprite generation ─────────────────────────────────
@@ -12,7 +18,7 @@ export function getOutlineSprite(sprite: SpriteData): SpriteData {
   if (cached) return cached
 
   const rows = sprite.length
-  const cols = sprite[0].length
+  const cols = sprite[0]!.length
   // Expanded grid: +2 in each dimension for 1px border
   const outline: string[][] = []
   for (let r = 0; r < rows + 2; r++) {
@@ -22,21 +28,21 @@ export function getOutlineSprite(sprite: SpriteData): SpriteData {
   // For each opaque pixel, mark its 4 cardinal neighbors as white
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (sprite[r][c] === '') continue
+      if (sprite[r]![c] === '') continue
       const er = r + 1
       const ec = c + 1
-      if (outline[er - 1][ec] === '') outline[er - 1][ec] = '#FFFFFF'
-      if (outline[er + 1][ec] === '') outline[er + 1][ec] = '#FFFFFF'
-      if (outline[er][ec - 1] === '') outline[er][ec - 1] = '#FFFFFF'
-      if (outline[er][ec + 1] === '') outline[er][ec + 1] = '#FFFFFF'
+      if (outline[er - 1]![ec] === '') outline[er - 1]![ec] = '#FFFFFF'
+      if (outline[er + 1]![ec] === '') outline[er + 1]![ec] = '#FFFFFF'
+      if (outline[er]![ec - 1] === '') outline[er]![ec - 1] = '#FFFFFF'
+      if (outline[er]![ec + 1] === '') outline[er]![ec + 1] = '#FFFFFF'
     }
   }
 
   // Clear pixels that overlap with original opaque pixels
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (sprite[r][c] !== '') {
-        outline[r + 1][c + 1] = ''
+      if (sprite[r]![c] !== '') {
+        outline[r + 1]![c + 1] = ''
       }
     }
   }
@@ -56,7 +62,7 @@ export function getCachedSprite(sprite: SpriteData, zoom: number): HTMLCanvasEle
   if (cached) return cached
 
   const rows = sprite.length
-  const cols = sprite[0].length
+  const cols = sprite[0]!.length
   const canvas = document.createElement('canvas')
   canvas.width = cols * zoom
   canvas.height = rows * zoom
@@ -65,7 +71,7 @@ export function getCachedSprite(sprite: SpriteData, zoom: number): HTMLCanvasEle
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      const color = sprite[r][c]
+      const color = sprite[r]![c]!
       if (color === '') continue
       ctx.fillStyle = color
       ctx.fillRect(c * zoom, r * zoom, zoom, zoom)

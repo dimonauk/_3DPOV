@@ -165,7 +165,8 @@ export function updateCharacter(
           }
         }
         if (walkableTiles.length > 0) {
-          const target = walkableTiles[Math.floor(Math.random() * walkableTiles.length)]
+          // Math.floor(Math.random() * walkableTiles.length) bounded to [0, length-1].
+          const target = walkableTiles[Math.floor(Math.random() * walkableTiles.length)]!
           const path = findPath(ch.tileCol, ch.tileRow, target.col, target.row, tileMap, blockedTiles)
           if (path.length > 0) {
             ch.path = path
@@ -236,8 +237,10 @@ export function updateCharacter(
         break
       }
 
-      // Move toward next tile in path
-      const nextTile = ch.path[0]
+      // Move toward next tile in path. The outer branch already checked
+      // `ch.path.length === 0` and returned via the `break` above, so
+      // path[0] is defined when we reach this line.
+      const nextTile = ch.path[0]!
       ch.dir = directionBetween(ch.tileCol, ch.tileRow, nextTile.col, nextTile.row)
 
       ch.moveProgress += (WALK_SPEED_PX_PER_SEC / TILE_SIZE) * dt
@@ -279,16 +282,19 @@ export function updateCharacter(
 
 /** Get the correct sprite frame for a character's current state and direction */
 export function getCharacterSprite(ch: Character, sprites: CharacterSprites): SpriteData {
+  // CharacterSprites guarantees walk[dir] / typing[dir] / reading[dir]
+  // exist for every Dir; frame indices are clamped via modulo to the
+  // strip length the sprite generator emitted (4 walk, 2 typing/reading).
   switch (ch.state) {
     case CharacterState.TYPE:
       if (isReadingTool(ch.currentTool)) {
-        return sprites.reading[ch.dir][ch.frame % 2]
+        return sprites.reading[ch.dir][ch.frame % 2]!
       }
-      return sprites.typing[ch.dir][ch.frame % 2]
+      return sprites.typing[ch.dir][ch.frame % 2]!
     case CharacterState.WALK:
-      return sprites.walk[ch.dir][ch.frame % 4]
+      return sprites.walk[ch.dir][ch.frame % 4]!
     case CharacterState.IDLE:
-      return sprites.walk[ch.dir][1]
+      return sprites.walk[ch.dir][1]!
     default:
       return sprites.walk[ch.dir][1]
   }

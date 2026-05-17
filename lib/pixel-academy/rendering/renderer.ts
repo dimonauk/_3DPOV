@@ -54,13 +54,14 @@ export function renderTileGrid(
   const s = TILE_SIZE * zoom
   const useSpriteFloors = hasFloorSprites()
   const tmRows = tileMap.length
-  const tmCols = tmRows > 0 ? tileMap[0].length : 0
+  const tmCols = tmRows > 0 ? tileMap[0]!.length : 0
   const layoutCols = cols ?? tmCols
 
   // Floor tiles + wall base color
   for (let r = 0; r < tmRows; r++) {
     for (let c = 0; c < tmCols; c++) {
-      const tile = tileMap[r][c]
+      // (r, c) bounded by tmRows / tmCols read off the same map.
+      const tile = tileMap[r]![c]!
 
       // Skip VOID tiles entirely (transparent)
       if (tile === TileType.VOID) continue
@@ -546,7 +547,7 @@ export function renderFrame(
   ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
   // Use layout dimensions (fallback to tileMap size)
-  const cols = layoutCols ?? (tileMap.length > 0 ? tileMap[0].length : 0)
+  const cols = layoutCols ?? (tileMap.length > 0 ? tileMap[0]!.length : 0)
   const rows = layoutRows ?? tileMap.length
 
   // Center map in viewport + pan offset (integer device pixels)

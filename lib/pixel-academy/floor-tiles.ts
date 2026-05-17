@@ -33,7 +33,8 @@ export function setFloorSprites(sprites: SpriteData[]): void {
 export function getFloorSprite(patternIndex: number): SpriteData | null {
   const idx = patternIndex - 1
   if (idx < 0) return null
-  if (idx < floorSprites.length) return floorSprites[idx]
+  // Bounded by `idx < floorSprites.length` guard above.
+  if (idx < floorSprites.length) return floorSprites[idx]!
   // No PNG sprites loaded — return default solid tile for any valid pattern index
   if (floorSprites.length === 0 && patternIndex >= 1) return DEFAULT_FLOOR_SPRITE
   return null
