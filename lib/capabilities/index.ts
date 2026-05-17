@@ -297,6 +297,17 @@ const auraAliveStubs: CapabilityRecord[] = [
     load: () => import("./media/capture"),
   },
   {
+    id: "media.qr-transfer",
+    kind: "media",
+    name: "QR payload transfer",
+    summary:
+      "Encode a text payload (typically a shader source) into a URL the QR renderer can display, and decode any scanned URL or raw text back to the payload. LZ-string compressed so multi-kilobyte shaders fit in a single QR. Hand-off pattern for desktop chamber → phone chamber state ferries.",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/ShaderEditor/components/QRTransfer.tsx (Apache-2.0). Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./media/qr-transfer"),
+  },
+  {
     id: "viz.depth-estimation",
     kind: "viz",
     name: "Depth estimation",
