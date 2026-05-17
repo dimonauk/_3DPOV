@@ -241,6 +241,17 @@ const auraAliveStubs: CapabilityRecord[] = [
     stateSlices: ["input"],
   },
   {
+    id: "input.gaze",
+    kind: "input",
+    name: "Gaze sample stream",
+    summary:
+      "Yaw/pitch gaze sample buffer over time with statistics + dwell-zone clustering. Companion to input.headpose: headpose is now, gaze is history. Accepts samples from any source (WebGazer, MediaPipe eye-landmarker, recorded JSON); the consuming chamber decides the tracker.",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/GazeHeatmap/ (Apache-2.0). Math helpers split into lib/math/spherical + signal. Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./input/gaze"),
+  },
+  {
     id: "viz.light-sculpture",
     kind: "viz",
     name: "Light sculpture",
