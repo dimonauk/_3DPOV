@@ -7,7 +7,7 @@ import {
   isPhotographProduct,
 } from "components/product/photograph-meta";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
-import { resolveGlbUrl } from "lib/three-d";
+import { resolveGlbUrl, resolveUsdzUrl } from "lib/three-d";
 import { getProduct, getProductRecommendations } from "lib/shopify/cached";
 import type { Image } from "lib/shopify/types";
 import type { Metadata } from "next";
@@ -61,6 +61,7 @@ export default async function ProductPage(props: {
   if (!product) return notFound();
 
   const glbUrl = resolveGlbUrl(product);
+  const usdzUrl = resolveUsdzUrl(product);
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -101,6 +102,7 @@ export default async function ProductPage(props: {
                   altText: image.altText,
                 }))}
                 glbUrl={glbUrl}
+                usdzUrl={usdzUrl}
               />
             </Suspense>
           </div>

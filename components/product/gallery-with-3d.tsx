@@ -19,14 +19,19 @@ const GLBViewer = dynamic(
  * and a WebGL GLB viewer. Only renders the tab strip when a GLB URL is
  * present; otherwise passes through to <Gallery /> unchanged so product
  * pages without a 3D model look identical to the stock commerce theme.
+ *
+ * `usdzUrl` (optional) enables the iOS AR Quick Look button overlaid on
+ * the 3D view — see GLBViewer.
  */
 export function GalleryWith3D({
   images,
   glbUrl,
+  usdzUrl,
   tint,
 }: {
   images: { src: string; altText: string }[];
   glbUrl?: string;
+  usdzUrl?: string;
   tint?: string;
 }) {
   const [mode, setMode] = useState<"photos" | "3d">("photos");
@@ -48,7 +53,7 @@ export function GalleryWith3D({
       {mode === "photos" ? (
         <Gallery images={images} />
       ) : (
-        <GLBViewer glb={glbUrl} tint={tint} />
+        <GLBViewer glb={glbUrl} usdz={usdzUrl} tint={tint} />
       )}
     </div>
   );
