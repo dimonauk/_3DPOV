@@ -90,14 +90,19 @@ function fixMultilineJson(raw: string): string {
 }
 
 function loadCredential(): { projectId: string; clientEmail: string; privateKey: string } | null {
-  const raw = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+  let raw = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
   if (!raw) return null;
+  // UTF-8 BOM strip — Vercel's UI sometimes prepends one when pasting
+  // a downloaded JSON keyfile from Notepad/VSCode-encoded-with-BOM.
+  // JSON.parse rejects it with "Unexpected token '﻿'".
+  if (raw.charCodeAt(0) === 0xfeff) raw = raw.slice(1);
+  raw = raw.trim();
+
   let parsed: Record<string, unknown>;
   try {
     parsed = JSON.parse(raw) as Record<string, unknown>;
   } catch {
-    // Vercel UI lets you paste service-account JSON with literal
-    // newlines. Escape them and try again.
+    // Fallback: handle literal newlines pasted inside private_key.
     try {
       parsed = JSON.parse(fixMultilineJson(raw)) as Record<string, unknown>;
     } catch {
