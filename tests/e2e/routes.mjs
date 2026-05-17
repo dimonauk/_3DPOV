@@ -36,6 +36,8 @@ export const ROUTES = [
   { path: "/atelier/shape-of-it", slug: "atelier-shape-of-it" },
   { path: "/atelier/aura-tron", slug: "atelier-aura-tron" },
   { path: "/atelier/procedural-city", slug: "atelier-procedural-city" },
+  { path: "/atelier/shader-station", slug: "atelier-shader-station" },
+  { path: "/atelier/gaze-heatmap", slug: "atelier-gaze-heatmap" },
   { path: "/atelier/rig-simulator", slug: "atelier-rig-simulator" },
   { path: "/atelier/cctv-cross-reference", slug: "atelier-cctv-cross-reference" },
   { path: "/atelier/waveguide-forge", slug: "atelier-waveguide-forge" },
