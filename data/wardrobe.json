@@ -1,4 +1,46 @@
 {
-  "_comment": "Wardrobe outfit registry — populated by /admin/wardrobe-upload after the 7 PBR outfits are uploaded to Vercel Blob. Each entry maps a slug to its public Blob URL. Consumed by the wardrobe picker UI in AuraCompanion and the change_outfit Aura tool.",
-  "outfits": []
+  "outfits": [
+    {
+      "slug": "baby-pink-spice",
+      "label": "Baby Pink Spice",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/baby-pink-spice.vrm",
+      "bytes": 55063388
+    },
+    {
+      "slug": "bunny-top",
+      "label": "Bunny Top",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/bunny-top.vrm",
+      "bytes": 48841968
+    },
+    {
+      "slug": "kawaii-potion",
+      "label": "Kawaii Potion",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/kawaii-potion.vrm",
+      "bytes": 51338268
+    },
+    {
+      "slug": "purple-dance",
+      "label": "Purple Dance",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/purple-dance.vrm",
+      "bytes": 49057376
+    },
+    {
+      "slug": "ready-player-one",
+      "label": "Ready Player One",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/ready-player-one.vrm",
+      "bytes": 48188184
+    },
+    {
+      "slug": "pink-blouse-purple-plaid-skirt",
+      "label": "Pink Blouse Purple Plaid Skirt",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/pink-blouse-purple-plaid-skirt.vrm",
+      "bytes": 57958152
+    },
+    {
+      "slug": "pink-coat",
+      "label": "Pink Coat",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/pink-coat.vrm",
+      "bytes": 53017028
+    }
+  ]
 }
