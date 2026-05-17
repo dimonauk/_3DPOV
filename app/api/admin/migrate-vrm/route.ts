@@ -142,3 +142,56 @@ export const POST = withRouteLogging(
     });
   },
 );
+
+
+/**
+ * Diagnostic GET handler — bearer-token gated. Reports whether the env
+ * vars Firebase Admin needs are present and parse correctly. Use this
+ * to debug "firebase admin not configured" errors without exposing the
+ * secrets themselves.
+ */
+export const GET = withRouteLogging(
+  "admin.migrate-vrm.diag",
+  async (req: NextRequest, _ctx, _log) => {
+    const auth = req.headers.get("authorization") ?? "";
+    const token = auth.replace(/^Bearer\s+/i, "").trim();
+    const expected = process.env.MIGRATE_TOKEN;
+    if (!expected || !token || token !== expected) {
+      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+    }
+
+    const sa = process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT;
+    const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+
+    const diag: Record<string, unknown> = {
+      saPresent: Boolean(sa),
+      saLength: sa?.length ?? 0,
+      bucketPresent: Boolean(bucket),
+      bucketValue: bucket ?? null,
+      saJsonValid: false,
+      saHasProjectId: false,
+      saHasClientEmail: false,
+      saHasPrivateKey: false,
+      saProjectId: null as string | null,
+    };
+
+    if (sa) {
+      try {
+        const parsed = JSON.parse(sa) as Record<string, unknown>;
+        diag.saJsonValid = true;
+        diag.saHasProjectId = typeof parsed["project_id"] === "string";
+        diag.saHasClientEmail = typeof parsed["client_email"] === "string";
+        diag.saHasPrivateKey = typeof parsed["private_key"] === "string";
+        diag.saProjectId = (parsed["project_id"] as string) ?? null;
+      } catch {
+        diag.saJsonValid = false;
+      }
+    }
+
+    // Try the actual admin getter — should be null if anything above is wrong.
+    const storage = getFirebaseAdminStorage();
+    diag.storageInitialised = storage !== null;
+
+    return NextResponse.json(diag);
+  },
+);
