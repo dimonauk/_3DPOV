@@ -42,6 +42,9 @@ export const GROUPS: NavGroup[] = [
     label: "Work",
     links: [
       { label: "Atelier", href: "/atelier" },
+      { label: "Wall piece designer", href: "/atelier/wall-piece-designer" },
+      { label: "Wall array designer", href: "/atelier/wall-array-designer" },
+      { label: "Jewellery designer", href: "/atelier/jewellery-designer" },
       { label: "Photographs", href: "/photographs" },
       { label: "Aerial", href: "/aerial" },
       { label: "Print bureau", href: "/bureau" },

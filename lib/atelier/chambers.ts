@@ -433,6 +433,33 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     status: "live",
     benchSource: "D:/.github/Shadrerapp GazeHeatmap (Apache-2.0)",
   },
+  {
+    slug: "wall-piece-designer",
+    title: "Wall Piece Designer",
+    blurb:
+      "Breed a single waveguide wall sculpture via the studio's evolution loop. 12 candidates per generation; mutate / breed / keep the one that holds the room.",
+    category: "make-3d",
+    status: "live",
+    benchSource: "lib/evolution + lib/assets/genomes (studio canon)",
+  },
+  {
+    slug: "wall-array-designer",
+    title: "Wall Array Designer",
+    blurb:
+      "Breed a 9-piece wall array. Shared parent lineage means the tiles read as a rhythm; commissioned as one belt-printed slot.",
+    category: "make-3d",
+    status: "live",
+    benchSource: "lib/evolution + lib/assets/genomes (studio canon)",
+  },
+  {
+    slug: "jewellery-designer",
+    title: "Jewellery Designer",
+    blurb:
+      "Breed a wearable waveguide. Same engine, biased for gem-rich genomes + wearable scale. Pendant / earring / ring mounts.",
+    category: "make-3d",
+    status: "live",
+    benchSource: "lib/evolution + lib/assets/genomes (studio canon)",
+  },
 ];
 
 // ---------- Helpers ----------
