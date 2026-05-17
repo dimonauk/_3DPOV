@@ -17,6 +17,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
+import LiveBanter from "components/cast/live-banter";
 import type { CharacterBible } from "lib/cast";
 import { createLogger } from "lib/log";
 
@@ -397,6 +398,11 @@ export default function AcademyClient({
           <p className="mt-2 max-w-2xl text-sm text-chrome-300">
             {todaysPair.note}
           </p>
+        </section>
+
+        {/* Live banter — the cast actually talking, driven by agent.banter */}
+        <section className="mt-12">
+          <LiveBanter />
         </section>
 
         {/* Cohort */}
