@@ -1,6 +1,7 @@
 import Footer from "components/layout/footer";
 import Link from "next/link";
 
+import LiveBanter from "components/cast/live-banter";
 import { listBibles, type CharacterBible } from "lib/cast";
 import type { ChronoModeSlug } from "lib/chrono-protocol";
 
@@ -172,6 +173,10 @@ export default function CastPage() {
           >
             apps
           </Link>
+        </div>
+
+        <div className="mt-12">
+          <LiveBanter />
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
