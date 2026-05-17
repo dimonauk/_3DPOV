@@ -33,15 +33,34 @@ import type {
  * Server-side router. Caller passes the operator's Firebase uid so the
  * media library write carries the right `uploadedBy` (matches the
  * posture in `splat-generate.server.ts` and `splat-ar-deploy.server.ts`).
+ *
+ * `ctx.fallbackToCardFast` (default true) silently re-dispatches to the
+ * card-fast provider when splat-real returns `provider-unavailable` —
+ * the common case until the HoloFlow Desktop helper ships. Surfaces
+ * that need to assert canonical quality (admin re-bake tools, regression
+ * tests) pass `fallbackToCardFast: false` to surface the gap explicitly.
  */
 export async function thumbnailSplatServer(
   input: ThumbnailSplatInput,
-  ctx: { uploadedBy: string },
+  ctx: { uploadedBy: string; fallbackToCardFast?: boolean },
 ): Promise<ThumbnailSplatResult> {
+  const fallback = ctx.fallbackToCardFast ?? true;
   switch (input.provider) {
     case "card-fast":
       return renderCardFast(input, ctx.uploadedBy);
-    case "splat-real":
-      return renderSplatReal(input, ctx.uploadedBy);
+    case "splat-real": {
+      try {
+        return await renderSplatReal(input, ctx.uploadedBy);
+      } catch (err) {
+        const code = (err as { code?: string })?.code;
+        if (fallback && code === "provider-unavailable") {
+          return renderCardFast(
+            { ...input, provider: "card-fast" },
+            ctx.uploadedBy,
+          );
+        }
+        throw err;
+      }
+    }
   }
 }
