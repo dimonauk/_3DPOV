@@ -1,5 +1,7 @@
 import CodexRef from "components/codex/codex-ref";
 
+import type { Entry } from "lib/writing";
+
 export default function OnEditioningPhotographs() {
   return (
     <>
@@ -192,3 +194,20 @@ export default function OnEditioningPhotographs() {
     </>
   );
 }
+
+/**
+ * Colocated entry record. lib/articles.tsx imports this named export
+ * (rather than carrying the metadata in its central array). Pattern
+ * defined in docs/ARTICLES_REGISTRY_SPLIT.md; this is the first
+ * migration — when all 42 entries colocate their record, the central
+ * registry shrinks to a thin import + sort.
+ */
+export const entry: Entry = {
+  slug: "on-editioning-photographs",
+  title: "On Editioning Photographs",
+  date: "2026-05-11",
+  kind: "article",
+  excerpt:
+    "The edition is a promise. A note on sizes, artist's proofs, certificates, and what it means to close one.",
+  Body: OnEditioningPhotographs,
+};
