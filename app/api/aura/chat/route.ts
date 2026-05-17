@@ -32,9 +32,13 @@ import {
   getFirebaseAdminAuth,
   getFirebaseAdminDb,
 } from "lib/firebase/admin";
+import { rememberVectorServer } from "lib/capabilities/agent/memory-vector.server";
+import { createLogger, errToObject } from "lib/log";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
+
+const log = createLogger("api.aura.chat");
 
 type Turn = { role: "user" | "model"; text: string };
 
@@ -92,9 +96,36 @@ async function persistTurn(
       { merge: true },
     );
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error("aura/chat: persistTurn failed", err);
+    log.error("persistTurn failed", { uid, err: errToObject(err) });
   }
+
+  // Mirror the turn pair into vector memory. Fire-and-forget so embed
+  // latency doesn't slow the response; the typed errors from
+  // agent.memory-vector log gracefully when the vector index hasn't
+  // been created or the Gemini key is absent. Matches the wiring in
+  // /api/aura/history POST.
+  void Promise.allSettled([
+    rememberVectorServer({
+      uid,
+      turn: { at: now, speaker: "user", text: userTurn.text },
+    }),
+    rememberVectorServer({
+      uid,
+      turn: { at: now, speaker: "aura", text: modelTurn.text },
+    }),
+  ]).then((results) => {
+    const failed = results.filter((r) => r.status === "rejected");
+    if (failed.length > 0) {
+      log.info("vector-memory: some turns failed to embed", {
+        uid,
+        failed: failed.length,
+        firstReason:
+          failed[0] && failed[0].status === "rejected"
+            ? String(failed[0].reason)
+            : undefined,
+      });
+    }
+  });
 }
 
 export async function POST(req: Request) {
