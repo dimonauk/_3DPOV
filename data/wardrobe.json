@@ -1,0 +1,4 @@
+{
+  "_comment": "Wardrobe outfit registry — populated by /admin/wardrobe-upload after the 7 PBR outfits are uploaded to Vercel Blob. Each entry maps a slug to its public Blob URL. Consumed by the wardrobe picker UI in AuraCompanion and the change_outfit Aura tool.",
+  "outfits": []
+}
