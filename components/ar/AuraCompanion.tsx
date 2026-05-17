@@ -44,6 +44,26 @@ import {
   type AuraCardSummary,
 } from "lib/aura/parse-ui-stream";
 import { resolveAnimationFromText } from "lib/vrm/animationMap";
+import wardrobeData from "../../data/wardrobe.json";
+
+type WardrobeOutfit = {
+  slug: string;
+  label: string;
+  url: string;
+  bytes: number;
+};
+const WARDROBE_OUTFITS: WardrobeOutfit[] = wardrobeData.outfits;
+// Emoji hints per outfit slug. Decorative only — labels are the
+// authoritative identifier in the picker UI.
+const OUTFIT_GLYPH: Record<string, string> = {
+  "baby-pink-spice": "👗",
+  "bunny-top": "🐰",
+  "kawaii-potion": "🧪",
+  "pink-blouse-purple-plaid-skirt": "👚",
+  "pink-coat": "🧥",
+  "purple-dance": "💃",
+  "ready-player-one": "🕶",
+};
 
 const VRMViewer = dynamic(() => import("./VRMViewer"), { ssr: false });
 
@@ -93,6 +113,7 @@ function ToolCallChip({
     book_a_call: "📅",
     save_to_wallet: "💳",
     play_animation: "🎭",
+    change_outfit: "👗",
   };
   const LABELS: Record<string, string> = {
     capture_lead: "Saving lead",
@@ -101,6 +122,7 @@ function ToolCallChip({
     book_a_call: "Booking",
     save_to_wallet: "Wallet save",
     play_animation: "Posing",
+    change_outfit: "Changing outfit",
   };
   const icon = ICONS[call.name] ?? "▸";
   const label = LABELS[call.name] ?? call.name;
@@ -121,6 +143,8 @@ function ToolCallChip({
     argPreview = a["purpose"] as string;
   } else if (call.name === "play_animation" && typeof a["name"] === "string") {
     argPreview = a["name"] as string;
+  } else if (call.name === "change_outfit" && typeof a["slug"] === "string") {
+    argPreview = a["slug"] as string;
   }
 
   return (
@@ -213,6 +237,13 @@ function ToolCallChip({
           ✓ Saved {call.action.email}
         </div>
       )}
+
+      {/* Outfit change confirmation */}
+      {call.action?.kind === "changeOutfit" && (
+        <div className="tool-chip-confirm">
+          ✓ Now wearing: {call.action.label}
+        </div>
+      )}
     </div>
   );
 }
@@ -226,6 +257,15 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
   const [woken, setWoken] = useState(false);
   const [introPlayed, setIntroPlayed] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  // Wardrobe state — initialized from props.vrmUrl (the card's default
+  // outfit from data/cards/<slug>.json). Outfit changes either via the
+  // picker UI or the change_outfit Aura tool update this; VRMViewer
+  // re-mounts on URL change.
+  const [currentVrmUrl, setCurrentVrmUrl] = useState(vrmUrl);
+  useEffect(() => {
+    // If the parent ever changes the default mid-mount, follow it.
+    setCurrentVrmUrl(vrmUrl);
+  }, [vrmUrl]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -418,6 +458,9 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
                   detail: { name: evt.action.name },
                 }),
               );
+            } else if (evt.action?.kind === "changeOutfit") {
+              // Update state; VRMViewer re-mounts on the new URL.
+              setCurrentVrmUrl(evt.action.url);
             }
           }
         } else if (evt.type === "error") {
@@ -523,7 +566,7 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
   return (
     <div className="aura-root">
       <div className="aura-stage">
-        <VRMViewer card={card} vrmUrl={vrmUrl} />
+        <VRMViewer card={card} vrmUrl={currentVrmUrl} />
 
         {/* Speaking indicator overlay */}
         {speaking && (
@@ -556,6 +599,34 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
             {chatOpen ? "↓ Close chat" : `💬 Chat with ${card.name.split(" ")[0]}'s avatar`}
           </button>
         )}
+      </div>
+
+      {/* Outfit picker */}
+      <div className="aura-wardrobe">
+        <span className="aura-wardrobe-tag">Outfit</span>
+        <div className="aura-wardrobe-chips">
+          {WARDROBE_OUTFITS.map((o) => {
+            const isActive = currentVrmUrl === o.url;
+            return (
+              <button
+                key={o.slug}
+                type="button"
+                onClick={() => setCurrentVrmUrl(o.url)}
+                className={
+                  "aura-wardrobe-btn" + (isActive ? " aura-wardrobe-active" : "")
+                }
+                title={o.label}
+                aria-pressed={isActive}
+                aria-label={`Wear ${o.label}`}
+              >
+                <span className="aura-wardrobe-glyph">
+                  {OUTFIT_GLYPH[o.slug] ?? "👕"}
+                </span>
+                <span className="aura-wardrobe-name">{o.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Chat panel */}
@@ -918,6 +989,73 @@ export default function AuraCompanion({ card, vrmUrl }: Props) {
           margin-top: 0.4rem;
           color: #b8e0a8;
           font-size: 0.75rem;
+        }
+
+        /* ---- Outfit picker ---- */
+        .aura-wardrobe {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.4rem 0.55rem;
+          background: rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 111, 181, 0.18);
+          border-radius: 0.6rem;
+          flex-wrap: wrap;
+        }
+        .aura-wardrobe-tag {
+          font-size: 0.65rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          opacity: 0.55;
+          padding-left: 0.2rem;
+          padding-right: 0.2rem;
+          flex-shrink: 0;
+        }
+        .aura-wardrobe-chips {
+          display: flex;
+          gap: 0.35rem;
+          flex-wrap: wrap;
+          flex: 1;
+        }
+        .aura-wardrobe-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.32rem;
+          padding: 0.28rem 0.6rem;
+          background: rgba(255, 111, 181, 0.06);
+          border: 1px solid rgba(255, 111, 181, 0.2);
+          border-radius: 999px;
+          color: rgba(255, 255, 255, 0.85);
+          font-family: inherit;
+          font-size: 0.72rem;
+          cursor: pointer;
+          transition: background 0.15s ease, border-color 0.15s ease,
+            transform 0.12s ease;
+        }
+        .aura-wardrobe-btn:hover {
+          background: rgba(255, 111, 181, 0.16);
+          border-color: rgba(255, 111, 181, 0.5);
+        }
+        .aura-wardrobe-active {
+          background: rgba(255, 111, 181, 0.28);
+          border-color: rgba(255, 111, 181, 0.85);
+          color: white;
+          transform: scale(1.02);
+        }
+        .aura-wardrobe-glyph {
+          font-size: 0.95rem;
+          line-height: 1;
+        }
+        .aura-wardrobe-name {
+          font-weight: 500;
+        }
+        @media (max-width: 520px) {
+          .aura-wardrobe-name {
+            display: none;
+          }
+          .aura-wardrobe-btn {
+            padding: 0.34rem 0.55rem;
+          }
         }
       `}</style>
     </div>

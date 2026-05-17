@@ -31,6 +31,32 @@ import {
   ALL_ANIMATIONS,
   type AnimationName,
 } from "lib/vrm/animationMap";
+import wardrobeData from "../../data/wardrobe.json";
+
+type WardrobeOutfit = {
+  slug: string;
+  label: string;
+  url: string;
+  bytes: number;
+};
+const WARDROBE_OUTFITS: WardrobeOutfit[] = wardrobeData.outfits;
+const OUTFIT_SLUG_LIST = WARDROBE_OUTFITS.map((o) => o.slug);
+const OUTFIT_DESCRIPTIONS: Record<string, string> = {
+  "baby-pink-spice":
+    "Aura's default — pink crop top + pleated skirt, bubblegum-pink hair, cute and approachable",
+  "bunny-top":
+    "Casual cute — bunny-themed crop top, soft palette, low-key playful",
+  "kawaii-potion":
+    "Witchy / potion-shop aesthetic — pastel purples and pinks, slightly theatrical",
+  "pink-blouse-purple-plaid-skirt":
+    "Preppy schoolgirl — pink blouse with a purple plaid skirt, structured",
+  "pink-coat":
+    "Outdoor / cold-weather — pink overcoat layered over the base outfit",
+  "purple-dance":
+    "Dance-floor / performance — purple dance outfit, energetic, made for movement",
+  "ready-player-one":
+    "Cyber / VR — futuristic streetwear, the gamer-poet vibe",
+};
 
 type CardSummary = {
   slug: string;
@@ -298,6 +324,43 @@ export function getCardAuraTools(opts: {
           action: {
             kind: "playAnimation" as const,
             name: name as AnimationName,
+          },
+        };
+      },
+    }),
+
+    // ---------------------------------------------------------------
+    change_outfit: tool({
+      description: `Swap ${card.name}'s avatar into a different outfit from the studio wardrobe. Use when the visitor asks to see a different look, when the mood of the conversation shifts (dancing → purple-dance, going outside → pink-coat, gaming → ready-player-one), or when an outfit would visually reinforce what you're saying. The change is near-instant — animation continues mid-transition. Available outfits:
+${OUTFIT_SLUG_LIST.map((s) => `  - ${s}: ${OUTFIT_DESCRIPTIONS[s] ?? "(outfit)"}`).join("\n")}`,
+      inputSchema: z.object({
+        slug: z
+          .enum([
+            "baby-pink-spice",
+            "bunny-top",
+            "kawaii-potion",
+            "pink-blouse-purple-plaid-skirt",
+            "pink-coat",
+            "purple-dance",
+            "ready-player-one",
+          ])
+          .describe("Outfit slug from the wardrobe registry"),
+      }),
+      execute: async ({ slug }) => {
+        const outfit = WARDROBE_OUTFITS.find((o) => o.slug === slug);
+        if (!outfit) {
+          return {
+            summary: `Unknown outfit "${slug}". Valid options: ${OUTFIT_SLUG_LIST.join(", ")}.`,
+            action: null,
+          };
+        }
+        return {
+          summary: `Swapping ${card.name}'s avatar to the ${outfit.label} outfit. In your reply, briefly note what vibe this look has so the visitor connects the change to the conversation.`,
+          action: {
+            kind: "changeOutfit" as const,
+            slug: outfit.slug,
+            label: outfit.label,
+            url: outfit.url,
           },
         };
       },
