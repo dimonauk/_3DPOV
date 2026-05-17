@@ -264,6 +264,18 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["viz.attractor"],
   },
   {
+    id: "viz.heatmap-equirect",
+    kind: "viz",
+    name: "Equirect heatmap render",
+    summary:
+      "Render an equirectangular (2:1) heatmap, foveal mask, or scanpath from a GazeSample stream. Composes input.gaze + lib/algorithms/heatmap + lib/math/spherical. Three modes: HEATMAP (gaussian accumulation through HeatmapGenerator), FOVEAL_VIEW (inverse mask), SCANPATH (dashed trace + nodes).",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/GazeHeatmap/components/HeatmapViewport.tsx (Apache-2.0). Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./viz/heatmap-equirect"),
+    dependsOn: ["input.gaze"],
+  },
+  {
     id: "geo.position",
     kind: "geo",
     name: "Geolocation + heading",
