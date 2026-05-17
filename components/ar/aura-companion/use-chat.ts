@@ -1,0 +1,202 @@
+"use client";
+
+/**
+ * components/ar/aura-companion/use-chat.ts — Chat state machine for
+ * AuraCompanion. Owns the messages array, input value, busy flag,
+ * and error; exposes `send` which POSTs to /api/cards/[slug]/chat,
+ * streams the SSE-like Aura response via parseAuraStream, threads
+ * tool calls into the latest assistant message, and speaks the
+ * final reply through the supplied `speak` callback.
+ *
+ * Extracted from AuraCompanion.tsx per ARCHITECTURE.md Rule 1.
+ * Side effects: window.dispatchEvent for animations and router.push
+ * for navigate-action tools. Visitor's history lives in this hook's
+ * useState only — no persistence, no PII risk.
+ */
+
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+
+import type { Card } from "lib/ar/types";
+import { parseAuraStream } from "lib/aura/parse-ui-stream";
+import { resolveAnimationFromText } from "lib/vrm/animationMap";
+
+import { type ChatMessage, type ToolCallRecord } from "./types";
+
+export type UseChatOptions = {
+  card: Card;
+  speak: (text: string) => void;
+};
+
+export function useAuraChat({ card, speak }: UseChatOptions) {
+  const router = useRouter();
+  const slug = card.slug;
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const clear = useCallback(() => {
+    setMessages([]);
+    setError(null);
+  }, []);
+
+  const send = useCallback(async () => {
+    const text = input.trim();
+    if (!text || busy) return;
+    setInput("");
+    setError(null);
+
+    const newUser: ChatMessage = { role: "user", content: text };
+    const history = [...messages, newUser];
+    setMessages(history);
+    setBusy(true);
+
+    // Add a placeholder assistant message to stream into.
+    const assistantIndex = history.length;
+    setMessages([...history, { role: "assistant", content: "", streaming: true }]);
+
+    try {
+      const res = await fetch(`/api/cards/${slug}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+      });
+      if (!res.ok) {
+        // Friendly messaging for the two visitor-facing states the
+        // server already returns (503 not configured) or might return
+        // once a rate-limit lands (429 too many requests).
+        let friendly: string | null = null;
+        if (res.status === 429) {
+          const retryAfter = res.headers.get("Retry-After");
+          const seconds = retryAfter ? Number(retryAfter) : NaN;
+          friendly =
+            Number.isFinite(seconds) && seconds > 0
+              ? `Slow down — try again in ${Math.ceil(seconds)}s.`
+              : "Slow down — too many requests, try again shortly.";
+        } else if (res.status === 503) {
+          friendly = "Chat isn't available right now. Try again later.";
+        }
+        const errBody = friendly ?? (await res.text()).slice(0, 200);
+        setError(friendly ? errBody : `Chat error: ${res.status} ${errBody}`);
+        setMessages((m) => m.slice(0, assistantIndex));
+        setBusy(false);
+        return;
+      }
+      if (!res.body) {
+        setError("No response body");
+        setMessages((m) => m.slice(0, assistantIndex));
+        setBusy(false);
+        return;
+      }
+      let acc = "";
+      const turnTools: ToolCallRecord[] = [];
+
+      const writeAssistant = () => {
+        setMessages((m) => {
+          const next = [...m];
+          next[assistantIndex] = {
+            role: "assistant",
+            content: acc,
+            streaming: true,
+            ...(turnTools.length > 0 ? { toolCalls: [...turnTools] } : {}),
+          };
+          return next;
+        });
+      };
+
+      for await (const evt of parseAuraStream(res.body)) {
+        if (evt.type === "text-delta") {
+          acc += evt.text;
+          writeAssistant();
+        } else if (evt.type === "tool-call") {
+          turnTools.push({
+            id: evt.toolCallId,
+            name: evt.toolName,
+            args: evt.args,
+            status: "pending",
+          });
+          writeAssistant();
+        } else if (evt.type === "tool-result") {
+          const rec = turnTools.find((t) => t.id === evt.toolCallId);
+          if (rec) {
+            rec.status = "complete";
+            const out =
+              evt.result && typeof evt.result === "object"
+                ? (evt.result as { summary?: string })
+                : undefined;
+            if (out?.summary) rec.summary = out.summary;
+            if (evt.action) rec.action = evt.action;
+            if (evt.action?.kind === "showCards") rec.cards = evt.action.cards;
+            if (evt.action?.kind === "showCard") rec.card = evt.action.card;
+            writeAssistant();
+
+            // Client-side effects.
+            if (evt.action?.kind === "navigate" && evt.action.path) {
+              const path = evt.action.path;
+              setTimeout(() => router.push(path), 600);
+            } else if (evt.action?.kind === "playAnimation") {
+              // VRMViewer (mounted above the chat) listens on the window.
+              window.dispatchEvent(
+                new CustomEvent("aura:play-animation", {
+                  detail: { name: evt.action.name },
+                }),
+              );
+            }
+          }
+        } else if (evt.type === "error") {
+          throw new Error(evt.message);
+        }
+      }
+
+      // Finalise.
+      setMessages((m) => {
+        const next = [...m];
+        next[assistantIndex] = {
+          role: "assistant",
+          content: acc,
+          ...(turnTools.length > 0 ? { toolCalls: turnTools } : {}),
+        };
+        return next;
+      });
+
+      // Keyword-based auto-animation: if Aura's reply contains words
+      // like "interesting", "well done", "goodbye", trigger the
+      // matching emote. Skip if the agent already called play_animation
+      // this turn (don't double up).
+      const triggeredAnimation = turnTools.some(
+        (t) => t.name === "play_animation",
+      );
+      if (!triggeredAnimation && acc.trim()) {
+        const auto = resolveAnimationFromText(acc);
+        if (auto) {
+          window.dispatchEvent(
+            new CustomEvent("aura:play-animation", {
+              detail: { name: auto },
+            }),
+          );
+        }
+      }
+
+      // Speak the reply.
+      if (acc.trim()) speak(acc);
+    } catch (e) {
+      setError((e as Error).message ?? "Network error");
+      setMessages((m) => m.slice(0, assistantIndex));
+    } finally {
+      setBusy(false);
+    }
+  }, [busy, input, messages, slug, router, speak]);
+
+  return {
+    messages,
+    input,
+    setInput,
+    busy,
+    error,
+    setError,
+    clear,
+    send,
+  };
+}
