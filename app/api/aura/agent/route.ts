@@ -252,8 +252,9 @@ export const POST = withRouteLogging("aura.agent", async (req: NextRequest, _ctx
     return result.toUIMessageStreamResponse();
   } catch (err) {
     log.error("agent:failed", { err: errToObject(err) });
+    const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { error: "agent_failed", message: (err as Error).message },
+      { error: "agent_failed", message },
       { status: 502 },
     );
   }

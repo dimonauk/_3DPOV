@@ -36,22 +36,39 @@ export default function GazeHeatmapClient() {
   const [samples, setSamples] = useState<GazeSample[]>([]);
   const [mode, setMode] = useState<AnalysisMode>("HEATMAP");
   const [blobRadiusDeg, setBlobRadiusDeg] = useState(5.0);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const handleUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setUploadError(null);
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
         const data = JSON.parse(event.target?.result as string);
         const parsed = loadFromJson(data);
+        if (parsed.length === 0) {
+          setUploadError(
+            "No valid gaze samples in this file. Expecting an array of { t, yaw_deg, pitch_deg }.",
+          );
+          return;
+        }
         setSamples(parsed);
-      } catch {
-        /* ignore parse errors — empty samples already */
+      } catch (err) {
+        setUploadError(
+          err instanceof Error
+            ? `Could not parse: ${err.message}`
+            : "Could not parse this file as gaze JSON.",
+        );
       }
     };
+    reader.onerror = () => {
+      setUploadError("Could not read the file.");
+    };
     reader.readAsText(file);
+    // Reset the input so re-uploading the same file fires onload again.
+    e.target.value = "";
   }, []);
 
   const timeRange = useMemo<[number, number]>(() => {
@@ -112,6 +129,11 @@ export default function GazeHeatmapClient() {
               className="hidden"
             />
           </label>
+          {uploadError && (
+            <span className="rounded-sm border border-coral-500/60 bg-coral-500/10 px-2 py-0.5 text-[10px] text-coral-300">
+              {uploadError}
+            </span>
+          )}
           {MODES.map((m) => (
             <button
               key={m.id}
