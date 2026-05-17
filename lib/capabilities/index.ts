@@ -276,6 +276,29 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["input.gaze"],
   },
   {
+    id: "viz.shader-editor",
+    kind: "viz",
+    name: "GLSL editor primitives",
+    summary:
+      "Headless GLSL editing functions: detectCustomUniforms (regex scan, hint-aware), assembleFragment (precision + built-in uniforms + lib injection from lib/math/glsl + gl_FragColor wrapper), compileFragment (try-compile against a throw-away WebGL context). The substrate the shader-station chamber's textarea-to-preview loop runs on.",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/ShaderEditor/hooks/useUniformDetection.ts + the assembly/compile blocks in index.tsx (Apache-2.0). Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./viz/shader-editor"),
+  },
+  {
+    id: "viz.shader-export",
+    kind: "viz",
+    name: "Shader → PNG snapshot",
+    summary:
+      "Render a compiled fragment shader to a PNG at equirect (2048×1024), square (1024×1024), or arbitrary size. Spins up a throw-away THREE.WebGLRenderer + full-screen quad, renders once, returns dataURL — disposes the renderer afterwards. The export-button substrate for the shader-station chamber.",
+    status: "registered",
+    source:
+      "Lifted from D:/.github/Shadrerapp/src/apps/ShaderEditor/hooks/useShaderExport.ts (Apache-2.0). Per docs/SHADRERAPP_MIGRATION.md.",
+    load: () => import("./viz/shader-export"),
+    dependsOn: ["viz.shader-editor"],
+  },
+  {
     id: "geo.position",
     kind: "geo",
     name: "Geolocation + heading",
