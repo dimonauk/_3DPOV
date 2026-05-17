@@ -30,6 +30,8 @@ import { withRouteLogging, errToObject } from "lib/log";
  *   500 → internal error (uncaught throw — request id in body)
  */
 
+export const maxDuration = 60;
+
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB
 const RATE_LIMIT_PER_HOUR = 10;
 

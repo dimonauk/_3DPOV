@@ -27,6 +27,8 @@ import { withRouteLogging, errToObject } from "lib/log";
  * slug. See lib/cards/aura-card-tools.ts.
  */
 
+export const maxDuration = 60;
+
 type Params = { params: Promise<{ slug: string }> };
 
 export const POST = withRouteLogging<Params>(

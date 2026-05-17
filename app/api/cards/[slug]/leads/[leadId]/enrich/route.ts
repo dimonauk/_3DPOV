@@ -15,6 +15,8 @@ import { withRouteLogging, errToObject } from "lib/log";
  * Every response carries X-Request-Id for log correlation.
  */
 
+export const maxDuration = 60;
+
 type Params = { params: Promise<{ slug: string; leadId: string }> };
 
 export const POST = withRouteLogging<Params>(

@@ -36,6 +36,8 @@ import { withRouteLogging, errToObject } from "lib/log";
  * turn worst case.
  */
 
+export const maxDuration = 60;
+
 const MAX_HISTORY_MESSAGES = 50;
 const MAX_INPUT_CHARS = 2000;
 const TEXT_MODEL =
