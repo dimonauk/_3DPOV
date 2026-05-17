@@ -207,6 +207,18 @@ const auraAliveStubs: CapabilityRecord[] = [
     stateSlices: ["cast"],
   },
   {
+    id: "agent.memory-vector",
+    kind: "agent",
+    name: "Vector memory (Firestore)",
+    summary:
+      "Durable semantic memory keyed by Firebase uid. Each turn is embedded once via Gemini text-embedding-004 (768 dims) and written to users/{uid}/memory/{auto}. Recall walks Firestore's native findNearest vector index with cosine distance. Sibling to agent.memory — in-memory Jaccard stays the fast path; this is the persistent across-session companion.",
+    status: "registered",
+    source: "Studio composite: Firebase Admin Firestore vector field (FieldValue.vector + findNearest) + @google/genai text-embedding-004. Operator-side requirement: gcloud firestore indexes composite create on the memory collection-group.",
+    load: () => import("./agent/memory-vector"),
+    stateSlices: [],
+    dependsOn: ["agent.memory"],
+  },
+  {
     id: "input.headpose",
     kind: "input",
     name: "Head pose",
