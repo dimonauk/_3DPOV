@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function OnTheBenchYearTen() {
   return (
     <>
@@ -53,3 +55,33 @@ export default function OnTheBenchYearTen() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "on-the-bench-year-ten",
+    title: "On the Bench, Year Ten",
+    date: "2023-08-04",
+    kind: "journal",
+    excerpt:
+      "Building the first rig that did what the commercial pois couldn't. A Teensy on a desk, a Hall sensor and a magnet, a vertical white line that was a vertical white line.",
+    Body: OnTheBenchYearTen,
+    related: [
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The argument this entry is the field note for.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The walkthrough version of the same build.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The current state of the kit, six years on.",
+      },
+    ],
+  };

@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 export default function YearOneFire() {
   return (
     <>
@@ -58,3 +60,31 @@ export default function YearOneFire() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "year-one-fire",
+    title: "Year One, Fire",
+    date: "2014-11-30",
+    kind: "journal",
+    excerpt:
+      "Before the camera, before the rigs, before any of this. The body learning the geometry. Sock poi, three-beat weaves, eyes closed, then fire.",
+    Body: YearOneFire,
+    related: [
+      {
+        href: "/practice",
+        label: "Practice — Stage I, poi",
+      },
+      {
+        href: "/tutorials/spinning-fire-poi-safely",
+        label: "Tutorial — Spinning Fire Poi Safely",
+        note: "The boring stuff that came after this entry's recklessness.",
+      },
+      {
+        href: "/about",
+        label: "About — the practice",
+      },
+    ],
+  };

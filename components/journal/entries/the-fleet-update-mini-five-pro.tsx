@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -162,3 +164,60 @@ export default function TheFleetUpdateMiniFivePro() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-fleet-update-mini-five-pro",
+    title: "The Fleet Update — Mini 5 Pro and the Bluetooth LEDs",
+    date: "2026-04-22",
+    kind: "journal",
+    excerpt:
+      "The fifth airframe came home from the shop. Sub-250-gram DJI Mini 5 Pro, AliExpress Bluetooth LEDs gorilla-glued to the spine, a small Osmo Action body-mounted for ground-level capture. The mission shape that was not possible with four — the unsynchronised LED swarm — is now on the table.",
+    Body: TheFleetUpdateMiniFivePro,
+    related: [
+      {
+        href: "/articles/the-fleet-five-airframes",
+        label: "The Fleet — Five Airframes",
+        note: "The full fleet article. The Mini 5 Pro is the fifth airframe this entry records.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The architectural cousin — same persistence-of-vision trick at a different scale.",
+      },
+      {
+        href: "/journal/first-light",
+        label: "First Light",
+        note: "The first quiet step toward the technique this entry is the fleet-scale version of.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the working line",
+        note: "The commission shape this fleet exists to serve.",
+      },
+      {
+        href: "/stack",
+        label: "The Stack",
+        note: "The bench, including all five airframes named in full.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.dji.com/uk/mini-5-pro",
+        label: "DJI Mini 5 Pro — official product page",
+        note: "Sub-250-gram travel airframe; 1-inch sensor.",
+      },
+      {
+        href: "https://www.dji.com/uk/osmo-action-5-pro",
+        label: "DJI Osmo Action — official product page",
+        note: "Body-mounted action camera; ecosystem-coherent with the rest of the DJI side.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The optical foundation the LED-swarm photographs depend on.",
+      },
+    ],
+  };

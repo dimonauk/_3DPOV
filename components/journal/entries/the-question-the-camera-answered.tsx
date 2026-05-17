@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function TheQuestionTheCameraAnswered() {
   return (
     <>
@@ -87,3 +89,59 @@ export default function TheQuestionTheCameraAnswered() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-question-the-camera-answered",
+    title: "The Question the Camera Answered",
+    date: "2025-11-14",
+    kind: "journal",
+    excerpt:
+      "Twelve years in. On how a long exposure made the gesture visible to everyone — and what the studio became next.",
+    Body: TheQuestionTheCameraAnswered,
+    related: [
+      {
+        href: "/about",
+        label: "About — the practice, the method, the studio",
+      },
+      {
+        href: "/journal/the-night-the-camera-was-right",
+        label: "The Night the Camera Was Right",
+        note: "The hinge night this piece reflects on.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The technical companion to this piece.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs — light, written in the air",
+        note: "What the camera has been answering with.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.homeofpoi.com/lessons_all/",
+        label: "Home of Poi — full lesson archive",
+        note: "Free tutorials for every fundamental poi move, organised by level. Where most of the studio's first decade began.",
+      },
+      {
+        href: "https://drex.poi.me/",
+        label: "Drex Files — poi tutorial site",
+        note: "Long-running reference site for cross-follow, antispin, weaves, and the maths behind each.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Long-exposure_photography",
+        label: "Long-exposure photography — Wikipedia",
+        note: "The technical foundation for everything visible in the studio's photographs.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Poi_(performance_art)",
+        label: "Poi (performance art) — Wikipedia",
+        note: "Cultural and historical background on poi, including its Māori origin.",
+      },
+    ],
+  };

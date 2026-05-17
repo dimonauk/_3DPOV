@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 export default function TheFirstWallArray() {
   return (
     <>
@@ -73,3 +75,32 @@ export default function TheFirstWallArray() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-first-wall-array",
+    title: "The First Wall Array",
+    date: "2024-05-12",
+    kind: "journal",
+    excerpt:
+      "Field record of the commission that worked out how to do wall arrays properly. Nine pieces, three years of practice, six layout drafts, two days of install. The composition was alive by the second night.",
+    Body: TheFirstWallArray,
+    related: [
+      {
+        href: "/articles/wall-arrays-geometry-of-rooms",
+        label: "Wall Arrays — the Geometry of Rooms",
+        note: "The article that grew out of this install.",
+      },
+      {
+        href: "/tutorials/lighting-a-waveguide-object",
+        label: "Tutorial — Lighting a Waveguide Object",
+        note: "The per-piece optical engineering.",
+      },
+      {
+        href: "/contact?intent=commission",
+        label: "Commission a wall array",
+      },
+    ],
+  };

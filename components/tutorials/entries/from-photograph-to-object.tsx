@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = (
   <span className="ml-0.5 text-chrome-500">&nearr;</span>
@@ -214,3 +216,69 @@ export default function FromPhotographToObject() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "from-photograph-to-object",
+    title: "From Photograph to 3D Object",
+    date: "2025-09-18",
+    kind: "tutorial",
+    excerpt:
+      "The studio's pipeline. How a long-exposure photograph becomes voxel data, becomes a mesh, becomes a resin print with embedded waveguides.",
+    Body: FromPhotographToObject,
+    related: [
+      {
+        href: "/tutorials/your-first-long-exposure",
+        label: "Tutorial — Your First Long-Exposure Light Painting",
+        note: "Step one: get the source photograph right.",
+      },
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The instrument that makes the photographs precise enough to translate.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The studio's printer and post-processing setup.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage VI, the objects",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Voxel",
+        label: "Voxel — Wikipedia",
+        note: "The volumetric pixel: what the studio's photographs are converted into before becoming a mesh.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Marching_cubes",
+        label: "Marching cubes algorithm — Wikipedia",
+        note: "The standard algorithm for turning voxel data into a printable surface mesh.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Stereolithography",
+        label: "Stereolithography (SLA) — Wikipedia",
+        note: "The resin-printing process the studio uses. Read this to understand why SLA is the right choice for embedded waveguides.",
+      },
+      {
+        href: "https://docs.blender.org/manual/en/latest/modeling/meshes/index.html",
+        label: "Blender Mesh modelling documentation",
+        note: "Free, professional 3D software. The studio uses it for the cleanup pass between voxel data and print-ready geometry.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Light_pipe",
+        label: "Light pipe / waveguide — Wikipedia",
+        note: "The optical principle behind the acrylic channels embedded in the studio's objects.",
+      },
+      {
+        href: "https://www.openscad.org/documentation.html",
+        label: "OpenSCAD documentation",
+        note: "Programmatic CAD. Useful for parametric waveguide channel design.",
+      },
+    ],
+  };

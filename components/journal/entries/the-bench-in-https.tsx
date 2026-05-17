@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -121,3 +123,45 @@ export default function TheBenchInHttps() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-bench-in-https",
+    title: "The Bench in HTTPS",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "The studio's Sharp image bench got a tailnet hostname and a real TLS cert today. Same Docker host, one sidecar, no public internet — the bench is now reachable from anywhere I am logged in.",
+    Body: TheBenchInHttps,
+    related: [
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The wider working set the Sharp bench is part of.",
+      },
+      {
+        href: "/codex/persistence-of-vision",
+        label: "Persistence of Vision",
+        note: "An adjacent piece of studio infrastructure documented in catalogue mode.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://tailscale.com/kb/1242/tailscale-serve",
+        label: "Tailscale Serve — official documentation",
+        note: "The mechanism that puts a private service behind a tailnet hostname with a real cert.",
+      },
+      {
+        href: "https://sharp.pixelplumbing.com/",
+        label: "Sharp — high-performance Node.js image processing",
+        note: "The libvips-backed image library the studio's print pipeline depends on.",
+      },
+      {
+        href: "https://letsencrypt.org/how-it-works/",
+        label: "Let's Encrypt — how it works",
+        note: "The ACME-based cert issuer that signs the tailnet hostnames.",
+      },
+    ],
+  };

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 const code =
@@ -224,3 +226,69 @@ flat.tofile("image.bin")`}</code>
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "programming-pov-frames",
+    title: "Programming Frames for a POV Rig",
+    date: "2024-09-22",
+    kind: "tutorial",
+    excerpt:
+      "From a regular image to the per-column polar data the rig actually wants. Gamma, brightness budgets, the angular reference, and the three test patterns the studio runs on every new rig.",
+    Body: ProgrammingPovFrames,
+    related: [
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The hardware this tutorial presumes you have on the bench.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The architectural argument for angle-sync vs time-sync.",
+      },
+      {
+        href: "/play",
+        label: "Play — solo level two, The Trail",
+        note: "The angular-sync architecture this tutorial walks through, played in a browser instead of programmed.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage IV, POV LED arrays",
+      },
+      {
+        href: "/journal/on-the-bench-year-ten",
+        label: "On the Bench, Year Ten",
+        note: "The field record of the first rig that did this properly.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://numpy.org/doc/stable/reference/index.html",
+        label: "NumPy — official reference",
+        note: "Array operations, polar transforms, the underlying maths of the image prep.",
+      },
+      {
+        href: "https://pillow.readthedocs.io/en/stable/",
+        label: "Pillow — Python Imaging Library",
+        note: "Open-source image read/resize/write toolkit.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gamma_correction",
+        label: "Gamma correction — Wikipedia",
+        note: "Why a linear-to-sRGB curve matters for LED output.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels",
+        label: "NeoPixel power — Adafruit Learn",
+        note: "Current budgets, supply sizing, the gotchas of running addressable LEDs at full brightness.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/td_pulse.html",
+        label: "Teensy hardware timers — PJRC",
+        note: "Microsecond-level pulse generation for column-by-column writes.",
+      },
+    ],
+  };

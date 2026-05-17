@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function YourFirstLongExposure() {
   return (
     <>
@@ -137,3 +139,79 @@ export default function YourFirstLongExposure() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "your-first-long-exposure",
+    title: "Your First Long-Exposure Light Painting",
+    date: "2022-03-15",
+    kind: "tutorial",
+    excerpt:
+      "A beginner walkthrough. Camera, place, tool, frame, shutter, gesture. The first photograph is always the same.",
+    Body: YourFirstLongExposure,
+    related: [
+      {
+        href: "/tutorials/building-a-pov-led-rig",
+        label: "Tutorial — Building a POV LED Rig",
+        note: "The next instrument up. Same discipline, programmable.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "When the off-the-shelf tools stop being enough.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the history of light painting at the studio",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — light painting from above",
+        note: "Drone-mounted sources, for when the body cannot reach.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Long-exposure_photography",
+        label: "Long-exposure photography — Wikipedia",
+        note: "Foundational article covering shutter speed, motion capture, and the technique's history.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Exposure_(photography)",
+        label: "Exposure (photography) — Wikipedia",
+        note: "The exposure triangle: aperture, shutter, ISO. Read this once and the camera settings start making sense.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Aperture",
+        label: "Aperture — Wikipedia",
+        note: "What f/numbers mean, how aperture controls depth of field and light gathering.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Film_speed",
+        label: "Film speed (ISO) — Wikipedia",
+        note: "ISO sensitivity explained. Why low ISO means cleaner photographs.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Depth_of_field",
+        label: "Depth of field — Wikipedia",
+        note: "What controls how much of the scene is in focus at once.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Light_painting",
+        label: "Light painting — Wikipedia",
+        note: "The full history and the major contemporary practitioners. Many entry points for what to try next.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/%C3%89tienne-Jules_Marey",
+        label: "Étienne-Jules Marey — Wikipedia",
+        note: "The 19th-century French scientist whose chronophotography is the direct ancestor of light painting.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Fire_performance",
+        label: "Fire performance — Wikipedia",
+        note: "Safety, fuels, and discipline overview. Read before you go near open flame.",
+      },
+    ],
+  };

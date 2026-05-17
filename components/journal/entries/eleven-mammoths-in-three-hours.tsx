@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function ElevenMammothsInThreeHours() {
   return (
     <>
@@ -111,3 +113,33 @@ export default function ElevenMammothsInThreeHours() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "eleven-mammoths-in-three-hours",
+    title: "Eleven mammoths in three hours",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "A Wednesday refactor: eleven oversized code files split into smaller, single-purpose siblings under a 300-line cap. Same behaviour, smaller rooms.",
+    Body: ElevenMammothsInThreeHours,
+    related: [
+      {
+        href: "/codex/marching-cubes",
+        label: "Marching Cubes",
+        note: "The algorithm whose 723-line module was the biggest of the eleven.",
+      },
+      {
+        href: "/codex/gyroid-surfaces",
+        label: "Gyroid Surfaces",
+        note: "The test scene used to confirm the marching-cubes split was behaviour-preserving.",
+      },
+      {
+        href: "/journal/the-bench-in-https",
+        label: "The Bench in HTTPS",
+        note: "Another piece of quiet studio infrastructure, in the same workshop register.",
+      },
+    ],
+  };

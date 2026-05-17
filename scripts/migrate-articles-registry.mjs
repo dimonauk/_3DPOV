@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 /**
- * scripts/migrate-articles-registry.mjs — one-shot.
+ * scripts/migrate-articles-registry.mjs — one-shot writing-registry
+ * migrator. Generalises across lib/{articles,journal,tutorials}.tsx;
+ * defaults to articles when no argv is passed.
  *
- * Migrates lib/articles.tsx from a central ENTRIES array to the
+ * Usage:
+ *   node scripts/migrate-articles-registry.mjs            # articles
+ *   node scripts/migrate-articles-registry.mjs journal    # journal
+ *   node scripts/migrate-articles-registry.mjs tutorials  # tutorials
+ *
+ * Migrates lib/<target>.tsx from a central ENTRIES array to the
  * colocated-`entry`-export pattern per docs/ARTICLES_REGISTRY_SPLIT.md.
  *
  * For each entry in ENTRIES:
@@ -26,8 +33,14 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const REPO = path.resolve(import.meta.dirname, "..");
-const ARTICLES_TSX = path.join(REPO, "lib/articles.tsx");
-const ENTRIES_DIR = path.join(REPO, "components/articles/entries");
+const TARGET = process.argv[2] ?? "articles";
+if (!["articles", "journal", "tutorials"].includes(TARGET)) {
+  console.error(`Unknown target ${TARGET}; expected one of articles|journal|tutorials`);
+  process.exit(2);
+}
+const ARTICLES_TSX = path.join(REPO, `lib/${TARGET}.tsx`);
+const ENTRIES_DIR = path.join(REPO, `components/${TARGET}/entries`);
+const IMPORT_PREFIX = `components/${TARGET}/entries/`;
 
 const slugToEntryName = (slug) =>
   `${slug
@@ -40,7 +53,10 @@ const src = await readFile(ARTICLES_TSX, "utf8");
 
 // Parse import map: default-import name → file slug.
 const importMap = new Map();
-const importRegex = /^import (\w+) from "components\/articles\/entries\/([^"]+)";$/gm;
+const importRegex = new RegExp(
+  String.raw`^import (\w+) from "components\/${TARGET}\/entries\/([^"]+)";$`,
+  "gm",
+);
 for (const m of src.matchAll(importRegex)) {
   importMap.set(m[1], m[2]);
 }
@@ -164,8 +180,8 @@ const newSrc = (() => {
   // Replace each default-import with named-entry-import, in path order.
   for (const [bodyName, fileSlug] of importMap.entries()) {
     const entryName = slugToEntryName(fileSlug);
-    const oldImport = `import ${bodyName} from "components/articles/entries/${fileSlug}";`;
-    const newImport = `import { entry as ${entryName} } from "components/articles/entries/${fileSlug}";`;
+    const oldImport = `import ${bodyName} from "${IMPORT_PREFIX}${fileSlug}";`;
+    const newImport = `import { entry as ${entryName} } from "${IMPORT_PREFIX}${fileSlug}";`;
     if (out.includes(oldImport)) {
       out = out.replace(oldImport, newImport);
     }

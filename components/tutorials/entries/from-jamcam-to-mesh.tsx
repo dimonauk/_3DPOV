@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 const code = "mx-0.5 rounded-sm bg-warm-black-800 px-1 py-0.5 font-mono text-xs";
@@ -266,3 +268,70 @@ pnpm exec tsx scripts/cctv-mesh-batch.ts \\
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "from-jamcam-to-mesh",
+    title: "From JamCam to mesh: building a 3D archive from public CCTV",
+    date: "2026-05-14",
+    kind: "tutorial",
+    excerpt:
+      "Cross-reference TfL JamCams against HoloWalk pins, poll the stills on a schedule, and feed each frame into Apple SHARP or InstantMesh on the bench. A continuously refreshing 3D archive of London at street level.",
+    Body: FromJamcamToMesh,
+    related: [
+      {
+        href: "/tutorials/from-360-to-splat",
+        label: "Tutorial — From 360 to Splat",
+        note: "The sibling pipeline. Different input camera, same mesh-from-image instinct.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The earlier flat-to-volumetric pipeline. Different model class, same destination.",
+      },
+      {
+        href: "/holo-walk",
+        label: "HoloWalk",
+        note: "The sculpture-pin geography the camera roster is matched against.",
+      },
+      {
+        href: "/articles/ungrounded",
+        label: "Ungrounded",
+        note: "The architectural framing of the studio leaving the 2D plane.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://api.tfl.gov.uk/Place/Type/JamCam",
+        label: "TfL JamCams — Place API endpoint",
+        note: "Live JSON roster of every JamCam in London, with lat/lng and current still URL. No auth, no key.",
+      },
+      {
+        href: "https://api-portal.tfl.gov.uk/api-details#api=Place&operation=Place_PlacesByTypeByTypesQueryActiveOnly",
+        label: "TfL Unified API portal — Place endpoint",
+        note: "The official documentation for the endpoint above, including query parameters and response shape.",
+      },
+      {
+        href: "https://github.com/apple/ml-sharp",
+        label: "Apple ml-sharp — official repository",
+        note: "Source code and weights link for the archival-path model. Research-only licence; check before publishing outputs.",
+      },
+      {
+        href: "https://github.com/TencentARC/InstantMesh",
+        label: "InstantMesh — official repository",
+        note: "The print-safe path. Apache-2.0 licence, feed-forward mesh from a single image, ~30s per frame on a 3080 Ti.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gaussian_splatting",
+        label: "Gaussian splatting — Wikipedia",
+        note: "The rendering technique SHARP produces. Read this if the .ply format does not feel familiar.",
+      },
+      {
+        href: "https://tailscale.com/kb/1019/subnets",
+        label: "Tailscale — subnet routing docs",
+        note: "How the studio exposes the bench services across the tailnet as mesh-bench and sharp-bench.",
+      },
+    ],
+  };

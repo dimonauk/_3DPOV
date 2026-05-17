@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function OnTheApparatus() {
   return (
     <>
@@ -110,3 +112,60 @@ export default function OnTheApparatus() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "on-the-apparatus",
+    title: "On the Apparatus",
+    date: "2026-03-09",
+    kind: "journal",
+    excerpt:
+      "A working set, not a portfolio. The kit currently on the bench, in the workshop, and in the air.",
+    Body: OnTheApparatus,
+    related: [
+      {
+        href: "/journal/first-light",
+        label: "First Light",
+        note: "The kit, in action, on its first LED-modified flight.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "Why the POV rigs are custom-built, not bought.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — the full history",
+        note: "How the kit accumulated, stage by stage.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.pjrc.com/teensy/td_3_1.html",
+        label: "Teensy 3.1 specifications — PJRC",
+        note: "Vendor reference for the microcontroller at the heart of the POV rigs.",
+      },
+      {
+        href: "https://www.ti.com/lit/ds/symlink/tlc5927.pdf",
+        label: "TLC5927 datasheet — Texas Instruments (PDF)",
+        note: "The full technical reference for the 16-channel constant-current LED driver used in the rigs.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "NeoPixel Überguide — Adafruit Learn",
+        note: "The canonical tutorial for working with addressable LEDs. Start here if you have never wired up a strip.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Stereolithography",
+        label: "Stereolithography (SLA) — Wikipedia",
+        note: "The 3D-printing process used for the studio's resin object production.",
+      },
+      {
+        href: "https://www.hahnemuehle.com/en/digital-fineart.html",
+        label: "Hahnemühle Digital FineArt papers",
+        note: "Manufacturer reference for the cotton-rag and etching papers the studio prints on.",
+      },
+    ],
+  };

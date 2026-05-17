@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function TheNightTheFontsCameBack() {
   return (
     <>
@@ -124,3 +126,40 @@ export default function TheNightTheFontsCameBack() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-night-the-fonts-came-back",
+    title: "The night the fonts came back",
+    date: "2026-05-14",
+    kind: "journal",
+    excerpt:
+      "A Next.js 15.6 canary regression silently dropped the /_next/static prefix from inlined @font-face URLs. The page kept working in Times New Roman. The fix was one flag.",
+    Body: TheNightTheFontsCameBack,
+    related: [
+      {
+        href: "/atelier/rig-simulator",
+        label: "Rig Simulator",
+        note: "The SSR-safe three.js pattern this entry contrasts with — a noisier, easier-to-catch failure mode.",
+      },
+      {
+        href: "/journal/the-bench-in-https",
+        label: "The Bench in HTTPS",
+        note: "An adjacent piece of studio plumbing in the same workshop register.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://nextjs.org/docs/app/api-reference/components/font",
+        label: "next/font — official documentation",
+        note: "The self-hosting font helper that produces the hashed /_next/static/media URLs at build time.",
+      },
+      {
+        href: "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss",
+        label: "experimental.inlineCss — Next.js config reference",
+        note: "The flag whose canary behaviour caused the regression.",
+      },
+    ],
+  };

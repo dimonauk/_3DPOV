@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = (
   <span className="ml-0.5 text-chrome-500">&nearr;</span>
@@ -263,3 +265,74 @@ export default function BuildingAPovLedRig() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "building-a-pov-led-rig",
+    title: "Building a POV LED Rig",
+    date: "2024-02-11",
+    kind: "tutorial",
+    excerpt:
+      "A bill of materials and assembly walkthrough for a first persistence-of-vision rig. Teensy, LED driver, addressable strip, Hall sensor, chassis.",
+    Body: BuildingAPovLedRig,
+    related: [
+      {
+        href: "/tutorials/your-first-long-exposure",
+        label: "Tutorial — Your First Long-Exposure Light Painting",
+        note: "The discipline this rig is built to extend.",
+      },
+      {
+        href: "/articles/why-i-build-my-own-rigs",
+        label: "Why I Build My Own Rigs",
+        note: "The argument that motivates the bench-built approach.",
+      },
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The studio's full kit list for context.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage IV, POV LED arrays",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://www.pjrc.com/teensy/",
+        label: "Teensy microcontrollers — PJRC",
+        note: "Vendor home; download the Teensyduino IDE plugin from here.",
+      },
+      {
+        href: "https://www.pjrc.com/teensy/td_pulse.html",
+        label: "Teensy hardware timers and pulse generation — PJRC",
+        note: "The microsecond-level timing reference you will need for column-by-column LED output.",
+      },
+      {
+        href: "https://www.ti.com/lit/ds/symlink/tlc5927.pdf",
+        label: "TLC5927 datasheet (PDF) — Texas Instruments",
+        note: "Full pinout, timing, and grayscale handling. Bookmark this; you will refer back constantly.",
+      },
+      {
+        href: "https://learn.adafruit.com/adafruit-neopixel-uberguide",
+        label: "NeoPixel Überguide — Adafruit Learn",
+        note: "Read end to end before specifying your LED strip. Power budget, level-shifting, capacitor placement.",
+      },
+      {
+        href: "https://fastled.io/",
+        label: "FastLED library",
+        note: "Cross-platform addressable-LED library. The studio rigs use a custom driver but FastLED is the right place to start.",
+      },
+      {
+        href: "https://learn.sparkfun.com/tutorials/hall-effect-sensors",
+        label: "Hall-effect sensors — SparkFun Learn",
+        note: "How magnetic-field sensors work and how to wire one for rotation detection.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "Why the rig works at all. The eye and the camera both rely on this.",
+      },
+    ],
+  };

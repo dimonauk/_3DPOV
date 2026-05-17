@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const code = "mx-0.5 rounded-sm bg-warm-black-800 px-1 py-0.5 font-mono text-xs";
 
@@ -201,3 +203,80 @@ crow-spiral-bankside__e25__07-of-25__hpr308__202605.tif`}
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "editioning-a-single-exposure",
+    title: "Editioning a single exposure",
+    date: "2026-05-14",
+    kind: "tutorial",
+    excerpt:
+      "The boring, paperwork-shaped part of selling photographs. Edition size, numbering convention, master-file hashing, certificates of authenticity, 3-2-2 archival storage, and what to do when the edition runs out (you don't reprint, you retire).",
+    Body: EditioningASingleExposure,
+    related: [
+      {
+        href: "/tutorials/calibrating-the-imageprograf-pro-1100",
+        label: "Tutorial — Calibrating the imagePROGRAF PRO-1100",
+        note: "The print workflow upstream of this one. Identical copies require identical calibration.",
+      },
+      {
+        href: "/codex/edition-size-conventions",
+        label: "Codex — Edition size conventions",
+        note: "Why 15 to 30 + 2 AP, and what the other sizes signal.",
+      },
+      {
+        href: "/codex/certificate-of-authenticity",
+        label: "Codex — Certificate of authenticity",
+        note: "The full field list the studio's CoA template carries.",
+      },
+      {
+        href: "/codex/artists-proof",
+        label: "Codex — Artist's proof",
+        note: "Why the studio keeps two, sells them last, and never makes a third.",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs",
+        note: "The editions the paperwork exists to serve.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Edition_(printmaking)",
+        label: "Edition (printmaking) — Wikipedia",
+        note: "Where the numbering convention came from, and the 19th-century intaglio practice that justifies it.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Artist%27s_proof",
+        label: "Artist's proof — Wikipedia",
+        note: "Foundational article on the AP convention and the secondary-market behaviour around it.",
+      },
+      {
+        href: "https://www.hahnemuehle.com/en/digital-papers/fineart-photo/fineart-photo-rag.html",
+        label: "Hahnemühle Photo Rag 308 — product page",
+        note: "The paper the studio's default certificates declare. Rated for >100 years archival under proper storage.",
+      },
+      {
+        href: "https://www.canson-infinity.com/en/products/baryta-prestige-ii",
+        label: "Canson Baryta Prestige II — product page",
+        note: "The alternative paper of record for the studio's gloss-finish editions.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/SHA-2",
+        label: "SHA-256 — Wikipedia",
+        note: "The hashing algorithm used to bind a certificate to a specific master file.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Linear_Tape-Open",
+        label: "LTO (Linear Tape-Open) — Wikipedia",
+        note: "The cold-storage medium the studio uses for one of the three master copies.",
+      },
+      {
+        href: "https://www.archivalmethods.com/",
+        label: "Archival Methods — conservation supplies",
+        note: "Sleeves, conservation boxes, and the rest of the dark-cupboard kit. The studio buys from them.",
+      },
+    ],
+  };

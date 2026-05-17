@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function TheNightTheCameraWasRight() {
   return (
     <>
@@ -46,3 +48,31 @@ export default function TheNightTheCameraWasRight() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-night-the-camera-was-right",
+    title: "The Night the Camera Was Right",
+    date: "2017-09-22",
+    kind: "journal",
+    excerpt:
+      "The hinge night. The first long exposure that came back as object rather than as snapshot. Twenty-five seconds, wet grass, no idea yet what it meant.",
+    Body: TheNightTheCameraWasRight,
+    related: [
+      {
+        href: "/journal/the-question-the-camera-answered",
+        label: "The Question the Camera Answered",
+        note: "The reflection piece that grew out of this night.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage II, long exposure",
+      },
+      {
+        href: "/photographs",
+        label: "Photographs — what the camera has been holding ever since",
+      },
+    ],
+  };

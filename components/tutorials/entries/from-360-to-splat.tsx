@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 const code = "mx-0.5 rounded-sm bg-warm-black-800 px-1 py-0.5 font-mono text-xs";
@@ -293,3 +295,75 @@ python scripts/sharp-runner.py \\
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "from-360-to-splat",
+    title: "From 360 to Splat",
+    date: "2026-05-13",
+    kind: "tutorial",
+    excerpt:
+      "How a single 360 equirectangular still becomes a navigable 3D scene via Apple SHARP. The bridge between the studio's aerial / 360 work and the gaussian-splat pipeline that feeds /play/neo-london.",
+    Body: From360ToSplatTutorial,
+    related: [
+      {
+        href: "/articles/london-360-walking",
+        label: "Ten Years of 360 Cameras, One Pole",
+        note: "The companion article on the user-facing side of the same shift.",
+      },
+      {
+        href: "/articles/ungrounded",
+        label: "Ungrounded",
+        note: "The architectural framing of the studio leaving the 2D plane.",
+      },
+      {
+        href: "/play/neo-london",
+        label: "Play — Neo-London map",
+        note: "Where the splats land. A pin per scene, coloured by status.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — drone-captured 360 work",
+        note: "The aerial counterpart to the ground-level walking captures.",
+      },
+      {
+        href: "/tutorials/from-photograph-to-object",
+        label: "Tutorial — From Photograph to 3D Object",
+        note: "The earlier flat-to-volumetric pipeline. Different model, same instinct.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://github.com/apple/ml-sharp",
+        label: "Apple ml-sharp — official repository",
+        note: "Source code, weights link, and the upstream README. December 2025 release.",
+      },
+      {
+        href: "https://huggingface.co/apple/Sharp",
+        label: "apple/Sharp — Hugging Face model card",
+        note: "The pre-trained weights. Pull these with huggingface-cli before running inference.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Gaussian_splatting",
+        label: "Gaussian splatting — Wikipedia",
+        note: "The rendering technique SHARP outputs. Read this if the .ply format does not feel familiar.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Equirectangular_projection",
+        label: "Equirectangular projection — Wikipedia",
+        note: "Why a 360 photograph is a rectangle in storage and a sphere in use.",
+      },
+      {
+        href: "https://ffmpeg.org/ffmpeg-filters.html#v360",
+        label: "ffmpeg v360 filter — official docs",
+        note: "The filter that does the cube-projection. Many input and output formats; the studio uses input=e:output=flat.",
+      },
+      {
+        href: "https://www.dji.com/360",
+        label: "DJI Osmo 360 — product page",
+        note: "The studio's current 360 camera. Two square 1/1.1-inch sensors, glass-and-sensor before software.",
+      },
+    ],
+  };

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 export default function FirstLight() {
   return (
     <>
@@ -60,3 +62,50 @@ export default function FirstLight() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "first-light",
+    title: "First Light",
+    date: "2026-04-22",
+    kind: "journal",
+    excerpt:
+      "First flight of the LED-modified airframes. The platform is flying; the technique is not consistent yet.",
+    Body: FirstLight,
+    related: [
+      {
+        href: "/journal/on-the-apparatus",
+        label: "On the Apparatus",
+        note: "The spec sheet for the kit in the air.",
+      },
+      {
+        href: "/aerial",
+        label: "Aerial — the fleet, the FPV pipeline",
+        note: "The full drone fleet and how it is flown.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage V, drones modified",
+        note: "Where this work sits in the studio's history.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Persistence_of_vision",
+        label: "Persistence of vision — Wikipedia",
+        note: "The optical effect every POV display depends on. Start here for the underlying principle.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/DJI_Mavic",
+        label: "DJI Mavic — Wikipedia",
+        note: "Background on the Mavic 2 Pro airframe and the Hasselblad L1D-20c imaging system.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/First-person_view_(radio_control)",
+        label: "First-person view (RC) — Wikipedia",
+        note: "Overview of the FPV control discipline the studio's flights run on.",
+      },
+    ],
+  };

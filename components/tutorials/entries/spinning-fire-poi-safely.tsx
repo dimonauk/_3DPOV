@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { Entry } from "lib/writing";
+
 const ext = "underline underline-offset-4 hover:text-pink-200";
 const arrow = <span className="ml-0.5 text-chrome-500">&nearr;</span>;
 
@@ -187,3 +189,49 @@ export default function SpinningFirePoiSafely() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "spinning-fire-poi-safely",
+    title: "Spinning Fire Poi Safely",
+    date: "2019-06-04",
+    kind: "tutorial",
+    excerpt:
+      "Not a beginner tutorial. The body needs the kata before fire enters the picture. Kit, site, light-up, kata, end — read whole before you light anything.",
+    Body: SpinningFirePoiSafely,
+    related: [
+      {
+        href: "/tutorials/your-first-long-exposure",
+        label: "Tutorial — Your First Long-Exposure Light Painting",
+        note: "The discipline this presumes you have done.",
+      },
+      {
+        href: "/practice",
+        label: "Practice — Stage I, poi",
+      },
+      {
+        href: "/journal/year-one-fire",
+        label: "Field record — Year One, Fire",
+        note: "Before any of the safety mattered.",
+      },
+    ],
+    furtherReading: [
+      {
+        href: "https://en.wikipedia.org/wiki/Fire_performance",
+        label: "Fire performance — Wikipedia",
+        note: "Safety, fuels, and discipline overview. Read before going anywhere near open flame.",
+      },
+      {
+        href: "https://homeofpoi.com/lessons_view/Fire+Safety",
+        label: "Home of Poi — fire safety lessons",
+        note: "Free, video-led safety walkthroughs from the longest-running poi-instruction community.",
+      },
+      {
+        href: "https://en.wikipedia.org/wiki/Kerosene",
+        label: "Kerosene / paraffin lamp oil — Wikipedia",
+        note: "Properties of the fuel, including flash point and combustion byproducts.",
+      },
+    ],
+  };

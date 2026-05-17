@@ -1,3 +1,5 @@
+import type { Entry } from "lib/writing";
+
 export default function TheWeekBefore() {
   return (
     <>
@@ -92,3 +94,16 @@ export default function TheWeekBefore() {
     </>
   );
 }
+
+/**
+ * Colocated entry record — see docs/ARTICLES_REGISTRY_SPLIT.md.
+ */
+export const entry: Entry =   {
+    slug: "the-week-before",
+    title: "The week before",
+    date: "2026-05-13",
+    kind: "journal",
+    excerpt:
+      "Pre-flight notes. The drone fleet on the bench, the time-sync firmware for first flights, tomorrow's shoot.",
+    Body: TheWeekBefore,
+  };
