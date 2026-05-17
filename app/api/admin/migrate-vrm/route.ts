@@ -28,7 +28,7 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { withRouteLogging } from "lib/log";
-import { put, list } from "@vercel/blob";
+import { put, list, del } from "@vercel/blob";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -202,5 +202,73 @@ export const GET = withRouteLogging(
     }
 
     return NextResponse.json(base);
+  },
+);
+
+
+/**
+ * DELETE handler — bearer-token gated. Removes specific blobs by URL.
+ * Body: { urls: string[] }
+ *
+ * Removes one or more blobs from the Vercel Blob store. Use this to
+ * clean up duplicate or stale uploads when the quota fills.
+ *
+ * Usage:
+ *   curl -X DELETE https://holoflow.co.uk/api/admin/migrate-vrm \
+ *     -H "Authorization: Bearer $MIGRATE_TOKEN" \
+ *     -H "Content-Type: application/json" \
+ *     -d '{"urls":["https://....public.blob.vercel-storage.com/..."]}'
+ */
+export const DELETE = withRouteLogging(
+  "admin.migrate-vrm.delete",
+  async (req: NextRequest, _ctx, log) => {
+    const auth = req.headers.get("authorization") ?? "";
+    const tokenHeader = auth.replace(/^Bearer\s+/i, "").trim();
+    const expected = process.env.MIGRATE_TOKEN;
+    if (!expected || !tokenHeader || tokenHeader !== expected) {
+      return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+    }
+
+    let body: { urls?: string[] };
+    try {
+      body = (await req.json()) as { urls?: string[] };
+    } catch {
+      return NextResponse.json({ error: "invalid JSON body" }, { status: 400 });
+    }
+
+    if (!body.urls || !Array.isArray(body.urls) || body.urls.length === 0) {
+      return NextResponse.json(
+        { error: "urls array required" },
+        { status: 400 },
+      );
+    }
+
+    let blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+    if (!blobToken) {
+      return NextResponse.json(
+        { error: "BLOB_READ_WRITE_TOKEN env not set" },
+        { status: 503 },
+      );
+    }
+    if (blobToken.charCodeAt(0) === 0xfeff) blobToken = blobToken.slice(1);
+    blobToken = blobToken.trim();
+
+    log.info("deleting blobs", { count: body.urls.length });
+
+    try {
+      await del(body.urls, { token: blobToken });
+      return NextResponse.json({
+        ok: true,
+        deleted: body.urls.length,
+        urls: body.urls,
+      });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      log.error("delete failed", { error: message });
+      return NextResponse.json(
+        { error: "delete_failed", message },
+        { status: 502 },
+      );
+    }
   },
 );
