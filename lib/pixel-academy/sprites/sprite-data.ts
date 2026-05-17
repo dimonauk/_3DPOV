@@ -1057,8 +1057,11 @@ export function getCharacterSprites(paletteIndex: number, hueShift = 0): Charact
   let sprites: CharacterSprites
 
   if (loadedCharacters) {
-    // Use pre-colored character sprites directly (no palette swapping)
-    const char = loadedCharacters[paletteIndex % loadedCharacters.length]
+    // Use pre-colored character sprites directly (no palette swapping).
+    // `paletteIndex % loadedCharacters.length` is bounded; char is defined.
+    // Each direction array (down/up/right) is a fixed 7-frame strip:
+    // walk 0..2, typing 3..4, reading 5..6 — every index below is in-bounds.
+    const char = loadedCharacters[paletteIndex % loadedCharacters.length]!
     const d = char.down
     const u = char.up
     const rt = char.right
@@ -1066,27 +1069,28 @@ export function getCharacterSprites(paletteIndex: number, hueShift = 0): Charact
 
     sprites = {
       walk: {
-        [Dir.DOWN]: [d[0], d[1], d[2], d[1]],
-        [Dir.UP]: [u[0], u[1], u[2], u[1]],
-        [Dir.RIGHT]: [rt[0], rt[1], rt[2], rt[1]],
-        [Dir.LEFT]: [flip(rt[0]), flip(rt[1]), flip(rt[2]), flip(rt[1])],
+        [Dir.DOWN]: [d[0]!, d[1]!, d[2]!, d[1]!],
+        [Dir.UP]: [u[0]!, u[1]!, u[2]!, u[1]!],
+        [Dir.RIGHT]: [rt[0]!, rt[1]!, rt[2]!, rt[1]!],
+        [Dir.LEFT]: [flip(rt[0]!), flip(rt[1]!), flip(rt[2]!), flip(rt[1]!)],
       },
       typing: {
-        [Dir.DOWN]: [d[3], d[4]],
-        [Dir.UP]: [u[3], u[4]],
-        [Dir.RIGHT]: [rt[3], rt[4]],
-        [Dir.LEFT]: [flip(rt[3]), flip(rt[4])],
+        [Dir.DOWN]: [d[3]!, d[4]!],
+        [Dir.UP]: [u[3]!, u[4]!],
+        [Dir.RIGHT]: [rt[3]!, rt[4]!],
+        [Dir.LEFT]: [flip(rt[3]!), flip(rt[4]!)],
       },
       reading: {
-        [Dir.DOWN]: [d[5], d[6]],
-        [Dir.UP]: [u[5], u[6]],
-        [Dir.RIGHT]: [rt[5], rt[6]],
-        [Dir.LEFT]: [flip(rt[5]), flip(rt[6])],
+        [Dir.DOWN]: [d[5]!, d[6]!],
+        [Dir.UP]: [u[5]!, u[6]!],
+        [Dir.RIGHT]: [rt[5]!, rt[6]!],
+        [Dir.LEFT]: [flip(rt[5]!), flip(rt[6]!)],
       },
     }
   } else {
-    // Fallback: use hardcoded templates with palette swapping
-    const pal = CHARACTER_PALETTES[paletteIndex % CHARACTER_PALETTES.length]
+    // Fallback: use hardcoded templates with palette swapping.
+    // CHARACTER_PALETTES is a fixed-size readonly tuple; modulo guarantees in-bounds.
+    const pal = CHARACTER_PALETTES[paletteIndex % CHARACTER_PALETTES.length]!
     const r = (t: TemplateCell[][]) => resolveTemplate(t, pal)
     const rf = (t: TemplateCell[][]) => resolveTemplate(flipHorizontal(t), pal)
 

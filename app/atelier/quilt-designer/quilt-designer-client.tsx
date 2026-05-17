@@ -231,9 +231,10 @@ type Cell = {
 
 const EMPTY_CELL: Cell = {
   blockId: "solid",
-  primary: PALETTE[0].hex,
-  secondary: PALETTE[0].hex,
-  background: PALETTE[0].hex,
+  // PALETTE is a fixed-size readonly tuple; indices 0..2 are always present.
+  primary: PALETTE[0]!.hex,
+  secondary: PALETTE[0]!.hex,
+  background: PALETTE[0]!.hex,
   rotation: 0,
 };
 
@@ -256,9 +257,9 @@ export default function QuiltDesignerClient() {
   const [brushBlockId, setBrushBlockId] = useState<string>(
     "half-square-triangle",
   );
-  const [brushPrimary, setBrushPrimary] = useState<string>(PALETTE[1].hex);
-  const [brushSecondary, setBrushSecondary] = useState<string>(PALETTE[2].hex);
-  const [brushBackground, setBrushBackground] = useState<string>(PALETTE[0].hex);
+  const [brushPrimary, setBrushPrimary] = useState<string>(PALETTE[1]!.hex);
+  const [brushSecondary, setBrushSecondary] = useState<string>(PALETTE[2]!.hex);
+  const [brushBackground, setBrushBackground] = useState<string>(PALETTE[0]!.hex);
   const [brushRotation, setBrushRotation] = useState<0 | 90 | 180 | 270>(0);
 
   // Each cell, on the wall, is this many inches per side.
@@ -274,9 +275,10 @@ export default function QuiltDesignerClient() {
       setRows(clamped);
       setGrid((g) => {
         const next = makeBlankGrid(clamped, cols);
+        // Both loops bounded by min(actual, target) so r/c are valid in both grids.
         for (let r = 0; r < Math.min(g.length, clamped); r += 1) {
-          for (let c = 0; c < Math.min(g[r].length, cols); c += 1) {
-            next[r][c] = g[r][c];
+          for (let c = 0; c < Math.min(g[r]!.length, cols); c += 1) {
+            next[r]![c] = g[r]![c]!;
           }
         }
         return next;
@@ -292,8 +294,8 @@ export default function QuiltDesignerClient() {
       setGrid((g) => {
         const next = makeBlankGrid(rows, clamped);
         for (let r = 0; r < Math.min(g.length, rows); r += 1) {
-          for (let c = 0; c < Math.min(g[r].length, clamped); c += 1) {
-            next[r][c] = g[r][c];
+          for (let c = 0; c < Math.min(g[r]!.length, clamped); c += 1) {
+            next[r]![c] = g[r]![c]!;
           }
         }
         return next;
@@ -308,7 +310,9 @@ export default function QuiltDesignerClient() {
     (r: number, c: number) => {
       setGrid((g) => {
         const next = g.map((row) => row.slice());
-        next[r][c] = {
+        // r/c come from the click handler which iterates the same grid;
+        // next[r] exists because makeBlankGrid created `rows` rows.
+        next[r]![c] = {
           blockId: brushBlockId,
           primary: brushPrimary,
           secondary: brushSecondary,
@@ -640,7 +644,9 @@ export default function QuiltDesignerClient() {
             {/* paint */}
             {grid.map((row, r) =>
               row.map((cell, c) => {
-                const block = BLOCKS_BY_ID.get(cell.blockId) ?? BLOCKS[0];
+                // BLOCKS[0] is the solid-block default; map lookup or
+                // first entry — never undefined since BLOCKS has length > 0.
+                const block = BLOCKS_BY_ID.get(cell.blockId) ?? BLOCKS[0]!;
                 const cx = c * 100;
                 const cy = r * 100;
                 const transform =
@@ -700,7 +706,8 @@ export default function QuiltDesignerClient() {
                       e.preventDefault();
                       setGrid((g) => {
                         const next = g.map((row) => row.slice());
-                        next[r][c] = { ...EMPTY_CELL };
+                        // r/c from the same grid we're cloning; rows + cells defined.
+                        next[r]![c] = { ...EMPTY_CELL };
                         return next;
                       });
                     }}
