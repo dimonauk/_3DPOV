@@ -1,5 +1,56 @@
 # Holo-Flow Studio — Changelog
 
+## 2026-05-17 — Pro-tier hardening pass (continued)
+
+### Deferred items completed
+
+The "deferred / not done" list from earlier today is now mostly done:
+
+- **Content-Security-Policy in report-only mode**. Header stamped on every
+  HTML response via `middleware.ts`. Violations POST to `/api/csp-report`
+  and land in Vercel function logs (rate-limited at 50/min/IP to keep
+  noise floor manageable). Directives in `lib/security/csp.ts` —
+  permissive `script-src` / `style-src` ('unsafe-inline' + 'unsafe-eval'
+  because Next.js inlines SSR hydration and styled-jsx emits inline
+  styles), restrictive `connect-src` (explicit allowlist: Vercel Blob,
+  Firebase, AI Gateway, Anthropic, Google AI, Shopify, Vercel Analytics).
+  **Nothing breaks** — this is the audit phase. Watch logs for a week,
+  tighten until violations drop to near-zero, then flip the header name
+  from `Content-Security-Policy-Report-Only` to `Content-Security-Policy`.
+
+- **Distributed rate limiter**. New `lib/rate-limit/` module with a single
+  `checkRate({ key, limit, windowSec })` interface. Auto-detects:
+  - **Upstash backend** when `KV_REST_API_URL` + `KV_REST_API_TOKEN` are
+    set (Vercel KV or self-managed Upstash). Fixed-window counter via
+    INCR+EXPIRE pipeline against the Upstash REST API. Cross-region
+    consistent. Fails OPEN on Upstash errors (better to let an abuser
+    through than to lock out every visitor when KV's down).
+  - **In-memory fallback** when KV env vars aren't set. Same algorithm,
+    per-function-instance state.
+  - **Zero external deps** — uses raw `fetch()` against the Upstash REST
+    API. `@upstash/redis` would be nice but pulling it in killed pnpm
+    once and the API surface is trivial.
+  - **`/api/healthz` now reports** `"rateLimit": "upstash" | "memory"`
+    so you can verify which backend is live without log-trawling.
+  - Wired into both `/api/cards/scan` and `lib/cards/leads-server.ts`.
+    To turn on Upstash: provision Vercel KV in the dashboard
+    (Storage → Create Database → KV), connect it to the project, and
+    `KV_REST_API_URL` + `KV_REST_API_TOKEN` get auto-injected. No code
+    change needed; the next deploy picks them up and `/api/healthz`
+    will start reporting `"rateLimit":"upstash"`.
+
+### Code quality
+
+- **Dropped legacy multipart + imageBase64 paths in `/api/cards/scan`**.
+  All clients have used the `blobUrl` path for one deploy cycle; the
+  older code was dead weight + attack surface. Body parser now accepts
+  only `{ blobUrl, mediaType? }`. ~70 lines deleted from the route.
+
+- **`vercel.json` header-rule ordering fixed**. The `/api/(.*)` rule was
+  being overridden by the global `/(.*)` rule for shared keys
+  (Referrer-Policy). Vercel applies LATER matching rules over earlier
+  ones in the array, so `/api/(.*)` is now last.
+
 ## 2026-05-17 — Pro-tier hardening pass
 
 A single-day push to take advantage of the Vercel Pro upgrade. Seven shipped
@@ -63,22 +114,12 @@ Aura wardrobe feature, and the firewall baseline.
   - `cards/dimona/aura.vrm` deleted from Blob (duplicated as
     `wardrobe/baby-pink-spice.vrm`).
 
-### Deferred / not done
-
-- **Content-Security-Policy**: site uses Three.js + WebGL + MindAR camera +
-  Web Speech + Vercel Blob cross-origin VRMs + Firebase + AI Gateway +
-  embedded booking iframes. Strict CSP would break things until each origin
-  is audited. Worth a separate session in report-only mode.
-- **Dashboard-side firewall**: Bot Protection toggle, per-IP rate limits
-  with cross-region state, optional defensive custom rules. See
-  `docs/FIREWALL.md` for the exact rules to copy in.
-- **Upstash Redis rate limiting**: overkill for current traffic. In-app
-  limits + Firewall layer cover realistic abuse.
-
 ### Migration notes
 
 - Env vars added: `CRON_SECRET` (64-char hex, required for the daily cron).
 - Env vars removed: `MIGRATE_TOKEN`.
 - Blob bucket changes: +7 wardrobe outfits, -1 stale dimona VRM.
-- No data migration required. No breaking API changes (legacy multipart +
-  imageBase64 paths in `/api/cards/scan` kept for backward compat).
+- No data migration required.
+- **Breaking**: `/api/cards/scan` no longer accepts multipart or
+  `{ imageBase64 }` bodies. All clients must POST `{ blobUrl }`. The
+  shipped `CardScanner.tsx` already uses the Blob path.

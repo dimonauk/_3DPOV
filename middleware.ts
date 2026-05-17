@@ -1,6 +1,6 @@
 /**
  * Edge middleware — runs on every request before Next.js route
- * resolution. Three responsibilities:
+ * resolution. Four responsibilities:
  *
  *   1. HOSTNAME ALLOWLIST
  *      Refuse requests whose Host header isn't holoflow.co.uk,
@@ -20,6 +20,15 @@
  *      via withRouteLogging; this one is upstream and survives
  *      even on 404s and other no-function paths.
  *
+ *   4. CSP-REPORT-ONLY HEADER
+ *      Stamp Content-Security-Policy-Report-Only on every HTML
+ *      response so browsers POST violation reports to
+ *      /api/csp-report. Audit phase — nothing breaks; we just see
+ *      what would have broken if CSP were enforced. Skip on API
+ *      routes (CSP doesn't apply to non-HTML) and on the report
+ *      endpoint itself (avoid a loop where CSP on the report
+ *      endpoint generates a CSP report on the report endpoint).
+ *
  * Edge middleware runs in the Vercel Edge runtime — no Node APIs.
  * Keep it small. State is per-region per-instance and not shared,
  * which is why proper rate-limiting belongs in the Firewall layer
@@ -27,6 +36,7 @@
  */
 
 import { NextResponse, type NextRequest } from "next/server";
+import { buildCsp, CSP_HEADER_NAME } from "lib/security/csp";
 
 const ALLOWED_HOSTNAMES = new Set([
   "holoflow.co.uk",
@@ -51,6 +61,21 @@ function newRequestId(): string {
   crypto.getRandomValues(bytes);
   return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
 }
+
+// CSP only goes on HTML responses, not API or asset responses.
+// The report endpoint itself is excluded to avoid loops.
+function shouldStampCsp(pathname: string): boolean {
+  if (pathname.startsWith("/api/")) return false;
+  if (pathname.startsWith("/_next/")) return false;
+  if (pathname.startsWith("/cards/") && /\.(mind|glb|usdz|png|svg)$/.test(pathname)) {
+    return false;
+  }
+  return true;
+}
+
+// Build the CSP header value once at module load. It's a pure
+// function of static config — no per-request state needed.
+const CSP_VALUE = buildCsp({ reportOnly: true });
 
 export function middleware(req: NextRequest): NextResponse {
   const host = req.headers.get("host");
@@ -83,6 +108,12 @@ export function middleware(req: NextRequest): NextResponse {
   if (!res.headers.has("x-request-id")) {
     res.headers.set("X-Request-Id", newRequestId());
   }
+
+  // CSP — report-only on HTML responses.
+  if (shouldStampCsp(req.nextUrl.pathname)) {
+    res.headers.set(CSP_HEADER_NAME, CSP_VALUE);
+  }
+
   return res;
 }
 

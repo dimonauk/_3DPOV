@@ -9,8 +9,12 @@
  *   - branch:     VERCEL_GIT_COMMIT_REF
  *   - buildTime:  module-init timestamp (frozen at cold start)
  *
+ * Plus operational diagnostics:
+ *   - rateLimit:  "upstash" or "memory" — which backend is live
+ *
  * Use cases:
  *   - "Did my push actually deploy?" → curl this, compare sha to git log
+ *   - "Is distributed rate limiting on?" → rateLimit field
  *   - Monitoring service liveness checks
  *   - Sanity-check the prod alias is current after every deploy
  *
@@ -22,6 +26,7 @@
  */
 
 import { NextResponse, type NextRequest } from "next/server";
+import { getRateLimitBackend } from "lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 5;
@@ -45,6 +50,7 @@ export async function GET(_req: NextRequest): Promise<NextResponse> {
       branch: BRANCH,
       env: ENV,
       buildTime: BUILD_TIME,
+      rateLimit: getRateLimitBackend(),
       // ISO timestamp at request time, useful for clock-skew checks.
       now: new Date().toISOString(),
     },
