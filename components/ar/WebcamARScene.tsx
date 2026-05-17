@@ -34,28 +34,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import type * as THREE_TYPES from "three";
-import type { Card } from "lib/ar/types";
 
-type WebcamARSceneProps = { card: Card };
+import { createLogger, errToObject } from "lib/log";
 
-type ARStatus =
-  | "idle"
-  | "requesting"
-  | "active"
-  | "denied"
-  | "no-camera"
-  | "loading-model"
-  | "xr-active";
+import { webcamARStyles } from "./webcam-ar/styles";
+import {
+  type ARStatus,
+  HAND_MODEL_URL,
+  LM_MIDDLE_MCP,
+  LM_WRIST,
+  MEDIAPIPE_WASM_URL,
+  type WebcamARSceneProps,
+} from "./webcam-ar/types";
+import { useWebcamRecording } from "./webcam-ar/use-recording";
 
-// MediaPipe hand landmark indices we care about.
-const LM_WRIST = 0;
-const LM_MIDDLE_MCP = 9;
-
-// Hosted hand-landmarker model and WASM. Both are public-CDN; if
-// offline use is needed, mirror these into public/ and update.
-const MEDIAPIPE_WASM_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm";
-const HAND_MODEL_URL =
-  "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task";
+const log = createLogger("ar.WebcamARScene");
 
 export default function WebcamARScene({ card }: WebcamARSceneProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -66,16 +59,11 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
   const [status, setStatus] = useState<ARStatus>("idle");
   const [webXRSupported, setWebXRSupported] = useState(false);
   const [handTracking, setHandTracking] = useState(false);
-  const [recording, setRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Recording infrastructure — refs so we can start/stop from
-  // anywhere in the component without churning state.
+  // Scene-canvas ref is published by startCameraAR so the recorder
+  // (and any future compositor) can read pixels from it.
   const rendererCanvasRef = useRef<HTMLCanvasElement | null>(null);
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const recorderChunksRef = useRef<Blob[]>([]);
-  const recorderRafRef = useRef<number>(0);
-  const compositeCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Mutable refs the render loop reads — avoids stale-closure issues
   // when state flips mid-frame.
@@ -83,6 +71,14 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
   useEffect(() => {
     handTrackingRef.current = handTracking;
   }, [handTracking]);
+
+  const { recording, startRecording, stopRecording, abortRecording } =
+    useWebcamRecording({
+      videoRef,
+      sceneCanvasRef: rendererCanvasRef,
+      card,
+      onError: setError,
+    });
 
   // Feature-detect WebXR immersive-ar on mount.
   useEffect(() => {
@@ -93,123 +89,8 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
       .catch(() => setWebXRSupported(false));
   }, []);
 
-  // ------------------------------------------------------------------
-  // Recording: composite the camera video + the three.js canvas to a
-  // hidden canvas at ~30fps, MediaRecorder over its captureStream(),
-  // download as .webm when stopped. No upload, no server — pure
-  // client-side, the user gets a file they can share or post.
-  // ------------------------------------------------------------------
-  const startRecording = async () => {
-    const video = videoRef.current;
-    const sceneCanvas = rendererCanvasRef.current;
-    if (!video || !sceneCanvas) return;
-    if (recorderRef.current) return; // already running
-
-    const w = video.videoWidth || sceneCanvas.width;
-    const h = video.videoHeight || sceneCanvas.height;
-    if (!w || !h) {
-      setError("Recording: camera video not ready yet, try again in a moment");
-      return;
-    }
-
-    // Composite target — hidden offscreen canvas.
-    const composite = document.createElement("canvas");
-    composite.width = w;
-    composite.height = h;
-    const ctx = composite.getContext("2d");
-    if (!ctx) {
-      setError("Recording: 2D canvas context unavailable");
-      return;
-    }
-    compositeCanvasRef.current = composite;
-
-    const drawFrame = () => {
-      try {
-        ctx.drawImage(video, 0, 0, w, h);
-        ctx.drawImage(sceneCanvas, 0, 0, w, h);
-      } catch {
-        // Frame draw can fail mid-teardown — ignore.
-      }
-      recorderRafRef.current = requestAnimationFrame(drawFrame);
-    };
-    drawFrame();
-
-    const stream = composite.captureStream(30);
-
-    // Pick the best supported codec — prefer VP9, fall back to VP8.
-    const Rec = (window as { MediaRecorder?: typeof MediaRecorder }).MediaRecorder;
-    if (!Rec) {
-      setError("Recording: MediaRecorder not supported on this browser");
-      cancelAnimationFrame(recorderRafRef.current);
-      compositeCanvasRef.current = null;
-      return;
-    }
-    const candidates = [
-      "video/webm;codecs=vp9",
-      "video/webm;codecs=vp8",
-      "video/webm",
-      "video/mp4;codecs=avc1",
-    ];
-    const mimeType = candidates.find((c) => Rec.isTypeSupported && Rec.isTypeSupported(c)) ?? "";
-
-    let recorder: MediaRecorder;
-    try {
-      recorder = mimeType ? new Rec(stream, { mimeType, videoBitsPerSecond: 4_000_000 }) : new Rec(stream);
-    } catch (err) {
-      console.error("MediaRecorder ctor failed", err);
-      setError("Recording: " + ((err as Error).message ?? "couldn't start"));
-      cancelAnimationFrame(recorderRafRef.current);
-      compositeCanvasRef.current = null;
-      return;
-    }
-
-    recorderChunksRef.current = [];
-    recorder.ondataavailable = (e) => {
-      if (e.data.size > 0) recorderChunksRef.current.push(e.data);
-    };
-    recorder.onstop = () => {
-      cancelAnimationFrame(recorderRafRef.current);
-      const blob = new Blob(recorderChunksRef.current, { type: mimeType || "video/webm" });
-      const url = URL.createObjectURL(blob);
-      const extension = mimeType.includes("mp4") ? "mp4" : "webm";
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `holoflow-ar-${card.slug}-${Date.now()}.${extension}`;
-      a.click();
-      // Revoke after a tick so the browser has time to start the download.
-      setTimeout(() => URL.revokeObjectURL(url), 5_000);
-      recorderChunksRef.current = [];
-      compositeCanvasRef.current = null;
-      recorderRef.current = null;
-    };
-
-    try { (window as { __holoflow_track?: (s: string, t: string) => void }).__holoflow_track?.(card.slug, "recording"); } catch {}
-    recorder.start(1_000); // 1s chunks — limits memory if the user records for a while
-    recorderRef.current = recorder;
-    setRecording(true);
-  };
-
-  const stopRecording = () => {
-    const rec = recorderRef.current;
-    if (rec && rec.state !== "inactive") {
-      rec.stop();
-    }
-    setRecording(false);
-  };
-
   const stopCamera = () => {
-    if (recorderRef.current) {
-      try {
-        recorderRef.current.stop();
-      } catch {
-        // ignore — was already stopped or torn down
-      }
-      recorderRef.current = null;
-    }
-    cancelAnimationFrame(recorderRafRef.current);
-    compositeCanvasRef.current = null;
-    setRecording(false);
-
+    abortRecording();
     if (streamRef.current) {
       for (const track of streamRef.current.getTracks()) track.stop();
       streamRef.current = null;
@@ -440,7 +321,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
             },
           };
         } catch (err) {
-          console.error("HandLandmarker init failed:", err);
+          log.error("HandLandmarker init failed", { err: errToObject(err) });
           setError("Hand tracking failed to initialise");
         } finally {
           handLoading = false;
@@ -568,7 +449,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
       setStatus("active");
     } catch (err) {
-      console.error("WebcamARScene: failed to start", err);
+      log.error("failed to start", { err: errToObject(err) });
       setError((err as Error).message ?? "Failed to start AR scene");
       stopCamera();
     }
@@ -609,7 +490,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         optionalFeatures: ["plane-detection"],
       });
     } catch (err) {
-      console.error("XR session request failed", err);
+      log.error("XR session request failed", { err: errToObject(err) });
       setError("WebXR session was refused.");
       setStatus("idle");
       return;
@@ -857,7 +738,7 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
 
       setStatus("xr-active");
     } catch (err) {
-      console.error("WebXR setup failed", err);
+      log.error("WebXR setup failed", { err: errToObject(err) });
       setError((err as Error).message ?? "WebXR session failed");
       session.end().catch(() => undefined);
       setStatus("idle");
@@ -984,190 +865,12 @@ export default function WebcamARScene({ card }: WebcamARSceneProps) {
         <div className="wc-error wc-error-floating">{error}</div>
       )}
 
-      <style jsx>{`
-        .wc-root {
-          width: 100%;
-          padding: 0 1rem;
-          position: relative;
-        }
-        .wc-prompt {
-          width: 100%;
-          height: 70vh;
-          min-height: 400px;
-          border-radius: 1rem;
-          background: linear-gradient(
-            135deg,
-            ${card.brand.primary}22,
-            ${card.brand.secondary}22
-          );
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 1.25rem;
-          padding: 2rem;
-          text-align: center;
-        }
-        .wc-xr-hint {
-          background: transparent;
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-        }
-        .wc-xr-hint > * {
-          pointer-events: auto;
-        }
-        .wc-hint {
-          font-size: 1rem;
-          line-height: 1.5;
-          max-width: 32rem;
-        }
-        .wc-fine {
-          font-size: 0.75rem;
-          opacity: 0.6;
-          max-width: 28rem;
-        }
-        .wc-error {
-          color: #ff6b6b;
-          font-size: 0.85rem;
-          max-width: 30rem;
-        }
-        .wc-error-floating {
-          position: absolute;
-          top: 1rem;
-          left: 1rem;
-          right: 1rem;
-          background: rgba(0, 0, 0, 0.7);
-          padding: 0.5rem 1rem;
-          border-radius: 0.5rem;
-          z-index: 5;
-        }
-        .wc-btn {
-          background: ${card.brand.primary};
-          color: ${card.brand.textOnBrand};
-          border: none;
-          padding: 1rem 1.75rem;
-          border-radius: 999px;
-          font-weight: 700;
-          font-size: 1rem;
-          cursor: pointer;
-          box-shadow: 0 4px 24px ${card.brand.primary}66;
-          transition: transform 0.1s ease;
-        }
-        .wc-btn-secondary {
-          background: transparent;
-          color: inherit;
-          border: 1px solid currentColor;
-          padding: 0.75rem 1.5rem;
-          border-radius: 999px;
-          font-weight: 600;
-          font-size: 0.9rem;
-          cursor: pointer;
-          opacity: 0.8;
-        }
-        .wc-btn:active,
-        .wc-btn-secondary:active {
-          transform: scale(0.97);
-        }
-        .wc-btn-small {
-          background: transparent;
-          color: inherit;
-          border: 1px solid currentColor;
-          padding: 0.5rem 1rem;
-          border-radius: 999px;
-          font-size: 0.85rem;
-          cursor: pointer;
-          opacity: 0.7;
-        }
-        .wc-video {
-          display: none;
-          position: absolute;
-          top: 0;
-          left: 1rem;
-          right: 1rem;
-          width: calc(100% - 2rem);
-          height: 70vh;
-          min-height: 400px;
-          object-fit: cover;
-          border-radius: 1rem;
-          z-index: 1;
-        }
-        .wc-video-on {
-          display: block;
-        }
-        .wc-canvas {
-          display: none;
-          position: absolute;
-          top: 0;
-          left: 1rem;
-          right: 1rem;
-          width: calc(100% - 2rem);
-          height: 70vh;
-          min-height: 400px;
-          border-radius: 1rem;
-          z-index: 2;
-          pointer-events: auto;
-        }
-        .wc-canvas-on {
-          display: block;
-        }
-        .wc-overlay {
-          position: absolute;
-          bottom: 1.5rem;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 0.5rem;
-          z-index: 3;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .wc-toggle {
-          background: rgba(0, 0, 0, 0.55);
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          padding: 0.65rem 1.1rem;
-          border-radius: 999px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          cursor: pointer;
-          backdrop-filter: blur(8px);
-          transition: all 0.15s ease;
-        }
-        .wc-toggle:active {
-          transform: scale(0.97);
-        }
-        .wc-toggle-on {
-          background: ${card.brand.primary};
-          color: ${card.brand.textOnBrand};
-          border-color: ${card.brand.primary};
-        }
-        .wc-toggle-rec {
-          background: #d92626;
-          color: white;
-          border-color: #d92626;
-          animation: rec-pulse 1.4s ease-in-out infinite;
-        }
-        @keyframes rec-pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(217, 38, 38, 0.55); }
-          50%      { box-shadow: 0 0 0 8px rgba(217, 38, 38, 0); }
-        }
-        .wc-stop {
-          position: absolute;
-          top: 1rem;
-          right: 2rem;
-          z-index: 3;
-          background: rgba(0, 0, 0, 0.6);
-          color: white;
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          font-size: 1.2rem;
-          cursor: pointer;
-          backdrop-filter: blur(8px);
-        }
-      `}</style>
+      {/* Global because styled-jsx's babel plugin needs to see static
+          CSS in source to compute a scoped className; the styles live
+          in styles.ts so this component file stays readable. The
+          `wc-*` class prefix is unique to this component, so global
+          injection won't collide with anything else. */}
+      <style jsx global>{`${webcamARStyles(card)}`}</style>
     </div>
   );
 }
