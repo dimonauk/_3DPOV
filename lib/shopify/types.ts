@@ -68,9 +68,40 @@ export type Page = {
   updatedAt: string;
 };
 
-export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
+/**
+ * Storefront API metafield result. A `metafields(identifiers: [...])`
+ * query returns one entry per identifier in input order, with `null`
+ * for any that aren't set on the product.
+ *
+ * The studio uses two custom metafields for 3D viewers:
+ *   - custom.model_3d       → File (GLB) URL
+ *   - custom.model_3d_usdz  → File (USDZ) URL — iOS AR Quick Look
+ *
+ * Operators define these as File-type metafields in Shopify admin and
+ * attach the GLB / USDZ uploads. lib/three-d.ts prefers these URLs over
+ * the tag-driven /models/{handle}.glb convention.
+ */
+export type ShopifyMetafield = {
+  key: string;
+  namespace: string;
+  value: string;
+  reference?: {
+    // GenericFile reference (the operator-facing default — works for
+    // any uploaded file: GLB, USDZ, anything).
+    url?: string;
+    // Native Shopify Model3d reference; carries both GLB and USDZ
+    // sources in one record. We support it as an alternative shape.
+    sources?: { url: string; format: string }[];
+  };
+};
+
+export type Product = Omit<ShopifyProduct, "variants" | "images" | "metafields"> & {
   variants: ProductVariant[];
   images: Image[];
+  /** Resolved GLB URL from custom.model_3d metafield (preferred over tag-based fallback). */
+  model3dUrl?: string;
+  /** Resolved USDZ URL from custom.model_3d_usdz metafield (iOS AR Quick Look). */
+  model3dUsdzUrl?: string;
 };
 
 export type ProductOption = {
@@ -133,6 +164,8 @@ export type ShopifyProduct = {
   seo: SEO;
   tags: string[];
   updatedAt: string;
+  /** Raw metafield results in fragment identifier order. */
+  metafields?: (ShopifyMetafield | null)[];
 };
 
 export type ShopifyCartOperation = {

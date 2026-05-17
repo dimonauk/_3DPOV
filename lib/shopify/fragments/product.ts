@@ -56,6 +56,27 @@ const productFragment = /* GraphQL */ `
     }
     tags
     updatedAt
+    metafields(
+      identifiers: [
+        { namespace: "custom", key: "model_3d" }
+        { namespace: "custom", key: "model_3d_usdz" }
+      ]
+    ) {
+      key
+      namespace
+      value
+      reference {
+        ... on GenericFile {
+          url
+        }
+        ... on Model3d {
+          sources {
+            url
+            format
+          }
+        }
+      }
+    }
   }
   ${imageFragment}
   ${seoFragment}

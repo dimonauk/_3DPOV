@@ -26,8 +26,10 @@ import type {
   Collection,
   Connection,
   Image,
+  Product,
   ShopifyCart,
   ShopifyCollection,
+  ShopifyMetafield,
   ShopifyProduct,
 } from "./types";
 
@@ -154,10 +156,32 @@ const reshapeImages = (images: Connection<Image>, productTitle: string) => {
   });
 };
 
+// custom.model_3d (GLB) and custom.model_3d_usdz (USDZ) match the fragment
+// identifier order in lib/shopify/fragments/product.ts.
+const metafieldUrl = (m: ShopifyMetafield | null | undefined): string | undefined => {
+  if (!m) return undefined;
+  // Model3d reference: pick the source matching the metafield key suffix.
+  const sources = m.reference?.sources;
+  if (sources && sources.length > 0) {
+    const wantUsdz = m.key.endsWith("usdz");
+    const match = sources.find((s) => {
+      const f = s.format.toLowerCase();
+      return wantUsdz ? f === "usdz" : f === "glb" || f === "gltf";
+    });
+    if (match?.url) return match.url;
+    if (sources[0]?.url) return sources[0].url;
+  }
+  // GenericFile reference: just the URL on the file.
+  if (m.reference?.url) return m.reference.url;
+  // Plain text metafield: the value is the URL itself.
+  if (m.value && /^https?:\/\//.test(m.value)) return m.value;
+  return undefined;
+};
+
 export const reshapeProduct = (
   product: ShopifyProduct,
   filterHiddenProducts: boolean = true
-) => {
+): Product | undefined => {
   if (
     !product ||
     (filterHiddenProducts && product.tags.includes(HIDDEN_PRODUCT_TAG))
@@ -165,12 +189,16 @@ export const reshapeProduct = (
     return undefined;
   }
 
-  const { images, variants, ...rest } = product;
+  const { images, variants, metafields, ...rest } = product;
+  const model3dUrl = metafieldUrl(metafields?.[0]);
+  const model3dUsdzUrl = metafieldUrl(metafields?.[1]);
 
   return {
     ...rest,
     images: reshapeImages(images, product.title),
     variants: removeEdgesAndNodes(variants),
+    ...(model3dUrl && { model3dUrl }),
+    ...(model3dUsdzUrl && { model3dUsdzUrl }),
   };
 };
 
