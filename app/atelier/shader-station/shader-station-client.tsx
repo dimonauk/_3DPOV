@@ -26,7 +26,6 @@ import {
   SNIPPETS,
   type PresetId,
 } from "lib/algorithms/shaders";
-import { injectLibs } from "lib/math/glsl";
 import {
   startSpectrum,
   type SpectrumBands,
@@ -37,6 +36,11 @@ import {
   encodeForTransfer,
   readPayloadFromCurrentUrl,
 } from "lib/capabilities/media/qr-transfer";
+import {
+  assembleFragment,
+  compileFragment,
+} from "lib/capabilities/viz/shader-editor";
+import { downloadShaderPng } from "lib/capabilities/viz/shader-export";
 
 const SILENT: SpectrumBands = { low: 0, mid: 0, high: 0, volume: 0 };
 
@@ -77,20 +81,7 @@ function ShaderSphere({
     [],
   );
 
-  const fragment = useMemo(() => {
-    return `
-      precision highp float;
-      uniform float u_time; uniform float u_seed; uniform float u_complexity;
-      uniform vec3 u_palette[5];
-      uniform sampler2D u_texture; uniform bool u_use_texture;
-      uniform vec2 u_tex_tiling; uniform vec2 u_tex_offset; uniform vec2 u_tex_scale;
-      uniform float u_tex_alpha;
-      uniform float u_audio_low; uniform float u_audio_mid; uniform float u_audio_high; uniform float u_audio_volume;
-      varying vec2 vUv;
-      ${injectLibs(code)}
-      void main() { gl_FragColor = vec4(render(vUv), 1.0); }
-    `;
-  }, [code]);
+  const fragment = useMemo(() => assembleFragment(code), [code]);
 
   const vertex = `
     varying vec2 vUv;
@@ -139,11 +130,28 @@ export default function ShaderStationClient() {
     }
   }, []);
 
+  // Debounced try-compile to populate the error surface below the
+  // textarea. The chamber's preview material catches the same error
+  // silently; this puts a human-readable message in front of the
+  // author when their edit doesn't parse.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const result = compileFragment(assembleFragment(code));
+      setError(result.ok ? null : result.error);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [code]);
+
   const handlePreset = useCallback((id: PresetId) => {
     setActivePreset(id);
     setCode(PRESETS[id]);
     setError(null);
   }, []);
+
+  const handleExport = useCallback(() => {
+    const filename = `holoflow_${activePreset.toLowerCase()}_${Date.now()}`;
+    downloadShaderPng({ code, size: { kind: "equirect" } }, filename);
+  }, [activePreset, code]);
 
   const handleInsertSnippet = useCallback((snippet: string) => {
     setCode((c) => `${snippet}\n\n${c}`);
@@ -235,6 +243,13 @@ export default function ShaderStationClient() {
             className="rounded-sm border border-warm-black-700 px-3 py-1 hover:border-pink-200/40"
           >
             share via qr
+          </button>
+          <button
+            type="button"
+            onClick={handleExport}
+            className="rounded-sm border border-warm-black-700 px-3 py-1 hover:border-pink-200/40"
+          >
+            export 2048×1024 png
           </button>
         </div>
         {shareUrl && (
