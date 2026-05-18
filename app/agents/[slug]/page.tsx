@@ -12,13 +12,11 @@
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
-import { allProfiles, getProfile } from "lib/people/registry";
+import { getProfile } from "lib/people/registry";
 
-export const dynamic = "force-static";
-
-export async function generateStaticParams() {
-  return allProfiles().map((p) => ({ slug: p.id }));
-}
+// Render-on-request — see /people/[slug] for the rationale. The agent
+// stub doesn't justify the build-time pre-render cost.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

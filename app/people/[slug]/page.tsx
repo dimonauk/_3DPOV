@@ -14,14 +14,14 @@
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
-import { allProfiles, getProfile } from "lib/people/registry";
+import { getProfile } from "lib/people/registry";
 import type { ProfileSocials } from "lib/people/types";
 
-export const dynamic = "force-static";
-
-export async function generateStaticParams() {
-  return allProfiles().map((p) => ({ slug: p.id }));
-}
+// Render-on-request to keep the build memory budget intact. With 274
+// profiles + 274 agents pre-rendering at build time, the 8 GB Vercel
+// build machine OOMs. Profiles are cheap to render dynamically and
+// the Edge caches them anyway.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
