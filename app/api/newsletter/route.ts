@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { createLogger } from "lib/log";
+
 export const dynamic = "force-dynamic";
+
+const log = createLogger("api.newsletter");
 
 /**
  * Newsletter subscription. Logs to console today; swap the body to
@@ -26,7 +30,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  console.log(`[newsletter] subscribe email=${email} source=${source}`);
+  log.info("subscribe", { email, source });
 
   return NextResponse.json({ ok: true });
 }

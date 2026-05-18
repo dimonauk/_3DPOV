@@ -6,6 +6,7 @@ import {
 } from "lib/cards/scanner-server";
 import { verifyIdToken } from "lib/firebase/admin";
 import { withRouteLogging, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 /**
  * POST /api/cards/scan — extract contact fields from a card photo.
@@ -33,20 +34,15 @@ import { withRouteLogging, errToObject } from "lib/log";
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB
 const RATE_LIMIT_PER_HOUR = 10;
 
-type Counter = { count: number; resetAt: number };
-const counters = new Map<string, Counter>();
-
-function checkRate(uid: string): { ok: boolean; remaining: number } {
-  const now = Date.now();
-  const c = counters.get(uid);
-  if (!c || c.resetAt < now) {
-    counters.set(uid, { count: 1, resetAt: now + 60 * 60 * 1000 });
-    return { ok: true, remaining: RATE_LIMIT_PER_HOUR - 1 };
-  }
-  if (c.count >= RATE_LIMIT_PER_HOUR) return { ok: false, remaining: 0 };
-  c.count += 1;
-  return { ok: true, remaining: RATE_LIMIT_PER_HOUR - c.count };
-}
+// Shared limiter — module-scoped so the in-memory fallback is preserved
+// across requests in the same isolate. When UPSTASH_REDIS_REST_URL +
+// _TOKEN are configured, this auto-upgrades to Redis so the cap holds
+// across Fluid Compute isolates / scale-outs.
+const limiter = createFixedWindowLimiter({
+  scope: "cards.scan",
+  limit: RATE_LIMIT_PER_HOUR,
+  windowMs: 60 * 60 * 1000,
+});
 
 export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx, log) => {
   if (!isScannerConfigured()) {
@@ -77,9 +73,9 @@ export const POST = withRouteLogging("cards.scan", async (req: NextRequest, _ctx
   }
   log.debug("auth:ok", { uid });
 
-  const limit = checkRate(uid);
+  const limit = await limiter.consume(`uid:${uid}`);
   if (!limit.ok) {
-    log.info("rate_limited", { uid });
+    log.info("rate_limited", { uid, backend: limiter.backend });
     return NextResponse.json(
       { error: "rate_limited", message: "10 scans per hour per user." },
       { status: 429 },

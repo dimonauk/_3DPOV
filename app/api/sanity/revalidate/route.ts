@@ -24,7 +24,10 @@
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
+import { createLogger } from "lib/log";
 import { tagForType } from "../../../../lib/sanity/fetch";
+
+const log = createLogger("api.sanity.revalidate");
 
 function constantTimeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
@@ -68,8 +71,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const tag = tagForType(type);
 
   if (!tag) {
-    // eslint-disable-next-line no-console
-    console.warn("[sanity revalidate] unknown _type:", type);
+    log.warn("unknown _type", { type });
     return NextResponse.json({ ok: true, revalidated: false, reason: "unknown-type" });
   }
 

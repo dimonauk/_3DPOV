@@ -41,11 +41,35 @@ import {
   type AgentProvider,
 } from "lib/capabilities/agent/dialogue";
 import { createLogger } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 const log = createLogger("api:aura/narrate");
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 20;
+
+// Atelier chambers can fire narration on tab switches and panel
+// updates; 60/hour/IP comfortably covers an active session while
+// capping a misbehaving client. Auto-upgrades to Upstash Redis.
+const HOURLY_CAP = 60;
+const limiter = createFixedWindowLimiter({
+  scope: "api.aura.narrate",
+  limit: HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
+
+function clientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) {
+    const first = xff.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return (
+    req.headers.get("x-real-ip") ??
+    req.headers.get("cf-connecting-ip") ??
+    "unknown"
+  );
+}
 
 type LengthHint = "one-sentence" | "two-sentence";
 
@@ -70,6 +94,24 @@ function pickProvider(): AgentProvider {
 }
 
 export async function POST(req: Request) {
+  const ip = clientIp(req);
+  const slot = await limiter.consume(`ip:${ip}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.warn("rate_limited", { ip, retryAfterSec, backend: limiter.backend });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Narration cap: ${HOURLY_CAP}/hour/visitor.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();

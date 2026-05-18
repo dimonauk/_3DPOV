@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 
 import { isZoneSlug, type ZoneSlug } from "lib/chrono-protocol/zones";
+import { createLogger } from "lib/log";
+
+const log = createLogger("api.chrono-protocol.score");
 
 /**
  * Chrono-Protocol score submission.
@@ -71,10 +74,10 @@ export async function POST(req: Request) {
   }
 
   if (!adminConfigured()) {
-    console.log(
-      "[chrono-protocol/score] stub-mode write:",
-      JSON.stringify({ zone: body.zone, score: body.score }),
-    );
+    log.info("stub-mode write (admin not configured)", {
+      zone: body.zone,
+      score: body.score,
+    });
     return NextResponse.json(
       {
         ok: true,

@@ -38,6 +38,7 @@ import { GoogleGenAI } from "@google/genai";
 
 import { envOrUndefined, googleGenApiKey } from "lib/env";
 import { createLogger } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 const log = createLogger("api:ai-google-imagen");
 
@@ -106,13 +107,18 @@ function parseBody(raw: unknown): Body | { error: string } {
 
 // -------------------- Rate limit (studio quota only) --------------------
 
-// In-memory map. NB: this is per-Vercel-instance and won't survive a
-// cold start or scale-out; it's V1 best-effort to slow obvious abuse.
-// V2 should swap in a shared KV store (Upstash, Vercel KV, etc.).
-type Bucket = { count: number; resetAt: number };
-const studioBuckets: Map<string, Bucket> = new Map();
 const STUDIO_HOURLY_CAP = 5;
 const HOUR_MS = 60 * 60 * 1000;
+
+// Shared limiter — in-memory by default; auto-upgrades to Upstash Redis
+// when UPSTASH_REDIS_REST_URL + _TOKEN are set so the cap holds across
+// Fluid Compute isolates / scale-outs. Visitor BYO-key path skips the
+// limiter entirely (they're on their own quota).
+const studioLimiter = createFixedWindowLimiter({
+  scope: "ai.google.generate-image.studio",
+  limit: STUDIO_HOURLY_CAP,
+  windowMs: HOUR_MS,
+});
 
 function clientIp(req: Request): string {
   const xff = req.headers.get("x-forwarded-for");
@@ -125,29 +131,6 @@ function clientIp(req: Request): string {
     req.headers.get("cf-connecting-ip") ??
     "unknown"
   );
-}
-
-/** Returns null if the IP is within cap, or a {remaining,resetAt} object
- *  if it just consumed a slot. Returns "blocked" with resetAt if over. */
-function consumeStudioSlot(
-  ip: string,
-): { ok: true; remaining: number; resetAt: number } | { ok: false; resetAt: number } {
-  const now = Date.now();
-  const existing = studioBuckets.get(ip);
-  if (!existing || existing.resetAt <= now) {
-    const fresh: Bucket = { count: 1, resetAt: now + HOUR_MS };
-    studioBuckets.set(ip, fresh);
-    return { ok: true, remaining: STUDIO_HOURLY_CAP - 1, resetAt: fresh.resetAt };
-  }
-  if (existing.count >= STUDIO_HOURLY_CAP) {
-    return { ok: false, resetAt: existing.resetAt };
-  }
-  existing.count += 1;
-  return {
-    ok: true,
-    remaining: STUDIO_HOURLY_CAP - existing.count,
-    resetAt: existing.resetAt,
-  };
 }
 
 // -------------------- Handler --------------------
@@ -194,7 +177,7 @@ export async function POST(req: Request) {
   // Rate-limit only studio-quota path.
   if (!usingVisitorKey) {
     const ip = clientIp(req);
-    const slot = consumeStudioSlot(ip);
+    const slot = await studioLimiter.consume(`ip:${ip}`);
     if (!slot.ok) {
       const retryAfterSec = Math.max(
         1,
@@ -215,7 +198,10 @@ export async function POST(req: Request) {
         },
       );
     }
-    log.info("studio quota consumed", { remaining: slot.remaining });
+    log.info("studio quota consumed", {
+      remaining: slot.remaining,
+      backend: studioLimiter.backend,
+    });
   }
 
   const modelName = envOrUndefined("GOOGLE_IMAGEN_MODEL") ?? "imagen-4.0-generate-001";

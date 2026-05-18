@@ -27,6 +27,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 import { envOrUndefined, googleGenApiKey } from "lib/env";
 import { createLogger } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 const log = createLogger("api:clothing-reverse");
 
@@ -35,10 +36,17 @@ export const maxDuration = 60;
 
 // -------------------- Rate limit (studio quota only) --------------------
 
-type Bucket = { count: number; resetAt: number };
-const studioBuckets: Map<string, Bucket> = new Map();
 const STUDIO_HOURLY_CAP = 5;
 const HOUR_MS = 60 * 60 * 1000;
+
+// Shared limiter — in-memory by default; auto-upgrades to Upstash Redis
+// when UPSTASH_REDIS_REST_URL + _TOKEN are set so the cap holds across
+// Fluid Compute isolates. Visitor BYO-key path skips it entirely.
+const studioLimiter = createFixedWindowLimiter({
+  scope: "clothing-reverse.studio",
+  limit: STUDIO_HOURLY_CAP,
+  windowMs: HOUR_MS,
+});
 
 function clientIp(req: Request): string {
   const xff = req.headers.get("x-forwarded-for");
@@ -51,33 +59,6 @@ function clientIp(req: Request): string {
     req.headers.get("cf-connecting-ip") ??
     "unknown"
   );
-}
-
-function consumeStudioSlot(
-  ip: string,
-):
-  | { ok: true; remaining: number; resetAt: number }
-  | { ok: false; resetAt: number } {
-  const now = Date.now();
-  const existing = studioBuckets.get(ip);
-  if (!existing || existing.resetAt <= now) {
-    const fresh: Bucket = { count: 1, resetAt: now + HOUR_MS };
-    studioBuckets.set(ip, fresh);
-    return {
-      ok: true,
-      remaining: STUDIO_HOURLY_CAP - 1,
-      resetAt: fresh.resetAt,
-    };
-  }
-  if (existing.count >= STUDIO_HOURLY_CAP) {
-    return { ok: false, resetAt: existing.resetAt };
-  }
-  existing.count += 1;
-  return {
-    ok: true,
-    remaining: STUDIO_HOURLY_CAP - existing.count,
-    resetAt: existing.resetAt,
-  };
 }
 
 // -------------------- Constants --------------------
@@ -305,7 +286,7 @@ export async function POST(req: Request) {
 
   if (!usingVisitorKey) {
     const ip = clientIp(req);
-    const slot = consumeStudioSlot(ip);
+    const slot = await studioLimiter.consume(`ip:${ip}`);
     if (!slot.ok) {
       const retryAfterSec = Math.max(
         1,
@@ -324,7 +305,10 @@ export async function POST(req: Request) {
         },
       );
     }
-    log.info("studio quota consumed", { remaining: slot.remaining });
+    log.info("studio quota consumed", {
+      remaining: slot.remaining,
+      backend: studioLimiter.backend,
+    });
   }
 
   const buf = await file.arrayBuffer();

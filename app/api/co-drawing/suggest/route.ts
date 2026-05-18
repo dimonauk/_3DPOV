@@ -38,17 +38,60 @@ import { GoogleGenAI, Modality } from "@google/genai";
 
 import { envOrUndefined, googleGenApiKey } from "lib/env";
 import { createLogger } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 const log = createLogger("api:co-drawing-suggest");
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
+// Image-generation calls are the priciest path in the atelier. Cap
+// generously enough for an active co-drawing session (a sketch every
+// ~6 minutes) while shutting down scripted abuse. Auto-upgrades to
+// Upstash Redis when env is set.
+const HOURLY_CAP = 10;
+const limiter = createFixedWindowLimiter({
+  scope: "api.co-drawing.suggest",
+  limit: HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
+
+function clientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) {
+    const first = xff.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return (
+    req.headers.get("x-real-ip") ??
+    req.headers.get("cf-connecting-ip") ??
+    "unknown"
+  );
+}
+
 // ~16 MB of base64 = ~12 MB of binary; well above any plausible
 // canvas PNG at 960x540 but below the JSON body limit.
 const MAX_BASE64_BYTES = 16 * 1024 * 1024;
 
 export async function POST(req: Request) {
+  const ip = clientIp(req);
+  const slot = await limiter.consume(`ip:${ip}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.warn("rate_limited", { ip, retryAfterSec, backend: limiter.backend });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Co-drawing cap: ${HOURLY_CAP}/hour/visitor.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();

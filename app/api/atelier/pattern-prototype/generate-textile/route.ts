@@ -24,6 +24,7 @@ import { NextResponse } from "next/server";
 import { createLogger } from "lib/log";
 import { comfyUIGenerateServer } from "lib/capabilities/viz/generate-comfyui.server";
 import type { ComfyUIGenerateError } from "lib/capabilities/viz/generate-comfyui";
+import type { AtelierComfyJobResponse } from "lib/atelier/comfy-job-response";
 import {
   adminGuardErrorBody,
   AdminGuardError,
@@ -92,12 +93,13 @@ export async function POST(req: Request) {
       bytes: result.bytes,
       durationMs,
     });
-    return NextResponse.json({
+    const body: AtelierComfyJobResponse = {
       url: result.url,
       bytes: result.bytes,
       generatedAt: result.generatedAt,
       durationMs,
-    });
+    };
+    return NextResponse.json(body);
   } catch (err) {
     if (isComfyError(err)) {
       const code = err.code;

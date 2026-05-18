@@ -7,6 +7,8 @@
 
 import { NextResponse } from "next/server";
 import { verifyIdToken } from "lib/firebase/admin";
+import { isAdminEmail } from "lib/auth/admin-emails";
+import { createLogger, errToObject } from "lib/log";
 import {
   mediaDelete,
   mediaSetRetired,
@@ -17,7 +19,7 @@ export const dynamic = "force-dynamic";
 // `runtime` is incompatible with experimental.useCache — Next defaults to
 // Node.js for routes importing server-only modules.
 
-const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
+const log = createLogger("api.admin.media.[id]");
 
 function extractBearer(req: Request): string | null {
   const header = req.headers.get("authorization") ?? req.headers.get("Authorization");
@@ -41,7 +43,7 @@ async function authorise(
   }
   try {
     const decoded = await verifyIdToken(token);
-    if (!decoded.email || !ADMIN_EMAILS.has(decoded.email.toLowerCase())) {
+    if (!isAdminEmail(decoded.email)) {
       return {
         ok: false,
         response: NextResponse.json(
@@ -113,7 +115,7 @@ export async function PATCH(
     await mediaSetRetired(id, body.retired);
     return NextResponse.json({ ok: true, id, retired: body.retired });
   } catch (err) {
-    console.error(`[/api/admin/media/${id}] PATCH failed:`, err);
+    log.error("PATCH failed", { id, err: errToObject(err) });
     return errorResponse(err);
   }
 }
@@ -134,7 +136,7 @@ export async function DELETE(
     await mediaDelete(id);
     return NextResponse.json({ ok: true, id });
   } catch (err) {
-    console.error(`[/api/admin/media/${id}] DELETE failed:`, err);
+    log.error("DELETE failed", { id, err: errToObject(err) });
     return errorResponse(err);
   }
 }

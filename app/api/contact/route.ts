@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { createLogger } from "lib/log";
+
 export const dynamic = "force-dynamic";
+
+const log = createLogger("api.contact");
 
 const INTENT_SET = new Set([
   "general",
@@ -13,17 +17,23 @@ const INTENT_SET = new Set([
 ]);
 
 /**
- * Contact form submissions. Today: validates + logs to console.
- * Tomorrow: forward to an inbox via Resend (or whatever ESP is chosen).
- * UI contract is stable; swap the body below.
+ * Contact form submissions.
  *
- * Example follow-up wiring (Resend):
- *   await resend.emails.send({
- *     from: process.env.ORDER_FROM_EMAIL!,
- *     to: "contact@holoflow.co.uk",
- *     subject: `[${intent}] ${name}`,
- *     html: ...
- *   });
+ * Two-path delivery, picked at request time based on env state:
+ *
+ *   1. **Resend** — when `RESEND_API_KEY` and both `ORDER_FROM_EMAIL`
+ *      (verified domain From:) + `CONTACT_INBOX_EMAIL` (operator inbox)
+ *      are set. Sends a plain-text email to the inbox with the visitor's
+ *      details and message; sets reply-to so the operator can reply
+ *      directly from their mail client.
+ *
+ *   2. **Log-only fallback** — when any of those env vars is missing,
+ *      logs the submission to `lib/log` at info level so it shows up in
+ *      Vercel runtime logs (and previously-deployed surfaces keep
+ *      working without an outbound mail provider configured).
+ *
+ * Either path returns `{ ok: true }` to the caller — the UI never knows
+ * which channel handled the submission.
  */
 export async function POST(req: Request) {
   let payload: {
@@ -63,9 +73,65 @@ export async function POST(req: Request) {
     );
   }
 
-  console.log(
-    `[contact] intent=${intent} name=${name} email=${email} message_len=${message.length}`,
-  );
+  const resendKey = process.env.RESEND_API_KEY;
+  const fromAddress =
+    process.env.ORDER_FROM_EMAIL ?? process.env.RESEND_FROM_ADDRESS;
+  const inboxAddress = process.env.CONTACT_INBOX_EMAIL;
+
+  if (resendKey && fromAddress && inboxAddress) {
+    try {
+      // Lazy-import so the Resend module only loads on the path that
+      // needs it — keeps the log-only fallback's cold start small.
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendKey);
+      const subject = `[${intent}] ${name} via holoflow.co.uk`;
+      const textBody = [
+        `Intent : ${intent}`,
+        `Name   : ${name}`,
+        `Email  : ${email}`,
+        `Length : ${message.length} chars`,
+        ``,
+        `--- message ---`,
+        message,
+      ].join("\n");
+      const result = await resend.emails.send({
+        from: fromAddress,
+        to: inboxAddress,
+        replyTo: email,
+        subject,
+        text: textBody,
+      });
+      if (result.error) {
+        log.error("resend send failed; falling through to log channel", {
+          intent,
+          err: result.error,
+        });
+      } else {
+        log.info("contact:sent via resend", {
+          intent,
+          to: inboxAddress,
+          messageLen: message.length,
+          id: result.data?.id,
+        });
+        return NextResponse.json({ ok: true });
+      }
+    } catch (err) {
+      log.error("resend wiring threw; falling through to log channel", {
+        intent,
+        err: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+
+  // Fallback: log to Vercel runtime logs so the submission isn't lost
+  // when no ESP is wired up (or when Resend errors and we fell through).
+  log.info("contact:received (log-only fallback)", {
+    intent,
+    name,
+    email,
+    messageLen: message.length,
+    resendConfigured: Boolean(resendKey && fromAddress && inboxAddress),
+  });
 
   return NextResponse.json({ ok: true });
 }

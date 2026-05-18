@@ -7,6 +7,7 @@ import {
 } from "lib/cards/aura-server";
 import { getCardAuraTools } from "lib/cards/aura-card-tools";
 import { withRouteLogging, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 /**
  * POST /api/cards/[slug]/chat — stream a chat reply from the card's
@@ -20,14 +21,32 @@ import { withRouteLogging, errToObject } from "lib/log";
  *     with text + tool calls + tool results interleaved
  *   - 404 → unknown card
  *   - 422 → card has no vrmPersona (chat not enabled)
+ *   - 429 → per-IP-per-card hourly turn cap exceeded
  *   - 503 → AI_GATEWAY_API_KEY not configured
  *
  * Tools are card-scoped: leads go to THIS card's collection, booking
  * uses THIS card's calendar.url, find_related_cards excludes this
  * slug. See lib/cards/aura-card-tools.ts.
+ *
+ * # Rate limit
+ *
+ * 20 turns per hour per (IP, slug). Card chats are tool-using AI calls
+ * at gemini-flash-lite pricing — cap covers cost-of-abuse from a
+ * scripted attacker hammering one card, while leaving an honest
+ * visitor plenty of room for a real conversation. Per-card bucket
+ * (not per-IP global) means visiting cards A and B both get full
+ * budgets — a long chat with A doesn't lock you out of B.
+ * Auto-upgrades to Upstash Redis when env is set.
  */
 
 type Params = { params: Promise<{ slug: string }> };
+
+const HOURLY_TURN_CAP = 20;
+const limiter = createFixedWindowLimiter({
+  scope: "cards.chat",
+  limit: HOURLY_TURN_CAP,
+  windowMs: 60 * 60 * 1000,
+});
 
 export const POST = withRouteLogging<Params>(
   "cards.chat",
@@ -90,6 +109,33 @@ export const POST = withRouteLogging<Params>(
       undefined;
     const ua = req.headers.get("user-agent") ?? undefined;
     const country = req.headers.get("x-vercel-ip-country") ?? undefined;
+
+    // Rate-limit AFTER body validation so a malformed POST doesn't
+    // burn a turn from the visitor's bucket. Per-(ip, slug) bucket so
+    // hopping cards gives a fresh budget per card. CGNAT visitors
+    // share a bucket — same trade as elsewhere on the site.
+    const limitKey = `ip:${ip ?? "unknown"}:${slug}`;
+    const slot = await limiter.consume(limitKey);
+    if (!slot.ok) {
+      const retryAfterSec = Math.max(
+        1,
+        Math.ceil((slot.resetAt - Date.now()) / 1000),
+      );
+      log.warn("rate_limited", {
+        slug,
+        ip,
+        retryAfterSec,
+        backend: limiter.backend,
+      });
+      return NextResponse.json(
+        {
+          error: "rate_limited",
+          message: `Chat cap is ${HOURLY_TURN_CAP} turns per hour per card per visitor. Try again shortly.`,
+          retryAfterSec,
+        },
+        { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+      );
+    }
 
     const tools = getCardAuraTools({
       card,

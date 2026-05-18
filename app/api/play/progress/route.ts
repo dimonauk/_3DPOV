@@ -4,6 +4,10 @@ import {
   defaultProgress,
   type PlayerProgress,
 } from "lib/play/state";
+import { createLogger, errToObject } from "lib/log";
+import { verifyIdToken } from "lib/firebase/admin";
+
+const log = createLogger("api.play.progress");
 
 /**
  * Game progress API.
@@ -83,6 +87,38 @@ function isValidProgress(input: unknown): input is PlayerProgress {
 }
 
 export async function POST(req: Request) {
+  // Bearer-token gate. The full Firestore wiring is still a TODO
+  // (the route can't actually persist until firebase-admin is set
+  // up), but accepting unauthenticated POSTs that pretend to succeed
+  // is a worse posture than rejecting them — clients building against
+  // this route should learn now that they need to send a token.
+  //
+  // When firebase-admin IS configured, we verify the token properly.
+  // When it isn't, we still require the header's presence so the
+  // route stays honest about who is calling.
+  const authHeader =
+    req.headers.get("authorization") ?? req.headers.get("Authorization");
+  if (!authHeader?.toLowerCase().startsWith("bearer ")) {
+    return NextResponse.json(
+      { error: "Missing Authorization: Bearer <idToken>" },
+      { status: 401 },
+    );
+  }
+  const idToken = authHeader.slice("bearer ".length).trim();
+  if (!idToken) {
+    return NextResponse.json({ error: "Empty token" }, { status: 401 });
+  }
+
+  let uid: string | undefined;
+  if (adminConfigured()) {
+    try {
+      uid = (await verifyIdToken(idToken)).uid;
+    } catch (err) {
+      log.warn("token verify failed", { err: errToObject(err) });
+      return NextResponse.json({ error: "invalid_token" }, { status: 401 });
+    }
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -112,13 +148,11 @@ export async function POST(req: Request) {
   }
 
   // TODO: real implementation
-  //   const idToken = req.headers.get("authorization")?.replace(/^Bearer /, "");
-  //   const decoded = await getAuth().verifyIdToken(idToken);
-  //   await getFirestore().doc(`play_progress/${decoded.uid}`).set({
+  //   await getFirestore().doc(`play_progress/${uid}`).set({
   //     ...body,
-  //     userId: decoded.uid,
+  //     userId: uid,
   //     updatedAt: FieldValue.serverTimestamp(),
   //   });
-  //   return NextResponse.json({ ok: true, progress: { ...body, userId: decoded.uid } });
-  return NextResponse.json({ ok: true, progress: body }, { status: 200 });
+  //   return NextResponse.json({ ok: true, progress: { ...body, userId: uid } });
+  return NextResponse.json({ ok: true, progress: body, uid }, { status: 200 });
 }

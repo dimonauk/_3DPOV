@@ -1,11 +1,34 @@
 /**
- * app/api/viz/splat-generate/route.ts — Submit a splat-generate job.
+ * app/api/viz/splat-generate/route.ts — Submit an image-source
+ * splat-generate job.
  *
  * JSON POST endpoint. Verifies the Firebase ID token from
  * `Authorization: Bearer <token>`, checks the email against the
- * operator allow-list, then delegates to `splatGenerateServer()` —
- * which dispatches to the right provider (sharp-onnx today; postshot,
- * studio-rig-native, luma-genie are stubs that throw until wired).
+ * operator allow-list, then delegates to `splatGenerateServer()`.
+ *
+ * # Provider gating
+ *
+ * The `SplatProvider` type union enumerates SIX providers
+ * (sharp-onnx, hangar-gsplat, hangar-4dgs, luma-genie, postshot,
+ * studio-rig-native). This route ACCEPTS only four —
+ *
+ *   sharp-onnx          (live, image-source)
+ *   postshot            (stub; throws provider-unavailable)
+ *   studio-rig-native   (stub; throws provider-unavailable)
+ *   luma-genie          (live, luma-ref)
+ *
+ * — and rejects the hangar-* family at the gate. Hangar providers
+ * consume VIDEO sources, and the operator UI for video → splat lives
+ * at `/api/holo-walk/generate-splat`, which handles the multipart
+ * video upload + per-operator rate-limit + admin guard appropriate
+ * for that flow. Routing hangar-* through this image-only route would
+ * accept a payload the parser silently downgrades to a "not supported
+ * in this build" error — clearer to gate up-front.
+ *
+ * If a future use-case needs hangar-* through a JSON-source route
+ * (e.g. submitting an existing Vercel Blob URL of a video), add the
+ * provider here AND extend `parseInput` to accept `source.kind ===
+ * "video"`.
  *
  * Body shape (JSON):
  *   {
@@ -23,6 +46,7 @@
 import { NextResponse } from "next/server";
 
 import { verifyIdToken } from "lib/firebase/admin";
+import { isAdminEmail } from "lib/auth/admin-emails";
 import { splatGenerateServer } from "lib/capabilities/viz/splat-generate.server";
 import type {
   SplatGenerateInput,
@@ -32,8 +56,9 @@ import type {
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
-const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
-
+// Intentionally narrower than the `SplatProvider` type union — see
+// "Provider gating" in the file header. Hangar-* providers use the
+// /api/holo-walk/generate-splat route instead.
 const PROVIDERS: ReadonlySet<SplatProvider> = new Set([
   "sharp-onnx",
   "postshot",
@@ -56,6 +81,14 @@ function parseInput(body: unknown): SplatGenerateInput | { error: string } {
   const obj = body as Record<string, unknown>;
   const provider = obj["provider"];
   if (typeof provider !== "string" || !PROVIDERS.has(provider as SplatProvider)) {
+    // Special-case hangar-* so the error message points the caller at
+    // the route that actually handles those (instead of leaving them
+    // hunting in the type union).
+    if (provider === "hangar-gsplat" || provider === "hangar-4dgs") {
+      return {
+        error: `provider "${provider}" submits video sources via /api/holo-walk/generate-splat — this route only accepts image sources`,
+      };
+    }
     return {
       error: `provider must be one of ${Array.from(PROVIDERS).join(" | ")}`,
     };
@@ -66,6 +99,11 @@ function parseInput(body: unknown): SplatGenerateInput | { error: string } {
   }
   const s = source as Record<string, unknown>;
   const sourceKind = s["kind"];
+  // Intentionally narrow: this route handles the image-single flow
+  // (Apple SHARP, single-photo → 3D Gaussian Splat). Multi-image,
+  // video, and luma-ref flows live on dedicated routes that do their
+  // own multipart / external-ID validation. Adding kinds here means
+  // also extending the providers gate above.
   if (sourceKind === "image-single") {
     if (typeof s["url"] !== "string") {
       return { error: "source.url is required for image-single" };
@@ -100,7 +138,7 @@ export async function POST(req: Request) {
       err instanceof Error ? err.message : "Token verification failed";
     return NextResponse.json({ error: message }, { status: 401 });
   }
-  if (!decoded.email || !ADMIN_EMAILS.has(decoded.email.toLowerCase())) {
+  if (!isAdminEmail(decoded.email)) {
     return NextResponse.json(
       { error: "Not authorised for operator routes" },
       { status: 403 },

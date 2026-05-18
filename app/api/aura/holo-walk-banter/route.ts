@@ -10,19 +10,33 @@
  * Cast pair defaults to Penny (operational) + Marcel (creative) per
  * the audit's reading; caller can override via `?cast=`.
  *
- * # Cost
- * Per-call Gemini fee. Open to all visitors. Rate-limit when /holo-walk
- * gets real traffic; for now the studio eats it.
+ * # Cost / rate limit
+ * Per-call Gemini fee. Open to all visitors (no auth). Capped at
+ * 10 banters per IP per hour — comfortable for a visitor exploring
+ * a handful of locations on a single trip, tight enough that a
+ * scripted attacker can't run up the gateway bill. Auto-upgrades
+ * to Upstash Redis when env is set.
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { bibles, type CastMemberId } from "lib/cast";
 import { respondBanter } from "lib/capabilities/agent/banter";
 import { getLocation } from "lib/holo-walk/locations";
+import { createLogger, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
+
+const log = createLogger("api.aura.holo-walk-banter");
+
+const HOURLY_CAP = 10;
+const limiter = createFixedWindowLimiter({
+  scope: "aura.holo-walk-banter",
+  limit: HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
 
 const DEFAULT_CAST: CastMemberId[] = ["penny", "marcel"];
 
@@ -48,7 +62,7 @@ function parseCast(raw: string | null): CastMemberId[] {
   return ids.length > 0 ? ids : DEFAULT_CAST;
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   let body: unknown;
   try {
     body = await req.json();
@@ -78,6 +92,35 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { error: `unknown location: ${locationId}` },
       { status: 404 },
+    );
+  }
+
+  // Rate-limit by IP. No auth on the route (public visitor surface),
+  // so IP is the most stable key available. CGNAT visitors share a
+  // bucket — same trade-off as elsewhere on the site.
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
+  const slot = await limiter.consume(`ip:${ip}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.warn("rate_limited", {
+      ip,
+      locationId,
+      retryAfterSec,
+      backend: limiter.backend,
+    });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Banter cap is ${HOURLY_CAP} per hour per visitor. Try again shortly.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
     );
   }
 
@@ -122,6 +165,7 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
+    log.error("banter failed", { locationId, err: errToObject(err) });
     return NextResponse.json(
       { error: `banter failed: ${message}` },
       { status: 502 },

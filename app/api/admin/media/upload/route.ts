@@ -11,6 +11,8 @@
 
 import { NextResponse } from "next/server";
 import { verifyIdToken } from "lib/firebase/admin";
+import { isAdminEmail } from "lib/auth/admin-emails";
+import { createLogger, errToObject } from "lib/log";
 import { mediaUpload } from "lib/capabilities/media/library";
 import {
   MediaLibraryError,
@@ -28,7 +30,7 @@ export const dynamic = "force-dynamic";
 // Operator uploads can be large (4K stills, video). Allow up to ~250MB.
 export const maxDuration = 300;
 
-const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
+const log = createLogger("api.admin.media.upload");
 
 const KINDS: ReadonlySet<MediaKind> = new Set([
   "photo",
@@ -111,7 +113,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: message }, { status: 401 });
   }
 
-  if (!decoded.email || !ADMIN_EMAILS.has(decoded.email.toLowerCase())) {
+  if (!isAdminEmail(decoded.email)) {
     return NextResponse.json(
       { error: "Not authorised for operator routes" },
       { status: 403 },
@@ -222,7 +224,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: err.message, code: err.code }, { status });
     }
     const message = err instanceof Error ? err.message : String(err);
-    console.error("[/api/admin/media/upload] failed:", err);
+    log.error("upload failed", { err: errToObject(err) });
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

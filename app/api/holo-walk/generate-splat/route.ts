@@ -28,7 +28,7 @@
 
 import { NextResponse } from "next/server";
 
-import { mediaUpload } from "lib/capabilities/media/library";
+import { mediaDelete, mediaUpload } from "lib/capabilities/media/library";
 import {
   MediaLibraryError,
   type MediaKind,
@@ -41,6 +41,7 @@ import {
   requireAdminUser,
 } from "lib/integrations/google/admin-guard";
 import { createLogger } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 export const dynamic = "force-dynamic";
 // Bench-side training can take many minutes. The capability already
@@ -48,6 +49,36 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 800;
 
 const log = createLogger("api:/holo-walk/generate-splat");
+
+// Bench-side splat training is expensive AND produces large artifacts.
+// Cost shape (May 2026, hangar-gsplat provider, single operator):
+//   - GPU: ~$0.30-1.50 per job (8-30 min on a single A100, depending
+//     on input resolution + iterations). Bench is studio-owned so the
+//     marginal cost is electricity + amortised hardware, not on-demand
+//     cloud rates — figures here assume cloud-equivalent pricing as a
+//     "what would it cost if bench was on RunPod" sanity check.
+//   - Vercel Blob: ~50MB-2GB PLY per success (subject + iterations);
+//     ~$0.005-0.20 per stored job at $0.10/GB/month.
+//   - Egress: free within the studio for splat-AR-deploy renders.
+// Cap at 5 jobs/hour per operator UID — enough to iterate on a real
+// shoot (typically 1-3 jobs per session as the operator tweaks
+// frame-stride / SfM solver), tight enough that an accidental
+// form-resubmit loop or compromised operator credential can't run up
+// a five-figure cloud bill in a single quiet weekend.
+// Auto-upgrades to Upstash Redis when env is set.
+const HOURLY_JOB_CAP = 5;
+const limiter = createFixedWindowLimiter({
+  scope: "holo-walk.generate-splat",
+  limit: HOURLY_JOB_CAP,
+  windowMs: 60 * 60 * 1000,
+});
+
+// Body-size cap on the inbound video upload. The capability itself
+// streams the video to the bench so the only Vercel cost here is
+// transient memory + the Blob storage write. 2 GB is generous for a
+// 360-camera shoot (Insta360 X4 at max bitrate produces ~600MB/min);
+// past that the operator should pre-trim before uploading.
+const MAX_VIDEO_BYTES = 2 * 1024 * 1024 * 1024;
 
 // Accept the obvious video MIME types the operator console produces.
 // Note: DJI .OSV files arrive as application/octet-stream or
@@ -100,6 +131,30 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
+  // Per-operator rate-limit. Keyed on UID (not IP) — operators can
+  // legitimately rotate between Salford / MediaCity Wi-Fi during a
+  // shoot. Auth has already been verified so the UID is trustworthy.
+  const slot = await limiter.consume(`uid:${admin.uid}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.warn("rate_limited", {
+      uid: admin.uid,
+      retryAfterSec,
+      backend: limiter.backend,
+    });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Splat training cap is ${HOURLY_JOB_CAP} jobs per hour per operator. Try again shortly.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+    );
+  }
+
   let form: FormData;
   try {
     form = await req.formData();
@@ -146,6 +201,32 @@ export async function POST(req: Request) {
         error: `Expected a video upload; got mimeType=${mimeType}, filename=${filename}.`,
       },
       { status: 400 },
+    );
+  }
+
+  // Body-size cap. The Blob spec exposes a numeric `size` — Node's
+  // FormData implementation populates it from Content-Length, so this
+  // is reliable for our multipart uploads. A missing/non-numeric size
+  // is treated as "trust but don't enforce" (the bench has its own
+  // input limits as a backstop).
+  const fileSize: number | undefined =
+    typeof (file as { size?: unknown }).size === "number"
+      ? (file as { size: number }).size
+      : undefined;
+  if (fileSize !== undefined && fileSize > MAX_VIDEO_BYTES) {
+    log.warn("video too large", {
+      uid: admin.uid,
+      sizeBytes: fileSize,
+      maxBytes: MAX_VIDEO_BYTES,
+    });
+    return NextResponse.json(
+      {
+        error: "video_too_large",
+        message: `Video exceeds ${Math.round(MAX_VIDEO_BYTES / (1024 * 1024 * 1024))}GB cap. Pre-trim before uploading.`,
+        sizeBytes: fileSize,
+        maxBytes: MAX_VIDEO_BYTES,
+      },
+      { status: 413 },
     );
   }
 
@@ -236,8 +317,39 @@ export async function POST(req: Request) {
     const message = err instanceof Error ? err.message : String(err);
     log.error("splat-generate failed", { id, videoUrl, message });
 
+    // ---- Orphan-media cleanup ----
+    // The source video lives in Vercel Blob + a Firestore media row.
+    // When the bench job fails, NEITHER is useful: there's no gallery
+    // entry pointing at the video, and the operator's "retry" path
+    // (re-upload via /holo-walk/new) provides fresh bytes. Without
+    // cleanup, every failed job leaks ~50MB-2GB of Blob storage AND
+    // a stale media-library row. Best-effort: log the outcome, don't
+    // fail the response on a cleanup miss.
+    let sourceVideoCleanup: "deleted" | "failed" = "deleted";
+    let sourceVideoCleanupError: string | undefined;
+    try {
+      await mediaDelete(videoMediaId);
+      log.info("cleaned up orphan source video", { id, videoMediaId });
+    } catch (cleanupErr) {
+      sourceVideoCleanup = "failed";
+      sourceVideoCleanupError =
+        cleanupErr instanceof Error
+          ? cleanupErr.message
+          : String(cleanupErr);
+      log.warn("orphan source video cleanup failed", {
+        id,
+        videoMediaId,
+        err: sourceVideoCleanupError,
+      });
+    }
+
     // Persist the error so the operator can see it in the gallery
-    // without having to re-scrape Vercel logs.
+    // without having to re-scrape Vercel logs. videoUrl / videoMediaId
+    // are kept on the row even after a successful cleanup — they're
+    // the canonical record of "what was uploaded" at the time of
+    // failure. The errorMessage suffix tells the operator the URL is
+    // dead so they don't click expecting bytes.
+    let errorRowWriteError: string | undefined;
     try {
       await writeDynamicSculpture({
         id,
@@ -247,18 +359,39 @@ export async function POST(req: Request) {
         videoUrl,
         videoMediaId,
         status: "error",
-        errorMessage: message,
+        errorMessage:
+          sourceVideoCleanup === "deleted"
+            ? `${message} (source video removed)`
+            : message,
         createdBy: admin.uid,
       });
     } catch (writeErr) {
+      errorRowWriteError =
+        writeErr instanceof Error ? writeErr.message : String(writeErr);
       log.warn("could not persist error row", {
         id,
-        message: writeErr instanceof Error ? writeErr.message : String(writeErr),
+        message: errorRowWriteError,
       });
     }
 
     return NextResponse.json(
-      { error: message, stage: "splat-generate", id, videoUrl },
+      {
+        error: message,
+        stage: "splat-generate",
+        id,
+        videoUrl,
+        sourceVideoCleanup,
+        ...(sourceVideoCleanupError !== undefined
+          ? { sourceVideoCleanupError }
+          : {}),
+        // When the error-row write ALSO failed, surface that in the
+        // body so the operator knows the gallery won't reflect this
+        // failure — otherwise they'll think the job is "still running"
+        // instead of "failed and unrecorded".
+        ...(errorRowWriteError !== undefined
+          ? { errorRowWriteError }
+          : {}),
+      },
       { status: 500 },
     );
   }

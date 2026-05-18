@@ -22,9 +22,12 @@
  */
 
 import { TAGS } from "lib/constants";
+import { createLogger } from "lib/log";
 import { revalidateTag } from "next/cache";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+
+const log = createLogger("api.revalidate");
 
 /** Base64-encode a buffer (Edge-compatible — no Buffer). */
 function bufferToBase64(buf: ArrayBuffer): string {
@@ -106,7 +109,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     constantTimeEqual(querySecret, process.env.SHOPIFY_REVALIDATION_SECRET);
 
   if (!hmacValid && !queryValid) {
-    console.error("[revalidate] auth failed — neither HMAC nor URL secret valid");
+    log.error("auth failed — neither HMAC nor URL secret valid", { topic });
     return NextResponse.json({ status: 401 });
   }
 

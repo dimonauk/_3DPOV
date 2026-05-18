@@ -6,6 +6,7 @@ import {
   importCards,
 } from "lib/cards/bulk-import-server";
 import { withRouteLogging, errToObject } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 /**
  * POST /api/cards/bulk-import — create or update multiple cards from CSV.
@@ -30,6 +31,17 @@ import { withRouteLogging, errToObject } from "lib/log";
 const MAX_ROWS = 100;
 const MAX_CSV_BYTES = 1024 * 1024;
 
+// Per-uid quota — 5 imports/hour. A single import can write 100 cards
+// to Firestore; 5/hour caps a single user at 500 card writes/hour,
+// which is more than the cleanup-and-republish workflow needs but
+// keeps a runaway client from flooding the collection.
+const HOURLY_CAP = 5;
+const limiter = createFixedWindowLimiter({
+  scope: "api.cards.bulk-import",
+  limit: HOURLY_CAP,
+  windowMs: 60 * 60 * 1000,
+});
+
 export const POST = withRouteLogging("cards.bulk-import", async (req: NextRequest, _ctx, log) => {
   const auth = req.headers.get("authorization") ?? "";
   const token = auth.startsWith("Bearer ") ? auth.slice(7) : "";
@@ -43,6 +55,26 @@ export const POST = withRouteLogging("cards.bulk-import", async (req: NextReques
   } catch (err) {
     log.warn("auth:invalid_token", { err: errToObject(err) });
     return NextResponse.json({ error: "invalid_token" }, { status: 401 });
+  }
+
+  // Per-uid quota — bulk-import writes up to MAX_ROWS Firestore docs
+  // in a single call; capping per-uid keeps a runaway client from
+  // flooding the collection.
+  const slot = await limiter.consume(`uid:${uid}`);
+  if (!slot.ok) {
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((slot.resetAt - Date.now()) / 1000),
+    );
+    log.info("rate_limited", { uid, retryAfterSec, backend: limiter.backend });
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `Bulk-import cap: ${HOURLY_CAP} imports per hour per user.`,
+        retryAfterSec,
+      },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } },
+    );
   }
 
   let csv = "";

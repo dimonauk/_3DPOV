@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { withRouteLogging, errToObject, type LogLevel } from "lib/log";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 /**
  * POST /api/log — receive client-side error reports.
@@ -32,20 +33,15 @@ import { withRouteLogging, errToObject, type LogLevel } from "lib/log";
 
 const MAX_BODY_BYTES = 32 * 1024; // 32 KB hard cap
 const RATE_LIMIT_PER_MIN = 10;
-type Counter = { count: number; resetAt: number };
-const counters = new Map<string, Counter>();
 
-function checkRate(ip: string): boolean {
-  const now = Date.now();
-  const c = counters.get(ip);
-  if (!c || c.resetAt < now) {
-    counters.set(ip, { count: 1, resetAt: now + 60_000 });
-    return true;
-  }
-  if (c.count >= RATE_LIMIT_PER_MIN) return false;
-  c.count += 1;
-  return true;
-}
+// Shared limiter — in-memory fallback when Upstash Redis env isn't
+// configured (matches the previous local-Map behaviour); auto-upgrades
+// to Redis when env is set so the cap holds across isolates.
+const limiter = createFixedWindowLimiter({
+  scope: "api.log",
+  limit: RATE_LIMIT_PER_MIN,
+  windowMs: 60_000,
+});
 
 export const POST = withRouteLogging("api.log", async (req: NextRequest, _ctx, log) => {
   const ip =
@@ -53,8 +49,9 @@ export const POST = withRouteLogging("api.log", async (req: NextRequest, _ctx, l
     req.headers.get("x-real-ip") ||
     "0.0.0.0";
 
-  if (!checkRate(ip)) {
-    log.info("client_log:rate_limited", { ip });
+  const limit = await limiter.consume(`ip:${ip}`);
+  if (!limit.ok) {
+    log.info("client_log:rate_limited", { ip, backend: limiter.backend });
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 

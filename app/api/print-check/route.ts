@@ -23,6 +23,7 @@ import { NextResponse } from "next/server";
 
 import { createLogger } from "lib/log";
 import { printCheckFromBuffer } from "lib/capabilities/image/print-check.server";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 const log = createLogger("api:print-check");
 
@@ -31,11 +32,17 @@ export const maxDuration = 30;
 
 const MAX_BYTES = 40 * 1024 * 1024; // 40 MB — fits Osmo 360 max-res JPEGs
 
-// In-memory per-IP bucket. Best-effort throttle.
-type Bucket = { count: number; resetAt: number };
-const buckets: Map<string, Bucket> = new Map();
 const HOURLY_CAP = 60;
 const HOUR_MS = 60 * 60 * 1000;
+
+// Shared limiter — module-scoped. In-memory fallback when Upstash Redis
+// env isn't configured; auto-upgrades to Redis when it is, so the cap
+// holds across Fluid Compute isolates.
+const limiter = createFixedWindowLimiter({
+  scope: "api.print-check",
+  limit: HOURLY_CAP,
+  windowMs: HOUR_MS,
+});
 
 function clientIp(req: Request): string {
   const xff = req.headers.get("x-forwarded-for");
@@ -50,24 +57,9 @@ function clientIp(req: Request): string {
   );
 }
 
-function consumeSlot(ip: string): { ok: boolean; resetAt: number } {
-  const now = Date.now();
-  const existing = buckets.get(ip);
-  if (!existing || existing.resetAt <= now) {
-    const fresh: Bucket = { count: 1, resetAt: now + HOUR_MS };
-    buckets.set(ip, fresh);
-    return { ok: true, resetAt: fresh.resetAt };
-  }
-  if (existing.count >= HOURLY_CAP) {
-    return { ok: false, resetAt: existing.resetAt };
-  }
-  existing.count += 1;
-  return { ok: true, resetAt: existing.resetAt };
-}
-
 export async function POST(req: Request) {
   const ip = clientIp(req);
-  const slot = consumeSlot(ip);
+  const slot = await limiter.consume(`ip:${ip}`);
   if (!slot.ok) {
     const retryAfterSec = Math.max(
       1,

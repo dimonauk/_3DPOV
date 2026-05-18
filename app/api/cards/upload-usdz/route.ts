@@ -21,8 +21,11 @@
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import { verifyIdToken } from "lib/firebase/admin";
+import { createLogger, errToObject } from "lib/log";
 
 const MAX_SIZE_BYTES = 15 * 1024 * 1024; // 15 MB
+
+const log = createLogger("api.cards.upload-usdz");
 
 export async function POST(req: Request) {
   // 1. Auth.
@@ -43,7 +46,7 @@ export async function POST(req: Request) {
     const decoded = await verifyIdToken(idToken);
     uid = decoded.uid;
   } catch (err) {
-    console.warn("[upload-usdz] token verify failed:", err);
+    log.warn("token verify failed", { err: errToObject(err) });
     return NextResponse.json(
       { error: "Invalid or expired auth token. Sign in again." },
       { status: 401 },
@@ -131,7 +134,7 @@ export async function POST(req: Request) {
       addRandomSuffix: false,
     });
   } catch (err) {
-    console.error("[upload-usdz] Vercel Blob put() failed:", err);
+    log.error("Vercel Blob put() failed", { err: errToObject(err) });
     return NextResponse.json(
       { error: "Storage upload failed. Try again." },
       { status: 502 },
