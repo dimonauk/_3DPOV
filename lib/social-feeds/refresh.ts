@@ -10,6 +10,8 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
+import { fetchBlueskySource } from "./fetch-bluesky";
+import { fetchMastodonSource } from "./fetch-mastodon";
 import { fetchRssSource } from "./fetch-rss";
 import { getProfile } from "../people/registry";
 import { activeSources } from "./sources";
@@ -40,9 +42,16 @@ async function fetchOne(source: FeedSource): Promise<AggregatedPost[]> {
       const result = await fetchRssSource(source, personName);
       return result.posts;
     }
-    // Stubs — each platform gets its own module when wired.
-    case "bluesky":
-    case "mastodon":
+    case "bluesky": {
+      const result = await fetchBlueskySource(source, personName);
+      return result.posts;
+    }
+    case "mastodon": {
+      const result = await fetchMastodonSource(source, personName);
+      return result.posts;
+    }
+    // Instagram + X + Flickr + YouTube require auth or browser
+    // sessions; each gets its own module when those slots are wired.
     case "instagram":
     case "x":
     case "flickr":
