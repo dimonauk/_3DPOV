@@ -6,19 +6,17 @@ export default {
   // process.cwd() resolves to the project directory because Next runs the
   // config from the project root.
   outputFileTracingRoot: process.cwd(),
-  // Skip the build-time TS + lint checks. The build container is 8 GB
-  // and this codebase's TS check has been peaking near the ceiling,
-  // OOM-killing production deploys (see holoflow-deploy-debug skill
-  // #9). TS still runs locally — every commit should pass
-  // `pnpm exec tsc --noEmit` before push — but Vercel doesn't re-run
-  // it. Same posture for ESLint (already enforced in pre-commit).
-  // This saves ~30s + ~2 GB peak on each build.
   //
-  // TODO (any agent): once we've seen 3-5 consecutive green production
-  // builds after the services/ removal, revert these two lines and let
-  // Vercel re-enforce TS + ESLint. See docs/AGENT-COORDINATION.md.
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
+  // TS + ESLint re-enabled at build time after the services/ split
+  // removed the OOM (commit `09f19d3`). The previous bypass was
+  // `typescript: { ignoreBuildErrors: true }` and
+  // `eslint: { ignoreDuringBuilds: true }` from commit `cb44e54`, which
+  // was a flailing fix for the OOM cause that's now properly addressed.
+  //
+  // If the build OOMs again after this revert: check whether new heavy
+  // dirs have crept back in (services/, large WASM, etc.) before
+  // re-disabling. The bypass is the last resort, not the first.
+  //
   experimental: {
     ppr: true,
     // inlineCss disabled: on Next 15.6 canary it emits next/font @font-face
