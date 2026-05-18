@@ -28,7 +28,14 @@ import { NextResponse } from "next/server";
 import { createLogger, errToObject } from "lib/log";
 
 import { verifyWebhookSignature } from "lib/stripe/server";
-import { transitionStatus as transitionBureauStatus } from "lib/bureau/order";
+import {
+  getOrder,
+  transitionStatus as transitionBureauStatus,
+} from "lib/bureau/order";
+import {
+  sendCustomerReceipt,
+  sendOperatorNotification,
+} from "lib/bureau/order-emails";
 
 export const dynamic = "force-dynamic";
 
@@ -96,15 +103,34 @@ async function onPaymentIntentSucceeded(event: StripeEvent): Promise<void> {
 
   try {
     if (kind === "bureau") {
-      await transitionBureauStatus(
+      const order = await transitionBureauStatus(
         orderId,
         "paid",
         "stripe-webhook",
         `Payment Intent ${pi.id} succeeded${pi.receipt_email ? " for " + pi.receipt_email : ""}.`,
       );
-      // TODO: trigger fulfilment — queue the print job at the studio's
-      // Pro-1100, send confirmation email, attach to operator queue.
       log.info("bureau order marked paid", { orderId });
+
+      // Best-effort emails — never block the webhook response on these.
+      // The order doc is the canonical source of truth either way.
+      // Re-read the doc so the email sees the just-applied paidAt +
+      // stripePaymentIntentId fields.
+      const enriched = (await getOrder(orderId)) ?? order;
+      const [custResult, opResult] = await Promise.all([
+        sendCustomerReceipt(enriched).catch((err) => ({
+          ok: false,
+          error: err instanceof Error ? err.message : String(err),
+        })),
+        sendOperatorNotification(enriched).catch((err) => ({
+          ok: false,
+          error: err instanceof Error ? err.message : String(err),
+        })),
+      ]);
+      log.info("bureau emails dispatched", {
+        orderId,
+        customer: custResult.ok ? "sent" : custResult.error,
+        operator: opResult.ok ? "sent" : opResult.error,
+      });
     } else if (kind === "printfile") {
       // TODO: hand off to printfile-engine farm forwarder
       log.info("printfile order paid (forwarder TODO)", { orderId });
