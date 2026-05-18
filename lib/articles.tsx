@@ -29,6 +29,7 @@ import { entry as theJewelleryAlgorithmsEntry } from "components/articles/entrie
 import { entry as theLivingStageEntry } from "components/articles/entries/the-living-stage";
 import { entry as theMathematicsOfMorphingEntry } from "components/articles/entries/the-mathematics-of-morphing";
 import { entry as thePracticeInEightThreadsEntry } from "components/articles/entries/the-practice-in-eight-threads";
+import { entry as thePrintabilityOracleEntry } from "components/articles/entries/the-printability-oracle";
 import { entry as theRightPaperForALightPaintingEntry } from "components/articles/entries/the-right-paper-for-a-light-painting";
 import { entry as theSieveAndTheOracleEntry } from "components/articles/entries/the-sieve-and-the-oracle";
 import { entry as jonThePhotographerEntry } from "components/articles/entries/jon-the-photographer";
@@ -45,6 +46,7 @@ import { entry as whyThePendantGlowsFromTheInsideEntry } from "components/articl
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  thePrintabilityOracleEntry,
   jonThePhotographerEntry,
   wallsTunnelForeshoreEntry,
   whyIBuildMyOwnRigsEntry,
