@@ -45,9 +45,19 @@ export default function AuraCompanion({ card, vrmUrl }: AuraCompanionProps) {
   // outfit from data/cards/<slug>.json). Outfit changes via either the
   // picker UI or the change_outfit Aura tool update this; VRMViewer
   // re-mounts on URL change.
+  //
+  // The prop-sync effect runs only when the parent's `vrmUrl` value
+  // actually changes, tracked via a ref. This protects against a
+  // noop rerender silently reverting an in-flight outfit change
+  // (visitor toggled the picker, or Aura's change_outfit fired) back
+  // to the card default.
   const [currentVrmUrl, setCurrentVrmUrl] = useState(vrmUrl);
+  const lastVrmUrlPropRef = useRef(vrmUrl);
   useEffect(() => {
-    setCurrentVrmUrl(vrmUrl);
+    if (lastVrmUrlPropRef.current !== vrmUrl) {
+      lastVrmUrlPropRef.current = vrmUrl;
+      setCurrentVrmUrl(vrmUrl);
+    }
   }, [vrmUrl]);
 
   const chatLogRef = useRef<HTMLDivElement | null>(null);
