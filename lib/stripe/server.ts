@@ -22,9 +22,16 @@
 
 import "server-only";
 
+import { createHmac, timingSafeEqual } from "node:crypto";
+
 import { createLogger } from "lib/log";
 
 const log = createLogger("stripe.server");
+
+/** Tolerance window for the `t=` timestamp in the signature header.
+ *  Stripe's official recommendation: 5 minutes. Wider = more replay
+ *  surface; narrower = false negatives from clock skew. */
+const SIGNATURE_TOLERANCE_SECONDS = 5 * 60;
 
 const STRIPE_API_BASE = "https://api.stripe.com/v1";
 
@@ -150,36 +157,135 @@ export async function createPaymentIntent(
 }
 
 /**
- * Verify a Stripe webhook signature. Required for the webhook route to
- * trust incoming events.
+ * Parse the comma-separated `Stripe-Signature` header into a typed
+ * envelope: `t=<unix-seconds>,v1=<hex>,v1=<hex>,...`. Multiple `v1`
+ * signatures can be present (during key rotation Stripe sends both);
+ * we accept the first that matches.
+ */
+type StripeSignatureEnvelope = {
+  timestamp: number;
+  /** Hex-encoded SHA-256 HMAC signatures. May have multiple during rotation. */
+  signatures: string[];
+};
+
+function parseSignatureHeader(header: string): StripeSignatureEnvelope | null {
+  const parts = header.split(",");
+  let timestamp: number | null = null;
+  const signatures: string[] = [];
+  for (const part of parts) {
+    const eq = part.indexOf("=");
+    if (eq < 0) continue;
+    const k = part.slice(0, eq).trim();
+    const v = part.slice(eq + 1).trim();
+    if (k === "t") {
+      const n = Number(v);
+      if (Number.isFinite(n)) timestamp = n;
+    } else if (k === "v1") {
+      signatures.push(v);
+    }
+    // Stripe also emits `v0` for some legacy events; we don't support
+    // them (v0 has known weaknesses) — caller's loud-fail is the
+    // right posture here.
+  }
+  if (timestamp === null || signatures.length === 0) return null;
+  return { timestamp, signatures };
+}
+
+/**
+ * Constant-time hex string comparison. Wraps timingSafeEqual to avoid
+ * the early-exit timing leak from `===`.
+ */
+function safeHexEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  try {
+    return timingSafeEqual(Buffer.from(a, "hex"), Buffer.from(b, "hex"));
+  } catch {
+    // Malformed hex (uneven length, non-hex chars) — equivalent to mismatch.
+    return false;
+  }
+}
+
+/**
+ * Verify a Stripe webhook signature.
  *
- * v1 stub: returns `true` when STRIPE_WEBHOOK_SECRET is unset (dev
- * mode); returns `false` and logs when set but verification fails.
- * Full HMAC-SHA256 verification per Stripe's docs:
- *   const signedPayload = `${timestamp}.${rawBody}`;
- *   const expected = hmacSha256(signedPayload, secret);
- *   if (timingSafeEqual(expected, providedSig)) ...
+ * Implements the verification scheme documented at
+ * https://stripe.com/docs/webhooks#verify-manually:
+ *   1. Parse the `Stripe-Signature` header into `t=<ts>,v1=<sig>,...`
+ *   2. Build the signed payload: `${timestamp}.${rawBody}`
+ *   3. HMAC-SHA256 with the webhook secret
+ *   4. Constant-time-compare against the v1 signature(s) from the header
+ *   5. Reject if the timestamp is older than the tolerance (replay guard)
  *
- * Real implementation needs `node:crypto` import + parsing of the
- * comma-separated `Stripe-Signature` header. Defer until first real
- * webhook event lands; for now log + accept.
+ * Returns true ONLY when the signature is valid AND the timestamp is
+ * within tolerance.
+ *
+ * Posture when secret is unset:
+ *   - In production (NODE_ENV=production): returns false + logs.
+ *     Forces the operator to set the secret before any webhook is
+ *     trusted.
+ *   - In other envs: returns true + logs. Local dev with Stripe CLI
+ *     `stripe listen --forward-to` is the usual use case; setting
+ *     `STRIPE_WEBHOOK_SKIP_VERIFY=1` is an explicit dev escape hatch
+ *     when you really need to accept unsigned calls.
  */
 export function verifyWebhookSignature(
   rawBody: string,
   signatureHeader: string | null,
+  now: number = Math.floor(Date.now() / 1000),
 ): boolean {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
+  const skip = process.env.STRIPE_WEBHOOK_SKIP_VERIFY === "1";
+  const isProd = process.env.NODE_ENV === "production";
+
   if (!secret) {
-    log.warn("STRIPE_WEBHOOK_SECRET unset — accepting webhook without verify");
+    if (skip) {
+      log.warn("Stripe webhook secret unset, SKIP_VERIFY=1 — accepting");
+      return true;
+    }
+    if (isProd) {
+      log.error("STRIPE_WEBHOOK_SECRET unset in production — rejecting");
+      return false;
+    }
+    log.warn("STRIPE_WEBHOOK_SECRET unset (non-prod) — accepting; set it before deploying");
     return true;
   }
+
   if (!signatureHeader) {
-    log.warn("Stripe webhook missing signature header");
+    log.warn("Stripe webhook missing Stripe-Signature header");
     return false;
   }
-  // TODO: real HMAC-SHA256 verify per https://stripe.com/docs/webhooks#verify-manually
-  log.warn("Stripe webhook signature check is stub-only (TODO)");
-  return true;
+
+  const envelope = parseSignatureHeader(signatureHeader);
+  if (!envelope) {
+    log.warn("Stripe webhook signature header malformed", {
+      preview: signatureHeader.slice(0, 80),
+    });
+    return false;
+  }
+
+  const age = now - envelope.timestamp;
+  if (age > SIGNATURE_TOLERANCE_SECONDS) {
+    log.warn("Stripe webhook timestamp outside tolerance", {
+      ageSeconds: age,
+      tolerance: SIGNATURE_TOLERANCE_SECONDS,
+    });
+    return false;
+  }
+  if (age < -SIGNATURE_TOLERANCE_SECONDS) {
+    log.warn("Stripe webhook timestamp in the future", { ageSeconds: age });
+    return false;
+  }
+
+  const signedPayload = `${envelope.timestamp}.${rawBody}`;
+  const expected = createHmac("sha256", secret).update(signedPayload).digest("hex");
+
+  for (const provided of envelope.signatures) {
+    if (safeHexEqual(provided, expected)) return true;
+  }
+  log.warn("Stripe webhook signature mismatch", {
+    signaturesChecked: envelope.signatures.length,
+  });
+  return false;
 }
 
 /**
