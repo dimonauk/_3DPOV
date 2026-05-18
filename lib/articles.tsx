@@ -31,6 +31,7 @@ import { entry as theMathematicsOfMorphingEntry } from "components/articles/entr
 import { entry as thePracticeInEightThreadsEntry } from "components/articles/entries/the-practice-in-eight-threads";
 import { entry as theRightPaperForALightPaintingEntry } from "components/articles/entries/the-right-paper-for-a-light-painting";
 import { entry as theSieveAndTheOracleEntry } from "components/articles/entries/the-sieve-and-the-oracle";
+import { entry as jonThePhotographerEntry } from "components/articles/entries/jon-the-photographer";
 import { entry as ungroundedEntry } from "components/articles/entries/ungrounded";
 import { entry as vrAsPsychologicalSystemEntry } from "components/articles/entries/vr-as-psychological-system";
 import { entry as wallsTunnelForeshoreEntry } from "components/articles/entries/walls-tunnel-foreshore";
@@ -44,6 +45,7 @@ import { entry as whyThePendantGlowsFromTheInsideEntry } from "components/articl
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  jonThePhotographerEntry,
   wallsTunnelForeshoreEntry,
   whyIBuildMyOwnRigsEntry,
   lineageMareyToNowEntry,
