@@ -129,3 +129,59 @@ export type Provenance = {
   /** ISO timestamp of when this provenance row was created. */
   createdAt: string;
 };
+
+// ---------------------------------------------------------------------------
+// Orders — the persistent shape behind the Stripe Checkout Session.
+// `lib/bureau/order.ts` owns the lifecycle transitions; the route handlers
+// at app/api/bureau/order/route.ts + /api/stripe/webhook/route.ts wire
+// the outer edges.
+// ---------------------------------------------------------------------------
+
+export type OrderStatus =
+  | "pending_payment"
+  | "paid"
+  | "fulfilling"
+  | "fulfilled"
+  | "refunded"
+  | "cancelled";
+
+export type ShippingAddress = {
+  name?: string;
+  line1: string;
+  line2?: string | null;
+  city: string;
+  region?: string | null;
+  postcode: string;
+  country: string;
+};
+
+export type CreateOrderRequest = {
+  imageId: string;
+  sizeChoice: SizeChoice;
+  paperChoice: PaperChoice;
+  edition: EditionChoice;
+  quoteId?: string;
+  customerEmail: string;
+  customerName?: string;
+};
+
+export type Order = {
+  id: string;
+  imageId: string;
+  sizeChoice: SizeChoice;
+  paperChoice: PaperChoice;
+  edition: EditionChoice;
+  /** Price the order was quoted at, in pence. */
+  priceGbp: number;
+  customerEmail: string;
+  customerName?: string;
+  shippingAddress?: ShippingAddress;
+  status: OrderStatus;
+  stripeSessionId?: string;
+  stripePaymentIntentId?: string;
+  createdAt: string;
+  updatedAt: string;
+  paidAt?: string;
+  fulfilledAt?: string;
+  notes?: string;
+};

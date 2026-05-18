@@ -126,3 +126,23 @@ export function quoteFor(
 
   return { ok: true, quote };
 }
+
+/**
+ * Convenience alias used by the order route + checkout page. Takes a
+ * trusted QuoteRequest (i.e. already type-narrowed) and returns the
+ * Quote directly, throwing on invalid input. Used in the
+ * server-side re-verify step where the caller has already
+ * narrowed the inputs and just wants the price + labels.
+ */
+export function computeQuote(req: {
+  imageId: string;
+  sizeChoice: SizeChoice;
+  paperChoice: PaperChoice;
+  edition: EditionChoice;
+}): Quote {
+  const result = quoteFor(req);
+  if (!result.ok) {
+    throw new Error(`invalid quote request: ${result.error.message}`);
+  }
+  return result.quote;
+}
