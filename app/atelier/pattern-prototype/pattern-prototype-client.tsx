@@ -4,21 +4,15 @@
  * app/atelier/pattern-prototype/pattern-prototype-client.tsx
  *
  * Ported from D:/The_Hangar/apps/prototypes/threadlogic-ai-pattern-prototyper/
- * Original was a Vite/React-19 app with four "modes" (Style / Dolly /
- * Draft / Archive), a sidebar of garment controls, a Gemini pattern-
- * draft call, a sandboxed Function-constructor pattern executor, and
- * a floating chat bot.
- *
- * Orchestrator only. Defaults in defaults.ts; sidebar nav + controls
- * in sidebar-panel.tsx; mannequin SVG in studio-view.tsx;
- * Flux-textile prompt + previews in textile-view.tsx; live pattern
- * SVG + topology JSON + style sliders in pattern-editor.tsx; types
- * in types.ts; icons in icons.tsx; engine helpers in
- * pattern-logic.ts; floating chat in chat-bot.tsx. Per
- * ARCHITECTURE.md Rule 1.
+ * Original was a Vite/React-19 app with four "modes" (Style /
+ * Dolly / Draft / Archive), a sidebar of garment controls, a Gemini
+ * pattern-draft call, a sandboxed Function-constructor pattern
+ * executor, and a floating chat bot.
  *
  * Port notes:
  *
+ * - lucide-react isn't installed on the site, so the handful of
+ *   icons are inline SVGs (see ./icons).
  * - The original Hangar prototype made Gemini calls direct from the
  *   browser using `process.env.API_KEY` baked into the Vite build —
  *   that pattern never resolves in a Next.js client bundle (which
@@ -31,12 +25,19 @@
  *   var is read on the client. If neither key is configured the
  *   page surfaces a settings prompt.
  * - The mock FreeSewing executor (Point/Path classes inside a
- *   `new Function(...)` sandbox) lives in `pattern-logic.ts` — tiny
- *   and load-bearing for the demo.
+ *   `new Function(...)` sandbox) is inlined verbatim in
+ *   ./pattern-logic — it's tiny and load-bearing for the demo.
  * - Tailwind classes are the original "rose / cyan / slate" set;
  *   the chamber sits inside the page chrome but doesn't try to
  *   adopt the site palette (the prototype's whole point is that
  *   it's a vivid mode-switching demo).
+ *
+ * Sub-components live in sibling files (per ARCHITECTURE.md Rule 1):
+ *   - ./sidebar-panel    Left rail with mode pills + garment controls
+ *   - ./studio-view      Mannequin SVG (editorial / playroom / archive)
+ *   - ./textile-view     Flux1-dev textile generator + tile preview
+ *   - ./pattern-editor   Blueprint-mode SVG + topology graph
+ *   - ./chat-bot         Floating chat dock
  */
 
 import { useCallback, useState } from "react";
@@ -44,10 +45,10 @@ import { useCallback, useState } from "react";
 import GoogleAiSettings from "components/atelier/google-ai-settings";
 import { useAuth } from "components/auth/auth-provider";
 import { createLogger } from "lib/log";
-import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
+import { useActiveChamber, pushAtelierOutput } from "lib/state/atelier-hooks";
 import {
-  activeVisitorKey,
   useGoogleAiKeyStore,
+  activeVisitorKey,
 } from "lib/state/google-ai-key";
 
 import ChatBot from "./chat-bot";
@@ -60,11 +61,8 @@ import {
   ICON_SPARKLES,
   ICON_WAND,
 } from "./icons";
+import { executePatternLogic, generatePattern } from "./pattern-logic";
 import { PatternEditor } from "./pattern-editor";
-import {
-  executePatternLogic,
-  generatePattern,
-} from "./pattern-logic";
 import { SidebarPanel } from "./sidebar-panel";
 import { StudioView } from "./studio-view";
 import { TextileView } from "./textile-view";
