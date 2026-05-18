@@ -4,12 +4,11 @@ import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTutorial, tutorials } from "lib/tutorials";
+import { getTutorial } from "lib/tutorials";
 import { formatEntryDate } from "lib/writing";
 
-export function generateStaticParams() {
-  return tutorials.map((e) => ({ slug: e.slug }));
-}
+// Render-on-request; see /articles/[slug] for the rationale.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

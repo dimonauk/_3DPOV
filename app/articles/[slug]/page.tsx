@@ -3,12 +3,15 @@ import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getArticle, articles } from "lib/articles";
+import { getArticle } from "lib/articles";
 import { formatEntryDate } from "lib/writing";
 
-export function generateStaticParams() {
-  return articles.map((e) => ({ slug: e.slug }));
-}
+// Render-on-request to stay within Vercel's 45-min build cap. With
+// 80+ articles (many 1k+ lines of inline JSX), pre-rendering them all
+// at build time blew through the build budget. ISR + edge caching
+// handles the perf side at runtime — first hit renders, subsequent
+// hits serve cached.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
