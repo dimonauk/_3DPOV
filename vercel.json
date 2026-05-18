@@ -2,7 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "crons": [
+    {
+      "_comment": "Daily sweep of pending Rookery nurture emails (Day 3 + Day 7). The handler is gated by CRON_SECRET; Vercel auto-injects the bearer header on cron-triggered invocations.",
+      "path": "/api/cron/rookery-pending-emails",
+      "schedule": "0 0 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/cards/:slug/target.mind",

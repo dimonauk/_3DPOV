@@ -141,5 +141,14 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Rookery nurture-email queue — Day 3 + Day 7 sends scheduled by
+    // the onboarding route, swept daily by the cron at
+    // /api/cron/rookery-pending-emails. Reads would expose member
+    // email addresses (and the perch roster); writes would let a
+    // visitor inject mail. Admin SDK only.
+    match /pending_emails/{id} {
+      allow read, write: if false;
+    }
+
   }
 }

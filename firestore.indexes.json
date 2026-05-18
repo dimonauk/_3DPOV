@@ -17,6 +17,16 @@
           "vectorConfig": { "dimension": 768, "flat": {} }
         }
       ]
+    },
+    {
+      "_comment": "Subject-scoped media listings for the public surface pages (aerial, research/cctv, holo-walk gallery). Filters by subject + retired, orders by uploadedAt desc. Shape mirrors lib/capabilities/media/library-firestore.ts listMediaRecords.",
+      "collectionGroup": "media",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "subject", "order": "ASCENDING" },
+        { "fieldPath": "retired", "order": "ASCENDING" },
+        { "fieldPath": "uploadedAt", "order": "DESCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
