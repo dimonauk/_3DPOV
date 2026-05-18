@@ -8,9 +8,21 @@ import { entry as lightingAWaveguideObjectEntry } from "components/tutorials/ent
 import { entry as programmingPovFramesEntry } from "components/tutorials/entries/programming-pov-frames";
 import { entry as spinningFirePoiSafelyEntry } from "components/tutorials/entries/spinning-fire-poi-safely";
 import { entry as yourFirstLongExposureEntry } from "components/tutorials/entries/your-first-long-exposure";
+import { entry as emulatorTutorialRetroarchEntry } from "components/tutorials/entries/emulator-tutorial-retroarch";
+import { entry as emulatorTutorialMesenEntry } from "components/tutorials/entries/emulator-tutorial-mesen";
+import { entry as emulatorTutorialDolphinEntry } from "components/tutorials/entries/emulator-tutorial-dolphin";
+import { entry as emulatorTutorialMameEntry } from "components/tutorials/entries/emulator-tutorial-mame";
+import { entry as emulatorTutorialPcsx2Entry } from "components/tutorials/entries/emulator-tutorial-pcsx2";
+import { entry as emulatorTutorialDosboxXEntry } from "components/tutorials/entries/emulator-tutorial-dosbox-x";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  emulatorTutorialRetroarchEntry,
+  emulatorTutorialMesenEntry,
+  emulatorTutorialDolphinEntry,
+  emulatorTutorialMameEntry,
+  emulatorTutorialPcsx2Entry,
+  emulatorTutorialDosboxXEntry,
   yourFirstLongExposureEntry,
   buildingAPovLedRigEntry,
   fromPhotographToObjectEntry,
