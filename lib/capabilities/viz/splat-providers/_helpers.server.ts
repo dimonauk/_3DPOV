@@ -102,6 +102,21 @@ export type PollOptions = {
 const DEFAULT_POLL_INTERVAL_MS = 1_500;
 const DEFAULT_POLL_TIMEOUT_MS = 5 * 60 * 1_000;
 
+// Per-request HTTP timeouts. The outer `pollUntilDone` deadline catches
+// "job took too long" but does NOT catch "individual fetch hung after
+// successful TCP handshake" — a stalled HTTP response can block the
+// entire capability until Vercel's function timeout fires (300s+ on
+// Fluid, 800s on the splat route). These per-fetch deadlines bound a
+// single hung request so the outer loop / caller can recover.
+//
+// Values picked from observed bench behaviour: poll status is small
+// JSON (~200 bytes), result download is multi-MB (up to a couple of GB
+// for hangar-gsplat PLYs), source asset is operator-supplied URL of
+// unknown size.
+const POLL_FETCH_TIMEOUT_MS = 15_000;
+const DOWNLOAD_FETCH_TIMEOUT_MS = 5 * 60 * 1_000;
+const ASSET_FETCH_TIMEOUT_MS = 60_000;
+
 /**
  * GET {serviceUrl}/jobs/{jobId} on an interval, returning the status
  * once `state === "done"`. Throws `generation-failed` on `error` /
@@ -126,7 +141,25 @@ export async function pollUntilDone(
         `${label} job ${jobId} timed out after ${timeoutMs / 1000}s`,
       );
     }
-    const res = await fetch(`${serviceUrl}${jobsPath}/${jobId}`, { headers });
+    let res: Response;
+    try {
+      res = await fetch(`${serviceUrl}${jobsPath}/${jobId}`, {
+        headers,
+        // Bound a single status-poll fetch independently of the outer
+        // job deadline — without this, a stalled response holds the
+        // poll loop for the full poll-timeout window AND keeps the
+        // bench-side connection open.
+        signal: AbortSignal.timeout(POLL_FETCH_TIMEOUT_MS),
+      });
+    } catch (err) {
+      if (err instanceof DOMException && err.name === "TimeoutError") {
+        throw asError(
+          "provider-unavailable",
+          `${label} poll hung (>${POLL_FETCH_TIMEOUT_MS / 1000}s) on job ${jobId}`,
+        );
+      }
+      throw err;
+    }
     if (!res.ok) {
       throw asError(
         "provider-unavailable",
@@ -161,10 +194,28 @@ export async function downloadResultBytes(
   const label = opts.providerLabel ?? "splat";
   const jobsPath = opts.jobsPath ?? "/jobs";
   const headers = opts.token ? authHeaders(opts.token) : {};
-  const res = await fetch(
-    `${serviceUrl}${jobsPath}/${jobId}/result/${resultPath}`,
-    { headers },
-  );
+  let res: Response;
+  try {
+    res = await fetch(
+      `${serviceUrl}${jobsPath}/${jobId}/result/${resultPath}`,
+      {
+        headers,
+        // Bound the download — PLYs can be 1+ GB so the timeout is
+        // generous, but a stalled byte stream past this point is a
+        // real failure mode (bench restart mid-download, network
+        // partition, etc.) and we'd rather surface than hang.
+        signal: AbortSignal.timeout(DOWNLOAD_FETCH_TIMEOUT_MS),
+      },
+    );
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "generation-failed",
+        `${label} result download hung (>${DOWNLOAD_FETCH_TIMEOUT_MS / 1000}s) for job ${jobId}/${resultPath}`,
+      );
+    }
+    throw err;
+  }
   if (!res.ok) {
     throw asError(
       "generation-failed",
@@ -184,7 +235,25 @@ export type FetchedAsset = {
 };
 
 export async function fetchAsset(url: string): Promise<FetchedAsset> {
-  const res = await fetch(url);
+  // Source URL is operator-supplied (could be a Vercel Blob URL, a
+  // Luma signed URL, an arbitrary public CDN). A slow / unreachable
+  // host would otherwise block the entire capability until the route
+  // hits maxDuration. 60s is generous for any real source asset; a
+  // hung TCP socket past that is a real failure.
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      signal: AbortSignal.timeout(ASSET_FETCH_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "source-invalid",
+        `source asset fetch hung (>${ASSET_FETCH_TIMEOUT_MS / 1000}s): ${url}`,
+      );
+    }
+    throw err;
+  }
   if (!res.ok) {
     throw asError(
       "source-invalid",

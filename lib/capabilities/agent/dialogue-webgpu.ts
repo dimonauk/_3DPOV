@@ -155,6 +155,48 @@ async function getOrCreateEngine(
   return promise;
 }
 
+/**
+ * Release a cached MLC engine and its WebGPU + worker resources.
+ * Pass `model` to dispose a specific engine; omit to dispose every
+ * cached engine. Idempotent — calling with an unknown model is a
+ * no-op. The IndexedDB-cached model weights stay (so a subsequent
+ * `respondWebGpu()` call doesn't re-download).
+ *
+ * Callers (notably the dedicated `/aura/web-llm` page) should call
+ * this on component unmount so the WebGPU device + worker threads
+ * don't survive the navigation away. The site-wide AuraLauncher
+ * deliberately does NOT dispose on close — the launcher reopens
+ * many times per session and keeping the engine warm is desirable.
+ */
+export async function disposeWebGpuEngine(
+  model?: WebGpuModelId,
+): Promise<void> {
+  if (model) {
+    const cached = ENGINE_CACHE.get(model);
+    if (!cached) return;
+    ENGINE_CACHE.delete(model);
+    try {
+      const engine = await cached;
+      await engine.unload();
+    } catch {
+      // Best-effort — never throw during teardown.
+    }
+    return;
+  }
+  const all = Array.from(ENGINE_CACHE.entries());
+  ENGINE_CACHE.clear();
+  await Promise.allSettled(
+    all.map(async ([, cached]) => {
+      try {
+        const engine = await cached;
+        await engine.unload();
+      } catch {
+        // Best-effort.
+      }
+    }),
+  );
+}
+
 function buildSystemPrompt(bible: CharacterBible): string {
   const draws = bible.draws.map((d) => `- ${d}`).join("\n");
   const refusals = bible.refusals.map((r) => `- ${r}`).join("\n");

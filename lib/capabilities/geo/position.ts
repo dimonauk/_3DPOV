@@ -126,9 +126,36 @@ function writePosition(pos: GeolocationPosition): void {
 }
 
 function handleGeolocationError(err: GeolocationPositionError): void {
+  const at = new Date().toISOString();
   if (err.code === err.PERMISSION_DENIED) {
     geoStore.getState().setPermission("denied");
     geoStore.getState().setTracking(false);
+    geoStore.getState().setLastError({
+      code: "denied",
+      message: err.message || "Permission denied.",
+      at,
+    });
+    return;
+  }
+  if (err.code === err.TIMEOUT) {
+    // watchPosition timed out before producing a fix. The watcher stays
+    // attached and will retry; surface the state so UI can show a
+    // "GPS struggling — keep walking / step outside" affordance instead
+    // of leaving the visitor on a spinner.
+    geoStore.getState().setLastError({
+      code: "timeout",
+      message: err.message || "GPS fix timed out.",
+      at,
+    });
+    return;
+  }
+  if (err.code === err.POSITION_UNAVAILABLE) {
+    geoStore.getState().setLastError({
+      code: "unavailable",
+      message: err.message || "Position unavailable.",
+      at,
+    });
+    return;
   }
 }
 

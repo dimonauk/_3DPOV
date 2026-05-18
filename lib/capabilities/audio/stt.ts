@@ -5,7 +5,10 @@
  * Full purpose in stt.PURPOSE.md.
  */
 
+import { createLogger } from "lib/log";
 import { audioStore, type TranscriptChunk } from "lib/state/audio";
+
+const log = createLogger("capability:audio.stt");
 
 export type STTProvider = "web-speech" | "whisper";
 
@@ -129,8 +132,7 @@ export function startSTT(options: StartSTTOptions = {}): void {
     // does not have a reference to throw to; subscribers see the
     // transcript stop growing.
     if (recognition === r) recognition = null;
-    // eslint-disable-next-line no-console
-    console.warn(`audio.stt: web-speech error "${event.error}"`);
+    log.warn("web-speech error", { error: event.error });
   };
   r.onend = () => {
     if (recognition === r) recognition = null;

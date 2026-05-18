@@ -57,6 +57,11 @@ const SERVICE_AUTH_TOKEN = process.env["SHARP_ONNX_AUTH_TOKEN"] ?? "";
  *  when the bench reports something other than a count (defensive). */
 const SHARP_GAUSSIAN_DEFAULT = 1_179_648;
 
+// Image POST to SHARP bench — single still up to a few MB. 2 min is
+// more than enough headroom for the multipart upload; a stalled
+// request past that is a real bench-side problem.
+const SHARP_POST_TIMEOUT_MS = 2 * 60 * 1_000;
+
 async function postJob(
   imageBytes: Uint8Array,
   imageMimeType: string,
@@ -70,11 +75,23 @@ async function postJob(
     imageFilename,
   );
   form.set("meta", JSON.stringify(meta));
-  const res = await fetch(`${SERVICE_URL}/jobs`, {
-    method: "POST",
-    body: form,
-    headers: authHeaders(SERVICE_AUTH_TOKEN),
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${SERVICE_URL}/jobs`, {
+      method: "POST",
+      body: form,
+      headers: authHeaders(SERVICE_AUTH_TOKEN),
+      signal: AbortSignal.timeout(SHARP_POST_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "provider-unavailable",
+        `sharp-onnx job submission hung (>${SHARP_POST_TIMEOUT_MS / 1000}s)`,
+      );
+    }
+    throw err;
+  }
   if (!res.ok) {
     throw asError(
       "provider-unavailable",

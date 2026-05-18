@@ -16,7 +16,10 @@ import { GoogleGenAI, Type, type Schema } from "@google/genai";
 import type { CharacterBible } from "lib/cast/aura";
 import type { ChronoModeSlug } from "lib/chrono-protocol";
 import { envOrThrow, isConfigured } from "lib/env";
+import { createLogger, errToObject } from "lib/log";
 import type { CastMemberId } from "lib/state/cast";
+
+const log = createLogger("capability:agent.banter");
 
 /** Canon tick: the prototype runs banter on a 12-second interval. */
 export const DEFAULT_TICK_MS = 12_000;
@@ -235,9 +238,9 @@ function parseTurns(raw: string, activeIds: CastMemberId[]): BanterTurn[] {
  * calls Gemini once, returns a typed 1-3 line exchange. Headless — no
  * slice writes; callers persist via cast.history if they want it logged.
  *
- * Returns an empty `BanterResult` (with a console.warn) when
- * `GOOGLE_AI_API_KEY` is unset, so the UI never crashes when banter is
- * unavailable.
+ * Returns an empty `BanterResult` (with a structured log warning via
+ * `lib/log`) when `GOOGLE_AI_API_KEY` is unset, so the UI never
+ * crashes when banter is unavailable.
  */
 export async function respondBanter(
   context: BanterContext,
@@ -247,15 +250,13 @@ export async function respondBanter(
   const activeIds = context.activeSpeakers.filter((id) => bibles[id]);
 
   if (!isConfigured("GOOGLE_AI_API_KEY")) {
-    console.warn(
-      "agent.banter: GOOGLE_AI_API_KEY is not set — returning empty banter.",
-    );
+    log.warn("GOOGLE_AI_API_KEY is not set — returning empty banter");
     return { turns: [], tickMs, followUpEta: tickMs };
   }
 
   if (activeIds.length === 0) {
-    console.warn(
-      "agent.banter: no active speakers had matching bibles — returning empty banter.",
+    log.warn(
+      "no active speakers had matching bibles — returning empty banter",
     );
     return { turns: [], tickMs, followUpEta: tickMs };
   }
@@ -269,7 +270,7 @@ export async function respondBanter(
     const turns = parseTurns(raw, activeIds);
     return { turns, tickMs, followUpEta: tickMs };
   } catch (error) {
-    console.error("agent.banter: Gemini call failed", error);
+    log.error("Gemini call failed", { err: errToObject(error) });
     return { turns: [], tickMs, followUpEta: tickMs };
   }
 }

@@ -28,9 +28,25 @@ function asError(code: SplatComposeError["code"], message: string): Error {
 }
 
 /**
- * Server-side router. Picks the right provider and runs it. Caller must
- * pass `uploadedBy` (the operator's Firebase uid) — matches the media
- * library's auth posture and the `splatGenerateServer` shape.
+ * Server-side router. Picks the right provider and runs it.
+ *
+ * # Caller contract (auth)
+ *
+ * `_ctx.uploadedBy` is currently unused (the only provider throws
+ * before any persistence), but the parameter is reserved for the
+ * eventual wired path. When the bench-side fusion pipeline lands,
+ * this function will pass `uploadedBy` straight through to
+ * `persistSplat` (or whatever wires fused outputs into the media
+ * library). At that point the same caller contract as
+ * `splatGenerateServer` applies: `uploadedBy` MUST be a Firebase uid
+ * that the caller has already verified via `verifyIdToken` AND
+ * confirmed against the operator allow-list. This function trusts
+ * the caller — it does NOT re-verify. Never accept the value from
+ * user input.
+ *
+ * The `_` prefix on the parameter name flags "intentionally unused
+ * today, kept for forward compatibility" — drop the underscore when
+ * the provider lands.
  */
 export async function splatComposeServer(
   input: SplatComposeInput,

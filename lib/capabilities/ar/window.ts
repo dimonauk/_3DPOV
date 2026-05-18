@@ -161,6 +161,28 @@ export function computeARTransform(
 ): ARTransform {
   const groundHeight = options.groundHeight ?? DEFAULT_GROUND_HEIGHT_M;
 
+  // Non-finite inputs (rare — usually a transient GPS glitch in the
+  // store, or an uninitialised heading) would propagate NaN through
+  // the entire transform and land the sculpture at (NaN, NaN, NaN).
+  // Return a sentinel "out of range, infinite distance" transform so
+  // the AR view stays in its safe fallback state instead of trying to
+  // render at NaN positions.
+  if (
+    !Number.isFinite(viewer.lat) ||
+    !Number.isFinite(viewer.lon) ||
+    !Number.isFinite(viewer.headingDegrees) ||
+    !Number.isFinite(target.lat) ||
+    !Number.isFinite(target.lon)
+  ) {
+    return {
+      targetPos: [0, groundHeight, -10] as const,
+      bearing: 0,
+      distanceMeters: Number.POSITIVE_INFINITY,
+      arrived: false,
+      outOfRange: true,
+    };
+  }
+
   const phi1 = toRadians(viewer.lat);
   const phi2 = toRadians(target.lat);
   const dPhi = toRadians(target.lat - viewer.lat);

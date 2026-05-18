@@ -50,8 +50,22 @@ export { generateViaSharpOnnxFromBytes };
 export type { SplatOutputTarget } from "./splat-providers";
 
 /**
- * Server-side router. Picks the right provider and runs it. Caller
- * must pass `uploadedBy` (the operator's Firebase uid).
+ * Server-side router. Picks the right provider and runs it.
+ *
+ * # Caller contract (auth)
+ *
+ * `ctx.uploadedBy` MUST be a Firebase uid that the caller has already
+ * verified via `verifyIdToken` AND confirmed against the operator
+ * allow-list (see `lib/auth/admin-emails.ts` + `requireAdminUser` in
+ * `lib/integrations/google/admin-guard.ts`). This function trusts the
+ * caller — it does NOT re-verify. Reasoning: the bench-side providers
+ * persist artifacts tagged with `uploadedBy`, and the splat generation
+ * itself is expensive enough that the route layer's auth gate is the
+ * right enforcement boundary.
+ *
+ * Callers that skip pre-verification (e.g. internal cron jobs that
+ * synthesise a uid) MUST document the trust source at the call site.
+ * Never accept an `uploadedBy` value from user input.
  */
 export async function splatGenerateServer(
   input: SplatGenerateInput,

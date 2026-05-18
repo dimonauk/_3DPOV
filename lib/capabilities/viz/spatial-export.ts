@@ -19,6 +19,9 @@ import {
 
 import type { StereoPair } from "lib/capabilities/viz/stereo-pair";
 import { exportStereoToUsdz } from "lib/capabilities/viz/usdz-export";
+import { createLogger, errToObject } from "lib/log";
+
+const log = createLogger("viz.spatial-export");
 
 export type SpatialFormat = "sbs-mp4" | "ou-mp4" | "usdz-stereo";
 
@@ -209,9 +212,24 @@ export async function startSpatialRecording(
     cancel: () => {
       if (!recording) return;
       recording = false;
-      void output.cancel();
+      // Mediabunny's output.cancel() is async but returning a Promise
+      // here would change the contract (callers expect cancel() to be
+      // synchronous fire-and-forget). Log the eventual outcome so a
+      // silent cancel failure surfaces in DevTools rather than hiding.
+      output.cancel().catch((err) => {
+        log.warn("output.cancel rejected", { err: errToObject(err) });
+      });
       source.close();
     },
+    /**
+     * Finalise the recording into an MP4 blob.
+     *
+     * **Idempotent:** calling stop() after a previous stop() or
+     * cancel() returns an empty `video/mp4` blob — NOT a partial
+     * recording. Callers that need to detect "nothing to save" should
+     * check `blob.size > 0` before sharing, or guard the second call
+     * at their layer.
+     */
     stop: async () => {
       if (!recording) {
         return new Blob([], { type: "video/mp4" });

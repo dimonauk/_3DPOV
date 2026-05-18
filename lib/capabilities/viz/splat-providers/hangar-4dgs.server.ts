@@ -79,6 +79,12 @@ const DEFAULT_TRAINER: "4dgs" | "deformable-gs" | "sc-gs" = "4dgs";
 /** 4D training takes longer than 3D — bump the deadline to 30 minutes. */
 const HANGAR_4DGS_TIMEOUT_MS = 30 * 60 * 1_000;
 
+// Video POST to splat360 bench's 4D endpoint — same multi-GB
+// multipart upload as gsplat. Matches the poll-loop budget so the
+// upload phase can take the full window if the bench is on a slow
+// link to its inbound storage.
+const HANGAR_4DGS_POST_TIMEOUT_MS = HANGAR_4DGS_TIMEOUT_MS;
+
 type Hangar4dgsParams = {
   encoding: "deformable-mlp" | "canonical-time";
   keyframes: number;
@@ -99,11 +105,23 @@ async function postJob(
     videoFilename,
   );
   form.set("params", JSON.stringify(params));
-  const res = await fetch(`${SERVICE_URL}/video4d/jobs`, {
-    method: "POST",
-    body: form,
-    headers: authHeaders(SERVICE_AUTH_TOKEN),
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${SERVICE_URL}/video4d/jobs`, {
+      method: "POST",
+      body: form,
+      headers: authHeaders(SERVICE_AUTH_TOKEN),
+      signal: AbortSignal.timeout(HANGAR_4DGS_POST_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "provider-unavailable",
+        `hangar-4dgs upload hung (>${HANGAR_4DGS_POST_TIMEOUT_MS / 1000}s) — check bench reachability`,
+      );
+    }
+    throw err;
+  }
   if (res.status === 404 || res.status === 405) {
     throw asError(
       "provider-unavailable",

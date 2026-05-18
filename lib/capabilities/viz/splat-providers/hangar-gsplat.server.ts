@@ -82,6 +82,12 @@ const DEFAULT_ITERATIONS = 30_000;
 /** Pipeline can take several minutes — extend the default 5 min poll. */
 const HANGAR_GSPLAT_TIMEOUT_MS = 15 * 60 * 1_000;
 
+// Video POST to splat360 bench — multi-GB multipart upload over a
+// 360-camera shoot's worth of footage. 15 min matches the poll
+// timeout above; a stalled multipart upload past that is "bench
+// gone" not "still chunking bytes".
+const HANGAR_GSPLAT_POST_TIMEOUT_MS = HANGAR_GSPLAT_TIMEOUT_MS;
+
 type HangarGsplatParams = {
   frameStride: number;
   trainer: "gsplat" | "brush";
@@ -102,11 +108,23 @@ async function postJob(
     videoFilename,
   );
   form.set("params", JSON.stringify(params));
-  const res = await fetch(`${SERVICE_URL}/video3d/jobs`, {
-    method: "POST",
-    body: form,
-    headers: authHeaders(SERVICE_AUTH_TOKEN),
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${SERVICE_URL}/video3d/jobs`, {
+      method: "POST",
+      body: form,
+      headers: authHeaders(SERVICE_AUTH_TOKEN),
+      signal: AbortSignal.timeout(HANGAR_GSPLAT_POST_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "provider-unavailable",
+        `hangar-gsplat upload hung (>${HANGAR_GSPLAT_POST_TIMEOUT_MS / 1000}s) — check bench reachability`,
+      );
+    }
+    throw err;
+  }
   if (res.status === 404 || res.status === 405) {
     throw asError(
       "provider-unavailable",

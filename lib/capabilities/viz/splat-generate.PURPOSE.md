@@ -6,14 +6,16 @@ provider covers every source-type / licence / quality combination, and
 this capability is the seam where the call-site picks one and the
 output lands in a uniform record.
 
-## The three tracks
+## The provider matrix
 
-| Provider | Source | Licence | Use |
+| Provider | Source | Licence | Status |
 |---|---|---|---|
-| **sharp-onnx** | Single image | apple-amlr (research-only) | CCTV archive, fast ingest, research surfaces |
-| **postshot** | Image-set / video | Commercial-friendly | Commerce display + sale |
-| **studio-rig-native** | POV-rig capture | Studio-owned | Original IP, editioned pieces |
-| **luma-genie** | Hosted API ref | Third-party commercial | Quick high-quality, terms-bound |
+| **sharp-onnx** | Single image | apple-amlr (research-only) | Live (bench) — CCTV archive, fast ingest |
+| **hangar-gsplat** | Video | commercial-ok | Live (bench) — HoloWalk operator upload |
+| **hangar-4dgs** | Video | commercial-ok | Live (bench, 4D variant) |
+| **luma-genie** | Hosted API ref | Third-party commercial | Live (with LUMA_API_KEY) |
+| **postshot** | Image-set / video | commercial-ok | Stub — Jawset Postshot has no public API; manual workflow |
+| **studio-rig-native** | POV-rig capture | commercial-ok | Stub — capture pipeline not built |
 
 ## Why source-agnostic
 
@@ -29,22 +31,35 @@ on a single capability with a provider union, the studio:
    outputs literally cannot reach a "buy" surface because the
    `isSplatCommerceEligible` predicate gates it.
 
-## Foundation-phase status
+## Status
 
-This file (`splat-generate.ts`) defines the type surface and a stub
-router. Concrete providers are not yet wired. The next wires, in order
-of likely landing:
+The type surface in `splat-generate.ts` is stable. The server-side
+router in `splat-generate.server.ts` dispatches to per-provider modules
+under `./splat-providers/`. Four providers are LIVE; two remain stubs:
 
-1. **sharp-onnx** — already running on the bench at
-   `D:/The_Hangar/engines/sharp-onnx/batch_cctv.py` and via the
-   `tail99b2a4.ts.net` HTTPS sidecar; just needs the
-   `python-services/sharp_onnx_service.py` FastAPI wrapper + the
-   provider stub here that POSTs to it.
-2. **postshot** — depends on a Postshot CLI capture path
-   (`postshot-cli.exe` exists at `C:\Program Files\Jawset Postshot\bin\`).
-3. **studio-rig-native** — depends on the POV-rig capture pipeline
-   (separate vertical).
-4. **luma-genie** — wire once a paid plan + API key are in place.
+- **sharp-onnx** — `splat-providers/sharp-onnx.server.ts`. Talks to the
+  bench FastAPI sidecar (`tail99b2a4.ts.net` HTTPS) wrapping
+  `D:/The_Hangar/engines/sharp-onnx/batch_cctv.py`.
+- **hangar-gsplat** — `splat-providers/hangar-gsplat.server.ts`. Talks
+  to the splat360 bench's `/video3d/jobs` endpoint. The HoloWalk
+  operator console at `/holo-walk/new` is the primary caller (via
+  `/api/holo-walk/generate-splat`).
+- **hangar-4dgs** — `splat-providers/hangar-4dgs.server.ts`. Same bench,
+  `/video4d/jobs` endpoint. 4D Gaussian Splat trainer for time-varying
+  scenes.
+- **luma-genie** — `splat-providers/luma-genie.server.ts`. Imports a
+  pre-trained Luma capture by objectId. Requires `LUMA_API_KEY`.
+- **postshot** — stub. Jawset Postshot has no public API; the operator
+  workflow is "drag images into the GUI, train, export PLY, upload via
+  `/api/admin/splat/from-bytes` with provider `studio-rig-native`".
+- **studio-rig-native** — stub. The POV-rig multi-camera capture
+  pipeline is studio-owned but not yet built. Until it lands, the
+  bytes-in entry from Postshot is the closest commerce-safe path.
+
+The image-source public route (`/api/viz/splat-generate`) accepts only
+sharp-onnx, postshot, studio-rig-native, luma-genie — see the
+"Provider gating" note in that route's header. Video-source providers
+(hangar-*) route through `/api/holo-walk/generate-splat` instead.
 
 ## What the record carries
 

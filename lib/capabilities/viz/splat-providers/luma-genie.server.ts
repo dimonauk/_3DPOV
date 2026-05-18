@@ -59,6 +59,11 @@ const API_KEY = process.env["LUMA_API_KEY"] ?? "";
 
 const SHAPE_LUMA_DEFAULT_GAUSSIANS = 500_000;
 
+// Status query is a small JSON GET to Luma's public API. 30s is more
+// than enough for any reasonable Luma response; a stalled request
+// past that is "Luma down" not "still serializing JSON".
+const LUMA_CAPTURE_FETCH_TIMEOUT_MS = 30 * 1_000;
+
 type LumaCaptureResponse = {
   status?: "processing" | "ready" | "failed";
   downloads?: {
@@ -77,12 +82,24 @@ async function fetchLumaCapture(objectId: string): Promise<LumaCaptureResponse> 
     );
   }
 
-  const res = await fetch(`${API_URL}/v1/captures/${encodeURIComponent(objectId)}`, {
-    headers: {
-      Authorization: `Bearer ${API_KEY}`,
-      Accept: "application/json",
-    },
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}/v1/captures/${encodeURIComponent(objectId)}`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        Accept: "application/json",
+      },
+      signal: AbortSignal.timeout(LUMA_CAPTURE_FETCH_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw asError(
+        "provider-unavailable",
+        `luma-genie: capture fetch hung (>${LUMA_CAPTURE_FETCH_TIMEOUT_MS / 1000}s)`,
+      );
+    }
+    throw err;
+  }
   if (res.status === 401 || res.status === 403) {
     throw asError(
       "provider-unavailable",
