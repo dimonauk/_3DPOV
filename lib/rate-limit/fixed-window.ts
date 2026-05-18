@@ -3,8 +3,7 @@
  *
  * One-line role: replace the per-route `const counters = new Map(...)`
  * pattern with a shared limiter that auto-upgrades from in-memory to
- * Upstash Redis when `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
- * are configured.
+ * Upstash Redis when env vars are configured.
  *
  * # Why fixed-window
  *
@@ -37,10 +36,23 @@
  *
  * # Storage selection
  *
- * Per-call: if Redis env vars are present, use Redis. Otherwise use the
- * module-local Map. The decision is cached in module scope, so a single
- * process keeps its choice (no per-call probe). To switch storage on a
- * running process, restart the server — env changes don't hot-reload.
+ * Per-process at module init: if Redis env vars are present, use Redis.
+ * Otherwise use the module-local Map. The decision is cached in module
+ * scope, so a single process keeps its choice (no per-call probe). To
+ * switch storage on a running process, restart the server — env
+ * changes don't hot-reload.
+ *
+ * Env vars checked, in order:
+ *   - `UPSTASH_REDIS_REST_URL`  / `UPSTASH_REDIS_REST_TOKEN`
+ *     (set when you provision Upstash directly, outside Vercel)
+ *   - `KV_REST_API_URL`         / `KV_REST_API_TOKEN`
+ *     (set automatically when you connect Vercel KV to the project via
+ *     the dashboard — Storage → Create Database → KV)
+ *
+ * Both pairs are BOM-stripped at module load — the Vercel env-var UI
+ * has historically pasted U+FEFF on at least two of our other tokens
+ * (`FIREBASE_ADMIN_SERVICE_ACCOUNT`, `BLOB_READ_WRITE_TOKEN`), so we
+ * defend against it everywhere now.
  *
  * # Key shape
  *
@@ -86,22 +98,44 @@ export interface FixedWindowLimiter {
   readonly backend: "redis" | "memory";
 }
 
+/**
+ * BOM-strip an env var value if present. Vercel's env-var UI pasted
+ * U+FEFF on several of our tokens historically; this is the universal
+ * cleanup applied wherever those tokens enter the runtime.
+ */
+function readEnvClean(name: string): string | undefined {
+  const v = process.env[name];
+  if (!v) return undefined;
+  if (v.charCodeAt(0) === 0xfeff) return v.slice(1).trim();
+  return v.trim() || undefined;
+}
+
 // ---------------------------------------------------------------------
 // Redis client (lazy, module-scoped)
 // ---------------------------------------------------------------------
 
 type RedisLike = Pick<Redis, "incr" | "expire" | "ttl">;
 
-let cachedRedis: RedisLike | null | undefined;
+// State is split into a value + an init flag so the cached value's type
+// stays `RedisLike | null` (no `| undefined` to fight TypeScript over).
+// Previously this was a tri-state `RedisLike | null | undefined` which
+// tripped a narrowing error in strict-mode TS.
+let cachedRedis: RedisLike | null = null;
+let cacheInitialized = false;
 
 function getRedis(): RedisLike | null {
-  if (cachedRedis !== undefined) return cachedRedis;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (cacheInitialized) return cachedRedis;
+  cacheInitialized = true;
+
+  const url =
+    readEnvClean("UPSTASH_REDIS_REST_URL") ?? readEnvClean("KV_REST_API_URL");
+  const token =
+    readEnvClean("UPSTASH_REDIS_REST_TOKEN") ??
+    readEnvClean("KV_REST_API_TOKEN");
+
   if (!url || !token) {
     log.info("redis not configured, using in-memory fallback");
-    cachedRedis = null;
-    return null;
+    return cachedRedis; // null
   }
   try {
     cachedRedis = new Redis({ url, token });
@@ -111,9 +145,17 @@ function getRedis(): RedisLike | null {
     log.warn("redis init failed, falling back to in-memory", {
       err: err instanceof Error ? err.message : String(err),
     });
-    cachedRedis = null;
-    return null;
+    return cachedRedis; // still null — assignment above never happened
   }
+}
+
+/**
+ * Diagnostics — which backend is live? Exposed for `/api/healthz` so
+ * operators can verify whether Vercel KV is actually wired up without
+ * log-trawling.
+ */
+export function getRateLimitBackend(): "redis" | "memory" {
+  return getRedis() ? "redis" : "memory";
 }
 
 // ---------------------------------------------------------------------

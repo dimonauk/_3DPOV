@@ -13,9 +13,10 @@ import "server-only";
  *   - We never confirm the lead via email to the visitor (no double-
  *     opt-in spam vector); the card owner can follow up directly.
  *
- * Rate limiting goes through lib/rate-limit, which auto-uses Upstash
- * Redis when KV_REST_API_URL is set (cross-region consistent) and
- * falls back to in-memory per-instance Maps otherwise.
+ * Rate limiting uses lib/rate-limit/fixed-window — auto-uses Upstash
+ * Redis when KV_REST_API_URL or UPSTASH_REDIS_REST_URL is configured
+ * (cross-region consistent) and falls back to in-memory per-instance
+ * Maps otherwise. 5 leads per minute per (slug, ip) is the cap.
  *
  * If RESEND_API_KEY is set, an instant notification is sent to the
  * card's contact.email when a lead arrives. This is purely a
@@ -26,10 +27,15 @@ import "server-only";
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
 import { FieldValue, type Firestore } from "firebase-admin/firestore";
 import { hashIp } from "lib/cards/ip-hash";
-import { checkRate } from "lib/rate-limit";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
-const RATE_MAX = 5;
-const RATE_WINDOW_SEC = 60;
+// Module-scoped limiter — cheap to construct, one per cold start.
+// 5 lead-create requests per minute per (slug, ip) combination.
+const leadLimiter = createFixedWindowLimiter({
+  scope: "cards.lead",
+  limit: 5,
+  windowMs: 60 * 1000,
+});
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -71,11 +77,7 @@ export async function createCardLead(
   }
 
   const ipHash = input.ip ? hashIp(input.ip) : "anon";
-  const rate = await checkRate({
-    key: `lead:${input.slug}:${ipHash}`,
-    limit: RATE_MAX,
-    windowSec: RATE_WINDOW_SEC,
-  });
+  const rate = await leadLimiter.consume(`${input.slug}:${ipHash}`);
   if (!rate.ok) {
     return { ok: false, error: "rate_limited" };
   }

@@ -10,7 +10,8 @@
  *   - buildTime:  module-init timestamp (frozen at cold start)
  *
  * Plus operational diagnostics:
- *   - rateLimit:  "upstash" or "memory" — which backend is live
+ *   - rateLimit:  "redis" or "memory" — which backend the
+ *                 fixed-window limiter selected at module init
  *
  * Use cases:
  *   - "Did my push actually deploy?" → curl this, compare sha to git log
@@ -26,7 +27,7 @@
  */
 
 import { NextResponse, type NextRequest } from "next/server";
-import { getRateLimitBackend } from "lib/rate-limit";
+import { getRateLimitBackend } from "lib/rate-limit/fixed-window";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 5;

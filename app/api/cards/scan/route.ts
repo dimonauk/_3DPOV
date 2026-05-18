@@ -21,7 +21,7 @@ import {
 } from "lib/cards/scanner-server";
 import { verifyIdToken } from "lib/firebase/admin";
 import { withRouteLogging, errToObject } from "lib/log";
-import { checkRate } from "lib/rate-limit";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 /**
  * POST /api/cards/scan — extract contact fields from a card photo.
@@ -39,9 +39,10 @@ import { checkRate } from "lib/rate-limit";
  *
  * Every response carries X-Request-Id for log correlation.
  *
- * Rate limiting uses lib/rate-limit, which auto-uses Upstash Redis
- * when KV_REST_API_URL is configured (cross-region consistent),
- * falls back to in-memory per-instance Maps otherwise.
+ * Rate limiting uses lib/rate-limit/fixed-window — auto-uses Upstash
+ * Redis when KV_REST_API_URL or UPSTASH_REDIS_REST_URL is configured
+ * (cross-region consistent), falls back to in-memory per-instance
+ * Maps otherwise.
  *
  * Response:
  *   200 → ExtractedCardFields
@@ -57,8 +58,15 @@ import { checkRate } from "lib/rate-limit";
 export const maxDuration = 60;
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB
-const RATE_LIMIT_PER_HOUR = 10;
-const RATE_WINDOW_SEC = 60 * 60;
+
+// Module-scoped limiter — one instance per cold start, shared across
+// requests on the same isolate. The factory probes the Redis env vars
+// once at module init and caches the decision.
+const scanLimiter = createFixedWindowLimiter({
+  scope: "cards.scan",
+  limit: 10,
+  windowMs: 60 * 60 * 1000, // 1 hour
+});
 
 export const POST = withRouteLogging(
   "cards.scan",
@@ -92,18 +100,14 @@ export const POST = withRouteLogging(
     log.debug("auth:ok", { uid });
 
     // --- Rate limit ---
-    const limit = await checkRate({
-      key: `scan:${uid}`,
-      limit: RATE_LIMIT_PER_HOUR,
-      windowSec: RATE_WINDOW_SEC,
-    });
+    const limit = await scanLimiter.consume(`uid:${uid}`);
     if (!limit.ok) {
-      log.info("rate_limited", { uid, backend: limit.backend });
+      log.info("rate_limited", { uid, backend: scanLimiter.backend });
       return NextResponse.json(
         {
           error: "rate_limited",
-          message: `${RATE_LIMIT_PER_HOUR} scans per hour per user.`,
-          resetAt: limit.reset,
+          message: `10 scans per hour per user.`,
+          resetAt: limit.resetAt,
         },
         { status: 429 },
       );
@@ -212,7 +216,7 @@ export const POST = withRouteLogging(
       uid,
       mediaType,
       imageBytes,
-      rateBackend: limit.backend,
+      rateBackend: scanLimiter.backend,
     });
     try {
       const extracted: ExtractedCardFields = await scanCardImage(
@@ -237,7 +241,7 @@ export const POST = withRouteLogging(
           status: 200,
           headers: {
             "X-Holoflow-Scans-Remaining": String(limit.remaining),
-            "X-Rate-Limit-Backend": limit.backend,
+            "X-Rate-Limit-Backend": scanLimiter.backend,
           },
         },
       );
