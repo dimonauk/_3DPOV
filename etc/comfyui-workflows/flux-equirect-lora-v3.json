@@ -1,0 +1,68 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": { "ckpt_name": "flux1-dev-fp8.safetensors" },
+    "_meta": { "title": "Load Flux1-dev FP8 Checkpoint" }
+  },
+  "2": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": ["1", 0],
+      "clip": ["1", 1],
+      "lora_name": "equirectangular_flux_lora_v3_000003072.safetensors",
+      "strength_model": 0.85,
+      "strength_clip": 0.85
+    },
+    "_meta": { "title": "Load Equirectangular Flux LoRA v3" }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "equirectangular 360 panorama, an atmospheric outdoor scene at golden hour, seamless spherical projection, photorealistic, ultra wide",
+      "clip": ["2", 1]
+    },
+    "_meta": { "title": "Positive Prompt" }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "distorted, warped seams, low quality, watermark, text, blurry edges",
+      "clip": ["2", 1]
+    },
+    "_meta": { "title": "Negative Prompt" }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": { "width": 2048, "height": 1024, "batch_size": 1 },
+    "_meta": { "title": "Empty Latent — 2048x1024 equirect (2:1)" }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": ["2", 0],
+      "positive": ["3", 0],
+      "negative": ["4", 0],
+      "latent_image": ["5", 0],
+      "seed": 360,
+      "steps": 28,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    },
+    "_meta": { "title": "KSampler — Flux + Equirect LoRA" }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["6", 0], "vae": ["1", 2] },
+    "_meta": { "title": "VAE Decode" }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["7", 0],
+      "filename_prefix": "holoflow_flux_equirect_v3"
+    },
+    "_meta": { "title": "Save Image" }
+  }
+}

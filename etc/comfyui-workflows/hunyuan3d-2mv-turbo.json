@@ -1,0 +1,52 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": { "ckpt_name": "hunyuan3d-dit-v2-mv-turbo_fp16.safetensors" },
+    "_meta": { "title": "Load Hunyuan3D 2mv Turbo" }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": { "image": "input/ref1.png" },
+    "_meta": { "title": "Reference Image (caller overrides via params)" }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "a single object, clean studio background, even lighting",
+      "clip": ["1", 1]
+    },
+    "_meta": { "title": "Positive Prompt (metadata only — Hunyuan3D conditions on image)" }
+  },
+  "4": {
+    "class_type": "ImageResize+",
+    "inputs": {
+      "image": ["2", 0],
+      "width": 512,
+      "height": 512,
+      "keep_proportion": true,
+      "resampling": "lanczos"
+    },
+    "_meta": { "title": "Resize Reference to 512" }
+  },
+  "5": {
+    "class_type": "Hunyuan3dImageTo3D",
+    "inputs": {
+      "model": ["1", 0],
+      "image": ["4", 0],
+      "steps": 20,
+      "guidance_scale": 5.0,
+      "octree_resolution": 256,
+      "num_views": 6,
+      "seed": 42
+    },
+    "_meta": { "title": "Hunyuan3D Generate Mesh" }
+  },
+  "6": {
+    "class_type": "Hunyuan3dSaveGLB",
+    "inputs": {
+      "mesh": ["5", 0],
+      "filename_prefix": "holoflow_hy3d_2mv_turbo"
+    },
+    "_meta": { "title": "Save GLB" }
+  }
+}
