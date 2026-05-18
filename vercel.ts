@@ -24,7 +24,13 @@
 
 import type { VercelConfig } from "@vercel/config/v1";
 
-export const config: VercelConfig = {
+// NOTE: must be `export default`, NOT `export const config`. The
+// @vercel/config@0.5.0 CLI's auto-collect path wraps every named
+// export under its own key (so `export const config = {...}` compiles
+// to `{ "config": {...} }`, which Vercel rejects at config-load with
+// no build events). The CLI's default-export path spreads correctly.
+// `satisfies` keeps the type check without forcing a named const.
+export default {
   framework: "nextjs",
   buildCommand: "pnpm run build",
   installCommand: "pnpm install --frozen-lockfile",
@@ -105,4 +111,4 @@ export const config: VercelConfig = {
       ],
     },
   ],
-};
+} satisfies VercelConfig;
