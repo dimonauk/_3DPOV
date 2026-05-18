@@ -28,13 +28,27 @@ function toRadians(degrees: number): number {
   return (degrees * Math.PI) / 180;
 }
 
-/** Haversine great-circle distance between two (lat, lon) pairs in metres. */
+/**
+ * Haversine great-circle distance between two (lat, lon) pairs in
+ * metres. Returns `NaN` when any input is non-finite — callers MUST
+ * guard with `Number.isFinite()` before using the result for distance
+ * gating (the AR view's "out of range" / "arrived" thresholds would
+ * silently misbehave otherwise).
+ */
 export function haversineMeters(
   aLat: number,
   aLon: number,
   bLat: number,
   bLon: number,
 ): number {
+  if (
+    !Number.isFinite(aLat) ||
+    !Number.isFinite(aLon) ||
+    !Number.isFinite(bLat) ||
+    !Number.isFinite(bLon)
+  ) {
+    return Number.NaN;
+  }
   const dLat = toRadians(bLat - aLat);
   const dLon = toRadians(bLon - aLon);
   const lat1 = toRadians(aLat);
@@ -95,6 +109,7 @@ export function locationsNear(
   lon: number,
   radiusMeters: number,
 ): LocationWithDistance[] {
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return [];
   const matches: LocationWithDistance[] = [];
   for (const loc of LOCATIONS) {
     const distanceMeters = haversineMeters(
@@ -103,7 +118,10 @@ export function locationsNear(
       loc.coords.lat,
       loc.coords.lon,
     );
-    if (distanceMeters <= radiusMeters) {
+    // `<= radius` is false for NaN, so the guard here is belt-and-
+    // braces, but call it out explicitly so a future refactor that
+    // changes the comparator doesn't silently let NaN slip through.
+    if (Number.isFinite(distanceMeters) && distanceMeters <= radiusMeters) {
       matches.push({ ...loc, distanceMeters });
     }
   }

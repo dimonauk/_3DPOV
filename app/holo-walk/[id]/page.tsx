@@ -86,14 +86,12 @@ export default async function HoloWalkLocationPage({
         </div>
 
         <section className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row">
-          <button
-            type="button"
-            disabled
-            className="flex-1 cursor-not-allowed rounded-sm border border-pink-200/40 bg-pink-200/10 px-6 py-4 chrome-label text-pink-100 opacity-60"
-            title="The /holo-walk/<id>/ar route arrives in the next wave."
+          <Link
+            href={`/holo-walk/${loc.id}/ar`}
+            className="flex-1 rounded-sm border border-pink-200/60 bg-pink-200/10 px-6 py-4 text-center chrome-label text-pink-100 transition-colors hover:border-pink-200 hover:bg-pink-200/20"
           >
-            open in AR &rarr; coming next wave
-          </button>
+            open in AR &rarr;
+          </Link>
           {loc.originalPhoto && (
             <Link
               href={loc.originalPhoto}
@@ -103,6 +101,17 @@ export default async function HoloWalkLocationPage({
             </Link>
           )}
         </section>
+        {/* When no photoreal splat is attached, the AR view falls back to
+            the algorithmic attractor sculpture — same anchor point, same
+            sight lines, different aesthetic. Telling visitors up-front
+            avoids the "this isn't what the photograph shows" surprise. */}
+        {!loc.splat && (
+          <p className="mt-3 text-xs text-chrome-400">
+            The photoreal splat for this spot hasn&rsquo;t been trained
+            yet; AR will render the algorithmic sculpture in its place.
+            Same anchor, same compass bearing &mdash; different surface.
+          </p>
+        )}
 
         {loc.narrationScript && (
           <section className="mt-10 rounded-sm border border-warm-black-800 bg-warm-black-900/30 p-8">

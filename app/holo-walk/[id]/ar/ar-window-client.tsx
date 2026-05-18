@@ -37,8 +37,10 @@ import { useGeoStore } from "lib/state/geo";
 import {
   ArrivedOverlay,
   CaptureBar,
+  CompassDeniedOverlay,
   DeniedOverlay,
   ErrorOverlay,
+  GpsUnavailableOverlay,
   InfoStrip,
   IntroCard,
   OutOfRangeStrip,
@@ -49,6 +51,8 @@ type Phase =
   | "intro"
   | "requesting"
   | "denied"
+  | "compass-denied"
+  | "gps-unavailable"
   | "active"
   | "out-of-range"
   | "arrived"
@@ -147,16 +151,53 @@ export default function ARWindowClient({
   const handleStart = useCallback(async () => {
     setPhase("requesting");
     setErrorMessage(null);
+    // Clear any stale lastError from a previous attempt so the GPS
+    // watcher below has a clean slate to write into.
+    useGeoStore.getState().setLastError(null);
+    // Retry from denied/error releases any stream the previous attempt
+    // captured — otherwise back-to-back retries leak camera handles
+    // (and the camera LED stays on, freaking the visitor out).
+    if (streamRef.current) {
+      releaseStream(streamRef.current);
+      streamRef.current = null;
+    }
+    let acquiredStream: MediaStream | null = null;
     try {
-      await requestPermissions();
+      // iOS Safari requires DeviceOrientationEvent.requestPermission()
+      // for compass access. If the visitor denied it, the AR sight
+      // lines silently break (sculpture appears in the wrong direction).
+      // Block the start instead of letting them walk into a useless
+      // experience — the AR overlay tells them to enable Motion access
+      // and try again.
+      const perms = await requestPermissions();
+      // Detect iOS by feature-detecting the requestPermission API.
+      // On non-iOS, `orientation` resolves true implicitly.
+      const isIOSStylePermission =
+        typeof window !== "undefined" &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        typeof (window.DeviceOrientationEvent as any)?.requestPermission ===
+          "function";
+      if (isIOSStylePermission && !perms.orientation) {
+        setPhase("compass-denied");
+        return;
+      }
       await startGeoTracking();
-      const stream = await requestCameraStream();
-      streamRef.current = stream;
+      acquiredStream = await requestCameraStream();
+      streamRef.current = acquiredStream;
       if (videoRef.current) {
-        await attachStreamToVideo(stream, videoRef.current);
+        await attachStreamToVideo(acquiredStream, videoRef.current);
       }
       setPhase("active");
     } catch (err) {
+      // attachStreamToVideo can throw AFTER the camera is hot — release
+      // the stream we acquired so the visitor doesn't see a "denied"
+      // overlay over a still-lit camera LED. Tracked via the local
+      // `acquiredStream` because the ref may have been overwritten by
+      // a concurrent retry (unlikely but cheap to be precise).
+      if (acquiredStream) {
+        releaseStream(acquiredStream);
+        if (streamRef.current === acquiredStream) streamRef.current = null;
+      }
       const msg = err instanceof Error ? err.message : String(err);
       const isDenied =
         err instanceof Error &&
@@ -166,6 +207,27 @@ export default function ARWindowClient({
       setPhase(isDenied ? "denied" : "error");
     }
   }, []);
+
+  // GPS-fix watchdog: when the watcher reports timeout / unavailable
+  // and we're still in the "requesting" or "active" phase, transition
+  // to a fallback overlay so the visitor isn't stuck on a spinner. A
+  // successful fix clears `lastError` and bumps `position`, which lets
+  // the transform effect take over.
+  const lastGeoError = useGeoStore((s) => s.lastError);
+  const geoPosition = useGeoStore((s) => s.position);
+  useEffect(() => {
+    if (geoPosition) return; // got a fix — let the transform path run
+    if (!lastGeoError) return;
+    if (lastGeoError.code === "denied") {
+      // Denied at the watcher level (not at requestPermissions) — treat
+      // like the original NotAllowedError branch.
+      if (phase === "requesting" || phase === "active") setPhase("denied");
+      return;
+    }
+    if (lastGeoError.code === "timeout" || lastGeoError.code === "unavailable") {
+      if (phase === "requesting") setPhase("gps-unavailable");
+    }
+  }, [lastGeoError, geoPosition, phase]);
 
   const handlePhoto = useCallback(async () => {
     if (!videoRef.current || !overlayCanvasRef.current) return;
@@ -201,6 +263,18 @@ export default function ARWindowClient({
       }
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : String(err));
+      // Recording handle may be live even though we couldn't stop
+      // gracefully — cancel it so the underlying MediaRecorder /
+      // encoder releases its buffers. If it's already stopped, cancel
+      // is a no-op.
+      if (recordingHandleRef.current) {
+        try {
+          recordingHandleRef.current.cancel();
+        } catch {
+          // best-effort — already in an error path
+        }
+        recordingHandleRef.current = null;
+      }
       setRecording(false);
       setRecordingStartedAt(null);
     }
@@ -255,6 +329,19 @@ export default function ARWindowClient({
           onRetry={handleStart}
           errorMessage={errorMessage}
           locationId={location.id}
+        />
+      )}
+      {phase === "compass-denied" && (
+        <CompassDeniedOverlay
+          onRetry={handleStart}
+          locationId={location.id}
+        />
+      )}
+      {phase === "gps-unavailable" && (
+        <GpsUnavailableOverlay
+          onRetry={handleStart}
+          locationId={location.id}
+          errorMessage={lastGeoError?.message ?? null}
         />
       )}
       {phase === "error" && (

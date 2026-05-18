@@ -15,7 +15,7 @@
  * asks for it.
  */
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 type Turn = {
   speaker: string;
@@ -63,8 +63,16 @@ export default function LocationBanter({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Ref-based in-flight guard so the callback doesn't depend on the
+  // `busy` state — keeping `busy` in the deps array re-creates the
+  // callback every state flip, defeating the point of useCallback
+  // and causing the button's onClick reference to churn each render.
+  // The ref reads the live value at call-time, which is what we want.
+  const inFlightRef = useRef(false);
+
   const summon = useCallback(async () => {
-    if (busy) return;
+    if (inFlightRef.current) return;
+    inFlightRef.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -74,6 +82,18 @@ export default function LocationBanter({
         body: JSON.stringify({ locationId, cast }),
       });
       if (!res.ok) {
+        // Friendly copy for the 429 path so a rate-limited visitor
+        // gets actionable text instead of a raw "429: rate_limited"
+        // dump. Other statuses fall through to the raw body.
+        if (res.status === 429) {
+          const retryAfter = res.headers.get("Retry-After");
+          const seconds = retryAfter ? Number(retryAfter) : NaN;
+          throw new Error(
+            Number.isFinite(seconds) && seconds > 0
+              ? `The cast needs a moment — try again in ${Math.ceil(seconds)}s.`
+              : "The cast needs a moment — too many requests, try again shortly.",
+          );
+        }
         const body = await res.text().catch(() => "");
         throw new Error(`${res.status}: ${body.slice(0, 200)}`);
       }
@@ -82,9 +102,10 @@ export default function LocationBanter({
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
+      inFlightRef.current = false;
       setBusy(false);
     }
-  }, [locationId, cast, busy]);
+  }, [locationId, cast]);
 
   return (
     <section className="mt-12 rounded-md border border-warm-black-800 bg-warm-black-950/60 p-6">

@@ -30,7 +30,7 @@ import { getFirebaseAuth } from "lib/firebase/client";
 import { createLogger } from "lib/log";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const log = createLogger("route:/holo-walk:splat-generate");
 
@@ -73,6 +73,18 @@ export default function HoloWalkNewSculpturePage() {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+
+  // Abort the in-flight POST if the operator navigates away mid-train.
+  // Without this, the request keeps streaming bytes server-side AND
+  // the bench-side splat job continues; the route's maxDuration=800
+  // means we'd otherwise tie up a function instance for ~13 min after
+  // the operator has visibly moved on.
+  const abortRef = useRef<AbortController | null>(null);
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+    };
+  }, []);
 
   const isBusy = status.kind === "uploading" || status.kind === "training";
 
@@ -129,14 +141,29 @@ export default function HoloWalkNewSculpturePage() {
     // the actual bench job typically dominates the wall-clock time.
     setStatus({ kind: "training" });
 
+    // Replace any prior controller (e.g. a previous failed submit
+    // that the operator is retrying). Cancel-then-abandon is fine
+    // here — the previous request's response, if any, is discarded.
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     let res: Response;
     try {
       res = await fetch("/api/holo-walk/generate-splat", {
         method: "POST",
         headers: { Authorization: `Bearer ${idToken}` },
         body: fd,
+        signal: controller.signal,
       });
     } catch (err) {
+      // Distinguish operator-cancel (unmount, resubmit) from real
+      // network failure so we don't surface a spurious error toast
+      // for a user-initiated abort.
+      if (err instanceof DOMException && err.name === "AbortError") {
+        log.info("upload aborted");
+        return;
+      }
       const message =
         err instanceof Error ? err.message : "Network error during upload.";
       log.error("upload network error", { message });
@@ -148,8 +175,20 @@ export default function HoloWalkNewSculpturePage() {
     try {
       body = (await res.json()) as ApiResponse;
     } catch {
-      const message = `Server returned non-JSON response (${res.status}).`;
-      log.error("non-json response", { status: res.status });
+      // Salvage whatever text came back — Next sometimes returns an
+      // HTML 500 page on uncaught route errors, which the JSON parse
+      // hides. Cap at 500 chars so a giant HTML body doesn't fill the
+      // status pill.
+      let snippet = "";
+      try {
+        snippet = (await res.text()).slice(0, 500);
+      } catch {
+        // body already consumed by the .json() attempt above
+      }
+      const message = snippet
+        ? `Server returned non-JSON (${res.status}): ${snippet}`
+        : `Server returned non-JSON response (${res.status}).`;
+      log.error("non-json response", { status: res.status, snippet });
       setStatus({ kind: "error", message });
       return;
     }

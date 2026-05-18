@@ -9,10 +9,14 @@
 
 import maplibregl, { Map as MapLibreMap, Marker } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 import type { SculptureLocation } from "lib/holo-walk/locations";
+import { createLogger } from "lib/log";
+
+const log = createLogger("holo-walk.map-client");
 
 const DEFAULT_STYLE =
   "https://tiles.openfreemap.org/styles/positron";
@@ -39,6 +43,7 @@ export default function HoloWalkMapClient({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -55,13 +60,31 @@ export default function HoloWalkMapClient({
       attributionControl: { compact: true },
     });
 
-    map.on("error", () => {
+    map.on("error", (e) => {
+      // Tile-host outage triggers this — we fall back to OSM raster
+      // tiles. The original failure is interesting if the fallback
+      // ALSO fails, so log both attempts.
+      log.warn("map style error, swapping to fallback", {
+        url: styleUrl,
+        err:
+          e && typeof e === "object" && "error" in e
+            ? String((e as { error?: unknown }).error)
+            : null,
+      });
       try {
         map.setStyle(FALLBACK_STYLE);
-      } catch {
-        /* ignore */
+      } catch (err) {
+        log.error("fallback style also failed", {
+          err: err instanceof Error ? err.message : String(err),
+        });
       }
     });
+
+    // Track markers so cleanup can remove them deterministically.
+    // MapLibre's map.remove() drops the canvas but doesn't always
+    // tear down marker DOM + their listeners; explicit .remove() on
+    // each marker is the documented disposal path.
+    const markers: Marker[] = [];
 
     map.on("load", () => {
       for (const loc of locations) {
@@ -80,20 +103,27 @@ export default function HoloWalkMapClient({
         el.addEventListener("mouseenter", () => setHovered(loc.id));
         el.addEventListener("mouseleave", () => setHovered(null));
         el.addEventListener("click", () => {
-          window.location.href = `/holo-walk/${loc.id}`;
+          // Client-side navigation — preserves the App Router cache
+          // and avoids the hard reload that window.location.href
+          // would force.
+          router.push(`/holo-walk/${loc.id}`);
         });
-        new Marker({ element: el })
+        const marker = new Marker({ element: el })
           .setLngLat([loc.coords.lon, loc.coords.lat])
           .addTo(map);
+        markers.push(marker);
       }
     });
 
     mapRef.current = map;
     return () => {
+      for (const m of markers) {
+        m.remove();
+      }
       map.remove();
       mapRef.current = null;
     };
-  }, [locations]);
+  }, [locations, router]);
 
   const hoveredLoc = hovered
     ? locations.find((l) => l.id === hovered) ?? null

@@ -108,6 +108,107 @@ export function DeniedOverlay({
   );
 }
 
+/**
+ * iOS Safari blocks DeviceOrientationEvent (the compass feed) until the
+ * visitor explicitly grants Motion & Orientation access — and that grant
+ * is per-tab, not site-level. If they tap "Deny" the AR view has no
+ * heading at all, which silently breaks sight lines: the sculpture
+ * appears in the wrong direction. We surface this instead of letting
+ * them walk into a useless experience.
+ */
+export function CompassDeniedOverlay({
+  onRetry,
+  locationId,
+}: {
+  onRetry: () => void;
+  locationId: string;
+}) {
+  return (
+    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center px-6">
+      <div className="max-w-md rounded-sm border border-pink-200/40 bg-warm-black-950/90 p-8 text-center backdrop-blur">
+        <div className="chrome-label text-pink-200">compass needed</div>
+        <p className="mt-3 text-sm text-chrome-200">
+          The sculpture is anchored to the spot it was made — AR needs
+          your phone&rsquo;s compass to point it the right way. Tap
+          retry and grant <em>Motion &amp; Orientation</em> when iOS
+          asks. Otherwise the sculpture will float at the wrong bearing.
+        </p>
+        <p className="mt-3 text-xs text-chrome-400">
+          On iOS: tap retry &rarr; the &ldquo;Motion &amp; Orientation
+          Access&rdquo; prompt appears once per tab. If you already
+          denied it, reload this page or enable it in Safari &rarr;
+          Settings &rarr; Advanced &rarr; Website Data.
+        </p>
+        <div className="mt-6 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={onRetry}
+            className="h-12 rounded-sm border border-pink-200/60 bg-pink-200/10 chrome-label text-pink-100 hover:bg-pink-200/20"
+          >
+            retry
+          </button>
+          <Link
+            href={`/holo-walk/${locationId}`}
+            className="text-xs text-chrome-400 hover:text-pink-200"
+          >
+            back to sculpture page
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * GPS watcher returned timeout / unavailable without a fix. Cities + dense
+ * indoor environments can suppress GPS for the first 30-60s; "step outside"
+ * is the practical mitigation. The watcher stays attached so a real fix
+ * will still flow in and unlock the active phase via the position effect.
+ */
+export function GpsUnavailableOverlay({
+  onRetry,
+  locationId,
+  errorMessage,
+}: {
+  onRetry: () => void;
+  locationId: string;
+  errorMessage: string | null;
+}) {
+  return (
+    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center px-6">
+      <div className="max-w-md rounded-sm border border-pink-200/40 bg-warm-black-950/90 p-8 text-center backdrop-blur">
+        <div className="chrome-label text-pink-200">no GPS fix yet</div>
+        <p className="mt-3 text-sm text-chrome-200">
+          The phone can&rsquo;t see the satellites well enough from
+          where you&rsquo;re standing. Step somewhere with sky overhead
+          and try again &mdash; cities and indoor spaces often take a
+          full minute on the first fix.
+        </p>
+        {errorMessage && (
+          <p className="mt-3 font-mono text-xs text-chrome-400">
+            {errorMessage}
+          </p>
+        )}
+        <div className="mt-6 flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={onRetry}
+            className="h-12 rounded-sm border border-pink-200/60 bg-pink-200/10 chrome-label text-pink-100 hover:bg-pink-200/20"
+          >
+            try again
+          </button>
+          <Link
+            href={`/holo-walk/${locationId}`}
+            className="text-xs text-chrome-400 hover:text-pink-200"
+          >
+            back to sculpture page
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ErrorOverlay({
   errorMessage,
   onRetry,

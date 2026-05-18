@@ -30,7 +30,11 @@ export default function SculpturePreviewClient({
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
 
   return (
-    <div className="relative h-full w-full">
+    <div
+      className="relative h-full w-full"
+      role="img"
+      aria-label={`3D preview of the ${location.name} light-sculpture${location.city ? ` in ${location.city}` : ""}. Drag with mouse or touch to orbit; pinch to zoom.`}
+    >
       <Canvas camera={{ position: [0, -0.2, 4.4], fov: 45 }}>
         <ambientLight intensity={0.35} />
         <directionalLight position={[3, 4, 5]} intensity={0.7} />

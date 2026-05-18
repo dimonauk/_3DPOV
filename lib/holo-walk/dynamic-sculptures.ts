@@ -37,8 +37,11 @@ import "server-only";
 import { Timestamp } from "firebase-admin/firestore";
 
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
+import { createLogger, errToObject } from "lib/log";
 
 const COLLECTION = "holo_walk_dynamic_sculptures";
+
+const log = createLogger("holo-walk.dynamic-sculptures");
 
 /**
  * Status of a dynamic sculpture row. `queued` and `running` only
@@ -186,7 +189,13 @@ export async function listDynamicSculptures(): Promise<DynamicSculpture[]> {
   let db;
   try {
     db = requireFirebaseAdminDb();
-  } catch {
+  } catch (err) {
+    // Genuinely-unconfigured Firestore is the expected path here
+    // (preview deploys, local dev without ADC); log at debug so
+    // operators see it but it doesn't fill prod logs.
+    log.debug("admin db not configured, returning empty list", {
+      err: errToObject(err),
+    });
     return [];
   }
   try {
@@ -196,7 +205,12 @@ export async function listDynamicSculptures(): Promise<DynamicSculpture[]> {
       .limit(200)
       .get();
     return snap.docs.map((doc) => fromFirestoreData(doc.id, doc.data()));
-  } catch {
+  } catch (err) {
+    // Real Firestore failure (perms, quota, malformed doc, network).
+    // Empty list keeps the gallery rendering, but operators need to
+    // see this — silent zero-result is otherwise indistinguishable
+    // from "no sculptures yet" on the index page.
+    log.error("list failed", { err: errToObject(err) });
     return [];
   }
 }
@@ -208,10 +222,19 @@ export async function getDynamicSculpture(
   let db;
   try {
     db = requireFirebaseAdminDb();
-  } catch {
+  } catch (err) {
+    log.debug("admin db not configured, returning null", {
+      id,
+      err: errToObject(err),
+    });
     return null;
   }
-  const doc = await db.collection(COLLECTION).doc(id).get();
-  if (!doc.exists) return null;
-  return fromFirestoreData(doc.id, doc.data() ?? {});
+  try {
+    const doc = await db.collection(COLLECTION).doc(id).get();
+    if (!doc.exists) return null;
+    return fromFirestoreData(doc.id, doc.data() ?? {});
+  } catch (err) {
+    log.error("get failed", { id, err: errToObject(err) });
+    return null;
+  }
 }
