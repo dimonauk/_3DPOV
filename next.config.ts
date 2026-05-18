@@ -28,6 +28,26 @@ export default {
     "passkit-generator",
     "firebase-admin",
   ],
+  // Tell Vercel's file-tracer (@vercel/nft) NOT to copy onnxruntime-node
+  // into any lambda bundle. `serverExternalPackages` affects webpack
+  // bundling but NFT *still* statically follows imports through
+  // lib/capabilities/viz/depth-estimation.ts → @huggingface/transformers
+  // → onnxruntime-node and copies all 354 MB of native .node binaries
+  // into every page that touches the capabilities registry. That blew
+  // five lambdas past the 250 MB limit on deploy dpl_4MKBt99TAeoLxMW1ZGiceYJAamhB
+  // (capabilities.js, spatial.js, spatial/video.js, photographs/spatial.js,
+  // research/cctv-3d-archive.js). Exclusion is safe because no server
+  // code actually invokes onnxruntime — depth-estimation only runs in
+  // the browser (it touches `document` / `navigator` / canvas) and the
+  // kokoro/whisper workers are Web Workers, not server routes.
+  outputFileTracingExcludes: {
+    "*": [
+      "node_modules/onnxruntime-node/**",
+      "node_modules/.pnpm/onnxruntime-node@*/**",
+      "node_modules/@huggingface/transformers/**",
+      "node_modules/.pnpm/@huggingface+transformers@*/**",
+    ],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
