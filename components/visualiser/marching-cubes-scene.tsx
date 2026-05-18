@@ -14,7 +14,7 @@ import {
   marchingCubesStep,
   type ScalarField,
 } from "lib/visualiser/marching-cubes-math";
-import { LabelAt } from "./_helpers";
+import { LabelAt, useDispose } from "./_helpers";
 
 /**
  * MarchingCubesScene &mdash; the voxel grid, the corner spheres, and the
@@ -166,6 +166,16 @@ function Stage({ field, isoValue, stepMode, cubeIndex }: Props) {
     [stepCorners],
   );
 
+  // Release each BufferGeometry's GPU buffer when its memo reruns
+  // (preset / resolution / iso / cubeIndex change) OR the scene
+  // unmounts. Without this, every preset swap orphans the previous
+  // surface geometry in VRAM (~30-180k floats for a full marching-
+  // cubes surface at default resolution).
+  useDispose(gridGeom);
+  useDispose(fullGeom);
+  useDispose(stepTrisGeom);
+  useDispose(stepHighlight);
+
   return (
     <group>
       {/* Grid wireframe. */}
@@ -260,6 +270,12 @@ export default function MarchingCubesScene({
     <div
       className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-warm-black-800"
       style={{ backgroundColor: "#0c0a12" }}
+      role="img"
+      aria-label={
+        stepMode
+          ? `Marching-cubes voxel grid in step mode: showing one highlighted cube (index ${cubeIndex}) and the triangles it emits at iso-value ${isoValue.toFixed(2)}. Drag to rotate, scroll to zoom.`
+          : `Marching-cubes voxel grid: full iso-surface at iso-value ${isoValue.toFixed(2)}. Drag to rotate, scroll to zoom.`
+      }
     >
       <Canvas
         camera={{ position: [3, 2.4, 3.6], fov: 45 }}

@@ -147,28 +147,41 @@ export default function ReactionDiffusionShell() {
         width={N}
         height={N}
         className="mx-auto h-[420px] w-[420px] border border-warm-black-800 [image-rendering:pixelated]"
+        role="img"
+        aria-label={`Gray-Scott reaction-diffusion simulation on a ${N}×${N} grid. Feed rate ${F.toFixed(4)}, kill rate ${k.toFixed(4)}, ${running ? "running" : "paused"}.`}
       />
 
-      <div className="flex flex-wrap items-center gap-2 text-xs">
+      <div
+        className="flex flex-wrap items-center gap-2 text-xs"
+        role="group"
+        aria-label="Simulation controls"
+      >
         <span className="chrome-label mr-1">preset</span>
-        {PRESETS.map((p) => (
-          <button
-            key={p.label}
-            type="button"
-            onClick={() => {
-              setF(p.F);
-              setK(p.k);
-              setGeneration((g) => g + 1);
-            }}
-            className="rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-300 hover:border-pink-200/60 hover:text-pink-200"
-            title={p.note}
-          >
-            {p.label}
-          </button>
-        ))}
+        {PRESETS.map((p) => {
+          const isActive = F === p.F && k === p.k;
+          return (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => {
+                setF(p.F);
+                setK(p.k);
+                setGeneration((g) => g + 1);
+              }}
+              aria-label={`Load ${p.label} preset (${p.note})`}
+              aria-pressed={isActive}
+              className="rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-300 hover:border-pink-200/60 hover:text-pink-200"
+              title={p.note}
+            >
+              {p.label}
+            </button>
+          );
+        })}
         <button
           type="button"
           onClick={() => setRunning((r) => !r)}
+          aria-label={running ? "Pause simulation" : "Resume simulation"}
+          aria-pressed={!running}
           className="ml-2 rounded-sm border border-pink-200/40 bg-pink-200/10 px-3 py-1 text-pink-100 hover:border-pink-200"
         >
           {running ? "pause" : "run"}
@@ -176,6 +189,7 @@ export default function ReactionDiffusionShell() {
         <button
           type="button"
           onClick={() => setGeneration((g) => g + 1)}
+          aria-label="Reset simulation to initial seed"
           className="rounded-sm border border-warm-black-800 px-3 py-1 text-chrome-300 hover:border-pink-200/60 hover:text-pink-200"
         >
           reset
@@ -192,6 +206,7 @@ export default function ReactionDiffusionShell() {
             step={0.0005}
             value={F}
             onChange={(e) => setF(Number(e.target.value))}
+            aria-label="Feed rate (F) — how fast the substrate is replenished"
           />
         </label>
         <label className="flex flex-col gap-1 text-xs text-chrome-300">
@@ -203,6 +218,7 @@ export default function ReactionDiffusionShell() {
             step={0.0005}
             value={k}
             onChange={(e) => setK(Number(e.target.value))}
+            aria-label="Kill rate (k) — how fast V is removed from the system"
           />
         </label>
       </div>

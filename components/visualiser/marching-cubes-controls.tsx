@@ -96,6 +96,8 @@ export default function MarchingCubesControls({
               key={p.id}
               type="button"
               onClick={() => onPresetChange(p.id)}
+              aria-label={`Switch scalar field to ${p.label}`}
+              aria-pressed={preset === p.id}
               className={
                 "rounded-sm border px-3 py-2 text-left text-xs transition " +
                 (preset === p.id
@@ -229,7 +231,11 @@ export default function MarchingCubesControls({
       <div className="rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-6">
         <div className="chrome-label text-pink-200">Readout</div>
 
-        <dl className="mt-5 space-y-4 text-sm">
+        <dl
+          className="mt-5 space-y-4 text-sm"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <div className="flex items-baseline justify-between gap-4">
             <dt className="text-chrome-400">Total cubes in grid</dt>
             <dd className="font-mono text-chrome-100">

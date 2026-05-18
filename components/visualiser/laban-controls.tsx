@@ -124,6 +124,8 @@ export default function LabanControls({
               key={be.name}
               type="button"
               onClick={() => onPreset(be.name)}
+              aria-label={`Set effort to ${be.name}`}
+              aria-pressed={named === be.name}
               className={
                 "rounded-sm border px-3 py-2 text-left text-xs transition " +
                 (named === be.name
@@ -141,7 +143,11 @@ export default function LabanControls({
 
         <div className="mt-7">
           <div className="chrome-label text-pink-200">Readout</div>
-          <dl className="mt-3 space-y-2 text-sm">
+          <dl
+            className="mt-3 space-y-2 text-sm"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-chrome-400">Closest named effort</dt>
               <dd className="font-mono">

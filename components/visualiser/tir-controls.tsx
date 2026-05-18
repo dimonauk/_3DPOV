@@ -156,19 +156,24 @@ export default function TIRControls({
         <div className="mt-7">
           <div className="chrome-label text-pink-200">Presets</div>
           <div className="mt-3 grid grid-cols-2 gap-2">
-            {TIR_PRESETS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                onClick={() => onPreset(p)}
-                className="rounded-sm border border-warm-black-700 bg-warm-black-950/60 px-3 py-2 text-left text-xs text-chrome-200 transition hover:border-pink-200 hover:text-pink-200"
-              >
-                <div className="text-chrome-100">{p.label}</div>
-                <div className="mt-0.5 font-mono text-[0.65rem] text-chrome-500">
-                  {p.note}
-                </div>
-              </button>
-            ))}
+            {TIR_PRESETS.map((p) => {
+              const isActive = n1 === p.n1 && n2 === p.n2;
+              return (
+                <button
+                  key={p.label}
+                  type="button"
+                  onClick={() => onPreset(p)}
+                  aria-label={`Load ${p.label} preset (${p.note})`}
+                  aria-pressed={isActive}
+                  className="rounded-sm border border-warm-black-700 bg-warm-black-950/60 px-3 py-2 text-left text-xs text-chrome-200 transition hover:border-pink-200 hover:text-pink-200"
+                >
+                  <div className="text-chrome-100">{p.label}</div>
+                  <div className="mt-0.5 font-mono text-[0.65rem] text-chrome-500">
+                    {p.note}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -177,7 +182,11 @@ export default function TIRControls({
       <div className="rounded-sm border border-warm-black-800 bg-warm-black-900/40 p-6">
         <div className="chrome-label text-pink-200">Readout</div>
 
-        <dl className="mt-5 space-y-4 text-sm">
+        <dl
+          className="mt-5 space-y-4 text-sm"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <div className="flex items-baseline justify-between gap-4">
             <dt className="text-chrome-400">Critical angle &theta;&#x1D04;</dt>
             <dd className="font-mono text-chrome-100">

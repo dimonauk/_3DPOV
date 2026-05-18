@@ -34,18 +34,45 @@ function surfaceSlope(x: number, p: SurfaceParams): number {
     Math.cos((2 * Math.PI * x) / p.wavelength + p.phase);
 }
 
-/** Trace one downward ray; return the x position where it hits the screen. */
+/**
+ * Trace one downward ray through the curved top surface and return
+ * the x position where it hits the screen.
+ *
+ * # Sign convention (canvas coordinates)
+ *
+ * Canvas pixel coords have +Y pointing DOWN (screen sits at y =
+ * SCREEN_Y, top of canvas at y = 0). The incident ray direction is
+ * therefore `I = (0, +1)` — moving downward into the medium.
+ *
+ * The surface curve `y = surfaceY(x)` produces a height field whose
+ * tangent is `(1, slope)`. The "upward" normal (pointing AWAY from
+ * the medium, back toward the source) is `n_up = (-slope, -1)/|n|`
+ * — note the `-1` Y, since +Y is down. We compute `n_up` here as
+ * `(nx, ny) = (-slope, +1)/|n|` which puts the normal pointing
+ * physically up in real-world terms BUT positive-Y in canvas coords;
+ * that flip is intentional and consistent with the rest of the
+ * tracing math below.
+ *
+ * The incident-vs-normal cosine works out to `cosI = ny` directly
+ * because `dot((0,1), (nx, ny)) = ny`. We compute it via the more
+ * symmetric `dot((0,1), (-nx, -ny))` form to keep the parallel with
+ * Snell vector form in textbooks.
+ *
+ * `N` (the inward normal, pointing INTO the medium below) is the
+ * negation of the upward normal, hence `Nx = -nx, Ny = -ny` further
+ * down. The standard Snell vector formula then plugs in unchanged.
+ */
 function traceRay(rayX: number, p: SurfaceParams): number {
   const ySurf = surfaceY(rayX, p);
   const slope = surfaceSlope(rayX, p);
-  // Surface normal: (-slope, 1) normalised. Pointing up + along surface.
   const nLen = Math.hypot(slope, 1);
   const nx = -slope / nLen;
   const ny = 1 / nLen;
-  // Incident ray is going straight down: direction (0, 1).
-  // cos(theta_i) = dot(incident, -normal) = -ny  (since -normal = (slope, -1)/nLen)
-  // But easier: angle between incident and normal.
-  const cosI = -((0) * (-nx) + (1) * (-ny)); // dot((0,1), (-nx,-ny))
+  // Incident ray direction = (0, +1) (downward in canvas coords).
+  // cosI = dot(I, n_up) ≡ ny; the explicit dot form is kept so
+  // someone editing the geometry can change the incident direction
+  // without rewriting the angle calc.
+  const cosI = -((0) * (-nx) + (1) * (-ny));
   const eta = N_TOP / p.ior;
   const k = 1 - eta * eta * (1 - cosI * cosI);
   if (k < 0) {
@@ -53,8 +80,8 @@ function traceRay(rayX: number, p: SurfaceParams): number {
     return rayX;
   }
   const cosT = Math.sqrt(k);
-  // Refracted direction = eta * I + (eta*cosI - cosT) * N  (N facing into medium 2)
-  // N here points DOWN into the medium (away from incident origin): (nx, ny) is the upward normal; the inward normal is (-nx, -ny).
+  // Refracted direction = eta * I + (eta*cosI - cosT) * N  (N points
+  // INTO medium 2 — inward normal — so it's the negation of n_up).
   const Nx = -nx;
   const Ny = -ny;
   const tx = eta * 0 + (eta * cosI - cosT) * Nx;
@@ -148,9 +175,15 @@ export default function CausticProjectorShell() {
         width={SCREEN_W}
         height={SCREEN_Y + 80}
         className="mx-auto w-full max-w-[640px] border border-warm-black-800"
+        role="img"
+        aria-label={`Caustic projection: ${N_RAYS} parallel rays travelling downward, refracting through a sinusoidal surface (amplitude ${amplitude.toFixed(1)}px, wavelength ${wavelength.toFixed(0)}px, IOR ${ior.toFixed(2)}), with hit density shown as a histogram bar at the bottom.`}
       />
 
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+      <div
+        className="grid grid-cols-1 gap-3 md:grid-cols-2"
+        role="group"
+        aria-label="Surface and material controls"
+      >
         <label className="flex flex-col gap-1 text-xs text-chrome-300">
           <span className="font-mono">amplitude = {amplitude.toFixed(1)} px</span>
           <input
@@ -160,6 +193,7 @@ export default function CausticProjectorShell() {
             step={0.5}
             value={amplitude}
             onChange={(e) => setAmplitude(Number(e.target.value))}
+            aria-label="Surface amplitude in pixels"
           />
         </label>
         <label className="flex flex-col gap-1 text-xs text-chrome-300">
@@ -171,6 +205,7 @@ export default function CausticProjectorShell() {
             step={2}
             value={wavelength}
             onChange={(e) => setWavelength(Number(e.target.value))}
+            aria-label="Surface wavelength in pixels per cycle"
           />
         </label>
         <label className="flex flex-col gap-1 text-xs text-chrome-300">
@@ -182,6 +217,7 @@ export default function CausticProjectorShell() {
             step={0.01}
             value={ior}
             onChange={(e) => setIor(Number(e.target.value))}
+            aria-label="Index of refraction of the lower medium"
           />
         </label>
         <label className="flex flex-col gap-1 text-xs text-chrome-300">
@@ -193,6 +229,7 @@ export default function CausticProjectorShell() {
             step={0.01}
             value={phase}
             onChange={(e) => setPhase(Number(e.target.value))}
+            aria-label="Surface phase offset in radians"
           />
         </label>
       </div>

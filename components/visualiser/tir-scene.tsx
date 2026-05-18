@@ -26,6 +26,8 @@ export default function TIRScene({ n1, n2, incidentDeg }: Props) {
     <div
       className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-warm-black-800"
       style={{ backgroundColor: "#0c0a12" }}
+      role="img"
+      aria-label={`Total Internal Reflection visualiser: upper half-space (medium 1, n=${n1.toFixed(2)}), lower half-space (medium 2, n=${n2.toFixed(2)}), incident ray at ${incidentDeg.toFixed(1)} degrees from the normal. Drag to rotate, scroll to zoom.`}
     >
       <Canvas
         camera={{ position: [0, 0.4, 4.2], fov: 50 }}
@@ -47,7 +49,10 @@ export default function TIRScene({ n1, n2, incidentDeg }: Props) {
           autoRotate={false}
         />
       </Canvas>
-      <div className="pointer-events-none absolute bottom-3 left-3 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-chrome-500">
+      <div
+        className="pointer-events-none absolute bottom-3 left-3 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-chrome-500"
+        aria-hidden
+      >
         Drag to rotate &middot; scroll to zoom
       </div>
     </div>

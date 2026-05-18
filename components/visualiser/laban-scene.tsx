@@ -9,7 +9,7 @@ import {
   BASIC_EFFORTS,
   type LabanEffort,
 } from "lib/visualiser/laban-math";
-import { ChromeLabel, LabelAt } from "./_helpers";
+import { ChromeLabel, LabelAt, useDispose } from "./_helpers";
 
 /**
  * LabanScene &mdash; the Space&times;Time&times;Weight cube plus the live
@@ -102,6 +102,10 @@ function Trail({ effort }: Props) {
     g.setDrawRange(0, 0);
     geometryRef.current = g;
   }
+  // Release the trail's BufferGeometry's GPU buffer when the Laban
+  // shell unmounts. Without this, navigating between visualisers leaks
+  // a TRAIL_LENGTH × 3 × 4-byte buffer per visit.
+  useDispose(geometryRef.current);
   const drawCountRef = useRef(0);
 
   // Track effort changes; push the new sample into the ring on every render
@@ -289,6 +293,8 @@ export default function LabanScene({ effort }: Props) {
     <div
       className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-warm-black-800"
       style={{ backgroundColor: "#0c0a12" }}
+      role="img"
+      aria-label="Laban Effort cube: pink point inside a 3D space-time-weight cube, with a flow dial in the corner. Eight named Basic Effort vertices labelled. Drag to rotate, scroll to zoom."
     >
       <Canvas
         camera={{ position: [3.2, 2.4, 3.4], fov: 50 }}
@@ -311,7 +317,10 @@ export default function LabanScene({ effort }: Props) {
           autoRotate={false}
         />
       </Canvas>
-      <div className="pointer-events-none absolute bottom-3 left-3 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-chrome-500">
+      <div
+        className="pointer-events-none absolute bottom-3 left-3 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-chrome-500"
+        aria-hidden
+      >
         Drag to rotate &middot; scroll to zoom
       </div>
     </div>

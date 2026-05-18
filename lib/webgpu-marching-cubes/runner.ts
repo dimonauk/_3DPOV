@@ -12,8 +12,12 @@
 // render pipeline, and an internal orbit camera. The chamber's React
 // surface just calls setParams() + frame().
 
+import { createLogger, errToObject } from "lib/log";
+
 import { MC_COMPUTE_WGSL, RENDER_WGSL } from "./shaders";
 import { MC_TRI_TABLE } from "./tri-table";
+
+const log = createLogger("atelier.isosurface");
 
 // Local subset of the WebGPU type surface. We don't ship
 // `@webgpu/types` as a direct dependency of the site, and the package
@@ -469,7 +473,7 @@ export class IsosurfaceRunner {
       this.depthTexture?.destroy();
       this.device?.destroy?.();
     } catch (err) {
-      console.error("[atelier/isosurface] cleanup error", err);
+      log.error("cleanup error", { err: errToObject(err) });
     }
   }
 }

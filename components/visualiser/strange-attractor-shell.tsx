@@ -18,6 +18,7 @@ import {
 } from "lib/capabilities/viz/attractor";
 import { useAuraStore, type AuraMood } from "lib/state/aura";
 import { useVizStore } from "lib/state/viz";
+import { useDispose } from "./_helpers";
 
 const MOODS: AuraMood[] = [
   "neutral",
@@ -48,6 +49,12 @@ function AttractorPoints({ generation }: { generation: number }) {
     return geo;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [engine, generation]);
+  // Release the previous attractor BufferGeometry when the memo
+  // recomputes (engine swap or visitor-triggered regeneration). Each
+  // geometry holds POINT_COUNT × 3 × 4 bytes (~384 KB at the default
+  // 32k points) plus its GPU buffer; without disposal every mood
+  // change leaks a copy.
+  useDispose(geometry);
 
   return (
     <points geometry={geometry}>
@@ -78,24 +85,47 @@ export default function StrangeAttractorShell() {
   }, [mood, engine, setAttractorEngine]);
 
   return (
-    <div className="relative h-full w-full">
-      <Canvas camera={{ position: [0, 0, 3.6], fov: 45 }}>
+    <div
+      className="relative h-full w-full"
+      role="img"
+      aria-label={`Strange-attractor visualisation: ${POINT_COUNT.toLocaleString()}-point trajectory of the "${engine}" attractor engine, currently set by mood "${mood}". Auto-rotating; drag to orbit, scroll to zoom.`}
+    >
+      <Canvas
+        camera={{ position: [0, 0, 3.6], fov: 45 }}
+        // Cap DPR so 4K + Retina displays don't render at native (2.5×)
+        // resolution. Matches the laban / marching-cubes scenes.
+        dpr={[1, 2]}
+        gl={{
+          antialias: true,
+          powerPreference: "high-performance",
+          alpha: false,
+        }}
+      >
         <ambientLight intensity={0.4} />
         <OrbitControls enablePan={false} autoRotate autoRotateSpeed={0.4} />
         <AttractorPoints generation={generation} />
       </Canvas>
 
-      <div className="pointer-events-none absolute left-3 top-3 rounded-sm border border-warm-black-800 bg-warm-black-950/80 px-3 py-1 font-mono text-xs text-chrome-100">
+      <div
+        className="pointer-events-none absolute left-3 top-3 rounded-sm border border-warm-black-800 bg-warm-black-950/80 px-3 py-1 font-mono text-xs text-chrome-100"
+        aria-live="polite"
+      >
         engine: <span className="text-pink-200">{engine}</span>
       </div>
 
-      <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-1 text-[10px] text-chrome-300">
+      <div
+        className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-1 text-[10px] text-chrome-300"
+        role="group"
+        aria-label="Mood selector"
+      >
         <span className="chrome-label mr-2">mood</span>
         {MOODS.map((m) => (
           <button
             key={m}
             type="button"
             onClick={() => setMood(m)}
+            aria-label={`Switch attractor to ${m} mood`}
+            aria-pressed={m === mood}
             className={`rounded-sm border px-2 py-0.5 ${
               m === mood
                 ? "border-pink-200 bg-pink-200/10 text-pink-100"
