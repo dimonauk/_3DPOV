@@ -35,12 +35,25 @@ export function StageXRBar({ store }: { store: XRStore }) {
       xr?: { isSessionSupported: (mode: string) => Promise<boolean> };
     };
     if (!nav.xr) return;
-    Promise.all([
+    // Fire-and-forget probe. The cancellation guard prevents the state
+    // setter from firing on an unmounted component; the explicit
+    // `.catch` keeps any unexpected reject from surfacing as an
+    // unhandled-promise-rejection warning during HMR. `void` marks
+    // the intentional discard so a future "needs await" lint doesn't
+    // flag it.
+    void Promise.all([
       nav.xr.isSessionSupported("immersive-vr").catch(() => false),
       nav.xr.isSessionSupported("immersive-ar").catch(() => false),
-    ]).then(([vr, ar]) => {
-      if (!cancelled) setSupport({ vr, ar });
-    });
+    ])
+      .then(([vr, ar]) => {
+        if (!cancelled) setSupport({ vr, ar });
+      })
+      .catch(() => {
+        // Probe-level failures (e.g. navigator.xr present but throws
+        // on every call) leave support at its initial false/false
+        // state, which renders the "XR unavailable" pill — correct
+        // UX without surfacing an error.
+      });
     return () => {
       cancelled = true;
     };

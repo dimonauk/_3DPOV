@@ -15,11 +15,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { createLogger, errToObject } from "lib/log";
 import { CHAMBERS } from "lib/shape-of-it/chambers";
 import { THREADS } from "lib/shape-of-it/threads";
 import { KNOW_NODES, LIFE_NODES } from "lib/shape-of-it/labyrinth";
 
 import type { SceneStats, ShapeOfItScene } from "./scene";
+
+const log = createLogger("atelier:shape-of-it");
 
 // TODO(print-bar): chamber is render-only — the WebGPU TSL scene is a
 // kinetic memorial of the studio's working history, not a printable
@@ -62,7 +65,7 @@ export default function ShapeOfItClient() {
         scene.start();
         setSupported("yes");
       } catch (err) {
-        console.error("[shape-of-it] init failed", err);
+        log.error("init failed", { err: errToObject(err) });
         if (!cancelled) setSupported("no");
       }
     })();

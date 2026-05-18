@@ -15,9 +15,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { createLogger, errToObject } from "lib/log";
+
 import { FALLBACK_LED_COUNT, HARDWARE, type Pattern } from "./hardware";
 import { makePattern } from "./patterns";
 import type { Simulator } from "./simulator";
+
+const log = createLogger("atelier:rig-simulator");
 
 export default function RigSimulatorClient() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -57,7 +61,7 @@ export default function RigSimulatorClient() {
         simRef.current = sim;
         setSupported("yes");
       } catch (err) {
-        console.error("[rig-simulator] init failed", err);
+        log.error("init failed", { err: errToObject(err) });
         if (!cancelled) setSupported("no");
       }
     })();

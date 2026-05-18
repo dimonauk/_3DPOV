@@ -57,11 +57,19 @@ function Prop({ spec }: { spec: PropSpec }) {
 
 export function StageProps({ specs }: { specs: PropSpec[] | undefined }) {
   if (!specs || specs.length === 0) return null;
+  // Compose a key from url + position so a room config that places the
+  // SAME glb at multiple spots gets stable per-instance keys (instead
+  // of re-mounting when the spec array reorders). Falls back to a
+  // pure-url key when no position is given.
   return (
     <Suspense fallback={null}>
-      {specs.map((spec, i) => (
-        <Prop key={`${spec.url}-${i}`} spec={spec} />
-      ))}
+      {specs.map((spec) => {
+        const pos = spec.position;
+        const key = pos
+          ? `${spec.url}@${pos[0]},${pos[1]},${pos[2]}`
+          : spec.url;
+        return <Prop key={key} spec={spec} />;
+      })}
     </Suspense>
   );
 }

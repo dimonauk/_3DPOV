@@ -27,6 +27,9 @@ import {
 // failing the prod build with "The export bloom was not found in
 // module three/build/three.tsl.js". Direct path-import avoids that.
 import { bloom } from "lib/three-vendor/BloomNode.js";
+import { createLogger, errToObject } from "lib/log";
+
+const log = createLogger("atelier:poi-sculptor:post");
 
 export type FxState = {
   bloom: boolean;
@@ -53,7 +56,7 @@ export function buildPostPipeline(
       try {
         node = bloom(node, 1.6, 0.35, 0.08);
       } catch (err) {
-        console.warn("[poi-sculptor] bloom unavailable", err);
+        log.warn("bloom unavailable", { err: errToObject(err) });
       }
     }
 
@@ -66,7 +69,7 @@ export function buildPostPipeline(
     postProcessing.outputNode = node;
     return { postProcessing };
   } catch (err) {
-    console.warn("[poi-sculptor] post-pipeline failed", err);
+    log.warn("post-pipeline failed", { err: errToObject(err) });
     return null;
   }
 }

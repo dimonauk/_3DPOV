@@ -13,7 +13,11 @@
 import * as THREE from "three/webgpu";
 import { Fn, instancedBufferAttribute, smoothstep, uv, vec4 } from "three/tsl";
 
+import { createLogger, errToObject } from "lib/log";
+
 import { FALLBACK_LED_COUNT } from "./hardware";
+
+const log = createLogger("atelier:rig-simulator:core");
 
 export type ProgressCallback = (progress: number, events: number) => void;
 
@@ -297,7 +301,7 @@ export class Simulator {
       ).readRenderTargetPixelsAsync(this.accumTarget, 0, 0, w, h)) as Float32Array;
       this.writeTonemappedDisplay(result, w, h);
     } catch (err) {
-      console.warn("[rig-simulator] accumulator read-back failed", err);
+      log.warn("accumulator read-back failed", { err: errToObject(err) });
     }
   }
 

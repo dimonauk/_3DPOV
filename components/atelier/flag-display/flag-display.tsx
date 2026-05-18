@@ -134,6 +134,12 @@ const FlagDisplay = forwardRef<FlagDisplayHandle, FlagDisplayProps>(
 
     return (
       <div
+        // role+aria-label on the wrapper give screen readers something
+        // to announce for the R3F canvas inside (the @react-three/fiber
+        // <Canvas> renders a raw <canvas> element with no surface for
+        // aria attributes that survive a re-render).
+        role="img"
+        aria-label="Flag-loom: interactive cloth simulation surface"
         className={
           className ??
           "h-full w-full overflow-hidden rounded-sm border border-warm-black-800 bg-warm-black-950"

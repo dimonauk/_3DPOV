@@ -17,6 +17,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { createLogger } from "lib/log";
+import { parseAtelierErrorResponse } from "lib/atelier/parse-error-response";
 import { pushAtelierOutput, useActiveChamber } from "lib/state/atelier-hooks";
 
 const log = createLogger("atelier:co-drawing");
@@ -25,7 +26,12 @@ type OutputState =
   | { kind: "idle" }
   | { kind: "running"; startedAt: number }
   | { kind: "ready"; durationMs: number }
-  | { kind: "error"; message: string };
+  | {
+      kind: "error";
+      message: string;
+      code?: string;
+      retryAfterSec?: number;
+    };
 
 const CANVAS_W = 960;
 const CANVAS_H = 540;
@@ -177,16 +183,16 @@ export default function CoDrawingClient() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ prompt: trimmed, drawingData }),
         });
-        if (!res.ok) {
-          const text = await res.text();
-          let message = `HTTP ${res.status}`;
-          try {
-            const parsed = JSON.parse(text) as { error?: string };
-            if (parsed.error) message = parsed.error;
-          } catch {
-            if (text.length > 0 && text.length < 300) message = text;
+        const err = await parseAtelierErrorResponse(res, {
+          chamberSlug: "co-drawing",
+        });
+        if (err) {
+          const next: OutputState = { kind: "error", message: err.message };
+          if (err.code !== undefined) next.code = err.code;
+          if (err.retryAfterSec !== undefined) {
+            next.retryAfterSec = err.retryAfterSec;
           }
-          setOutput({ kind: "error", message });
+          setOutput(next);
           return;
         }
         const json = (await res.json()) as {

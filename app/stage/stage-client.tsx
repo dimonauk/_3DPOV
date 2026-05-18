@@ -71,22 +71,32 @@ function RoomPicker({
   onSelect: (slug: string) => void;
 }) {
   return (
-    <div className="flex items-center gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/70 p-1 backdrop-blur-sm">
-      {ROOM_SLUGS.map((s) => (
-        <button
-          key={s}
-          type="button"
-          onClick={() => onSelect(s)}
-          className={
-            slug === s
-              ? "rounded-sm bg-pink-200/20 px-2 py-1 font-mono text-[0.6rem] text-pink-100"
-              : "rounded-sm px-2 py-1 font-mono text-[0.6rem] text-chrome-400 hover:text-chrome-200"
-          }
-          title={ROOMS[s]!.name}
-        >
-          {s}
-        </button>
-      ))}
+    <div
+      className="flex items-center gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/70 p-1 backdrop-blur-sm"
+      role="group"
+      aria-label="Stage room"
+    >
+      {ROOM_SLUGS.map((s) => {
+        const name = ROOMS[s]!.name;
+        const isCurrent = slug === s;
+        return (
+          <button
+            key={s}
+            type="button"
+            onClick={() => onSelect(s)}
+            className={
+              isCurrent
+                ? "rounded-sm bg-pink-200/20 px-2 py-1 font-mono text-[0.6rem] text-pink-100"
+                : "rounded-sm px-2 py-1 font-mono text-[0.6rem] text-chrome-400 hover:text-chrome-200"
+            }
+            title={name}
+            aria-label={`Switch to ${name} room`}
+            aria-current={isCurrent ? "page" : undefined}
+          >
+            {s}
+          </button>
+        );
+      })}
     </div>
   );
 }

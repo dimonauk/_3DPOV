@@ -39,6 +39,8 @@ export type ChamberParams = Record<string, unknown>;
  *  thumbnail + the click-back-into-chamber affordance. */
 export type AtelierOutputKind =
   | "image"
+  | "svg"
+  | "data"
   | "stl"
   | "ply"
   | "json"

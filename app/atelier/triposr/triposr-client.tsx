@@ -347,7 +347,6 @@ export default function TriposrClient() {
                   {(output.durationMs / 1000).toFixed(1)}s
                 </span>
                 <div className="relative overflow-hidden rounded-sm">
-                  {/* @ts-expect-error — model-viewer is a web component */}
                   <model-viewer
                     src={output.result.glbUrl}
                     alt="Generated 3D mesh"

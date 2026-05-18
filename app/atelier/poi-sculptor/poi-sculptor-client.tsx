@@ -15,11 +15,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import PrintBar from "components/commerce/print-bar";
+import { createLogger, errToObject } from "lib/log";
 import { exportGLB, exportSTL } from "lib/poi-sculptor/export";
 
 import { Controls, type ControlsState } from "./controls";
 import { PrintDrawer } from "./print-drawer";
 import type { PoiSculptorScene, SceneStats } from "./scene";
+
+const log = createLogger("atelier:poi-sculptor");
 
 type LastExport = {
   kind: "stl" | "glb";
@@ -78,7 +81,7 @@ export default function PoiSculptorClient() {
         scene.start();
         setSupported("yes");
       } catch (err) {
-        console.error("[poi-sculptor] init failed", err);
+        log.error("init failed", { err: errToObject(err) });
         if (!cancelled) setSupported("no");
       }
     })();
