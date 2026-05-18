@@ -60,6 +60,33 @@ export default function AdminLandingPage() {
               Retire or delete in place.
             </span>
           </Link>
+          <Link
+            href="/admin/assets"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">03</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Asset registry
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Add a mesh, Blender file, gallery album or archive to
+              data/assets.json. Vercel Blob for &lt; 50 MB, Drive for larger,
+              Photos for gallery links.
+            </span>
+          </Link>
+          <Link
+            href="/admin/wardrobe"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">04</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Wardrobe
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Add a .vrm outfit to data/wardrobe.json. Browser-direct upload
+              to Vercel Blob, then paste the snippet.
+            </span>
+          </Link>
         </nav>
 
         <footer className="flex justify-between border-t border-warm-black-700 pt-4">
