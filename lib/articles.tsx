@@ -43,9 +43,19 @@ import { entry as whereTheStudioHasLivedEntry } from "components/articles/entrie
 import { entry as whyIBuildModularEntry } from "components/articles/entries/why-i-build-modular";
 import { entry as whyIBuildMyOwnRigsEntry } from "components/articles/entries/why-i-build-my-own-rigs";
 import { entry as whyThePendantGlowsFromTheInsideEntry } from "components/articles/entries/why-the-pendant-glows-from-the-inside";
+import { entry as whosWhoUkArPeopleEntry } from "components/articles/entries/whos-who-uk-ar-people";
+import { entry as whosWhoUkFireArtPhotographersEntry } from "components/articles/entries/whos-who-uk-fire-art-photographers";
+import { entry as whosWhoUkLightPaintersEntry } from "components/articles/entries/whos-who-uk-light-painters";
+import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entries/whos-who-uk-motion-capture";
+import { entry as whosWhoUkVrPeopleEntry } from "components/articles/entries/whos-who-uk-vr-people";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  whosWhoUkFireArtPhotographersEntry,
+  whosWhoUkLightPaintersEntry,
+  whosWhoUkMotionCaptureEntry,
+  whosWhoUkVrPeopleEntry,
+  whosWhoUkArPeopleEntry,
   thePrintabilityOracleEntry,
   jonThePhotographerEntry,
   wallsTunnelForeshoreEntry,
