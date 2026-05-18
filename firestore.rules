@@ -150,5 +150,15 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Printfile orders — customer STL/GLB intake from printfiles@
+    // holoflow.co.uk. Reads would expose customer emails + their
+    // private 3D files (which we drop-ship to a print farm). Writes
+    // would let a visitor inject fake orders. Admin SDK only; the
+    // /admin/printfiles dashboard reads via the server (server
+    // component fetch) so it bypasses these rules.
+    match /printfile_orders/{id} {
+      allow read, write: if false;
+    }
+
   }
 }
