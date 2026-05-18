@@ -69,6 +69,19 @@ export const SPEED_RAMP_PER_TICK = 0.001;
 export const BANTER_TICK_MS = 12_000;
 
 /**
+ * Per-session cap on banter LLM calls. The loop fires every
+ * BANTER_TICK_MS (12s) while phase is run/encounter; without a cap a
+ * visitor who leaves the tab open racks ~300 Gemini calls per hour.
+ * 60 = ~12 minutes of continuous run before the loop quiets, which
+ * comfortably covers a real session and shuts down accidental abuse.
+ * The runner stops firing past this cap and logs once at info level
+ * so operators can see it in runtime logs.
+ *
+ * Override at runtime by passing `maxBanterCalls` to `<GameLoopRunner>`.
+ */
+export const MAX_BANTER_CALLS_PER_SESSION = 60;
+
+/**
  * Random-event trigger threshold (`Math.random() > THRESHOLD`).
  * 0.6 = ~40% of banter ticks fire a random-event banter.
  */

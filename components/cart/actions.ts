@@ -1,9 +1,11 @@
 "use server";
 
 import { TAGS } from "lib/constants";
+import { createLogger, errToObject } from "lib/log";
 import {
   addToCart,
   createCart,
+  CartNotInitialisedError,
   getCart,
   removeFromCart,
   updateCart,
@@ -11,6 +13,8 @@ import {
 import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+const log = createLogger("cart.actions");
 
 export async function addItem(
   prevState: any,
@@ -24,6 +28,21 @@ export async function addItem(
     await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
     updateTag(TAGS.cart);
   } catch (e) {
+    // Race-safe recovery: the cart cookie may not have landed yet on the
+    // very first visit (CartProvider's createCartAndSetCookie races a
+    // fast click). Create + retry once before surfacing an error to the
+    // user.
+    if (e instanceof CartNotInitialisedError) {
+      try {
+        const cart = await createCart();
+        (await cookies()).set("cartId", cart.id!);
+        await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
+        updateTag(TAGS.cart);
+        return;
+      } catch {
+        return "Error adding item to cart";
+      }
+    }
     return "Error adding item to cart";
   }
 }
@@ -90,7 +109,7 @@ export async function updateItemQuantity(
 
     updateTag(TAGS.cart);
   } catch (e) {
-    console.error(e);
+    log.error("updateItemQuantity failed", { err: errToObject(e) });
     return "Error updating item quantity";
   }
 }

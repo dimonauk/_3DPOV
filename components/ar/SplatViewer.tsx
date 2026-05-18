@@ -32,7 +32,10 @@
  */
 
 import { useEffect, useRef } from "react";
+import { createLogger, errToObject } from "lib/log";
 import type { Card } from "lib/ar/types";
+
+const log = createLogger("ar.SplatViewer");
 
 type SplatViewerProps = { card: Card; splatUrl: string };
 
@@ -86,6 +89,17 @@ export default function SplatViewer({ card, splatUrl }: SplatViewerProps) {
         renderMode: GaussianSplats3D.RenderMode.OnChange,
       });
 
+      // Register the dispose hook BEFORE awaiting addSplatScene so an
+      // exception (or a fast unmount) on that await doesn't orphan the
+      // already-allocated Viewer + its WebGL context.
+      disposeRef.current = () => {
+        try {
+          viewer.dispose();
+        } catch {
+          // ignore dispose errors on unmount
+        }
+      };
+
       try {
         await viewer.addSplatScene(splatUrl, {
           progressiveLoad: splatUrl.endsWith(".ply") || splatUrl.endsWith(".splat"),
@@ -94,21 +108,11 @@ export default function SplatViewer({ card, splatUrl }: SplatViewerProps) {
           rotation: [0, 0, 0, 1],
           scale: [1, 1, 1],
         });
-        if (cancelled) {
-          viewer.dispose();
-          return;
-        }
+        if (cancelled) return; // cleanup runs from the returned ref
         viewer.start();
-
-        disposeRef.current = () => {
-          try {
-            viewer.dispose();
-          } catch {
-            // ignore dispose errors on unmount
-          }
-        };
       } catch (err) {
-        console.error("SplatViewer: failed to load scene", err);
+        log.error("failed to load scene", { err: errToObject(err) });
+        // dispose hook already wired — cleanup will release the viewer.
       }
     })();
 

@@ -105,6 +105,8 @@ export function useVoice(): VoiceState & VoiceControls {
 
   const sttWorkerRef = useRef<Worker | null>(null);
   const ttsWorkerRef = useRef<Worker | null>(null);
+  const sttListenerRef = useRef<((e: MessageEvent) => void) | null>(null);
+  const ttsListenerRef = useRef<((e: MessageEvent) => void) | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
@@ -112,6 +114,11 @@ export function useVoice(): VoiceState & VoiceControls {
     ((value: string | null) => void) | null
   >(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
+  // Tracks the current Blob URL feeding the audio element so we can
+  // revoke it before assigning a replacement (or on unmount). Without
+  // this, every TTS reply leaks one URL into the document's internal
+  // table and the page never gives that memory back.
+  const audioUrlRef = useRef<string | null>(null);
   const speakResolverRef = useRef<(() => void) | null>(null);
 
   // ---------- STT worker lazy init ------------------------------------
@@ -123,7 +130,7 @@ export function useVoice(): VoiceState & VoiceControls {
       new URL("./whisper-worker.ts", import.meta.url),
       { type: "module" },
     );
-    worker.addEventListener("message", (e: MessageEvent) => {
+    const listener = (e: MessageEvent) => {
       const data = e.data as {
         status?: string;
         data?: { text?: string } | string;
@@ -159,7 +166,9 @@ export function useVoice(): VoiceState & VoiceControls {
           resolver(null);
         }
       }
-    });
+    };
+    worker.addEventListener("message", listener);
+    sttListenerRef.current = listener;
     sttWorkerRef.current = worker;
     return worker;
   }, []);
@@ -173,13 +182,20 @@ export function useVoice(): VoiceState & VoiceControls {
       new URL("./kokoro-worker.ts", import.meta.url),
       { type: "module" },
     );
-    worker.addEventListener("message", (e: MessageEvent) => {
+    const listener = (e: MessageEvent) => {
       const data = e.data as { status?: string; audio?: Blob | null; error?: string };
       if (data.status === "ready") {
         setState((s) => ({ ...s, ttsReady: true, ttsLoading: false }));
       } else if (data.status === "complete") {
         if (data.audio) {
+          // Revoke the previous Blob URL before assigning a new one.
+          // The audio element doesn't release the prior src on its own.
+          if (audioUrlRef.current) {
+            URL.revokeObjectURL(audioUrlRef.current);
+            audioUrlRef.current = null;
+          }
           const url = URL.createObjectURL(data.audio);
+          audioUrlRef.current = url;
           if (!audioElRef.current) {
             audioElRef.current = new Audio();
             audioElRef.current.addEventListener("ended", () => {
@@ -230,7 +246,9 @@ export function useVoice(): VoiceState & VoiceControls {
           resolver();
         }
       }
-    });
+    };
+    worker.addEventListener("message", listener);
+    ttsListenerRef.current = listener;
     worker.postMessage({ type: "load" });
     ttsWorkerRef.current = worker;
     return worker;
@@ -274,14 +292,16 @@ export function useVoice(): VoiceState & VoiceControls {
           type: recorder.mimeType || "audio/webm",
         });
         recordedChunksRef.current = [];
+        // AudioContext must be closed even when decodeAudioData throws —
+        // otherwise the per-origin context budget leaks on every bad mic.
+        let audioCtx: AudioContext | null = null;
         try {
           // Decode → resample → ship to worker.
           const arrayBuf = await blob.arrayBuffer();
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const audioCtx = new (window.AudioContext ||
+          audioCtx = new (window.AudioContext ||
             (window as any).webkitAudioContext)();
           const decoded = await audioCtx.decodeAudioData(arrayBuf);
-          await audioCtx.close();
           const float32 = resampleToMono16k(decoded);
           transcribeResolverRef.current = resolve;
           ensureSttWorker().postMessage({ audio: float32 });
@@ -293,6 +313,12 @@ export function useVoice(): VoiceState & VoiceControls {
             sttError: `decode: ${message}`,
           }));
           resolve(null);
+        } finally {
+          try {
+            await audioCtx?.close();
+          } catch {
+            // Already closed, or browser refused — nothing we can do.
+          }
         }
       };
       recorder.stop();
@@ -342,11 +368,33 @@ export function useVoice(): VoiceState & VoiceControls {
   useEffect(() => {
     return () => {
       mediaStreamRef.current?.getTracks().forEach((t) => t.stop());
+      // Detach the message listeners before terminating the workers.
+      // Without this, a worker that was re-created after a mic toggle
+      // can fire stale listeners against an unmounted component.
+      if (sttWorkerRef.current && sttListenerRef.current) {
+        sttWorkerRef.current.removeEventListener(
+          "message",
+          sttListenerRef.current,
+        );
+      }
+      if (ttsWorkerRef.current && ttsListenerRef.current) {
+        ttsWorkerRef.current.removeEventListener(
+          "message",
+          ttsListenerRef.current,
+        );
+      }
+      sttListenerRef.current = null;
+      ttsListenerRef.current = null;
       sttWorkerRef.current?.terminate();
       ttsWorkerRef.current?.terminate();
       if (audioElRef.current) {
         audioElRef.current.pause();
         audioElRef.current.src = "";
+      }
+      // Final Blob URL release — every TTS reply allocated one.
+      if (audioUrlRef.current) {
+        URL.revokeObjectURL(audioUrlRef.current);
+        audioUrlRef.current = null;
       }
     };
   }, []);

@@ -33,7 +33,10 @@
  */
 
 import { useEffect, useRef } from "react";
+import { createLogger, errToObject } from "lib/log";
 import type { Card } from "lib/ar/types";
+
+const log = createLogger("ar.ModelViewerNative");
 
 // React 19: JSX namespace lives inside "react", not as a global.
 // This declaration makes <model-viewer /> typecheck.
@@ -56,7 +59,7 @@ export default function ModelViewerNative({ card }: { card: Card }) {
     loadedRef.current = true;
     // Web component import side-effects only — no top-level await needed.
     import("@google/model-viewer").catch((err) => {
-      console.error("Failed to load model-viewer:", err);
+      log.error("Failed to load model-viewer", { err: errToObject(err) });
     });
   }, []);
 

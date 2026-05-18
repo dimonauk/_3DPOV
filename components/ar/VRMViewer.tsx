@@ -33,12 +33,15 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { createLogger, errToObject } from "lib/log";
 import type { Card } from "lib/ar/types";
 import {
   ALL_ANIMATIONS,
   ANIMATION_GLYPH,
   type AnimationName,
 } from "lib/vrm/animationMap";
+
+const log = createLogger("ar.VRMViewer");
 
 type VRMViewerProps = {
   card: Card;
@@ -69,6 +72,27 @@ export default function VRMViewer({
     const container = containerRef.current;
     if (!container) return;
 
+    // Progressive cleanup: each resource registers its own teardown
+    // hook as it's created. If React unmounts mid-load (fast nav,
+    // route change during VRM fetch), the cleanup callback below
+    // runs every registered hook, releasing everything that exists
+    // at the moment of cancellation. The previous shape only wired
+    // a single disposeRef.current AFTER the full pipeline succeeded,
+    // so renderer + scene + listeners allocated during load could
+    // be orphaned on cancellation.
+    const cleanupFns: Array<() => void> = [];
+    const runCleanup = () => {
+      while (cleanupFns.length > 0) {
+        const fn = cleanupFns.pop();
+        try {
+          fn?.();
+        } catch {
+          // Best-effort teardown; never throw during cleanup.
+        }
+      }
+    };
+    disposeRef.current = runCleanup;
+
     (async () => {
       const [
         THREE,
@@ -97,6 +121,12 @@ export default function VRMViewer({
       renderer.setSize(width, height);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
+      cleanupFns.push(() => {
+        renderer.dispose();
+        if (renderer.domElement.parentNode === container) {
+          container.removeChild(renderer.domElement);
+        }
+      });
 
       // Three-point lighting.
       scene.add(new THREE.AmbientLight(0xffffff, 1.0));
@@ -127,16 +157,39 @@ export default function VRMViewer({
         // Face the camera.
         vrm.scene.rotation.y = Math.PI;
         scene.add(vrm.scene);
+        cleanupFns.push(() => {
+          if (vrm?.scene) {
+            VRMUtils.deepDispose(vrm.scene);
+            scene.remove(vrm.scene);
+          }
+        });
 
         // Animation mixer + controller.
         mixer = new THREE.AnimationMixer(vrm.scene);
         controller = new AnimationController(vrm, mixer);
         controllerRef.current = controller;
+        cleanupFns.push(() => {
+          // Defensive flush before controller.dispose() — bounds the
+          // tab-switch-under-load class of leak by stopping every
+          // action and releasing the cached clip→action binding for
+          // the GLB root, even if the AnimationController's own
+          // teardown ever drifts from stopping every action.
+          try {
+            mixer?.stopAllAction();
+            if (mixer && vrm?.scene) {
+              mixer.uncacheRoot(vrm.scene);
+            }
+          } catch {
+            // Best-effort; never throw during cleanup.
+          }
+          controller?.dispose();
+          controllerRef.current = null;
+        });
         await controller.startIdle();
         if (cancelled) return;
         setReady(true);
       } catch (err) {
-        console.error("VRMViewer: failed to load avatar", err);
+        log.error("failed to load avatar", { err: errToObject(err) });
       }
 
       // --- Window event subscribers ---
@@ -145,7 +198,7 @@ export default function VRMViewer({
         const name = detail?.name as AnimationName | undefined;
         if (!controller || !name) return;
         if (!(ALL_ANIMATIONS as string[]).includes(name)) {
-          console.warn("VRMViewer: unknown animation", name);
+          log.warn("unknown animation", { name });
           return;
         }
         void controller.playOneShot(name);
@@ -155,10 +208,14 @@ export default function VRMViewer({
       };
       window.addEventListener(PLAY_EVENT, onPlay);
       window.addEventListener(IDLE_EVENT, onIdle);
+      cleanupFns.push(() => {
+        window.removeEventListener(PLAY_EVENT, onPlay);
+        window.removeEventListener(IDLE_EVENT, onIdle);
+      });
 
       // --- Render loop ---
       const clock = new THREE.Clock();
-      let raf = 0;
+      let raf: number | null = null;
       const animate = () => {
         const dt = clock.getDelta();
         if (mixer) mixer.update(dt);
@@ -167,6 +224,9 @@ export default function VRMViewer({
         raf = requestAnimationFrame(animate);
       };
       animate();
+      cleanupFns.push(() => {
+        if (raf !== null) cancelAnimationFrame(raf);
+      });
 
       // --- Resize ---
       const handleResize = () => {
@@ -178,23 +238,7 @@ export default function VRMViewer({
       };
       const resizeObs = new ResizeObserver(handleResize);
       resizeObs.observe(container);
-
-      disposeRef.current = () => {
-        cancelAnimationFrame(raf);
-        resizeObs.disconnect();
-        window.removeEventListener(PLAY_EVENT, onPlay);
-        window.removeEventListener(IDLE_EVENT, onIdle);
-        controller?.dispose();
-        controllerRef.current = null;
-        if (vrm?.scene) {
-          VRMUtils.deepDispose(vrm.scene);
-          scene.remove(vrm.scene);
-        }
-        renderer.dispose();
-        if (renderer.domElement.parentNode === container) {
-          container.removeChild(renderer.domElement);
-        }
-      };
+      cleanupFns.push(() => resizeObs.disconnect());
     })();
 
     return () => {

@@ -17,7 +17,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { createLogger, errToObject } from "lib/log";
 import type { Card } from "lib/ar/types";
+
+const log = createLogger("ar.MindARScene");
 
 type Status = "idle" | "loading" | "ready" | "running" | "scanning" | "tracked" | "error";
 
@@ -112,7 +115,7 @@ export default function MindARScene({ card }: { card: Card }) {
       } else {
         setError(err?.message ?? "Unknown error initialising AR. Try reloading.");
       }
-      console.error("MindAR error:", err);
+      log.error("MindAR error", { err: errToObject(err) });
     }
   }, [card]);
 

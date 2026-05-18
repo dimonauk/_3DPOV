@@ -87,12 +87,37 @@ function normaliseHex(s: string): string {
 }
 
 /**
+ * Per-field length cap. No legitimate card field needs more than 1024
+ * characters (URLs are typically <200 chars, bios under 500). A
+ * malformed CSV with an unclosed quote would otherwise grow `field`
+ * unbounded as the parser consumes commas, newlines, and the rest of
+ * the file as raw bytes — turning a 1 MB upload into a guaranteed
+ * Lambda OOM. The cap is generous for honest input and shuts down
+ * the DoS vector at the parser boundary.
+ */
+const MAX_FIELD_CHARS = 1024;
+
+export class CsvFieldTooLargeError extends Error {
+  constructor(public readonly atIndex: number) {
+    super(
+      `csv field exceeds ${MAX_FIELD_CHARS} chars at byte ${atIndex} — ` +
+        "probable unclosed quote or pathological row",
+    );
+    this.name = "CsvFieldTooLargeError";
+  }
+}
+
+/**
  * Parse a CSV string (RFC 4180-ish — handles double-quoted fields
  * including escaped quotes "") into an array of rows. Each row is
  * an object keyed by lowercased header.
  *
  * No dependencies — papaparse / csv-parse would be heavier than
  * needed here for the bounded set of expected columns.
+ *
+ * Throws `CsvFieldTooLargeError` when any single field would exceed
+ * MAX_FIELD_CHARS — the route handler catches this and returns a
+ * 400 to the caller instead of OOMing the worker.
  */
 export function parseCsv(text: string): Array<Record<string, string>> {
   const rows: string[][] = [];
@@ -102,13 +127,24 @@ export function parseCsv(text: string): Array<Record<string, string>> {
   let i = 0;
   const len = text.length;
 
+  // Centralised append so the length cap is checked once per char,
+  // covering every place that grows `field` (escaped-quote, quoted-
+  // content, unquoted-content). The bare `field += c` of the prior
+  // shape skipped this check on three paths.
+  const appendChar = (ch: string): void => {
+    if (field.length >= MAX_FIELD_CHARS) {
+      throw new CsvFieldTooLargeError(i);
+    }
+    field += ch;
+  };
+
   while (i < len) {
     const c = text[i];
     if (inQuotes) {
       if (c === '"') {
         // Escaped quote? Peek the next char.
         if (text[i + 1] === '"') {
-          field += '"';
+          appendChar('"');
           i += 2;
           continue;
         }
@@ -116,7 +152,7 @@ export function parseCsv(text: string): Array<Record<string, string>> {
         i++;
         continue;
       }
-      field += c;
+      appendChar(c!);
       i++;
       continue;
     }
@@ -141,7 +177,7 @@ export function parseCsv(text: string): Array<Record<string, string>> {
       else i++;
       continue;
     }
-    field += c;
+    appendChar(c!);
     i++;
   }
   if (field.length > 0 || cur.length > 0) {

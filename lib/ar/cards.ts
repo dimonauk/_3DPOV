@@ -1,8 +1,11 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { createLogger, errToObject } from "lib/log";
 import type { Card } from "./types";
 
 const CARDS_DIR = path.join(process.cwd(), "data", "cards");
+
+const log = createLogger("ar.cards");
 
 /**
  * Load a single card by slug. Two-tier lookup:
@@ -42,7 +45,7 @@ export async function getCard(slug: string): Promise<Card | null> {
     return doc?.card ?? null;
   } catch (err) {
     // Firestore failures should not break the page — log and treat as not-found.
-    console.warn("[lib/ar/cards] Firestore lookup failed for slug:", slug, err);
+    log.warn("Firestore lookup failed", { slug, err: errToObject(err) });
     return null;
   }
 }

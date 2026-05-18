@@ -2,14 +2,18 @@
 
 import { useEffect, useRef } from "react";
 
+import { createLogger } from "lib/log";
+
+const log = createLogger("HolofoilDice");
+
 /**
  * Holofoil Dice — WebGL raymarching shader by Jaenam (2025-12-07,
  * CC BY-NC-SA 4.0). Original Twigl source:
  * https://x.com/Jaenam97/status/1997653539078693351
  *
  * Ported to WebGL 1.0 / GLSL ES 1.0 to match Twigl's runtime exactly
- * (Twigl targets WebGL 1.0). tanh polyfilled. Aggressive diagnostic
- * logging — open DevTools console to see [HolofoilDice] lines.
+ * (Twigl targets WebGL 1.0). tanh polyfilled. Diagnostic logging
+ * routes through `lib/log` — set LOG_LEVEL=debug to see init detail.
  */
 
 const VERTEX_SHADER = `
@@ -90,18 +94,18 @@ function compile(
 ) {
   const sh = gl.createShader(type);
   if (!sh) {
-    console.error(`[HolofoilDice] failed to create ${label} shader`);
+    log.error("failed to create shader", { label });
     return null;
   }
   gl.shaderSource(sh, src);
   gl.compileShader(sh);
   if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-    const log = gl.getShaderInfoLog(sh);
-    console.error(`[HolofoilDice] ${label} compile error:\n${log}`);
+    const info = gl.getShaderInfoLog(sh);
+    log.error("compile error", { label, info });
     gl.deleteShader(sh);
     return null;
   }
-  console.log(`[HolofoilDice] ${label} compiled ✓`);
+  log.debug("shader compiled", { label });
   return sh;
 }
 
@@ -111,10 +115,10 @@ export function HolofoilDice() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
-      console.error("[HolofoilDice] no canvas ref");
+      log.error("no canvas ref");
       return;
     }
-    console.log("[HolofoilDice] mounting", {
+    log.debug("mounting", {
       clientW: canvas.clientWidth,
       clientH: canvas.clientHeight,
     });
@@ -128,14 +132,13 @@ export function HolofoilDice() {
       canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
 
     if (!gl) {
-      console.error("[HolofoilDice] WebGL not supported on this browser");
+      log.error("WebGL not supported on this browser");
       return;
     }
-    console.log(
-      "[HolofoilDice] WebGL ctx ✓",
-      gl.getParameter(gl.VERSION),
-      gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
-    );
+    log.debug("WebGL ctx acquired", {
+      version: gl.getParameter(gl.VERSION),
+      sl: gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
+    });
 
     const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER, "vertex");
     const fs = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER, "fragment");
@@ -143,21 +146,18 @@ export function HolofoilDice() {
 
     const prog = gl.createProgram();
     if (!prog) {
-      console.error("[HolofoilDice] failed to create program");
+      log.error("failed to create program");
       return;
     }
     gl.attachShader(prog, vs);
     gl.attachShader(prog, fs);
     gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.error(
-        "[HolofoilDice] program link error:\n",
-        gl.getProgramInfoLog(prog),
-      );
+      log.error("program link error", { info: gl.getProgramInfoLog(prog) });
       return;
     }
     gl.useProgram(prog);
-    console.log("[HolofoilDice] program linked ✓");
+    log.debug("program linked");
 
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -230,12 +230,10 @@ export function HolofoilDice() {
       gl.uniform4f(uMouse, mouseX, mouseY, mouseDown, 0);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       if (frameCount === 0) {
-        console.log(
-          "[HolofoilDice] first frame drawn at",
-          canvas.width,
-          "×",
-          canvas.height,
-        );
+        log.debug("first frame drawn", {
+          width: canvas.width,
+          height: canvas.height,
+        });
       }
       frameCount++;
       raf = requestAnimationFrame(tick);

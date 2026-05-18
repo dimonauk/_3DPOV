@@ -33,6 +33,7 @@ import "server-only";
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
 import { FieldValue, type Firestore } from "firebase-admin/firestore";
 import { hashIp } from "lib/cards/ip-hash";
+import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 export { hashIp };
 
@@ -57,19 +58,23 @@ export type CardEvent = {
 
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 30;
-const rateLog = new Map<string, number[]>();
 
-function checkRate(ipHash: string): boolean {
-  const now = Date.now();
-  const list = rateLog.get(ipHash) ?? [];
-  const recent = list.filter((t) => now - t < RATE_WINDOW_MS);
-  if (recent.length >= RATE_MAX) {
-    rateLog.set(ipHash, recent);
-    return false;
-  }
-  recent.push(now);
-  rateLog.set(ipHash, recent);
-  return true;
+// Shared limiter — module-scoped. In-memory fallback (matching the
+// previous local-Map behaviour exactly when Upstash env isn't set);
+// auto-upgrades to Upstash Redis when UPSTASH_REDIS_REST_URL +
+// UPSTASH_REDIS_REST_TOKEN are configured so the cap holds across
+// Fluid Compute isolates / scale-outs. Without this, analytics
+// poisoning could route through cold-start isolates and bypass the
+// 30/min/IP-hash cap.
+const eventLimiter = createFixedWindowLimiter({
+  scope: "cards.events",
+  limit: RATE_MAX,
+  windowMs: RATE_WINDOW_MS,
+});
+
+async function checkRate(ipHash: string): Promise<boolean> {
+  const result = await eventLimiter.consume(ipHash);
+  return result.ok;
 }
 
 const ALLOWED_TYPES: CardEventType[] = [
@@ -109,7 +114,7 @@ export async function recordCardEvent(input: RecordInput): Promise<RecordResult>
   }
 
   const ipHash = input.ip ? hashIp(input.ip) : "anon";
-  if (!checkRate(ipHash)) {
+  if (!(await checkRate(ipHash))) {
     return { ok: false, error: "rate_limited" };
   }
 
@@ -120,8 +125,13 @@ export async function recordCardEvent(input: RecordInput): Promise<RecordResult>
     return { ok: false, error: "no_admin" };
   }
 
-  const truncate = (s: string | null | undefined, max: number) =>
-    s ? s.slice(0, max) : undefined;
+  // Use null (not undefined) as the absence marker — Firestore writes
+  // null fine but rejects undefined with a hard error, which made every
+  // event POST without all optional fields 500 before this. Reading
+  // back, both null and missing-field code paths render the same in
+  // the dashboard (`?? "(direct)"` etc.), so null is the safe pick.
+  const truncate = (s: string | null | undefined, max: number): string | null =>
+    s ? s.slice(0, max) : null;
 
   const doc = {
     type: input.type,

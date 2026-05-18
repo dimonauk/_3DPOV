@@ -96,10 +96,32 @@ export async function createCart(): Promise<Cart> {
   return reshapeCart(res.body.data.cartCreate.cart);
 }
 
+/**
+ * Pulls the cartId cookie and throws a typed CartNotInitialisedError
+ * when it's missing — preferable to the previous non-null assertion,
+ * which let `undefined` flow into the Shopify mutation and produced a
+ * confusing 400. Callers in components/cart/actions.ts are expected to
+ * catch this and either create-and-retry (for addItem) or surface a
+ * user-facing message (for remove/update — those flows assume a cart
+ * already exists from the prior getCart() call).
+ */
+export class CartNotInitialisedError extends Error {
+  constructor() {
+    super("Cart not initialised — no cartId cookie present.");
+    this.name = "CartNotInitialisedError";
+  }
+}
+
+async function requireCartId(): Promise<string> {
+  const cartId = (await cookies()).get("cartId")?.value;
+  if (!cartId) throw new CartNotInitialisedError();
+  return cartId;
+}
+
 export async function addToCart(
   lines: { merchandiseId: string; quantity: number }[]
 ): Promise<Cart> {
-  const cartId = (await cookies()).get("cartId")?.value!;
+  const cartId = await requireCartId();
   const res = await shopifyFetch<ShopifyAddToCartOperation>({
     query: addToCartMutation,
     variables: {
@@ -111,7 +133,7 @@ export async function addToCart(
 }
 
 export async function removeFromCart(lineIds: string[]): Promise<Cart> {
-  const cartId = (await cookies()).get("cartId")?.value!;
+  const cartId = await requireCartId();
   const res = await shopifyFetch<ShopifyRemoveFromCartOperation>({
     query: removeFromCartMutation,
     variables: {
@@ -126,7 +148,7 @@ export async function removeFromCart(lineIds: string[]): Promise<Cart> {
 export async function updateCart(
   lines: { id: string; merchandiseId: string; quantity: number }[]
 ): Promise<Cart> {
-  const cartId = (await cookies()).get("cartId")?.value!;
+  const cartId = await requireCartId();
   const res = await shopifyFetch<ShopifyUpdateCartOperation>({
     query: editCartItemsMutation,
     variables: {

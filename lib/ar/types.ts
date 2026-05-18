@@ -156,11 +156,13 @@ export interface Card {
   /**
    * Optional booking integration. When set, the card landing shows a
    * "Book a meeting" embed pointing at the configured URL.
+   *
+   * (Previously declared twice on this interface — the second copy is
+   * collapsed into this single canonical declaration. Same shape, same
+   * optionality; no callers affected.)
    */
   calendar?: CardCalendar;
   print: CardPrintSpec;
-  /** Optional booking surface */
-  calendar?: CardCalendar;
   /** ISO timestamp when card was created/issued */
   issuedAt: string;
   /** Set true if this card should appear on the public /cards index */

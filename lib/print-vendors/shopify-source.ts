@@ -18,6 +18,7 @@
  * site continues to use `studio-manchester.ts` as the source of truth.
  */
 
+import { createLogger, errToObject } from "lib/log";
 import { shopifyFetch } from "lib/shopify/_internal";
 import type {
   PrintFinishSlug,
@@ -27,6 +28,8 @@ import type {
   PrintScaleSlug,
   PrintVendor,
 } from "./_base";
+
+const log = createLogger("print-vendors.shopify-source");
 
 /** The handle of the active vendor metaobject entry in Shopify. */
 const VENDOR_HANDLE = process.env.SHOPIFY_VENDOR_METAOBJECT_HANDLE;
@@ -111,7 +114,9 @@ export async function fetchVendorFromShopify(): Promise<PrintVendor | null> {
     if (!node) return null;
     return parseVendor(node);
   } catch (err) {
-    console.warn("[print-vendors] Shopify fetch failed; using hand-curated.", err);
+    log.warn("Shopify fetch failed; using hand-curated", {
+      err: errToObject(err),
+    });
     return null;
   }
 }

@@ -16,6 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { aura } from "lib/cast/aura";
 import {
   DEFAULT_WEBGPU_MODEL,
+  disposeWebGpuEngine,
   probeWebGpuChatSupport,
   respondWebGpu,
   type WebGpuChatSupport,
@@ -51,8 +52,16 @@ export default function WebLLMChat({
     });
     return () => {
       cancelled = true;
+      // Dispose THIS page's engine on unmount so WebGPU device +
+      // worker threads don't survive the navigation away. The
+      // IndexedDB model weights stay cached so a re-visit only
+      // pays the engine-init cost (seconds), not the download
+      // cost (1.5-2 GB). The site-wide AuraLauncher deliberately
+      // does NOT call this on close — its engine stays warm for
+      // the next open.
+      void disposeWebGpuEngine(model);
     };
-  }, []);
+  }, [model]);
 
   useEffect(() => {
     if (scrollerRef.current) {

@@ -36,10 +36,13 @@
  */
 
 import { TAGS } from "lib/constants";
+import { createLogger } from "lib/log";
 import {
   unstable_cacheLife as cacheLife,
   unstable_cacheTag as cacheTag,
 } from "next/cache";
+
+const log = createLogger("shopify.cached");
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
@@ -112,9 +115,9 @@ export async function getCollectionProducts({
   cacheLife("days");
 
   if (!endpoint) {
-    console.log(
-      `Skipping getCollectionProducts for '${collection}' - Shopify not configured`
-    );
+    log.info("Skipping getCollectionProducts - Shopify not configured", {
+      collection,
+    });
     return [];
   }
 
@@ -128,7 +131,7 @@ export async function getCollectionProducts({
   });
 
   if (!res.body.data.collection) {
-    console.log(`No collection found for \`${collection}\``);
+    log.info("No collection found", { collection });
     return [];
   }
 
@@ -143,7 +146,7 @@ export async function getCollections(): Promise<Collection[]> {
   cacheLife("days");
 
   if (!endpoint) {
-    console.log("Skipping getCollections - Shopify not configured");
+    log.info("Skipping getCollections - Shopify not configured");
     return [
       {
         handle: "",
@@ -191,7 +194,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
   cacheLife("days");
 
   if (!endpoint) {
-    console.log(`Skipping getMenu for '${handle}' - Shopify not configured`);
+    log.info("Skipping getMenu - Shopify not configured", { handle });
     return [];
   }
 
@@ -219,7 +222,7 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
   cacheLife("days");
 
   if (!endpoint) {
-    console.log(`Skipping getProduct for '${handle}' - Shopify not configured`);
+    log.info("Skipping getProduct - Shopify not configured", { handle });
     return undefined;
   }
 

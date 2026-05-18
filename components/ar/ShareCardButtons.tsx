@@ -31,7 +31,19 @@ export default function ShareCardButtons({ card, slug }: Props) {
   const [flash, setFlash] = useState<string | null>(null);
 
   useEffect(() => {
-    setCanNativeShare(typeof navigator !== "undefined" && !!navigator.share);
+    // Web Share API requires a secure context (https, or localhost
+    // which the platform treats as secure). Without the protocol
+    // check the button rendered on http dev origins and the tap
+    // silently no-op'd — confusing during QA. `127.0.0.1` is also
+    // a secure context per the spec.
+    const secure =
+      typeof window !== "undefined" &&
+      (window.location.protocol === "https:" ||
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1");
+    setCanNativeShare(
+      secure && typeof navigator !== "undefined" && !!navigator.share,
+    );
   }, []);
 
   const url =

@@ -11,6 +11,9 @@ import { useEffect } from "react";
 
 import { useInputStore, type HeadPose, type HeadPoseSource } from "lib/state/input";
 import { startHeadpose, stopHeadpose } from "lib/capabilities/input/headpose";
+import { createLogger, errToObject } from "lib/log";
+
+const log = createLogger("hooks.useHeadPose");
 
 export type UseHeadPoseOptions = {
   /** Tracker to start. Default "mouse" — the only implemented source in v0.1. */
@@ -40,7 +43,7 @@ export function useHeadPose(options: UseHeadPoseOptions = {}): UseHeadPoseResult
     try {
       startHeadpose({ source: requested });
     } catch (err) {
-      console.warn("useHeadPose: failed to start tracker", err);
+      log.warn("failed to start tracker", { err: errToObject(err) });
     }
     return () => stopHeadpose();
   }, [options.manual, options.source]);

@@ -12,7 +12,10 @@ import { useFrame } from "@react-three/fiber";
 import type { VRM, VRMHumanBoneName } from "@pixiv/three-vrm";
 import { Object3D } from "three";
 
+import { createLogger, errToObject } from "lib/log";
 import { vrmStore, type VRMHandleId } from "lib/state/vrm";
+
+const log = createLogger("three.VRMAvatar");
 import { loadVRM, unloadVRM, getVRM } from "lib/capabilities/vrm/load";
 
 export type VRMAvatarProps = {
@@ -41,7 +44,7 @@ export function VRMAvatar({ url, id: idProp }: VRMAvatarProps) {
       })
       .catch((err) => {
         if (!cancelled) {
-          console.error("VRMAvatar: failed to load", url, err);
+          log.error("failed to load", { url, err: errToObject(err) });
         }
       });
 
