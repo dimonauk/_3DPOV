@@ -50,11 +50,15 @@ import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entrie
 import { entry as whosWhoUkVrPeopleEntry } from "components/articles/entries/whos-who-uk-vr-people";
 import { entry as osintForFindingYourPeopleEntry } from "components/articles/entries/osint-for-finding-your-people";
 import { entry as theOsintStackForCreativeResearchEntry } from "components/articles/entries/the-osint-stack-for-creative-research";
+import { entry as emulationAsACreativeToolEntry } from "components/articles/entries/emulation-as-a-creative-tool";
+import { entry as theEmulationStackForCreativeResearchEntry } from "components/articles/entries/the-emulation-stack-for-creative-research";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
   osintForFindingYourPeopleEntry,
   theOsintStackForCreativeResearchEntry,
+  emulationAsACreativeToolEntry,
+  theEmulationStackForCreativeResearchEntry,
   whosWhoUkFireArtPhotographersEntry,
   whosWhoUkLightPaintersEntry,
   whosWhoUkMotionCaptureEntry,
