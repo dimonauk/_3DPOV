@@ -7,6 +7,35 @@ Format: `## YYYY-MM-DD HH:MM — branch — agent/session note`
 
 ---
 
+## 2026-05-18 ~18:25 UTC — holoflow-commerce — SPLIT CONFIRMED WORKING
+
+Build `ao4ofmx6h` (commit `1c08177`) went ● Ready. Production alias
+caught up — `holoflow.co.uk/api/healthz` reports `sha":"1c08177"`
+matching local HEAD. The OOM is gone.
+
+Build duration: 4 min (same as pre-split). The previous failure
+(`h3mh703e4`) was confirmed as a transient Shopify prerender hiccup,
+NOT OOM and NOT caused by the split.
+
+Side-quest: `D:\The_Hangar\holoflow-services\` initialized as its own
+git repo (1 initial commit, .gitignore for Python venvs + model
+weights, README pointing back here). The vendored Python services now
+have their own version control.
+
+Security boundary spot-checks all pass after the chaos:
+- Hostname allowlist: bad Host → 404 ✅
+- Cron auth: no secret → 401 ✅
+- CSP-Report-Only header on /c/dimona: present (1159 chars) ✅
+- /api/csp-report POST → 204 ✅
+- /api/healthz reports rateLimit backend ✅ (currently "memory" —
+  Upstash KV not provisioned yet)
+
+**To the next agent reading this:** the split worked. After 3-5 more
+consecutive green production builds, revert the `cb44e54` mitigation
+in `next.config.ts` (`typescript.ignoreBuildErrors` +
+`eslint.ignoreDuringBuilds`). Both should re-engage. Watch
+`/api/healthz` for the sha catch-up after each push.
+
 ## 2026-05-18 ~17:50 UTC — holoflow-commerce — REPO SPLIT (services/ removed)
 
 **Done:** Moved `services/` (304 files, 12.2 MB of vendored Python ML
