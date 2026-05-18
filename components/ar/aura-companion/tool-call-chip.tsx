@@ -29,6 +29,7 @@ export function ToolCallChip({
     save_to_wallet: "💳",
     play_animation: "🎭",
     change_outfit: "👗",
+    set_emotion: "✨",
   };
   const LABELS: Record<string, string> = {
     capture_lead: "Saving lead",
@@ -38,6 +39,7 @@ export function ToolCallChip({
     save_to_wallet: "Wallet save",
     play_animation: "Posing",
     change_outfit: "Changing outfit",
+    set_emotion: "Mood",
   };
   const icon = ICONS[call.name] ?? "▸";
   const label = LABELS[call.name] ?? call.name;
@@ -60,6 +62,11 @@ export function ToolCallChip({
     argPreview = a["name"] as string;
   } else if (call.name === "change_outfit" && typeof a["slug"] === "string") {
     argPreview = a["slug"] as string;
+  } else if (
+    call.name === "set_emotion" &&
+    typeof a["emotion"] === "string"
+  ) {
+    argPreview = a["emotion"] as string;
   }
 
   return (

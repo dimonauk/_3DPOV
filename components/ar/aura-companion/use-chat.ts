@@ -19,7 +19,10 @@ import { useCallback, useState } from "react";
 
 import type { Card } from "lib/ar/types";
 import { parseAuraStream } from "lib/aura/parse-ui-stream";
-import { resolveAnimationFromText } from "lib/vrm/animationMap";
+import {
+  EMOTION_TO_ANIMATION,
+  resolveAnimationFromText,
+} from "lib/vrm/animationMap";
 
 import { type ChatMessage, type ToolCallRecord } from "./types";
 
@@ -148,6 +151,20 @@ export function useAuraChat({ card, speak, onOutfitChange }: UseChatOptions) {
                   detail: { name: evt.action.name },
                 }),
               );
+            } else if (evt.action?.kind === "setEmotion") {
+              // Agent declared an emotional tone. Map emotion to an
+              // animation via the canonical EMOTION_TO_ANIMATION
+              // registry; if it resolves to a real animation (i.e.,
+              // not null/neutral), dispatch the same play-animation
+              // event the explicit play_animation tool uses.
+              const animation = EMOTION_TO_ANIMATION[evt.action.emotion];
+              if (animation) {
+                window.dispatchEvent(
+                  new CustomEvent("aura:play-animation", {
+                    detail: { name: animation },
+                  }),
+                );
+              }
             } else if (evt.action?.kind === "changeOutfit") {
               // Hand the new VRM URL up to the host; it owns the
               // currentVrmUrl state that VRMViewer re-mounts on.
@@ -170,12 +187,14 @@ export function useAuraChat({ card, speak, onOutfitChange }: UseChatOptions) {
         return next;
       });
 
-      // Keyword-based auto-animation: if Aura's reply contains words
-      // like "interesting", "well done", "goodbye", trigger the
-      // matching emote. Skip if the agent already called play_animation
-      // this turn (don't double up).
+      // Keyword-based auto-animation: a last-resort fallback. We
+      // prefer the agent's structured emotion emission — either
+      // play_animation (explicit gesture) or set_emotion (mood tag
+      // that the client maps via EMOTION_TO_ANIMATION). Only run the
+      // regex when neither fired, so we don't double up on top of the
+      // agent's own choice.
       const triggeredAnimation = turnTools.some(
-        (t) => t.name === "play_animation",
+        (t) => t.name === "play_animation" || t.name === "set_emotion",
       );
       if (!triggeredAnimation && acc.trim()) {
         const auto = resolveAnimationFromText(acc);

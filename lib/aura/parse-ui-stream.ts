@@ -62,7 +62,8 @@ export type AuraClientAction =
   | { kind: "showVcard"; slug: string; url: string; name: string }
   | { kind: "saveToWallet"; slug: string; platforms: Array<"apple" | "google"> }
   | { kind: "playAnimation"; name: string }
-  | { kind: "changeOutfit"; slug: string; label: string; url: string };
+  | { kind: "changeOutfit"; slug: string; label: string; url: string }
+  | { kind: "setEmotion"; emotion: string };
 
 export type AuraCardSummary = {
   slug: string;

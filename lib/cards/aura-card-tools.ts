@@ -330,6 +330,43 @@ export function getCardAuraTools(opts: {
     }),
 
     // ---------------------------------------------------------------
+    set_emotion: tool({
+      description: `Declare your current emotional state. Call this EARLY in your turn — ideally as the FIRST tool call before anything else — so the avatar's body language matches the words you're about to say. The client maps your emotion to the right idle animation automatically; you don't need to pick the animation yourself (use play_animation only for specific big gestures like waving goodbye or jumping for joy). Pick the single emotion that best fits THIS reply, not your overall mood. Available emotions:
+  happy, sad, angry, relaxed, curious, analytical, focused, nurturing, playful, mischievous, warm, concerned, approving, disapproving, surprised, firm, clinical, cold, neutral`,
+      inputSchema: z.object({
+        emotion: z
+          .enum([
+            "happy",
+            "sad",
+            "angry",
+            "relaxed",
+            "curious",
+            "analytical",
+            "focused",
+            "nurturing",
+            "playful",
+            "mischievous",
+            "warm",
+            "concerned",
+            "approving",
+            "disapproving",
+            "surprised",
+            "firm",
+            "clinical",
+            "cold",
+            "neutral",
+          ])
+          .describe("One emotion word that fits THIS reply's tone."),
+      }),
+      execute: async ({ emotion }) => {
+        return {
+          summary: `Emotional tone set to ${emotion}. The avatar's posture will reflect this.`,
+          action: { kind: "setEmotion" as const, emotion },
+        };
+      },
+    }),
+
+    // ---------------------------------------------------------------
     change_outfit: tool({
       description: `Swap ${card.name}'s avatar into a different outfit from the studio wardrobe. Use when the visitor asks to see a different look, when the mood of the conversation shifts (dancing → purple-dance, going outside → pink-coat, gaming → ready-player-one), or when an outfit would visually reinforce what you're saying. The change is near-instant — animation continues mid-transition. Available outfits:
 ${OUTFIT_SLUG_LIST.map((s) => `  - ${s}: ${OUTFIT_DESCRIPTIONS[s] ?? "(outfit)"}`).join("\n")}`,
