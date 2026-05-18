@@ -210,6 +210,17 @@ export function getFirebaseAdminDb(): Firestore | null {
   const app = getFirebaseAdminApp();
   if (!app) return null;
   _adminDb = getFirestore(app);
+  // Firestore admin throws "Value for argument 'data' is not a valid
+  // Firestore value" when a write payload contains undefined. The
+  // common case: API route helpers spread optional fields into a doc
+  // and any missing field becomes undefined. Turning this on makes
+  // the admin silently drop undefined keys on writes, which matches
+  // the client SDK's default behaviour.
+  try {
+    _adminDb.settings({ ignoreUndefinedProperties: true });
+  } catch {
+    // settings() throws if called twice; safe to ignore on re-init.
+  }
   return _adminDb;
 }
 

@@ -56,6 +56,13 @@ export default {
         hostname: "cdn.shopify.com",
         pathname: "/s/files/**",
       },
+      {
+        // Vercel Blob — VRMs, future wardrobe outfit previews, AI
+        // scanner uploads. Blob URLs are <store-id>.public.blob.vercel-storage.com.
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+        pathname: "/**",
+      },
     ],
   },
   // The `onnxruntime-node` package ships native `.node` binding binaries

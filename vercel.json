@@ -7,6 +7,10 @@
     {
       "path": "/api/cron/rookery-pending-emails",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/sweep-scan-temp",
+      "schedule": "0 4 * * *"
     }
   ],
   "headers": [
@@ -43,7 +47,7 @@
       "headers": [
         {
           "key": "Permissions-Policy",
-          "value": "camera=(self), gyroscope=(self), accelerometer=(self), magnetometer=(self)"
+          "value": "camera=(self), gyroscope=(self), accelerometer=(self), magnetometer=(self), microphone=(self)"
         }
       ]
     },
@@ -51,7 +55,23 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options",        "value": "SAMEORIGIN" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
+        { "key": "Strict-Transport-Security",  "value": "max-age=63072000; includeSubDomains; preload" },
+        {
+          "key": "Permissions-Policy",
+          "value": "browsing-topics=(), interest-cohort=(), payment=(), usb=(), bluetooth=(), midi=(), serial=(), hid=(), idle-detection=(), screen-wake-lock=(self)"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control",        "value": "private, no-store" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy",      "value": "no-referrer" },
+        { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" }
       ]
     }
   ]

@@ -13,6 +13,10 @@ import "server-only";
  *   - We never confirm the lead via email to the visitor (no double-
  *     opt-in spam vector); the card owner can follow up directly.
  *
+ * Rate limiting goes through lib/rate-limit, which auto-uses Upstash
+ * Redis when KV_REST_API_URL is set (cross-region consistent) and
+ * falls back to in-memory per-instance Maps otherwise.
+ *
  * If RESEND_API_KEY is set, an instant notification is sent to the
  * card's contact.email when a lead arrives. This is purely a
  * convenience — leads always land in Firestore regardless. If Resend
@@ -22,25 +26,10 @@ import "server-only";
 import { requireFirebaseAdminDb } from "lib/firebase/admin";
 import { FieldValue, type Firestore } from "firebase-admin/firestore";
 import { hashIp } from "lib/cards/ip-hash";
+import { checkRate } from "lib/rate-limit";
 
-export { hashIp };
-
-const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 5;
-const rateLog = new Map<string, number[]>();
-
-function checkRate(ipHash: string): boolean {
-  const now = Date.now();
-  const list = rateLog.get(ipHash) ?? [];
-  const recent = list.filter((t) => now - t < RATE_WINDOW_MS);
-  if (recent.length >= RATE_MAX) {
-    rateLog.set(ipHash, recent);
-    return false;
-  }
-  recent.push(now);
-  rateLog.set(ipHash, recent);
-  return true;
-}
+const RATE_WINDOW_SEC = 60;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -82,7 +71,12 @@ export async function createCardLead(
   }
 
   const ipHash = input.ip ? hashIp(input.ip) : "anon";
-  if (!checkRate(ipHash)) {
+  const rate = await checkRate({
+    key: `lead:${input.slug}:${ipHash}`,
+    limit: RATE_MAX,
+    windowSec: RATE_WINDOW_SEC,
+  });
+  if (!rate.ok) {
     return { ok: false, error: "rate_limited" };
   }
 

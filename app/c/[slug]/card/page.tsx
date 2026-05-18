@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { getCard, listCardSlugs } from "lib/ar/cards";
@@ -51,8 +52,16 @@ export default async function CardPrintPage({ params }: PageProps) {
       <section className="cards">
         <div className="card-bleed" style={{ width: `${totalW}mm`, height: `${totalH}mm` }}>
           <div className="card-trim" style={{ width: `${w}mm`, height: `${h}mm`, margin: `${bleed}mm` }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={card.ar.targetImage} alt="" />
+            {card.ar.targetImage ? (
+              <Image
+                src={card.ar.targetImage}
+                alt={card.name}
+                fill
+                sizes={`${w}mm`}
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            ) : null}
           </div>
         </div>
 
@@ -98,9 +107,7 @@ export default async function CardPrintPage({ params }: PageProps) {
           overflow: hidden;
           position: relative;
         }
-        .card-trim img {
-          width: 100%; height: 100%; object-fit: cover; display: block;
-        }
+        
         .back-grid {
           display: grid; grid-template-columns: 1fr auto; gap: 4mm;
           width: 100%; height: 100%; align-items: end;

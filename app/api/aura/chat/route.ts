@@ -40,7 +40,7 @@ import {
 import { createLogger, errToObject } from "lib/log";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+export const maxDuration = 60;
 
 const log = createLogger("api.aura.chat");
 

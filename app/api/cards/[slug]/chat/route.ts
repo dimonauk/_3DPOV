@@ -39,6 +39,8 @@ import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
  * Auto-upgrades to Upstash Redis when env is set.
  */
 
+export const maxDuration = 60;
+
 type Params = { params: Promise<{ slug: string }> };
 
 const HOURLY_TURN_CAP = 20;
