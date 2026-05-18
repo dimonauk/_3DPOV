@@ -185,3 +185,39 @@ export type Order = {
   fulfilledAt?: string;
   notes?: string;
 };
+
+/** Event kinds for the bureau order audit log. The log is append-only
+ *  — every meaningful side-effect on an order gets a row, so the
+ *  operator dashboard can reconstruct a timeline and disputes
+ *  (chargebacks, refund claims) can be defended with a timestamped
+ *  trail. */
+export type BureauOrderEventKind =
+  | "order_created"
+  | "payment_intent_attached"
+  | "stripe_session_attached"
+  | "status_transitioned"
+  | "address_updated"
+  | "note_added"
+  | "customer_emailed"
+  | "operator_emailed";
+
+/** A single row in the audit log. Stored at
+ *  `bureau_orders/{orderId}/events/{eventId}`. */
+export type BureauOrderEvent = {
+  id: string;
+  orderId: string;
+  kind: BureauOrderEventKind;
+  /** Who caused the event. "system" for webhook-driven transitions,
+   *  "customer:<email>" for customer-initiated, "operator:<email>"
+   *  for admin-dashboard actions, "cron:<job>" for scheduled. */
+  by: string;
+  /** ISO 8601 timestamp. */
+  at: string;
+  /** Previous status when `kind === "status_transitioned"`. */
+  prevStatus?: OrderStatus;
+  /** New status when `kind === "status_transitioned"`. */
+  nextStatus?: OrderStatus;
+  /** Free-form details — anything specific to the event kind. Kept
+   *  loose because the audit log is reactive, not query-driven. */
+  details?: Record<string, string | number | boolean | null>;
+};

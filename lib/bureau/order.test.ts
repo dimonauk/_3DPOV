@@ -9,7 +9,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { mintOrderId, priceFromQuote } from "./order";
+import { mintEventId, mintOrderId, priceFromQuote } from "./order";
 import type { Quote } from "./types";
 
 describe("mintOrderId", () => {
@@ -38,6 +38,41 @@ describe("mintOrderId", () => {
     // accept to keep this test flake-free without relying on perfect
     // entropy.
     expect(ids.size).toBeGreaterThanOrEqual(99);
+  });
+});
+
+describe("mintEventId", () => {
+  it("matches the evt-<ISO compact>-<4hex> shape", () => {
+    const id = mintEventId();
+    expect(id).toMatch(/^evt-\d{8}T\d{6}-[0-9a-f]{4}$/);
+  });
+
+  it("encodes the timestamp in UTC", () => {
+    const date = new Date(Date.UTC(2026, 4, 18, 23, 59, 7));
+    const id = mintEventId(date);
+    expect(id.startsWith("evt-20260518T235907-")).toBe(true);
+  });
+
+  it("zero-pads month / day / hour / minute / second", () => {
+    const date = new Date(Date.UTC(2026, 0, 1, 0, 5, 9));
+    const id = mintEventId(date);
+    expect(id.startsWith("evt-20260101T000509-")).toBe(true);
+  });
+
+  it("sorts lexicographically in chronological order", () => {
+    const a = mintEventId(new Date(Date.UTC(2026, 0, 1, 12, 0, 0)));
+    const b = mintEventId(new Date(Date.UTC(2026, 0, 1, 12, 0, 1)));
+    const c = mintEventId(new Date(Date.UTC(2026, 0, 2, 12, 0, 0)));
+    expect([c, a, b].sort()).toEqual([a, b, c]);
+  });
+
+  it("generates distinct ids in the same second", () => {
+    const date = new Date();
+    const ids = new Set(Array.from({ length: 50 }, () => mintEventId(date)));
+    // With 16 bits of entropy a 50-item set has a ~2% collision rate;
+    // accept ≥48 unique to keep the test flake-free without depending
+    // on perfect RNG distribution.
+    expect(ids.size).toBeGreaterThanOrEqual(48);
   });
 });
 
