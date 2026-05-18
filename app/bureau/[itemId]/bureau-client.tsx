@@ -159,25 +159,16 @@ export default function BureauClient({ itemId }: { itemId: string }) {
       />
 
       <div>
-        {quoteState.kind === "ready" && orderState.kind !== "form" && orderState.kind !== "creating" && (
+        {quoteState.kind === "ready" && orderState.kind === "idle" && (
           <QuoteSummary quote={quoteState.quote} onOrder={onOrderRevealForm} />
         )}
 
-        {quoteState.kind === "ready" && (orderState.kind === "form" || orderState.kind === "creating") && (
+        {quoteState.kind === "ready" && orderState.kind !== "idle" && (
           <CustomerForm
             onSubmit={onOrderSubmit}
             onCancel={() => setOrderState({ kind: "idle" })}
             busy={orderState.kind === "creating"}
             error={orderState.kind === "error" ? orderState.message : null}
-          />
-        )}
-
-        {quoteState.kind === "ready" && orderState.kind === "error" && (
-          <CustomerForm
-            onSubmit={onOrderSubmit}
-            onCancel={() => setOrderState({ kind: "idle" })}
-            busy={false}
-            error={orderState.message}
           />
         )}
 
