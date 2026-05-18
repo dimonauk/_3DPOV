@@ -14,6 +14,8 @@ import { entry as emulatorTutorialDolphinEntry } from "components/tutorials/entr
 import { entry as emulatorTutorialMameEntry } from "components/tutorials/entries/emulator-tutorial-mame";
 import { entry as emulatorTutorialPcsx2Entry } from "components/tutorials/entries/emulator-tutorial-pcsx2";
 import { entry as emulatorTutorialDosboxXEntry } from "components/tutorials/entries/emulator-tutorial-dosbox-x";
+import { entry as instructableDemoEntry } from "components/tutorials/entries/instructable-demo";
+import { entry as tutorialDragonScaleWallReliefEntry } from "components/tutorials/entries/tutorial-dragon-scale-wall-relief";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -33,6 +35,8 @@ const ENTRIES: Entry[] = [
   from360ToSplatEntry,
   fromJamcamToMeshEntry,
   editioningASingleExposureEntry,
+  instructableDemoEntry,
+  tutorialDragonScaleWallReliefEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

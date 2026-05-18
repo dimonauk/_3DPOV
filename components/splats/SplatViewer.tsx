@@ -54,11 +54,15 @@ export default function SplatViewer({
       // rejects. We side-step by loading from esm.sh at runtime with
       // a webpackIgnore directive — webpack never parses the package
       // and the browser's native ESM loader fetches it on demand.
+      // Runtime ESM import via esm.sh; webpackIgnore tells webpack
+      // to leave it alone, TS can't resolve the remote URL statically
+      // so the import expression is cast to a generic Promise.
+      const sparkImport = (Function(
+        'return import(/* webpackIgnore: true */ "https://esm.sh/@sparkjsdev/spark@0.1.10")',
+      )()) as Promise<Record<string, unknown>>;
       const [THREE, SPARK] = await Promise.all([
         import("three"),
-        import(
-          /* webpackIgnore: true */ "https://esm.sh/@sparkjsdev/spark@0.1.10"
-        ),
+        sparkImport,
       ]);
       const host = hostRef.current;
       // Clear any leftover canvas.

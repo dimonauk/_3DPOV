@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import type { InstructableMeta } from "./tutorials/types";
 
 export type EntryKind = "journal" | "article" | "tutorial";
 
@@ -37,6 +38,14 @@ export type Entry = {
   // willing to sit and learn can get to this work. These links are the
   // ladder up.
   furtherReading?: RelatedLink[];
+  /**
+   * Optional Instructables-style structured metadata. Tutorials only.
+   * When present, the tutorial detail page renders the structured
+   * surface (chips, supplies, numbered steps, troubleshooting) below
+   * the standard `Body`. Absent on every existing entry — the layer
+   * is fully opt-in.
+   */
+  instructable?: InstructableMeta;
 };
 
 export function isExternalHref(href: string): boolean {

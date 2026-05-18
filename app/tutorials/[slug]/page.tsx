@@ -1,4 +1,5 @@
 import Footer from "components/layout/footer";
+import { Instructable } from "components/tutorials/Instructable";
 import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
@@ -54,6 +55,7 @@ export default async function TutorialPage({
         <div className="mt-12 prose-gallery text-chrome-200">
           <Body />
         </div>
+        {entry.instructable && <Instructable meta={entry.instructable} />}
         <RelatedBlock
           related={entry.related}
           furtherReading={entry.furtherReading}
