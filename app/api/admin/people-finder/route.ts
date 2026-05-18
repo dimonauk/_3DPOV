@@ -25,7 +25,10 @@ export const maxDuration = 300;
 
 const MAX_BATCH = 20;
 
-async function assertAdmin(req: NextRequest, log: { warn: (msg: string, ctx?: object) => void }): Promise<void> {
+async function assertAdmin(
+  req: NextRequest,
+  log: { warn: (msg: string, meta?: Record<string, unknown>) => void },
+): Promise<void> {
   const auth = req.headers.get("authorization") ?? "";
   const idToken = auth.startsWith("Bearer ") ? auth.slice(7) : "";
   if (!idToken) {

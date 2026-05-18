@@ -47,6 +47,11 @@ import { entry as whosWhoUkArPeopleEntry } from "components/articles/entries/who
 import { entry as whosWhoUkFireArtPhotographersEntry } from "components/articles/entries/whos-who-uk-fire-art-photographers";
 import { entry as whosWhoUkLightPaintersEntry } from "components/articles/entries/whos-who-uk-light-painters";
 import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entries/whos-who-uk-motion-capture";
+import { entry as whosWhoUkAiPeopleEntry } from "components/articles/entries/whos-who-uk-ai-people";
+import { entry as whosWhoUkArmPeopleEntry } from "components/articles/entries/whos-who-uk-arm-people";
+import { entry as whosWhoUkCpuChipPeopleEntry } from "components/articles/entries/whos-who-uk-cpu-chip-people";
+import { entry as whosWhoUkGooglePeopleEntry } from "components/articles/entries/whos-who-uk-google-people";
+import { entry as whosWhoUkMetaPeopleEntry } from "components/articles/entries/whos-who-uk-meta-people";
 import { entry as whosWhoUkPixelArtistsEntry } from "components/articles/entries/whos-who-uk-pixel-artists";
 import { entry as whosWhoUkVrPeopleEntry } from "components/articles/entries/whos-who-uk-vr-people";
 import { entry as osintForFindingYourPeopleEntry } from "components/articles/entries/osint-for-finding-your-people";
@@ -62,6 +67,11 @@ const ENTRIES: Entry[] = [
   theOsintStackForCreativeResearchEntry,
   emulationAsACreativeToolEntry,
   theEmulationStackForCreativeResearchEntry,
+  whosWhoUkAiPeopleEntry,
+  whosWhoUkArmPeopleEntry,
+  whosWhoUkCpuChipPeopleEntry,
+  whosWhoUkGooglePeopleEntry,
+  whosWhoUkMetaPeopleEntry,
   whosWhoUkPixelArtistsEntry,
   whosWhoUkFireArtPhotographersEntry,
   whosWhoUkLightPaintersEntry,
