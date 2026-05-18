@@ -232,6 +232,76 @@ For an agent picking up this repo cold:
 8. Commit + push to `claude/skeleton-build`.
 9. Update this roadmap.
 
+## Open-source leverage
+
+The platform is mostly an integration of existing open-source upstreams,
+not a from-scratch build. Every studio avenue maps to 1-3 OSS projects
+that, when plugged in, become a `/something` route on the site. The
+pattern: pick the next slot from this table, wire the upstream behind
+a thin component, ship.
+
+### Already wired
+
+| Project | Licence | Where it lives | What it gives |
+| --- | --- | --- | --- |
+| Next.js 15 | MIT | core framework | App Router, PPR, useCache |
+| EmulatorJS + libretro WASM cores | GPL | `/emulator/[system]` | 23-system BYO-ROM browser emulator |
+| Maigret | MIT | `D:/Tools/osint/.venv` | username sweep across 2,500+ platforms |
+| ExifTool | Perl/Artistic | local install path | image metadata extraction |
+| model-viewer | Apache 2 | `components/three/MeshAsset.tsx` | AR cards + 3D embed |
+| mind-ar-js | MIT | `lib/capabilities/ar/` | image-target AR compilation |
+| Three.js + R3F | MIT | atelier scenes, splat viewer | 3D rendering |
+| Sharp + @napi-rs/canvas | MIT | server-side image | thumbnail / OG / print pipelines |
+| Firebase Admin SDK | Apache 2 | `lib/firebase/admin.ts` | auth + Firestore |
+| @vercel/blob | Apache 2 | asset registry, wardrobe | binary storage |
+| Stripe (REST) | proprietary | `lib/stripe/server.ts` | bureau payments |
+| Resend | proprietary | transactional email | receipts + outreach |
+| `dollyos-comfyui-3d` bridge | n/a | bench bridge | ComfyUI workflows |
+| Blender MCP | GPL | bench bridge | fabrication renders |
+
+### Lined up but not yet site-integrated
+
+| Project | Slot it fills | Status |
+| --- | --- | --- |
+| Hekate + Atmosphère + Lockpick_RCM + NXDumpTool | Switch personal-dump workflow | documented privately in `holoflow-private/docs/switch-personal-dumping.md`, never on the public site |
+| Sherlock + Spiderfoot + Bellingcat toolkit | extended OSINT | covered in `/articles/the-osint-stack-for-creative-research`; not installed |
+| Pixelorama (Godot pixel-art editor) | pixel art atelier | already installed at `%APPDATA%/Pixelorama/extensions/`; no `/atelier/pixel-studio` route yet |
+| FreeMoCap + EasyMocap + Mediapipe | motion capture | covered in motion-capture who's-who; no in-site capability |
+| OctoPrint + Mainsail + Klipper | 3D printer monitoring | not yet a site-side surface |
+
+### Big open slots (one-route-per-session plays)
+
+| Domain | Project | What it would give us | Route it'd land at |
+| --- | --- | --- | --- |
+| ActivityPub federation | **Fedify** (TS, MIT) | federated profile + posts to Mastodon / Pixelfed | `/users/<handle>` AS2 endpoint, RSS at `/feed.xml` |
+| Local LLM | **Ollama** (already on bench) | per-person agent inference behind the `/agents/<slug>` stub | wire to `/api/agents/[slug]/chat` |
+| AI provider abstraction | **Vercel AI SDK + AI Gateway** | one gateway, multi-provider, observability | `lib/ai/` |
+| 3D splat web view | **Spark.js** (PlayCanvas, MIT) | in-browser splat rendering of venue captures | `/splats/[id]` |
+| Splat editor | **SuperSplat** (PlayCanvas, MIT) | trim, recolour, optimise a `.ply` capture | `/atelier/splat-editor` |
+| Pixel art on site | **Pixilart-clone projects** / Aseprite-like WASM | tile + sprite editing in browser | `/atelier/pixel-studio` |
+| Tilemap editor | **LDtk** (free) | tile-grid arrangement, level editing | `/atelier/tilemap` |
+| LED programming sandbox | **WLED** firmware + browser controller | live LED programming preview | `/atelier/led-sandbox` |
+| Vector store | **pgvector** (Postgres) or **Qdrant** | knowledge-base retrieval for rolodex + magazine | `/api/search/semantic` |
+| Indieweb federation | **microformats2** + **WebSub** | magazine federates outwards, gets followed back | `<head>` markup + `/api/websub` |
+| Static fediverse bridge | **Bridgy Fed** | bridge holoflow.co.uk's static articles to ActivityPub | external service, configure once |
+| Server sandbox | **Vercel Sandbox** (GA 2026) | run user-uploaded scripts (ComfyUI workflows, etc.) safely | `/api/sandbox/run` |
+
+### Pattern for slotting a new open-source upstream
+
+1. Pick a slot from the "big open" table.
+2. Read the upstream's quickstart + licence; verify the licence is
+   compatible (MIT / Apache 2 / GPL with attribution).
+3. Add the package (`pnpm add <name>`) or pull the source where
+   relevant.
+4. Build a thin component wrapping it, mirroring the
+   `components/emulator/EmulatorJsEmbed.tsx` pattern (client
+   component + a typed registry + a per-instance route).
+5. Add a tutorial article in `components/tutorials/entries/` that
+   walks a reader through what it does + how to use it.
+6. Register the article + the capability if it goes through
+   `lib/capabilities/`.
+7. Update the "Already wired" table in this file.
+
 ## Why this is structured for slow burn
 
 Dimona has named the cadence: "skeleton it, start filling gaps. step
