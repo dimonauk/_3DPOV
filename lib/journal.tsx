@@ -4,16 +4,20 @@ import { entry as onTheApparatusEntry } from "components/journal/entries/on-the-
 import { entry as onTheBenchYearTenEntry } from "components/journal/entries/on-the-bench-year-ten";
 import { entry as splatsFromTheCamerasOutsideEntry } from "components/journal/entries/splats-from-the-cameras-outside";
 import { entry as theBenchInHttpsEntry } from "components/journal/entries/the-bench-in-https";
+import { entry as theBusAtFourEntry } from "components/journal/entries/the-bus-at-four";
 import { entry as theFirstWallArrayEntry } from "components/journal/entries/the-first-wall-array";
 import { entry as theFleetUpdateMiniFiveProEntry } from "components/journal/entries/the-fleet-update-mini-five-pro";
 import { entry as theNightTheCameraWasRightEntry } from "components/journal/entries/the-night-the-camera-was-right";
 import { entry as theNightTheFontsCameBackEntry } from "components/journal/entries/the-night-the-fonts-came-back";
 import { entry as theQuestionTheCameraAnsweredEntry } from "components/journal/entries/the-question-the-camera-answered";
 import { entry as theWeekBeforeEntry } from "components/journal/entries/the-week-before";
+import { entry as whyNightEntry } from "components/journal/entries/why-night";
 import { entry as yearOneFireEntry } from "components/journal/entries/year-one-fire";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  theBusAtFourEntry,
+  whyNightEntry,
   firstLightEntry,
   onTheApparatusEntry,
   theQuestionTheCameraAnsweredEntry,
