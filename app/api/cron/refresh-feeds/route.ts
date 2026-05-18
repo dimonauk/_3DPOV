@@ -1,23 +1,22 @@
 /**
  * /api/cron/refresh-feeds — Pull all watched feeds, normalise, store.
  *
- * Skeleton route. The real runtime fetches each FeedSource in
- * `lib/social-feeds/sources.ts`, parses the response via
- * `feedsmith`, normalises into AggregatedPost shape, and writes
- * `data/aggregated-feed.json` (capped at 1000 entries).
+ * Calls `refreshAggregatedFeed()` which:
+ *   1. Reads every active FeedSource from lib/social-feeds/sources.ts.
+ *   2. Dispatches per-platform fetcher (RSS / Atom / Bluesky /
+ *      Mastodon / etc.).
+ *   3. Merges, dedupes, sorts by date.
+ *   4. Writes data/aggregated-feed.json capped at 1000 entries.
  *
- * Auth: gated by `CRON_SECRET` header so only Vercel Cron + the
- * operator can hit it. Vercel Cron pings this hourly.
- *
- * Today the route is a stub — it validates the secret, lists the
- * sources, and returns a status report. The actual fetch/write loop
- * lands in a follow-up session.
+ * Auth: gated by CRON_SECRET via the Authorization header so only
+ * Vercel Cron + the operator can hit it. Vercel Cron pings this
+ * hourly when wired into vercel.json's `crons` section.
  */
 
+import { revalidatePath } from "next/cache";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { activeSources } from "lib/social-feeds/sources";
-import { getLastRefresh } from "lib/social-feeds/store";
+import { refreshAggregatedFeed } from "lib/social-feeds/refresh";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
@@ -34,23 +33,23 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "unauthorised" }, { status: 401 });
   }
 
-  const sources = activeSources();
-
-  // TODO: for each source, fetch + parse via feedsmith + write store.
-  // Skeleton today; the loop ships in a follow-up session that adds:
-  //   - fetch with timeout + retry
-  //   - feedsmith.parseRSS / parseAtom / parseJSONFeed normalisation
-  //   - Bluesky AT-proto + Mastodon API per-platform fetchers
-  //   - de-duplication by post id
-  //   - write to data/aggregated-feed.json (capped at 1000 entries)
-  //   - revalidatePath("/feed")
-
-  return NextResponse.json({
-    ok: true,
-    stub: true,
-    sources_watched: sources.length,
-    last_refresh: getLastRefresh(),
-    note:
-      "Refresh runtime not yet implemented; this route validates the cron contract and source registry only.",
-  });
+  try {
+    const summary = await refreshAggregatedFeed();
+    // Bust the static cache on /feed so the next page render picks up
+    // the fresh JSON.
+    try {
+      revalidatePath("/feed");
+    } catch {
+      /* revalidate is best-effort outside a request lifecycle */
+    }
+    return NextResponse.json({ ok: true, summary });
+  } catch (err) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: err instanceof Error ? err.message : String(err),
+      },
+      { status: 500 },
+    );
+  }
 }
