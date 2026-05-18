@@ -52,9 +52,11 @@ import { entry as osintForFindingYourPeopleEntry } from "components/articles/ent
 import { entry as theOsintStackForCreativeResearchEntry } from "components/articles/entries/the-osint-stack-for-creative-research";
 import { entry as emulationAsACreativeToolEntry } from "components/articles/entries/emulation-as-a-creative-tool";
 import { entry as theEmulationStackForCreativeResearchEntry } from "components/articles/entries/the-emulation-stack-for-creative-research";
+import { entry as byoRomBrowserEmulatorsEntry } from "components/articles/entries/byo-rom-browser-emulators";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  byoRomBrowserEmulatorsEntry,
   osintForFindingYourPeopleEntry,
   theOsintStackForCreativeResearchEntry,
   emulationAsACreativeToolEntry,
