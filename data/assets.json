@@ -1,0 +1,42 @@
+{
+  "_doc": "Asset registry — see docs/ASSET-HOSTING.md. Every entry conforms to lib/assets/types.ts. Add new entries at the top; ids must never change once published.",
+  "assets": [
+    {
+      "id": "example-mesh-vercel",
+      "name": "Example mesh — Vercel Blob hosted (placeholder)",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 5242880,
+      "host": "vercel-blob",
+      "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/meshes/example-placeholder.glb",
+      "licence": "studio-proprietary",
+      "tags": ["example", "placeholder"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "example-blend-drive",
+      "name": "Example Blender project — Google Drive hosted (placeholder)",
+      "kind": "blend",
+      "format": "blend",
+      "bytes": 419430400,
+      "host": "google-drive",
+      "driveId": "REPLACE_WITH_REAL_DRIVE_FILE_ID",
+      "url": "https://drive.google.com/uc?export=download&id=REPLACE_WITH_REAL_DRIVE_FILE_ID",
+      "licence": "studio-proprietary",
+      "tags": ["example", "placeholder", "blender"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "example-photos-album",
+      "name": "Example photo album — Google Photos shared album (placeholder)",
+      "kind": "image",
+      "format": "album",
+      "bytes": 0,
+      "host": "google-photos",
+      "url": "https://photos.app.goo.gl/REPLACE_WITH_REAL_SHARE_LINK",
+      "licence": "studio-proprietary",
+      "tags": ["example", "placeholder", "album"],
+      "publishedAt": "2026-05-18"
+    }
+  ]
+}
