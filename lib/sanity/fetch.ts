@@ -18,7 +18,10 @@ import "server-only";
 
 import { unstable_cache } from "next/cache";
 
+import { createLogger, errToObject } from "lib/log";
 import { getSanityClient } from "./client";
+
+const log = createLogger("sanity.fetch");
 import {
   Q_ALL_PANOS,
   Q_ALL_PHOTOS,
@@ -149,8 +152,7 @@ async function safeFetch<T>(
   try {
     return (await client.fetch<T>(query, params)) ?? fallback;
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error("[sanity] fetch failed:", err);
+    log.error("fetch failed", { err: errToObject(err) });
     return fallback;
   }
 }

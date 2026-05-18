@@ -38,12 +38,13 @@ export const pipelines: Pipeline[] = [
     summary:
       "Aura speaks; her mouth moves in time. The first canonical multi-capability composition.",
     stages: [
+      { capability: "vrm.load", note: "load /dimona.vrm into the vrm slice" },
       { capability: "audio.tts", note: "speak text via Web Speech or ElevenLabs" },
       { capability: "audio.visemes", note: "estimate viseme timeline from text + duration" },
       { capability: "vrm.expressions.blend", note: "read active viseme, write mouth weights to vrm.expressions" },
     ],
     slices: ["audio", "vrm"],
-    surface: "/demo/aura-talks",
+    surface: "/pipelines/lipsync",
     status: "registered",
   },
   {
@@ -52,10 +53,11 @@ export const pipelines: Pipeline[] = [
     summary:
       "Aura's facial expression mirrors her mood without saying a word. Brow + eye + relaxed-state weights.",
     stages: [
+      { capability: "vrm.load", note: "load /dimona.vrm into the vrm slice" },
       { capability: "vrm.expressions.blend", note: "read aura.mood, write face weights to vrm.expressions" },
     ],
     slices: ["aura", "vrm"],
-    surface: "/demo/aura-talks",
+    surface: "/pipelines/mood-face",
     status: "registered",
   },
   {

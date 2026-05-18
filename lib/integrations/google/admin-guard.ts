@@ -14,8 +14,7 @@
 import "server-only";
 
 import { verifyIdToken } from "lib/firebase/admin";
-
-const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
+import { isAdminEmail } from "lib/auth/admin-emails";
 
 export class AdminGuardError extends Error {
   constructor(public status: 401 | 403, message: string) {
@@ -55,7 +54,7 @@ export async function requireAdminUser(req: Request): Promise<{
     throw new AdminGuardError(401, "Could not verify Firebase ID token.");
   }
   const email = decoded.email?.toLowerCase() ?? "";
-  if (!email || !ADMIN_EMAILS.has(email)) {
+  if (!isAdminEmail(email)) {
     throw new AdminGuardError(
       403,
       `Account ${decoded.email ?? "(no email)"} is not on the operator allow-list.`,

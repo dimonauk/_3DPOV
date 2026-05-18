@@ -6,6 +6,9 @@ import {
   getFirebaseDb,
   isFirebaseConfigured,
 } from "lib/firebase/client";
+import { createLogger, errToObject } from "lib/log";
+
+const log = createLogger("NewsletterSignup");
 
 type Status =
   | { kind: "idle" }
@@ -46,7 +49,7 @@ export function NewsletterSignup() {
       setStatus({ kind: "success" });
       setEmail("");
     } catch (err) {
-      console.error("[NewsletterSignup] submit failed:", err);
+      log.error("submit failed", { err: errToObject(err) });
       setStatus({
         kind: "error",
         message:

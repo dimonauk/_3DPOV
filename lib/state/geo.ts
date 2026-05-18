@@ -33,6 +33,23 @@ export type GeoHeading = {
 
 export type GeoPermission = "unknown" | "granted" | "denied" | "prompt";
 
+/**
+ * Non-success outcomes from watchPosition that the UI needs to surface.
+ * `permission` was already tracked separately; `timeout` and `unavailable`
+ * are the new states — previously swallowed by the geo capability's
+ * error handler, so a watchPosition that never returned a fix produced
+ * silent inaction. Surfacing them lets the AR shell transition from
+ * "requesting" into a real overlay instead of spinning forever.
+ */
+export type GeoErrorCode = "timeout" | "unavailable" | "denied";
+
+export type GeoError = {
+  code: GeoErrorCode;
+  message: string;
+  /** ISO timestamp. */
+  at: string;
+};
+
 export type GeoState = {
   position: GeoPosition | null;
   heading: GeoHeading | null;
@@ -40,6 +57,8 @@ export type GeoState = {
   tracking: boolean;
   /** ISO timestamp of the last position update; null when never received. */
   lastUpdate: string | null;
+  /** Last non-success outcome from the geolocation watcher; cleared on fix. */
+  lastError: GeoError | null;
 };
 
 export type GeoActions = {
@@ -47,6 +66,7 @@ export type GeoActions = {
   setHeading: (heading: GeoHeading) => void;
   setPermission: (permission: GeoPermission) => void;
   setTracking: (tracking: boolean) => void;
+  setLastError: (error: GeoError | null) => void;
   clear: () => void;
 };
 
@@ -56,15 +76,23 @@ const initial: GeoState = {
   permission: "unknown",
   tracking: false,
   lastUpdate: null,
+  lastError: null,
 };
 
 export const useGeoStore = create<GeoState & GeoActions>()((set) => ({
   ...initial,
   setPosition: (position) =>
-    set({ position, lastUpdate: new Date().toISOString() }),
+    set({
+      position,
+      lastUpdate: new Date().toISOString(),
+      // A successful fix clears any prior timeout/unavailable state so
+      // UI overlays watching `lastError` don't stick around stale.
+      lastError: null,
+    }),
   setHeading: (heading) => set({ heading }),
   setPermission: (permission) => set({ permission }),
   setTracking: (tracking) => set({ tracking }),
+  setLastError: (lastError) => set({ lastError }),
   clear: () => set({ ...initial }),
 }));
 

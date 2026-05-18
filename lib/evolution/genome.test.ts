@@ -102,8 +102,12 @@ describe("crossover", () => {
       const aGene = a.genes[i]!;
       const childGene = child.genes[i]!;
       expect(childGene.id).toBe(aGene.id);
-      // Numeric blend of v*(1-α) + v*α = v exactly.
-      expect(childGene.value).toBe(aGene.value);
+      // v*(1-α) + v*α equals v mathematically, but floating-point can
+      // drift in the last bit (e.g. 0.42 → 0.42000000000000004 for some
+      // α). Allow the drift; assert numeric equivalence not bit equality.
+      // `Gene<T>.value` is generic-typed; makeNumericGenome guarantees
+      // every gene here is a number, so the casts are safe and narrow.
+      expect(childGene.value as number).toBeCloseTo(aGene.value as number, 12);
     }
   });
 

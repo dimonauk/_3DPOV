@@ -21,14 +21,13 @@ import {
   isFirebaseConfigured,
   signInWithGoogle,
 } from "lib/firebase/client";
-
-/** Operator allow-list. Compare lowercased. */
-const ADMIN_EMAILS = new Set<string>(["dimonauk@gmail.com"]);
-
-function isAdminEmail(email: string | null | undefined): boolean {
-  if (!email) return false;
-  return ADMIN_EMAILS.has(email.toLowerCase());
-}
+// NOTE: lib/auth/admin-emails reads process.env.ADMIN_EMAILS which is a
+// server-only var. Next inlines it into the client bundle at build time
+// because this file has "use client" — that's fine here, the allow-list
+// is not a secret (Firestore Rules enforce the real check); putting it
+// in the bundle just centralises the source of truth with the server
+// routes that gate on the same env var.
+import { isAdminEmail } from "lib/auth/admin-emails";
 
 function Frame({ children }: { children: ReactNode }) {
   return (

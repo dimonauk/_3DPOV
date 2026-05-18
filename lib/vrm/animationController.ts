@@ -2,12 +2,15 @@
 
 import * as THREE from "three";
 import type { VRM } from "@pixiv/three-vrm";
+import { createLogger } from "lib/log";
 import { loadVRMAnimation } from "./loadVRMAnimation";
 import {
   type AnimationName,
   ANIMATION_URL,
   IDLE_URL,
 } from "./animationMap";
+
+const baseLogger = createLogger("vrm.animationController");
 
 /**
  * AnimationController — manages VRM body animations on top of a
@@ -27,12 +30,27 @@ import {
 
 const CROSSFADE_DURATION = 0.3; // seconds
 
+// Route through lib/log so the threshold (LOG_LEVEL) and ring-buffer
+// snapshot work — but keep the window.__auraDebug gate so the verbose
+// per-frame anim chatter only fires when a developer opts in. Varargs
+// signature is preserved so existing call sites compile unchanged.
+function stringifyArg(a: unknown): string {
+  if (typeof a === "string") return a;
+  if (a instanceof Error) return a.message;
+  try {
+    return JSON.stringify(a);
+  } catch {
+    return String(a);
+  }
+}
 const log = (...a: unknown[]) => {
   if (typeof window !== "undefined" && (window as { __auraDebug?: boolean }).__auraDebug) {
-    console.log("🎭 [Anim]", ...a);
+    baseLogger.debug(a.map(stringifyArg).join(" "));
   }
 };
-const warn = (...a: unknown[]) => console.warn("🎭 [Anim]", ...a);
+const warn = (...a: unknown[]) => {
+  baseLogger.warn(a.map(stringifyArg).join(" "));
+};
 
 export class AnimationController {
   private _mixer: THREE.AnimationMixer;

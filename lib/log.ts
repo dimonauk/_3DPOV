@@ -79,12 +79,24 @@ const LEVEL_ORDER: Record<LogLevel, number> = {
   fatal: 4,
 };
 
+let runtimeLevel: LogLevel | null = null;
+
 function minLevel(): LogLevel {
+  if (runtimeLevel) return runtimeLevel;
   const env = (process.env.LOG_LEVEL ?? "").toLowerCase();
   if (env === "debug" || env === "info" || env === "warn" || env === "error" || env === "fatal") {
     return env;
   }
   return process.env.NODE_ENV === "production" ? "info" : "debug";
+}
+
+/**
+ * Override the active log level at runtime. Mainly for tests that want
+ * to silence below `error` (or assert on debug output). Passing `null`
+ * restores the env/NODE_ENV-derived default.
+ */
+export function setLogLevel(level: LogLevel | null): void {
+  runtimeLevel = level;
 }
 
 function shouldEmit(level: LogLevel): boolean {

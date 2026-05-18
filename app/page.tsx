@@ -3,12 +3,18 @@ import { ThreeItemGrid } from "components/grid/three-items";
 import Footer from "components/layout/footer";
 import { HolofoilHypercube } from "components/holofoil-hypercube";
 import Link from "next/link";
+import { Suspense } from "react";
 
-// Force dynamic rendering — the Shopify product fetch in Carousel / 
-// ThreeItemGrid was intermittently failing during static prerender 
-// (see digest 265885447). Rendering at request time avoids it 
-// without forcing us to handle Shopify outage edge cases at build.
-export const dynamic = "force-dynamic";
+// Previously: `export const dynamic = "force-dynamic"` to dodge an
+// intermittent Shopify prerender failure (digest 265885447).
+//
+// With Partial Prerendering (experimental.ppr=true in next.config.ts)
+// enabled, the better shape is to keep the page statically rendered
+// and wrap the Shopify-bound sections in <Suspense>. The shell (Hero,
+// Statement, PipelineSection) renders from cache; Carousel and
+// ThreeItemGrid stream in on the dynamic path, with skeletons in
+// place if Shopify is slow / unavailable. Hero loads faster for every
+// visitor, and a Shopify hiccup no longer takes the whole page down.
 
 export const metadata = {
   description:
@@ -24,10 +30,53 @@ export default function HomePage() {
       <Hero />
       <Statement />
       <PipelineSection />
-      <FeaturedSection />
-      <Carousel />
+      <Suspense fallback={<FeaturedSectionSkeleton />}>
+        <FeaturedSection />
+      </Suspense>
+      <Suspense fallback={<CarouselSkeleton />}>
+        <Carousel />
+      </Suspense>
       <Footer />
     </>
+  );
+}
+
+// Skeletons keep layout stable while the Shopify reads stream in.
+// Matching the section dimensions / spacing of the real content so the
+// shift after hydration is zero.
+
+function FeaturedSectionSkeleton() {
+  return (
+    <section className="mx-auto max-w-(--breakpoint-2xl) px-4 py-16 md:px-8">
+      <div className="mb-6 flex items-end justify-between">
+        <div>
+          <div className="chrome-label">Current release</div>
+          <h2 className="mt-2 text-3xl md:text-4xl">
+            What is on the shelf right now.
+          </h2>
+        </div>
+      </div>
+      <div className="grid gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2 lg:max-h-[calc(100vh-200px)]">
+        <div className="aspect-square animate-pulse rounded-sm bg-warm-black-900/60 md:col-span-4 md:row-span-2" />
+        <div className="aspect-square animate-pulse rounded-sm bg-warm-black-900/60 md:col-span-2 md:row-span-1" />
+        <div className="aspect-square animate-pulse rounded-sm bg-warm-black-900/60 md:col-span-2 md:row-span-1" />
+      </div>
+    </section>
+  );
+}
+
+function CarouselSkeleton() {
+  return (
+    <div className="w-full overflow-hidden pb-6 pt-1">
+      <ul className="flex gap-4 px-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <li
+            key={i}
+            className="aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none animate-pulse rounded-sm bg-warm-black-900/60 md:w-1/3"
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 

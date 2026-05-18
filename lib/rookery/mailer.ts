@@ -64,11 +64,28 @@ function applyVariables(
   return out;
 }
 
+// Pull the bare address out of "Display Name <addr@host>" or pass
+// through if the value is already a bare address. Used for the
+// List-Unsubscribe mailto: target.
+function bareAddress(value: string): string {
+  const m = /<([^>]+)>/.exec(value);
+  return m ? m[1]! : value;
+}
+
 function buildPayload(
   to: string,
   email: RookeryEmail,
   variables: Record<string, string> | undefined,
 ) {
+  // The unsubscribe address defaults to the reply-to address so a
+  // visitor's "unsubscribe" gesture lands in the same inbox the
+  // operator already reads. EMAIL_UNSUBSCRIBE_ADDRESS overrides
+  // when a dedicated mailbox is wired.
+  const unsubSource =
+    process.env.EMAIL_UNSUBSCRIBE_ADDRESS ||
+    process.env.EMAIL_REPLY_TO ||
+    DEFAULT_REPLY_TO;
+  const unsubBare = bareAddress(unsubSource);
   return {
     from: process.env.EMAIL_FROM || DEFAULT_FROM,
     reply_to: process.env.EMAIL_REPLY_TO || DEFAULT_REPLY_TO,
@@ -76,10 +93,24 @@ function buildPayload(
     subject: applyVariables(email.subject, variables),
     text: applyVariables(email.text, variables),
     html: applyVariables(email.html, variables),
+    // RFC 2369 + RFC 8058. List-Unsubscribe gives a mailto target
+    // every modern mail client renders as an "Unsubscribe" button;
+    // List-Unsubscribe-Post advertises that we honour one-click
+    // unsubscribe gestures (Gmail / Yahoo bulk-sender requirements
+    // since Feb 2024). The mailto goes to the operator inbox; the
+    // operator is responsible for adding the address to a
+    // suppression list and never re-sending.
+    headers: {
+      "List-Unsubscribe": `<mailto:${unsubBare}?subject=unsubscribe>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
   };
 }
 
-async function sendViaResend(payload: ReturnType<typeof buildPayload>) {
+async function sendViaResend(
+  payload: ReturnType<typeof buildPayload>,
+  idempotencyKey?: string,
+) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error(
@@ -87,12 +118,21 @@ async function sendViaResend(payload: ReturnType<typeof buildPayload>) {
     );
   }
 
+  const headers: Record<string, string> = {
+    Authorization: `Bearer ${apiKey}`,
+    "Content-Type": "application/json",
+  };
+  // Resend's Idempotency-Key header makes retries safe — duplicate
+  // sends with the same key inside 24h return the original send id
+  // instead of dispatching again. Without it a retry / webhook
+  // replay / double-click on a "send" button could double-mail the
+  // recipient. The caller picks the key (typically a hash of slug
+  // + recipient address so a deliberate re-send is a clean miss).
+  if (idempotencyKey) headers["Idempotency-Key"] = idempotencyKey;
+
   const res = await fetch(RESEND_ENDPOINT, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify(payload),
   });
 
@@ -122,24 +162,35 @@ async function sendViaSmtp(
   );
 }
 
+export type SendRookeryEmailOptions = {
+  /** Token substitutions for future personalisation. */
+  variables?: Record<string, string>;
+  /** Resend Idempotency-Key — duplicate sends with the same key
+   *  within 24h return the original send id instead of dispatching
+   *  again. The route layer picks a stable key (e.g. hash of slug +
+   *  recipient) so retries don't double-mail. */
+  idempotencyKey?: string;
+};
+
 /**
  * Send one of the three canned Rookery onboarding emails to `to`.
  * Pass-through `variables` for future personalisation tokens; not
- * used by the current email bodies.
+ * used by the current email bodies. Pass `idempotencyKey` to make
+ * the send safe to retry (Resend dedups by key for 24h).
  */
 export async function sendRookeryEmail(
   to: string,
   emailSlug: RookeryEmailSlug,
-  variables?: Record<string, string>,
+  options: SendRookeryEmailOptions = {},
 ): Promise<SendResult> {
   const email = getRookeryEmail(emailSlug);
   if (!email) {
     throw new Error(`Unknown rookery email slug "${emailSlug}".`);
   }
 
-  const payload = buildPayload(to, email, variables);
+  const payload = buildPayload(to, email, options.variables);
   const provider = resolveProvider();
 
   if (provider === "smtp") return sendViaSmtp(payload);
-  return sendViaResend(payload);
+  return sendViaResend(payload, options.idempotencyKey);
 }
