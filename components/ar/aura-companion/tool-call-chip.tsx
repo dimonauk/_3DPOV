@@ -28,6 +28,7 @@ export function ToolCallChip({
     book_a_call: "📅",
     save_to_wallet: "💳",
     play_animation: "🎭",
+    change_outfit: "👗",
   };
   const LABELS: Record<string, string> = {
     capture_lead: "Saving lead",
@@ -36,6 +37,7 @@ export function ToolCallChip({
     book_a_call: "Booking",
     save_to_wallet: "Wallet save",
     play_animation: "Posing",
+    change_outfit: "Changing outfit",
   };
   const icon = ICONS[call.name] ?? "▸";
   const label = LABELS[call.name] ?? call.name;
@@ -56,6 +58,8 @@ export function ToolCallChip({
     argPreview = a["purpose"] as string;
   } else if (call.name === "play_animation" && typeof a["name"] === "string") {
     argPreview = a["name"] as string;
+  } else if (call.name === "change_outfit" && typeof a["slug"] === "string") {
+    argPreview = a["slug"] as string;
   }
 
   return (
@@ -146,6 +150,13 @@ export function ToolCallChip({
       {call.action?.kind === "leadCaptured" && (
         <div className="tool-chip-confirm">
           ✓ Saved {call.action.email}
+        </div>
+      )}
+
+      {/* Outfit change confirmation */}
+      {call.action?.kind === "changeOutfit" && (
+        <div className="tool-chip-confirm">
+          ✓ Now wearing: {call.action.label}
         </div>
       )}
     </div>

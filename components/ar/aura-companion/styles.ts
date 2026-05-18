@@ -388,4 +388,71 @@ export const AURA_COMPANION_STYLES = `
     color: #b8e0a8;
     font-size: 0.75rem;
   }
+
+  /* ---- Outfit picker ---- */
+  .aura-wardrobe {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.55rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 111, 181, 0.18);
+    border-radius: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .aura-wardrobe-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    flex-shrink: 0;
+  }
+  .aura-wardrobe-chips {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .aura-wardrobe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    padding: 0.28rem 0.6rem;
+    background: rgba(255, 111, 181, 0.06);
+    border: 1px solid rgba(255, 111, 181, 0.2);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: inherit;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease,
+      transform 0.12s ease;
+  }
+  .aura-wardrobe-btn:hover {
+    background: rgba(255, 111, 181, 0.16);
+    border-color: rgba(255, 111, 181, 0.5);
+  }
+  .aura-wardrobe-active {
+    background: rgba(255, 111, 181, 0.28);
+    border-color: rgba(255, 111, 181, 0.85);
+    color: white;
+    transform: scale(1.02);
+  }
+  .aura-wardrobe-glyph {
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+  .aura-wardrobe-name {
+    font-weight: 500;
+  }
+  @media (max-width: 520px) {
+    .aura-wardrobe-name {
+      display: none;
+    }
+    .aura-wardrobe-btn {
+      padding: 0.34rem 0.55rem;
+    }
+  }
 `;

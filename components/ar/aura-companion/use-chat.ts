@@ -26,9 +26,14 @@ import { type ChatMessage, type ToolCallRecord } from "./types";
 export type UseChatOptions = {
   card: Card;
   speak: (text: string) => void;
+  /** Optional outfit-change handler. Fires when Aura's `change_outfit`
+   *  tool resolves with a `changeOutfit` action carrying the new
+   *  VRM URL. The host typically updates a `currentVrmUrl` state so
+   *  VRMViewer re-mounts with the new outfit. */
+  onOutfitChange?: (url: string) => void;
 };
 
-export function useAuraChat({ card, speak }: UseChatOptions) {
+export function useAuraChat({ card, speak, onOutfitChange }: UseChatOptions) {
   const router = useRouter();
   const slug = card.slug;
 
@@ -143,6 +148,10 @@ export function useAuraChat({ card, speak }: UseChatOptions) {
                   detail: { name: evt.action.name },
                 }),
               );
+            } else if (evt.action?.kind === "changeOutfit") {
+              // Hand the new VRM URL up to the host; it owns the
+              // currentVrmUrl state that VRMViewer re-mounts on.
+              onOutfitChange?.(evt.action.url);
             }
           }
         } else if (evt.type === "error") {
@@ -187,7 +196,7 @@ export function useAuraChat({ card, speak }: UseChatOptions) {
     } finally {
       setBusy(false);
     }
-  }, [busy, input, messages, slug, router, speak]);
+  }, [busy, input, messages, slug, router, speak, onOutfitChange]);
 
   return {
     messages,
