@@ -18,21 +18,13 @@ export type WardrobeOutfit = {
   label: string;
   url: string;
   bytes: number;
+  /** Decorative emoji rendered alongside the label. Optional — falls
+   *  back to a generic shirt glyph. Sourced from data/wardrobe.json
+   *  so adding an outfit doesn't require touching this file. */
+  glyph?: string;
 };
 
 export const WARDROBE_OUTFITS: WardrobeOutfit[] = wardrobeData.outfits;
-
-// Emoji hints per outfit slug. Decorative only — labels are the
-// authoritative identifier in the picker UI.
-export const OUTFIT_GLYPH: Record<string, string> = {
-  "baby-pink-spice": "👗",
-  "bunny-top": "🐰",
-  "kawaii-potion": "🧪",
-  "pink-blouse-purple-plaid-skirt": "👚",
-  "pink-coat": "🧥",
-  "purple-dance": "💃",
-  "ready-player-one": "🕶",
-};
 
 export function WardrobePicker({
   currentVrmUrl,
@@ -59,9 +51,7 @@ export function WardrobePicker({
               aria-pressed={isActive}
               aria-label={`Wear ${o.label}`}
             >
-              <span className="aura-wardrobe-glyph">
-                {OUTFIT_GLYPH[o.slug] ?? "👕"}
-              </span>
+              <span className="aura-wardrobe-glyph">{o.glyph ?? "👕"}</span>
               <span className="aura-wardrobe-name">{o.label}</span>
             </button>
           );

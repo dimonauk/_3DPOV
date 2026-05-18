@@ -4,43 +4,50 @@
       "slug": "baby-pink-spice",
       "label": "Baby Pink Spice",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/baby-pink-spice.vrm",
-      "bytes": 55063388
+      "bytes": 55063388,
+      "glyph": "👗"
     },
     {
       "slug": "bunny-top",
       "label": "Bunny Top",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/bunny-top.vrm",
-      "bytes": 48841968
+      "bytes": 48841968,
+      "glyph": "🐰"
     },
     {
       "slug": "kawaii-potion",
       "label": "Kawaii Potion",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/kawaii-potion.vrm",
-      "bytes": 51338268
+      "bytes": 51338268,
+      "glyph": "🧪"
     },
     {
       "slug": "purple-dance",
       "label": "Purple Dance",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/purple-dance.vrm",
-      "bytes": 49057376
+      "bytes": 49057376,
+      "glyph": "💃"
     },
     {
       "slug": "ready-player-one",
       "label": "Ready Player One",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/ready-player-one.vrm",
-      "bytes": 48188184
+      "bytes": 48188184,
+      "glyph": "🕶"
     },
     {
       "slug": "pink-blouse-purple-plaid-skirt",
       "label": "Pink Blouse Purple Plaid Skirt",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/pink-blouse-purple-plaid-skirt.vrm",
-      "bytes": 57958152
+      "bytes": 57958152,
+      "glyph": "👚"
     },
     {
       "slug": "pink-coat",
       "label": "Pink Coat",
       "url": "https://lglvkyusmzhrkrbk.public.blob.vercel-storage.com/wardrobe/pink-coat.vrm",
-      "bytes": 53017028
+      "bytes": 53017028,
+      "glyph": "🧥"
     }
   ]
 }
