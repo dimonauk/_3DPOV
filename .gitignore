@@ -40,6 +40,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Editor scratch — VSCode multi-root workspace files saved into the tree
+# by accident (per-user paths, not project content).
+*.code-workspace
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
