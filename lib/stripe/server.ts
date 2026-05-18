@@ -181,3 +181,48 @@ export function verifyWebhookSignature(
   log.warn("Stripe webhook signature check is stub-only (TODO)");
   return true;
 }
+
+/**
+ * Retrieve a Payment Intent by id. Used by the checkout page to get
+ * the `client_secret` after the order route created the PI.
+ *
+ * Returns null when STRIPE_SECRET_KEY isn't configured (so the
+ * checkout page can render a graceful "not configured" notice
+ * instead of crashing).
+ */
+export async function getPaymentIntent(
+  id: string,
+): Promise<{ id: string; clientSecret: string; status: string } | null> {
+  if (!isConfigured()) {
+    log.warn("getPaymentIntent skipped — not configured");
+    return null;
+  }
+  const res = await fetch(
+    `${STRIPE_API_BASE}/payment_intents/${encodeURIComponent(id)}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY ?? ""}`,
+        "Stripe-Version": "2024-12-18.acacia",
+      },
+    },
+  );
+  const json = (await res.json()) as {
+    id?: string;
+    client_secret?: string;
+    status?: string;
+    error?: { message?: string };
+  };
+  if (!res.ok || !json.id || !json.client_secret) {
+    log.warn("getPaymentIntent failed", {
+      id,
+      status: res.status,
+      error: json.error?.message,
+    });
+    return null;
+  }
+  return {
+    id: json.id,
+    clientSecret: json.client_secret,
+    status: json.status ?? "unknown",
+  };
+}
