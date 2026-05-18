@@ -48,10 +48,14 @@ import { entry as whosWhoUkFireArtPhotographersEntry } from "components/articles
 import { entry as whosWhoUkLightPaintersEntry } from "components/articles/entries/whos-who-uk-light-painters";
 import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entries/whos-who-uk-motion-capture";
 import { entry as whosWhoUkAiPeopleEntry } from "components/articles/entries/whos-who-uk-ai-people";
+import { entry as whosWhoUkApplePeopleEntry } from "components/articles/entries/whos-who-uk-apple-people";
 import { entry as whosWhoUkArmPeopleEntry } from "components/articles/entries/whos-who-uk-arm-people";
 import { entry as whosWhoUkCpuChipPeopleEntry } from "components/articles/entries/whos-who-uk-cpu-chip-people";
 import { entry as whosWhoUkGooglePeopleEntry } from "components/articles/entries/whos-who-uk-google-people";
+import { entry as whosWhoUkGpuAdjacentsEntry } from "components/articles/entries/whos-who-uk-gpu-adjacents";
 import { entry as whosWhoUkMetaPeopleEntry } from "components/articles/entries/whos-who-uk-meta-people";
+import { entry as whosWhoUkMicrosoftPeopleEntry } from "components/articles/entries/whos-who-uk-microsoft-people";
+import { entry as whosWhoUkOpenSourceEntry } from "components/articles/entries/whos-who-uk-open-source";
 import { entry as whosWhoUkPixelArtistsEntry } from "components/articles/entries/whos-who-uk-pixel-artists";
 import { entry as whosWhoUkVrPeopleEntry } from "components/articles/entries/whos-who-uk-vr-people";
 import { entry as osintForFindingYourPeopleEntry } from "components/articles/entries/osint-for-finding-your-people";
@@ -68,10 +72,14 @@ const ENTRIES: Entry[] = [
   emulationAsACreativeToolEntry,
   theEmulationStackForCreativeResearchEntry,
   whosWhoUkAiPeopleEntry,
+  whosWhoUkApplePeopleEntry,
   whosWhoUkArmPeopleEntry,
   whosWhoUkCpuChipPeopleEntry,
   whosWhoUkGooglePeopleEntry,
+  whosWhoUkGpuAdjacentsEntry,
   whosWhoUkMetaPeopleEntry,
+  whosWhoUkMicrosoftPeopleEntry,
+  whosWhoUkOpenSourceEntry,
   whosWhoUkPixelArtistsEntry,
   whosWhoUkFireArtPhotographersEntry,
   whosWhoUkLightPaintersEntry,
