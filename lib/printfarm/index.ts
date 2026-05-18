@@ -12,6 +12,8 @@ import "server-only";
 import { createLogger } from "lib/log";
 
 import { manualProvider } from "./manual";
+import { slant3dProvider } from "./slant3d";
+import { treatstockProvider } from "./treatstock";
 import type { PrintfarmProviderModule } from "./_base";
 
 import type { PrintfarmProvider } from "lib/printfiles/types";
@@ -21,13 +23,9 @@ const log = createLogger("printfarm.registry");
 /** Every implemented provider. */
 const REGISTRY: Record<string, PrintfarmProviderModule> = {
   manual: manualProvider,
-  // Stubs for future providers — when their impl lands, drop the file
-  // in this dir and register here. The intake pipeline will pick them
-  // up automatically when PRINTFARM_PROVIDER is set to the new id.
-  //
-  // treatstock: treatstockProvider,
-  // slant3d:    slant3dProvider,
-  // craftcloud: craftcloudProvider,
+  slant3d: slant3dProvider,
+  treatstock: treatstockProvider,
+  // craftcloud: craftcloudProvider, // future
 };
 
 /**
