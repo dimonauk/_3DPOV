@@ -1,0 +1,40 @@
+# .vercelignore — files NOT to send to the Vercel build container.
+# This is belt-and-braces; combined with Next.js outputFileTracingExcludes
+# in next.config.ts, it stops heavy non-app code from bloating the build
+# context.
+#
+# READ docs/AGENT-COORDINATION.md and AGENTS.md before touching this file.
+
+# Vendored Python ML services live in D:\The_Hangar\holoflow-services\
+# now, but exclude defensively in case anything re-introduces the path.
+services/
+
+# Python ML services again — alternate paths agents have tried.
+**/services/
+holoflow-services/
+
+# Firebase Functions Python — deploys separately via `firebase deploy`,
+# nothing to do with the Vercel build.
+functions/
+
+# Python virtual environments and cache.
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Local-only dev artefacts.
+.merge-staging/
+*.code-workspace
+D:/temp/
+docs/audit-wave9/
+
+# Big binaries we never want shipped to the build container.
+*.psd
+*.ai
+*.blend
+*.psarc
+*.npy
+*.glb.bak
+*.fbx

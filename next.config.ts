@@ -13,6 +13,10 @@ export default {
   // `pnpm exec tsc --noEmit` before push — but Vercel doesn't re-run
   // it. Same posture for ESLint (already enforced in pre-commit).
   // This saves ~30s + ~2 GB peak on each build.
+  //
+  // TODO (any agent): once we've seen 3-5 consecutive green production
+  // builds after the services/ removal, revert these two lines and let
+  // Vercel re-enforce TS + ESLint. See docs/AGENT-COORDINATION.md.
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
   experimental: {
@@ -55,6 +59,18 @@ export default {
       "node_modules/.pnpm/onnxruntime-node@*/**",
       "node_modules/@huggingface/transformers/**",
       "node_modules/.pnpm/@huggingface+transformers@*/**",
+      // `services/` (vendored Python ML projects) was moved out of this
+      // repo to D:\The_Hangar\holoflow-services\ on 2026-05-18 to fix
+      // OOMs (304 files, 12 MB, none imported by Next.js). Exclude
+      // belt-and-braces in case any agent re-introduces the directory.
+      // See AGENTS.md at the repo root.
+      "services/**",
+      // `functions/` is Firebase Functions Python and deploys via
+      // `firebase deploy --only functions`, never via Vercel. Excluded
+      // from the Next.js tracing so it can't bloat the build context.
+      "functions/**",
+      // `.merge-staging/` is the local working-tree path; never deploy.
+      ".merge-staging/**",
     ],
   },
   images: {
