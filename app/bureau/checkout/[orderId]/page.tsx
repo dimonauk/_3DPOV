@@ -154,84 +154,87 @@ export default async function BureauCheckoutPage({
   );
 }
 
+// Server Component — `<style jsx>` from styled-jsx is client-only and
+// pulls in `client-only` which fails the build here. A plain <style>
+// tag with dangerouslySetInnerHTML is the standard server-safe pattern
+// for one-page static CSS in the App Router.
+const BC_CSS = `
+.bc-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0a1a, #0a0a1a);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 4rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.bc-card {
+  max-width: 540px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 111, 181, 0.25);
+  border-radius: 0.75rem;
+  padding: 2rem 1.75rem;
+}
+.bc-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff6fb5;
+  background: rgba(255, 111, 181, 0.12);
+  border: 1px solid rgba(255, 111, 181, 0.3);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+.bc-card h1 {
+  font-size: 1.3rem;
+  margin: 0 0 0.6rem;
+}
+.bc-summary {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0.3rem;
+  font-size: 0.88rem;
+}
+.bc-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+  color: #ff6fb5;
+}
+.bc-note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+.bc-note code {
+  background: rgba(255, 111, 181, 0.12);
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.25rem;
+}
+.bc-note a {
+  color: #ff6fb5;
+}
+.bc-link {
+  color: #ff6fb5;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.bc-link:hover {
+  text-decoration: underline;
+}
+.bc-card footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+`;
+
 function BcStyles() {
-  return (
-    // eslint-disable-next-line react/no-unknown-property
-    <style jsx global>{`
-      .bc-root {
-        min-height: 100vh;
-        background: linear-gradient(135deg, #1a0a1a, #0a0a1a);
-        color: rgba(255, 255, 255, 0.92);
-        padding: 4rem 1.5rem;
-        display: flex;
-        justify-content: center;
-      }
-      .bc-card {
-        max-width: 540px;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(255, 111, 181, 0.25);
-        border-radius: 0.75rem;
-        padding: 2rem 1.75rem;
-      }
-      .bc-tag {
-        display: inline-block;
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #ff6fb5;
-        background: rgba(255, 111, 181, 0.12);
-        border: 1px solid rgba(255, 111, 181, 0.3);
-        padding: 0.2rem 0.65rem;
-        border-radius: 999px;
-        margin-bottom: 0.85rem;
-      }
-      .bc-card h1 {
-        font-size: 1.3rem;
-        margin: 0 0 0.6rem;
-      }
-      .bc-summary {
-        color: rgba(255, 255, 255, 0.7);
-        margin: 0 0 0.3rem;
-        font-size: 0.88rem;
-      }
-      .bc-price {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin: 0 0 1.5rem;
-        color: #ff6fb5;
-      }
-      .bc-note {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85rem;
-        margin: 1rem 0;
-      }
-      .bc-note code {
-        background: rgba(255, 111, 181, 0.12);
-        padding: 0.05rem 0.35rem;
-        border-radius: 0.25rem;
-      }
-      .bc-note a {
-        color: #ff6fb5;
-      }
-      .bc-link {
-        color: #ff6fb5;
-        text-decoration: none;
-        font-size: 0.85rem;
-      }
-      .bc-link:hover {
-        text-decoration: underline;
-      }
-      .bc-card footer {
-        margin-top: 1.5rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.5);
-      }
-    `}</style>
-  );
+  return <style dangerouslySetInnerHTML={{ __html: BC_CSS }} />;
 }

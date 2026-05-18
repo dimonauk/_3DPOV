@@ -180,8 +180,14 @@ export default async function AdminBureauPage() {
         </div>
       )}
 
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: AB_CSS }} />
+    </main>
+  );
+}
+
+// Server Component — styled-jsx is client-only; see
+// app/bureau/checkout/[orderId]/page.tsx for the rationale.
+const AB_CSS = `
         .ab-root {
           max-width: 1100px;
           margin: 0 auto;
@@ -277,7 +283,4 @@ export default async function AdminBureauPage() {
             display: none;
           }
         }
-      `}</style>
-    </main>
-  );
-}
+`;

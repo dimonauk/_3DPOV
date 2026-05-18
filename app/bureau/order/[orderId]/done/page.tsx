@@ -145,10 +145,9 @@ export default async function BureauOrderDonePage({
   );
 }
 
-function BodStyles() {
-  return (
-    // eslint-disable-next-line react/no-unknown-property
-    <style jsx global>{`
+// Server Component — see app/bureau/checkout/[orderId]/page.tsx for the
+// rationale; styled-jsx is client-only.
+const BOD_CSS = `
       .bod-root {
         min-height: 100vh;
         background: linear-gradient(135deg, #1a0a1a, #0a0a1a);
@@ -266,6 +265,8 @@ function BodStyles() {
       .bod-fineprint a {
         color: rgba(255, 255, 255, 0.85);
       }
-    `}</style>
-  );
+`;
+
+function BodStyles() {
+  return <style dangerouslySetInnerHTML={{ __html: BOD_CSS }} />;
 }

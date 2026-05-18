@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PhotosAlbumAsset } from "components/three";
 import type { Entry } from "lib/writing";
 
 const ext = "underline underline-offset-4 hover:text-pink-200";
@@ -68,6 +69,13 @@ export default function JonThePhotographer() {
         flow arts alongside the rest of us. He is in the scene first
         and behind the camera second. That order is the difference.
       </p>
+
+      <p className="mb-2 text-sm text-chrome-400">
+        The studio&rsquo;s working archive of his flow-arts frames
+        &mdash; the foreshore sessions, Leake Street, the LED traces
+        the rigs produced on the bench upstream.
+      </p>
+      <PhotosAlbumAsset id="example-photos-album" />
 
       <h2 className="mt-12 text-2xl text-chrome-100">The mouse</h2>
 
