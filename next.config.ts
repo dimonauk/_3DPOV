@@ -6,6 +6,15 @@ export default {
   // process.cwd() resolves to the project directory because Next runs the
   // config from the project root.
   outputFileTracingRoot: process.cwd(),
+  // Skip the build-time TS + lint checks. The build container is 8 GB
+  // and this codebase's TS check has been peaking near the ceiling,
+  // OOM-killing production deploys (see holoflow-deploy-debug skill
+  // #9). TS still runs locally — every commit should pass
+  // `pnpm exec tsc --noEmit` before push — but Vercel doesn't re-run
+  // it. Same posture for ESLint (already enforced in pre-commit).
+  // This saves ~30s + ~2 GB peak on each build.
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   experimental: {
     ppr: true,
     // inlineCss disabled: on Next 15.6 canary it emits next/font @font-face
