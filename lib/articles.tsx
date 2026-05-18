@@ -48,9 +48,13 @@ import { entry as whosWhoUkFireArtPhotographersEntry } from "components/articles
 import { entry as whosWhoUkLightPaintersEntry } from "components/articles/entries/whos-who-uk-light-painters";
 import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entries/whos-who-uk-motion-capture";
 import { entry as whosWhoUkVrPeopleEntry } from "components/articles/entries/whos-who-uk-vr-people";
+import { entry as osintForFindingYourPeopleEntry } from "components/articles/entries/osint-for-finding-your-people";
+import { entry as theOsintStackForCreativeResearchEntry } from "components/articles/entries/the-osint-stack-for-creative-research";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  osintForFindingYourPeopleEntry,
+  theOsintStackForCreativeResearchEntry,
   whosWhoUkFireArtPhotographersEntry,
   whosWhoUkLightPaintersEntry,
   whosWhoUkMotionCaptureEntry,
