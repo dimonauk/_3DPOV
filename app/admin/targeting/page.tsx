@@ -201,8 +201,7 @@ export default async function TargetingPage({
         </section>
       )}
 
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <style jsx global>{ADMIN_TARGETING_STYLES}</style>
+      <style dangerouslySetInnerHTML={{ __html: ADMIN_TARGETING_STYLES }} />
     </div>
   );
 }

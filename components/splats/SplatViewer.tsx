@@ -49,9 +49,16 @@ export default function SplatViewer({
       cleanupRef.current = null;
     }
     try {
+      // Spark.js's npm bundle uses a webpack asset-module config
+      // (`generator: { filename }`) that Next 15.6 canary's webpack
+      // rejects. We side-step by loading from esm.sh at runtime with
+      // a webpackIgnore directive — webpack never parses the package
+      // and the browser's native ESM loader fetches it on demand.
       const [THREE, SPARK] = await Promise.all([
         import("three"),
-        import("@sparkjsdev/spark"),
+        import(
+          /* webpackIgnore: true */ "https://esm.sh/@sparkjsdev/spark@0.1.10"
+        ),
       ]);
       const host = hostRef.current;
       // Clear any leftover canvas.

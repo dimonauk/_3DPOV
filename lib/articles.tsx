@@ -49,6 +49,7 @@ import { entry as whosWhoUkLightPaintersEntry } from "components/articles/entrie
 import { entry as whosWhoUkMotionCaptureEntry } from "components/articles/entries/whos-who-uk-motion-capture";
 import { entry as whosWhoUkAiPeopleEntry } from "components/articles/entries/whos-who-uk-ai-people";
 import { entry as whosWhoUkApplePeopleEntry } from "components/articles/entries/whos-who-uk-apple-people";
+import { entry as whosWhoUkDronePeopleEntry } from "components/articles/entries/whos-who-uk-drone-people";
 import { entry as whosWhoUkArmPeopleEntry } from "components/articles/entries/whos-who-uk-arm-people";
 import { entry as whosWhoUkCpuChipPeopleEntry } from "components/articles/entries/whos-who-uk-cpu-chip-people";
 import { entry as whosWhoUkGooglePeopleEntry } from "components/articles/entries/whos-who-uk-google-people";
@@ -71,6 +72,7 @@ const ENTRIES: Entry[] = [
   theOsintStackForCreativeResearchEntry,
   emulationAsACreativeToolEntry,
   theEmulationStackForCreativeResearchEntry,
+  whosWhoUkDronePeopleEntry,
   whosWhoUkAiPeopleEntry,
   whosWhoUkApplePeopleEntry,
   whosWhoUkArmPeopleEntry,
