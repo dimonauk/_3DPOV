@@ -273,10 +273,11 @@ a thin component, ship.
 
 | Domain | Project | What it would give us | Route it'd land at |
 | --- | --- | --- | --- |
-| ActivityPub federation | **Fedify** (TS, MIT) | federated profile + posts to Mastodon / Pixelfed | `/users/<handle>` AS2 endpoint, RSS at `/feed.xml` |
-| Local LLM | **Ollama** (already on bench) | per-person agent inference behind the `/agents/<slug>` stub | wire to `/api/agents/[slug]/chat` |
+| ActivityPub federation | **Fedify v2 + `@fedify/next`** (fedify-dev/fedify, MIT) — official Next.js integration; `fedify init -w next` scaffolds; debug dashboard + relay support | federated profile + posts to Mastodon / Pixelfed | `/users/<handle>` AS2 endpoint + inbox/outbox |
+| Local LLM | **Ollama** (already on bench) + **`ai-sdk-ollama`** (jagreehal, Vercel AI SDK v6 provider — type-safe, cross-provider through the gateway) | per-person agent chat behind `/agents/<slug>` | `/api/agents/[slug]/chat` (streamText) |
+| Social aggregation | **feedsmith** (macieklamberski, MIT, TS-native RSS/Atom/JSON/OPML parser with full TS types) + Bluesky AT-proto API + Mastodon API | parse + normalise per-person social output into one feed | `/feed` aggregator + `/api/cron/refresh-feeds` |
 | AI provider abstraction | **Vercel AI SDK + AI Gateway** | one gateway, multi-provider, observability | `lib/ai/` |
-| 3D splat web view | **Spark.js** (PlayCanvas, MIT) | in-browser splat rendering of venue captures | `/splats/[id]` |
+| 3D splat web view | **Spark.js** (`@sparkjsdev/spark`, MIT) — WIRED at `/splats` | in-browser splat rendering | `/splats/[id]` |
 | Splat editor | **SuperSplat** (PlayCanvas, MIT) | trim, recolour, optimise a `.ply` capture | `/atelier/splat-editor` |
 | Pixel art on site | **Pixilart-clone projects** / Aseprite-like WASM | tile + sprite editing in browser | `/atelier/pixel-studio` |
 | Tilemap editor | **LDtk** (free) | tile-grid arrangement, level editing | `/atelier/tilemap` |

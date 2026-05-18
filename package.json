@@ -49,6 +49,7 @@
     "ai": "^6.0.184",
     "canvas": "^3.2.3",
     "clsx": "^2.1.1",
+    "feedsmith": "^2.9.4",
     "firebase": "^12.12.1",
     "firebase-admin": "^13.9.0",
     "googleapis": "^171.4.0",

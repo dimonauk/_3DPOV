@@ -1,26 +1,24 @@
 /**
  * /agents/[slug] — Agentic representation of a person.
  *
- * Skeleton route. Each rolodex entry will eventually have an AI
- * agent built from their public output (and fuller representation
- * when opt-in). Visitors and subscribers can interact with the
- * agent here — ask a question, see a digest, find connection
- * moments.
+ * Reads from `lib/people/registry.ts` to know who the agent is *of*.
+ * Today the chat surface is in-flight (the Ollama-backed runtime
+ * lands in a future session); the page surfaces the person + sets
+ * up the slot the chat will land in.
  *
- * Today this page is a placeholder. It tells the visitor what the
- * agent surface *will be*, links to the person's public-profile
- * page, and offers the studio's outreach path until the agent is
- * built.
- *
- * The slug matches the rolodex entry id (see private/rolodex/
- * rolodex.json) which is also the slug used in /people/<slug>.
+ * Slug matches the rolodex / profile id.
  */
 
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
+import { allProfiles, getProfile } from "lib/people/registry";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return allProfiles().map((p) => ({ slug: p.id }));
+}
 
 export async function generateMetadata({
   params,
@@ -28,8 +26,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const profile = getProfile(slug);
   return {
-    title: `${slug} — agent`,
+    title: profile
+      ? `${profile.name}'s agent`
+      : `${slug} — agent`,
     robots: { index: false, follow: false },
   };
 }
@@ -40,31 +41,37 @@ export default async function AgentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const profile = getProfile(slug);
+  const display = profile?.name ?? slug;
 
   return (
     <>
       <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="chrome-label">Simulation layer · Agent</div>
         <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05]">
-          {slug}&rsquo;s agent.
+          {display}&rsquo;s agent.
         </h1>
+
+        {profile ? (
+          <p className="mt-3 text-sm text-chrome-300">
+            {profile.scenes.join(" · ")} · {profile.location}
+          </p>
+        ) : null}
 
         <section className="mt-10 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-8">
           <div className="chrome-label text-pink-200">In flight</div>
           <p className="mt-3 text-sm leading-relaxed text-chrome-200">
-            Every person the studio names in its who&rsquo;s-who lists
-            is, in time, getting an agent here. An interactive twin
-            built from their public output — their site, their posts,
-            their press, the work they&rsquo;ve published under their
-            own name. The agent answers questions on their behalf,
-            surfaces a digest of what they&rsquo;ve been making, and
-            opens a clean path to actually getting in touch.
+            Every person the studio names is, in time, getting an
+            agent here. An interactive twin built from public output
+            &mdash; their site, posts, press, the work they&rsquo;ve
+            published under their own name. Ask the agent about
+            their practice, see a digest of what they&rsquo;ve made
+            lately, find a connection moment.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-chrome-200">
-            This particular agent isn&rsquo;t built yet. It will be.
-            The studio is building these in the same order the
-            rolodex grew &mdash; scene by scene, person by person,
-            slowly.
+            The chat runtime isn&rsquo;t wired yet (Ollama-backed,
+            roadmapped). For now this page is the slot it lands in,
+            and links to {display}&rsquo;s public surfaces below.
           </p>
         </section>
 
@@ -76,9 +83,21 @@ export default async function AgentPage({
                 href={`/people/${slug}`}
                 className="text-pink-200 hover:underline"
               >
-                See {slug}&rsquo;s public profile &rarr;
+                See {display}&rsquo;s profile &rarr;
               </Link>
             </li>
+            {profile ? (
+              <li>
+                <a
+                  href={profile.publicUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-200 hover:underline"
+                >
+                  Visit their own site &rarr;
+                </a>
+              </li>
+            ) : null}
             <li>
               <Link
                 href="/whoswho"
@@ -102,12 +121,11 @@ export default async function AgentPage({
           <div className="chrome-label">How the agent will work</div>
           <p className="mt-4 text-sm leading-relaxed text-chrome-300">
             Built from public output only. Opt-in for deeper
-            representation when the person joins the platform.
-            Subscriber-gated for chat depth. Never claims to speak
-            for the person beyond what their own public archive
-            supports. Citation discipline applies &mdash; every
-            agent reply links back to the public source it&rsquo;s
-            drawing from.
+            representation when {display} claims the page. Subscriber-
+            gated for chat depth. Never speaks for the person beyond
+            what their own public archive supports. Citation
+            discipline applies &mdash; every agent reply links back
+            to the public source.
           </p>
           <p className="mt-3 text-xs text-chrome-500">
             See <code>docs/ROADMAP.md</code> for the longer story.

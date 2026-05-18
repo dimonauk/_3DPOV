@@ -1,20 +1,27 @@
 /**
- * /people/[slug] — Public profile page per rolodex entry.
+ * /people/[slug] — Public profile page per person in the rolodex.
  *
- * Skeleton route. Reads the consent-marked subset of the private
- * rolodex (when the rolodex moves to a shared data layer). Today
- * the page tells visitors what this surface will be and offers
- * the practitioner's own URL + the studio's outreach path.
+ * Reads from `lib/people/registry.ts` (publishable fields only). The
+ * fuller private profile lives in the `holoflow-private` repo at
+ * `rolodex/people/<slug>.md` and is surfaced through the subscriber
+ * tier (auth-gated, future).
  *
- * Slug matches the rolodex entry id which is also the slug used
- * by /agents/<slug>.
+ * Slug matches the rolodex id, which is also the slug used for
+ * `/agents/<slug>`. Slot for "claim this profile" (the practitioner
+ * joins the platform) is left open in the prose.
  */
 
 import Link from "next/link";
 
 import Footer from "components/layout/footer";
+import { allProfiles, getProfile } from "lib/people/registry";
+import type { ProfileSocials } from "lib/people/types";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return allProfiles().map((p) => ({ slug: p.id }));
+}
 
 export async function generateMetadata({
   params,
@@ -22,10 +29,53 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const profile = getProfile(slug);
+  if (!profile) {
+    return { title: `${slug} — profile`, robots: { index: false } };
+  }
   return {
-    title: `${slug} — profile`,
-    robots: { index: false, follow: false },
+    title: `${profile.name} — ${profile.scenes.join(" · ")}`,
+    description: profile.bioShort,
+    robots: { index: true, follow: true },
   };
+}
+
+const SOCIAL_PREFIXES: Record<keyof ProfileSocials, string> = {
+  instagram: "https://instagram.com/",
+  x: "https://x.com/",
+  bluesky: "https://bsky.app/profile/",
+  mastodon: "https://",
+  flickr: "https://flickr.com/photos/",
+  youtube: "https://youtube.com/",
+  tiktok: "https://tiktok.com/@",
+  facebook: "https://facebook.com/",
+  linkedin: "https://linkedin.com/in/",
+  github: "https://github.com/",
+};
+
+const SOCIAL_LABELS: Record<keyof ProfileSocials, string> = {
+  instagram: "Instagram",
+  x: "X",
+  bluesky: "Bluesky",
+  mastodon: "Mastodon",
+  flickr: "Flickr",
+  youtube: "YouTube",
+  tiktok: "TikTok",
+  facebook: "Facebook",
+  linkedin: "LinkedIn",
+  github: "GitHub",
+};
+
+function socialUrl(
+  platform: keyof ProfileSocials,
+  handle: string,
+): string {
+  const h = handle.replace(/^@/, "");
+  if (platform === "mastodon" && h.includes("@")) {
+    const [user, instance] = h.split("@");
+    return `https://${instance}/@${user}`;
+  }
+  return `${SOCIAL_PREFIXES[platform]}${h}`;
 }
 
 export default async function PersonPage({
@@ -34,49 +84,162 @@ export default async function PersonPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const profile = getProfile(slug);
+
+  if (!profile) {
+    return (
+      <>
+        <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+          <div className="chrome-label">Knowledge base · Person</div>
+          <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05]">
+            {slug}.
+          </h1>
+
+          <section className="mt-10 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-8">
+            <div className="chrome-label text-pink-200">
+              Not in the rolodex yet
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-chrome-200">
+              The studio publishes profiles in the same order the
+              rolodex grows. If you&rsquo;re looking for someone
+              specific and they&rsquo;re missing,{" "}
+              <Link
+                href="/contact"
+                className="text-pink-200 hover:underline"
+              >
+                write to the studio
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section className="mt-10">
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/people"
+                  className="text-pink-200 hover:underline"
+                >
+                  All profiles &rarr;
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/whoswho"
+                  className="text-pink-200 hover:underline"
+                >
+                  Who&rsquo;s-who index &rarr;
+                </Link>
+              </li>
+            </ul>
+          </section>
+        </article>
+        <Footer />
+      </>
+    );
+  }
+
+  const socials = profile.socials ?? {};
+  const socialKeys = Object.keys(socials) as Array<keyof ProfileSocials>;
 
   return (
     <>
       <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="chrome-label">Knowledge base · Person</div>
         <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05]">
-          {slug}.
+          {profile.name}.
         </h1>
+        {profile.publicBrand && profile.publicBrand !== profile.name ? (
+          <p className="mt-2 text-sm text-chrome-400">
+            also publishes as <em>{profile.publicBrand}</em>
+          </p>
+        ) : null}
 
-        <section className="mt-10 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-8">
-          <div className="chrome-label text-pink-200">In flight</div>
-          <p className="mt-3 text-sm leading-relaxed text-chrome-200">
-            Every person the studio names in its who&rsquo;s-who lists
-            is getting a profile page here. Public-information only,
-            cited, linked back to their own site. Subscriber tier
-            opens fuller fields. The practitioner can claim the page
-            when they join the platform and from that point it
-            represents them on their terms.
-          </p>
-          <p className="mt-4 text-sm leading-relaxed text-chrome-200">
-            This particular profile isn&rsquo;t built yet. The studio
-            is building these in the same order the rolodex grows
-            &mdash; scene by scene, slowly.
-          </p>
+        <p className="mt-8 text-base leading-relaxed text-chrome-200">
+          {profile.bioShort}
+        </p>
+
+        <section className="mt-10 grid grid-cols-2 gap-6 border-t border-warm-black-800 pt-6 text-sm sm:grid-cols-4">
+          <div>
+            <div className="chrome-label">Location</div>
+            <div className="mt-1 text-chrome-200">{profile.location}</div>
+          </div>
+          <div>
+            <div className="chrome-label">Role</div>
+            <div className="mt-1 text-chrome-200">{profile.role}</div>
+          </div>
+          <div className="sm:col-span-2">
+            <div className="chrome-label">Scenes</div>
+            <div className="mt-1 flex flex-wrap gap-1.5 text-chrome-200">
+              {profile.scenes.map((s) => (
+                <span
+                  key={s}
+                  className="rounded-full border border-warm-black-700 px-2 py-0.5 text-xs"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="mt-10">
-          <div className="chrome-label">What you can do now</div>
-          <ul className="mt-4 space-y-3 text-sm">
+          <div className="chrome-label">Where to find them</div>
+          <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link
-                href={`/agents/${slug}`}
+              <a
+                href={profile.publicUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-pink-200 hover:underline"
               >
-                Ask their agent &rarr;
-              </Link>
+                {profile.publicUrl.replace(/^https?:\/\//, "")} &rarr;
+              </a>
             </li>
+            {socialKeys.map((k) => {
+              const handle = socials[k];
+              if (!handle) return null;
+              return (
+                <li key={k}>
+                  <a
+                    href={socialUrl(k, handle)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-200 hover:underline"
+                  >
+                    {SOCIAL_LABELS[k]}: {handle} &rarr;
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section className="mt-10">
+          <div className="chrome-label">Appears in</div>
+          <ul className="mt-4 space-y-2 text-sm">
+            {profile.appearsIn.map((articleSlug) => (
+              <li key={articleSlug}>
+                <Link
+                  href={`/articles/${articleSlug}`}
+                  className="text-pink-200 hover:underline"
+                >
+                  {articleSlug.replace(/-/g, " ")} &rarr;
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-10 border-t border-warm-black-800 pt-6">
+          <div className="chrome-label">Studio surfaces</div>
+          <ul className="mt-4 space-y-2 text-sm">
             <li>
               <Link
-                href="/whoswho"
+                href={`/agents/${profile.id}`}
                 className="text-pink-200 hover:underline"
               >
-                Find them in the who&rsquo;s-who index &rarr;
+                Ask {profile.name}&rsquo;s agent &rarr;
               </Link>
             </li>
             <li>
@@ -90,15 +253,24 @@ export default async function PersonPage({
           </ul>
         </section>
 
-        <section className="mt-12 border-t border-warm-black-800 pt-8">
+        <section className="mt-10 border-t border-warm-black-800 pt-6">
           <div className="chrome-label">House rules</div>
           <p className="mt-4 text-sm leading-relaxed text-chrome-300">
-            Public sources only. Cited and linked. No identity
-            classification, no aggregated dossiers. Each profile is
-            here to celebrate the work, not to profile the person.
+            Public sources only, cited and linked. No identity
+            classification, no aggregated dossiers. This profile
+            celebrates the work; the practitioner&rsquo;s own site
+            is canonical. If {profile.name} would like to claim this
+            page or update its content, they&rsquo;re welcome to{" "}
+            <Link
+              href="/contact"
+              className="text-pink-200 hover:underline"
+            >
+              write to the studio
+            </Link>
+            .
           </p>
           <p className="mt-3 text-xs text-chrome-500">
-            See <code>docs/ROADMAP.md</code> for the longer story.
+            Last verified {profile.lastVerified}.
           </p>
         </section>
       </article>

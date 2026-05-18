@@ -1,0 +1,246 @@
+[
+  {
+    "id": "jon-the-photographer",
+    "name": "JonThePhotographer",
+    "publicBrand": "JonThePhotographer",
+    "location": "London",
+    "scenes": ["fire-art", "light-painting"],
+    "role": "photographer",
+    "publicUrl": "https://jonthephotographer.co.uk",
+    "socials": {
+      "instagram": "@jonthephotographer.co.uk",
+      "x": "@jonphotomaker",
+      "flickr": "155180913@N04",
+      "facebook": "jonthephotographer.co.uk"
+    },
+    "bioShort": "London-based DSLR + flow-arts photographer; a regular at the OXO Tower foreshore London Fire Spinners meet, Leake Street, and the wider walls / tunnel / foreshore circuit.",
+    "appearsIn": ["whos-who-uk-fire-art-photographers"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "penelope-barritt",
+    "name": "Penelope Barritt",
+    "location": "London",
+    "scenes": ["fire-art"],
+    "role": "photographer",
+    "publicUrl": "https://www.alamy.com/stock-photo/penelope-barritt.html",
+    "bioShort": "Editorial and stock photographer; documents the London Fire Spinners' monthly full-moon meet on the OXO Tower foreshore.",
+    "appearsIn": ["whos-who-uk-fire-art-photographers"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "tony-sellen",
+    "name": "Tony Sellen",
+    "location": "London",
+    "scenes": ["light-painting"],
+    "role": "photographer",
+    "publicUrl": "https://www.londonfineartphotography.co.uk/long-exposure-london/",
+    "bioShort": "London long-exposure photographer; his Long Exposure London series is a baseline reference for night-photography in the capital.",
+    "appearsIn": [
+      "whos-who-uk-fire-art-photographers",
+      "whos-who-uk-light-painters"
+    ],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "sean-rodrigo",
+    "name": "Sean Rodrigo",
+    "publicBrand": "Continuum VR",
+    "location": "London",
+    "scenes": ["vr"],
+    "role": "artist",
+    "publicUrl": "https://virtualrealityartist.co.uk",
+    "bioShort": "London-based VR painter; works under Continuum VR doing live painting, training, storyboards, previs and concept art directly inside VR.",
+    "appearsIn": ["whos-who-uk-vr-people"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "gravity-sketch",
+    "name": "Gravity Sketch",
+    "location": "London",
+    "scenes": ["vr"],
+    "role": "studio",
+    "publicUrl": "https://www.gravitysketch.com",
+    "bioShort": "Royal College of Art spinout; cross-platform 3D modelling and creation tool for designers, used in automotive, footwear and product design.",
+    "appearsIn": ["whos-who-uk-vr-people"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "marshmallow-laser-feast",
+    "name": "Marshmallow Laser Feast",
+    "location": "London",
+    "scenes": ["vr", "ar", "projection"],
+    "role": "studio",
+    "publicUrl": "https://marshmallowlaserfeast.com",
+    "bioShort": "Experiential art collective; works at the intersection of VR, AR, projection and installation. Major institutional commissions worldwide.",
+    "appearsIn": [
+      "whos-who-uk-vr-people",
+      "whos-who-uk-ar-people"
+    ],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "reflex-arc",
+    "name": "Reflex Arc",
+    "location": "London",
+    "scenes": ["vr", "ar"],
+    "role": "studio",
+    "publicUrl": "https://reflexarc.co.uk",
+    "bioShort": "Three-time BAFTA-nominated XR studio; longstanding digital partner of David Hockney plus immersive work for Sky, HSBC and cultural institutions.",
+    "appearsIn": [
+      "whos-who-uk-vr-people",
+      "whos-who-uk-ar-people"
+    ],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "audiomotion",
+    "name": "Audiomotion",
+    "location": "Other UK",
+    "scenes": ["motion-capture"],
+    "role": "studio",
+    "publicUrl": "https://www.audiomotion.com",
+    "bioShort": "Oxford-based optical motion-capture house; large-volume Vicon stage; credits across UK film, TV and games.",
+    "appearsIn": ["whos-who-uk-motion-capture"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "centroid-motion-capture",
+    "name": "Centroid Motion Capture",
+    "location": "Other UK",
+    "scenes": ["motion-capture"],
+    "role": "studio",
+    "publicUrl": "https://www.centroid3d.com",
+    "bioShort": "Pinewood-based optical mocap studio; film and broadcast credits including major franchise performance-capture work.",
+    "appearsIn": ["whos-who-uk-motion-capture"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "imaginarium-studios",
+    "name": "Imaginarium Studios",
+    "location": "London",
+    "scenes": ["motion-capture", "performance"],
+    "role": "studio",
+    "publicUrl": "https://www.imaginariumstudios.co.uk",
+    "bioShort": "Andy Serkis's London performance-capture house; the canonical UK address for actor-led full-body and facial capture.",
+    "appearsIn": ["whos-who-uk-motion-capture"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "move-ai",
+    "name": "Move AI",
+    "location": "London",
+    "scenes": ["motion-capture"],
+    "role": "studio",
+    "publicUrl": "https://move.ai",
+    "bioShort": "Markerless multi-camera motion capture using ML pose estimation; cloud-processed full-body and facial tracking from phone video.",
+    "appearsIn": ["whos-who-uk-motion-capture"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "gary-j-lucken",
+    "name": "Gary J. Lucken",
+    "publicBrand": "Army of Trolls",
+    "location": "Other UK",
+    "scenes": ["pixel-art"],
+    "role": "artist",
+    "publicUrl": "https://armyoftrolls.co.uk",
+    "bioShort": "British pixel artist; long-running Army of Trolls practice across game art and personal pieces, with a distinct chunky-pixel signature.",
+    "appearsIn": ["whos-who-uk-pixel-artists"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "chris-maltby",
+    "name": "Chris Maltby",
+    "location": "London",
+    "scenes": ["pixel-art", "led-programming"],
+    "role": "artist",
+    "publicUrl": "https://www.chrismaltby.com",
+    "bioShort": "London-based developer and pixel artist; creator of GB Studio, the visual development environment for Game Boy ROM creation.",
+    "appearsIn": ["whos-who-uk-pixel-artists"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "dan-malone",
+    "name": "Dan Malone",
+    "location": "Other UK",
+    "scenes": ["pixel-art"],
+    "role": "artist",
+    "publicUrl": "https://danmalone.com",
+    "bioShort": "British video game pixel artist; long career across 16-bit-era titles with a signature Mega Drive / Amiga-era palette sensibility.",
+    "appearsIn": ["whos-who-uk-pixel-artists"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "ian-hobson",
+    "name": "Ian Hobson",
+    "location": "Other UK",
+    "scenes": ["light-painting"],
+    "role": "photographer",
+    "publicUrl": "https://www.ianhobson.co.uk",
+    "bioShort": "UK light painter; long-running practice with handheld LED torches and pixelsticks; teaches workshops on the technique.",
+    "appearsIn": ["whos-who-uk-light-painters"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "david-gilliver",
+    "name": "David Gilliver",
+    "location": "Edinburgh",
+    "scenes": ["light-painting"],
+    "role": "photographer",
+    "publicUrl": "https://www.davidgilliver.com",
+    "bioShort": "Edinburgh-based light painter and night photographer; long-exposure landscape and figure work, plus workshops.",
+    "appearsIn": ["whos-who-uk-light-painters"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "apache",
+    "name": "Apache",
+    "location": "Other UK",
+    "scenes": ["ar", "vr"],
+    "role": "studio",
+    "publicUrl": "https://apache.co.uk",
+    "bioShort": "XR studio based in the St Albans / London orbit; specialises in AR, VR and body-tracking work for brand and broadcast.",
+    "appearsIn": ["whos-who-uk-ar-people", "whos-who-uk-vr-people"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "arcade-xr",
+    "name": "Arcade XR",
+    "location": "London",
+    "scenes": ["ar"],
+    "role": "studio",
+    "publicUrl": "https://arcadexr.com",
+    "bioShort": "London-based immersive experience agency; AR storytelling for cultural institutions including the National Gallery, Sky, Disney and UK Parliament.",
+    "appearsIn": ["whos-who-uk-ar-people"],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "visualise",
+    "name": "Visualise",
+    "location": "London",
+    "scenes": ["vr", "ar"],
+    "role": "studio",
+    "publicUrl": "https://visualise.com",
+    "bioShort": "London XR agency; VR + AR + 360 + volumetric and large-scale installation work since 2011.",
+    "appearsIn": [
+      "whos-who-uk-vr-people",
+      "whos-who-uk-ar-people"
+    ],
+    "lastVerified": "2026-05-18"
+  },
+  {
+    "id": "pervasive-media-studio",
+    "name": "Pervasive Media Studio",
+    "location": "Bristol",
+    "scenes": ["vr", "ar", "motion-capture", "performance"],
+    "role": "venue",
+    "publicUrl": "https://www.watershed.co.uk/studio/",
+    "bioShort": "Bristol research studio at the Watershed; ~150 artists, technologists and academics exploring playful creative-technology projects.",
+    "appearsIn": [
+      "whos-who-uk-vr-people",
+      "whos-who-uk-ar-people"
+    ],
+    "lastVerified": "2026-05-18"
+  }
+]
