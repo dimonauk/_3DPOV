@@ -405,6 +405,16 @@ const auraAliveStubs: CapabilityRecord[] = [
     load: () => import("./viz/splat-generate"),
   },
   {
+    id: "viz.splat-generate-360",
+    kind: "viz",
+    name: "Splat generate (360 source)",
+    summary:
+      "Sibling to viz.splat-generate scoped to spherical-camera capture (Avata 360, Osmo 360, Insta360 X-series, Theta, GoPro Max). Three source shapes (fisheye-pair / equirect-video / equirect-image-set) and three camera-model strategies (fisheye-pair / equirect / cubemap). Single provider 'hangar-360' routes to the splat360 service on port 8390. Locked to commercial-ok licence via PROVIDER_LICENCE_360 — no apple-amlr contamination possible. Foundation-phase stub; throws provider-unavailable until the hangar-360 wires land.",
+    status: "registered",
+    source: "Studio sibling to viz.splat-generate. Backed by D:/The_Hangar/engines/splat360/ (COLMAP/GLOMAP + gsplat/Brush, all commerce-safe OSS). PURPOSE doc at lib/capabilities/viz/splat-generate-360.PURPOSE.md.",
+    load: () => import("./viz/splat-generate-360"),
+  },
+  {
     id: "viz.splat-render",
     kind: "viz",
     name: "Splat render",
