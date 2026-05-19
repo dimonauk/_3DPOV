@@ -37,6 +37,7 @@ import { entry as unrealPixelStreamingBrowserDeliveryEntry } from "components/tu
 import { entry as blenderTutorialFacetedGemstoneGeonodesEntry } from "components/tutorials/entries/blender-tutorial-faceted-gemstone-geonodes";
 import { entry as blenderTutorialGeometryNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-terrain";
 import { entry as blenderTutorialLowPolyFacetedHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-low-poly-faceted-hard-surface";
+import { entry as blenderTutorialFacetedGemWebxrEntry } from "components/tutorials/entries/blender-tutorial-faceted-gem-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -79,6 +80,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialFacetedGemstoneGeonodesEntry,
   blenderTutorialGeometryNodesLowPolyTerrainEntry,
   blenderTutorialLowPolyFacetedHardSurfaceEntry,
+  blenderTutorialFacetedGemWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

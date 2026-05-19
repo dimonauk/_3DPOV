@@ -118,3 +118,4 @@ screen-capture session.
 |---|---|---|---|---|
 | 2026-05-19 | blender-tutorial-geometry-nodes-low-poly-terrain | GN — procedural terrain | blends/geometry-nodes/low-poly-terrain/ | bpy.data GN tree; Blender 5.1 interface.new_socket API; noise displacement + flat shade |
 | 2026-05-19 | blender-tutorial-low-poly-faceted-hard-surface | Smooth by Angle + Sharp edge marks | blends/low-poly/faceted-hard-surface/ | Blender 5.1 Auto-Smooth replacement; bmesh box-model + inset; flat studio-palette mat; Draco GLB |
+| 2026-05-19 | blender-tutorial-faceted-gem-webxr | bmesh data API gem + EEVEE Next cel-refraction | blends/low-poly-stylised/faceted-gem-webxr/ | Pure bmesh (no bpy.ops); brilliant-cut topology; Principled BSDF Transmission Weight (5.x); surface_render_method FORWARD; CONSTANT ColorRamp cel bands |

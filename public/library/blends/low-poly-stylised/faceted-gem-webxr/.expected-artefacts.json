@@ -1,0 +1,41 @@
+{
+  "slug": "faceted-gem-webxr",
+  "topic": "low-poly-stylised",
+  "blender_version": "5.1",
+  "files": {
+    "blend":    "public/library/blends/low-poly-stylised/faceted-gem-webxr/gem_cobalt.blend",
+    "glb":      "public/library/glbs/low-poly-stylised/gem_cobalt.glb",
+    "viewport": "public/library/videos/low-poly-stylised/faceted-gem-webxr/viewport.mp4",
+    "screen":   "public/library/videos/low-poly-stylised/faceted-gem-webxr/screen.mp4"
+  },
+  "expected_face_count":   25,
+  "expected_vertex_count": 25,
+  "expected_glb_kb_max":   10,
+  "cross_references": {
+    "studio": [
+      "/articles/low-poly-high-facet-shading",
+      "/articles/cohesive-low-poly-cell-shaded-vrm-worlds",
+      "/articles/advanced-cell-shading-techniques",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/atelier/scene-stage-demo"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/current/",
+        "title": "Blender Python API Reference",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/SebLague/Coding-Adventures",
+        "title": "Coding Adventures — crystal/refraction research",
+        "licence": "MIT",
+        "author": "Sebastian Lague",
+        "related_projects": [
+          "https://github.com/SebLague/Procedural-Stochastic-Texturing",
+          "https://github.com/SebLague/Marching-Cubes"
+        ]
+      }
+    ]
+  }
+}
