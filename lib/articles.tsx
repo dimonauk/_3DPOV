@@ -2,6 +2,7 @@ import { entry as artAsDoorFiveLayersEntry } from "components/articles/entries/a
 import { entry as auraTheBodyEntry } from "components/articles/entries/aura-the-body";
 import { entry as beltPrintedWallReliefsEntry } from "components/articles/entries/belt-printed-wall-reliefs";
 import { entry as choreographingWithLabanEntry } from "components/articles/entries/choreographing-with-laban";
+import { entry as cohesiveLowPolyCellShadedVrmWorldsEntry } from "components/articles/entries/cohesive-low-poly-cell-shaded-vrm-worlds";
 import { entry as colourWithoutPigmentEntry } from "components/articles/entries/colour-without-pigment";
 import { entry as fromPicassoForwardEntry } from "components/articles/entries/from-picasso-forward";
 import { entry as howTheStudioBreedsSculpturesEntry } from "components/articles/entries/how-the-studio-breeds-sculptures";
@@ -75,9 +76,14 @@ import { entry as theOsintStackForCreativeResearchEntry } from "components/artic
 import { entry as emulationAsACreativeToolEntry } from "components/articles/entries/emulation-as-a-creative-tool";
 import { entry as theEmulationStackForCreativeResearchEntry } from "components/articles/entries/the-emulation-stack-for-creative-research";
 import { entry as byoRomBrowserEmulatorsEntry } from "components/articles/entries/byo-rom-browser-emulators";
+import { entry as lowPolyGraphicsInVrEntry } from "components/articles/entries/low-poly-graphics-in-vr";
+import { entry as cellShadedGraphicsInVrEntry } from "components/articles/entries/cell-shaded-graphics-in-vr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
+  lowPolyGraphicsInVrEntry,
+  cellShadedGraphicsInVrEntry,
+  cohesiveLowPolyCellShadedVrmWorldsEntry,
   byoRomBrowserEmulatorsEntry,
   osintForFindingYourPeopleEntry,
   theOsintStackForCreativeResearchEntry,

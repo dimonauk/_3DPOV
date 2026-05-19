@@ -60,10 +60,13 @@ The site is Next.js 15.6 canary on App Router, deployed to Vercel, branch `claud
 
 | Project | Licence | Role | Where |
 | --- | --- | --- | --- |
-| [feedsmith](https://github.com/macieklamberski/feedsmith) `^2.9` | MIT | RSS/Atom/JSONFeed parse + build | `lib/feed/atom.ts`, `lib/workers/feed-parse.worker.ts` |
+| [feedsmith](https://github.com/macieklamberski/feedsmith) `^2.9` | MIT | RSS/Atom/JSONFeed parse + build | `lib/feed/atom.ts`, `lib/workers/feed-parse.worker.ts`, `lib/watchers/sources/arxiv.ts`, `lib/watchers/sources/org-atom.ts` |
 | (in-house) ActivityPub skeleton | in-house | WebFinger + actor + outbox over `@fedify`-shaped routes | `lib/federation/*`, `app/.well-known/*` |
 | [Mastodon public API](https://docs.joinmastodon.org/) | AGPL-3.0 (server) | Status fetcher for /feed | `lib/social-feeds/fetch-mastodon.ts` |
 | [Bluesky AT Protocol](https://github.com/bluesky-social/atproto) | MIT | `api.bsky.app` author-feed fetcher | `lib/social-feeds/fetch-bluesky.ts` |
+| [GitHub REST API](https://docs.github.com/en/rest) | proprietary (TOS) | Commits + releases poll for the Polymaths Feed watcher | `lib/watchers/sources/github-releases.ts`, `lib/watchers/sources/holoflow-git.ts`, `lib/watchers/sources/org-atom.ts` |
+| [Hugging Face Hub API](https://huggingface.co/docs/hub/api) | proprietary (TOS) | Recent-model poll for the Polymaths Feed watcher | `lib/watchers/sources/huggingface-models.ts` |
+| [arXiv API](https://info.arxiv.org/help/api/index.html) | open access (arXiv ToS) | Recent-paper poll for the Polymaths Feed watcher | `lib/watchers/sources/arxiv.ts` |
 
 ## Magazine engine
 
