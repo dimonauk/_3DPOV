@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+
+import { ParallaxLayer } from "components/parallax/ParallaxLayer";
 
 /**
  * The headline magazine-cover plate. A `.lux-stage` perspective box
@@ -7,6 +11,17 @@ import Image from "next/image";
  * on their own z-planes. Tilts a touch on hover (reduced-motion-safe),
  * carries the paper-stack shadow so it reads as a sheet sitting above
  * the page rather than welded to it.
+ *
+ * Parallax showcase: every floating element here is wrapped in a
+ * ParallaxLayer with a descending speed so the cover separates into
+ * depth bands as the reader scrolls. The image drifts slowest (0.4)
+ * and the issue chip drifts fastest (1.0), so the title appears to
+ * lift up off the photograph and into the page. See docs/PARALLAX.md
+ * for the wider story.
+ *
+ * Client component because the parallax hooks subscribe to a window-
+ * level scroll store. The wrapper is the only state-bearing part —
+ * the visual content is all static markup.
  */
 export type LuxCoverProps = {
   /** Optional background image. Rendered with priority since it's hero. */
@@ -45,9 +60,15 @@ export function LuxCover({
       >
         {/* Backplate — image if supplied, otherwise the same chrome-sheen
             gradient fallback the writing hero plate uses, so empty
-            covers still have weight at the top of the column. */}
+            covers still have weight at the top of the column.
+
+            Parallax speed 0.4 — the image drifts slowest, sitting
+            visibly "behind" everything else as the page moves. */}
         {image ? (
-          <div className="lux-z-0 absolute inset-0">
+          <ParallaxLayer
+            speed={0.4}
+            className="lux-z-0 absolute inset-0"
+          >
             <Image
               src={image.src}
               alt={image.alt}
@@ -56,53 +77,73 @@ export function LuxCover({
               sizes="(min-width: 1024px) 960px, 100vw"
               priority
             />
-          </div>
+          </ParallaxLayer>
         ) : (
-          <div
-            aria-hidden
-            className="lux-z-0 absolute inset-0 bg-[#0c0a12]"
-            style={{
-              backgroundImage:
-                "radial-gradient(600px 320px at 70% 30%, rgba(0,243,255,0.15), transparent 60%), radial-gradient(540px 360px at 20% 80%, rgba(255,77,255,0.18), transparent 60%), radial-gradient(420px 280px at 50% 100%, rgba(255,215,0,0.10), transparent 65%)",
-            }}
-          />
+          <ParallaxLayer
+            speed={0.4}
+            className="lux-z-0 absolute inset-0"
+          >
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[#0c0a12]"
+              style={{
+                backgroundImage:
+                  "radial-gradient(600px 320px at 70% 30%, rgba(0,243,255,0.15), transparent 60%), radial-gradient(540px 360px at 20% 80%, rgba(255,77,255,0.18), transparent 60%), radial-gradient(420px 280px at 50% 100%, rgba(255,215,0,0.10), transparent 65%)",
+              }}
+            />
+          </ParallaxLayer>
         )}
 
         {/* Vignette over the image — keeps the foiled title legible
-            even when the photograph behind is busy. */}
+            even when the photograph behind is busy. Static (no
+            parallax) so the legibility floor is uniform. */}
         <div
           aria-hidden
           className="lux-z-1 hero-vignette pointer-events-none absolute inset-0"
         />
 
         {/* Top-right issue chip — pinned to the corner, sits on its own
-            forward plane so it lifts cleanly on hover. */}
+            forward plane so it lifts cleanly on hover.
+
+            Parallax speed 1.0 — fastest in the stack, so the chip
+            stays locked to the page as the reader scrolls past
+            (relative to the slower image behind, it appears to
+            rush forward). */}
         {issueChip && (
-          <div className="lux-z-4 absolute top-4 right-4 md:top-6 md:right-6">
+          <ParallaxLayer
+            speed={1.0}
+            className="lux-z-4 absolute top-4 right-4 md:top-6 md:right-6"
+          >
             <span className="chrome-label rounded-full border border-pink-300/40 bg-warm-black-950/60 px-3 py-1 text-pink-200 backdrop-blur-sm">
               {issueChip}
             </span>
-          </div>
+          </ParallaxLayer>
         )}
 
         {/* Title stack — bottom-anchored. Supertitle, then the big
-            foiled serif, then the italic subtitle. */}
+            foiled serif, then the italic subtitle. Each line gets
+            its own ParallaxLayer at a slightly different speed so
+            the stack fans apart as the reader scrolls. */}
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 md:p-10">
           {supertitle && (
-            <span className="lux-z-2 chrome-label text-pink-200">
-              {supertitle}
-            </span>
+            <ParallaxLayer speed={0.6} className="lux-z-2">
+              <span className="chrome-label text-pink-200">{supertitle}</span>
+            </ParallaxLayer>
           )}
-          <h1
-            className="lux-z-3 lux-foil font-display text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {title}
-          </h1>
+          <ParallaxLayer speed={0.8} className="lux-z-3">
+            <h1
+              className="lux-foil font-display text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {title}
+            </h1>
+          </ParallaxLayer>
           {subtitle && (
-            <p className="lux-z-3 max-w-xl text-base text-chrome-200 italic md:text-lg">
-              {subtitle}
-            </p>
+            <ParallaxLayer speed={0.85} className="lux-z-3">
+              <p className="max-w-xl text-base text-chrome-200 italic md:text-lg">
+                {subtitle}
+              </p>
+            </ParallaxLayer>
           )}
         </div>
       </div>
