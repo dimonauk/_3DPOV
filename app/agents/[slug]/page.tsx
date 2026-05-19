@@ -1,15 +1,18 @@
 /**
- * /agents/[slug] — Agentic representation of a person.
+ * /agents/[slug] — Agentic representation of a person OR cast member.
  *
- * Reads from `lib/people/registry.ts` to know who the agent is *of*.
- * Today the chat surface is in-flight (the Ollama-backed runtime
- * lands in a future session); the page surfaces the person + sets
- * up the slot the chat will land in.
+ * Two valid lookup paths:
+ *  - `lib/cast` — named studio characters (Aura, Marcel, Penny, ...).
+ *    These carry a CharacterBible (voice, draws, posture).
+ *  - `lib/people/registry` — real-world practitioners with public
+ *    output, agent built from their site/posts.
  *
- * Slug matches the rolodex / profile id.
+ * If the slug matches neither, the page 404s rather than rendering an
+ * empty agent surface.
  */
 
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import AgentChat from "components/agents/AgentChat";
 import Footer from "components/layout/footer";
@@ -19,6 +22,32 @@ import { getProfile } from "lib/people/registry";
 // stub doesn't justify the build-time pre-render cost.
 export const dynamic = "force-dynamic";
 
+// Defensive cast lookup. The cast module is being built alongside this
+// page; if the import fails the slug page still renders against the
+// people-registry path. Returns `null` for both "module missing" and
+// "slug not in cast" — callers fall through to the people-registry
+// lookup.
+type CastBible = {
+  id: string;
+  name: string;
+  role: string;
+  voice: string;
+  draws: string[];
+  defaultMode: string;
+};
+
+async function getCastBible(slug: string): Promise<CastBible | null> {
+  try {
+    const mod = await import("lib/cast");
+    type CastId = ReturnType<typeof mod.listCastIds>[number];
+    const ids = mod.listCastIds();
+    if (!(ids as readonly string[]).includes(slug)) return null;
+    return mod.getBible(slug as CastId) as CastBible;
+  } catch {
+    return null;
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,10 +55,10 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const profile = getProfile(slug);
+  const bible = await getCastBible(slug);
+  const name = profile?.name ?? bible?.name ?? slug;
   return {
-    title: profile
-      ? `${profile.name}'s agent`
-      : `${slug} — agent`,
+    title: profile ? `${name}'s agent` : `${name} — agent`,
     robots: { index: false, follow: false },
   };
 }
@@ -41,7 +70,15 @@ export default async function AgentPage({
 }) {
   const { slug } = await params;
   const profile = getProfile(slug);
-  const display = profile?.name ?? slug;
+  const bible = await getCastBible(slug);
+
+  // 404 if the slug isn't claimed by either registry. Avoids rendering
+  // an empty agent surface for typos and stale links.
+  if (!profile && !bible) {
+    notFound();
+  }
+
+  const display = profile?.name ?? bible?.name ?? slug;
 
   return (
     <>
@@ -76,17 +113,62 @@ export default async function AgentPage({
           </p>
         </section>
 
-        {profile ? (
-          <div className="mt-8">
-            <AgentChat slug={slug} profileName={profile.name} />
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-[1fr_220px]">
+          <div>
+            {profile ? (
+              <AgentChat slug={slug} profileName={profile.name} />
+            ) : (
+              <section className="rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-6 text-sm text-chrome-300">
+                {display}&rsquo;s chat is wired against the cast
+                bible, not the rolodex &mdash; the Ollama runtime
+                lands here once the people-registry side of the
+                handshake catches up. The bible (voice, things they
+                draw to) is in the sidebar.
+              </section>
+            )}
           </div>
-        ) : (
-          <section className="mt-8 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-6 text-sm text-chrome-300">
-            No public profile under <code>{slug}</code>. The agent
-            surface is built per-profile &mdash; once {display} has an
-            entry in the rolodex, the chat lands here.
-          </section>
-        )}
+
+          {bible ? (
+            <aside className="space-y-6 text-sm">
+              <section>
+                <div className="chrome-label">Voice register</div>
+                <p className="mt-2 text-xs leading-relaxed text-chrome-300">
+                  {bible.voice}
+                </p>
+                <div
+                  className="mt-3 inline-block rounded-full border border-pink-200/40 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-pink-200"
+                >
+                  {bible.defaultMode}
+                </div>
+              </section>
+
+              {bible.draws.length > 0 ? (
+                <section>
+                  <div className="chrome-label">Speaks about</div>
+                  <ul className="mt-2 space-y-1.5">
+                    {bible.draws.map((topic, i) => (
+                      <li
+                        key={`${bible.id}-draws-${i}`}
+                        className="text-xs text-chrome-300"
+                      >
+                        &middot; {topic}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+
+              <section>
+                <div className="chrome-label">Boundary</div>
+                <p className="mt-2 text-xs text-chrome-400">
+                  Won&rsquo;t pretend on topics outside the bible.
+                  If a question lands outside what {display} draws
+                  to, the agent says so plainly.
+                </p>
+              </section>
+            </aside>
+          ) : null}
+        </div>
 
         <section className="mt-10">
           <div className="chrome-label">What you can do now</div>
