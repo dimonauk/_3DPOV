@@ -80,6 +80,7 @@ import { entry as lowPolyGraphicsInVrEntry } from "components/articles/entries/l
 import { entry as lowPolyHighFacetShadingEntry } from "components/articles/entries/low-poly-high-facet-shading";
 import { entry as cellShadedGraphicsInVrEntry } from "components/articles/entries/cell-shaded-graphics-in-vr";
 import { entry as advancedCellShadingTechniquesEntry } from "components/articles/entries/advanced-cell-shading-techniques";
+import { entry as spatialAudioInWebxrEntry } from "components/articles/entries/spatial-audio-in-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -87,6 +88,7 @@ const ENTRIES: Entry[] = [
   lowPolyHighFacetShadingEntry,
   cellShadedGraphicsInVrEntry,
   advancedCellShadingTechniquesEntry,
+  spatialAudioInWebxrEntry,
   cohesiveLowPolyCellShadedVrmWorldsEntry,
   byoRomBrowserEmulatorsEntry,
   osintForFindingYourPeopleEntry,
