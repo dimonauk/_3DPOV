@@ -1,0 +1,40 @@
+{
+  "slug": "low-poly-terrain",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "terrain_faceted.glb",
+    "terrain_faceted.blend"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/low-poly-terrain/viewport.mp4",
+    "public/library/videos/geometry-nodes/low-poly-terrain/screen.mp4"
+  ],
+  "tutorial_component": "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-terrain.tsx",
+  "cross_references": {
+    "studio_surfaces": [
+      "/articles/low-poly-high-facet-shading",
+      "/articles/cohesive-low-poly-cell-shaded-vrm-worlds",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-addon-3d-print-toolbox"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0"
+      },
+      {
+        "url": "https://polyhaven.com",
+        "author": "Poly Haven contributors",
+        "licence": "CC0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "author": "Khronos Group / UX3D / Julien Duroure",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}

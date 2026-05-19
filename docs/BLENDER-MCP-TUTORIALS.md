@@ -110,3 +110,10 @@ screen-capture session.
 - UV sphere ring topology (8×6) maps cleanly to gem zones — each ring index
   is one latitude band, making bmesh zone selection deterministic.
 - Headless run: `blender --background --python blueprint.py`
+---
+
+## Content-mill log (hourly autopilot)
+
+| Date | Slug | Topic | Library path | Notes |
+|---|---|---|---|---|
+| 2026-05-19 | blender-tutorial-geometry-nodes-low-poly-terrain | GN — procedural terrain | blends/geometry-nodes/low-poly-terrain/ | bpy.data GN tree; Blender 5.1 interface.new_socket API; noise displacement + flat shade |
