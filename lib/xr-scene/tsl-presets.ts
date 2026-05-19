@@ -18,6 +18,31 @@
  * with the closest equivalent uniform setup.
  */
 
+/**
+ * Re-export the full catalogue from lib/tsl-materials so SceneStage
+ * authors who already import `buildPreset` here keep working, but
+ * can also reach for any of the extended presets (holographic,
+ * anodised, waveguide-glow, etc.) without restructuring imports.
+ *
+ * The legacy `buildPreset(name, opts)` below covers the original four
+ * (chrome / foil / matte / glass) with the SceneStage-friendly
+ * `{ material, tick, dispose }` envelope. For everything else, call
+ * `getMaterialPreset(id)?.build(overrides)` directly — you own
+ * disposal in that path.
+ */
+export {
+  ALL_MATERIAL_PRESETS,
+  getMaterialPreset,
+  presetsByCategory,
+} from "lib/tsl-materials";
+export type {
+  TslMaterialPreset,
+  TslMaterialOverrides,
+  TslMaterialCategory,
+  TslMaterialBackend,
+  TslMaterialCost,
+} from "lib/tsl-materials";
+
 export type PresetName = "chrome" | "foil" | "matte" | "glass";
 
 export type PresetMaterial = {
