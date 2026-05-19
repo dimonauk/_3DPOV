@@ -2,9 +2,9 @@
 
 /**
  * components/webxr-retroarch/RetroArchRoom.tsx — The virtual game-room
- * R3F scene. CRT TV on a stand, console-and-controller on a side
- * table, floor under the feet, three-light setup, EmulatorJS canvas
- * piped onto the TV's screen plane.
+ * R3F scene. CRT TV on a stand, console + controller on a side table,
+ * floor under the feet, three-light setup, EmulatorJS canvas piped
+ * onto the TV's screen plane.
  *
  * The texture is owned at this level so the per-frame `needsUpdate`
  * flip lives next to the render code that reads it. The XR-controller
@@ -12,12 +12,15 @@
  * place to budget the per-frame cost. Quest 3 measured ~1-2 ms for
  * the texture upload on a 256×240 NES surface, ~2-3 ms on 640×480
  * PSX; the input poll is sub-100 µs.
+ *
+ * The furniture (floor, sky, CRT chassis, stand, table, lights) lives
+ * in room-furniture.tsx to keep this file under the studio's 300-line
+ * per-file rule.
  */
 
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import {
-  BackSide,
   CanvasTexture,
   DoubleSide,
   type MeshBasicMaterial,
@@ -33,6 +36,14 @@ import {
 import { hasSeparateController } from "lib/webxr-retroarch/devices-fallback";
 import { getMapping } from "lib/webxr-retroarch/input-mappings";
 import { buildRoomLayout } from "lib/webxr-retroarch/room-layout";
+
+import {
+  CRTChassisAndStand,
+  FallbackConsole,
+  RoomFloorAndSky,
+  RoomLights,
+  SideTable,
+} from "./room-furniture";
 
 export type RetroArchRoomProps = {
   systemSlug: string;
@@ -89,79 +100,11 @@ export function RetroArchRoom({
 
   return (
     <group>
-      {/* Floor — matte concrete plate. */}
-      <mesh
-        position={[
-          layout.floorCenter[0],
-          layout.floorCenter[1],
-          layout.floorCenter[2],
-        ]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[layout.floorRadius * 2, layout.floorRadius * 2]} />
-        <meshStandardMaterial color="#1c1620" roughness={0.85} metalness={0.05} />
-      </mesh>
+      <RoomFloorAndSky layout={layout} />
+      <CRTChassisAndStand layout={layout} />
+      <SideTable layout={layout} />
 
-      {/* Skybox — inside-out icosahedron painted near-black. */}
-      <mesh scale={32}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshStandardMaterial
-          color="#0c0a14"
-          roughness={1}
-          metalness={0}
-          side={BackSide}
-        />
-      </mesh>
-
-      {/* TV stand — wood-toned box. */}
-      <mesh
-        position={[
-          layout.standCenter[0],
-          layout.standCenter[1],
-          layout.standCenter[2],
-        ]}
-        castShadow
-        receiveShadow
-      >
-        <boxGeometry
-          args={layout.standSize as unknown as [number, number, number]}
-        />
-        <meshStandardMaterial color="#3a2418" roughness={0.7} metalness={0.05} />
-      </mesh>
-
-      {/* CRT TV chassis. */}
-      <mesh
-        position={[
-          layout.tvCenter[0],
-          layout.tvCenter[1],
-          layout.tvCenter[2],
-        ]}
-        castShadow
-      >
-        <boxGeometry
-          args={layout.tvSize as unknown as [number, number, number]}
-        />
-        <meshStandardMaterial color="#19191e" roughness={0.55} metalness={0.4} />
-      </mesh>
-
-      {/* Two dial knobs — a small period tell. */}
-      {[0.08, -0.08].map((dy, i) => (
-        <mesh
-          key={i}
-          position={[
-            layout.tvCenter[0] + layout.tvSize[0] / 2 - 0.05,
-            layout.tvCenter[1] + dy,
-            layout.tvCenter[2] + layout.tvSize[2] / 2 + 0.012,
-          ]}
-          rotation={[Math.PI / 2, 0, 0]}
-        >
-          <cylinderGeometry args={[0.018, 0.018, 0.024, 24]} />
-          <meshStandardMaterial color="#c9c2b8" roughness={0.4} metalness={0.7} />
-        </mesh>
-      ))}
-
-      {/* Screen plane — load-bearing object. CanvasTexture from
+      {/* Screen plane — the load-bearing object. CanvasTexture from
           EmulatorJS canvas via the bridge; basic material so the
           framebuffer doesn't get re-lit (lighting on emulator pixels
           looks wrong). */}
@@ -173,7 +116,7 @@ export function RetroArchRoom({
         ]}
       >
         <planeGeometry
-          args={layout.screenSize as unknown as [number, number]}
+          args={[layout.screenSize[0], layout.screenSize[1]]}
         />
         <meshBasicMaterial
           ref={screenMatRef}
@@ -197,42 +140,6 @@ export function RetroArchRoom({
         />
         <meshBasicMaterial color="#3a285a" transparent opacity={0.35} />
       </mesh>
-
-      {/* Side table — thin chrome slab. */}
-      <mesh
-        position={[
-          layout.tableCenter[0],
-          layout.tableCenter[1],
-          layout.tableCenter[2],
-        ]}
-        castShadow
-        receiveShadow
-      >
-        <boxGeometry
-          args={layout.tableSize as unknown as [number, number, number]}
-        />
-        <meshStandardMaterial color="#1a1822" roughness={0.25} metalness={0.85} />
-      </mesh>
-      {/* Table legs — four thin uprights. */}
-      {([
-        [-1, -1],
-        [-1, 1],
-        [1, -1],
-        [1, 1],
-      ] as const).map(([sx, sz], i) => (
-        <mesh
-          key={i}
-          position={[
-            layout.tableCenter[0] + sx * (layout.tableSize[0] / 2 - 0.03),
-            layout.tableCenter[1] / 2,
-            layout.tableCenter[2] + sz * (layout.tableSize[2] / 2 - 0.03),
-          ]}
-          castShadow
-        >
-          <cylinderGeometry args={[0.018, 0.018, layout.tableCenter[1], 8]} />
-          <meshStandardMaterial color="#1a1822" roughness={0.3} metalness={0.85} />
-        </mesh>
-      ))}
 
       {/* Console body on the table — via DeviceMesh (GLB or primitive
           fallback). */}
@@ -268,30 +175,10 @@ export function RetroArchRoom({
         </group>
       ) : null}
 
-      {/* Three-light setup pulled from the layout. */}
-      <pointLight
-        position={
-          layout.keyLight.position as unknown as [number, number, number]
-        }
-        intensity={layout.keyLight.intensity}
-        color={layout.keyLight.colour}
-      />
-      <pointLight
-        position={
-          layout.fillLight.position as unknown as [number, number, number]
-        }
-        intensity={layout.fillLight.intensity}
-        color={layout.fillLight.colour}
-      />
-      <pointLight
-        position={
-          layout.rimLight.position as unknown as [number, number, number]
-        }
-        intensity={layout.rimLight.intensity}
-        color={layout.rimLight.colour}
-      />
+      <RoomLights layout={layout} />
 
-      {/* TV-glow point light at the screen. */}
+      {/* TV-glow point light at the screen — only on once the picture
+          is live, otherwise the dark TV reads more correctly. */}
       {texture ? (
         <pointLight
           position={[
@@ -306,16 +193,6 @@ export function RetroArchRoom({
         />
       ) : null}
     </group>
-  );
-}
-
-/** Inlined fallback for systems with no DEVICE_CATALOGUE entry. */
-function FallbackConsole() {
-  return (
-    <mesh castShadow>
-      <boxGeometry args={[0.32, 0.07, 0.22]} />
-      <meshStandardMaterial color="#c8c8d0" roughness={0.55} metalness={0.2} />
-    </mesh>
   );
 }
 
