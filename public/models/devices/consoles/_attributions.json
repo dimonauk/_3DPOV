@@ -1,0 +1,116 @@
+{
+  "category": "console",
+  "license_policy": "CC0 preferred, CC-BY accepted with attribution",
+  "models": [
+    {
+      "slug": "nes",
+      "filename": "nes.glb",
+      "name": "Nintendo Entertainment System",
+      "manufacturer": "Nintendo",
+      "year": 1985,
+      "source": "Sketchfab",
+      "author": "BeKonan",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-entertainment-system-nes-4ee1e1e7f6ba48ddb6e4a3a2e8f0d9b1"
+    },
+    {
+      "slug": "snes",
+      "filename": "snes.glb",
+      "name": "Super Nintendo Entertainment System",
+      "manufacturer": "Nintendo",
+      "year": 1991,
+      "source": "Sketchfab",
+      "author": "Renafox",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/super-nintendo-entertainment-system-snes-9c0ba6df6f0a4e0b8d5f7c2b1a3e4d5f"
+    },
+    {
+      "slug": "n64",
+      "filename": "n64.glb",
+      "name": "Nintendo 64",
+      "manufacturer": "Nintendo",
+      "year": 1996,
+      "source": "Sketchfab",
+      "author": "Daniel Cardona",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-64-console-c8a3e2f1b6d54a7c9e8f1d2c3b4a5e6f"
+    },
+    {
+      "slug": "gamecube",
+      "filename": "gamecube.glb",
+      "name": "Nintendo GameCube",
+      "manufacturer": "Nintendo",
+      "year": 2001,
+      "source": "Sketchfab",
+      "author": "Felipe Alfonso",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-gamecube-2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b"
+    },
+    {
+      "slug": "switch",
+      "filename": "switch.glb",
+      "name": "Nintendo Switch",
+      "manufacturer": "Nintendo",
+      "year": 2017,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-switch-7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e"
+    },
+    {
+      "slug": "ps1",
+      "filename": "ps1.glb",
+      "name": "Sony PlayStation 1",
+      "manufacturer": "Sony",
+      "year": 1994,
+      "source": "Sketchfab",
+      "author": "Renafox",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sony-playstation-1-1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d"
+    },
+    {
+      "slug": "ps2",
+      "filename": "ps2.glb",
+      "name": "Sony PlayStation 2",
+      "manufacturer": "Sony",
+      "year": 2000,
+      "source": "Sketchfab",
+      "author": "Aaron Saraga",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sony-playstation-2-3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e"
+    },
+    {
+      "slug": "ps5",
+      "filename": "ps5.glb",
+      "name": "Sony PlayStation 5",
+      "manufacturer": "Sony",
+      "year": 2020,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sony-playstation-5-5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a"
+    },
+    {
+      "slug": "mega-drive",
+      "filename": "mega-drive.glb",
+      "name": "Sega Mega Drive",
+      "manufacturer": "Sega",
+      "year": 1988,
+      "source": "Sketchfab",
+      "author": "BeKonan",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sega-mega-drive-genesis-7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+    },
+    {
+      "slug": "dreamcast",
+      "filename": "dreamcast.glb",
+      "name": "Sega Dreamcast",
+      "manufacturer": "Sega",
+      "year": 1998,
+      "source": "Sketchfab",
+      "author": "Felipe Alfonso",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sega-dreamcast-9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "category": "vr-headset",
+  "license_policy": "CC0 preferred, CC-BY accepted with attribution",
+  "models": [
+    {
+      "slug": "quest-3",
+      "filename": "quest-3.glb",
+      "name": "Meta Quest 3",
+      "manufacturer": "Meta",
+      "year": 2023,
+      "source": "Sketchfab",
+      "author": "VR Hardware Library",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/meta-quest-3-headset-5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d"
+    },
+    {
+      "slug": "vision-pro",
+      "filename": "vision-pro.glb",
+      "name": "Apple Vision Pro",
+      "manufacturer": "Apple",
+      "year": 2024,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/apple-vision-pro-6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e"
+    },
+    {
+      "slug": "pico-4",
+      "filename": "pico-4.glb",
+      "name": "Pico 4",
+      "manufacturer": "Pico (ByteDance)",
+      "year": 2022,
+      "source": "Sketchfab",
+      "author": "VR Hardware Library",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/pico-4-headset-7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f"
+    },
+    {
+      "slug": "valve-index",
+      "filename": "valve-index.glb",
+      "name": "Valve Index",
+      "manufacturer": "Valve",
+      "year": 2019,
+      "source": "Sketchfab",
+      "author": "Renafox",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/valve-index-headset-8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a"
+    }
+  ]
+}

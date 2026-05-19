@@ -89,6 +89,18 @@ The studio runs two in-house TSL libraries — `lib/tsl-materials/` (preset Node
 | (in-house) Instructable system | in-house | Aura Test Chamber tutorial chrome | `components/tutorials/Instructable.tsx`, `lib/tutorials/types.ts` |
 | (in-house) Luxe components | in-house | IssueBand, EditionNumeral, LuxCover, LuxFolio, SectionOpener | `components/luxe/*` |
 
+## WebXR RetroArch (game-room simulator)
+
+The virtual living room at `/atelier/webxr-retroarch`. CRT TV, console on the side table, controller in the visitor's hand, a libretro WASM core running the visitor's own ROM. See `docs/WEBXR-RETROARCH.md` for the architecture. ROM bytes never leave the device — same posture as `/emulator`.
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) `stable` | GPL-3.0 | WASM libretro front-end. Loaded from `cdn.emulatorjs.org/stable/data/`. Studio's wrapper is its own work, not derivative — calls the public `EJS_*` global surface only. | `components/emulator/EmulatorJsEmbed.tsx`, `components/webxr-retroarch/EmulatorHost.tsx` |
+| [RetroArch](https://github.com/libretro/RetroArch) | GPL-3.0 | Reference for libretro input-mapping conventions. No source copied; the `LIBRETRO_BUTTONS` index constants are facts about a public API. | `lib/webxr-retroarch/input-mappings.ts` (conventions cited) |
+| Device GLBs (consoles + controllers) | CC0 / CC-BY per-model | Console + controller bodies for the room. Sourced from Sketchfab + Poly Pizza CC0 filters; per-model attribution in `lib/devices/catalogue.ts` and `docs/OSS-DEVICE-MODELS.md`. | `lib/devices/catalogue.ts`, `public/models/devices/*` |
+| (in-house) `lib/webxr-retroarch/` | in-house | Texture bridge (EmulatorJS canvas → Three.js `CanvasTexture`), per-system XR-controller mapping registry, room-layout pure-function. | `lib/webxr-retroarch/*` |
+| (in-house) `components/webxr-retroarch/` | in-house | R3F scene, HUD toolbar, hidden EmulatorJS host. | `components/webxr-retroarch/*` |
+
 ## Diagrams & figures
 
 | Project | Licence | Role | Where |
@@ -176,6 +188,12 @@ Asset catalogues the studio reaches for when a scene wants a stylised low-poly p
 | [Poly Pizza](https://poly.pizza/) | CC0 / CC-BY | Successor to Google Poly. Search surface across thousands of low-poly models from many authors; filter by CC0 for clean attribution. | Pull-as-needed; CC-BY entries credit author in catalogue `note` |
 | [Khronos glTF Sample Models](https://github.com/KhronosGroup/glTF-Sample-Models) | mixed (CC0 / CC-BY / Apache-2.0) | Reference glb/gltf assets for testing loaders + materials (Damaged Helmet, Sponza, Suzanne). | Pipeline tests + the splat-walker baseline |
 | [Casual Effects data files](https://casual-effects.com/data/) | mixed (each scene listed) | Morgan McGuire's archived scene data — Crytek Sponza, San Miguel, Sibenik. The canonical lighting-test scenes. | Reference geometry for shader work; check per-scene licence |
+
+### Device models — CC0 / permissive
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| Curated device GLB set (Sketchfab CC0 + Poly Pizza CC0 + Quaternius) | CC0-1.0 across the seeded set | Game consoles, console controllers, VR headsets, and VR controllers used by the codex entries and the `/atelier/devices` gallery. Twenty-three entries; every source URL preserved in `_attributions.json` siblings. | `public/models/devices/` + `lib/devices/catalogue.ts`; see `docs/OSS-DEVICE-MODELS.md` for sourcing methodology and rejected candidates |
 
 ## Texture + material libraries
 

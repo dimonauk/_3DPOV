@@ -1,0 +1,72 @@
+{
+  "category": "console-controller",
+  "license_policy": "CC0 preferred, CC-BY accepted with attribution",
+  "models": [
+    {
+      "slug": "nes-controller",
+      "filename": "nes-controller.glb",
+      "name": "NES controller",
+      "manufacturer": "Nintendo",
+      "year": 1985,
+      "source": "Poly Pizza",
+      "author": "Quaternius",
+      "licence": "CC0-1.0",
+      "url": "https://poly.pizza/m/nes-controller"
+    },
+    {
+      "slug": "snes-controller",
+      "filename": "snes-controller.glb",
+      "name": "SNES controller",
+      "manufacturer": "Nintendo",
+      "year": 1991,
+      "source": "Poly Pizza",
+      "author": "Quaternius",
+      "licence": "CC0-1.0",
+      "url": "https://poly.pizza/m/snes-controller"
+    },
+    {
+      "slug": "n64-controller",
+      "filename": "n64-controller.glb",
+      "name": "N64 controller",
+      "manufacturer": "Nintendo",
+      "year": 1996,
+      "source": "Sketchfab",
+      "author": "Daniel Cardona",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-64-controller-1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f"
+    },
+    {
+      "slug": "switch-pro-controller",
+      "filename": "switch-pro-controller.glb",
+      "name": "Switch Pro Controller",
+      "manufacturer": "Nintendo",
+      "year": 2017,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/nintendo-switch-pro-controller-2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a"
+    },
+    {
+      "slug": "dualshock-4",
+      "filename": "dualshock-4.glb",
+      "name": "Sony DualShock 4",
+      "manufacturer": "Sony",
+      "year": 2013,
+      "source": "Sketchfab",
+      "author": "Felipe Alfonso",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sony-dualshock-4-3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b"
+    },
+    {
+      "slug": "xbox-series-controller",
+      "filename": "xbox-series-controller.glb",
+      "name": "Xbox Series controller",
+      "manufacturer": "Microsoft",
+      "year": 2020,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/microsoft-xbox-series-controller-4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c"
+    }
+  ]
+}

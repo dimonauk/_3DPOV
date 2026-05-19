@@ -1,0 +1,50 @@
+{
+  "category": "vr-controller",
+  "license_policy": "CC0 preferred, CC-BY accepted with attribution",
+  "models": [
+    {
+      "slug": "quest-touch-plus",
+      "filename": "quest-touch-plus.glb",
+      "name": "Meta Quest Touch Plus",
+      "manufacturer": "Meta",
+      "year": 2023,
+      "source": "Sketchfab",
+      "author": "VR Hardware Library",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/meta-quest-touch-plus-controller-9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b"
+    },
+    {
+      "slug": "index-knuckles",
+      "filename": "index-knuckles.glb",
+      "name": "Valve Index Controllers (Knuckles)",
+      "manufacturer": "Valve",
+      "year": 2019,
+      "source": "Sketchfab",
+      "author": "Renafox",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/valve-index-controllers-knuckles-0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c"
+    },
+    {
+      "slug": "psvr2-sense",
+      "filename": "psvr2-sense.glb",
+      "name": "PSVR2 Sense controllers",
+      "manufacturer": "Sony",
+      "year": 2023,
+      "source": "Sketchfab",
+      "author": "Patrick Allen",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/sony-psvr2-sense-controllers-1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d"
+    },
+    {
+      "slug": "pico-motion-controller",
+      "filename": "pico-motion-controller.glb",
+      "name": "Pico Motion Controllers",
+      "manufacturer": "Pico (ByteDance)",
+      "year": 2022,
+      "source": "Sketchfab",
+      "author": "VR Hardware Library",
+      "licence": "CC0-1.0",
+      "url": "https://sketchfab.com/3d-models/pico-4-motion-controllers-2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e"
+    }
+  ]
+}
