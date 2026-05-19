@@ -29,6 +29,10 @@ import { entry as blenderAddonLightPainterEntry } from "components/tutorials/ent
 import { entry as blenderAddonSpriteSheetMakerEntry } from "components/tutorials/entries/blender-addon-sprite-sheet-maker";
 import { entry as blenderAddonMixamoRigEntry } from "components/tutorials/entries/blender-addon-mixamo-rig";
 import { entry as blenderAddonModularTreeEntry } from "components/tutorials/entries/blender-addon-modular-tree";
+import { entry as blenderMcpFacetedSphereEntry } from "components/tutorials/entries/blender-mcp-faceted-sphere";
+import { entry as blenderMcpParametricTorusEntry } from "components/tutorials/entries/blender-mcp-parametric-torus";
+import { entry as blenderMcpTetraFractalEntry } from "components/tutorials/entries/blender-mcp-tetra-fractal";
+import { entry as blenderMcpCubeWalkerEntry } from "components/tutorials/entries/blender-mcp-cube-walker";
 import { entry as unrealPixelStreamingBrowserDeliveryEntry } from "components/tutorials/entries/unreal-pixel-streaming-browser-delivery";
 import { Entry, sortByDateDescending } from "./writing";
 
@@ -64,6 +68,10 @@ const ENTRIES: Entry[] = [
   blenderAddonSpriteSheetMakerEntry,
   blenderAddonMixamoRigEntry,
   blenderAddonModularTreeEntry,
+  blenderMcpFacetedSphereEntry,
+  blenderMcpParametricTorusEntry,
+  blenderMcpTetraFractalEntry,
+  blenderMcpCubeWalkerEntry,
   unrealPixelStreamingBrowserDeliveryEntry,
 ];
 

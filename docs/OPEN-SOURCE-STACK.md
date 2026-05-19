@@ -212,6 +212,8 @@ CLI tools the bench runs against glTFs before they land in the repo. None of the
 | --- | --- | --- | --- |
 | [meshoptimizer + gltfpack](https://github.com/zeux/meshoptimizer) | MIT | Mesh simplification, vertex cache optimisation, gltf-side compression. The `gltfpack` CLI is the default first-pass tool for any external glb before it lands under `public/models/`. | Bench-side; not a runtime dep |
 | [glTF-Transform CLI](https://github.com/donmccurdy/glTF-Transform) | MIT | Programmatic glTF transforms (simplify, flat-normals, weld, prune). Use when `gltfpack` is the wrong shape — typically when a transform needs to be scripted alongside the asset pipeline. | Bench-side; `npx @gltf-transform/cli` |
+| [njanakiev/blender-scripting](https://github.com/njanakiev/blender-scripting) | MIT | The studio adapts three of this repo's scripts (`simple_sphere.py`, `parametric_torus.py`, `tetrahedron_fractal.py`) into the Blender-via-MCP tutorial family. See `docs/BLENDER-MCP-TUTORIALS.md` for the catalogue. | `components/tutorials/entries/blender-mcp-*.tsx`; bench-side, not a runtime dep |
+| [aaronjolson/Blender-Python-Procedural-Level-Generation](https://github.com/aaronjolson/Blender-Python-Procedural-Level-Generation) | MIT | Source for the random-walk cube-placement script used as splat-walker placeholder geometry. Adapted into the cube-walker MCP tutorial. | `components/tutorials/entries/blender-mcp-cube-walker.tsx`; bench-side |
 
 ## Reference + study (OSS in this aesthetic)
 
