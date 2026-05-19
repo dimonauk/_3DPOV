@@ -1,0 +1,63 @@
+{
+  "slug": "geo-nodes-low-poly-terrain",
+  "topic": "terrain",
+  "blender_version": "5.1",
+  "technique": "geometry-nodes",
+  "created": "2026-05-19",
+  "artefacts": {
+    "blend": "public/library/blends/terrain/geo-nodes-low-poly-terrain/terrain_low_poly.blend",
+    "glb":   "public/library/glbs/terrain/geo-nodes-low-poly-terrain/terrain_low_poly.glb",
+    "videos": [
+      "public/library/videos/terrain/geo-nodes-low-poly-terrain/viewport.mp4",
+      "public/library/videos/terrain/geo-nodes-low-poly-terrain/screen.mp4"
+    ]
+  },
+  "glb_spec": {
+    "faces": 400,
+    "vertices_approx": 441,
+    "draco_level": 6,
+    "y_up": true,
+    "holoflow_facet": true,
+    "root_name": "terrain_low_poly"
+  },
+  "scripts": {
+    "blueprint": "public/library/blends/terrain/geo-nodes-low-poly-terrain/blueprint.py",
+    "record":    "public/library/blends/terrain/geo-nodes-low-poly-terrain/record.py"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-addon-vrm-format",
+      "/tutorials/blender-addon-tissue"
+    ],
+    "studio_articles": [
+      "/articles/low-poly-high-facet-shading",
+      "/articles/cohesive-low-poly-cell-shaded-vrm-worlds",
+      "/articles/advanced-cell-shading-techniques"
+    ],
+    "studio_routes": [
+      "/atelier/scene-stage-demo"
+    ],
+    "outside_sources": [
+      {
+        "label": "Blender Manual — Set Position (GN)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Blender Manual — Noise Texture",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/noise.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "KIT OPS GN terrain reference implementation (MIT)",
+        "url": "https://github.com/proxe/KIT-OPS",
+        "licence": "MIT",
+        "author": "Chipp Walters / proxe"
+      }
+    ]
+  },
+  "licence": "CC0"
+}

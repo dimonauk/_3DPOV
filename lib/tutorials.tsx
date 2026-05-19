@@ -42,6 +42,7 @@ import { entry as blenderFacetedGemFlatNormalsEntry } from "components/tutorials
 import { entry as blenderTutorialGnInstanceOnPointsEntry } from "components/tutorials/entries/blender-tutorial-gn-instance-on-points";
 import { entry as blenderTutorialUvUnwrapLowPolyStylisedEntry } from "components/tutorials/entries/blender-tutorial-uv-unwrap-low-poly-stylised";
 import { entry as blenderTutorialGeoNodesLowPolyFacetedRockEntry } from "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-faceted-rock";
+import { entry as blenderTutorialGeoNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geo-nodes-low-poly-terrain";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -89,6 +90,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnInstanceOnPointsEntry,
   blenderTutorialUvUnwrapLowPolyStylisedEntry,
   blenderTutorialGeoNodesLowPolyFacetedRockEntry,
+  blenderTutorialGeoNodesLowPolyTerrainEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
