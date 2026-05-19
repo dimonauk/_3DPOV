@@ -39,6 +39,7 @@ import { entry as blenderTutorialLowPolyFacetedHardSurfaceEntry } from "componen
 import { entry as blenderTutorialFacetedGemWebxrEntry } from "components/tutorials/entries/blender-tutorial-faceted-gem-webxr";
 import { entry as blenderTutorialFlatShadedFacetedNormalsEntry } from "components/tutorials/entries/blender-tutorial-flat-shaded-faceted-normals";
 import { entry as blenderFacetedGemFlatNormalsEntry } from "components/tutorials/entries/blender-tutorial-faceted-gem-flat-normals";
+import { entry as blenderTutorialGnInstanceOnPointsEntry } from "components/tutorials/entries/blender-tutorial-gn-instance-on-points";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -83,6 +84,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialFacetedGemWebxrEntry,
   blenderTutorialFlatShadedFacetedNormalsEntry,
   blenderFacetedGemFlatNormalsEntry,
+  blenderTutorialGnInstanceOnPointsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

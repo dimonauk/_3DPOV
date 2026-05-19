@@ -1,0 +1,48 @@
+{
+  "slug": "instance-on-points",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/instance-on-points/output/instance_scatter.glb",
+      "description": "Scattered diamond-tile panel, collapsed via Realize Instances, exported as GLB",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 400
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/instance-on-points/viewport.mp4",
+      "description": "10-second camera-tilt render showing tile depth and scatter pattern",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 10,
+      "expected_size_mb_max": 25
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/instance-on-points/screen.mp4",
+      "description": "OBS screen capture of the GN editor + viewport session",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-addon-tissue",
+      "/tutorials/blender-tutorial-geometry-nodes-low-poly-terrain",
+      "/articles/low-poly-high-facet-shading",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "author": "Blender Foundation contributors",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "author": "Nikolai Janakiev",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
