@@ -75,3 +75,38 @@ The 4-second timeout rule from `blender-pipelines` is the single most important 
 ## Voice + register
 
 The doc you're reading is workshop-Dimona; the tutorial entries are Princess (Aura Test Chamber) for the chrome and workshop-Dimona for the bench steps. Voice-mode authority is `holoflow-voice` skill → `docs/AURA-TEST-CHAMBER-VOICE.md` → individual tutorial body. The Princess narrates the procedure; the bench narrates the failures.
+
+---
+
+## 2026-05-19 — library series (public/library/ pipeline)
+
+The `public/library/` directory introduces a parallel authoring pipeline to the
+MCP-socket tutorials above. Where the MCP series fires scripts over the bench's
+TCP socket, the library series ships headless-runnable blueprints alongside the
+source `.blend` and export artefacts. Every library entry carries its own
+`record.py` for viewport animation and `SCREEN-RECORDING-NOTES.md` for the OBS
+screen-capture session.
+
+### faceted-gemstone-geonodes
+
+| Field | Value |
+|-------|-------|
+| **Tutorial slug** | `blender-tutorial-faceted-gemstone-geonodes` |
+| **Tutorial URL** | `/tutorials/blender-tutorial-faceted-gemstone-geonodes` |
+| **Library path** | `public/library/blends/procedural/faceted-gemstone-geonodes/` |
+| **Blender** | 5.1 |
+| **Technique** | UV sphere (8 seg × 6 rings) → bmesh crown/girdle/pavilion zones → flat shading → Principled BSDF IOR 2.42 → GN parametric sliders via `nt.interface.new_socket()` → Draco GLB |
+| **Artefacts** | `gemstone.blend`, `gemstone.glb`, `viewport.mp4`, `screen.mp4` |
+| **Source 1** | Blender Manual — GN Convex Hull (Blender Foundation, CC-BY-4.0) |
+| **Source 2** | geometry-script by Carson Katri (MIT) |
+| **Date** | 2026-05-19 |
+
+**Notes:**
+- First entry in `public/library/` — establishes the full directory shape
+  (`blueprint.py`, `record.py`, `README.md`, `SCREEN-RECORDING-NOTES.md`,
+  `.expected-artefacts.json`) and the `MANIFEST.md` row format.
+- Demonstrates Blender 5.x GN interface API (`nt.interface.new_socket`)
+  replacing the removed 3.x `nt.inputs.new()` / `nt.outputs.new()`.
+- UV sphere ring topology (8×6) maps cleanly to gem zones — each ring index
+  is one latitude band, making bmesh zone selection deterministic.
+- Headless run: `blender --background --python blueprint.py`

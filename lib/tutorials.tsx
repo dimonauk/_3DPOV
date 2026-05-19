@@ -34,6 +34,7 @@ import { entry as blenderMcpParametricTorusEntry } from "components/tutorials/en
 import { entry as blenderMcpTetraFractalEntry } from "components/tutorials/entries/blender-mcp-tetra-fractal";
 import { entry as blenderMcpCubeWalkerEntry } from "components/tutorials/entries/blender-mcp-cube-walker";
 import { entry as unrealPixelStreamingBrowserDeliveryEntry } from "components/tutorials/entries/unreal-pixel-streaming-browser-delivery";
+import { entry as blenderTutorialFacetedGemstoneGeonodesEntry } from "components/tutorials/entries/blender-tutorial-faceted-gemstone-geonodes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -73,6 +74,7 @@ const ENTRIES: Entry[] = [
   blenderMcpTetraFractalEntry,
   blenderMcpCubeWalkerEntry,
   unrealPixelStreamingBrowserDeliveryEntry,
+  blenderTutorialFacetedGemstoneGeonodesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

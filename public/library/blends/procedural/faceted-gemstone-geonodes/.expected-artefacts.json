@@ -1,0 +1,58 @@
+{
+  "slug": "faceted-gemstone-geonodes",
+  "topic": "procedural",
+  "blender_version": "5.1",
+  "created": "2026-05-19",
+  "artefacts": {
+    "blend": "public/library/blends/procedural/faceted-gemstone-geonodes/gemstone.blend",
+    "glb":   "public/library/glbs/procedural/faceted-gemstone-geonodes/gemstone.glb",
+    "viewport_mp4": "public/library/videos/procedural/faceted-gemstone-geonodes/viewport.mp4",
+    "screen_mp4":   "public/library/videos/procedural/faceted-gemstone-geonodes/screen.mp4"
+  },
+  "scripts": {
+    "blueprint": "public/library/blends/procedural/faceted-gemstone-geonodes/blueprint.py",
+    "record":    "public/library/blends/procedural/faceted-gemstone-geonodes/record.py"
+  },
+  "expected_mesh": {
+    "vertex_count_approx": 48,
+    "face_count_approx":   56,
+    "shade_flat": true,
+    "root_object_name": "gem_faceted"
+  },
+  "expected_material": {
+    "name": "gem_sapphire",
+    "ior":  2.42,
+    "roughness": 0.02,
+    "metallic": 0.0
+  },
+  "cross_references": {
+    "internal": [
+      { "surface": "tutorial", "slug": "blender-to-site-asset-pipeline",     "href": "/tutorials/blender-to-site-asset-pipeline"     },
+      { "surface": "article",  "slug": "low-poly-high-facet-shading",         "href": "/articles/low-poly-high-facet-shading"         },
+      { "surface": "tutorial", "slug": "tutorial-dragon-scale-wall-relief",   "href": "/tutorials/tutorial-dragon-scale-wall-relief"   },
+      { "surface": "article",  "slug": "cohesive-low-poly-cell-shaded-vrm-worlds", "href": "/articles/cohesive-low-poly-cell-shaded-vrm-worlds" },
+      { "surface": "codex",    "slug": "fdm-printing",                        "href": "/codex/fdm-printing"                           }
+    ],
+    "external": [
+      {
+        "title":   "Blender Manual — Geometry Nodes: Convex Hull",
+        "url":     "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/convex_hull.html",
+        "licence": "CC-BY-4.0",
+        "author":  "Blender Foundation and Contributors",
+        "related": [
+          "https://studio.blender.org",
+          "https://github.com/blender/blender-addons"
+        ]
+      },
+      {
+        "title":   "geometry-script by Carson Katri — Python-like Geometry Nodes",
+        "url":     "https://github.com/carson-katri/geometry-script",
+        "licence": "MIT",
+        "author":  "Carson Katri",
+        "related": [
+          "https://github.com/carson-katri/dream-textures"
+        ]
+      }
+    ]
+  }
+}
