@@ -6,8 +6,11 @@ import BeltPrinter from "components/codex/entries/belt-printer";
 import C2paContentProvenance from "components/codex/entries/c2pa-content-provenance";
 import CanonImageprografPro1100 from "components/codex/entries/canon-imageprograf-pro-1100";
 import Caustics from "components/codex/entries/caustics";
+import Cemu from "components/codex/entries/cemu";
 import CertificateOfAuthenticity from "components/codex/entries/certificate-of-authenticity";
+import CitraAnd3dsEmulatorForks from "components/codex/entries/citra-and-3ds-emulator-forks";
 import DjiMini5Pro from "components/codex/entries/dji-mini-5-pro";
+import EdenEmulator from "components/codex/entries/eden-emulator";
 import EditionSizeConventions from "components/codex/entries/edition-size-conventions";
 import EquirectangularProjection from "components/codex/entries/equirectangular-projection";
 import FdmPrinting from "components/codex/entries/fdm-printing";
@@ -24,10 +27,12 @@ import KuwaharaFilter from "components/codex/entries/kuwahara-filter";
 import LabanMovementAnalysis from "components/codex/entries/laban-movement-analysis";
 import LongExposurePhotography from "components/codex/entries/long-exposure-photography";
 import MarchingCubes from "components/codex/entries/marching-cubes";
+import MelonDs from "components/codex/entries/melonds";
 import Mtoon from "components/codex/entries/mtoon";
 import OnePressThreeSixtyCapture from "components/codex/entries/one-press-three-sixty-capture";
 import OnnxRuntime from "components/codex/entries/onnx-runtime";
 import PanoTwoVrTourBuilding from "components/codex/entries/pano2vr-tour-building";
+import Ppsspp from "components/codex/entries/ppsspp";
 import PersistenceOfVision from "components/codex/entries/persistence-of-vision";
 import Photogrammetry from "components/codex/entries/photogrammetry";
 import Pixelstick from "components/codex/entries/pixelstick";
@@ -36,6 +41,7 @@ import PovLedArray from "components/codex/entries/pov-led-array";
 import PtguiHuginLightroomStitching from "components/codex/entries/ptgui-hugin-lightroom-stitching";
 import RampShading from "components/codex/entries/ramp-shading";
 import ReactThreeFiber from "components/codex/entries/react-three-fiber";
+import Rpcs3 from "components/codex/entries/rpcs3";
 import SdfSignedDistanceField from "components/codex/entries/sdf-signed-distance-field";
 import SignedDistanceFields from "components/codex/entries/signed-distance-fields";
 import SlicerSoftware from "components/codex/entries/slicer-software";
@@ -46,6 +52,7 @@ import TroikaThreeText from "components/codex/entries/troika-three-text";
 import TslThreeShadingLanguage from "components/codex/entries/tsl-three-shading-language";
 import UkCaaDroneRegulations2026 from "components/codex/entries/uk-caa-drone-regulations-2026";
 import VirtualReality from "components/codex/entries/virtual-reality";
+import Vita3k from "components/codex/entries/vita3k";
 import VrmVirtualRealityModel from "components/codex/entries/vrm-virtual-reality-model";
 import WaveguideObject from "components/codex/entries/waveguide-object";
 import WebGpu from "components/codex/entries/webgpu";
@@ -1241,6 +1248,207 @@ const ENTRIES: CodexEntry[] = [
       },
     ],
     Body: SlicerSoftware,
+  },
+  {
+    slug: "eden-emulator",
+    title: "Eden (Nintendo Switch emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "Open-source Nintendo Switch emulator in C++, GPL-3.0, the surviving community continuation in the yuzu lineage after the 2024 takedown. Successor to Suyu, Sudachi, and Citron; primary repo self-hosted at git.eden-emu.dev after the 2026 DMCA wave.",
+    seeAlso: [
+      "citra-and-3ds-emulator-forks",
+      "rpcs3",
+      "ppsspp",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "Eden — primary source (Gitea)",
+        url: "https://git.eden-emu.dev/eden-emu/eden",
+      },
+      {
+        label: "Eden — GitHub mirror + releases",
+        url: "https://github.com/eden-emulator",
+      },
+      {
+        label: "Wikipedia: yuzu (emulator) — for the lineage history",
+        url: "https://en.wikipedia.org/wiki/Yuzu_(emulator)",
+      },
+      {
+        label: "Emulation General Wiki: yuzu",
+        url: "https://emulation.gametechwiki.com/index.php/Yuzu",
+      },
+    ],
+    Body: EdenEmulator,
+  },
+  {
+    slug: "citra-and-3ds-emulator-forks",
+    title: "Citra and the 3DS emulator forks",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "The Nintendo 3DS emulator landscape after Citra's 2024 takedown. Lime3DS + PabloMK7's Citra fork merged into Azahar, now the recommended 3DS emulator under GPL-2.0; Mandarine stopped; Borked3DS continues as a slower experimental sandbox.",
+    seeAlso: [
+      "eden-emulator",
+      "rpcs3",
+      "ppsspp",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "Azahar — official site",
+        url: "https://azahar-emu.org/",
+      },
+      {
+        label: "Azahar — source",
+        url: "https://github.com/azahar-emu/azahar",
+      },
+      {
+        label: "Borked3DS — source",
+        url: "https://github.com/Borked3DS/Borked3DS",
+      },
+      {
+        label: "Emulation General Wiki: Nintendo 3DS emulators",
+        url: "https://emulation.gametechwiki.com/index.php/Nintendo_3DS_emulators",
+      },
+    ],
+    Body: CitraAnd3dsEmulatorForks,
+  },
+  {
+    slug: "rpcs3",
+    title: "RPCS3 (PlayStation 3 emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "The PlayStation 3 emulator and debugger, C++ since 2011, GPL-2.0. Over 70% of the PS3 library reported playable as of April 2026. The only credible solution to the Cell processor's PPE-plus-eight-SPE architecture.",
+    seeAlso: [
+      "eden-emulator",
+      "citra-and-3ds-emulator-forks",
+      "ppsspp",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "RPCS3 — official site",
+        url: "https://rpcs3.net/",
+      },
+      {
+        label: "RPCS3 — source",
+        url: "https://github.com/RPCS3/rpcs3",
+      },
+      {
+        label: "Wikipedia: RPCS3",
+        url: "https://en.wikipedia.org/wiki/RPCS3",
+      },
+    ],
+    Body: Rpcs3,
+  },
+  {
+    slug: "ppsspp",
+    title: "PPSSPP (PSP emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "The PlayStation Portable emulator by Henrik Rydgård since 2012, C++ under GPL-2.0-or-later. HLE — no BIOS required. The texture-replacement pipeline is the noteworthy feature for art-research workflows.",
+    seeAlso: [
+      "eden-emulator",
+      "citra-and-3ds-emulator-forks",
+      "rpcs3",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "PPSSPP — official site",
+        url: "https://www.ppsspp.org/",
+      },
+      {
+        label: "PPSSPP — source",
+        url: "https://github.com/hrydgard/ppsspp",
+      },
+      {
+        label: "PPSSPP wiki: texture replacement",
+        url: "https://github.com/hrydgard/ppsspp/wiki/Texture-replacement",
+      },
+    ],
+    Body: Ppsspp,
+  },
+  {
+    slug: "cemu",
+    title: "Cemu (Wii U emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "The only credible Wii U emulator. C++ under MPL-2.0; closed-source freeware 2015-2022, open-sourced August 2022. Worth its installation cost for Breath of the Wild and the gamepad-second-screen titles that did not survive in the Switch ports.",
+    seeAlso: [
+      "eden-emulator",
+      "citra-and-3ds-emulator-forks",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "Cemu — official site",
+        url: "https://cemu.info/",
+      },
+      {
+        label: "Cemu — source",
+        url: "https://github.com/cemu-project/Cemu",
+      },
+    ],
+    Body: Cemu,
+  },
+  {
+    slug: "melonds",
+    title: "melonDS (Nintendo DS / DSi emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "Arisotura's open-source DS and DSi emulator in C++ since 2016, GPL-3.0. One of the most carefully engineered open-source emulator codebases on the public internet. A WASM port exists and the EmulatorJS catalogue covers the DS through a melonDS-derived core.",
+    seeAlso: [
+      "eden-emulator",
+      "citra-and-3ds-emulator-forks",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "melonDS — source",
+        url: "https://github.com/melonDS-emu/melonDS",
+      },
+      {
+        label: "melonDS — WASM build",
+        url: "https://github.com/44670/melonDS-wasm",
+      },
+      {
+        label: "Emulation General Wiki: melonDS",
+        url: "https://emulation.gametechwiki.com/index.php/MelonDS",
+      },
+    ],
+    Body: MelonDs,
+  },
+  {
+    slug: "vita3k",
+    title: "Vita3K (PlayStation Vita emulator)",
+    category: "Apparatus",
+    date: "2026-05-19",
+    summary:
+      "Experimental open-source PlayStation Vita emulator in C++, GPL-2.0. The first and as of 2026 still the only Vita emulator with serious development activity. Slow-paced; Vita preservation is the worst commercial story of any modern handheld.",
+    seeAlso: [
+      "eden-emulator",
+      "citra-and-3ds-emulator-forks",
+      "ppsspp",
+      "the-oss-native-emulation-ecosystem",
+    ],
+    sources: [
+      {
+        label: "Vita3K — official site",
+        url: "https://vita3k.org/",
+      },
+      {
+        label: "Vita3K — source",
+        url: "https://github.com/Vita3K/Vita3K",
+      },
+    ],
+    Body: Vita3k,
   },
 ];
 

@@ -224,6 +224,28 @@ OSS projects worth opening when authoring in the low-poly + cel-shaded register.
 | [Open Brush](https://github.com/icosa-foundation/open-brush) | Apache-2.0 | The community fork of Tilt Brush. Cel-style brush shader implementations live in `Assets/Resources/Brushes/`; the studio's `lib/assets/brushes.ts` catalogues the same brush family. |
 | [Godot demo projects](https://github.com/godotengine/godot-demo-projects) | MIT | The `3d/` folder includes a toon-shaded demo + a few low-poly scenes. Useful as a structural reference for stylised forward rendering. |
 
+## Native emulators (study + future bench-bridge)
+
+Native desktop emulators the studio links out to from `/emulator` and the codex, and is staging to surface through a Tailscale-bench-bridge route. Catalogue lives at `lib/emulator/native-systems.ts`; survey doc at [`docs/EMULATION-NATIVE.md`](EMULATION-NATIVE.md). None of these are bundled — they're tools the user installs on their own machine, against ROMs and BIOSes the user dumps from their own hardware.
+
+| Project | Licence | Role |
+| --- | --- | --- |
+| [Eden](https://git.eden-emu.dev/eden-emu/eden) | GPL-3.0 | Nintendo Switch emulator. Surviving community continuation of the yuzu lineage after the 2024 takedown. Self-hosted primary repo post-2026 DMCA wave. |
+| [Ryubing](https://github.com/Ryubing) | MIT | Switch — the parallel Ryujinx-lineage fork. C# / .NET. |
+| [Azahar](https://github.com/azahar-emu/azahar) | GPL-2.0 | Nintendo 3DS — the post-Citra merger of Lime3DS and PabloMK7's Citra fork. The recommended 3DS emulator as of 2026. |
+| [Borked3DS](https://github.com/Borked3DS/Borked3DS) | GPL-2.0 | 3DS sandbox combining code from the post-Citra forks. Slower than Azahar; sandbox-feature-specific. |
+| [PPSSPP](https://github.com/hrydgard/ppsspp) | GPL-2.0+ | PlayStation Portable. HLE — no BIOS required. Texture-replacement pipeline. Also shipped as a Libretro core. |
+| [RPCS3](https://github.com/RPCS3/rpcs3) | GPL-2.0 | PlayStation 3. >70% library playable as of April 2026. |
+| [Dolphin](https://github.com/dolphin-emu/dolphin) (standalone) | GPL-2.0+ | GameCube + Wii. More capable than the EmulatorJS WASM core; texture-dump + AR-camera are the differentiators for art-research. |
+| [Cemu](https://github.com/cemu-project/Cemu) | MPL-2.0 | Wii U. Open-sourced 25 August 2022. Only credible Wii U emulator. |
+| [DuckStation](https://github.com/stenzek/duckstation) | CC-BY-NC-ND-4.0 (verified 2026-05-19) | PS1. Licence is non-commercial-no-derivatives — link to it, don't wrap it. |
+| [Vita3K](https://github.com/Vita3K/Vita3K) | GPL-2.0 | PS Vita. Experimental; only credible Vita emulator. |
+| [melonDS](https://github.com/melonDS-emu/melonDS) | GPL-3.0 | Nintendo DS + DSi. WASM port exists (44670/melonDS-wasm). |
+| [mGBA](https://github.com/mgba-emu/mgba) | MPL-2.0 | Game Boy / GBC / GBA. WASM port exists; cleanest small-codebase reference. |
+| [Flycast](https://github.com/flyinghead/flycast) | GPL-2.0 | Dreamcast + Naomi. WASM build at nasomers/flycast-wasm. Note: the libretro/flycast repo is deprecated; primary is flyinghead/flycast. |
+| [PCSX2](https://github.com/PCSX2/pcsx2) (standalone) | GPL-3.0+ | PS2. More capable than the EmulatorJS WASM core. |
+| [Xenia Canary](https://github.com/xenia-canary/xenia-canary) | BSD-3-Clause | Xbox 360. The active fork of Xenia. Windows-first. |
+
 ## Spatial UI (R3F / WebXR)
 
 | Project | Licence | Role | Where |
