@@ -1,0 +1,72 @@
+{
+  "slug": "faceted-gem",
+  "topic": "faceted-mesh",
+  "kind": "blend",
+  "blender_version": "5.1",
+  "files": [
+    {
+      "path": "faceted_gem.blend",
+      "description": "Blender scene: gem mesh, GemCrystal material, 3-point lighting rig, camera"
+    },
+    {
+      "path": "faceted_gem.glb",
+      "description": "WebXR-ready GLB — Draco level 6, +Y up, normals included, single binary"
+    }
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/faceted-mesh/faceted-gem/viewport.mp4",
+    "screen_mp4": "public/library/videos/faceted-mesh/faceted-gem/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      {
+        "surface": "article",
+        "slug": "low-poly-high-facet-shading",
+        "path": "/articles/low-poly-high-facet-shading"
+      },
+      {
+        "surface": "article",
+        "slug": "cohesive-low-poly-cell-shaded-vrm-worlds",
+        "path": "/articles/cohesive-low-poly-cell-shaded-vrm-worlds"
+      },
+      {
+        "surface": "tutorial",
+        "slug": "blender-to-site-asset-pipeline",
+        "path": "/tutorials/blender-to-site-asset-pipeline"
+      },
+      {
+        "surface": "tutorial",
+        "slug": "blender-addon-3d-print-toolbox",
+        "path": "/tutorials/blender-addon-3d-print-toolbox"
+      },
+      {
+        "surface": "docs",
+        "path": "docs/BLENDER-ADDON.md"
+      },
+      {
+        "surface": "macro",
+        "path": "tools/blender-addon/holoflow_macros/faceted_gem.py"
+      }
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/current/bmesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "notes": "bmesh API reference"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/properties/object_data.html#normals",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "notes": "Mesh normals reference, including use_auto_smooth removal in 4.1"
+      },
+      {
+        "url": "https://github.com/dfelinto/blender-manual",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors",
+        "notes": "Blender Manual source repository"
+      }
+    ]
+  }
+}
