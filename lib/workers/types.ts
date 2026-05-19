@@ -27,7 +27,9 @@ export type WorkerKind =
   | "feed-parse"
   | "splat-decode"
   | "font-mesh"
-  | "particle-init";
+  | "particle-init"
+  | "face-mesh"
+  | "hand-landmark";
 
 /**
  * Request envelope sent from the main thread to a worker.

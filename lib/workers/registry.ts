@@ -68,6 +68,16 @@ const FACTORIES: Record<WorkerKind, WorkerFactory> = {
       type: "module",
       name: "holoflow:particle-init",
     }),
+  "face-mesh": () =>
+    new Worker(new URL("./face-mesh.worker.ts", import.meta.url), {
+      type: "module",
+      name: "holoflow:face-mesh",
+    }),
+  "hand-landmark": () =>
+    new Worker(new URL("./hand-landmark.worker.ts", import.meta.url), {
+      type: "module",
+      name: "holoflow:hand-landmark",
+    }),
 };
 
 const instances = new Map<WorkerKind, Worker>();

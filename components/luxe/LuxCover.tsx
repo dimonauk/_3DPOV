@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import { ParallaxLayer } from "components/parallax/ParallaxLayer";
+import { MeshText3D } from "components/type3d/MeshText3D";
 
 /**
  * The headline magazine-cover plate. A `.lux-stage` perspective box
@@ -131,12 +132,25 @@ export function LuxCover({
             </ParallaxLayer>
           )}
           <ParallaxLayer speed={0.8} className="lux-z-3">
-            <h1
-              className="lux-foil font-display text-4xl leading-[0.95] md:text-6xl lg:text-7xl"
-              style={{ fontFamily: "var(--font-display)" }}
+            {/* Display register goes to 3D mesh per the type3d kit
+                (components/type3d/) — extruded foil letters instead
+                of an HTML glyph. The MeshText3D mirrors the title
+                into an sr-only `h1` so screen readers, search bots,
+                and select-to-copy still see real text; the mesh
+                canvas next to it is aria-hidden. Falls back to the
+                same `lux-foil` HTML heading if WebGL/WebGPU is
+                unavailable. */}
+            <MeshText3D
+              tag="h1"
+              material="foil"
+              motion="drift"
+              align="left"
+              size={96}
+              depth={14}
+              className="lux-foil"
             >
               {title}
-            </h1>
+            </MeshText3D>
           </ParallaxLayer>
           {subtitle && (
             <ParallaxLayer speed={0.85} className="lux-z-3">
