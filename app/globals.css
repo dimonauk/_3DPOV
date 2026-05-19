@@ -174,3 +174,209 @@ button {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+/* ─── Luxury-magazine 3D chrome ──────────────────────────────────────
+   Z-layer system for cover compositions, hero plates, and any surface
+   that should read as a layered paper artefact rather than as a flat
+   page. Apply `.lux-stage` to the wrapper that establishes the
+   perspective context, then `.lux-card` to children to opt them into
+   the layer system. Numeric depth utilities (`.lux-z-0` through
+   `.lux-z-5`) translate children forward in z. Motion clauses are
+   gated by `prefers-reduced-motion`. */
+
+.lux-stage {
+  perspective: 1600px;
+  perspective-origin: 50% 30%;
+  transform-style: preserve-3d;
+}
+
+.lux-card {
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition:
+    transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lux-tilt-on-hover:hover .lux-card,
+  .lux-card.lux-tilt-on-hover:hover {
+    transform: translateZ(32px) rotateX(2deg) rotateY(-2deg);
+  }
+}
+
+/* Explicit depth planes. Use these to compose layered covers — image
+   at lux-z-0, subtitle band at lux-z-2, big title at lux-z-3, edition
+   numeral at lux-z-4. */
+.lux-z-0 { transform: translateZ(0px); }
+.lux-z-1 { transform: translateZ(12px); }
+.lux-z-2 { transform: translateZ(24px); }
+.lux-z-3 { transform: translateZ(40px); }
+.lux-z-4 { transform: translateZ(60px); }
+.lux-z-5 { transform: translateZ(88px); }
+
+/* Paper-stack drop shadow — suggests the layer is lifted off the page.
+   Soft and warm-tinted to match the pink/warm-black palette. */
+.lux-shadow-sm {
+  box-shadow:
+    0 1px 0 0 rgba(255, 196, 217, 0.08),
+    0 8px 24px -10px rgba(0, 0, 0, 0.6);
+}
+.lux-shadow-md {
+  box-shadow:
+    0 1px 0 0 rgba(255, 196, 217, 0.1),
+    0 14px 44px -16px rgba(0, 0, 0, 0.78);
+}
+.lux-shadow-lg {
+  box-shadow:
+    0 1px 0 0 rgba(255, 196, 217, 0.12),
+    0 28px 80px -28px rgba(0, 0, 0, 0.85),
+    0 6px 18px -8px rgba(255, 120, 165, 0.1);
+}
+
+/* Stack-of-paper effect — pseudo-elements offset behind the main
+   element to suggest two sheets beneath the visible one. Apply to a
+   positioned element. */
+.lux-paper-stack { position: relative; }
+.lux-paper-stack::before,
+.lux-paper-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-warm-black-900);
+  border: 1px solid var(--color-warm-black-700);
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+.lux-paper-stack::before {
+  transform: translate(4px, 4px) rotate(0.4deg);
+  opacity: 0.55;
+}
+.lux-paper-stack::after {
+  transform: translate(8px, 8px) rotate(0.7deg);
+  opacity: 0.3;
+}
+
+/* Hairline rule — 1px ish, pink-200 at low alpha. Use as a divider
+   between magazine bands. */
+.lux-hairline {
+  border-top: 1px solid rgba(255, 196, 217, 0.18);
+}
+.lux-hairline-strong {
+  border-top: 1px solid rgba(255, 196, 217, 0.45);
+}
+
+/* Issue-band chrome — small-caps mono with hairlines top and bottom.
+   "ISSUE 03 · MAY 2026 · HOLOFLOW STUDIO". */
+.lux-issue-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid rgba(255, 196, 217, 0.35);
+  border-bottom: 1px solid rgba(255, 196, 217, 0.35);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-pink-200);
+}
+.lux-issue-band > span + span::before {
+  content: "·";
+  margin-right: 1.25rem;
+  color: var(--color-chrome-500);
+}
+
+/* Page-folio label — small mono numeral with a dot rule. */
+.lux-folio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-chrome-400);
+}
+.lux-folio::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-pink-300);
+}
+
+/* Edition numeral — large outlined display numeral for issue numbers
+   and section openers. Uses the display serif and an outline-only fill
+   via text-stroke; webkit-only for now. */
+.lux-edition-numeral {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(7rem, 18vw, 14rem);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-pink-200);
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+/* Foil-sheen — animated gradient sweep across display type. Apply to
+   text inside a `.lux-stage`. Gated by reduced-motion. */
+.lux-foil {
+  background: linear-gradient(
+    100deg,
+    var(--color-pink-200) 0%,
+    var(--color-chrome-100) 30%,
+    var(--color-lavender-200) 60%,
+    var(--color-pink-200) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lux-foil {
+    animation: lux-foil-sweep 9s ease-in-out infinite;
+  }
+  @keyframes lux-foil-sweep {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+/* Section vignette — radial halo behind a hero plate. Pairs with
+   `.lux-paper-stack` to suggest the plate is floating above the
+   warm-black page. */
+.lux-vignette {
+  position: relative;
+}
+.lux-vignette::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -1;
+  background:
+    radial-gradient(
+      60% 70% at 50% 35%,
+      rgba(255, 196, 217, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 50% at 80% 80%,
+      rgba(207, 183, 255, 0.12),
+      transparent 70%
+    );
+  pointer-events: none;
+}
+
+/* Body baseline shift — restored on hover for a barely-perceptible
+   "page settles" feeling. Use on issue-cover compositions. */
+@media (prefers-reduced-motion: no-preference) {
+  .lux-stage--hover-settle:hover .lux-card {
+    transition-duration: 700ms;
+  }
+}

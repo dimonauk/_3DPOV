@@ -60,6 +60,59 @@ export default function AdminLandingPage() {
               Retire or delete in place.
             </span>
           </Link>
+          <Link
+            href="/admin/assets"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">03</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Asset registry
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Add a mesh, Blender file, gallery album or archive to
+              data/assets.json. Vercel Blob for &lt; 50 MB, Drive for larger,
+              Photos for gallery links.
+            </span>
+          </Link>
+          <Link
+            href="/admin/wardrobe"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">04</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Wardrobe
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Add a .vrm outfit to data/wardrobe.json. Browser-direct upload
+              to Vercel Blob, then paste the snippet.
+            </span>
+          </Link>
+          <Link
+            href="/admin/people-finder"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">05</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              People finder
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Batch-verify usernames across 2,500+ sites via Maigret. Paste
+              names, get the claimed-platform hits per person.
+            </span>
+          </Link>
+          <Link
+            href="/admin/targeting"
+            className="flex flex-col gap-1 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-4 transition-colors hover:border-pink-200"
+          >
+            <span className="chrome-label text-chrome-400">06</span>
+            <span className="text-sm uppercase tracking-[0.18em] text-chrome-100">
+              Targeting
+            </span>
+            <span className="text-xs leading-relaxed text-chrome-400">
+              Match a piece of studio content against the rolodex. Sorted
+              by shared scenes + tags; per-person outreach links.
+            </span>
+          </Link>
         </nav>
 
         <footer className="flex justify-between border-t border-warm-black-700 pt-4">

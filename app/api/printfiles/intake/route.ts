@@ -29,7 +29,9 @@ import { createLogger, errToObject } from "lib/log";
 import { createFixedWindowLimiter } from "lib/rate-limit/fixed-window";
 
 import { createOrder, type AttachmentInputForBlob } from "lib/printfiles/directory";
+import { fetchFromLink } from "lib/printfiles/fetch-from-link";
 import { validateAttachment } from "lib/printfiles/ingest";
+import { extractLinks, type ExtractedLink } from "lib/printfiles/link-extractor";
 import { sendGraciousReply, sendRejectionReply } from "lib/printfiles/reply";
 import {
   ACCEPTED_EXTENSIONS,
@@ -99,6 +101,29 @@ function attachmentMime(att: ResendInboundAttachment): string {
 function hasAcceptedExtension(filename: string): boolean {
   const lower = filename.toLowerCase();
   return ACCEPTED_EXTENSIONS.some((ext) => lower.endsWith(ext));
+}
+
+/**
+ * Pick which extracted links are worth trying to fetch. Drive /
+ * Dropbox / OneDrive don't tell us the file extension upfront — try
+ * them even when hasAcceptedExtension is false (the fetched content's
+ * magic bytes are the source of truth). Direct links need the extension
+ * for the pre-fetch sanity check.
+ */
+function pickFetchableLinks(links: ExtractedLink[]): ExtractedLink[] {
+  const ranked = [...links];
+  ranked.sort((a, b) => {
+    // Direct URLs with the right extension first (highest confidence)
+    if (a.provider === "direct" && a.hasAcceptedExtension && b.provider !== "direct") return -1;
+    if (b.provider === "direct" && b.hasAcceptedExtension && a.provider !== "direct") return 1;
+    // Then Drive / Dropbox / OneDrive (have a direct-url)
+    if (a.directUrl && !b.directUrl) return -1;
+    if (b.directUrl && !a.directUrl) return 1;
+    return 0;
+  });
+  // Cap at 3 attempts so we don't burn time on a sender with a wall
+  // of links in their signature.
+  return ranked.filter((l) => l.directUrl !== null).slice(0, 3);
 }
 
 function clientIp(req: Request): string {
@@ -197,8 +222,64 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const attachments = body.attachments ?? [];
-  if (attachments.length === 0) {
-    log.info("no attachments", { sender: senderAddress });
+
+  // Pre-filter on extension before downloading bytes.
+  const usable = attachments.filter(
+    (a) => a.filename && hasAcceptedExtension(a.filename),
+  );
+
+  // Fallback: if no usable attachments, scan the email body for
+  // Drive / Dropbox / OneDrive / direct links and try to fetch the
+  // file from there. Lifts the >20 MB Resend Inbound cap.
+  let fetchedFromLink: AttachmentInputForBlob | null = null;
+  let linkAttemptError: string | null = null;
+  if (usable.length === 0) {
+    const links = extractLinks(`${subject}\n\n${textBody}\n\n${htmlBody ?? ""}`);
+    const candidates = pickFetchableLinks(links);
+    if (candidates.length > 0) {
+      for (const link of candidates) {
+        try {
+          const fetched = await fetchFromLink(link);
+          const { kind, validation } = validateAttachment(
+            fetched.filename,
+            fetched.contentType,
+            fetched.bytes,
+          );
+          if (!validation.ok && validation.issues.includes("mime-mismatch")) {
+            // The link landed on something that isn't actually a
+            // 3D file (e.g. a Drive folder index page). Try the next.
+            linkAttemptError = "fetched content was not a recognised 3D format";
+            continue;
+          }
+          fetchedFromLink = {
+            filename: fetched.filename,
+            contentType: fetched.contentType,
+            bytes: fetched.bytes,
+            inferredKind: kind,
+            validation,
+          };
+          log.info("intake via link", {
+            sender: senderAddress,
+            provider: link.provider,
+            bytes: fetched.bytes.byteLength,
+            kind,
+          });
+          break;
+        } catch (err) {
+          linkAttemptError = err instanceof Error ? err.message : String(err);
+          log.warn("link fetch failed", {
+            sender: senderAddress,
+            provider: link.provider,
+            err: linkAttemptError,
+          });
+          continue;
+        }
+      }
+    }
+  }
+
+  if (attachments.length === 0 && !fetchedFromLink) {
+    log.info("no attachments and no usable links", { sender: senderAddress });
     try {
       await sendRejectionReply({
         to: senderAddress,
@@ -211,14 +292,13 @@ export async function POST(req: Request): Promise<Response> {
     } catch {
       // swallow — the customer at least gets a fail-fast
     }
-    return NextResponse.json({ error: "no attachments" }, { status: 400 });
+    return NextResponse.json(
+      { error: "no attachments and no usable links", linkAttemptError },
+      { status: 400 },
+    );
   }
 
-  // Pre-filter on extension before downloading bytes.
-  const usable = attachments.filter(
-    (a) => a.filename && hasAcceptedExtension(a.filename),
-  );
-  if (usable.length === 0) {
+  if (usable.length === 0 && !fetchedFromLink) {
     log.info("no usable attachments", {
       sender: senderAddress,
       filenames: attachments.map((a) => a.filename),
@@ -311,6 +391,15 @@ export async function POST(req: Request): Promise<Response> {
       inferredKind: kind,
       validation,
     });
+  }
+
+  // Include the link-fetched file (validated above; bypasses the
+  // email-attachment caps because it has its own larger link-mode
+  // cap, applied inside fetchFromLink).
+  if (fetchedFromLink) {
+    if (fetchedFromLink.validation.ok) anyOk = true;
+    for (const issue of fetchedFromLink.validation.issues) aggregateIssues.add(issue);
+    attachmentInputs.push(fetchedFromLink);
   }
 
   if (!anyOk && attachmentInputs.length === 0) {

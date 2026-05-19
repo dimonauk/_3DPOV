@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="1400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="600" y="40" font-family="serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    DOLLOS DEPARTMENT STORE
+  </text>
+  <text x="600" y="70" font-family="serif" font-size="18" text-anchor="middle" fill="#8B7355">
+    Building Better Wardrobes Since 2025
+  </text>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="20" y="90" width="200" height="180" fill="#F5F1E8" stroke="#8B7355" stroke-width="2"/>
+    <text x="30" y="115" font-family="serif" font-size="14" font-weight="bold" fill="#3D2F28">LEGEND:</text>
+    <rect x="30" y="125" width="20" height="15" fill="#E6B8E6" opacity="0.4"/>
+    <text x="55" y="137" font-family="sans-serif" font-size="12" fill="#3D2F28">Agent Station</text>
+    <rect x="30" y="145" width="20" height="15" fill="#B8E6CF" opacity="0.4"/>
+    <text x="55" y="157" font-family="sans-serif" font-size="12" fill="#3D2F28">Work Area</text>
+    <rect x="30" y="165" width="20" height="15" fill="#FFB6C1" opacity="0.4"/>
+    <text x="55" y="177" font-family="sans-serif" font-size="12" fill="#3D2F28">Customer Zone</text>
+    <circle cx="40" cy="195" r="8" fill="#00D9FF" opacity="0.6"/>
+    <text x="55" y="200" font-family="sans-serif" font-size="12" fill="#3D2F28">AR Marker</text>
+    <path d="M 30 215 L 50 215" stroke="#FFD700" stroke-width="3" stroke-dasharray="5,3"/>
+    <text x="55" y="220" font-family="sans-serif" font-size="12" fill="#3D2F28">Brass Fixtures</text>
+    <rect x="30" y="230" width="20" height="15" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="3,2"/>
+    <text x="55" y="242" font-family="sans-serif" font-size="12" fill="#3D2F28">Holographic Display</text>
+  </g>
+
+  <!-- GROUND FLOOR -->
+  <g id="ground-floor">
+    <text x="600" y="310" font-family="serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      GROUND FLOOR
+    </text>
+    
+    <!-- Outer walls -->
+    <rect x="250" y="330" width="700" height="480" fill="#F5F1E8" stroke="#3D2F28" stroke-width="4"/>
+    
+    <!-- Main Entrance (bottom center) -->
+    <rect x="540" y="780" width="120" height="30" fill="#FFB6C1" opacity="0.4" stroke="#3D2F28" stroke-width="2"/>
+    <text x="600" y="800" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">ENTRANCE</text>
+    <circle cx="600" cy="795" r="6" fill="#00D9FF" opacity="0.8"/>
+    <text x="620" y="820" font-family="sans-serif" font-size="10" fill="#666">AR: DEPT_STORE_FRONT</text>
+    
+    <!-- Revolving doors decoration -->
+    <path d="M 570 810 Q 600 805 630 810" stroke="#FFD700" stroke-width="2" fill="none"/>
+    <circle cx="570" cy="810" r="3" fill="#FFD700"/>
+    <circle cx="630" cy="810" r="3" fill="#FFD700"/>
+    
+    <!-- Information Desk (center-bottom) -->
+    <rect x="540" y="700" width="120" height="60" fill="#E6B8E6" opacity="0.4" stroke="#8B7355" stroke-width="2"/>
+    <text x="600" y="720" font-family="serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">Information</text>
+    <text x="600" y="735" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">🗺️ Directory</text>
+    <text x="600" y="750" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Greeter on Duty</text>
+    
+    <!-- Central Aisle -->
+    <rect x="570" y="350" width="60" height="340" fill="#D4C5B9" opacity="0.3" stroke-dasharray="5,5" stroke="#8B7355" stroke-width="1"/>
+    <text x="600" y="520" font-family="serif" font-size="12" text-anchor="middle" fill="#666" transform="rotate(-90 600 520)">Main Aisle</text>
+    
+    <!-- LEFT SIDE: Manufacturing Floor -->
+    <g id="manufacturing-dept">
+      <rect x="270" y="350" width="250" height="200" fill="#B8E6CF" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="395" y="375" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">MANUFACTURING FLOOR</text>
+      <circle cx="395" cy="390" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="395" y="407" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_MANUFACTURING</text>
+      
+      <!-- Big Frank's station -->
+      <rect x="285" y="420" width="80" height="60" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="325" y="438" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Big Frank</text>
+      <text x="325" y="452" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">🏭 Coordinator</text>
+      <text x="325" y="465" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Foreman Station</text>
+      
+      <!-- Printers -->
+      <rect x="380" y="420" width="60" height="50" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="1"/>
+      <text x="410" y="435" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">PLA Printer</text>
+      <circle cx="410" cy="450" r="12" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      
+      <rect x="450" y="420" width="60" height="50" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="1"/>
+      <text x="480" y="435" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">Resin Printer</text>
+      <circle cx="480" cy="450" r="12" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      
+      <rect x="380" y="480" width="60" height="50" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="1"/>
+      <text x="410" y="495" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">Titanium</text>
+      <text x="410" y="507" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">Printer</text>
+      <circle cx="410" cy="518" r="12" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      
+      <!-- Certificate Station -->
+      <rect x="285" y="490" width="80" height="50" fill="#FFB6C1" opacity="0.3" stroke="#FFD700" stroke-width="1"/>
+      <text x="325" y="510" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">📄 Certificate</text>
+      <text x="325" y="523" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">Printer</text>
+      <text x="325" y="533" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">w/ Pastel Circuits</text>
+    </g>
+    
+    <!-- RIGHT SIDE: Commerce Counter -->
+    <g id="commerce-dept">
+      <rect x="680" y="350" width="250" height="200" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="805" y="375" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">COMMERCE COUNTER</text>
+      <circle cx="805" cy="390" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="805" y="407" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_COMMERCE</text>
+      
+      <!-- Mr. Commerce station -->
+      <rect x="700" y="420" width="90" height="70" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="745" y="440" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Mr. Commerce</text>
+      <text x="745" y="454" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">💰 Finance Manager</text>
+      <text x="745" y="468" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Brass Counter</text>
+      <rect x="710" y="473" width="70" height="12" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="1"/>
+      <text x="745" y="482" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#3D2F28">Cash Register</text>
+      
+      <!-- Credit packages display -->
+      <rect x="800" y="420" width="110" height="110" fill="#FFB6C1" opacity="0.2" stroke="#3D2F28" stroke-width="1"/>
+      <text x="855" y="438" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2F28">Credit Packages</text>
+      <rect x="810" y="445" width="90" height="18" fill="#E6B8E6" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="855" y="457" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Starter - 100 credits</text>
+      <rect x="810" y="468" width="90" height="18" fill="#B8E6CF" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="855" y="480" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Pro - 500 credits</text>
+      <rect x="810" y="491" width="90" height="18" fill="#FFD700" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="855" y="503" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Creator - 2000 credits</text>
+      <text x="855" y="518" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">♿ 100% FREE</text>
+      <text x="855" y="527" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">for disabled users</text>
+    </g>
+    
+    <!-- BOTTOM LEFT: AI Tailor's Parlour -->
+    <g id="tailor-dept">
+      <rect x="270" y="570" width="250" height="210" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="395" y="595" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">AI TAILOR'S PARLOUR</text>
+      <circle cx="395" cy="610" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="395" y="627" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_TAILOR</text>
+      
+      <!-- Miss Measurement station -->
+      <rect x="285" y="640" width="95" height="70" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="332" y="658" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Miss Measurement</text>
+      <text x="332" y="672" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">🤖 AI Tailor</text>
+      <text x="332" y="686" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Seamstress Station</text>
+      <circle cx="332" cy="698" r="8" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      <text x="332" y="702" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">Holo Tape</text>
+      
+      <!-- Fitting Area -->
+      <rect x="390" y="640" width="120" height="120" fill="#FFB6C1" opacity="0.2" stroke="#3D2F28" stroke-width="1"/>
+      <text x="450" y="658" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2F28">Fitting Room</text>
+      <ellipse cx="430" cy="700" rx="35" ry="50" fill="none" stroke="#8B7355" stroke-width="2"/>
+      <text x="430" y="705" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Dress Form</text>
+      <ellipse cx="470" cy="700" rx="35" ry="50" fill="none" stroke="#8B7355" stroke-width="2"/>
+      <text x="470" y="705" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">w/ Measurements</text>
+      <rect x="400" y="728" width="100" height="25" fill="#B8E6CF" opacity="0.3" stroke="#00D9FF" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="450" y="744" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Pattern Display</text>
+      
+      <!-- Photo Upload Station -->
+      <rect x="285" y="720" width="95" height="50" fill="#B8E6CF" opacity="0.3" stroke="#3D2F28" stroke-width="1"/>
+      <text x="332" y="738" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">📷 Photo Upload</text>
+      <text x="332" y="751" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">MediaPipe</text>
+      <text x="332" y="763" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Measurement</text>
+    </g>
+    
+    <!-- BOTTOM RIGHT: Elevator & Stairs -->
+    <g id="elevator">
+      <rect x="680" y="570" width="120" height="90" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="3"/>
+      <text x="740" y="595" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">ELEVATOR</text>
+      <text x="740" y="612" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">To Second Floor</text>
+      <circle cx="740" cy="630" r="20" fill="#FFD700" opacity="0.4" stroke="#3D2F28" stroke-width="2"/>
+      <text x="740" y="638" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">↑</text>
+      <text x="740" y="652" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Press to Ascend</text>
+      
+      <!-- Stairs -->
+      <rect x="810" y="570" width="120" height="90" fill="#D4C5B9" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="870" y="595" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">STAIRS</text>
+      <path d="M 820 620 L 920 620 M 820 630 L 920 610 M 820 640 L 920 600" stroke="#8B7355" stroke-width="2" fill="none"/>
+      <text x="870" y="655" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">To 2nd Floor</text>
+    </g>
+    
+    <!-- Rest Lounge -->
+    <rect x="680" y="670" width="250" height="80" fill="#B8E6CF" opacity="0.2" stroke="#3D2F28" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="805" y="690" font-family="serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">Customer Lounge</text>
+    <text x="805" y="708" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">☕ Refreshments  🪑 Seating</text>
+    <text x="805" y="723" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Brass fixtures • Pastel decor</text>
+    <text x="805" y="738" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">1950s ambient music</text>
+  </g>
+
+  <!-- SECOND FLOOR -->
+  <g id="second-floor">
+    <text x="600" y="860" font-family="serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      SECOND FLOOR
+    </text>
+    
+    <!-- Outer walls -->
+    <rect x="250" y="880" width="700" height="480" fill="#F5F1E8" stroke="#3D2F28" stroke-width="4"/>
+    
+    <!-- Elevator arrival -->
+    <rect x="680" y="1270" width="120" height="70" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="3"/>
+    <text x="740" y="1295" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">ELEVATOR</text>
+    <circle cx="740" cy="1315" r="20" fill="#FFD700" opacity="0.4" stroke="#3D2F28" stroke-width="2"/>
+    <text x="740" y="1323" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">↓</text>
+    <text x="740" y="1337" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">To Ground Floor</text>
+    
+    <!-- Stairs -->
+    <rect x="810" y="1270" width="120" height="70" fill="#D4C5B9" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+    <text x="870" y="1295" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">STAIRS</text>
+    <path d="M 820 1310 L 920 1330 M 820 1320 L 920 1320 M 820 1330 L 920 1310" stroke="#8B7355" stroke-width="2" fill="none"/>
+    
+    <!-- TOP LEFT: Marcel's Wardrobe Wing -->
+    <g id="marcel-dept">
+      <rect x="270" y="900" width="300" height="180" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="420" y="925" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">MARCEL'S WARDROBE WING</text>
+      <circle cx="420" cy="940" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="420" y="957" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_MARCEL</text>
+      
+      <!-- Marcel's station -->
+      <rect x="285" y="970" width="100" height="80" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="335" y="990" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Marcel</text>
+      <text x="335" y="1004" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">👔 Wardrobe Expert</text>
+      <text x="335" y="1018" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Consultation Desk</text>
+      <text x="335" y="1032" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">"Everything must</text>
+      <text x="335" y="1043" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">be *perfect*"</text>
+      
+      <!-- Outfit carousel -->
+      <ellipse cx="450" cy="1010" rx="100" ry="60" fill="none" stroke="#FFD700" stroke-width="2"/>
+      <text x="450" y="980" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2F28">Rotating Carousel</text>
+      <circle cx="400" cy="1010" r="20" fill="#E6B8E6" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="400" y="1015" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Outfit</text>
+      <circle cx="450" cy="1010" r="20" fill="#B8E6CF" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="450" y="1015" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Outfit</text>
+      <circle cx="500" cy="1010" r="20" fill="#FFB6C1" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="500" y="1015" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Outfit</text>
+      <text x="450" y="1045" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Click to browse catalog</text>
+      <text x="450" y="1058" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">AR try-on available</text>
+    </g>
+    
+    <!-- TOP RIGHT: Miss Education's Academy -->
+    <g id="education-dept">
+      <rect x="590" y="900" width="340" height="180" fill="#B8E6CF" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="760" y="925" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">LEARNING ACADEMY</text>
+      <circle cx="760" cy="940" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="760" y="957" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_EDUCATION</text>
+      
+      <!-- Miss Education station -->
+      <rect x="605" y="970" width="110" height="80" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="660" y="990" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Miss Education</text>
+      <text x="660" y="1004" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">📚 Learning Guide</text>
+      <text x="660" y="1018" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Teacher's Desk</text>
+      <text x="660" y="1032" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">"Gold star</text>
+      <text x="660" y="1043" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">for you!"</text>
+      
+      <!-- Quest board -->
+      <rect x="730" y="970" width="180" height="100" fill="#FFB6C1" opacity="0.2" stroke="#3D2F28" stroke-width="1"/>
+      <text x="820" y="988" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2F28">QUEST BOARD</text>
+      <rect x="745" y="995" width="150" height="18" fill="#E6B8E6" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="820" y="1007" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">⭐ Learn 3D Printing</text>
+      <rect x="745" y="1018" width="150" height="18" fill="#B8E6CF" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="820" y="1030" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">⭐ Design First Pattern</text>
+      <rect x="745" y="1041" width="150" height="18" fill="#FFB6C1" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="820" y="1053" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">⭐ Share Creation</text>
+      <text x="820" y="1068" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">Click quest to accept</text>
+    </g>
+    
+    <!-- BOTTOM LEFT: Dolly's Document Room -->
+    <g id="dolly-dept">
+      <rect x="270" y="1100" width="300" height="220" fill="#FFB6C1" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="420" y="1125" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">DOLLY'S DOCUMENT ROOM</text>
+      <circle cx="420" cy="1140" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="420" y="1157" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_DOLLY</text>
+      
+      <!-- Dolly's station -->
+      <rect x="285" y="1170" width="110" height="80" fill="#E6B8E6" opacity="0.4" stroke="#FFD700" stroke-width="2"/>
+      <text x="340" y="1190" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3D2F28">Dolly</text>
+      <text x="340" y="1204" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#3D2F28">📄 Documentation</text>
+      <text x="340" y="1218" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Secretary Desk</text>
+      <text x="340" y="1232" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">"All organized</text>
+      <text x="340" y="1243" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">just so!"</text>
+      
+      <!-- Filing cabinets -->
+      <rect x="285" y="1260" width="50" height="50" fill="#B8E6CF" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="310" y="1280" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Filing</text>
+      <text x="310" y="1292" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Cabinet</text>
+      <circle cx="310" cy="1300" r="6" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      
+      <rect x="345" y="1260" width="50" height="50" fill="#B8E6CF" opacity="0.3" stroke="#8B7355" stroke-width="1"/>
+      <text x="370" y="1280" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Filing</text>
+      <text x="370" y="1292" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#3D2F28">Cabinet</text>
+      <circle cx="370" cy="1300" r="6" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="2,2"/>
+      
+      <!-- Certificate display wall -->
+      <rect x="410" y="1170" width="140" height="140" fill="#FFB6C1" opacity="0.2" stroke="#3D2F28" stroke-width="1"/>
+      <text x="480" y="1188" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2F28">Certificate Gallery</text>
+      
+      <!-- Sample certificates on wall -->
+      <rect x="420" y="1195" width="50" height="35" fill="#F5F1E8" stroke="#00D9FF" stroke-width="1" stroke-dasharray="2,2"/>
+      <path d="M 425 1200 L 435 1205 M 435 1205 L 445 1210" stroke="#E6B8E6" stroke-width="1"/>
+      <text x="445" y="1220" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Cert w/</text>
+      <text x="445" y="1227" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Circuits</text>
+      
+      <rect x="480" y="1195" width="50" height="35" fill="#F5F1E8" stroke="#00D9FF" stroke-width="1" stroke-dasharray="2,2"/>
+      <path d="M 485 1200 L 495 1205 M 495 1205 L 505 1210" stroke="#B8E6CF" stroke-width="1"/>
+      <text x="505" y="1220" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Cert w/</text>
+      <text x="505" y="1227" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Circuits</text>
+      
+      <rect x="420" y="1240" width="50" height="35" fill="#F5F1E8" stroke="#00D9FF" stroke-width="1" stroke-dasharray="2,2"/>
+      <path d="M 425 1245 L 435 1250 M 435 1250 L 445 1255" stroke="#FFB6C1" stroke-width="1"/>
+      <text x="445" y="1265" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Cert w/</text>
+      <text x="445" y="1272" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Circuits</text>
+      
+      <rect x="480" y="1240" width="50" height="35" fill="#F5F1E8" stroke="#00D9FF" stroke-width="1" stroke-dasharray="2,2"/>
+      <path d="M 485 1245 L 495 1250 M 495 1250 L 505 1255" stroke="#00D9FF" stroke-width="1"/>
+      <text x="505" y="1265" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Cert w/</text>
+      <text x="505" y="1272" font-family="sans-serif" font-size="6" text-anchor="middle" fill="#666">Circuits</text>
+      
+      <text x="480" y="1298" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">All showing code traces!</text>
+    </g>
+    
+    <!-- BOTTOM RIGHT: Living Documentation Center -->
+    <g id="docs-center">
+      <rect x="590" y="1100" width="340" height="160" fill="#B8E6CF" opacity="0.3" stroke="#3D2F28" stroke-width="2"/>
+      <text x="760" y="1125" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">LIVING DOCUMENTATION CENTER</text>
+      <circle cx="760" cy="1140" r="8" fill="#00D9FF" opacity="0.8"/>
+      <text x="760" y="1157" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">AR: DEPT_DOCS</text>
+      
+      <!-- Interactive screens -->
+      <rect x="605" y="1170" width="140" height="70" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="3,2"/>
+      <text x="675" y="1190" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">AI Guide Screen</text>
+      <text x="675" y="1208" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">🤖 Ask me anything!</text>
+      <text x="675" y="1223" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">Context-aware help</text>
+      <text x="675" y="1235" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">Sitcom personality</text>
+      
+      <rect x="755" y="1170" width="155" height="70" fill="none" stroke="#00D9FF" stroke-width="2" stroke-dasharray="3,2"/>
+      <text x="832" y="1190" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Doc Navigator</text>
+      <text x="832" y="1208" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">Browse all guides</text>
+      <text x="832" y="1223" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">Self-aware suggestions</text>
+      <text x="832" y="1235" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">"You might like..."</text>
+    </g>
+  </g>
+  
+  <!-- Footer -->
+  <text x="600" y="1385" font-family="serif" font-size="12" text-anchor="middle" fill="#8B7355">
+    Professional Service • 100% FREE Accessibility • Building Better Wardrobes
+  </text>
+</svg>

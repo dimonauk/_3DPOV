@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="1600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="600" y="40" font-family="sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    DEPARTMENT STORE FLOOR NAVIGATION
+  </text>
+  <text x="600" y="70" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#8B7355">
+    Motherboard-Inspired Circuit Wayfinding System
+  </text>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="50" y="90" width="300" height="200" fill="#F5F1E8" stroke="#8B7355" stroke-width="2"/>
+    <text x="60" y="115" font-family="sans-serif" font-size="14" font-weight="bold" fill="#3D2F28">NAVIGATION LINES:</text>
+    
+    <line x1="60" y1="130" x2="100" y2="130" stroke="#E6B8E6" stroke-width="4"/>
+    <text x="110" y="135" font-family="sans-serif" font-size="12" fill="#3D2F28">Manufacturing (Lavender)</text>
+    
+    <line x1="60" y1="150" x2="100" y2="150" stroke="#FFB6C1" stroke-width="4"/>
+    <text x="110" y="155" font-family="sans-serif" font-size="12" fill="#3D2F28">AI Tailor (Pink)</text>
+    
+    <line x1="60" y1="170" x2="100" y2="170" stroke="#FFD700" stroke-width="4"/>
+    <text x="110" y="175" font-family="sans-serif" font-size="12" fill="#3D2F28">Commerce (Gold)</text>
+    
+    <line x1="60" y1="190" x2="100" y2="190" stroke="#B8E6CF" stroke-width="4"/>
+    <text x="110" y="195" font-family="sans-serif" font-size="12" fill="#3D2F28">Education (Mint)</text>
+    
+    <line x1="60" y1="210" x2="100" y2="210" stroke="#00D9FF" stroke-width="4"/>
+    <text x="110" y="215" font-family="sans-serif" font-size="12" fill="#3D2F28">Marcel's Salon (Cyan)</text>
+    
+    <line x1="60" y1="230" x2="100" y2="230" stroke="#FFA500" stroke-width="4"/>
+    <text x="110" y="235" font-family="sans-serif" font-size="12" fill="#3D2F28">Dolly's Docs (Amber)</text>
+    
+    <circle cx="80" cy="255" r="8" fill="#3D2F28"/>
+    <text x="95" y="260" font-family="sans-serif" font-size="11" fill="#3D2F28">Connection Node</text>
+    
+    <rect x="75" y="270" width="10" height="10" fill="#FFFFFF" stroke="#3D2F28" stroke-width="1"/>
+    <text x="95" y="279" font-family="sans-serif" font-size="11" fill="#3D2F28">Department</text>
+  </g>
+  
+  <!-- GROUND FLOOR MAP -->
+  <text x="600" y="330" font-family="sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    GROUND FLOOR - Circuit Navigation
+  </text>
+  
+  <!-- Floor outline -->
+  <rect x="200" y="360" width="800" height="550" fill="#F5F1E8" stroke="#3D2F28" stroke-width="4"/>
+  
+  <!-- ENTRANCE (bottom center) -->
+  <rect x="520" y="860" width="160" height="50" fill="#FFFFFF" stroke="#3D2F28" stroke-width="3"/>
+  <text x="600" y="890" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    MAIN ENTRANCE
+  </text>
+  
+  <!-- Central Hub Node -->
+  <circle cx="600" cy="750" r="25" fill="#3D2F28"/>
+  <text x="600" y="757" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#FFFFFF">HUB</text>
+  
+  <!-- CONNECTION LINES FROM HUB (Motherboard style - 90° angles) -->
+  
+  <!-- To Manufacturing (LEFT - Lavender) -->
+  <path d="M 575 750 L 400 750 L 400 500 L 300 500" 
+        stroke="#E6B8E6" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="400" cy="750" r="6" fill="#E6B8E6"/>
+  <circle cx="400" cy="500" r="6" fill="#E6B8E6"/>
+  
+  <!-- To AI Tailor (BOTTOM LEFT - Pink) -->
+  <path d="M 575 765 L 450 765 L 450 820 L 350 820" 
+        stroke="#FFB6C1" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="450" cy="765" r="6" fill="#FFB6C1"/>
+  <circle cx="450" cy="820" r="6" fill="#FFB6C1"/>
+  
+  <!-- To Commerce (RIGHT - Gold) -->
+  <path d="M 625 750 L 800 750 L 800 500 L 900 500" 
+        stroke="#FFD700" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="800" cy="750" r="6" fill="#FFD700"/>
+  <circle cx="800" cy="500" r="6" fill="#FFD700"/>
+  
+  <!-- To Elevator (TOP RIGHT - Multi-color) -->
+  <path d="M 615 735 L 615 650 L 850 650" 
+        stroke="#8B7355" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="10,5"/>
+  <circle cx="615" cy="650" r="6" fill="#8B7355"/>
+  
+  <!-- DEPARTMENTS -->
+  
+  <!-- Manufacturing Floor (Top Left) -->
+  <rect x="230" y="400" width="150" height="120" fill="#E6B8E6" opacity="0.3" stroke="#E6B8E6" stroke-width="4"/>
+  <text x="305" y="430" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    MANUFACTURING
+  </text>
+  <text x="305" y="450" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    Big Frank
+  </text>
+  <text x="305" y="470" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    🏭 Follow Lavender
+  </text>
+  <text x="305" y="485" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  
+  <!-- AI Tailor Parlour (Bottom Left) -->
+  <rect x="230" y="760" width="150" height="120" fill="#FFB6C1" opacity="0.3" stroke="#FFB6C1" stroke-width="4"/>
+  <text x="305" y="790" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    AI TAILOR
+  </text>
+  <text x="305" y="810" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    Miss Measurement
+  </text>
+  <text x="305" y="830" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    🤖 Follow Pink
+  </text>
+  <text x="305" y="845" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  
+  <!-- Commerce Counter (Top Right) -->
+  <rect x="820" y="400" width="150" height="120" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="4"/>
+  <text x="895" y="430" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    COMMERCE
+  </text>
+  <text x="895" y="450" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    Mr. Commerce
+  </text>
+  <text x="895" y="470" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    💰 Follow Gold
+  </text>
+  <text x="895" y="485" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  
+  <!-- Elevator (Right side) -->
+  <rect x="850" y="600" width="120" height="100" fill="#8B7355" opacity="0.3" stroke="#8B7355" stroke-width="4"/>
+  <text x="910" y="630" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    ELEVATOR
+  </text>
+  <text x="910" y="650" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    To 2nd Floor
+  </text>
+  <text x="910" y="670" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Follow Dotted
+  </text>
+  <text x="910" y="685" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Brown Line
+  </text>
+  
+  <!-- Circuit trace details (decorative) -->
+  <circle cx="500" cy="750" r="3" fill="#3D2F28" opacity="0.3"/>
+  <circle cx="700" cy="750" r="3" fill="#3D2F28" opacity="0.3"/>
+  <circle cx="600" cy="650" r="3" fill="#3D2F28" opacity="0.3"/>
+  
+  <!-- SECOND FLOOR MAP -->
+  <text x="600" y="960" font-family="sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    SECOND FLOOR - Circuit Navigation
+  </text>
+  
+  <!-- Floor outline -->
+  <rect x="200" y="990" width="800" height="550" fill="#F5F1E8" stroke="#3D2F28" stroke-width="4"/>
+  
+  <!-- ELEVATOR ARRIVAL (right) -->
+  <rect x="850" y="1400" width="120" height="100" fill="#8B7355" opacity="0.3" stroke="#8B7355" stroke-width="4"/>
+  <text x="910" y="1430" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    ELEVATOR
+  </text>
+  <text x="910" y="1450" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    From Ground
+  </text>
+  
+  <!-- Central Hub Node (2nd floor) -->
+  <circle cx="600" cy="1250" r="25" fill="#3D2F28"/>
+  <text x="600" y="1257" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#FFFFFF">HUB</text>
+  
+  <!-- CONNECTION LINES FROM HUB (2nd Floor) -->
+  
+  <!-- To Marcel's Salon (LEFT - Cyan) -->
+  <path d="M 575 1250 L 400 1250 L 400 1100 L 320 1100" 
+        stroke="#00D9FF" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="400" cy="1250" r="6" fill="#00D9FF"/>
+  <circle cx="400" cy="1100" r="6" fill="#00D9FF"/>
+  
+  <!-- To Education (TOP - Mint) -->
+  <path d="M 600 1225 L 600 1080 L 750 1080" 
+        stroke="#B8E6CF" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="600" cy="1080" r="6" fill="#B8E6CF"/>
+  
+  <!-- To Dolly's Docs (BOTTOM LEFT - Amber) -->
+  <path d="M 575 1265 L 450 1265 L 450 1400 L 350 1400" 
+        stroke="#FFA500" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="450" cy="1265" r="6" fill="#FFA500"/>
+  <circle cx="450" cy="1400" r="6" fill="#FFA500"/>
+  
+  <!-- From Elevator (RIGHT - Brown dotted) -->
+  <path d="M 850 1450 L 650 1450 L 650 1265 L 625 1265" 
+        stroke="#8B7355" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="10,5"/>
+  <circle cx="650" cy="1450" r="6" fill="#8B7355"/>
+  <circle cx="650" cy="1265" r="6" fill="#8B7355"/>
+  
+  <!-- DEPARTMENTS (2nd Floor) -->
+  
+  <!-- Marcel's Salon & Wardrobe (Top Left) -->
+  <rect x="230" y="1030" width="170" height="150" fill="#00D9FF" opacity="0.3" stroke="#00D9FF" stroke-width="4"/>
+  <text x="315" y="1060" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    MARCEL'S SALON
+  </text>
+  <text x="315" y="1080" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    &amp; Wardrobe Wing
+  </text>
+  <text x="315" y="1100" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    💇 Follow Cyan
+  </text>
+  <text x="315" y="1115" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  <text x="315" y="1135" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    Miss Marcel at desk
+  </text>
+  <text x="315" y="1150" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    Dolly at reception
+  </text>
+  
+  <!-- Learning Academy (Top Right) -->
+  <rect x="720" y="1010" width="250" height="150" fill="#B8E6CF" opacity="0.3" stroke="#B8E6CF" stroke-width="4"/>
+  <text x="845" y="1040" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    LEARNING ACADEMY
+  </text>
+  <text x="845" y="1060" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    Miss Education
+  </text>
+  <text x="845" y="1080" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    📚 Follow Mint
+  </text>
+  <text x="845" y="1095" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  <text x="845" y="1120" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    Quest board • Courses
+  </text>
+  <text x="845" y="1135" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    Nexus connections
+  </text>
+  
+  <!-- Dolly's Document Room (Bottom Left) -->
+  <rect x="230" y="1330" width="170" height="150" fill="#FFA500" opacity="0.3" stroke="#FFA500" stroke-width="4"/>
+  <text x="315" y="1360" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    DOLLY'S DOCS
+  </text>
+  <text x="315" y="1380" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#3D2F28">
+    Certificate Gallery
+  </text>
+  <text x="315" y="1400" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    📄 Follow Amber
+  </text>
+  <text x="315" y="1415" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Circuit Lines
+  </text>
+  <text x="315" y="1435" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    Living documentation
+  </text>
+  <text x="315" y="1450" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#666">
+    AI guide available
+  </text>
+  
+  <!-- Living Docs Center (Bottom Right) -->
+  <rect x="420" y="1330" width="200" height="150" fill="#00D9FF" opacity="0.2" stroke="#00D9FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="520" y="1360" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    Living Docs Center
+  </text>
+  <text x="520" y="1378" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    Interactive screens
+  </text>
+  <text x="520" y="1393" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    AI help kiosks
+  </text>
+  
+  <!-- Instructions box -->
+  <rect x="400" y="1010" width="280" height="160" fill="#FFFFFF" stroke="#3D2F28" stroke-width="2"/>
+  <text x="540" y="1035" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    HOW TO NAVIGATE
+  </text>
+  <text x="410" y="1060" font-family="sans-serif" font-size="11" fill="#3D2F28">
+    1. Look down at the floor
+  </text>
+  <text x="410" y="1080" font-family="sans-serif" font-size="11" fill="#3D2F28">
+    2. Find colored circuit lines
+  </text>
+  <text x="410" y="1100" font-family="sans-serif" font-size="11" fill="#3D2F28">
+    3. Follow your department's color
+  </text>
+  <text x="410" y="1120" font-family="sans-serif" font-size="11" fill="#3D2F28">
+    4. Lines lead to destination!
+  </text>
+  <text x="540" y="1145" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    ⚡ Like a computer motherboard
+  </text>
+  <text x="540" y="1160" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#666">
+    bringing power to components!
+  </text>
+  
+  <!-- Footer -->
+  <text x="600" y="1575" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#8B7355">
+    Floor lines embedded in tile • Glow in low light • Accessible for all • Beautiful and functional ✨
+  </text>
+</svg>

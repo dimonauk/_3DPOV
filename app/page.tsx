@@ -1,3 +1,5 @@
+import { AmbientField } from "components/ambient/AmbientField";
+import { CursorReticle, SpatialOverlay } from "components/ar-chrome";
 import { Carousel } from "components/carousel";
 import { ThreeItemGrid } from "components/grid/three-items";
 import Footer from "components/layout/footer";
@@ -27,6 +29,10 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* Spatial-chrome cursor reticle — viewport-wide. Disabled on
+          touch and frozen still under prefers-reduced-motion. The
+          single client component on an otherwise server-rendered page. */}
+      <CursorReticle />
       <Hero />
       <Statement />
       <PipelineSection />
@@ -83,6 +89,14 @@ function CarouselSkeleton() {
 function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-warm-black-800">
+      {/* Ambient particle field — fixed full-viewport, behind everything.
+          Pointer-events-none, dynamic-imported, respects reduced-motion.
+          See components/ambient/README.md for the budget + rules. */}
+      <AmbientField
+        density="low"
+        palette="pink"
+        intensity={0.4}
+      />
       {/* The hypercube: the site's bullet point. Sits behind the content
           on a deep-midnight plate and bleeds outward through a vignette
           so the typography reads cleanly without losing the glyph. */}
@@ -135,6 +149,17 @@ function Hero() {
           </Link>
         </div>
       </div>
+      {/* AR-chrome overlay — the headset-HUD framing on the hero plate.
+          Corner brackets, ISA-101 stage label top-left, XYZ axis
+          top-right. Sits above the hypercube and the type, never
+          blocks clicks. See components/ar-chrome/README.md. */}
+      <SpatialOverlay
+        stageLabel={{
+          stage: "ISA-101",
+          context: "STUDIO HOME",
+          index: "SECTION 00",
+        }}
+      />
     </section>
   );
 }

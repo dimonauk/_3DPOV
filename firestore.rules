@@ -160,5 +160,32 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Bureau orders — fine-art print orders (size + paper + edition)
+    // off the bureau picker UI. Customer email, Stripe Payment Intent
+    // id, and shipping address all live here. Operator-only. The
+    // /admin/bureau dashboard reads via server components, bypassing
+    // these rules. Webhook + checkout-completion writes use the
+    // admin SDK.
+    match /bureau_orders/{id} {
+      allow read, write: if false;
+
+      // Audit log — append-only timeline of every meaningful side-effect
+      // on the order. Source of truth for dispute defence (chargebacks,
+      // refund claims) and the operator-dashboard timeline. Admin SDK
+      // writes only, same as the parent doc.
+      match /events/{eventId} {
+        allow read, write: if false;
+      }
+    }
+
+    // GDPR rights-of-the-data-subject requests — access / deletion /
+    // rectification / portability / objection. Reads would expose
+    // every customer who has invoked their UK-GDPR rights (extremely
+    // sensitive). Writes go through the admin SDK from
+    // /api/gdpr/request. Admin SDK only.
+    match /gdpr_requests/{id} {
+      allow read, write: if false;
+    }
+
   }
 }

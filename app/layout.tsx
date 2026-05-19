@@ -64,6 +64,16 @@ export const metadata = {
     description: DESCRIPTION,
   },
   robots: { follow: false, index: false },
+  alternates: {
+    types: {
+      "application/atom+xml": [
+        { url: "/feed.xml", title: "Holoflow Studio — all writing" },
+        { url: "/articles/feed.xml", title: "Holoflow Studio — articles" },
+        { url: "/journal/feed.xml", title: "Holoflow Studio — journal" },
+        { url: "/tutorials/feed.xml", title: "Holoflow Studio — tutorials" },
+      ],
+    },
+  },
 };
 
 export default async function RootLayout({

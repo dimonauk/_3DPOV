@@ -47,6 +47,8 @@ declare module "@mediapipe/tasks-vision" {
 
   export class FaceLandmarker {
     static createFromOptions(vision: any, options: any): Promise<FaceLandmarker>;
+    detect(image: any, options?: any): any;
+    detectForVideo(image: any, timestamp: number, options?: any): any;
     close(): void;
   }
 

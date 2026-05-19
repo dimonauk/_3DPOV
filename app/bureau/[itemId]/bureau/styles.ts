@@ -200,4 +200,101 @@ export const BUREAU_PICKER_STYLES = `
     font-size: 0.85rem;
     margin-top: 0.5rem;
   }
+
+  /* Customer + shipping form (revealed after Order CTA). */
+  .bp-cust {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 111, 181, 0.3);
+    border-radius: 0.6rem;
+  }
+  .bp-cust-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 111, 181, 0.85);
+    margin-bottom: 0.2rem;
+  }
+  .bp-cust-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .bp-cust-row span {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+  }
+  .bp-cust-row input {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+  .bp-cust-row input:focus {
+    outline: 0;
+    border-color: rgba(255, 111, 181, 0.6);
+  }
+  .bp-cust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .bp-cust-country {
+    text-transform: uppercase;
+    max-width: 5rem;
+  }
+  .bp-cust-error {
+    background: rgba(255, 82, 82, 0.08);
+    border: 1px solid rgba(255, 82, 82, 0.4);
+    color: #ff8585;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.4rem;
+    font-size: 0.82rem;
+    margin: 0;
+  }
+  .bp-cust-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 0.4rem;
+  }
+  .bp-cust-cancel {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .bp-cust-pay {
+    background: #ff6fb5;
+    color: white;
+    border: 0;
+    padding: 0.65rem 1.3rem;
+    border-radius: 0.45rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .bp-cust-pay:disabled,
+  .bp-cust-cancel:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .bp-cust-fineprint {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0.3rem 0 0;
+  }
 `;

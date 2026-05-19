@@ -14,8 +14,14 @@
 
 import { createLogger, errToObject } from "lib/log";
 
-import { MC_COMPUTE_WGSL, RENDER_WGSL } from "./shaders";
-import { MC_TRI_TABLE } from "./tri-table";
+import { dispatchCompute, renderPass, writeCameraUniform } from "./passes";
+import {
+  createRunnerBuffers,
+  createRunnerPipelines,
+  MAX_VERTS_PER_RES,
+  type RunnerBuffers,
+  type RunnerPipelines,
+} from "./setup";
 
 const log = createLogger("atelier.isosurface");
 
@@ -47,15 +53,6 @@ export type RunnerStats = GenerateResult & {
   resolution: number;
   capacityHit: boolean;
 };
-
-const MAX_VERTS_PER_RES: Record<number, number> = {
-  32: 600_000,
-  64: 1_800_000,
-  128: 5_400_000,
-};
-
-const VERTEX_STRIDE_FLOATS = 6;
-const VERTEX_STRIDE_BYTES = VERTEX_STRIDE_FLOATS * 4;
 
 export class IsosurfaceRunner {
   private device: GPU;
@@ -144,122 +141,28 @@ export class IsosurfaceRunner {
     });
 
     const runner = new IsosurfaceRunner(device, context, canvas, format);
-    runner.initBuffers();
-    runner.initPipelines();
+    const buffers = createRunnerBuffers(device);
+    runner.adoptBuffers(buffers);
+    const pipelines = createRunnerPipelines(device, format, buffers);
+    runner.adoptPipelines(pipelines);
     return runner;
   }
 
-  private initBuffers(): void {
-    const device = this.device;
-
-    // Allocate the largest vertex buffer we might need, sized for the
-    // highest resolution the UI exposes. WebGPU has no realloc.
-    this.maxVerts = MAX_VERTS_PER_RES[128] ?? 5_400_000;
-    this.vertexBuffer = device.createBuffer({
-      // 0x80 = STORAGE | 0x20 = VERTEX | 0x4 = COPY_DST
-      size: this.maxVerts * VERTEX_STRIDE_BYTES,
-      usage: 0x80 | 0x20 | 0x4,
-    });
-
-    // Params uniform (8 × 4 bytes = 32 bytes, but std140 wants 16-aligned).
-    this.paramsBuffer = device.createBuffer({
-      size: 48,
-      usage: 0x40 | 0x4, // UNIFORM | COPY_DST
-    });
-
-    // Camera uniform: mat4x4 (64 bytes) + vec4 cameraPos (16) + vec4 lightDir (16) = 96 bytes
-    this.cameraBuffer = device.createBuffer({
-      size: 96,
-      usage: 0x40 | 0x4,
-    });
-
-    // Tri-table — uploaded once, immutable.
-    this.triTableBuffer = device.createBuffer({
-      size: MC_TRI_TABLE.byteLength,
-      usage: 0x80, // STORAGE
-      mappedAtCreation: true,
-    });
-    new Int32Array(this.triTableBuffer.getMappedRange()).set(MC_TRI_TABLE);
-    this.triTableBuffer.unmap();
-
-    // Atomic vertex counter (4 bytes).
-    this.counterBuffer = device.createBuffer({
-      size: 4,
-      usage: 0x80 | 0x4 | 0x8, // STORAGE | COPY_DST | COPY_SRC
-    });
-
-    this.counterReadback = device.createBuffer({
-      size: 4,
-      usage: 0x9, // COPY_DST | MAP_READ
-    });
+  private adoptBuffers(b: RunnerBuffers): void {
+    this.paramsBuffer = b.paramsBuffer;
+    this.cameraBuffer = b.cameraBuffer;
+    this.triTableBuffer = b.triTableBuffer;
+    this.counterBuffer = b.counterBuffer;
+    this.counterReadback = b.counterReadback;
+    this.vertexBuffer = b.vertexBuffer;
+    this.maxVerts = b.maxVerts;
   }
 
-  private initPipelines(): void {
-    const device = this.device;
-
-    const computeModule = device.createShaderModule({
-      code: MC_COMPUTE_WGSL,
-      label: "isosurface-mc-compute",
-    });
-
-    this.computePipeline = device.createComputePipeline({
-      layout: "auto",
-      compute: { module: computeModule, entryPoint: "main" },
-      label: "isosurface-mc-pipeline",
-    });
-
-    this.computeBindGroup = device.createBindGroup({
-      layout: this.computePipeline.getBindGroupLayout(0),
-      entries: [
-        { binding: 0, resource: { buffer: this.paramsBuffer } },
-        { binding: 1, resource: { buffer: this.triTableBuffer } },
-        { binding: 2, resource: { buffer: this.counterBuffer } },
-        { binding: 3, resource: { buffer: this.vertexBuffer } },
-      ],
-    });
-
-    const renderModule = device.createShaderModule({
-      code: RENDER_WGSL,
-      label: "isosurface-render-shader",
-    });
-
-    this.renderPipeline = device.createRenderPipeline({
-      layout: "auto",
-      vertex: {
-        module: renderModule,
-        entryPoint: "vs_main",
-        buffers: [
-          {
-            arrayStride: VERTEX_STRIDE_BYTES,
-            stepMode: "vertex",
-            attributes: [
-              { shaderLocation: 0, offset: 0, format: "float32x3" }, // position
-              { shaderLocation: 1, offset: 12, format: "float32x3" }, // normal
-            ],
-          },
-        ],
-      },
-      fragment: {
-        module: renderModule,
-        entryPoint: "fs_main",
-        targets: [{ format: this.format }],
-      },
-      primitive: {
-        topology: "triangle-list",
-        cullMode: "none",
-      },
-      depthStencil: {
-        format: "depth24plus",
-        depthWriteEnabled: true,
-        depthCompare: "less",
-      },
-      label: "isosurface-render-pipeline",
-    });
-
-    this.renderBindGroup = device.createBindGroup({
-      layout: this.renderPipeline.getBindGroupLayout(0),
-      entries: [{ binding: 0, resource: { buffer: this.cameraBuffer } }],
-    });
+  private adoptPipelines(p: RunnerPipelines): void {
+    this.computePipeline = p.computePipeline;
+    this.renderPipeline = p.renderPipeline;
+    this.computeBindGroup = p.computeBindGroup;
+    this.renderBindGroup = p.renderBindGroup;
   }
 
   setParams(p: IsosurfaceParams): void {
@@ -319,94 +222,33 @@ export class IsosurfaceRunner {
   }
 
   private async regenerate(): Promise<void> {
-    const device = this.device;
     const params = this.currentParams;
-    const t0 = performance.now();
-
-    // Upload params uniform. Layout matches Params struct in WGSL.
-    const u32Buf = new ArrayBuffer(48);
-    const u32 = new Uint32Array(u32Buf);
-    const f32 = new Float32Array(u32Buf);
-    u32[0] = params.resolution;
-    f32[1] = params.wSphere;
-    f32[2] = params.wTorus;
-    f32[3] = params.wGyroid;
-    f32[4] = params.threshold;
-    u32[5] = this.maxVerts;
-    u32[6] = 0;
-    u32[7] = 0;
-    device.queue.writeBuffer(this.paramsBuffer, 0, u32Buf);
-
-    // Reset the atomic vertex counter.
-    const zero = new Uint32Array([0]);
-    device.queue.writeBuffer(this.counterBuffer, 0, zero.buffer);
-
-    // Dispatch the compute. Workgroup is 4×4×4, so we dispatch
-    // ceil(res / 4) on each axis.
-    const wg = Math.ceil(params.resolution / 4);
-
-    const encoder = device.createCommandEncoder({ label: "mc-dispatch" });
-    const pass = encoder.beginComputePass({ label: "mc-pass" });
-    pass.setPipeline(this.computePipeline);
-    pass.setBindGroup(0, this.computeBindGroup);
-    pass.dispatchWorkgroups(wg, wg, wg);
-    pass.end();
-
-    // Copy the vertex counter back so we know how many triangles to draw.
-    encoder.copyBufferToBuffer(this.counterBuffer, 0, this.counterReadback, 0, 4);
-
-    device.queue.submit([encoder.finish()]);
-
-    await this.counterReadback.mapAsync(1); // GPUMapMode.READ
-    const count = new Uint32Array(this.counterReadback.getMappedRange())[0] ?? 0;
-    this.counterReadback.unmap();
-
-    const t1 = performance.now();
-
-    const capacityHit = count >= this.maxVerts;
-    const triCount = Math.floor(count / 3);
+    const outcome = await dispatchCompute(
+      {
+        device: this.device,
+        paramsBuffer: this.paramsBuffer,
+        counterBuffer: this.counterBuffer,
+        counterReadback: this.counterReadback,
+        computePipeline: this.computePipeline,
+        computeBindGroup: this.computeBindGroup,
+        maxVerts: this.maxVerts,
+      },
+      params,
+    );
     this.latestStats = {
-      triCount,
-      vertexCount: count,
-      generationMs: t1 - t0,
+      ...outcome,
       resolution: params.resolution,
-      capacityHit,
     };
   }
 
   private updateCamera(): void {
-    const r = this.orbitDistance;
-    const cy = Math.cos(this.orbitYaw);
-    const sy = Math.sin(this.orbitYaw);
-    const cp = Math.cos(this.orbitPitch);
-    const sp = Math.sin(this.orbitPitch);
-    const eye: [number, number, number] = [r * cp * sy, r * sp, r * cp * cy];
-    const target: [number, number, number] = [0, 0, 0];
-    const up: [number, number, number] = [0, 1, 0];
-
-    const view = lookAt(eye, target, up);
-    const aspect = Math.max(this.canvas.width / Math.max(this.canvas.height, 1), 0.001);
-    const proj = perspective(Math.PI / 4, aspect, 0.05, 50);
-    const viewProj = multiply(proj, view);
-
-    const buf = new ArrayBuffer(96);
-    const f32 = new Float32Array(buf);
-    for (let i = 0; i < 16; i += 1) f32[i] = viewProj[i] ?? 0;
-    f32[16] = eye[0];
-    f32[17] = eye[1];
-    f32[18] = eye[2];
-    f32[19] = 0;
-    // light from upper-front
-    const lx = 0.35;
-    const ly = 0.75;
-    const lz = 0.55;
-    const llen = Math.hypot(lx, ly, lz);
-    f32[20] = lx / llen;
-    f32[21] = ly / llen;
-    f32[22] = lz / llen;
-    f32[23] = 0;
-
-    this.device.queue.writeBuffer(this.cameraBuffer, 0, buf);
+    writeCameraUniform(this.device, this.cameraBuffer, {
+      yaw: this.orbitYaw,
+      pitch: this.orbitPitch,
+      distance: this.orbitDistance,
+      canvasWidth: this.canvas.width,
+      canvasHeight: this.canvas.height,
+    });
   }
 
   private ensureDepthTexture(): void {
@@ -428,36 +270,15 @@ export class IsosurfaceRunner {
   }
 
   private renderPass(): void {
-    const device = this.device;
-    const view = this.context.getCurrentTexture().createView();
-    const encoder = device.createCommandEncoder({ label: "isosurface-render" });
-    const pass = encoder.beginRenderPass({
-      colorAttachments: [
-        {
-          view,
-          // background: warm-black-950-ish, matches site shell
-          clearValue: { r: 0.03, g: 0.03, b: 0.05, a: 1 },
-          loadOp: "clear",
-          storeOp: "store",
-        },
-      ],
-      depthStencilAttachment: {
-        view: this.depthTexture.createView(),
-        depthClearValue: 1.0,
-        depthLoadOp: "clear",
-        depthStoreOp: "store",
-      },
+    renderPass({
+      device: this.device,
+      context: this.context,
+      depthTexture: this.depthTexture,
+      renderPipeline: this.renderPipeline,
+      renderBindGroup: this.renderBindGroup,
+      vertexBuffer: this.vertexBuffer,
+      vertexCount: this.latestStats.vertexCount,
     });
-
-    if (this.latestStats.vertexCount > 0) {
-      pass.setPipeline(this.renderPipeline);
-      pass.setBindGroup(0, this.renderBindGroup);
-      pass.setVertexBuffer(0, this.vertexBuffer);
-      pass.draw(this.latestStats.vertexCount, 1, 0, 0);
-    }
-
-    pass.end();
-    device.queue.submit([encoder.finish()]);
   }
 
   destroy(): void {
@@ -476,72 +297,4 @@ export class IsosurfaceRunner {
       log.error("cleanup error", { err: errToObject(err) });
     }
   }
-}
-
-// ----------------------------------------------------------------------------
-// Small mat4 helpers — column-major, matching the layout WGSL uniforms
-// expect. Inlined here so the chamber stays self-contained and doesn't
-// pull gl-matrix.
-// ----------------------------------------------------------------------------
-
-type Vec3 = [number, number, number];
-type Mat4 = number[]; // 16 elements, column-major
-
-function lookAt(eye: Vec3, target: Vec3, up: Vec3): Mat4 {
-  const [ex, ey, ez] = eye;
-  const [tx, ty, tz] = target;
-  let zx = ex - tx;
-  let zy = ey - ty;
-  let zz = ez - tz;
-  const zLen = Math.hypot(zx, zy, zz) || 1;
-  zx /= zLen;
-  zy /= zLen;
-  zz /= zLen;
-
-  let xx = up[1] * zz - up[2] * zy;
-  let xy = up[2] * zx - up[0] * zz;
-  let xz = up[0] * zy - up[1] * zx;
-  const xLen = Math.hypot(xx, xy, xz) || 1;
-  xx /= xLen;
-  xy /= xLen;
-  xz /= xLen;
-
-  const yx = zy * xz - zz * xy;
-  const yy = zz * xx - zx * xz;
-  const yz = zx * xy - zy * xx;
-
-  return [
-    xx, yx, zx, 0,
-    xy, yy, zy, 0,
-    xz, yz, zz, 0,
-    -(xx * ex + xy * ey + xz * ez),
-    -(yx * ex + yy * ey + yz * ez),
-    -(zx * ex + zy * ey + zz * ez),
-    1,
-  ];
-}
-
-function perspective(fovY: number, aspect: number, near: number, far: number): Mat4 {
-  const f = 1 / Math.tan(fovY / 2);
-  const nf = 1 / (near - far);
-  return [
-    f / aspect, 0, 0, 0,
-    0, f, 0, 0,
-    0, 0, far * nf, -1,
-    0, 0, far * near * nf, 0,
-  ];
-}
-
-function multiply(a: Mat4, b: Mat4): Mat4 {
-  const out: Mat4 = new Array(16).fill(0) as Mat4;
-  for (let c = 0; c < 4; c += 1) {
-    for (let r = 0; r < 4; r += 1) {
-      let sum = 0;
-      for (let k = 0; k < 4; k += 1) {
-        sum += (a[k * 4 + r] ?? 0) * (b[c * 4 + k] ?? 0);
-      }
-      out[c * 4 + r] = sum;
-    }
-  }
-  return out;
 }

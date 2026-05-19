@@ -1,14 +1,14 @@
 import Footer from "components/layout/footer";
+import { Instructable } from "components/tutorials/Instructable";
 import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTutorial, tutorials } from "lib/tutorials";
+import { getTutorial } from "lib/tutorials";
 import { formatEntryDate } from "lib/writing";
 
-export function generateStaticParams() {
-  return tutorials.map((e) => ({ slug: e.slug }));
-}
+// Render-on-request; see /articles/[slug] for the rationale.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -54,6 +54,9 @@ export default async function TutorialPage({
         <div className="mt-12 prose-gallery text-chrome-200">
           <Body />
         </div>
+        {entry.instructable && (
+          <Instructable meta={entry.instructable} slug={entry.slug} />
+        )}
         <RelatedBlock
           related={entry.related}
           furtherReading={entry.furtherReading}

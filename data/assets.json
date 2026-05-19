@@ -1,0 +1,102 @@
+{
+  "_doc": "Asset registry — see docs/ASSET-HOSTING.md. Every entry conforms to lib/assets/types.ts. Add new entries at the top; ids must never change once published.",
+  "assets": [
+    {
+      "id": "sculpture-reference-v1",
+      "name": "Reference sculpture — early bench piece",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 565584,
+      "host": "public-static",
+      "url": "/3d/holoflow/sculpture.glb",
+      "licence": "studio-proprietary",
+      "tags": ["sculpture", "reference", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "phyllotaxis-dense",
+      "name": "Phyllotaxis — dense spiral pattern",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 166488,
+      "host": "public-static",
+      "url": "/3d/holoflow/phyllotaxis-dense.glb",
+      "licence": "studio-proprietary",
+      "tags": ["procedural", "phyllotaxis", "botanical", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "dragon-scales-wall-art",
+      "name": "Dragon scales — wall-art tile",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 81516,
+      "host": "public-static",
+      "url": "/3d/holoflow/dragon-scales-wall-art.glb",
+      "licence": "studio-proprietary",
+      "tags": ["procedural", "wall-art", "tessellation", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "holoflow-gen0001-biomech",
+      "name": "HoloFlow Gen 1 — biomech specimen",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 7724,
+      "host": "public-static",
+      "url": "/3d/holoflow/gen0001-biomech.glb",
+      "licence": "studio-proprietary",
+      "tags": ["holoflow", "generation-1", "biomech", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "holoflow-gen0002-artistic",
+      "name": "HoloFlow Gen 2 — artistic specimen",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 7640,
+      "host": "public-static",
+      "url": "/3d/holoflow/gen0002-artistic.glb",
+      "licence": "studio-proprietary",
+      "tags": ["holoflow", "generation-2", "artistic", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "holoflow-gen0003-curvilinear",
+      "name": "HoloFlow Gen 3 — curvilinear specimen",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 14068,
+      "host": "public-static",
+      "url": "/3d/holoflow/gen0003-curvilinear.glb",
+      "licence": "studio-proprietary",
+      "tags": ["holoflow", "generation-3", "curvilinear", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "holoflow-gen0004-curvilinear",
+      "name": "HoloFlow Gen 4 — curvilinear specimen",
+      "kind": "mesh",
+      "format": "glb",
+      "bytes": 14068,
+      "host": "public-static",
+      "url": "/3d/holoflow/gen0004-curvilinear.glb",
+      "licence": "studio-proprietary",
+      "tags": ["holoflow", "generation-4", "curvilinear", "first-wave"],
+      "publishedAt": "2026-05-18"
+    },
+    {
+      "id": "example-blend-drive",
+      "name": "Example Blender project — Google Drive hosted (placeholder)",
+      "kind": "blend",
+      "format": "blend",
+      "bytes": 419430400,
+      "host": "google-drive",
+      "driveId": "REPLACE_WITH_REAL_DRIVE_FILE_ID",
+      "url": "https://drive.google.com/uc?export=download&id=REPLACE_WITH_REAL_DRIVE_FILE_ID",
+      "licence": "studio-proprietary",
+      "tags": ["example", "placeholder", "blender"],
+      "publishedAt": "2026-05-18"
+    }
+  ]
+}

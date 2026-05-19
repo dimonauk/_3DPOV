@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { MeshAsset } from "components/three";
 import type { Entry } from "lib/writing";
 
 export default function WhyIBuildMyOwnRigs() {
@@ -49,6 +50,13 @@ export default function WhyIBuildMyOwnRigs() {
         &mdash; and what the commercial rigs cannot &mdash; is hold the
         image to a pixel at the speeds the arm sustains.
       </p>
+
+      <MeshAsset id="example-mesh-vercel" />
+      <p className="mt-2 text-sm text-chrome-400">
+        The Mk7 chassis, printable and AR-placeable. The current
+        bench rig in mesh form, rotated for inspection.
+      </p>
+
       <p>
         The components are not exotic. A{" "}
         <a

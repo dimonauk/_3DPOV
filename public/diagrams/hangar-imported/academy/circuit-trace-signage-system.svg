@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1400" height="1800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="50" font-family="monospace" font-size="32" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    CIRCUIT TRACE SIGNAGE SYSTEM
+  </text>
+  <text x="700" y="85" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#8B7355">
+    Motherboard PCB Routing Style • 90° Angles Only • No Curves
+  </text>
+  
+  <!-- Example of PCB routing style -->
+  <g id="routing-example">
+    <rect x="50" y="110" width="400" height="120" fill="#F5F1E8" stroke="#3D2F28" stroke-width="2"/>
+    <text x="60" y="135" font-family="sans-serif" font-size="14" font-weight="bold" fill="#3D2F28">PCB Trace Routing Rules:</text>
+    <text x="60" y="155" font-family="monospace" font-size="11" fill="#666">✓ Only 90° angles (no 45° or curves)</text>
+    <text x="60" y="175" font-family="monospace" font-size="11" fill="#666">✓ Straight horizontal/vertical lines</text>
+    <text x="60" y="195" font-family="monospace" font-size="11" fill="#666">✓ Connection nodes at junctions</text>
+    <text x="60" y="215" font-family="monospace" font-size="11" fill="#666">✓ Color-coded by department</text>
+  </g>
+  
+  <!-- SIGN 1: MANUFACTURING (PCB Style) -->
+  <g id="manufacturing-pcb">
+    <rect x="100" y="270" width="300" height="320" fill="#E6B8E6" opacity="0.2" stroke="#E6B8E6" stroke-width="4" rx="10"/>
+    <text x="250" y="305" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      MANUFACTURING
+    </text>
+    
+    <!-- 3D Printer made from PCB traces -->
+    <g transform="translate(180, 330)">
+      <!-- Frame -->
+      <path d="M 20 0 L 120 0 L 120 10 L 20 10 Z" fill="#3D2F28"/>
+      <path d="M 20 0 L 20 80 M 120 0 L 120 80" stroke="#3D2F28" stroke-width="3"/>
+      <path d="M 20 80 L 120 80" stroke="#3D2F28" stroke-width="3"/>
+      
+      <!-- Print head (circuit trace style) -->
+      <path d="M 50 20 L 50 30 L 60 30 L 60 40 L 70 40" stroke="#E6B8E6" stroke-width="4" fill="none"/>
+      <circle cx="70" cy="40" r="3" fill="#E6B8E6"/>
+      
+      <!-- Build plate -->
+      <rect x="40" y="50" width="60" height="3" fill="#3D2F28"/>
+      
+      <!-- Object being printed (circuit pattern) -->
+      <path d="M 60 55 L 60 65 L 70 65 L 70 70 L 80 70" stroke="#00D9FF" stroke-width="2" fill="none"/>
+      <circle cx="60" cy="55" r="2" fill="#00D9FF"/>
+      <circle cx="80" cy="70" r="2" fill="#00D9FF"/>
+    </g>
+    
+    <!-- Department icons (circuit style) -->
+    <g transform="translate(110, 470)">
+      <rect width="80" height="30" fill="#FFFFFF" stroke="#E6B8E6" stroke-width="2" rx="3"/>
+      <path d="M 10 15 L 30 15 L 30 10 L 30 20" stroke="#3D2F28" stroke-width="2"/>
+      <path d="M 50 15 L 70 15" stroke="#3D2F28" stroke-width="2"/>
+      <circle cx="30" cy="15" r="2" fill="#3D2F28"/>
+      <circle cx="50" cy="15" r="2" fill="#3D2F28"/>
+      <text x="95" y="20" font-family="sans-serif" font-size="11" fill="#3D2F28">Big Frank</text>
+      
+      <rect y="40" width="80" height="30" fill="#FFFFFF" stroke="#E6B8E6" stroke-width="2" rx="3"/>
+      <path d="M 15 55 L 35 55 L 35 50 L 35 60 L 45 60 L 45 50" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <circle cx="35" cy="55" r="2" fill="#3D2F28"/>
+      <text x="95" y="60" font-family="sans-serif" font-size="11" fill="#3D2F28">Printers</text>
+      
+      <rect y="80" width="80" height="30" fill="#FFFFFF" stroke="#E6B8E6" stroke-width="2" rx="3"/>
+      <path d="M 20 95 L 40 95 L 40 90 L 50 90 L 50 100 L 60 100" stroke="#E6B8E6" stroke-width="2" fill="none"/>
+      <circle cx="40" cy="95" r="2" fill="#E6B8E6"/>
+      <text x="95" y="100" font-family="sans-serif" font-size="11" fill="#3D2F28">Certificates</text>
+    </g>
+  </g>
+  
+  <!-- SIGN 2: AI TAILOR (PCB Style) -->
+  <g id="tailor-pcb">
+    <rect x="450" y="270" width="300" height="320" fill="#FFB6C1" opacity="0.2" stroke="#FFB6C1" stroke-width="4" rx="10"/>
+    <text x="600" y="305" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      AI TAILOR
+    </text>
+    
+    <!-- Person + measurements (PCB traces) -->
+    <g transform="translate(560, 330)">
+      <!-- Body outline (rectangular PCB style) -->
+      <circle cx="40" cy="20" r="12" fill="none" stroke="#3D2F28" stroke-width="3"/>
+      <path d="M 40 32 L 40 60 M 40 40 L 20 55 M 40 40 L 60 55 M 40 60 L 30 85 M 40 60 L 50 85" stroke="#3D2F28" stroke-width="3"/>
+      
+      <!-- Measurement traces (90° only) -->
+      <path d="M 10 45 L 0 45 L 0 50 M 0 45 L 5 40 M 0 45 L 5 50" stroke="#00D9FF" stroke-width="2"/>
+      <path d="M 70 45 L 80 45 L 80 50 M 80 45 L 75 40 M 80 45 L 75 50" stroke="#00D9FF" stroke-width="2"/>
+      <path d="M 25 75 L 25 95 L 20 95 M 25 95 L 30 90 M 25 95 L 20 90" stroke="#00D9FF" stroke-width="2"/>
+      
+      <!-- Nodes -->
+      <circle cx="20" cy="55" r="2" fill="#00D9FF"/>
+      <circle cx="60" cy="55" r="2" fill="#00D9FF"/>
+      <circle cx="40" cy="75" r="2" fill="#00D9FF"/>
+    </g>
+    
+    <!-- Services -->
+    <g transform="translate(460, 470)">
+      <rect width="90" height="28" fill="#FFFFFF" stroke="#FFB6C1" stroke-width="2" rx="3"/>
+      <path d="M 10 14 L 25 14 M 25 10 L 25 18 M 25 14 L 35 14 L 35 10" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <text x="95" y="19" font-family="sans-serif" font-size="11" fill="#3D2F28">Photos</text>
+      
+      <rect y="35" width="90" height="28" fill="#FFFFFF" stroke="#FFB6C1" stroke-width="2" rx="3"/>
+      <path d="M 15 49 L 30 49 L 30 45 L 30 53 L 40 53 L 40 45 L 50 45" stroke="#00D9FF" stroke-width="2" fill="none"/>
+      <circle cx="30" cy="49" r="2" fill="#00D9FF"/>
+      <text x="95" y="54" font-family="sans-serif" font-size="11" fill="#3D2F28">AI Measure</text>
+      
+      <rect y="70" width="90" height="28" fill="#FFFFFF" stroke="#FFB6C1" stroke-width="2" rx="3"/>
+      <path d="M 20 84 L 35 84 L 35 80 L 45 80 L 45 88 L 55 88" stroke="#FFB6C1" stroke-width="2" fill="none"/>
+      <text x="95" y="89" font-family="sans-serif" font-size="11" fill="#3D2F28">Patterns</text>
+    </g>
+  </g>
+  
+  <!-- SIGN 3: SALON (PCB Style) -->
+  <g id="salon-pcb">
+    <rect x="800" y="270" width="300" height="320" fill="#00D9FF" opacity="0.2" stroke="#00D9FF" stroke-width="4" rx="10"/>
+    <text x="950" y="305" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      MARCEL'S SALON
+    </text>
+    
+    <!-- Salon chair (PCB trace construction) -->
+    <g transform="translate(900, 330)">
+      <!-- Seat -->
+      <rect x="30" y="40" width="40" height="25" fill="#00D9FF" opacity="0.3" stroke="#3D2F28" stroke-width="3"/>
+      <!-- Back -->
+      <rect x="35" y="15" width="30" height="25" fill="#00D9FF" opacity="0.3" stroke="#3D2F28" stroke-width="3"/>
+      <!-- Post (straight line) -->
+      <path d="M 50 65 L 50 85" stroke="#3D2F28" stroke-width="4"/>
+      <!-- Base -->
+      <path d="M 35 85 L 65 85" stroke="#3D2F28" stroke-width="4"/>
+      
+      <!-- Mirror frame (rectangular) -->
+      <rect x="75" y="20" width="35" height="50" fill="#FFFFFF" stroke="#3D2F28" stroke-width="3"/>
+      <!-- Person icon in mirror (circuit style) -->
+      <circle cx="92" cy="35" r="6" fill="#FFB6C1" opacity="0.4"/>
+      <path d="M 92 41 L 92 55" stroke="#3D2F28" stroke-width="2"/>
+    </g>
+    
+    <!-- Services -->
+    <g transform="translate(810, 470)">
+      <rect width="85" height="26" fill="#FFFFFF" stroke="#00D9FF" stroke-width="2" rx="3"/>
+      <path d="M 12 13 L 25 13 L 25 9 L 25 17 L 35 17" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <text x="90" y="18" font-family="sans-serif" font-size="11" fill="#3D2F28">Styling</text>
+      
+      <rect y="32" width="85" height="26" fill="#FFFFFF" stroke="#00D9FF" stroke-width="2" rx="3"/>
+      <path d="M 15 45 L 28 45 L 28 41 L 38 41 L 38 49 L 48 49" stroke="#00D9FF" stroke-width="2" fill="none"/>
+      <text x="90" y="50" font-family="sans-serif" font-size="11" fill="#3D2F28">Wardrobe</text>
+      
+      <rect y="64" width="85" height="26" fill="#FFFFFF" stroke="#00D9FF" stroke-width="2" rx="3"/>
+      <path d="M 18 77 L 30 77 L 30 73 L 40 73 L 40 81 L 50 81" stroke="#FFB6C1" stroke-width="2" fill="none"/>
+      <text x="90" y="82" font-family="sans-serif" font-size="11" fill="#3D2F28">Marcel</text>
+      
+      <rect y="96" width="85" height="26" fill="#FFFFFF" stroke="#00D9FF" stroke-width="2" rx="3"/>
+      <path d="M 20 109 L 33 109 L 33 105 L 43 105" stroke="#FFD700" stroke-width="2" fill="none"/>
+      <circle cx="43" cy="105" r="2" fill="#FFD700"/>
+      <text x="90" y="114" font-family="sans-serif" font-size="11" fill="#3D2F28">Dolly</text>
+    </g>
+  </g>
+  
+  <!-- DIRECTIONAL ARROWS (PCB Trace Style) -->
+  <text x="700" y="650" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    WAYFINDING ARROWS (90° Routing Only)
+  </text>
+  
+  <g id="pcb-arrows">
+    <!-- Left (PCB trace) -->
+    <g transform="translate(150, 680)">
+      <rect width="200" height="100" fill="#E6B8E6" opacity="0.2" stroke="#E6B8E6" stroke-width="3" rx="5"/>
+      <path d="M 150 50 L 50 50 L 50 40 L 30 50 L 50 60 L 50 50" stroke="#E6B8E6" stroke-width="6" stroke-linejoin="miter"/>
+      <circle cx="150" cy="50" r="4" fill="#E6B8E6"/>
+      <circle cx="50" cy="50" r="4" fill="#E6B8E6"/>
+      <text x="100" y="90" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">← LEFT</text>
+    </g>
+    
+    <!-- Right (PCB trace) -->
+    <g transform="translate(400, 680)">
+      <rect width="200" height="100" fill="#FFB6C1" opacity="0.2" stroke="#FFB6C1" stroke-width="3" rx="5"/>
+      <path d="M 50 50 L 150 50 L 150 40 L 170 50 L 150 60 L 150 50" stroke="#FFB6C1" stroke-width="6" stroke-linejoin="miter"/>
+      <circle cx="50" cy="50" r="4" fill="#FFB6C1"/>
+      <circle cx="150" cy="50" r="4" fill="#FFB6C1"/>
+      <text x="100" y="90" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">RIGHT →</text>
+    </g>
+    
+    <!-- Up (PCB trace) -->
+    <g transform="translate(650, 680)">
+      <rect width="200" height="100" fill="#B8E6CF" opacity="0.2" stroke="#B8E6CF" stroke-width="3" rx="5"/>
+      <path d="M 100 80 L 100 30 L 90 30 L 100 10 L 110 30 L 100 30" stroke="#B8E6CF" stroke-width="6" stroke-linejoin="miter"/>
+      <circle cx="100" cy="80" r="4" fill="#B8E6CF"/>
+      <circle cx="100" cy="30" r="4" fill="#B8E6CF"/>
+      <text x="100" y="95" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">↑ UP</text>
+    </g>
+    
+    <!-- Down (PCB trace) -->
+    <g transform="translate(900, 680)">
+      <rect width="200" height="100" fill="#FFD700" opacity="0.2" stroke="#FFD700" stroke-width="3" rx="5"/>
+      <path d="M 100 20 L 100 70 L 90 70 L 100 90 L 110 70 L 100 70" stroke="#FFD700" stroke-width="6" stroke-linejoin="miter"/>
+      <circle cx="100" cy="20" r="4" fill="#FFD700"/>
+      <circle cx="100" cy="70" r="4" fill="#FFD700"/>
+      <text x="100" y="10" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#3D2F28">↓ DOWN</text>
+    </g>
+  </g>
+  
+  <!-- FACILITY ICONS (PCB Style) -->
+  <text x="700" y="850" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    FACILITY SYMBOLS (Circuit Board Aesthetic)
+  </text>
+  
+  <g id="facilities-pcb">
+    <!-- Restroom (M/F as circuit traces) -->
+    <g transform="translate(100, 880)">
+      <rect width="150" height="100" fill="#B8E6CF" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <!-- Male -->
+      <circle cx="45" cy="35" r="8" fill="none" stroke="#3D2F28" stroke-width="2"/>
+      <path d="M 45 43 L 45 60 M 35 50 L 55 50 M 45 60 L 35 75 M 45 60 L 55 75" stroke="#3D2F28" stroke-width="2"/>
+      <!-- Female -->
+      <circle cx="105" cy="35" r="8" fill="none" stroke="#3D2F28" stroke-width="2"/>
+      <path d="M 105 43 L 105 55 M 95 55 L 115 55 L 115 70 M 95 55 L 95 70" stroke="#3D2F28" stroke-width="2"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Restrooms</text>
+    </g>
+    
+    <!-- Elevator (box + arrows) -->
+    <g transform="translate(280, 880)">
+      <rect width="150" height="100" fill="#8B7355" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <rect x="50" y="25" width="50" height="50" fill="none" stroke="#3D2F28" stroke-width="3"/>
+      <!-- Up arrow -->
+      <path d="M 75 35 L 75 30 L 70 30 L 75 23 L 80 30 L 75 30" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <!-- Down arrow -->
+      <path d="M 75 65 L 75 70 L 70 70 L 75 77 L 80 70 L 75 70" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Elevator</text>
+    </g>
+    
+    <!-- Info (i in circle) -->
+    <g transform="translate(460, 880)">
+      <rect width="150" height="100" fill="#00D9FF" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <circle cx="75" cy="50" r="25" fill="none" stroke="#3D2F28" stroke-width="3"/>
+      <rect x="72" y="35" width="6" height="6" fill="#3D2F28"/>
+      <rect x="72" y="45" width="6" height="20" fill="#3D2F28"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Information</text>
+    </g>
+    
+    <!-- Wheelchair (rectangular design) -->
+    <g transform="translate(640, 880)">
+      <rect width="150" height="100" fill="#B8E6CF" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <circle cx="65" cy="35" r="6" fill="#3D2F28"/>
+      <path d="M 65 41 L 65 50 L 58 60" stroke="#3D2F28" stroke-width="2"/>
+      <path d="M 65 45 L 85 45" stroke="#3D2F28" stroke-width="2"/>
+      <circle cx="85" cy="60" r="15" fill="none" stroke="#3D2F28" stroke-width="3"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Accessible</text>
+    </g>
+    
+    <!-- WiFi (rectangular waves) -->
+    <g transform="translate(820, 880)">
+      <rect width="150" height="100" fill="#00D9FF" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <circle cx="75" cy="70" r="3" fill="#3D2F28"/>
+      <!-- Arc 1 (as stepped line) -->
+      <path d="M 60 60 L 60 55 L 65 55 L 65 50 L 85 50 L 85 55 L 90 55 L 90 60" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <!-- Arc 2 -->
+      <path d="M 50 50 L 50 40 L 60 40 L 60 35 L 90 35 L 90 40 L 100 40 L 100 50" stroke="#3D2F28" stroke-width="2" fill="none"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Free WiFi</text>
+    </g>
+    
+    <!-- Exit (door + arrow) -->
+    <g transform="translate(1000, 880)">
+      <rect width="150" height="100" fill="#FFB6C1" opacity="0.2" stroke="#3D2F28" stroke-width="2" rx="5"/>
+      <rect x="50" y="30" width="50" height="45" fill="none" stroke="#3D2F28" stroke-width="3"/>
+      <!-- Arrow pointing out -->
+      <path d="M 75 52 L 100 52 L 100 48 L 110 55 L 100 62 L 100 58 L 75 58" stroke="#3D2F28" stroke-width="2"/>
+      <circle cx="75" cy="55" r="2" fill="#3D2F28"/>
+      <text x="75" y="95" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#3D2F28">Exit</text>
+    </g>
+  </g>
+  
+  <!-- PCB Routing Examples -->
+  <text x="700" y="1050" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+    SAMPLE FLOOR ROUTING (Actual Size)
+  </text>
+  
+  <g id="floor-routing-samples">
+    <!-- Manufacturing route -->
+    <g transform="translate(100, 1080)">
+      <text x="150" y="0" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#E6B8E6">
+        To Manufacturing →
+      </text>
+      <path d="M 50 20 L 150 20 L 150 60 L 250 60" 
+            stroke="#E6B8E6" stroke-width="8" fill="none" stroke-linejoin="miter"/>
+      <circle cx="50" cy="20" r="6" fill="#E6B8E6"/>
+      <circle cx="150" cy="20" r="4" fill="#E6B8E6"/>
+      <circle cx="150" cy="60" r="4" fill="#E6B8E6"/>
+      <circle cx="250" cy="60" r="6" fill="#E6B8E6"/>
+      <text x="260" y="65" font-family="sans-serif" font-size="11" fill="#666">Destination</text>
+    </g>
+    
+    <!-- Salon route -->
+    <g transform="translate(450, 1080)">
+      <text x="150" y="0" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#00D9FF">
+        To Salon →
+      </text>
+      <path d="M 50 40 L 100 40 L 100 20 L 200 20 L 200 50 L 250 50" 
+            stroke="#00D9FF" stroke-width="8" fill="none" stroke-linejoin="miter"/>
+      <circle cx="50" cy="40" r="6" fill="#00D9FF"/>
+      <circle cx="100" cy="40" r="4" fill="#00D9FF"/>
+      <circle cx="100" cy="20" r="4" fill="#00D9FF"/>
+      <circle cx="200" cy="20" r="4" fill="#00D9FF"/>
+      <circle cx="200" cy="50" r="4" fill="#00D9FF"/>
+      <circle cx="250" cy="50" r="6" fill="#00D9FF"/>
+      <text x="260" y="55" font-family="sans-serif" font-size="11" fill="#666">Destination</text>
+    </g>
+    
+    <!-- Multi-path junction -->
+    <g transform="translate(850, 1080)">
+      <text x="100" y="0" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+        Junction
+      </text>
+      <!-- Central hub -->
+      <circle cx="100" cy="40" r="8" fill="#3D2F28"/>
+      <!-- Routes out (90° only) -->
+      <path d="M 100 40 L 50 40" stroke="#E6B8E6" stroke-width="6"/>
+      <path d="M 100 40 L 150 40" stroke="#FFB6C1" stroke-width="6"/>
+      <path d="M 100 40 L 100 10" stroke="#B8E6CF" stroke-width="6"/>
+      <path d="M 100 40 L 100 70" stroke="#FFD700" stroke-width="6"/>
+      <circle cx="50" cy="40" r="4" fill="#E6B8E6"/>
+      <circle cx="150" cy="40" r="4" fill="#FFB6C1"/>
+      <circle cx="100" cy="10" r="4" fill="#B8E6CF"/>
+      <circle cx="100" cy="70" r="4" fill="#FFD700"/>
+    </g>
+  </g>
+  
+  <!-- Installation specs -->
+  <g id="specs">
+    <rect x="100" y="1230" width="1200" height="180" fill="#F5F1E8" stroke="#8B7355" stroke-width="2"/>
+    <text x="700" y="1260" font-family="monospace" font-size="16" font-weight="bold" text-anchor="middle" fill="#3D2F28">
+      INSTALLATION SPECIFICATIONS
+    </text>
+    
+    <text x="120" y="1290" font-family="sans-serif" font-size="12" fill="#3D2F28">Floor Lines:</text>
+    <text x="140" y="1310" font-family="monospace" font-size="11" fill="#666">• 3-inch width embedded in tile</text>
+    <text x="140" y="1330" font-family="monospace" font-size="11" fill="#666">• LED backlighting (low-glow, pastel)</text>
+    <text x="140" y="1350" font-family="monospace" font-size="11" fill="#666">• Only 90° angles (PCB routing rules)</text>
+    <text x="140" y="1370" font-family="monospace" font-size="11" fill="#666">• Junction nodes: 2-inch diameter circles</text>
+    <text x="140" y="1390" font-family="monospace" font-size="11" fill="#666">• Color-coded by destination department</text>
+    
+    <text x="550" y="1290" font-family="sans-serif" font-size="12" fill="#3D2F28">Wall Signs:</text>
+    <text x="570" y="1310" font-family="monospace" font-size="11" fill="#666">• Brass frames (1950s style)</text>
+    <text x="570" y="1330" font-family="monospace" font-size="11" fill="#666">• Icons built from circuit traces</text>
+    <text x="570" y="1350" font-family="monospace" font-size="11" fill="#666">• No curves - rectangles and 90° only</text>
+    <text x="570" y="1370" font-family="monospace" font-size="11" fill="#666">• Backlit with department color</text>
+    <text x="570" y="1390" font-family="monospace" font-size="11" fill="#666">• Pictographs universal (no words)</text>
+    
+    <text x="1000" y="1290" font-family="sans-serif" font-size="12" fill="#3D2F28">Aesthetic:</text>
+    <text x="1020" y="1310" font-family="monospace" font-size="11" fill="#666">• Computer motherboard inspired</text>
+    <text x="1020" y="1330" font-family="monospace" font-size="11" fill="#666">• 1950s Sears color palette</text>
+    <text x="1020" y="1350" font-family="monospace" font-size="11" fill="#666">• Clean, professional, welcoming</text>
+    <text x="1020" y="1370" font-family="monospace" font-size="11" fill="#666">• Self-explanatory to all ages</text>
+    <text x="1020" y="1390" font-family="monospace" font-size="11" fill="#666">• "Technology you can see"</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="700" y="1470" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#8B7355">
+    LIKE A MOTHERBOARD • BEAUTIFUL &amp; FUNCTIONAL • CODE AS DECORATION ✨
+  </text>
+  
+  <circle cx="700" cy="1530" r="60" fill="none" stroke="#B8860B" stroke-width="3"/>
+  <text x="700" y="1520" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#B8860B">PCB ROUTING</text>
+  <text x="700" y="1540" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#B8860B">STYLE GUIDE</text>
+  <text x="700" y="1555" font-family="monospace" font-size="8" text-anchor="middle" fill="#8B7355">90° Angles Only</text>
+</svg>

@@ -1,14 +1,14 @@
 import Footer from "components/layout/footer";
+import { MeshSceneProvider } from "components/type3d/MeshSceneProvider";
 import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getJournalEntry, journal } from "lib/journal";
+import { getJournalEntry } from "lib/journal";
 import { formatEntryDate } from "lib/writing";
 
-export function generateStaticParams() {
-  return journal.map((e) => ({ slug: e.slug }));
-}
+// Render-on-request; see /articles/[slug] for the rationale.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -37,28 +37,30 @@ export default async function JournalEntryPage({
 
   return (
     <>
-      <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <Link
-          href="/journal"
-          className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
-        >
-          &larr; Journal
-        </Link>
-        <div className="mt-10 chrome-label text-pink-200">
-          {formatEntryDate(entry.date)}
-        </div>
-        <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05] text-chrome-100">
-          {entry.title}
-        </h1>
-        <HeroPlate image={entry.heroImage} title={entry.title} />
-        <div className="mt-12 prose-gallery text-chrome-200">
-          <Body />
-        </div>
-        <RelatedBlock
-          related={entry.related}
-          furtherReading={entry.furtherReading}
-        />
-      </article>
+      <MeshSceneProvider>
+        <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+          <Link
+            href="/journal"
+            className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+          >
+            &larr; Journal
+          </Link>
+          <div className="mt-10 chrome-label text-pink-200">
+            {formatEntryDate(entry.date)}
+          </div>
+          <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05] text-chrome-100">
+            {entry.title}
+          </h1>
+          <HeroPlate image={entry.heroImage} title={entry.title} />
+          <div className="mt-12 prose-gallery text-chrome-200">
+            <Body />
+          </div>
+          <RelatedBlock
+            related={entry.related}
+            furtherReading={entry.furtherReading}
+          />
+        </article>
+      </MeshSceneProvider>
       <Footer />
     </>
   );
