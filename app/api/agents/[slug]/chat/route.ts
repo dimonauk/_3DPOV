@@ -30,11 +30,12 @@ import { createOllama } from "ai-sdk-ollama";
 import { buildAgentSystemPrompt } from "lib/agents/system-prompt";
 import { getProfile } from "lib/people/registry";
 
-// streamText needs Node — no edge runtime.
-export const runtime = "nodejs";
-// 60s ceiling matches the existing /api/aura/agent route.
+// streamText needs Node — but we can't `export const runtime = "nodejs"`
+// because that conflicts with experimental.useCache at the project
+// level. `dynamic = "force-dynamic"` + `maxDuration` is enough to
+// keep this route on the Node runtime + give it a 60s budget without
+// the redundant + incompatible runtime export.
 export const maxDuration = 60;
-// Don't let Next try to statically analyse this.
 export const dynamic = "force-dynamic";
 
 const DEFAULT_MODEL = "qwen3:8b";
