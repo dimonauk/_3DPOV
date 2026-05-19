@@ -54,7 +54,9 @@ export default async function TutorialPage({
         <div className="mt-12 prose-gallery text-chrome-200">
           <Body />
         </div>
-        {entry.instructable && <Instructable meta={entry.instructable} />}
+        {entry.instructable && (
+          <Instructable meta={entry.instructable} slug={entry.slug} />
+        )}
         <RelatedBlock
           related={entry.related}
           furtherReading={entry.furtherReading}

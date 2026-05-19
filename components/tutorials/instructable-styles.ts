@@ -14,6 +14,42 @@ export const INSTRUCTABLE_STYLES = `
   padding-top: 3rem;
 }
 
+.instructable__bom {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-warm-black-700);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.instructable__bom-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-pink-200);
+  border: 1px solid var(--color-pink-200);
+  padding: 0.5rem 0.85rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.instructable__bom-link:hover,
+.instructable__bom-link:focus-visible {
+  background: var(--color-pink-200);
+  color: var(--color-warm-black-900);
+}
+
+.instructable__bom-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-warm-black-300);
+  letter-spacing: 0.02em;
+}
+
 .instructable__chips {
   display: flex;
   flex-wrap: wrap;

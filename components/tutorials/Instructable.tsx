@@ -29,7 +29,15 @@ const DIFFICULTY_LABELS: Record<string, string> = {
  * Server-component-safe — scoped CSS via `<style dangerouslySetInnerHTML>`.
  * All sections optional; renderer skips any band whose data is absent.
  */
-export function Instructable({ meta }: { meta: InstructableMeta }) {
+export function Instructable({
+  meta,
+  slug,
+}: {
+  meta: InstructableMeta;
+  /** Tutorial slug — when provided, enables the "Download BOM (.csv)"
+   *  action link below the supplies band. */
+  slug?: string;
+}) {
   const hasChips = meta.time || meta.difficulty || meta.cost;
   const hasSupplies =
     !!meta.supplies &&
@@ -40,13 +48,21 @@ export function Instructable({ meta }: { meta: InstructableMeta }) {
   const hasDependencies = !!meta.dependencies && meta.dependencies.length > 0;
   const hasPrerequisites = !!meta.prerequisites && meta.prerequisites.length > 0;
   const hasSteps = !!meta.steps && meta.steps.length > 0;
+  const bomDownloadHref = slug ? `/api/tutorials/${slug}/bom.csv` : undefined;
+  const bomAvailable =
+    !!bomDownloadHref && (hasSupplies || hasSoftware || hasDependencies);
 
   return (
     <section className="instructable" aria-label="Test Chamber sheet">
       <style dangerouslySetInnerHTML={{ __html: INSTRUCTABLE_STYLES }} />
       {hasChips && <ChipsRow meta={meta} />}
       {hasPrerequisites && <PrerequisitesBand items={meta.prerequisites!} />}
-      {hasSupplies && <SuppliesBand supplies={meta.supplies!} />}
+      {hasSupplies && (
+        <SuppliesBand
+          supplies={meta.supplies!}
+          bomDownloadHref={bomAvailable ? bomDownloadHref : undefined}
+        />
+      )}
       {hasSoftware && <SoftwareBand items={meta.software!} />}
       {hasDependencies && <DependenciesBand items={meta.dependencies!} />}
       {hasSteps && <StepsBand steps={meta.steps!} />}
@@ -124,7 +140,13 @@ function PrerequisitesBand({ items }: { items: string[] }) {
   );
 }
 
-function SuppliesBand({ supplies }: { supplies: InstructableSupplies }) {
+function SuppliesBand({
+  supplies,
+  bomDownloadHref,
+}: {
+  supplies: InstructableSupplies;
+  bomDownloadHref?: string;
+}) {
   return (
     <Band title="Approved supplies">
       <div className="instructable__supplies">
@@ -141,6 +163,21 @@ function SuppliesBand({ supplies }: { supplies: InstructableSupplies }) {
           />
         )}
       </div>
+      {bomDownloadHref && (
+        <div className="instructable__bom">
+          <a
+            href={bomDownloadHref}
+            className="instructable__bom-link"
+            download
+          >
+            Download bill of materials (.csv)
+          </a>
+          <span className="instructable__bom-note">
+            One row per supplier; materials, tools, provisions,
+            software, dependencies.
+          </span>
+        </div>
+      )}
     </Band>
   );
 }
