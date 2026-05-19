@@ -15,6 +15,7 @@ import { entry as theNightTheFontsCameBackEntry } from "components/journal/entri
 import { entry as theQuestionTheCameraAnsweredEntry } from "components/journal/entries/the-question-the-camera-answered";
 import { entry as theWeekBeforeEntry } from "components/journal/entries/the-week-before";
 import { entry as theYellowBridgeTimelapseEntry } from "components/journal/entries/the-yellow-bridge-timelapse";
+import { entry as twoNewDiagramToolsOnTheBenchEntry } from "components/journal/entries/two-new-diagram-tools-on-the-bench";
 import { entry as whyNightEntry } from "components/journal/entries/why-night";
 import { entry as yearOneFireEntry } from "components/journal/entries/year-one-fire";
 import { Entry, sortByDateDescending } from "./writing";
@@ -39,6 +40,7 @@ const ENTRIES: Entry[] = [
   theNightTheFontsCameBackEntry,
   splatsFromTheCamerasOutsideEntry,
   theBenchInHttpsEntry,
+  twoNewDiagramToolsOnTheBenchEntry,
 ];
 
 export const journal: Entry[] = sortByDateDescending(ENTRIES);
