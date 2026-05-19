@@ -12,6 +12,8 @@
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:e2e": "node tests/e2e/run-sweep.mjs",
+    "test:visual": "node --experimental-strip-types --no-warnings tests/visual/run-all.mjs",
+    "test:visual:update": "node --experimental-strip-types --no-warnings tests/visual/run-all.mjs --update",
     "test:lint": "pnpm prettier:check",
     "splat:fetch": "tsx scripts/cctv-fetch.ts",
     "splat:register": "tsx scripts/register-splat.ts",
