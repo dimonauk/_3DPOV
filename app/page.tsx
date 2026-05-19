@@ -2,6 +2,12 @@ import { AmbientField } from "components/ambient/AmbientField";
 import { CursorReticle, SpatialOverlay } from "components/ar-chrome";
 import { Carousel } from "components/carousel";
 import { ThreeItemGrid } from "components/grid/three-items";
+import {
+  AtelierShowcase,
+  FrameworkPlate,
+  NowInTheMill,
+  ReadNext,
+} from "components/home/HomeBands";
 import Footer from "components/layout/footer";
 import { HolofoilHypercube } from "components/holofoil-hypercube";
 import Link from "next/link";
@@ -36,12 +42,22 @@ export default function HomePage() {
       <Hero />
       <Statement />
       <PipelineSection />
+      {/* Composition bands — framework-register integration. The
+          atelier showcase grid, the most-recent tutorials feed, and
+          the latest-articles plate. Pure server-rendered; the only
+          state-bearing bits on the homepage are still CursorReticle
+          and the hero's AmbientField. See docs/WEBXR-GAME-FRAMEWORK.md
+          for the wider story this stitches together. */}
+      <AtelierShowcase />
+      <NowInTheMill />
+      <ReadNext />
       <Suspense fallback={<FeaturedSectionSkeleton />}>
         <FeaturedSection />
       </Suspense>
       <Suspense fallback={<CarouselSkeleton />}>
         <Carousel />
       </Suspense>
+      <FrameworkPlate />
       <Footer />
     </>
   );
@@ -287,3 +303,4 @@ function FeaturedSection() {
     </section>
   );
 }
+
