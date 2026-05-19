@@ -47,6 +47,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.3.3",
     "ai": "^6.0.184",
+    "ai-sdk-ollama": "^3.8.4",
     "canvas": "^3.2.3",
     "clsx": "^2.1.1",
     "feedsmith": "^2.9.4",

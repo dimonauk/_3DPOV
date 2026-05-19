@@ -11,6 +11,7 @@
 
 import Link from "next/link";
 
+import AgentChat from "components/agents/AgentChat";
 import Footer from "components/layout/footer";
 import { getProfile } from "lib/people/registry";
 
@@ -57,21 +58,35 @@ export default async function AgentPage({
         ) : null}
 
         <section className="mt-10 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-8">
-          <div className="chrome-label text-pink-200">In flight</div>
+          <div className="chrome-label text-pink-200">Skeleton — wired to your local Ollama</div>
           <p className="mt-3 text-sm leading-relaxed text-chrome-200">
             Every person the studio names is, in time, getting an
             agent here. An interactive twin built from public output
             &mdash; their site, posts, press, the work they&rsquo;ve
-            published under their own name. Ask the agent about
-            their practice, see a digest of what they&rsquo;ve made
-            lately, find a connection moment.
+            published under their own name.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-chrome-200">
-            The chat runtime isn&rsquo;t wired yet (Ollama-backed,
-            roadmapped). For now this page is the slot it lands in,
-            and links to {display}&rsquo;s public surfaces below.
+            This one runs on a local Ollama runtime &mdash; nothing
+            routes through hosted inference, nothing leaves your
+            machine. If the chat below says &ldquo;ollama
+            offline&rdquo;, start one with{" "}
+            <code className="text-pink-200">ollama serve</code> and
+            pull the default model. The setup notes are in{" "}
+            <code className="text-pink-200">docs/AGENT-CHAT.md</code>.
           </p>
         </section>
+
+        {profile ? (
+          <div className="mt-8">
+            <AgentChat slug={slug} profileName={profile.name} />
+          </div>
+        ) : (
+          <section className="mt-8 rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-6 py-6 text-sm text-chrome-300">
+            No public profile under <code>{slug}</code>. The agent
+            surface is built per-profile &mdash; once {display} has an
+            entry in the rolodex, the chat lands here.
+          </section>
+        )}
 
         <section className="mt-10">
           <div className="chrome-label">What you can do now</div>
