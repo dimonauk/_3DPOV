@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { MermaidBlock } from "components/diagrams/MermaidBlock";
 import { RoughFigure } from "components/diagrams/RoughFigure";
+import { MeshProseLayer } from "components/type3d/MeshProseLayer";
 import type { Entry } from "lib/writing";
 
 const ext = "underline underline-offset-4 hover:text-pink-200";
@@ -9,17 +10,23 @@ const ext = "underline underline-offset-4 hover:text-pink-200";
 export default function TwoNewDiagramToolsOnTheBench() {
   return (
     <>
-      <p>
-        Bench acquired two new things this afternoon: Mermaid (the
-        text-to-diagram parser the engineering crowd uses for arch
-        diagrams) and Rough.js (the library that draws hand-drawn-
-        looking shapes into an SVG). Both got wired into the site as
-        client components so any article or journal entry can drop a
-        diagram inline. The IKEA-style flat-line SVGs the tutorial
-        section uses are still the right call for assembly figures,
-        but neither of those new tools is a replacement &mdash; they
-        cover the bits IKEA-flat doesn&rsquo;t reach.
-      </p>
+      {/* Showcase for the body-text mesh system. The HTML still
+          renders for a11y/SEO; the mesh paints on top when the
+          shared scene is available. See docs/MESH-PROSE.md. */}
+      <MeshProseLayer font="sans" material="matte">
+        <p>
+          Bench acquired two new things this afternoon: Mermaid (the
+          text-to-diagram parser the engineering crowd uses for arch
+          diagrams) and Rough.js (the library that draws hand-drawn-
+          looking shapes into an SVG). Both got wired into the site
+          as client components so any article or journal entry can
+          drop a diagram inline. The IKEA-style flat-line SVGs the
+          tutorial section uses are still the right call for
+          assembly figures, but neither of those new tools is a
+          replacement &mdash; they cover the bits IKEA-flat
+          doesn&rsquo;t reach.
+        </p>
+      </MeshProseLayer>
 
       <p>
         Mermaid is for arch diagrams and flowcharts where the shape
