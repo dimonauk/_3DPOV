@@ -41,6 +41,18 @@ The site is Next.js 15.6 canary on App Router, deployed to Vercel, branch `claud
 | `components/ar-chrome/` | in-house | Brackets, depth readouts, axis indicator, range bar, cursor reticle | `components/ar-chrome/*` |
 | `lib/parallax/` + `hooks/useParallax.ts` + `hooks/useTiltParallax.ts` | in-house | Shared scroll store + parallax/tilt hooks | wrapped via `<ParallaxLayer>` / `<ParallaxCover>` |
 
+## Shaders & visual style
+
+The studio runs two in-house TSL libraries — `lib/tsl-materials/` (preset NodeMaterials) and `lib/tsl-post/` (effect composer). Both prefer dual-path: TSL on WebGPU, `postprocessing` fallback on WebGL2. Every entry below names the upstream source for its algorithm; the actual implementations are studio-authored.
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [MToon](https://github.com/Santarh/MToon) (Santarh + VRM Consortium) | MIT | Rim-light pattern (`_RimColor` / `_RimFresnelPower` / `_RimLift`) folded into the cel ramp + the standalone glow-rim material + iridescent-soap rim falloff | `lib/tsl-materials/presets/cel-shaded.ts`, `lib/tsl-materials/presets/glow-rim.ts`, `lib/tsl-materials/presets/iridescent-soap.ts` |
+| [IronWarrior/UnityToonShader](https://github.com/IronWarrior/UnityToonShader) | Unlicense | Two-band facet-shading ramp shape adapted for the paper-folded preset (origami / low-poly look) | `lib/tsl-materials/presets/paper-folded.ts` |
+| Bayer 1973 ordered-threshold matrix | public-domain algorithm | Dither source — the published 8×8 matrix encoded inline for the print-zine post effect | `lib/tsl-post/effects/dither-bayer.ts` |
+| Cook & Torrance 1982 thin-film optics + Inigo Quilez cosine-palette pattern | public-domain algorithm | Soap-bubble interference colour cycle for the iridescent-soap material | `lib/tsl-materials/presets/iridescent-soap.ts` |
+| [Three.js examples](https://github.com/mrdoob/three.js/tree/dev/examples) | MIT | `mx_noise_float` usage pattern for static procedural texture overlays — paper-grain effect, stone preset variation | `lib/tsl-post/effects/paper-grain.ts`, `lib/tsl-materials/presets/stone.ts` |
+
 ## AI & inference
 
 | Project | Licence | Role | Where |
@@ -153,6 +165,61 @@ The site is Next.js 15.6 canary on App Router, deployed to Vercel, branch `claud
 | [jsdom](https://github.com/jsdom/jsdom) `^29.1` | MIT | DOM stand-in (alt) | testing utilities |
 | [@testing-library/react](https://github.com/testing-library/react-testing-library) `^16.3` | MIT | Component testing | `*.test.tsx` files |
 
+## 3D assets — CC0 / permissive
+
+Asset catalogues the studio reaches for when a scene wants a stylised low-poly prop or a faceted hero piece. None are bundled into the repo by default — pull individual models in as needed, drop them under `public/models/<category>/<slug>.glb`, and add a row to the relevant catalogue (e.g. `lib/sculpture-gallery/catalogue.ts`). Attribution stays in the file's `note` field and in `docs/ATTRIBUTIONS.md`.
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [Kenney.nl](https://kenney.nl/assets) | CC0 | Hundreds of low-poly model packs (city, nature, sci-fi, characters, props). The bench's first stop for placeholder geometry. | Pull-as-needed into `public/models/*` |
+| [Quaternius](https://quaternius.com/) | CC0 | Polished low-poly nature + character + sci-fi packs in a coherent flat-shaded register. Pairs well with the cel-shaded preset. | Pull-as-needed into `public/models/*` |
+| [Poly Pizza](https://poly.pizza/) | CC0 / CC-BY | Successor to Google Poly. Search surface across thousands of low-poly models from many authors; filter by CC0 for clean attribution. | Pull-as-needed; CC-BY entries credit author in catalogue `note` |
+| [Khronos glTF Sample Models](https://github.com/KhronosGroup/glTF-Sample-Models) | mixed (CC0 / CC-BY / Apache-2.0) | Reference glb/gltf assets for testing loaders + materials (Damaged Helmet, Sponza, Suzanne). | Pipeline tests + the splat-walker baseline |
+| [Casual Effects data files](https://casual-effects.com/data/) | mixed (each scene listed) | Morgan McGuire's archived scene data — Crytek Sponza, San Miguel, Sibenik. The canonical lighting-test scenes. | Reference geometry for shader work; check per-scene licence |
+
+## Texture + material libraries
+
+CC0 / permissive texture sources used when a TSL preset needs a base map, normal, or HDRI. The TSL material library at `lib/tsl-materials/` is procedural-first; these are the fallbacks when a scene wants a real captured surface.
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [ambientCG](https://ambientcg.com/) | CC0 | PBR texture catalogue — substrates, fabrics, painted surfaces, plus a small stylised set. The first stop for a real-world swatch. | Pull-as-needed into `public/textures/*` |
+| [Poly Haven](https://polyhaven.com/) | CC0 | HDRIs + PBR textures + a small model set. The HDRI library is the default environment-map source. | Pull-as-needed into `public/hdri/*` |
+
+## Authoring tooling — mesh + glTF
+
+CLI tools the bench runs against glTFs before they land in the repo. None of these need to be a runtime dependency — they run in scripts.
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [meshoptimizer + gltfpack](https://github.com/zeux/meshoptimizer) | MIT | Mesh simplification, vertex cache optimisation, gltf-side compression. The `gltfpack` CLI is the default first-pass tool for any external glb before it lands under `public/models/`. | Bench-side; not a runtime dep |
+| [glTF-Transform CLI](https://github.com/donmccurdy/glTF-Transform) | MIT | Programmatic glTF transforms (simplify, flat-normals, weld, prune). Use when `gltfpack` is the wrong shape — typically when a transform needs to be scripted alongside the asset pipeline. | Bench-side; `npx @gltf-transform/cli` |
+
+## Reference + study (OSS in this aesthetic)
+
+OSS projects worth opening when authoring in the low-poly + cel-shaded register. Not folded into the runtime — these are reading material.
+
+| Project | Licence | Why it matters here |
+| --- | --- | --- |
+| [Open Brush](https://github.com/icosa-foundation/open-brush) | Apache-2.0 | The community fork of Tilt Brush. Cel-style brush shader implementations live in `Assets/Resources/Brushes/`; the studio's `lib/assets/brushes.ts` catalogues the same brush family. |
+| [Godot demo projects](https://github.com/godotengine/godot-demo-projects) | MIT | The `3d/` folder includes a toon-shaded demo + a few low-poly scenes. Useful as a structural reference for stylised forward rendering. |
+
+## Spatial UI (R3F / WebXR)
+
+| Project | Licence | Role | Where |
+| --- | --- | --- | --- |
+| [@react-three/uikit](https://github.com/pmndrs/uikit) | MIT | Flexbox-laid-out 3D UI components for R3F — panels, lists, buttons that render as Three meshes. The candidate for the WebXR-first surface chrome (the place 2D React panels can't follow). | Shortlist for `components/xr-scene/*` chrome; not yet wired |
+
+## Fonts (OFL + permissive, complementary to the studio set)
+
+The studio set is **Cormorant Garamond** (display) + **Inter** (body) + **JetBrains Mono** (code). These are the OFL pools to pull from when a one-off piece wants a different voice without going outside the OFL fence.
+
+| Source | Licence | Role |
+| --- | --- | --- |
+| [Google Fonts (google/fonts)](https://github.com/google/fonts) | OFL (mostly) | The canonical OFL pool. Cormorant Garamond, Inter, JetBrains Mono all live here. Self-host via `next/font/google` rather than CDN. |
+| [Velvetyne](https://velvetyne.fr/) | OFL | Experimental display typefaces in a magazine-art register — useful when a section opener wants weight the studio set doesn't carry. Confirm per-font OFL before shipping. |
+| [The League of Movable Type](https://www.theleagueofmoveabletype.com/) | OFL | Workhorse OFL display + body fonts (League Spartan, Knewave, Goudy Bookletter). Reliable, established, easy to attribute. |
+
 ## Lined up — researched, not yet wired
 
 | Project | Licence | Why it's on the shortlist |
@@ -167,6 +234,12 @@ The site is Next.js 15.6 canary on App Router, deployed to Vercel, branch `claud
 | [pgvector](https://github.com/pgvector/pgvector) | PostgreSQL | Embeddings + nearest-neighbour for the rolodex + writing search. |
 | [Qdrant](https://github.com/qdrant/qdrant) | Apache-2.0 | Vector store, in-process or hosted. |
 | [Switch dumping toolchain](https://switch.homebrew.guide/) | mixed | Documented in `holoflow-private/docs/switch-personal-dumping.md`; surfaces as a private op tool. |
+| [Open Brush](https://github.com/icosa-foundation/open-brush) | Apache-2.0 | The Tilt Brush successor. The stylised brush shaders (oil paint, pencil, chrome, smoke) would each port cleanly into TSL presets. Deferred because Unity HLSL → TSL is line-by-line work and the existing 15-preset library covers the immediate need. |
+| [drei](https://github.com/pmndrs/drei) MeshTransmissionMaterial / MeshDistortMaterial / MeshWobbleMaterial | MIT | drei is already a dep; these materials are not currently surfaced through the tsl-materials registry. Worth wrapping in `lib/tsl-materials/presets/` adapters so the showcase + chip strip can pick them up uniformly. |
+| [pmndrs/maath](https://github.com/pmndrs/maath) | MIT | Easings, three-Color helpers, buffer-attribute utilities. Shader-adjacent — useful for the brick library's animation tracks and for procedural particle init. |
+| [Kuwahara anisotropic filter](https://en.wikipedia.org/wiki/Kuwahara_filter) | public-domain algorithm | Painterly post-process. Rejected this pass — the anisotropic variant is a 4-sector eigenvector decomposition per pixel, which lands in `expensive` territory and is XR-unsafe. Worth a `kuwahara` post effect for editorial 2D-only stills. |
+| [Sobel edge-detect on normal buffer](https://en.wikipedia.org/wiki/Sobel_operator) | public-domain algorithm | Outline via depth+normal Sobel rather than the inverted-hull approach in `outline.ts`. The current outline is structural; a normal-Sobel pass would catch interior creases the silhouette misses. |
+| [Lygia](https://github.com/patriciogonzalezvivo/lygia) | Prosperity (NON-PERMISSIVE) | **Cannot ship from.** Dual-licensed Prosperity + Patron — commercial-use restricted unless sponsoring. We re-derive any algorithm we want from the canonical first-source paper / public-domain reference instead. Listed here so future contributors do not paste from it. |
 
 ## Honest gaps
 

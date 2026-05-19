@@ -16,6 +16,9 @@ import { entry as emulatorTutorialPcsx2Entry } from "components/tutorials/entrie
 import { entry as emulatorTutorialDosboxXEntry } from "components/tutorials/entries/emulator-tutorial-dosbox-x";
 import { entry as instructableDemoEntry } from "components/tutorials/entries/instructable-demo";
 import { entry as tutorialDragonScaleWallReliefEntry } from "components/tutorials/entries/tutorial-dragon-scale-wall-relief";
+import { entry as blenderToSiteAssetPipelineEntry } from "components/tutorials/entries/blender-to-site-asset-pipeline";
+import { entry as webxrLocomotionPatternsEntry } from "components/tutorials/entries/webxr-locomotion-patterns";
+import { entry as wiringSpatialAudioInTheFrameworkEntry } from "components/tutorials/entries/wiring-spatial-audio-in-the-framework";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -37,6 +40,9 @@ const ENTRIES: Entry[] = [
   editioningASingleExposureEntry,
   instructableDemoEntry,
   tutorialDragonScaleWallReliefEntry,
+  blenderToSiteAssetPipelineEntry,
+  webxrLocomotionPatternsEntry,
+  wiringSpatialAudioInTheFrameworkEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

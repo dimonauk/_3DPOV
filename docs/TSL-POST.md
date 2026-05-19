@@ -31,29 +31,36 @@ The palette tokens used for tinting come from `lib/tsl-materials/palette.ts`
 — the same hex table the materials pack reads. If a swatch shifts there,
 mirror it in the same commit.
 
-## The eight effects
+## The effects
 
-Eleven shipped, eight headline:
+Thirteen shipped:
 
 **Tonal** — `bloom`, `god-rays`.
-**Screen-anchored** — `foil-sheen`, `scan-lines`, `film-grain`.
-**Grading** — `cel-post`.
+**Screen-anchored** — `foil-sheen`, `scan-lines`, `film-grain`, `paper-grain`.
+**Grading** — `cel-post`, `dither-bayer`.
 **Optical** — `vignette`, `chromatic-aberration`, `dof`.
 **Structural** — `outline`, `pixelate`.
 
-| id                     | XR    | Cost      | When to use                                   |
-| ---------------------- | ----- | --------- | --------------------------------------------- |
-| `bloom`                | safe  | moderate  | The waveguide glow on emissive trails.         |
-| `foil-sheen`           | safe  | cheap     | The `.lux-foil` sweep, but in the render.      |
-| `film-grain`           | safe  | cheap     | Break up too-clean plates. Cap at 0.05 amp.    |
-| `god-rays`             | safe  | expensive | A single bright source carrying the frame.     |
-| `cel-post`             | caveat| moderate  | Posterise + Sobel — VRM cel look.              |
-| `scan-lines`           | safe  | cheap     | CRT recovered-footage on archival scenes.      |
-| `pixelate`             | safe  | cheap     | The block-grid wireframe-as-cover look.        |
-| `outline`              | safe  | moderate  | Selection silhouette for a featured mesh.      |
-| `vignette`             | 2D    | cheap     | Focus on centre. Skipped in XR.                |
-| `chromatic-aberration` | 2D    | cheap     | RGB split for cinematic stills only.           |
-| `dof`                  | 2D    | expensive | Bokeh blur. XR wants foveation, not this.      |
+| id                     | XR    | Cost      | When to use                                                          |
+| ---------------------- | ----- | --------- | -------------------------------------------------------------------- |
+| `bloom`                | safe  | moderate  | The waveguide glow on emissive trails.                               |
+| `foil-sheen`           | safe  | cheap     | The `.lux-foil` sweep, but in the render.                            |
+| `film-grain`           | safe  | cheap     | Break up too-clean plates. Cap at 0.05 amp.                          |
+| `paper-grain`          | safe  | cheap     | Print-page texture. Static, warm-tinted. Cap at 0.4 intensity in XR. |
+| `dither-bayer`         | safe  | cheap     | Risograph / print-zine quantise. Cap at 8+ levels in XR.             |
+| `god-rays`             | safe  | expensive | A single bright source carrying the frame.                           |
+| `cel-post`             | caveat| moderate  | Posterise + Sobel — VRM cel look.                                    |
+| `scan-lines`           | safe  | cheap     | CRT recovered-footage on archival scenes.                            |
+| `pixelate`             | safe  | cheap     | The block-grid wireframe-as-cover look.                              |
+| `outline`              | safe  | moderate  | Selection silhouette for a featured mesh.                            |
+| `vignette`             | 2D    | cheap     | Focus on centre. Skipped in XR.                                      |
+| `chromatic-aberration` | 2D    | cheap     | RGB split for cinematic stills only.                                 |
+| `dof`                  | 2D    | expensive | Bokeh blur. XR wants foveation, not this.                            |
+
+Folded in 2026-05-19 (OSS shader survey pass):
+
+- `paper-grain` — static two-octave `mx_noise_float` overlay with a faint warm tint (Three.js examples MIT pattern). Pairs with `dither-bayer` for the printed-page look.
+- `dither-bayer` — ordered Bayer-1973 threshold dither (public-domain algorithm). Risograph / print-zine quantise. Cheap, XR-safe at 8+ levels.
 
 `safe` means the composer attaches it inside a WebXR session.
 `caveat` means it attaches but the operator should know about

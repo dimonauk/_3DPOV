@@ -38,6 +38,9 @@ import { paintedPlasticPreset } from "./presets/painted-plastic";
 import { celShadedPreset } from "./presets/cel-shaded";
 import { skinPreset } from "./presets/skin";
 import { stonePreset } from "./presets/stone";
+import { iridescentSoapPreset } from "./presets/iridescent-soap";
+import { glowRimPreset } from "./presets/glow-rim";
+import { paperFoldedPreset } from "./presets/paper-folded";
 
 /**
  * Every shipped preset, in catalogue order. The showcase page renders
@@ -51,10 +54,13 @@ export const ALL_MATERIAL_PRESETS: readonly TslMaterialPreset[] = [
   glassPreset,
   frostedGlassPreset,
   holographicPreset,
+  iridescentSoapPreset,
   anodisedPreset,
   waveguideGlowPreset,
+  glowRimPreset,
   paintedPlasticPreset,
   celShadedPreset,
+  paperFoldedPreset,
   skinPreset,
   stonePreset,
 ];
@@ -86,10 +92,13 @@ export {
   glassPreset,
   frostedGlassPreset,
   holographicPreset,
+  iridescentSoapPreset,
   anodisedPreset,
   waveguideGlowPreset,
+  glowRimPreset,
   paintedPlasticPreset,
   celShadedPreset,
+  paperFoldedPreset,
   skinPreset,
   stonePreset,
 };
