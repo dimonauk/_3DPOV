@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-label="U-channel aluminium top rail mounted to a wall, dragon-scale panel sliding up into the open channel from below.">
+  <title>U-channel rail with panel sliding up into it</title>
+  <g fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Wall (hatch fill suggestion via diagonal lines) -->
+    <rect x="20" y="20" width="280" height="40" rx="2" />
+    <g stroke-width="1.2">
+      <line x1="30" y1="30" x2="40" y2="20" />
+      <line x1="50" y1="40" x2="60" y2="20" />
+      <line x1="70" y1="50" x2="80" y2="30" />
+      <line x1="90" y1="50" x2="100" y2="30" />
+      <line x1="110" y1="50" x2="120" y2="30" />
+      <line x1="130" y1="50" x2="140" y2="30" />
+      <line x1="150" y1="50" x2="160" y2="30" />
+      <line x1="170" y1="50" x2="180" y2="30" />
+      <line x1="190" y1="50" x2="200" y2="30" />
+      <line x1="210" y1="50" x2="220" y2="30" />
+      <line x1="230" y1="50" x2="240" y2="30" />
+      <line x1="250" y1="50" x2="260" y2="30" />
+      <line x1="270" y1="50" x2="280" y2="30" />
+    </g>
+    <!-- Wall anchors -->
+    <line x1="80" y1="60" x2="80" y2="78" />
+    <line x1="240" y1="60" x2="240" y2="78" />
+    <circle cx="80" cy="80" r="4" fill="#1a1a1a" stroke="none" />
+    <circle cx="240" cy="80" r="4" fill="#1a1a1a" stroke="none" />
+    <!-- U-channel rail (top mounted to wall, opening downward) -->
+    <path d="M40 78 L280 78 L280 102 L268 102 L268 90 L52 90 L52 102 L40 102 Z" />
+    <!-- Panel top edge (chamfered) sliding up into rail -->
+    <path d="M70 130 L250 130 L260 140 L60 140 Z" />
+    <!-- Panel body (suggestion only) -->
+    <path d="M70 130 Q70 170 78 200" />
+    <path d="M250 130 Q250 170 242 200" />
+    <g stroke-width="1.2">
+      <path d="M90 148 Q100 152 110 148" />
+      <path d="M110 148 Q120 152 130 148" />
+      <path d="M130 148 Q140 152 150 148" />
+      <path d="M150 148 Q160 152 170 148" />
+      <path d="M170 148 Q180 152 190 148" />
+      <path d="M190 148 Q200 152 210 148" />
+      <path d="M210 148 Q220 152 230 148" />
+      <path d="M100 170 Q110 174 120 170" />
+      <path d="M120 170 Q130 174 140 170" />
+      <path d="M140 170 Q150 174 160 170" />
+      <path d="M160 170 Q170 174 180 170" />
+      <path d="M180 170 Q190 174 200 170" />
+      <path d="M200 170 Q210 174 220 170" />
+    </g>
+    <!-- Upward motion arrow -->
+    <line x1="160" y1="220" x2="160" y2="148" stroke-dasharray="3 3" />
+    <path d="M156 154 L160 148 L164 154" />
+  </g>
+</svg>

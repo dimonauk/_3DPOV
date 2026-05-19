@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-label="Top-down walk path: start mark, sweep arc, stop mark, with the camera to one side.">
+  <title>Top-down walk path with camera</title>
+  <g fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ground line -->
+    <line x1="20" y1="200" x2="340" y2="200" stroke-dasharray="2 4" />
+    <!-- Camera pictogram (bottom-left, looking up-right) -->
+    <rect x="32" y="160" width="36" height="22" rx="3" />
+    <circle cx="60" cy="171" r="6" />
+    <path d="M68 171 L96 138" stroke-dasharray="4 4" />
+    <path d="M68 175 L108 178" stroke-dasharray="4 4" />
+    <!-- Start footprint -->
+    <ellipse cx="140" cy="120" rx="10" ry="14" />
+    <text x="126" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#1a1a1a" stroke="none">START</text>
+    <!-- Sweep arc -->
+    <path d="M150 120 Q220 60 290 120" />
+    <!-- Arrowhead at end of arc -->
+    <path d="M282 116 L290 120 L286 128" />
+    <!-- Stop footprint -->
+    <ellipse cx="300" cy="120" rx="10" ry="14" />
+    <text x="288" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#1a1a1a" stroke="none">STOP</text>
+    <!-- Rig pictogram on the path mid-arc -->
+    <rect x="208" y="62" width="24" height="14" rx="2" />
+    <line x1="214" y1="68" x2="226" y2="68" />
+    <line x1="214" y1="72" x2="226" y2="72" />
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" role="img" aria-label="Top-down slicer view of dragon scales laid out as an offset grid, every second row shifted by half a scale.">
+  <title>Offset-grid scale layout in the slicer</title>
+  <g fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Build-plate outline -->
+    <rect x="20" y="20" width="320" height="180" rx="4" stroke-width="2.4" />
+    <!-- Row 1 scales (aligned) -->
+    <g>
+      <path d="M40 60 Q56 36 80 60 Q56 78 40 60 Z" />
+      <path d="M80 60 Q96 36 120 60 Q96 78 80 60 Z" />
+      <path d="M120 60 Q136 36 160 60 Q136 78 120 60 Z" />
+      <path d="M160 60 Q176 36 200 60 Q176 78 160 60 Z" />
+      <path d="M200 60 Q216 36 240 60 Q216 78 200 60 Z" />
+      <path d="M240 60 Q256 36 280 60 Q256 78 240 60 Z" />
+      <path d="M280 60 Q296 36 320 60 Q296 78 280 60 Z" />
+    </g>
+    <!-- Row 2 scales (offset by half) -->
+    <g>
+      <path d="M60 100 Q76 76 100 100 Q76 118 60 100 Z" />
+      <path d="M100 100 Q116 76 140 100 Q116 118 100 100 Z" />
+      <path d="M140 100 Q156 76 180 100 Q156 118 140 100 Z" />
+      <path d="M180 100 Q196 76 220 100 Q196 118 180 100 Z" />
+      <path d="M220 100 Q236 76 260 100 Q236 118 220 100 Z" />
+      <path d="M260 100 Q276 76 300 100 Q276 118 260 100 Z" />
+    </g>
+    <!-- Row 3 (aligned) -->
+    <g>
+      <path d="M40 140 Q56 116 80 140 Q56 158 40 140 Z" />
+      <path d="M80 140 Q96 116 120 140 Q96 158 80 140 Z" />
+      <path d="M120 140 Q136 116 160 140 Q136 158 120 140 Z" />
+      <path d="M160 140 Q176 116 200 140 Q176 158 160 140 Z" />
+      <path d="M200 140 Q216 116 240 140 Q216 158 200 140 Z" />
+      <path d="M240 140 Q256 116 280 140 Q256 158 240 140 Z" />
+      <path d="M280 140 Q296 116 320 140 Q296 158 280 140 Z" />
+    </g>
+    <!-- Row 4 (offset) -->
+    <g>
+      <path d="M60 180 Q76 156 100 180 Q76 198 60 180 Z" />
+      <path d="M100 180 Q116 156 140 180 Q116 198 100 180 Z" />
+      <path d="M140 180 Q156 156 180 180 Q156 198 140 180 Z" />
+      <path d="M180 180 Q196 156 220 180 Q196 198 180 180 Z" />
+      <path d="M220 180 Q236 156 260 180 Q236 198 220 180 Z" />
+      <path d="M260 180 Q276 156 300 180 Q276 198 260 180 Z" />
+    </g>
+    <!-- Offset indicator (dashed line between row 1 and row 2 origin marks) -->
+    <line x1="40" y1="50" x2="40" y2="200" stroke-dasharray="2 4" stroke-width="1.2" />
+    <line x1="60" y1="90" x2="60" y2="200" stroke-dasharray="2 4" stroke-width="1.2" />
+    <path d="M40 210 L60 210" stroke-width="2" />
+    <path d="M44 206 L40 210 L44 214" stroke-width="2" />
+    <path d="M56 206 L60 210 L56 214" stroke-width="2" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="A single dragon-scale module being flex-tested by a fingernail on the hinge.">
+  <title>Hinge flex test on a printed scale</title>
+  <g fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Scale module silhouette -->
+    <path d="M60 140 Q40 100 80 70 Q120 50 160 70 Q200 90 220 130 Q230 160 200 170 Q150 178 100 172 Q70 168 60 140 Z" />
+    <!-- Scale facet lines -->
+    <path d="M100 80 Q120 110 100 150" />
+    <path d="M140 70 Q160 110 140 160" />
+    <path d="M180 90 Q200 120 180 165" />
+    <!-- Hinge zone at base -->
+    <line x1="80" y1="168" x2="220" y2="168" stroke-dasharray="3 3" />
+    <!-- Fingertip + nail flexing -->
+    <path d="M240 158 Q270 140 290 162 Q298 174 286 188 Q270 198 250 192 Q236 184 240 168 Z" />
+    <path d="M268 160 L278 168 L274 178" />
+    <!-- Motion arrow at hinge -->
+    <path d="M212 184 Q224 198 240 196" />
+    <path d="M236 192 L240 196 L236 200" />
+  </g>
+</svg>
