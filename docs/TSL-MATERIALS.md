@@ -31,15 +31,21 @@ shifts there, mirror the change in `palette.ts` in the same commit.
 
 ## The presets
 
-Twelve presets, four categories:
+Fifteen presets, six categories:
 
 **Metal** — `chrome`, `foil`, `anodised`.
 **Glass** — `glass`, `frosted-glass`.
-**Glow** — `holographic`, `waveguide-glow`.
+**Glow** — `holographic`, `iridescent-soap`, `waveguide-glow`, `glow-rim`.
 **Plastic** — `painted-plastic`, `cel-shaded`.
-**Fabric** — `matte`.
+**Fabric** — `matte`, `paper-folded`.
 **Skin** — `skin`.
 **Stone** — `stone`.
+
+Folded in 2026-05-19 (the OSS shader survey pass):
+
+- `iridescent-soap` — thin-film interference, soap-bubble bands. Cook & Torrance thin-film optics + Inigo Quilez cosine palette (public-domain algorithms); MToon-style rim falloff (MIT).
+- `glow-rim` — pure additive silhouette halo. MToon's RimColor / RimFresnelPower / RimLift pattern (MIT). Cheap, geometry-agnostic — works on open shells where waveguide-glow's transmission can't.
+- `paper-folded` — two-band facet shading with a lavender crease accent. Adapted from IronWarrior/UnityToonShader (Unlicense). Pairs with the high-facet-shading article — needs `flatShading: true` on the geometry to read.
 
 The cost band on each (`cheap` / `moderate` / `expensive`) tells you
 how many you can scatter through a scene before frame budget bites.

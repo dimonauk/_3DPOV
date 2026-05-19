@@ -20,11 +20,13 @@ import {
   chromaticAberrationEffect,
   chromaticAberrationLowPreset,
 } from "./effects/chromatic-aberration";
+import { ditherBayerEffect } from "./effects/dither-bayer";
 import { dofEffect } from "./effects/dof";
 import { filmGrainEffect } from "./effects/film-grain";
 import { foilSheenEffect } from "./effects/foil-sheen";
 import { godRaysEffect } from "./effects/god-rays";
 import { outlineEffect } from "./effects/outline";
+import { paperGrainEffect } from "./effects/paper-grain";
 import { pixelateEffect } from "./effects/pixelate";
 import { scanLinesEffect } from "./effects/scan-lines";
 import { vignetteEffect } from "./effects/vignette";
@@ -36,11 +38,13 @@ export {
   celPostEffect,
   chromaticAberrationEffect,
   chromaticAberrationLowPreset,
+  ditherBayerEffect,
   dofEffect,
   filmGrainEffect,
   foilSheenEffect,
   godRaysEffect,
   outlineEffect,
+  paperGrainEffect,
   pixelateEffect,
   scanLinesEffect,
   vignetteEffect,
@@ -67,6 +71,8 @@ export const ALL_POST_EFFECTS: ReadonlyArray<TslPostEffect> = Object.freeze([
   foilSheenEffect,
   scanLinesEffect,
   filmGrainEffect,
+  paperGrainEffect,
+  ditherBayerEffect,
   chromaticAberrationEffect,
   vignetteEffect,
   dofEffect,
