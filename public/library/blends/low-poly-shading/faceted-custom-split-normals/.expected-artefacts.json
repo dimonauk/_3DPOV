@@ -1,0 +1,74 @@
+{
+  "slug": "faceted-custom-split-normals",
+  "topic": "low-poly-shading",
+  "blender_version": "5.1",
+  "created": "2026-05-19",
+  "artefacts": [
+    {
+      "path": "public/library/glbs/low-poly-shading/faceted-custom-split-normals/faceted_icosphere.glb",
+      "type": "glb",
+      "description": "Faceted icosphere with baked custom split normals — 80 tris, ~240 GLB vertices",
+      "generated_by": "blueprint.py"
+    },
+    {
+      "path": "public/library/videos/low-poly-shading/faceted-custom-split-normals/viewport.mp4",
+      "type": "video",
+      "description": "5-second EEVEE turntable — faceted vs smooth sphere comparison",
+      "generated_by": "record.py"
+    },
+    {
+      "path": "public/library/videos/low-poly-shading/faceted-custom-split-normals/screen.mp4",
+      "type": "video",
+      "description": "Screen recording of the full workflow (Dimona at the bench)",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "path": "/articles/low-poly-high-facet-shading",
+        "label": "Article — Low-poly high-facet shading"
+      },
+      {
+        "path": "/articles/advanced-cell-shading-techniques",
+        "label": "Article — Advanced cell-shading techniques"
+      },
+      {
+        "path": "/tutorials/blender-to-site-asset-pipeline",
+        "label": "Tutorial — Blender to site asset pipeline"
+      },
+      {
+        "path": "/tutorials/blender-addon-vrm-format",
+        "label": "Tutorial — VRM format add-on round-trip"
+      }
+    ],
+    "outside_sources": [
+      {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "label": "KhronosGroup — glTF 2.0 Specification",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF-Sample-Models",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "label": "KhronosGroup — glTF-Blender-IO (io_scene_gltf2)",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group, Blender Foundation",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF-Validator",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  },
+  "holoflow_flags": {
+    "facet": true,
+    "yup": true,
+    "apply_transforms": true,
+    "draco_level": null
+  }
+}
