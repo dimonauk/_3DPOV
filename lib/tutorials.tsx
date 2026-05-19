@@ -36,6 +36,7 @@ import { entry as blenderMcpCubeWalkerEntry } from "components/tutorials/entries
 import { entry as unrealPixelStreamingBrowserDeliveryEntry } from "components/tutorials/entries/unreal-pixel-streaming-browser-delivery";
 import { entry as blenderTutorialFacetedGemstoneGeonodesEntry } from "components/tutorials/entries/blender-tutorial-faceted-gemstone-geonodes";
 import { entry as blenderTutorialGeometryNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-terrain";
+import { entry as blenderTutorialLowPolyFacetedHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-low-poly-faceted-hard-surface";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -77,6 +78,7 @@ const ENTRIES: Entry[] = [
   unrealPixelStreamingBrowserDeliveryEntry,
   blenderTutorialFacetedGemstoneGeonodesEntry,
   blenderTutorialGeometryNodesLowPolyTerrainEntry,
+  blenderTutorialLowPolyFacetedHardSurfaceEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

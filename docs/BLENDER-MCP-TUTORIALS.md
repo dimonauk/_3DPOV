@@ -117,3 +117,4 @@ screen-capture session.
 | Date | Slug | Topic | Library path | Notes |
 |---|---|---|---|---|
 | 2026-05-19 | blender-tutorial-geometry-nodes-low-poly-terrain | GN — procedural terrain | blends/geometry-nodes/low-poly-terrain/ | bpy.data GN tree; Blender 5.1 interface.new_socket API; noise displacement + flat shade |
+| 2026-05-19 | blender-tutorial-low-poly-faceted-hard-surface | Smooth by Angle + Sharp edge marks | blends/low-poly/faceted-hard-surface/ | Blender 5.1 Auto-Smooth replacement; bmesh box-model + inset; flat studio-palette mat; Draco GLB |
