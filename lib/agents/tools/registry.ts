@@ -21,6 +21,16 @@ import { webFetchTool } from "./web-fetch";
 import { dropReadTool } from "./drop-read";
 import { printCheckTool } from "./print-check";
 import { memoryRecallTool, memoryRememberTool } from "./memory";
+import { fileReadTool } from "./file-read";
+import { fileWriteTool } from "./file-write";
+import { globFindTool } from "./glob";
+import { grepSearchTool } from "./grep";
+import { codeExecTool } from "./code-exec";
+import { agentDispatchTool } from "./agent-dispatch";
+import { codexQueryTool } from "./codex-query";
+import { capabilityListTool } from "./capability-list";
+import { researchRecallTool } from "./research-recall";
+import { researchRecordTool } from "./research-record";
 
 const log = createLogger("agents.tools.registry");
 
@@ -31,6 +41,23 @@ const TOOLS: ReadonlyArray<Tool> = [
   printCheckTool,
   memoryRecallTool,
   memoryRememberTool,
+  // ── Wave 2: harness-equivalent surface for specialists ─────────────
+  // File ops (read open; write gated by orchestrator + env flag).
+  fileReadTool,
+  fileWriteTool,
+  // Search.
+  globFindTool,
+  grepSearchTool,
+  // Code execution (sandboxed vm; gated by env flag).
+  codeExecTool,
+  // Sub-agent dispatch.
+  agentDispatchTool,
+  // Holoflow-specific registries.
+  codexQueryTool,
+  capabilityListTool,
+  // Persistent research store (stubs gracefully if not wired).
+  researchRecallTool,
+  researchRecordTool,
 ];
 
 let cached: ToolRegistry | null = null;

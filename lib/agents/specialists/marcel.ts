@@ -101,6 +101,14 @@ export const marcel: Specialist = {
     "memory.remember",
     "drop.read",
     "print.check",
+    // Wave 2 — architecture & dependency reading. Marcel reads the
+    // capability graph and the repo to reason about structure.
+    "file.read",
+    "glob.find",
+    "grep.search",
+    "capability.list",
+    "research.recall",
+    "research.record",
   ] as const,
   allowDelegation: false,
   systemPrompt: SYSTEM_PROMPT,

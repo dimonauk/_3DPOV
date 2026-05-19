@@ -93,7 +93,16 @@ export const coco: Specialist = {
     model: "claude-sonnet-4-6",
     via: "aperture",
   },
-  tools: ["web.search", "memory.recall", "memory.remember"] as const,
+  tools: [
+    "web.search",
+    "memory.recall",
+    "memory.remember",
+    // Wave 2 — vibe-check surface. Coco peeks at drops + the codex to
+    // ground her aesthetic read, but doesn't write or run code.
+    "drop.read",
+    "codex.query",
+    "research.recall",
+  ] as const,
   allowDelegation: false,
   systemPrompt: SYSTEM_PROMPT,
 };

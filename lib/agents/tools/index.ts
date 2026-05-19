@@ -22,3 +22,15 @@ export { webFetchTool } from "./web-fetch";
 export { dropReadTool } from "./drop-read";
 export { printCheckTool } from "./print-check";
 export { memoryRecallTool, memoryRememberTool } from "./memory";
+
+// Wave 2 — harness-equivalent surface.
+export { fileReadTool } from "./file-read";
+export { fileWriteTool } from "./file-write";
+export { globFindTool } from "./glob";
+export { grepSearchTool } from "./grep";
+export { codeExecTool } from "./code-exec";
+export { agentDispatchTool } from "./agent-dispatch";
+export { codexQueryTool } from "./codex-query";
+export { capabilityListTool } from "./capability-list";
+export { researchRecallTool } from "./research-recall";
+export { researchRecordTool } from "./research-record";

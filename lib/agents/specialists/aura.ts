@@ -111,6 +111,18 @@ export const aura: Specialist = {
     "memory.recall",
     "memory.remember",
     "drop.read",
+    // Wave 2 harness — orchestrator-grade surface. file.write is in the
+    // list but gated at runtime by AGENT_FILE_WRITE_ENABLED; only Aura
+    // is allowed to call it (the tool itself enforces that).
+    "file.read",
+    "file.write",
+    "glob.find",
+    "grep.search",
+    "agent.dispatch",
+    "codex.query",
+    "capability.list",
+    "research.recall",
+    "research.record",
   ] as const,
   allowDelegation: true,
   systemPrompt: SYSTEM_PROMPT,
