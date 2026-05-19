@@ -60,6 +60,11 @@ import { entry as whosWhoUkMetaPeopleEntry } from "components/articles/entries/w
 import { entry as whosWhoUkMicrosoftPeopleEntry } from "components/articles/entries/whos-who-uk-microsoft-people";
 import { entry as whosWhoUkOpenSourceEntry } from "components/articles/entries/whos-who-uk-open-source";
 import { entry as whosWhoUkPixelArtistsEntry } from "components/articles/entries/whos-who-uk-pixel-artists";
+import { entry as whosWhoUkGarmentWearableTechPeopleEntry } from "components/articles/entries/whos-who-uk-garment-wearable-tech-people";
+import { entry as whosWhoUkJewelleryPeopleEntry } from "components/articles/entries/whos-who-uk-jewellery-people";
+import { entry as whosWhoUkVtuberPeopleEntry } from "components/articles/entries/whos-who-uk-vtuber-people";
+import { entry as whosWhoUkVrSculptingPeopleEntry } from "components/articles/entries/whos-who-uk-vr-sculpting-people";
+import { entry as whosWhoUkProjectionVjPeopleEntry } from "components/articles/entries/whos-who-uk-projection-vj-people";
 import { entry as whosWhoUkSplat360PeopleEntry } from "components/articles/entries/whos-who-uk-splat-360-people";
 import { entry as whosWhoUk3dMeshPeopleEntry } from "components/articles/entries/whos-who-uk-3d-mesh-people";
 import { entry as whosWhoUkAudioSynthPeopleEntry } from "components/articles/entries/whos-who-uk-audio-synth-people";
@@ -91,6 +96,11 @@ const ENTRIES: Entry[] = [
   whosWhoUkMicrosoftPeopleEntry,
   whosWhoUkOpenSourceEntry,
   whosWhoUkPixelArtistsEntry,
+  whosWhoUkGarmentWearableTechPeopleEntry,
+  whosWhoUkJewelleryPeopleEntry,
+  whosWhoUkVtuberPeopleEntry,
+  whosWhoUkVrSculptingPeopleEntry,
+  whosWhoUkProjectionVjPeopleEntry,
   whosWhoUkSplat360PeopleEntry,
   whosWhoUk3dMeshPeopleEntry,
   whosWhoUkAudioSynthPeopleEntry,
