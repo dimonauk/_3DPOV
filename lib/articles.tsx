@@ -77,12 +77,16 @@ import { entry as emulationAsACreativeToolEntry } from "components/articles/entr
 import { entry as theEmulationStackForCreativeResearchEntry } from "components/articles/entries/the-emulation-stack-for-creative-research";
 import { entry as byoRomBrowserEmulatorsEntry } from "components/articles/entries/byo-rom-browser-emulators";
 import { entry as lowPolyGraphicsInVrEntry } from "components/articles/entries/low-poly-graphics-in-vr";
+import { entry as lowPolyHighFacetShadingEntry } from "components/articles/entries/low-poly-high-facet-shading";
 import { entry as cellShadedGraphicsInVrEntry } from "components/articles/entries/cell-shaded-graphics-in-vr";
+import { entry as advancedCellShadingTechniquesEntry } from "components/articles/entries/advanced-cell-shading-techniques";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
   lowPolyGraphicsInVrEntry,
+  lowPolyHighFacetShadingEntry,
   cellShadedGraphicsInVrEntry,
+  advancedCellShadingTechniquesEntry,
   cohesiveLowPolyCellShadedVrmWorldsEntry,
   byoRomBrowserEmulatorsEntry,
   osintForFindingYourPeopleEntry,
