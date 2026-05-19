@@ -33,6 +33,7 @@ import { entry as blenderMcpParametricTorusEntry } from "components/tutorials/en
 import { entry as blenderMcpTetraFractalEntry } from "components/tutorials/entries/blender-mcp-tetra-fractal";
 import { entry as blenderMcpCubeWalkerEntry } from "components/tutorials/entries/blender-mcp-cube-walker";
 import { entry as unrealPixelStreamingBrowserDeliveryEntry } from "components/tutorials/entries/unreal-pixel-streaming-browser-delivery";
+import { entry as blenderTutorialArmatureWeightPaintEntry } from "components/tutorials/entries/blender-tutorial-armature-weight-paint";
 import { entry as blenderTutorialFacetedGemstoneGeonodesEntry } from "components/tutorials/entries/blender-tutorial-faceted-gemstone-geonodes";
 import { entry as blenderTutorialGeometryNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-terrain";
 import { entry as blenderTutorialLowPolyFacetedHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-low-poly-faceted-hard-surface";
@@ -91,6 +92,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialUvUnwrapLowPolyStylisedEntry,
   blenderTutorialGeoNodesLowPolyFacetedRockEntry,
   blenderTutorialGeoNodesLowPolyTerrainEntry,
+  blenderTutorialArmatureWeightPaintEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

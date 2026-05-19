@@ -15,3 +15,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-05-19 | blend | uv-mapping | uv-unwrap-low-poly-stylised | 5.1 | CC0 | uv_low_poly_demo.blend · blueprint.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-uv-unwrap-low-poly-stylised |
 | 2026-05-19 | blend + glb | geometry | low-poly-faceted-rock | 5.1 | CC0 | rock_faceted.glb · blueprint.py · viewport.mp4 · screen.mp4 | /tutorials/geometry-nodes-low-poly-faceted-rock |
 | 2026-05-19 | blend + glb | terrain | geo-nodes-low-poly-terrain | 5.1 | CC0 | terrain_low_poly.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-geo-nodes-low-poly-terrain |
+| 2026-05-19 | blend + glb | rigging | armature-weight-paint | 5.1 | CC0 | armature_weight_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-armature-weight-paint |
