@@ -1,0 +1,45 @@
+{
+  "slug": "geometry-nodes-low-poly-faceted-rock",
+  "topic": "geometry",
+  "kind": "blend",
+  "blender_version": "5.1",
+  "files": {
+    "blueprint": "public/library/blends/geometry/low-poly-faceted-rock/blueprint.py",
+    "record": "public/library/blends/geometry/low-poly-faceted-rock/record.py",
+    "readme": "public/library/blends/geometry/low-poly-faceted-rock/README.md",
+    "screen_notes": "public/library/blends/geometry/low-poly-faceted-rock/SCREEN-RECORDING-NOTES.md"
+  },
+  "artefacts": {
+    "glb": "public/library/glbs/geometry/low-poly-faceted-rock/rock_faceted.glb",
+    "video_viewport": "public/library/videos/geometry/low-poly-faceted-rock/viewport.mp4",
+    "video_screen": "public/library/videos/geometry/low-poly-faceted-rock/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      { "path": "/tutorials/geometry-nodes-low-poly-faceted-rock", "kind": "tutorial" },
+      { "path": "/articles/low-poly-high-facet-shading",           "kind": "article"  },
+      { "path": "/articles/cohesive-low-poly-cell-shaded-vrm-worlds", "kind": "article" },
+      { "path": "/tutorials/blender-to-site-asset-pipeline",       "kind": "tutorial" }
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/",
+        "title": "Blender Geometry Nodes Reference Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/blender/blender",
+        "title": "Blender source repository",
+        "licence": "GPL-2.0-or-later (engine) / Apache-2.0 (bpy API stubs)",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://www.youtube.com/c/IanHubert2",
+        "title": "Ian Hubert Lazy Tutorials — procedural displacement patterns",
+        "licence": "CC-BY",
+        "author": "Ian Hubert"
+      }
+    ]
+  }
+}
