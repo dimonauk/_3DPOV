@@ -1,0 +1,49 @@
+{
+  "slug": "uv-unwrap-low-poly-stylised",
+  "topic": "uv-mapping",
+  "blender_version": "5.1",
+  "authored": "2026-05-19",
+  "files": {
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "screen_recording_notes": "SCREEN-RECORDING-NOTES.md",
+    "readme": "README.md"
+  },
+  "expected_outputs": {
+    "blend": "uv_low_poly_demo.blend",
+    "viewport_video": "public/library/videos/uv-mapping/uv-unwrap-low-poly-stylised/viewport.mp4",
+    "screen_video": "public/library/videos/uv-mapping/uv-unwrap-low-poly-stylised/screen.mp4"
+  },
+  "cross_references": {
+    "studio_articles": [
+      "/articles/low-poly-high-facet-shading",
+      "/articles/advanced-cell-shading-techniques",
+      "/articles/cohesive-low-poly-cell-shaded-vrm-worlds"
+    ],
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-faceted-gemstone-geonodes",
+      "/tutorials/blender-tutorial-low-poly-faceted-hard-surface",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "studio_codex": [
+      "/codex/mtoon",
+      "/codex/fresnel-rim-light",
+      "/codex/inverted-hull-outline"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — UV Unwrapping",
+        "url": "https://docs.blender.org/manual/en/latest/editors/uv/index.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "glTF-Blender-IO (TEXCOORD export)",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group / Julien Duroure"
+      }
+    ]
+  },
+  "licence": "CC0"
+}
