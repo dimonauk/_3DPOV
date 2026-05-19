@@ -19,7 +19,6 @@ import { entry as tutorialDragonScaleWallReliefEntry } from "components/tutorial
 import { entry as blenderToSiteAssetPipelineEntry } from "components/tutorials/entries/blender-to-site-asset-pipeline";
 import { entry as webxrLocomotionPatternsEntry } from "components/tutorials/entries/webxr-locomotion-patterns";
 import { entry as wiringSpatialAudioInTheFrameworkEntry } from "components/tutorials/entries/wiring-spatial-audio-in-the-framework";
-import { entry as wiringTheWebxrRetroarchRoomEntry } from "components/tutorials/entries/wiring-the-webxr-retroarch-room";
 import { entry as blenderAddonSkybrushStudioEntry } from "components/tutorials/entries/blender-addon-skybrush-studio";
 import { entry as blenderAddonVrmFormatEntry } from "components/tutorials/entries/blender-addon-vrm-format";
 import { entry as blenderAddon3dPrintToolboxEntry } from "components/tutorials/entries/blender-addon-3d-print-toolbox";
@@ -38,6 +37,7 @@ import { entry as blenderTutorialFacetedGemstoneGeonodesEntry } from "components
 import { entry as blenderTutorialGeometryNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geometry-nodes-low-poly-terrain";
 import { entry as blenderTutorialLowPolyFacetedHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-low-poly-faceted-hard-surface";
 import { entry as blenderTutorialFacetedGemWebxrEntry } from "components/tutorials/entries/blender-tutorial-faceted-gem-webxr";
+import { entry as blenderTutorialFlatShadedFacetedNormalsEntry } from "components/tutorials/entries/blender-tutorial-flat-shaded-faceted-normals";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -62,7 +62,6 @@ const ENTRIES: Entry[] = [
   blenderToSiteAssetPipelineEntry,
   webxrLocomotionPatternsEntry,
   wiringSpatialAudioInTheFrameworkEntry,
-  wiringTheWebxrRetroarchRoomEntry,
   blenderAddonSkybrushStudioEntry,
   blenderAddonVrmFormatEntry,
   blenderAddon3dPrintToolboxEntry,
@@ -81,6 +80,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGeometryNodesLowPolyTerrainEntry,
   blenderTutorialLowPolyFacetedHardSurfaceEntry,
   blenderTutorialFacetedGemWebxrEntry,
+  blenderTutorialFlatShadedFacetedNormalsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

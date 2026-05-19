@@ -1,0 +1,58 @@
+{
+  "slug": "flat-shaded-faceted-normals",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/shading/flat-shaded-faceted-normals/faceted_sphere.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py",
+      "required": true,
+      "description": "UV sphere with custom split normals and cel-shade material."
+    },
+    {
+      "path": "public/library/glbs/shading/flat-shaded-faceted-normals/faceted_sphere.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "required": true,
+      "description": "GLB export: +Y up, Draco 6, WebP, transforms applied."
+    },
+    {
+      "path": "public/library/videos/shading/flat-shaded-faceted-normals/viewport.mp4",
+      "type": "video",
+      "generated_by": "record.py",
+      "required": false,
+      "description": "5 s animated render: sun orbiting the faceted sphere."
+    },
+    {
+      "path": "public/library/videos/shading/flat-shaded-faceted-normals/screen.mp4",
+      "type": "video",
+      "generated_by": "OBS screen capture (see SCREEN-RECORDING-NOTES.md)",
+      "required": false,
+      "description": "6–8 min walkthrough recording of the technique in Blender."
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/articles/low-poly-high-facet-shading",
+      "/articles/advanced-cell-shading-techniques",
+      "/codex/ramp-shading",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/codex/mtoon"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/normals.html",
+        "title": "Blender Manual — Custom Split Normals",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      },
+      {
+        "url": "https://github.com/blender/blender/blob/main/scripts/addons_core/mesh_looptools.py",
+        "title": "LoopTools add-on — Blender source (normals utilities)",
+        "author": "Bart Crouch, Blender Foundation",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}
