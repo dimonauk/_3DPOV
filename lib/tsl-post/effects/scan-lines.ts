@@ -12,6 +12,9 @@
  * Reduced motion: density is fixed (not time-modulated) by default.
  */
 
+import { sin, uv as tslUv } from "three/tsl";
+import * as PP from "postprocessing";
+
 import { createLogger, errToObject } from "lib/log";
 
 import { __getActiveSlot } from "../composer";
@@ -54,12 +57,7 @@ function tryTsl(
 ): (() => void) | null {
   if (!slot.webgpu) return null;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const TSL = require("three/tsl") as typeof import("three/tsl");
-
-    // sin(uv.y * density * 600) gives roughly density*100 lines per
-    // viewport height; the 600 factor is empirical.
-    const lines = TSL.sin(TSL.uv().y.mul(density * 600)).mul(0.5).add(0.5);
+    const lines = sin(tslUv().y.mul(density * 600)).mul(0.5).add(0.5);
     const dark = (lines as unknown as { mul: (n: number) => unknown }).mul(opacity);
     const prev = slot.webgpu.node;
     const next = (prev as unknown as { mul: (n: unknown) => unknown }).mul(
@@ -80,9 +78,7 @@ function tryPp(
 ): (() => void) | null {
   if (!slot.webgl) return null;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const pp = require("postprocessing") as typeof import("postprocessing");
-    const scan = new pp.ScanlineEffect({ density });
+    const scan = new PP.ScanlineEffect({ density });
     scan.blendMode.opacity.value = opacity;
     slot.webgl.addEffect(scan);
     return () => {

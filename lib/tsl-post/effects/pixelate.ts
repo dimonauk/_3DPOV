@@ -11,6 +11,9 @@
  * Cost is cheap.
  */
 
+import { uv as tslUv, vec2 } from "three/tsl";
+import * as PP from "postprocessing";
+
 import { createLogger, errToObject } from "lib/log";
 
 import { __getActiveSlot } from "../composer";
@@ -48,18 +51,14 @@ function tryTsl(
 ): (() => void) | null {
   if (!slot.webgpu) return null;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const TSL = require("three/tsl") as typeof import("three/tsl");
-
-    // Quantise UV to block-grid centres. The 1024 here is an assumed
-    // viewport; the postprocessing fallback scales by real viewport
-    // because PixelationEffect handles its own resolution.
-    const size = TSL.vec2(1024, 1024);
+    // Quantise UV to block-grid centres. 1024 is an assumed viewport;
+    // the postprocessing fallback handles its own resolution.
+    const size = vec2(1024, 1024);
     const cells = size.div(block);
-    const snapped = TSL.uv()
+    const snapped = tslUv()
       .mul(cells)
       .floor()
-      .add(TSL.vec2(0.5, 0.5))
+      .add(vec2(0.5, 0.5))
       .div(cells);
     const prev = slot.webgpu.node;
     const resampled =
@@ -78,9 +77,7 @@ function tryPp(
 ): (() => void) | null {
   if (!slot.webgl) return null;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const pp = require("postprocessing") as typeof import("postprocessing");
-    const pixel = new pp.PixelationEffect(block);
+    const pixel = new PP.PixelationEffect(block);
     slot.webgl.addEffect(pixel);
     return () => {
       try {
