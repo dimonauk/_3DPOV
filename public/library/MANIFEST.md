@@ -17,3 +17,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-05-19 | blend + glb | terrain | geo-nodes-low-poly-terrain | 5.1 | CC0 | terrain_low_poly.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-geo-nodes-low-poly-terrain |
 | 2026-05-19 | blend + glb | rigging | armature-weight-paint | 5.1 | CC0 | armature_weight_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-armature-weight-paint |
 | 2026-05-19 | blend + glb | low-poly-shading | faceted-custom-split-normals | 5.1 | Apache-2.0 refs | faceted_icosphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 pending | /tutorials/blender-tutorial-faceted-custom-split-normals |
+| 2026-05-20 | blend + glb | rigging | shape-keys-morph-targets | 5.1 | CC0 | face_vrm.blend · face_vrm.glb (no Draco) · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shape-keys-morph-targets |
