@@ -48,6 +48,7 @@
     "@upstash/redis": "^1.38.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.3.3",
+    "@vercel/speed-insights": "^2.0.0",
     "ai": "^6.0.184",
     "ai-sdk-ollama": "^3.8.4",
     "canvas": "^3.2.3",

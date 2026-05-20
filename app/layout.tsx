@@ -5,6 +5,7 @@ import { WelcomeToast } from "components/welcome-toast";
 import { PlausibleAnalytics } from "components/analytics/plausible";
 import { KlaviyoAnalytics } from "components/analytics/klaviyo";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AuthProvider } from "components/auth/auth-provider";
 import AuraLauncher from "components/aura/aura-launcher";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
@@ -104,6 +105,7 @@ export default async function RootLayout({
         <PlausibleAnalytics />
         <KlaviyoAnalytics />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -141,6 +141,7 @@ The virtual living room at `/atelier/webxr-retroarch`. CRT TV, console on the si
 | [Upstash Redis](https://github.com/upstash/upstash-redis) `^1.38` | MIT | KV store (rate limits, cache) | `lib/cache.ts` consumers |
 | [@vercel/blob](https://github.com/vercel/storage) `^2.3` | Apache-2.0 | Object storage for splats + assets | `lib/blob.ts` |
 | [@vercel/analytics](https://github.com/vercel/analytics) `^2.0` | Apache-2.0 | Page-view analytics | layout |
+| [@vercel/speed-insights](https://github.com/vercel/speed-insights) `^2.0` | Apache-2.0 | Core Web Vitals telemetry to Vercel dashboard | layout |
 | [Plausible](https://github.com/plausible/analytics) (community runtime) | AGPL-3.0 (server) | Self-hostable analytics fallback | `components/analytics/plausible.tsx` |
 | Tailscale (Funnel + Serve) | BSD-3-Clause (core), proprietary (control plane) | Bench-bridge HTTPS | `holoflow-bench-bridge` pattern |
 | Firebase / Firebase Admin `^12 / ^13` | Apache-2.0 | Auth + Firestore | `lib/firebase.ts` |
