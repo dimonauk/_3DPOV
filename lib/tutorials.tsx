@@ -46,6 +46,7 @@ import { entry as blenderTutorialGeoNodesLowPolyFacetedRockEntry } from "compone
 import { entry as blenderTutorialGeoNodesLowPolyTerrainEntry } from "components/tutorials/entries/blender-tutorial-geo-nodes-low-poly-terrain";
 import { entry as blenderTutorialFacetedCustomSplitNormalsEntry } from "components/tutorials/entries/blender-tutorial-faceted-custom-split-normals";
 import { entry as blenderTutorialShapeKeysMorphTargetsEntry } from "components/tutorials/entries/blender-tutorial-shape-keys-morph-targets";
+import { entry as blenderTutorialNlaActionClipsVrmEntry } from "components/tutorials/entries/blender-tutorial-nla-action-clips-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -97,6 +98,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialArmatureWeightPaintEntry,
   blenderTutorialFacetedCustomSplitNormalsEntry,
   blenderTutorialShapeKeysMorphTargetsEntry,
+  blenderTutorialNlaActionClipsVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
