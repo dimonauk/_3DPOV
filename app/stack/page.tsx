@@ -128,7 +128,6 @@ function StackRow({ item }: { item: StackItem }) {
           className="text-lg text-chrome-100 underline underline-offset-4 hover:text-pink-200"
         >
           {item.name}
-          <span className="ml-0.5 text-chrome-500">&nearr;</span>
         </a>
         {item.status ? (
           <span className="chrome-label text-[0.6rem] text-chrome-500">
