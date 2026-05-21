@@ -7,11 +7,22 @@ import { Suspense } from "react";
 import { NewsletterForm } from "./newsletter-form";
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
+const skeleton = "w-full h-5 animate-pulse rounded-sm bg-warm-black-800";
 
-export default async function Footer() {
-  const currentYear = new Date().getFullYear();
-  const skeleton = "w-full h-5 animate-pulse rounded-sm bg-warm-black-800";
+// The Shopify menu fetch sits behind `"use cache"` + `cacheLife("days")`
+// but the lookup itself can stall under cold-start / canary-Next conditions.
+// Isolating the await inside a child component lets `<Suspense>` hold the
+// fallback while the rest of the footer (and the whole page) streams.
+// Previously this await ran at the top of the async Footer component,
+// gating page-body flush behind Shopify and breaking hydration of the
+// navbar dropdowns on pages without other streaming content.
+async function ShopifyFooterMenu() {
   const menu = await getMenu("next-js-frontend-footer-menu");
+  return <FooterMenu menu={menu} />;
+}
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
   const copyrightName = COMPANY_NAME || SITE_NAME || "Holo-Flow Studio";
 
   return (
@@ -133,7 +144,7 @@ export default async function Footer() {
               </div>
             }
           >
-            <FooterMenu menu={menu} />
+            <ShopifyFooterMenu />
           </Suspense>
           <ul className="space-y-2 text-sm">
             <li>
