@@ -6,8 +6,8 @@ operator dashboard shows the row) you swap test keys for live and you
 are open for business.
 
 The skeleton work is on branch `claude/skeleton-build` (preview deploy
-auto-fires per push). Production branch `holoflow-commerce` is
-untouched — merging is the final step.
+auto-fires per push). Production branch `main` is untouched — merging
+is the final step.
 
 ---
 
@@ -287,10 +287,10 @@ vercel env add STRIPE_WEBHOOK_SECRET production
 ## Step 10 — Merge skeleton-build → production
 
 ```bash
-git checkout holoflow-commerce
+git checkout main
 git pull
 git merge --no-ff claude/skeleton-build -m "feat(bureau): full Stripe wiring + operator dashboard"
-git push origin holoflow-commerce
+git push origin main
 ```
 
 Vercel will fire a production deploy. Once it's READY, `holoflow.co.uk/bureau/[itemId]` accepts real orders.
