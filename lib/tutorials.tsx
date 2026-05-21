@@ -49,6 +49,7 @@ import { entry as blenderTutorialShapeKeysMorphTargetsEntry } from "components/t
 import { entry as blenderTutorialNlaActionClipsVrmEntry } from "components/tutorials/entries/blender-tutorial-nla-action-clips-vrm";
 import { entry as blenderTutorialGnCurveToMeshEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh";
 import { entry as blenderTutorialVertexColourAttributesEntry } from "components/tutorials/entries/blender-tutorial-vertex-colour-attributes";
+import { entry as blenderTutorialTextureBakingNormalAoEntry } from "components/tutorials/entries/blender-tutorial-texture-baking-normal-ao";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -103,6 +104,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialNlaActionClipsVrmEntry,
   blenderTutorialGnCurveToMeshEntry,
   blenderTutorialVertexColourAttributesEntry,
+  blenderTutorialTextureBakingNormalAoEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
