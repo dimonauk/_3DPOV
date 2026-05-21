@@ -14,7 +14,8 @@ priority; phases are ordered by ROI, not by hard dependency.
   chambers), /capabilities (50+ entries), /cards (AR-card scan + Aura
   chat), /holo-walk (QR + AR), /aerial, /catalogue, /play, /articles
   /journal /tutorials, /admin/* operator console.
-- **Production branch:** `holoflow-commerce`.
+- **Production branch:** `main` (flipped from `holoflow-commerce` on
+  2026-05-20 in commit `7c0bb41`).
 - **Latest production deploy:** `f6aabb5` (printfiles engine + bureau
   MVP quote flow + admin/wardrobe + Aura set_emotion + ~150 sprint
   commits since 2026-05-17). Building as of writing.
@@ -35,7 +36,8 @@ Goal: leave the sprint in a green state. ~2-3 hrs.
       reach READY. If it errors, diagnose via `holoflow-deploy-debug`
       runbook and `holoflow-deploy-mcp-loop`.
 - [ ] Smoke-test live: `/`, `/atelier`, `/capabilities`,
-      `/cards/dimona`, `/bureau/test-item`, `/admin/printfiles`.
+      `/c/dimona` (AR card short link — `/cards/<slug>` is not a
+      route), `/bureau/test-item`, `/admin/printfiles`.
 - [ ] Verify the cron entries fired:
       - `/api/cron/rookery-pending-emails` 00:00 UTC daily
       - `/api/cron/sweep-scan-temp` 04:00 UTC daily
