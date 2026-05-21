@@ -48,6 +48,7 @@ import { entry as blenderTutorialFacetedCustomSplitNormalsEntry } from "componen
 import { entry as blenderTutorialShapeKeysMorphTargetsEntry } from "components/tutorials/entries/blender-tutorial-shape-keys-morph-targets";
 import { entry as blenderTutorialNlaActionClipsVrmEntry } from "components/tutorials/entries/blender-tutorial-nla-action-clips-vrm";
 import { entry as blenderTutorialGnCurveToMeshEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh";
+import { entry as blenderTutorialVertexColourAttributesEntry } from "components/tutorials/entries/blender-tutorial-vertex-colour-attributes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -101,6 +102,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShapeKeysMorphTargetsEntry,
   blenderTutorialNlaActionClipsVrmEntry,
   blenderTutorialGnCurveToMeshEntry,
+  blenderTutorialVertexColourAttributesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

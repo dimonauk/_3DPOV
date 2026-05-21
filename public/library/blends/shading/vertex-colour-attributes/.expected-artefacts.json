@@ -1,0 +1,42 @@
+{
+  "slug": "vertex-colour-attributes",
+  "topic": "shading",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "vertex_colour_demo.blend",
+    "vertex_colour_demo.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-faceted-gem-flat-normals",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-flat-shaded-faceted-normals"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Color Attributes",
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/vertex_paint/index.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF 2.0 Specification — Vertex Color (COLOR_0)",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#meshes",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO — Blender glTF exporter/importer",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
