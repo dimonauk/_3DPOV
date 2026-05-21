@@ -71,3 +71,15 @@ __pycache__/
 # Google Drive OAuth — bench-only creds, never commit
 .gdrive-oauth.json
 .gdrive-token.json
+
+# Vendored Python services — moved out on 2026-05-18 to fix Vercel OOM.
+# See AGENTS.md rule #1: services/ must not be re-added to this repo.
+# Local checkout of D:\The_Hangar\holoflow-services\ at this path is fine
+# for development, but it must not be tracked here.
+/services/
+
+# Polymaths watcher local fallback state. Real state lives in Vercel Blob
+# (see lib/watchers/store.ts); these files only exist as a dev fallback
+# when Blob isn't available.
+/data/polymaths-feed.json
+/data/polymaths-install-queue.json
