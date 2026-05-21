@@ -22,8 +22,11 @@
  * No auth — safe to expose. We don't disclose anything an
  * attacker couldn't already read from the public site.
  *
- * Public-cache 60s on Vercel's edge so external probes can hit
- * this repeatedly without burning function invocations.
+ * No-store. We previously cached this 60s at the edge to spare
+ * function invocations, but the cached response froze the `now`
+ * field — defeating its clock-skew/freshness purpose — and the
+ * function is trivial enough (constant fields + Date.now) that
+ * active-CPU cost is negligible. Monitors should debounce locally.
  */
 
 import { NextResponse, type NextRequest } from "next/server";
@@ -58,10 +61,9 @@ export async function GET(_req: NextRequest): Promise<NextResponse> {
     {
       status: 200,
       headers: {
-        // Short cache so monitoring tools can poll without burning
-        // function invocations, while still picking up new builds
-        // within a minute.
-        "Cache-Control": "public, max-age=60, s-maxage=60",
+        // No-store: the response carries a per-request `now`, so
+        // caching freezes that field and masks build-promotion timing.
+        "Cache-Control": "no-store, must-revalidate",
       },
     },
   );
