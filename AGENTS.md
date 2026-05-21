@@ -13,9 +13,11 @@ progress). Hosts the studio's marketing surfaces, atelier chambers
 plaques, the print bureau, the printfiles intake engine, and Aura
 (the studio's VRM-avatar companion).
 
-Production branch: **`holoflow-commerce`** → triggers Vercel deploy
-to `holoflow.co.uk`. Feature branches: **`claude/<slug>`**. PR to
-commerce when ready to ship.
+Production branch: **`main`** → triggers Vercel deploy to
+`holoflow.co.uk`. Feature branches: **`claude/<slug>`**. PR to `main`
+when ready to ship. (The flip from `holoflow-commerce` happened on
+2026-05-20 in commit `7c0bb41`; `holoflow-commerce` is now stale and
+should not be pushed to.)
 
 ## ⚠️ DO NOT (load-bearing operational rules)
 
@@ -47,9 +49,10 @@ changes:
    falls back to in-memory. The interface is stable; replace the
    backend if needed but keep the API.
 
-6. **Do not push directly to `holoflow-commerce`** (except for
-   `docs/`-only edits and the parallel-agent workflow). Open a PR for
-   review.
+6. **Do not push directly to `main`** (except for `docs/`-only edits
+   and the parallel-agent workflow). Open a PR for review. Do not push
+   to `holoflow-commerce` either — it's the old production branch,
+   stale since 2026-05-20, and Vercel no longer deploys it.
 
 ## The map
 
@@ -189,7 +192,7 @@ That's where it lives now.
 ## How to push
 
 ```
-git checkout holoflow-commerce
+git checkout main
 git pull --ff-only
 git checkout -b claude/<short-slug>
 # do work
@@ -200,7 +203,7 @@ git add <files>
 git commit -m "<scope>: <one-line> ..."
 git push -u origin claude/<short-slug>
 # Open PR via:
-# https://github.com/dimonauk/_3DPOV/compare/holoflow-commerce...claude/<short-slug>
+# https://github.com/dimonauk/_3DPOV/compare/main...claude/<short-slug>
 ```
 
 If you see "Dimona <dimonaauk@gmail.com>" commits land while you're
