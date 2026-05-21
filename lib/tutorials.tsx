@@ -47,6 +47,7 @@ import { entry as blenderTutorialGeoNodesLowPolyTerrainEntry } from "components/
 import { entry as blenderTutorialFacetedCustomSplitNormalsEntry } from "components/tutorials/entries/blender-tutorial-faceted-custom-split-normals";
 import { entry as blenderTutorialShapeKeysMorphTargetsEntry } from "components/tutorials/entries/blender-tutorial-shape-keys-morph-targets";
 import { entry as blenderTutorialNlaActionClipsVrmEntry } from "components/tutorials/entries/blender-tutorial-nla-action-clips-vrm";
+import { entry as blenderTutorialGnCurveToMeshEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -99,6 +100,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialFacetedCustomSplitNormalsEntry,
   blenderTutorialShapeKeysMorphTargetsEntry,
   blenderTutorialNlaActionClipsVrmEntry,
+  blenderTutorialGnCurveToMeshEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

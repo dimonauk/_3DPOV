@@ -1,0 +1,60 @@
+{
+  "slug": "gn-curve-to-mesh",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-curve-to-mesh/output/cable_pipe.glb",
+      "description": "Capped cylindrical cable mesh from a 3-point Bezier spine via Curve to Mesh GN",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 120
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-curve-to-mesh/cable_pipe.blend",
+      "description": "Blender scene with cable spine, GN modifier tree, and metallic material",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-curve-to-mesh/viewport.mp4",
+      "description": "60-frame camera orbit + radius animation: cable grows from thin to thick",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 2.5,
+      "expected_size_mb_max": 15
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-curve-to-mesh/screen.mp4",
+      "description": "OBS screen capture of GN editor session + modifier slider demo",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4",
+      "status": "pending"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-geometry-nodes-low-poly-terrain",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-low-poly-faceted-hard-surface"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html",
+        "author": "Blender Foundation contributors",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "author": "Khronos Group contributors",
+        "licence": "Apache-2.0"
+      },
+      {
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/geometries/TubeGeometry.js",
+        "author": "mrdoob and contributors",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
