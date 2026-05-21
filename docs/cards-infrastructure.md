@@ -9,7 +9,7 @@ specific env vars are set.
 
 | Service                    | Required env var(s)                       | Notes                                                                 |
 | -------------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| Vercel hosting             | (none)                                    | Auto-deploys from `dimonauk/_3DPOV@holoflow-commerce`                 |
+| Vercel hosting             | (none)                                    | Auto-deploys from `dimonauk/_3DPOV@main`                              |
 | Vercel Blob (public)       | `BLOB_READ_WRITE_TOKEN`                   | User-uploaded GLB/USDZ models                                         |
 | Vercel Blob (private)      | `PRIVATE_BLOB_READ_WRITE_TOKEN`           | Admin media library                                                   |
 | Firebase Auth + Firestore  | `FIREBASE_ADMIN_SERVICE_ACCOUNT` (JSON)   | Project `gen-lang-client-0149679024`                                  |
@@ -210,9 +210,8 @@ via `firebase deploy --only firestore:indexes`.
 Push the code → Vercel auto-builds.
 
 ```sh
-cd D:\The_Hangar\.merge-staging\_3DPOV
-git push origin holoflow-commerce
-git push hfs holoflow-commerce:main
+cd D:\.github\_3DPOV
+git push origin main
 ```
 
 Deploy Firestore rules:

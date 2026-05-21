@@ -10,8 +10,8 @@ vercel.com/new → Import Git Repository → pick `dimonauk/_3DPOV`.
 
 - **Framework preset**: Next.js (auto-detected)
 - **Root directory**: `.` (this branch has the site at the root)
-- **Branch to deploy**: `holoflow-commerce` for staging,
-  or set as production branch once you're happy
+- **Branch to deploy**: `main` (production, flipped from
+  `holoflow-commerce` on 2026-05-20)
 
 If you forked the commerce repo into its own repository instead
 (`dimonauk/holoflow`), just swap the import source.
@@ -84,8 +84,9 @@ No code changes needed — vercel/commerce already ships with the hooks.
 
 ## 6. Branch-per-stage
 
-- `holoflow-commerce` → preview (dev store)
-- `main` (or whatever you promote to) → production (prod store)
+- `main` → production (prod store) — flipped here from
+  `holoflow-commerce` on 2026-05-20
+- `claude/<slug>` feature branches → preview (dev store)
 
 Set the production branch in Project → Settings → Git. Staging env vars
 only attach to the preview environment, so staging experiments never
