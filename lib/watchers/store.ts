@@ -46,12 +46,39 @@ async function writeToFile(file: WatcherStoreFile): Promise<void> {
   await fs.writeFile(FILE_PATH, JSON.stringify(file, null, 2), "utf8");
 }
 
+// Hard cap on Upstash round-trips. The /news page renders three reads
+// in parallel and `dynamic = "force-dynamic"` blocks the whole response
+// on them — if Upstash is misconfigured or wedged, unbounded fetch
+// hangs the page up to the function maxDuration (default 300s) and
+// streams an empty body to the visitor.
+const UPSTASH_TIMEOUT_MS = 2_000;
+
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit & { timeoutMs: number },
+): Promise<Response> {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), init.timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: ctl.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function readFromUpstash(): Promise<WatcherStoreFile | null> {
   const url = `${process.env.KV_REST_API_URL}/get/${encodeURIComponent(KEY)}`;
-  const resp = await fetch(url, {
-    headers: { authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
-    // Upstash REST is fine without a cache hint — every call is fresh.
-  });
+  let resp: Response;
+  try {
+    resp = await fetchWithTimeout(url, {
+      headers: { authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` },
+      timeoutMs: UPSTASH_TIMEOUT_MS,
+    });
+  } catch {
+    // Network failure or timeout — caller falls through to the file
+    // snapshot. The page renders; the store just looks stale.
+    return null;
+  }
   if (!resp.ok) return null;
   const body = (await resp.json()) as { result?: string | null };
   if (!body.result) return null;
@@ -64,14 +91,20 @@ async function readFromUpstash(): Promise<WatcherStoreFile | null> {
 
 async function writeToUpstash(file: WatcherStoreFile): Promise<void> {
   const url = `${process.env.KV_REST_API_URL}/set/${encodeURIComponent(KEY)}`;
-  await fetch(url, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(JSON.stringify(file)),
-  });
+  try {
+    await fetchWithTimeout(url, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(JSON.stringify(file)),
+      timeoutMs: UPSTASH_TIMEOUT_MS,
+    });
+  } catch {
+    // Write best-effort. The file snapshot is the source of truth on
+    // the cron path; Upstash is a cross-region cache.
+  }
 }
 
 export async function readStore(): Promise<WatcherStoreFile> {
