@@ -52,6 +52,7 @@ import { entry as blenderTutorialVertexColourAttributesEntry } from "components/
 import { entry as blenderTutorialTextureBakingNormalAoEntry } from "components/tutorials/entries/blender-tutorial-texture-baking-normal-ao";
 import { entry as blenderTutorialGnExtrudeMeshPanelLinesEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-lines";
 import { entry as blenderTutorialEeveeToonCelShaderEntry } from "components/tutorials/entries/blender-tutorial-eevee-toon-cel-shader";
+import { entry as blenderTutorialAnimationDriversParametricShaderEntry } from "components/tutorials/entries/blender-tutorial-animation-drivers-parametric-shader";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -109,6 +110,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialTextureBakingNormalAoEntry,
   blenderTutorialGnExtrudeMeshPanelLinesEntry,
   blenderTutorialEeveeToonCelShaderEntry,
+  blenderTutorialAnimationDriversParametricShaderEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

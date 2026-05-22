@@ -1,0 +1,60 @@
+{
+  "slug": "animation-drivers-parametric-shader",
+  "topic": "animation",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/animation/animation-drivers-parametric-shader/crystal_shard.glb",
+      "description": "Draco-compressed GLB of the crystal shard at peak glow state (energy_level=1.0 snapshot)",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 30
+    },
+    {
+      "path": "public/library/blends/animation/animation-drivers-parametric-shader/crystal_shard.blend",
+      "description": "Blender scene with live driver graph — drag energy_level slider to see emission update",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/videos/animation/animation-drivers-parametric-shader/viewport.mp4",
+      "description": "150-frame pulse animation: crystal shard dark → cyan glow → dark with slow camera orbit",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 5,
+      "expected_size_mb_max": 20
+    },
+    {
+      "path": "public/library/videos/animation/animation-drivers-parametric-shader/screen.mp4",
+      "description": "OBS screen capture: Properties panel slider demo + Drivers Editor walkthrough + Graph Editor pulse",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4",
+      "status": "pending"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/animation/drivers/",
+        "author": "Blender Foundation contributors",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_animation_pointer",
+        "author": "Khronos Group contributors",
+        "licence": "Apache-2.0"
+      },
+      {
+        "url": "https://threejs.org/docs/#api/en/animation/AnimationMixer",
+        "author": "mrdoob and three.js contributors",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
