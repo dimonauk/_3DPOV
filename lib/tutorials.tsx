@@ -51,6 +51,7 @@ import { entry as blenderTutorialGnCurveToMeshEntry } from "components/tutorials
 import { entry as blenderTutorialVertexColourAttributesEntry } from "components/tutorials/entries/blender-tutorial-vertex-colour-attributes";
 import { entry as blenderTutorialTextureBakingNormalAoEntry } from "components/tutorials/entries/blender-tutorial-texture-baking-normal-ao";
 import { entry as blenderTutorialGnExtrudeMeshPanelLinesEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-lines";
+import { entry as blenderTutorialEeveeToonCelShaderEntry } from "components/tutorials/entries/blender-tutorial-eevee-toon-cel-shader";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -107,6 +108,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialVertexColourAttributesEntry,
   blenderTutorialTextureBakingNormalAoEntry,
   blenderTutorialGnExtrudeMeshPanelLinesEntry,
+  blenderTutorialEeveeToonCelShaderEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,35 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "toon_demo.blend",
+    "toon_demo.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-flat-shaded-faceted-normals",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-faceted-gem-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/shader_to_rgb.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/color_ramp.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group contributors"
+      }
+    ]
+  }
+}
