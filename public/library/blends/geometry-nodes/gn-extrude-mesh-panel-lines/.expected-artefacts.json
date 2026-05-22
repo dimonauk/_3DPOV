@@ -1,0 +1,60 @@
+{
+  "slug": "gn-extrude-mesh-panel-lines",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-extrude-mesh-panel-lines/output/panel_lines.glb",
+      "description": "Draco-compressed GLB of the 4x4 wall panel with recessed checkerboard extrusions and chamfered rims",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 20
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-extrude-mesh-panel-lines/panel_lines.blend",
+      "description": "Blender scene with live GN modifier — Panel Depth and Panel Inset sliders exposed",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-extrude-mesh-panel-lines/viewport.mp4",
+      "description": "60-frame camera orbit + Panel Depth animation (flat → deep recess) + Panel Inset animation (no chamfer → chamfered)",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 2.5,
+      "expected_size_mb_max": 15
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-extrude-mesh-panel-lines/screen.mp4",
+      "description": "OBS screen capture: GN editor walkthrough + live modifier slider demo",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4",
+      "status": "pending"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-low-poly-faceted-hard-surface",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-geometry-nodes-low-poly-terrain"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html",
+        "author": "Blender Foundation contributors",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html",
+        "author": "Blender Foundation contributors",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "author": "Khronos Group contributors",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}

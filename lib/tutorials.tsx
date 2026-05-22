@@ -50,6 +50,7 @@ import { entry as blenderTutorialNlaActionClipsVrmEntry } from "components/tutor
 import { entry as blenderTutorialGnCurveToMeshEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh";
 import { entry as blenderTutorialVertexColourAttributesEntry } from "components/tutorials/entries/blender-tutorial-vertex-colour-attributes";
 import { entry as blenderTutorialTextureBakingNormalAoEntry } from "components/tutorials/entries/blender-tutorial-texture-baking-normal-ao";
+import { entry as blenderTutorialGnExtrudeMeshPanelLinesEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-lines";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -105,6 +106,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCurveToMeshEntry,
   blenderTutorialVertexColourAttributesEntry,
   blenderTutorialTextureBakingNormalAoEntry,
+  blenderTutorialGnExtrudeMeshPanelLinesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
