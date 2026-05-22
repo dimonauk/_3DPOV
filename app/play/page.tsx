@@ -33,7 +33,11 @@ import {
  * `primaryLaunch` in that file.
  */
 
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — the page renders from a fully static
+// data registry (lib/play/families.ts). Under Next 15.6 canary + PPR,
+// force-dynamic on a sync page with no per-request inputs causes the
+// runtime to return 200 headers + zero body. Removing the directive
+// lets PPR prerender the shell statically.
 
 export const metadata = {
   title: "Play — every console, every launcher, one index",

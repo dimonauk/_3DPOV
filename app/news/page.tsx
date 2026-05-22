@@ -4,15 +4,19 @@
  * GitHub releases of every wired dep, AI/ML papers + models + org
  * activity.
  *
- * Force-dynamic — the store reads from Upstash (or the on-disk JSON
- * fallback) every render. The cron at /api/cron/refresh-watchers
- * triggers `revalidatePath("/news")` so we don't serve stale entries.
- *
  * Voice: workshop-Dimona for body copy, light Princess for chrome
  * labels. Cards never invent — title + summary come direct from the
  * upstream source.
+ *
+ * No `dynamic = "force-dynamic"` — under Next 15.6 canary + PPR the
+ * directive causes pages whose only slow surface is a Suspense-wrapped
+ * data fetch to return 200 headers + zero body. The shell + filter bar
+ * stream immediately; NewsBody fetches the feed inside <Suspense> and
+ * fills in when the watcher store responds (or instantly from the
+ * file-snapshot fallback if Upstash times out, see lib/watchers/store.ts).
  */
 import Link from "next/link";
+import { Suspense } from "react";
 
 import Footer from "components/layout/footer";
 import { SectionOpener } from "components/luxe/SectionOpener";
@@ -20,8 +24,6 @@ import { NewsCard } from "components/news/NewsCard";
 import { SourceFilterBar } from "components/news/SourceFilterBar";
 import { getFeedCounts, getLastRefresh, getPolymathsFeed } from "lib/watchers/getFeed";
 import type { FeedEntryKind, FeedSourceKind } from "lib/watchers/types";
-
-export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "News — the Polymaths Feed",
@@ -62,16 +64,7 @@ export default async function NewsPage({
   const params = await searchParams;
   const kind = pick<FeedEntryKind>(params.kind, KINDS);
   const source = pick<FeedSourceKind>(params.source, SOURCES);
-
-  const [entries, counts, lastRefresh] = await Promise.all([
-    getPolymathsFeed({ limit: 120, kind, source }),
-    getFeedCounts(),
-    getLastRefresh(),
-  ]);
-
   const issue = issueLabel(new Date());
-  const refreshedAt =
-    lastRefresh === "1970-01-01T00:00:00Z" ? null : new Date(lastRefresh);
 
   return (
     <>
@@ -84,60 +77,113 @@ export default async function NewsPage({
           strapline="The studio's working life as one chronological stream — commits, releases, papers, models. Polymath-shaped."
         />
 
-        <section className="mt-10 grid grid-cols-2 gap-3 text-xs text-chrome-400 sm:grid-cols-4">
-          <Stat label="Entries" value={counts.total.toString()} />
-          <Stat
-            label="Commits"
-            value={(counts.byKind.commit ?? 0).toString()}
-          />
-          <Stat
-            label="Releases"
-            value={(counts.byKind.release ?? 0).toString()}
-          />
-          <Stat
-            label="Papers + models"
-            value={((counts.byKind.paper ?? 0) + (counts.byKind.model ?? 0)).toString()}
-          />
-        </section>
-
-        <SourceFilterBar
-          kinds={KINDS}
-          sources={SOURCES}
-          activeKind={kind}
-          activeSource={source}
-          counts={counts}
-        />
-
-        {entries.length === 0 ? (
-          <EmptyState refreshedAt={refreshedAt} />
-        ) : (
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {entries.map((entry) => (
-              <NewsCard key={entry.id} entry={entry} />
-            ))}
-          </ul>
-        )}
-
-        <footer className="mt-16 border-t border-warm-black-800 pt-8 text-xs text-chrome-500">
-          <p>
-            Refreshes hourly via{" "}
-            <code className="text-pink-200">/api/cron/refresh-watchers</code>.
-            {refreshedAt
-              ? ` Last run ${refreshedAt.toISOString().replace("T", " ").slice(0, 16)} UTC.`
-              : " Never run."}{" "}
-            Subscribe to the{" "}
-            <Link href="/news/feed.xml" className="text-pink-200 hover:underline">
-              Atom feed
-            </Link>
-            . Sources catalogued in{" "}
-            <Link href="/docs/polymaths-feed" className="text-pink-200 hover:underline">
-              docs/POLYMATHS-FEED.md
-            </Link>
-            .
-          </p>
-        </footer>
+        <Suspense fallback={<NewsBodyFallback />}>
+          <NewsBody kind={kind} source={source} />
+        </Suspense>
       </article>
       <Footer />
+    </>
+  );
+}
+
+/**
+ * NewsBody — Stats + filter bar + cards + refresh note. All three
+ * watcher-store reads run inside this child so the parent shell can
+ * stream immediately while the feed fills in.
+ */
+async function NewsBody({
+  kind,
+  source,
+}: {
+  kind?: FeedEntryKind;
+  source?: FeedSourceKind;
+}) {
+  const [entries, counts, lastRefresh] = await Promise.all([
+    getPolymathsFeed({ limit: 120, kind, source }),
+    getFeedCounts(),
+    getLastRefresh(),
+  ]);
+
+  const refreshedAt =
+    lastRefresh === "1970-01-01T00:00:00Z" ? null : new Date(lastRefresh);
+
+  return (
+    <>
+      <section className="mt-10 grid grid-cols-2 gap-3 text-xs text-chrome-400 sm:grid-cols-4">
+        <Stat label="Entries" value={counts.total.toString()} />
+        <Stat
+          label="Commits"
+          value={(counts.byKind.commit ?? 0).toString()}
+        />
+        <Stat
+          label="Releases"
+          value={(counts.byKind.release ?? 0).toString()}
+        />
+        <Stat
+          label="Papers + models"
+          value={((counts.byKind.paper ?? 0) + (counts.byKind.model ?? 0)).toString()}
+        />
+      </section>
+
+      <SourceFilterBar
+        kinds={KINDS}
+        sources={SOURCES}
+        activeKind={kind}
+        activeSource={source}
+        counts={counts}
+      />
+
+      {entries.length === 0 ? (
+        <EmptyState refreshedAt={refreshedAt} />
+      ) : (
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {entries.map((entry) => (
+            <NewsCard key={entry.id} entry={entry} />
+          ))}
+        </ul>
+      )}
+
+      <footer className="mt-16 border-t border-warm-black-800 pt-8 text-xs text-chrome-500">
+        <p>
+          Refreshes hourly via{" "}
+          <code className="text-pink-200">/api/cron/refresh-watchers</code>.
+          {refreshedAt
+            ? ` Last run ${refreshedAt.toISOString().replace("T", " ").slice(0, 16)} UTC.`
+            : " Never run."}{" "}
+          Subscribe to the{" "}
+          <Link href="/news/feed.xml" className="text-pink-200 hover:underline">
+            Atom feed
+          </Link>
+          . Sources catalogued in{" "}
+          <Link href="/docs/polymaths-feed" className="text-pink-200 hover:underline">
+            docs/POLYMATHS-FEED.md
+          </Link>
+          .
+        </p>
+      </footer>
+    </>
+  );
+}
+
+function NewsBodyFallback() {
+  return (
+    <>
+      <section className="mt-10 grid grid-cols-2 gap-3 text-xs text-chrome-400 sm:grid-cols-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="h-16 animate-pulse rounded-sm border border-warm-black-700 bg-warm-black-900/40"
+          />
+        ))}
+      </section>
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <div
+            key={i}
+            className="h-32 animate-pulse rounded-sm border border-warm-black-700 bg-warm-black-900/40"
+          />
+        ))}
+      </div>
     </>
   );
 }
