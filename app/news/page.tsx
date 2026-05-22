@@ -56,14 +56,16 @@ function issueLabel(date: Date): string {
   return `${date.toLocaleString("en-GB", { month: "long" }).toUpperCase()} ${date.getUTCFullYear()}`;
 }
 
-export default async function NewsPage({
+// SYNC parent — searchParams is a Promise (Next 15) but we don't
+// await it here. The Promise gets passed down into NewsBody which
+// awaits it inside the Suspense boundary alongside the watcher-store
+// reads. Async parent + PPR + Turbopack canary produces the 200 +
+// zero-body hang we saw on /news after the first refactor pass.
+export default function NewsPage({
   searchParams,
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  const params = await searchParams;
-  const kind = pick<FeedEntryKind>(params.kind, KINDS);
-  const source = pick<FeedSourceKind>(params.source, SOURCES);
   const issue = issueLabel(new Date());
 
   return (
@@ -78,7 +80,7 @@ export default async function NewsPage({
         />
 
         <Suspense fallback={<NewsBodyFallback />}>
-          <NewsBody kind={kind} source={source} />
+          <NewsBody searchParams={searchParams} />
         </Suspense>
       </article>
       <Footer />
@@ -87,17 +89,20 @@ export default async function NewsPage({
 }
 
 /**
- * NewsBody — Stats + filter bar + cards + refresh note. All three
- * watcher-store reads run inside this child so the parent shell can
- * stream immediately while the feed fills in.
+ * NewsBody — Stats + filter bar + cards + refresh note. searchParams
+ * + the three watcher-store reads all resolve here, inside the
+ * parent's Suspense boundary, so the shell streams immediately while
+ * the feed fills in.
  */
 async function NewsBody({
-  kind,
-  source,
+  searchParams,
 }: {
-  kind?: FeedEntryKind;
-  source?: FeedSourceKind;
+  searchParams: Promise<SearchParams>;
 }) {
+  const params = await searchParams;
+  const kind = pick<FeedEntryKind>(params.kind, KINDS);
+  const source = pick<FeedSourceKind>(params.source, SOURCES);
+
   const [entries, counts, lastRefresh] = await Promise.all([
     getPolymathsFeed({ limit: 120, kind, source }),
     getFeedCounts(),
