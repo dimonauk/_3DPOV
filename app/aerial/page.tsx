@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import Footer from "components/layout/footer";
 import { mediaList } from "lib/capabilities/media/library";
@@ -35,46 +36,18 @@ export const metadata = {
   },
 };
 
-// Force per-request rendering — the page reads from Firestore live for
-// the recent-work gallery slice. Mirrors the pattern in
-// app/research/cctv-3d-archive/page.tsx, which is the proven shape in
-// this codebase for "marketing page with a small live media-library
-// surface" under Next 15.6 canary + PPR. Without this, the canary's
-// PPR + revalidate interaction can leave the page rendering an empty
-// shell on the first dev visit.
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — under Next 15.6 canary + PPR, that
+// directive causes pages with no per-request input (or with only a
+// suspended live slice) to return 200 headers + zero body. The
+// AerialLiveSection child below is the only async surface, and it's
+// wrapped in <Suspense> so the shell streams immediately; the gallery
+// fills in when Firestore responds (or the empty-state placeholder
+// renders if the env is unconfigured).
 
-export default async function AerialPage() {
-  // Defence-in-depth: even with revalidate-driven static generation,
-  // wrap the fetch so a transient Firestore error or missing env in
-  // any environment falls through to the empty-state placeholder
-  // rather than 500-ing the whole page.
-  let records: Media[] = [];
-  if (isFirebaseAdminConfigured()) {
-    try {
-      records = (await mediaList({ subject: "aerial", limit: 12 })).items;
-    } catch (err) {
-      log.error("mediaList failed", { err: errToObject(err) });
-    }
-  }
-
-  const gallery = pickGalleryItems(records);
-  const jsonLd = buildServiceJsonLd(gallery);
-
+export default function AerialPage() {
   return (
     <>
       <article className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        {/*
-          JSON-LD Service + Person + ImageGallery payload. Placed inside
-          the <article> per the Next.js metadata docs pattern — placing
-          a <script> as a direct Fragment child can confuse React's
-          server/client child reconciliation in App Router + PPR.
-        */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd }}
-        />
-
         {/* ── Hero ───────────────────────────────────────────────── */}
         <header className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
@@ -179,8 +152,10 @@ export default async function AerialPage() {
           </div>
         </section>
 
-        {/* ── Recent work ────────────────────────────────────────── */}
-        <RecentWork gallery={gallery} />
+        {/* ── Recent work + JSON-LD ──────────────────────────────── */}
+        <Suspense fallback={<RecentWorkFallback />}>
+          <AerialLiveSection />
+        </Suspense>
 
         {/* ── From the bench (preserved prose) ───────────────────── */}
         <section className="mt-16 prose-gallery text-chrome-200">
@@ -363,5 +338,54 @@ export default async function AerialPage() {
 
       <Footer />
     </>
+  );
+}
+
+/**
+ * AerialLiveSection — the Firestore-backed slice of /aerial.
+ *
+ * Pulled out of AerialPage so the rest of the page (hero, fleet,
+ * how-it-works, bench prose, contact CTA) renders synchronously and
+ * the visitor sees content within the streaming SSR shell. The
+ * Firestore await + gallery composition + JSON-LD assembly all sit
+ * behind the parent's <Suspense> boundary.
+ */
+async function AerialLiveSection() {
+  let records: Media[] = [];
+  if (isFirebaseAdminConfigured()) {
+    try {
+      records = (await mediaList({ subject: "aerial", limit: 12 })).items;
+    } catch (err) {
+      log.error("mediaList failed", { err: errToObject(err) });
+    }
+  }
+  const gallery = pickGalleryItems(records);
+  const jsonLd = buildServiceJsonLd(gallery);
+
+  return (
+    <>
+      {/*
+        JSON-LD Service + Person + ImageGallery payload. Lives inside
+        the suspended subtree so it can reference the resolved gallery
+        items; crawlers parse the full HTML so a late position is fine.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
+      <RecentWork gallery={gallery} />
+    </>
+  );
+}
+
+/** Lightweight placeholder shown while AerialLiveSection resolves. */
+function RecentWorkFallback() {
+  return (
+    <section id="recent-work" className="mt-16 scroll-mt-20">
+      <div className="chrome-label mb-4">Recent work</div>
+      <div className="rounded-md border border-warm-black-800 bg-warm-black-950/40 p-6 text-sm text-chrome-500">
+        Loading recent work&hellip;
+      </div>
+    </section>
   );
 }
