@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import Prose from "components/prose";
 import { getPage } from "lib/shopify";
-import { notFound } from "next/navigation";
 
 export async function generateMetadata(props: {
   params: Promise<{ page: string }>;
@@ -23,11 +24,27 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function Page(props: {
+// SYNC parent. Without this, Next 15.6 canary + Turbopack + PPR
+// returns 200 headers + zero body for the whole route while the
+// Shopify fetch resolves (or, if Shopify is misconfigured, indefinitely).
+// The visitor sees a friendly fallback while the body resolves.
+export default function Page(props: {
   params: Promise<{ page: string }>;
 }) {
-  const params = await props.params;
-  const page = await getPage(params.page);
+  return (
+    <Suspense fallback={<ShopifyPageFallback />}>
+      <ShopifyPageBody params={props.params} />
+    </Suspense>
+  );
+}
+
+async function ShopifyPageBody({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}) {
+  const resolved = await params;
+  const page = await getPage(resolved.page);
 
   if (!page) return notFound();
 
@@ -46,5 +63,16 @@ export default async function Page(props: {
         ).format(new Date(page.updatedAt))}.`}
       </p>
     </>
+  );
+}
+
+function ShopifyPageFallback() {
+  return (
+    <div className="space-y-4">
+      <div className="h-12 w-3/4 animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-4 w-4/6 animate-pulse rounded-sm bg-warm-black-800" />
+    </div>
   );
 }
