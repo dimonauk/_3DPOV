@@ -1,0 +1,123 @@
+/**
+ * app/splat-pro/viewer/page.tsx — browser splat viewer.
+ *
+ * Drop-in WebXR-capable viewer. Uses @sparkjsdev (already in the
+ * Holoflow stack per holoflow-canvas-server / holoflow-splat-vertical
+ * skills) for the splat rendering.
+ *
+ * v0: takes a local file (object URL) and renders it; later this
+ * accepts a /splat-pro/viewer/[id] dynamic route for shared splats.
+ */
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+export default function SplatViewerPage() {
+  const [url, setUrl] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!url || !ref.current) return;
+
+    let cleanup = () => {};
+    (async () => {
+      try {
+        // @sparkjsdev is the project's standard splat viewer (see the
+        // holoflow-splat-vertical skill). Import lazily so SSR is happy.
+        // The package's TS surface doesn't currently re-export the
+        // Viewer class — we reach into the module namespace at runtime.
+        const spark = (await import("@sparkjsdev/spark")) as unknown as {
+          Viewer: new (opts: {
+            container: HTMLElement;
+            background?: string;
+          }) => {
+            load: (url: string) => Promise<void>;
+            dispose: () => void;
+          };
+        };
+        const viewer = new spark.Viewer({
+          container: ref.current!,
+          background: "#000",
+        });
+        await viewer.load(url);
+        cleanup = () => viewer.dispose();
+      } catch (e) {
+        setErr(
+          "Spark viewer failed to load. Make sure @sparkjsdev is installed. " +
+            (e instanceof Error ? e.message : String(e)),
+        );
+      }
+    })();
+
+    return cleanup;
+  }, [url]);
+
+  return (
+    <main style={styles.main}>
+      <h1 style={styles.h1}>WebXR Splat Viewer</h1>
+      <p style={styles.sub}>
+        Drop a <code>.ply</code>, <code>.splat</code>, or <code>.ksplat</code> to
+        preview. Works in any modern browser; tap the AR icon on Quest 3 /
+        Vision Pro for immersive view.
+      </p>
+
+      <div
+        style={styles.drop}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          e.preventDefault();
+          const f = e.dataTransfer.files?.[0];
+          if (f) {
+            if (url) URL.revokeObjectURL(url);
+            setUrl(URL.createObjectURL(f));
+          }
+        }}
+        onClick={() => document.getElementById("file")?.click()}
+      >
+        {url ? "Loaded — drop again to swap" : "Drop a splat here"}
+        <input
+          id="file"
+          type="file"
+          accept=".ply,.splat,.ksplat"
+          style={{ display: "none" }}
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) {
+              if (url) URL.revokeObjectURL(url);
+              setUrl(URL.createObjectURL(f));
+            }
+          }}
+        />
+      </div>
+
+      <div ref={ref} style={styles.canvas} />
+
+      {err && <div style={styles.err}>{err}</div>}
+    </main>
+  );
+}
+
+const styles = {
+  main: { maxWidth: 1100, margin: "0 auto", padding: "48px 24px 96px", color: "#e6e8ee" },
+  h1: { fontSize: 36, margin: 0, fontWeight: 700 },
+  sub: { color: "#9aa3b2", marginBottom: 24 },
+  drop: {
+    border: "2px dashed #232732",
+    borderRadius: 12,
+    padding: "24px",
+    textAlign: "center" as const,
+    cursor: "pointer",
+    marginBottom: 16,
+    color: "#9aa3b2",
+  },
+  canvas: {
+    width: "100%",
+    height: "70vh",
+    background: "#000",
+    borderRadius: 12,
+    overflow: "hidden",
+  },
+  err: { color: "#ff6b6b", marginTop: 12, fontSize: 13 },
+} as const;
