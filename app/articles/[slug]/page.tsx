@@ -7,12 +7,14 @@ import { Suspense } from "react";
 import { getArticle } from "lib/articles";
 import { formatEntryDate } from "lib/writing";
 
-// Render-on-request to stay within Vercel's 45-min build cap. With
-// 80+ articles (many 1k+ lines of inline JSX), pre-rendering them all
-// at build time blew through the build budget. ISR + edge caching
-// handles the perf side at runtime — first hit renders, subsequent
-// hits serve cached.
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — under Next 15.6 canary + Turbopack
+// + PPR, force-dynamic produces 200 + zero-body hangs even with a
+// sync parent + Suspense child. The page stays dynamic per-request
+// because it awaits `params` (the route segment Promise) without
+// `generateStaticParams`; Next infers dynamic-ness from that. The
+// original `force-dynamic` was set to avoid pre-rendering 80+ articles
+// at build time (45-min Vercel cap); removing it is safe because
+// nothing was being pre-rendered.
 
 export async function generateMetadata({
   params,

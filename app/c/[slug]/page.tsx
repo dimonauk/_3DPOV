@@ -1,9 +1,11 @@
 // PPR + notFound() are caching with 200 status at the edge; opt this
 // route out so notFound() correctly returns a 404 HTTP status.
 export const experimental_ppr = false;
-// And kill edge caching entirely: PPR's static shell was cached as 200
-// even when notFound() fired. Server-render every card landing fresh.
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — under Next 15.6 canary + Turbopack,
+// it produces a 200 + zero-body hang even with sync parent + Suspense
+// child. Without it, the page is still rendered per request because
+// it awaits `params` + `getCard` inside the suspended subtree, and
+// `experimental_ppr = false` blocks edge caching for this route.
 
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
