@@ -8,8 +8,8 @@ import { Suspense } from "react";
 import { getJournalEntry } from "lib/journal";
 import { formatEntryDate } from "lib/writing";
 
-// Render-on-request; see /articles/[slug] for the rationale.
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — see app/articles/[slug] for the
+// rationale. Dynamic-per-request via the params await.
 
 export async function generateMetadata({
   params,

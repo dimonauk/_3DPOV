@@ -12,10 +12,13 @@
  */
 
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { createLogger } from "lib/log";
 
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — see app/research/cctv-3d-archive
+// for the canary rationale. The probe fetches inside StatusBody are
+// uncached so Next infers dynamic-ness automatically.
 
 export const metadata = {
   title: "Status — Holo-Flow Studio",
@@ -121,27 +124,11 @@ function statusClass(status: ServiceCheck["status"]): string {
   return "border-warm-black-700 text-chrome-400";
 }
 
-export default async function StatusPage() {
-  const checks = await collectChecks();
-  const byCategory = checks.reduce<Record<string, ServiceCheck[]>>((acc, c) => {
-    (acc[c.category] ??= []).push(c);
-    return acc;
-  }, {});
-
-  const categoryOrder: Array<ServiceCheck["category"]> = [
-    "site",
-    "bench",
-    "third-party",
-    "data",
-  ];
-
-  const categoryLabel: Record<ServiceCheck["category"], string> = {
-    site: "Site",
-    bench: "Bench (Sovereign-PC services)",
-    "third-party": "Third-party APIs",
-    data: "Data stores",
-  };
-
+// Sync parent — the bench probes run inside a Suspense child so the
+// header + last-checked timestamp flush immediately. Each probe has
+// its own 3s timeout via AbortSignal.timeout but Promise.all over five
+// of them still blocks the SSR flush under async-parent + canary PPR.
+export default function StatusPage() {
   return (
     <main className="min-h-screen bg-warm-black-950 px-6 py-16 font-mono text-chrome-200">
       <div className="mx-auto flex max-w-3xl flex-col gap-8">
@@ -163,37 +150,9 @@ export default async function StatusPage() {
           </p>
         </header>
 
-        {categoryOrder.map((cat) => {
-          const group = byCategory[cat] ?? [];
-          if (group.length === 0) return null;
-          return (
-            <section key={cat} className="flex flex-col gap-3">
-              <h2 className="chrome-label text-chrome-300">
-                {categoryLabel[cat]}
-              </h2>
-              <ul className="flex flex-col gap-2">
-                {group.map((c) => (
-                  <li
-                    key={c.id}
-                    className="flex items-baseline gap-4 rounded-sm border border-warm-black-800 bg-warm-black-900/40 px-4 py-3 text-sm"
-                  >
-                    <span
-                      className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider ${statusClass(
-                        c.status,
-                      )}`}
-                    >
-                      {c.status}
-                    </span>
-                    <span className="text-chrome-100">{c.label}</span>
-                    <span className="ml-auto text-xs text-chrome-400">
-                      {c.detail}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          );
-        })}
+        <Suspense fallback={<StatusBodyFallback />}>
+          <StatusBody />
+        </Suspense>
 
         <footer className="flex justify-between border-t border-warm-black-700 pt-4 text-xs text-chrome-500">
           <Link href="/" className="hover:text-pink-200">
@@ -203,5 +162,79 @@ export default async function StatusPage() {
         </footer>
       </div>
     </main>
+  );
+}
+
+async function StatusBody() {
+  const checks = await collectChecks();
+  const byCategory = checks.reduce<Record<string, ServiceCheck[]>>((acc, c) => {
+    (acc[c.category] ??= []).push(c);
+    return acc;
+  }, {});
+
+  const categoryOrder: Array<ServiceCheck["category"]> = [
+    "site",
+    "bench",
+    "third-party",
+    "data",
+  ];
+
+  const categoryLabel: Record<ServiceCheck["category"], string> = {
+    site: "Site",
+    bench: "Bench (Sovereign-PC services)",
+    "third-party": "Third-party APIs",
+    data: "Data stores",
+  };
+
+  return (
+    <>
+      {categoryOrder.map((cat) => {
+        const group = byCategory[cat] ?? [];
+        if (group.length === 0) return null;
+        return (
+          <section key={cat} className="flex flex-col gap-3">
+            <h2 className="chrome-label text-chrome-300">
+              {categoryLabel[cat]}
+            </h2>
+            <ul className="flex flex-col gap-2">
+              {group.map((c) => (
+                <li
+                  key={c.id}
+                  className="flex items-baseline gap-4 rounded-sm border border-warm-black-800 bg-warm-black-900/40 px-4 py-3 text-sm"
+                >
+                  <span
+                    className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider ${statusClass(
+                      c.status,
+                    )}`}
+                  >
+                    {c.status}
+                  </span>
+                  <span className="text-chrome-100">{c.label}</span>
+                  <span className="ml-auto text-xs text-chrome-400">
+                    {c.detail}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })}
+    </>
+  );
+}
+
+function StatusBodyFallback() {
+  return (
+    <section className="flex flex-col gap-3">
+      <div className="chrome-label text-chrome-500">Probing…</div>
+      <ul className="flex flex-col gap-2">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <li
+            key={i}
+            className="h-12 animate-pulse rounded-sm border border-warm-black-800 bg-warm-black-900/40"
+          />
+        ))}
+      </ul>
+    </section>
   );
 }

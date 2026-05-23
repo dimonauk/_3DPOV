@@ -1,5 +1,6 @@
 import Footer from "components/layout/footer";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import PhotoToSpatial, {
   type PhotoChoice,
@@ -12,28 +13,13 @@ export const metadata = {
     "Pick any editioned photograph and watch the studio's in-browser pipeline turn it into a spatial photo: depth-estimated, stereo-warped, and wrapped as USDZ for Vision Pro and iOS AR Quick Look. Zero server-side compute; your machine does the work.",
 };
 
-// Live-fetched (Shopify) at request time; per-render cost only.
-export const dynamic = "force-dynamic";
+// No `dynamic = "force-dynamic"` — produces a 200 + zero-body hang
+// under Next 15.6 canary + Turbopack + PPR. The Shopify fetch inside
+// PhotosPicker is uncached so the page is still dynamic per request.
 
 const COLLECTION_HANDLE = "photographs";
 
-export default async function PhotographsSpatialPage() {
-  const products = await getCollectionProducts({
-    collection: COLLECTION_HANDLE,
-  }).catch(() => []);
-
-  const photos: PhotoChoice[] = products
-    .map((p) => {
-      const image = p.images[0];
-      if (!image) return null;
-      return {
-        handle: p.handle,
-        title: p.title,
-        imageUrl: image.url,
-      };
-    })
-    .filter((p): p is PhotoChoice => p !== null);
-
+export default function PhotographsSpatialPage() {
   return (
     <>
       <article className="mx-auto max-w-5xl px-6 py-20 md:py-28">
@@ -59,24 +45,9 @@ export default async function PhotographsSpatialPage() {
           photo reuses it.
         </p>
 
-        <div className="mt-12">
-          {photos.length === 0 ? (
-            <div className="rounded-md border border-warm-black-800 bg-warm-black-950 p-6 text-sm text-chrome-400">
-              No photographs in the catalogue yet, or the Shopify
-              connection isn&rsquo;t configured in this environment.
-              Try{" "}
-              <Link
-                href="/photographs"
-                className="text-pink-200 underline underline-offset-4"
-              >
-                the main gallery
-              </Link>{" "}
-              once prints land.
-            </div>
-          ) : (
-            <PhotoToSpatial photos={photos} />
-          )}
-        </div>
+        <Suspense fallback={<PhotosPickerFallback />}>
+          <PhotosPicker />
+        </Suspense>
 
         <div className="mt-16 grid grid-cols-1 gap-6 border-t border-warm-black-800 pt-10 text-sm text-chrome-300 md:grid-cols-3">
           <div>
@@ -119,5 +90,58 @@ export default async function PhotographsSpatialPage() {
       </article>
       <Footer />
     </>
+  );
+}
+
+async function PhotosPicker() {
+  const products = await getCollectionProducts({
+    collection: COLLECTION_HANDLE,
+  }).catch(() => []);
+
+  const photos: PhotoChoice[] = products
+    .map((p) => {
+      const image = p.images[0];
+      if (!image) return null;
+      return {
+        handle: p.handle,
+        title: p.title,
+        imageUrl: image.url,
+      };
+    })
+    .filter((p): p is PhotoChoice => p !== null);
+
+  if (photos.length === 0) {
+    return (
+      <div className="mt-12 rounded-md border border-warm-black-800 bg-warm-black-950 p-6 text-sm text-chrome-400">
+        No photographs in the catalogue yet, or the Shopify
+        connection isn&rsquo;t configured in this environment. Try{" "}
+        <Link
+          href="/photographs"
+          className="text-pink-200 underline underline-offset-4"
+        >
+          the main gallery
+        </Link>{" "}
+        once prints land.
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-12">
+      <PhotoToSpatial photos={photos} />
+    </div>
+  );
+}
+
+function PhotosPickerFallback() {
+  return (
+    <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+      {[0, 1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="aspect-square animate-pulse rounded-md border border-warm-black-800 bg-warm-black-900/40"
+        />
+      ))}
+    </div>
   );
 }
