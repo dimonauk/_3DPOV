@@ -24,6 +24,7 @@ import { ditherBayerEffect } from "./effects/dither-bayer";
 import { dofEffect } from "./effects/dof";
 import { filmGrainEffect } from "./effects/film-grain";
 import { foilSheenEffect } from "./effects/foil-sheen";
+import { glitchCompositeEffect } from "./effects/glitch-composite";
 import { godRaysEffect } from "./effects/god-rays";
 import { outlineEffect } from "./effects/outline";
 import { paperGrainEffect } from "./effects/paper-grain";
@@ -42,6 +43,7 @@ export {
   dofEffect,
   filmGrainEffect,
   foilSheenEffect,
+  glitchCompositeEffect,
   godRaysEffect,
   outlineEffect,
   paperGrainEffect,
@@ -74,6 +76,7 @@ export const ALL_POST_EFFECTS: ReadonlyArray<TslPostEffect> = Object.freeze([
   paperGrainEffect,
   ditherBayerEffect,
   chromaticAberrationEffect,
+  glitchCompositeEffect,
   vignetteEffect,
   dofEffect,
   outlineEffect,
