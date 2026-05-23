@@ -5,6 +5,13 @@ import { Suspense } from "react";
 import Prose from "components/prose";
 import { getPage } from "lib/shopify";
 
+// Opt this route out of PPR — under Next 15.6 canary + Turbopack,
+// notFound() inside an async Suspense child hangs at 200 + 0 bytes
+// instead of resolving to a 404. Same fix as /c/[slug] and the writing
+// slug routes. Catalogue (which is /[page]/page.tsx?page=catalogue and
+// is also missing in Shopify) returns 404 cleanly with this.
+export const experimental_ppr = false;
+
 // Defensive: never throw and never call notFound() here. If Shopify is
 // slow or wedged, the 4s timeout in shopifyFetch will throw — we catch
 // it and return basic metadata so the page render still gets a chance

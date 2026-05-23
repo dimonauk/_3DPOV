@@ -8,8 +8,12 @@ import { Suspense } from "react";
 import { getTutorial } from "lib/tutorials";
 import { formatEntryDate } from "lib/writing";
 
-// No `dynamic = "force-dynamic"` — see app/articles/[slug] for the
-// rationale. Dynamic-per-request via the params await.
+// Opt this route out of PPR — see app/articles/[slug] for the
+// rationale. notFound() inside an async Suspense child hangs at 0
+// bytes under PPR; experimental_ppr=false makes it resolve cleanly.
+export const experimental_ppr = false;
+
+// No `dynamic = "force-dynamic"` — see app/articles/[slug].
 
 export async function generateMetadata({
   params,
