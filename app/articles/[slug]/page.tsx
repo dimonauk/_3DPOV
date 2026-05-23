@@ -7,14 +7,17 @@ import { Suspense } from "react";
 import { getArticle } from "lib/articles";
 import { formatEntryDate } from "lib/writing";
 
-// No `dynamic = "force-dynamic"` — under Next 15.6 canary + Turbopack
-// + PPR, force-dynamic produces 200 + zero-body hangs even with a
-// sync parent + Suspense child. The page stays dynamic per-request
-// because it awaits `params` (the route segment Promise) without
-// `generateStaticParams`; Next infers dynamic-ness from that. The
-// original `force-dynamic` was set to avoid pre-rendering 80+ articles
-// at build time (45-min Vercel cap); removing it is safe because
-// nothing was being pre-rendered.
+// Opt this route out of PPR. Under Next 15.6 canary + Turbopack, PPR's
+// static-shell caching interacts badly with notFound() inside an async
+// Suspense child — the response hangs at 200 + 0 bytes instead of
+// resolving to either the entry body or a 404. Same fix as /c/[slug]
+// uses for the same symptom. Page is still rendered per-request
+// (awaits params + getArticle); just not PPR-prerendered.
+export const experimental_ppr = false;
+
+// No `dynamic = "force-dynamic"` — the directive itself produces
+// 200 + zero-body hangs in this toolchain. experimental_ppr=false
+// alone is sufficient to make notFound() resolve correctly.
 
 export async function generateMetadata({
   params,
