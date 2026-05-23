@@ -3,6 +3,7 @@ import { HeroPlate } from "components/writing/hero-plate";
 import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { getArticle } from "lib/articles";
 import { formatEntryDate } from "lib/writing";
 
@@ -27,7 +28,25 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArticlePage({
+// Sync parent so PPR can flush the shell + Suspense fallback before the
+// params Promise resolves. Async parent + force-dynamic was the pattern
+// producing 200 + zero-body hangs on the slug routes.
+export default function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  return (
+    <>
+      <Suspense fallback={<ArticleBodyFallback />}>
+        <ArticleBody params={params} />
+      </Suspense>
+      <Footer />
+    </>
+  );
+}
+
+async function ArticleBody({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -39,30 +58,44 @@ export default async function ArticlePage({
   const Body = entry.Body;
 
   return (
-    <>
-      <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <Link
-          href="/articles"
-          className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
-        >
-          &larr; Articles
-        </Link>
-        <div className="mt-10 chrome-label text-pink-200">
-          {formatEntryDate(entry.date)}
+    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+      <Link
+        href="/articles"
+        className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+      >
+        &larr; Articles
+      </Link>
+      <div className="mt-10 chrome-label text-pink-200">
+        {formatEntryDate(entry.date)}
+      </div>
+      <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05] text-chrome-100">
+        {entry.title}
+      </h1>
+      <HeroPlate image={entry.heroImage} title={entry.title} />
+      <div className="mt-12 prose-gallery text-chrome-200">
+        <Body />
+      </div>
+      <RelatedBlock
+        related={entry.related}
+        furtherReading={entry.furtherReading}
+      />
+    </article>
+  );
+}
+
+function ArticleBodyFallback() {
+  return (
+    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+      <div className="space-y-4">
+        <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
+        <div className="space-y-2 pt-6">
+          <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
+          <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
+          <div className="h-4 w-4/6 animate-pulse rounded-sm bg-warm-black-800" />
         </div>
-        <h1 className="mt-4 text-4xl md:text-5xl leading-[1.05] text-chrome-100">
-          {entry.title}
-        </h1>
-        <HeroPlate image={entry.heroImage} title={entry.title} />
-        <div className="mt-12 prose-gallery text-chrome-200">
-          <Body />
-        </div>
-        <RelatedBlock
-          related={entry.related}
-          furtherReading={entry.furtherReading}
-        />
-      </article>
-      <Footer />
-    </>
+      </div>
+    </article>
   );
 }

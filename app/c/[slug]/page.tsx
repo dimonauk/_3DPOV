@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getCard, listCardSlugs } from "lib/ar/cards";
 import ARLandingClient from "components/ar/ARLandingClient";
 import CardEventTracker from "components/ar/CardEventTracker";
@@ -29,20 +30,37 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const card = await getCard(slug);
-  if (!card) return { title: "Card not found" };
-  return {
-    title: `${card.name} — ${card.studio ?? card.role}`,
-    description: card.tagline ?? card.role,
-    openGraph: {
-      title: card.name,
+  try {
+    const card = await getCard(slug);
+    if (!card) return { title: "Card not found" };
+    return {
+      title: `${card.name} — ${card.studio ?? card.role}`,
       description: card.tagline ?? card.role,
-      images: [{ url: card.ar.targetImage }],
-    },
-  };
+      openGraph: {
+        title: card.name,
+        description: card.tagline ?? card.role,
+        images: [{ url: card.ar.targetImage }],
+      },
+    };
+  } catch {
+    return { title: "Card" };
+  }
 }
 
-export default async function CardPage({ params }: PageProps) {
+// Sync parent — async-parent + force-dynamic blocks the entire response
+// from streaming until getCard resolves. Sync shell + Suspense child
+// lets the fallback flush immediately and the brand-coloured body
+// replace it when ready. Most-shared public link in the studio's
+// surface; matters most that it doesn't show 0 bytes.
+export default function CardPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={<CardLandingFallback />}>
+      <CardLandingBody params={params} />
+    </Suspense>
+  );
+}
+
+async function CardLandingBody({ params }: PageProps) {
   const { slug } = await params;
   const card = await getCard(slug);
   if (!card) notFound();
@@ -157,5 +175,65 @@ export default async function CardPage({ params }: PageProps) {
           <CalendarEmbed slug={slug} calendar={card.calendar} brand={card.brand} />
         )}
       </main>
+  );
+}
+
+function CardLandingFallback() {
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#0a0a0a",
+        color: "white",
+        margin: 0,
+        fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
+      }}
+    >
+      <header
+        style={{
+          background: "linear-gradient(135deg, #1a1a1a, #2a2a2a)",
+          color: "white",
+          padding: "3rem 1.5rem 2.5rem",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            height: "2.5rem",
+            width: "60%",
+            margin: "0 auto 1rem",
+            background: "#2f2f2f",
+            borderRadius: "0.25rem",
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}
+        />
+        <div
+          style={{
+            height: "1rem",
+            width: "40%",
+            margin: "0 auto",
+            background: "#2f2f2f",
+            borderRadius: "0.25rem",
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}
+        />
+      </header>
+      <div
+        style={{
+          maxWidth: "600px",
+          margin: "3rem auto",
+          padding: "1.5rem",
+          background: "#161616",
+          borderRadius: "1rem",
+          height: "200px",
+        }}
+      />
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `}</style>
+    </main>
   );
 }
