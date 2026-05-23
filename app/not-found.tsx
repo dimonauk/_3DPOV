@@ -11,6 +11,8 @@
 
 import Link from "next/link";
 
+import { NotFoundGlitch } from "components/glitch/not-found-glitch";
+
 export const metadata = {
   title: "Not here — Holo-Flow Studio",
   robots: { index: false, follow: false },
@@ -19,6 +21,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <main className="min-h-[70vh] bg-warm-black-950 px-6 py-24 font-mono text-chrome-200">
+      <NotFoundGlitch />
       <div className="mx-auto flex max-w-md flex-col items-center gap-6 text-center">
         <span className="chrome-label text-chrome-400">404 · Not here</span>
         <h1 className="text-3xl uppercase tracking-[0.18em] text-chrome-100">

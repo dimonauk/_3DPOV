@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AuthProvider } from "components/auth/auth-provider";
 import AuraLauncher from "components/aura/aura-launcher";
+import { GlitchProvider } from "components/glitch/GlitchProvider";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import { getCart } from "lib/shopify";
 import { ReactNode } from "react";
@@ -91,16 +92,18 @@ export default async function RootLayout({
     >
       <body className="bg-warm-black-950 text-warm-black-50 antialiased">
         <AuthProvider>
-          <CartProvider cartPromise={cart}>
-            <Navbar />
-            <WorkshopShell>
-              {children}
-              <Toaster closeButton theme="dark" />
-              <WelcomeToast />
-            </WorkshopShell>
-          </CartProvider>
-          {/* Floating Aura chat — visible only on allow-listed pages. */}
-          <AuraLauncher />
+          <GlitchProvider>
+            <CartProvider cartPromise={cart}>
+              <Navbar />
+              <WorkshopShell>
+                {children}
+                <Toaster closeButton theme="dark" />
+                <WelcomeToast />
+              </WorkshopShell>
+            </CartProvider>
+            {/* Floating Aura chat — visible only on allow-listed pages. */}
+            <AuraLauncher />
+          </GlitchProvider>
         </AuthProvider>
         <PlausibleAnalytics />
         <KlaviyoAnalytics />

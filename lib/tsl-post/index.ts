@@ -14,12 +14,14 @@
  * structural (outline, pixelate). See docs/TSL-POST.md for the why.
  */
 
+import { bitcrushPosteriseEffect } from "./effects/bitcrush-posterise";
 import { bloomEffect } from "./effects/bloom";
 import { celPostEffect } from "./effects/cel-post";
 import {
   chromaticAberrationEffect,
   chromaticAberrationLowPreset,
 } from "./effects/chromatic-aberration";
+import { dctBlocksEffect } from "./effects/dct-blocks";
 import { ditherBayerEffect } from "./effects/dither-bayer";
 import { dofEffect } from "./effects/dof";
 import { filmGrainEffect } from "./effects/film-grain";
@@ -30,15 +32,19 @@ import { outlineEffect } from "./effects/outline";
 import { paperGrainEffect } from "./effects/paper-grain";
 import { pixelateEffect } from "./effects/pixelate";
 import { scanLinesEffect } from "./effects/scan-lines";
+import { vhsTrackingEffect } from "./effects/vhs-tracking";
 import { vignetteEffect } from "./effects/vignette";
+import { waveWarpEffect } from "./effects/wave-warp";
 
 import type { TslPostEffect } from "./types";
 
 export {
+  bitcrushPosteriseEffect,
   bloomEffect,
   celPostEffect,
   chromaticAberrationEffect,
   chromaticAberrationLowPreset,
+  dctBlocksEffect,
   ditherBayerEffect,
   dofEffect,
   filmGrainEffect,
@@ -49,7 +55,9 @@ export {
   paperGrainEffect,
   pixelateEffect,
   scanLinesEffect,
+  vhsTrackingEffect,
   vignetteEffect,
+  waveWarpEffect,
 };
 
 export type {
@@ -67,18 +75,27 @@ export type {
  * just the sensible default the showcase mounts with.
  */
 export const ALL_POST_EFFECTS: ReadonlyArray<TslPostEffect> = Object.freeze([
+  // Grading
   celPostEffect,
+  bitcrushPosteriseEffect,
+  // Tonal
   bloomEffect,
   godRaysEffect,
   foilSheenEffect,
+  // Screen-anchored
   scanLinesEffect,
+  vhsTrackingEffect,
   filmGrainEffect,
   paperGrainEffect,
   ditherBayerEffect,
+  // Optical artefacts
   chromaticAberrationEffect,
+  waveWarpEffect,
+  dctBlocksEffect,
   glitchCompositeEffect,
   vignetteEffect,
   dofEffect,
+  // Structural
   outlineEffect,
   pixelateEffect,
 ]);
