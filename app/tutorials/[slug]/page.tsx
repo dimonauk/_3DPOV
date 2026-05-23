@@ -29,7 +29,9 @@ export async function generateMetadata({
   };
 }
 
-// Sync parent — see app/articles/[slug]/page.tsx for the rationale.
+// Sync parent renders the static frame — <article> wrapper + back link
+// — outside Suspense so the shell streams immediately. See
+// app/articles/[slug]/page.tsx for the rationale.
 export default function TutorialPage({
   params,
 }: {
@@ -37,15 +39,23 @@ export default function TutorialPage({
 }) {
   return (
     <>
-      <Suspense fallback={<TutorialBodyFallback />}>
-        <TutorialBody params={params} />
-      </Suspense>
+      <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+        <Link
+          href="/tutorials"
+          className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+        >
+          &larr; Tutorials
+        </Link>
+        <Suspense fallback={<TutorialEntryFallback />}>
+          <TutorialEntry params={params} />
+        </Suspense>
+      </article>
       <Footer />
     </>
   );
 }
 
-async function TutorialBody({
+async function TutorialEntry({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -57,13 +67,7 @@ async function TutorialBody({
   const Body = entry.Body;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <Link
-        href="/tutorials"
-        className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
-      >
-        &larr; Tutorials
-      </Link>
+    <>
       <div className="mt-10 chrome-label text-pink-200">
         {formatEntryDate(entry.date)}
       </div>
@@ -81,22 +85,20 @@ async function TutorialBody({
         related={entry.related}
         furtherReading={entry.furtherReading}
       />
-    </article>
+    </>
   );
 }
 
-function TutorialBodyFallback() {
+function TutorialEntryFallback() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <div className="space-y-4">
-        <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
-        <div className="space-y-2 pt-6">
-          <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
-          <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
-        </div>
+    <div className="space-y-4 pt-10">
+      <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
+      <div className="space-y-2 pt-6">
+        <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
       </div>
-    </article>
+    </div>
   );
 }

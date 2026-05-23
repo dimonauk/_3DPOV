@@ -29,8 +29,9 @@ export async function generateMetadata({
   };
 }
 
-// Sync parent — see app/articles/[slug]/page.tsx for the rationale.
-// MeshSceneProvider wraps the Suspense boundary so the provider's
+// Sync parent renders the static frame outside Suspense so the shell
+// streams immediately. See app/articles/[slug]/page.tsx for the
+// rationale. MeshSceneProvider wraps the whole shell so the provider's
 // context is available to the streamed-in body without re-mounting.
 export default function JournalEntryPage({
   params,
@@ -40,16 +41,24 @@ export default function JournalEntryPage({
   return (
     <>
       <MeshSceneProvider>
-        <Suspense fallback={<JournalBodyFallback />}>
-          <JournalBody params={params} />
-        </Suspense>
+        <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+          <Link
+            href="/journal"
+            className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+          >
+            &larr; Journal
+          </Link>
+          <Suspense fallback={<JournalEntryFallback />}>
+            <JournalEntry params={params} />
+          </Suspense>
+        </article>
       </MeshSceneProvider>
       <Footer />
     </>
   );
 }
 
-async function JournalBody({
+async function JournalEntry({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -61,13 +70,7 @@ async function JournalBody({
   const Body = entry.Body;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <Link
-        href="/journal"
-        className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
-      >
-        &larr; Journal
-      </Link>
+    <>
       <div className="mt-10 chrome-label text-pink-200">
         {formatEntryDate(entry.date)}
       </div>
@@ -82,22 +85,20 @@ async function JournalBody({
         related={entry.related}
         furtherReading={entry.furtherReading}
       />
-    </article>
+    </>
   );
 }
 
-function JournalBodyFallback() {
+function JournalEntryFallback() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <div className="space-y-4">
-        <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
-        <div className="space-y-2 pt-6">
-          <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
-          <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
-        </div>
+    <div className="space-y-4 pt-10">
+      <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
+      <div className="space-y-2 pt-6">
+        <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
       </div>
-    </article>
+    </div>
   );
 }

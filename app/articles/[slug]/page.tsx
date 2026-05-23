@@ -33,9 +33,14 @@ export async function generateMetadata({
   };
 }
 
-// Sync parent so PPR can flush the shell + Suspense fallback before the
-// params Promise resolves. Async parent + force-dynamic was the pattern
-// producing 200 + zero-body hangs on the slug routes.
+// Sync parent renders the static frame — <article> wrapper + back link
+// — outside the Suspense boundary. Confirmed working pattern from
+// /aerial, /research/cctv-3d-archive, /status, /photographs/spatial:
+// real static content in the parent before the suspended subtree, so
+// the shell streams immediately. Pages that wrapped everything inside
+// Suspense (parent rendered only `<Suspense>` itself) returned 200 +
+// zero bytes on production. Investigation:
+// https://claude.ai/code/session_017AKpoWcg6FxgTjjqDZthYV
 export default function ArticlePage({
   params,
 }: {
@@ -43,15 +48,23 @@ export default function ArticlePage({
 }) {
   return (
     <>
-      <Suspense fallback={<ArticleBodyFallback />}>
-        <ArticleBody params={params} />
-      </Suspense>
+      <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+        <Link
+          href="/articles"
+          className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
+        >
+          &larr; Articles
+        </Link>
+        <Suspense fallback={<ArticleEntryFallback />}>
+          <ArticleEntry params={params} />
+        </Suspense>
+      </article>
       <Footer />
     </>
   );
 }
 
-async function ArticleBody({
+async function ArticleEntry({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -63,13 +76,7 @@ async function ArticleBody({
   const Body = entry.Body;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <Link
-        href="/articles"
-        className="chrome-label text-chrome-400 underline-offset-4 hover:text-pink-200 hover:underline"
-      >
-        &larr; Articles
-      </Link>
+    <>
       <div className="mt-10 chrome-label text-pink-200">
         {formatEntryDate(entry.date)}
       </div>
@@ -84,23 +91,21 @@ async function ArticleBody({
         related={entry.related}
         furtherReading={entry.furtherReading}
       />
-    </article>
+    </>
   );
 }
 
-function ArticleBodyFallback() {
+function ArticleEntryFallback() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-      <div className="space-y-4">
-        <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
-        <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
-        <div className="space-y-2 pt-6">
-          <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
-          <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
-          <div className="h-4 w-4/6 animate-pulse rounded-sm bg-warm-black-800" />
-        </div>
+    <div className="space-y-4 pt-10">
+      <div className="h-4 w-20 animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-12 w-full animate-pulse rounded-sm bg-warm-black-800" />
+      <div className="h-64 w-full animate-pulse rounded-md bg-warm-black-800" />
+      <div className="space-y-2 pt-6">
+        <div className="h-4 w-full animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-4 w-5/6 animate-pulse rounded-sm bg-warm-black-800" />
+        <div className="h-4 w-4/6 animate-pulse rounded-sm bg-warm-black-800" />
       </div>
-    </article>
+    </div>
   );
 }

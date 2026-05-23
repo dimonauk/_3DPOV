@@ -40,17 +40,21 @@ export async function generateMetadata(props: {
   }
 }
 
-// SYNC parent. Without this, Next 15.6 canary + Turbopack + PPR
-// returns 200 headers + zero body for the whole route while the
-// Shopify fetch resolves (or, if Shopify is misconfigured, indefinitely).
-// The visitor sees a friendly fallback while the body resolves.
+// SYNC parent + a real static frame outside the Suspense boundary.
+// Empirically, pages whose parent rendered only `<Suspense>` (no
+// static content before it) still hung at 200 + 0 bytes on production
+// under Next 15.6 canary + Turbopack + PPR. Wrapping the Suspense in
+// an <article> shell flushes that frame on first byte, then the body
+// fills in.
 export default function Page(props: {
   params: Promise<{ page: string }>;
 }) {
   return (
-    <Suspense fallback={<ShopifyPageFallback />}>
-      <ShopifyPageBody params={props.params} />
-    </Suspense>
+    <article className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <Suspense fallback={<ShopifyPageFallback />}>
+        <ShopifyPageBody params={props.params} />
+      </Suspense>
+    </article>
   );
 }
 
