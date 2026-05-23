@@ -48,7 +48,7 @@ export default function NotFound() {
             Atelier
           </Link>
           <Link
-            href="/catalogue"
+            href="/search"
             className="rounded-sm border border-warm-black-700 px-4 py-2 uppercase tracking-wider transition-colors hover:border-pink-200 hover:text-pink-200"
           >
             Catalogue

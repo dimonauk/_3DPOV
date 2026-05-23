@@ -4,8 +4,18 @@ import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getArticle } from "lib/articles";
+import { articles, getArticle } from "lib/articles";
 import { formatEntryDate } from "lib/writing";
+
+// Pre-list every slug at build time. Under Next 15.6 canary +
+// Turbopack + PPR, the dynamic slug-render path hangs at 200 + 0
+// bytes; the static path serves correctly. /c/[slug] uses the same
+// pattern. Each entry is a TS component so the registry resolves
+// instantly — no I/O cost at build time, only the JSX render which
+// Turbopack already does fast.
+export function generateStaticParams() {
+  return articles.map((entry) => ({ slug: entry.slug }));
+}
 
 // Opt this route out of PPR. Under Next 15.6 canary + Turbopack, PPR's
 // static-shell caching interacts badly with notFound() inside an async
