@@ -5,8 +5,14 @@ import { RelatedBlock } from "components/writing/related-block";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getJournalEntry } from "lib/journal";
+import { getJournalEntry, journal } from "lib/journal";
 import { formatEntryDate } from "lib/writing";
+
+// Pre-list every slug at build time. See app/articles/[slug] for the
+// canary rationale.
+export function generateStaticParams() {
+  return journal.map((entry) => ({ slug: entry.slug }));
+}
 
 // Opt this route out of PPR — see app/articles/[slug] for the
 // rationale. notFound() inside an async Suspense child hangs at 0

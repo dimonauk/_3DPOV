@@ -3,14 +3,27 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import Prose from "components/prose";
-import { getPage } from "lib/shopify";
+import { getPage, getPages } from "lib/shopify";
 
-// Opt this route out of PPR — under Next 15.6 canary + Turbopack,
-// notFound() inside an async Suspense child hangs at 200 + 0 bytes
-// instead of resolving to a 404. Same fix as /c/[slug] and the writing
-// slug routes. Catalogue (which is /[page]/page.tsx?page=catalogue and
-// is also missing in Shopify) returns 404 cleanly with this.
+// Opt this route out of PPR — see app/articles/[slug] for the canary
+// rationale.
 export const experimental_ppr = false;
+
+// Pre-list every Shopify-CMS page handle at build time. Unlisted
+// paths 404 directly (dynamicParams = false) without entering the
+// broken dynamic-render path that hangs on this canary. `getPages` is
+// defensive: if Shopify is unconfigured or unreachable, it returns
+// an empty list and the route 404s cleanly for everything until a
+// real handle is published.
+export const dynamicParams = false;
+export async function generateStaticParams() {
+  try {
+    const pages = await getPages();
+    return pages.map((page) => ({ page: page.handle }));
+  } catch {
+    return [];
+  }
+}
 
 // Defensive: never throw and never call notFound() here. If Shopify is
 // slow or wedged, the 4s timeout in shopifyFetch will throw — we catch
