@@ -43,6 +43,15 @@ type ExtractVariables<T> = T extends { variables: object }
   ? T["variables"]
   : never;
 
+// Hard cap on Shopify Storefront API calls. The Vercel function default
+// maxDuration is 300s; without a timeout, a wedged/misconfigured Shopify
+// endpoint hangs the request that far. Production symptom was
+// /catalogue (resolved by app/[page]/page.tsx → getPage("catalogue"))
+// returning 200 + 0 bytes indefinitely. 4s is generous for an API
+// that normally returns <500ms; on timeout we throw a Shopify-shaped
+// error so existing call-sites' catches still work.
+const SHOPIFY_TIMEOUT_MS = 4_000;
+
 export async function shopifyFetch<T>({
   headers,
   query,
@@ -57,18 +66,27 @@ export async function shopifyFetch<T>({
       throw new Error("SHOPIFY_STORE_DOMAIN environment variable is not set");
     }
 
-    const result = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token": key,
-        ...headers,
-      },
-      body: JSON.stringify({
-        ...(query && { query }),
-        ...(variables && { variables }),
-      }),
-    });
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), SHOPIFY_TIMEOUT_MS);
+
+    let result: Response;
+    try {
+      result = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Shopify-Storefront-Access-Token": key,
+          ...headers,
+        },
+        body: JSON.stringify({
+          ...(query && { query }),
+          ...(variables && { variables }),
+        }),
+        signal: ctl.signal,
+      });
+    } finally {
+      clearTimeout(timer);
+    }
 
     const body = await result.json();
 
