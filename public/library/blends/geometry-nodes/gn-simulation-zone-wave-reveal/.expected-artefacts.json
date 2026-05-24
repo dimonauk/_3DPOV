@@ -1,0 +1,55 @@
+{
+  "slug": "gn-simulation-zone-wave-reveal",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "wave_reveal_grid.blend",
+    "wave_reveal_grid.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-wave-reveal/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-wave-reveal/screen.mp4"
+  ],
+  "outputs": {
+    "blend": "wave_reveal_grid.blend",
+    "glb": "wave_reveal_grid.glb"
+  },
+  "glb_path": "public/library/glbs/geometry-nodes/gn-simulation-zone-wave-reveal/wave_reveal_grid.glb",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-vertex-colour-attributes"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Scene Time Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/time/scene_time.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      }
+    ]
+  },
+  "technique_notes": [
+    "GeometryNodeSimulationInput + GeometryNodeSimulationOutput pair_with_output()",
+    "sim_out.state_items.new('FLOAT', 'Radius') — scalar state item on OUTPUT node",
+    "GeometryNodeInputNamedAttribute data_type='FLOAT' reads wave_time inside zone",
+    "Double GeometryNodeSwitch pattern for irreversible activation",
+    "ShaderNodeVectorMath LENGTH outputs[1] = scalar distance",
+    "Headless simulation requires sequential frame_set(1..N) to build cache",
+    "export_apply=True snapshots the evaluated mesh at the current frame"
+  ]
+}
