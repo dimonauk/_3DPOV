@@ -1,0 +1,35 @@
+{
+  "blend": "crystal_cluster.blend",
+  "glb": "crystal_cluster.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/geometry-nodes/gn-repeat-zone-crystal-cluster/viewport.mp4",
+    "screen":   "public/library/videos/geometry-nodes/gn-repeat-zone-crystal-cluster/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh"
+    ],
+    "outside_sources": [
+      {
+        "title": "Geometry Nodes — Repeat Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/repeat_zone.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-repeat-zone-crystal-cluster"
+}

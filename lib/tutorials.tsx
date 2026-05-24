@@ -54,6 +54,7 @@ import { entry as blenderTutorialGnExtrudeMeshPanelLinesEntry } from "components
 import { entry as blenderTutorialEeveeToonCelShaderEntry } from "components/tutorials/entries/blender-tutorial-eevee-toon-cel-shader";
 import { entry as blenderTutorialAnimationDriversParametricShaderEntry } from "components/tutorials/entries/blender-tutorial-animation-drivers-parametric-shader";
 import { entry as blenderTutorialGnMeshBooleanHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-boolean-hard-surface";
+import { entry as blenderTutorialGnRepeatZoneCrystalClusterEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-crystal-cluster";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -113,6 +114,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialEeveeToonCelShaderEntry,
   blenderTutorialAnimationDriversParametricShaderEntry,
   blenderTutorialGnMeshBooleanHardSurfaceEntry,
+  blenderTutorialGnRepeatZoneCrystalClusterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
