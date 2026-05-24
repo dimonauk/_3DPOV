@@ -58,6 +58,7 @@ import { entry as blenderTutorialGnRepeatZoneCrystalClusterEntry } from "compone
 import { entry as blenderTutorialVrmSpringBonesHairChainEntry } from "components/tutorials/entries/blender-tutorial-vrm-spring-bones-hair-chain";
 import { entry as blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-edge-crease-subdiv-hard-surface";
 import { entry as blenderTutorialGnSimulationZoneWaveRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-wave-reveal";
+import { entry as blenderTutorialGnDistributeWeightPaintedScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-weight-painted-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -121,6 +122,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialVrmSpringBonesHairChainEntry,
   blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry,
   blenderTutorialGnSimulationZoneWaveRevealEntry,
+  blenderTutorialGnDistributeWeightPaintedScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

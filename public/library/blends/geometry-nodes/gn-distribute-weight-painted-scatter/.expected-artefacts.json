@@ -1,0 +1,62 @@
+{
+  "slug": "gn-distribute-weight-painted-scatter",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "scatter_terrain.blend",
+    "scatter_terrain.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-distribute-weight-painted-scatter/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-distribute-weight-painted-scatter/screen.mp4"
+  ],
+  "outputs": {
+    "blend": "scatter_terrain.blend",
+    "glb": "scatter_terrain.glb"
+  },
+  "glb_path": "public/library/glbs/geometry-nodes/gn-distribute-weight-painted-scatter/scatter_terrain.glb",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-geo-nodes-low-poly-terrain"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Distribute Points on Faces",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Named Attribute Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "technique_notes": [
+    "GeometryNodeDistributePointsOnFaces distribute_method='RANDOM' — uniform density before culling",
+    "POINT-domain attributes are bilinearly interpolated to distributed points automatically",
+    "No Capture Attribute node required — Named Attribute reads from the flowing geometry context",
+    "FunctionNodeCompare data_type='FLOAT' operation='GREATER_EQUAL': A=random, B=density → delete mask",
+    "GeometryNodeDeleteGeometry domain='POINT' mode='ALL' removes probability-failed points",
+    "GeometryNodeRandomValue FLOAT_VECTOR for per-instance random Z rotation in Instance on Points",
+    "GeometryNodeRealizeInstances mandatory before export_apply=True for correct GLB geometry",
+    "ObjectInfo transform_space='RELATIVE' keeps prop centred on its own origin"
+  ]
+}
