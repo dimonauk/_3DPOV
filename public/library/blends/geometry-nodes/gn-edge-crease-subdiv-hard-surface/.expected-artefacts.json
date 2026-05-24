@@ -1,0 +1,67 @@
+{
+  "type": "blend+glb",
+  "topic": "geometry-nodes",
+  "slug": "gn-edge-crease-subdiv-hard-surface",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "edge_crease_hard_surface.blend",
+    "gn_edge_crease_hard_surface.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/geometry-nodes/gn-edge-crease-subdiv-hard-surface/viewport.mp4",
+    "screen_mp4": "public/library/videos/geometry-nodes/gn-edge-crease-subdiv-hard-surface/screen.mp4",
+    "status": "pending — run blueprint.py then record.py in a live Blender session; screen.mp4 requires manual OBS recording per SCREEN-RECORDING-NOTES.md"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-lines",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Manual — Edge Angle Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "name": "OpenSubdiv — Subdivision Surfaces (Catmull-Clark crease reference)",
+        "url": "https://graphics.pixar.com/opensubdiv/docs/subdivision_surfaces.html",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios",
+        "related_projects": [
+          "https://github.com/PixarAnimationStudios/USD",
+          "https://github.com/PixarAnimationStudios/OpenTimelineIO"
+        ]
+      },
+      {
+        "name": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  },
+  "gn_modifier_input_map": {
+    "Input_2": "Angle Threshold Deg",
+    "Input_3": "Blend Width Deg"
+  },
+  "key_attribute": {
+    "name": "crease_edge",
+    "domain": "EDGE",
+    "type": "FLOAT",
+    "range": [0.0, 1.0],
+    "read_by": "SubsurfModifier (use_creases=True)"
+  }
+}

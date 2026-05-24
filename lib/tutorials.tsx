@@ -56,6 +56,7 @@ import { entry as blenderTutorialAnimationDriversParametricShaderEntry } from "c
 import { entry as blenderTutorialGnMeshBooleanHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-boolean-hard-surface";
 import { entry as blenderTutorialGnRepeatZoneCrystalClusterEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-crystal-cluster";
 import { entry as blenderTutorialVrmSpringBonesHairChainEntry } from "components/tutorials/entries/blender-tutorial-vrm-spring-bones-hair-chain";
+import { entry as blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-edge-crease-subdiv-hard-surface";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -117,6 +118,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnMeshBooleanHardSurfaceEntry,
   blenderTutorialGnRepeatZoneCrystalClusterEntry,
   blenderTutorialVrmSpringBonesHairChainEntry,
+  blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
