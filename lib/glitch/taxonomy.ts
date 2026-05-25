@@ -36,6 +36,7 @@ export const GlitchGenre = {
   Social: "social",
   Commerce: "commerce",
   Error: "error",
+  Easter: "easter",
 } as const;
 export type GlitchGenre = (typeof GlitchGenre)[keyof typeof GlitchGenre];
 
@@ -48,6 +49,7 @@ export const ALL_GENRES: ReadonlyArray<GlitchGenre> = Object.freeze([
   GlitchGenre.Social,
   GlitchGenre.Commerce,
   GlitchGenre.Error,
+  GlitchGenre.Easter,
 ]);
 
 /**
@@ -92,6 +94,16 @@ export const GlitchFamily = {
   "error.four-oh-four": { genre: GlitchGenre.Error, weight: 2 },
   "error.client-exception": { genre: GlitchGenre.Error, weight: 3 },
   "error.capability-down": { genre: GlitchGenre.Error, weight: 2 },
+
+  // Easter eggs — playful interactions that reward exploration. Higher
+  // weight than navigation because each is a deliberate "I found
+  // something" moment; the post effect should respond crisply.
+  "easter.stub-reveal": { genre: GlitchGenre.Easter, weight: 3 },
+  "easter.konami": { genre: GlitchGenre.Easter, weight: 8 },
+  "easter.stat-click": { genre: GlitchGenre.Easter, weight: 2 },
+  "easter.logo-tap": { genre: GlitchGenre.Easter, weight: 2 },
+  "easter.cursor-streak": { genre: GlitchGenre.Easter, weight: 1 },
+  "easter.scanline-toggle": { genre: GlitchGenre.Easter, weight: 1 },
 } as const;
 export type GlitchFamily = keyof typeof GlitchFamily;
 
