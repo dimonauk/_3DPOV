@@ -1,0 +1,54 @@
+{
+  "slug": "gn-raycast-shadow-mask",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-raycast-shadow-mask/raycast_shadow_grid.blend",
+      "description": "Ground grid with Raycast GN shadow mask and two-tone Emission cel shader",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/glbs/geometry-nodes/gn-raycast-shadow-mask/raycast_shadow_grid.glb",
+      "description": "Draco-6 GLB with shadow_mask as custom vertex attribute _SHADOW_MASK",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 120
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-raycast-shadow-mask/viewport.mp4",
+      "description": "3-second animation of the blocker orbiting above the grid, shadow sweeping in real time",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 3,
+      "expected_size_mb_max": 15
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-raycast-shadow-mask/screen.mp4",
+      "description": "OBS screen capture — GN editor + Spreadsheet + viewport layout walkthrough",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/raycast.html",
+        "author": "Blender Documentation Team",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "author": "Khronos Group",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}

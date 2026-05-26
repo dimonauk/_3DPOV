@@ -61,6 +61,7 @@ import { entry as blenderTutorialGnSimulationZoneWaveRevealEntry } from "compone
 import { entry as blenderTutorialGnDistributeWeightPaintedScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-weight-painted-scatter";
 import { entry as blenderTutorialGnGeometryProximityDeformEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-proximity-deform";
 import { entry as blenderTutorialGnCaptureAttributeNamedAttributeEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-named-attribute";
+import { entry as blenderTutorialGnRaycastShadowMaskEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-shadow-mask";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -127,6 +128,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDistributeWeightPaintedScatterEntry,
   blenderTutorialGnGeometryProximityDeformEntry,
   blenderTutorialGnCaptureAttributeNamedAttributeEntry,
+  blenderTutorialGnRaycastShadowMaskEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
