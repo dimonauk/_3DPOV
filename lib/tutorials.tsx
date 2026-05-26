@@ -60,6 +60,7 @@ import { entry as blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry } from "comp
 import { entry as blenderTutorialGnSimulationZoneWaveRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-wave-reveal";
 import { entry as blenderTutorialGnDistributeWeightPaintedScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-weight-painted-scatter";
 import { entry as blenderTutorialGnGeometryProximityDeformEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-proximity-deform";
+import { entry as blenderTutorialGnCaptureAttributeNamedAttributeEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-named-attribute";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -125,6 +126,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneWaveRevealEntry,
   blenderTutorialGnDistributeWeightPaintedScatterEntry,
   blenderTutorialGnGeometryProximityDeformEntry,
+  blenderTutorialGnCaptureAttributeNamedAttributeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
