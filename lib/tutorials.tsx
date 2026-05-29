@@ -62,6 +62,7 @@ import { entry as blenderTutorialGnDistributeWeightPaintedScatterEntry } from "c
 import { entry as blenderTutorialGnGeometryProximityDeformEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-proximity-deform";
 import { entry as blenderTutorialGnCaptureAttributeNamedAttributeEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-named-attribute";
 import { entry as blenderTutorialGnRaycastShadowMaskEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-shadow-mask";
+import { entry as blenderTutorialGnIndexFaceColourMosaicEntry } from "components/tutorials/entries/blender-tutorial-gn-index-face-colour-mosaic";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -129,6 +130,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnGeometryProximityDeformEntry,
   blenderTutorialGnCaptureAttributeNamedAttributeEntry,
   blenderTutorialGnRaycastShadowMaskEntry,
+  blenderTutorialGnIndexFaceColourMosaicEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
