@@ -1,0 +1,41 @@
+{
+  "blend": "dual_mesh_voronoi_sphere.blend",
+  "glb": "dual_mesh_voronoi_sphere.glb",
+  "viewport_mp4": "public/library/videos/geometry-nodes/gn-dual-mesh-voronoi-sphere/viewport.mp4",
+  "screen_mp4": "public/library/videos/geometry-nodes/gn-dual-mesh-voronoi-sphere/screen.mp4",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-tutorial-gn-index-face-colour-mosaic",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html"
+        ]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  },
+  "topology": {
+    "subdiv_level": 2,
+    "source_triangles": 320,
+    "dual_vertices": 162,
+    "hexagons": 150,
+    "pentagons": 12
+  }
+}
