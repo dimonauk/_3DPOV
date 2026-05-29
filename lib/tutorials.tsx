@@ -63,6 +63,7 @@ import { entry as blenderTutorialGnGeometryProximityDeformEntry } from "componen
 import { entry as blenderTutorialGnCaptureAttributeNamedAttributeEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-named-attribute";
 import { entry as blenderTutorialGnRaycastShadowMaskEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-shadow-mask";
 import { entry as blenderTutorialGnIndexFaceColourMosaicEntry } from "components/tutorials/entries/blender-tutorial-gn-index-face-colour-mosaic";
+import { entry as blenderTutorialCurvesHairGroomingEntry } from "components/tutorials/entries/blender-tutorial-curves-hair-grooming";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -131,6 +132,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCaptureAttributeNamedAttributeEntry,
   blenderTutorialGnRaycastShadowMaskEntry,
   blenderTutorialGnIndexFaceColourMosaicEntry,
+  blenderTutorialCurvesHairGroomingEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

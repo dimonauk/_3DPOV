@@ -1,0 +1,55 @@
+{
+  "slug": "curves-hair-grooming",
+  "topic": "rigging",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/rigging/curves-hair-grooming/hair_grooming_head.blend",
+      "description": "Head icosphere + 44 seeded hair strands as Curves object, Principled Hair BSDF material, EEVEE Next ready",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/glbs/rigging/curves-hair-grooming/hair_grooming_head.glb",
+      "description": "Head-only GLB (Draco-6, WebP) — Curves object excluded; use GN ribbon pipeline for full hair export",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 80
+    },
+    {
+      "path": "public/library/videos/rigging/curves-hair-grooming/viewport.mp4",
+      "description": "3 s EEVEE Next camera orbit showing 44 hair strands on faceted head",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 3,
+      "expected_size_mb_max": 10
+    },
+    {
+      "path": "public/library/videos/rigging/curves-hair-grooming/screen.mp4",
+      "description": "OBS capture — Curves data panel, sculpt grooming tools, GN ribbon conversion, GLB export walkthrough",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/curves_sculpting/index.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/pixiv/three-vrm",
+        "author": "pixiv Inc.",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
