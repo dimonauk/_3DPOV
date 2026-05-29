@@ -1,0 +1,49 @@
+{
+  "slug": "gn-accumulate-field-spiral-tower",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "spiral_tower.blend",
+    "spiral_tower.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "videos/geometry-nodes/gn-accumulate-field-spiral-tower/viewport.mp4",
+    "videos/geometry-nodes/gn-accumulate-field-spiral-tower/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Accumulate Field Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Geometry Nodes Fields RFC",
+        "url": "https://devtalk.blender.org/t/geometry-nodes-fields/14042",
+        "licence": "CC-BY-SA",
+        "author": "Jacques Lucke"
+      }
+    ]
+  },
+  "key_nodes": [
+    "GeometryNodeAccumulateField",
+    "GeometryNodePoints",
+    "GeometryNodeSetPosition",
+    "GeometryNodeMeshCone",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeSetShadeSmooth",
+    "ShaderNodeMapRange"
+  ],
+  "macro": "tools/blender-addon/holoflow_macros/gn_accumulate_field_spiral_tower.py"
+}

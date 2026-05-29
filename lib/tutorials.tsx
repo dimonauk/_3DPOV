@@ -65,6 +65,7 @@ import { entry as blenderTutorialGnRaycastShadowMaskEntry } from "components/tut
 import { entry as blenderTutorialGnIndexFaceColourMosaicEntry } from "components/tutorials/entries/blender-tutorial-gn-index-face-colour-mosaic";
 import { entry as blenderTutorialCurvesHairGroomingEntry } from "components/tutorials/entries/blender-tutorial-curves-hair-grooming";
 import { entry as blenderTutorialGnDualMeshVoronoiSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-sphere";
+import { entry as blenderTutorialGnAccumulateFieldSpiralTowerEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-spiral-tower";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -135,6 +136,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnIndexFaceColourMosaicEntry,
   blenderTutorialCurvesHairGroomingEntry,
   blenderTutorialGnDualMeshVoronoiSphereEntry,
+  blenderTutorialGnAccumulateFieldSpiralTowerEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
