@@ -76,6 +76,231 @@
   --font-display: var(--font-display-loaded), ui-serif, Georgia, serif;
   --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono-loaded), ui-monospace, SFMono-Regular, monospace;
+
+  /* ─── Holo-Flow Studio kawaii-cyberpunk — added 2026-05-24 ─────────
+     New jewel-toned accents that complement the pink/mint/lavender
+     core palette. Use these for the verticals (Splatter, BY-GEN,
+     Heritage, Aura) where each pillar has its own colour identity.
+     Reference via text-gold-300 / bg-teal-400 / border-coral-400. */
+
+  /* Gold — antique brass to bright tarnish; pillar accent for
+     Heritage Documentation and Splatter's hero CTA. */
+  --color-gold-300: #f5e0a0;
+  --color-gold-400: #e8c97a;
+  --color-gold-500: #c9a84c;
+  --color-gold-600: #a08538;
+
+  /* Teal — luminous mint sibling, used by Aura emotion bars and
+     the demo-canvas "live" status dots. */
+  --color-teal-300: #7de8d0;
+  --color-teal-400: #3ecfb0;
+  --color-teal-500: #2bb094;
+
+  /* Coral — warm signal for warnings, Poi flow trails, and
+     destructive controls. */
+  --color-coral-300: #f0a090;
+  --color-coral-400: #e07060;
+  --color-coral-500: #c45846;
+
+  /* Sufficient lavender highs (we already have lavender 100..500).
+     The HTML referenced --v3 (#d4c8ff) which sits above 200 — add. */
+  --color-lavender-50: #f6f2ff;
+  --color-lavender-150: #d4c8ff;
+
+  /* Aliases for the deeper background tier the HTML uses (`--bg2`,
+     `--bg3`, `--sf`). Keep mapped to warm-black so existing pages
+     unaffected; new ones use these for layered surfaces. */
+  --color-warm-black-925: #100d18;
+  --color-warm-black-875: #181420;
+
+  /* ─── The Trail of My Passing — void palette ──────────────────────
+     Deep, void-black palette with saturated act accent colors.
+     Reference via text-trail-void / bg-trail-surface / border-trail-gold. */
+
+  /* Void — the deep black base */
+  --color-trail-void: #06060d;
+  --color-trail-deep: #0c0c18;
+  --color-trail-surface: #11111f;
+  --color-trail-surface2: #18182a;
+
+  /* Borders — subtle to medium brightness */
+  --color-trail-border: rgba(255, 255, 255, 0.06);
+  --color-trail-border-md: rgba(255, 255, 255, 0.12);
+
+  /* Ink — text and foreground */
+  --color-trail-ink: #eae8f4;
+  --color-trail-ink-2: #9896b0;
+  --color-trail-ink-3: #4a4860;
+  --color-trail-ink-4: #252438;
+
+  /* Act accent colors with dimmed variants */
+  --color-trail-act1: #ffd700; /* gold */
+  --color-trail-act1-dim: rgba(255, 215, 0, 0.12);
+  --color-trail-act2: #00e5aa; /* mint */
+  --color-trail-act2-dim: rgba(0, 229, 170, 0.08);
+  --color-trail-act3: #a78bfa; /* violet */
+  --color-trail-act3-dim: rgba(167, 139, 250, 0.08);
+  --color-trail-act4: #00f3ff; /* cyan */
+  --color-trail-act4-dim: rgba(0, 243, 255, 0.08);
+  --color-trail-act5: #ff7c6e; /* coral */
+  --color-trail-act5-dim: rgba(255, 124, 110, 0.08);
+
+  /* Fonts for Trail — serif for titles, mono for code */
+  --font-trail-serif: "Instrument Serif", Georgia, serif;
+  --font-trail-fell: "IM Fell English", Georgia, serif;
+  --font-trail-mono: "Martian Mono", monospace;
+
+  /* ─── Dimona pastel — added 2026-05-24 (third drop) ───────────────
+     The "50s pastel sci-fi kawaii cyber pastel goth witchcore princess
+     — happy cyberpunk, the opposite of Blade Runner" palette.
+     Pairs with the cornerStyle=octagonal axis for the clipped-corner
+     aesthetic. Mint is the spine; pink/lilac are accents; gold is
+     warm callouts; ice is cool callouts. */
+  --color-dimona-mint:  #7fffd4;
+  --color-dimona-pink:  #ffaacc;
+  --color-dimona-lilac: #cc99ff;
+  --color-dimona-gold:  #ffdd66;
+  --color-dimona-ice:   #aaeeff;
+  --color-dimona-dim:   #6a6480;
+  --color-dimona-ink:   #ddd8f0;
+  --color-dimona-bg:    #080810;
+  --color-dimona-bg1:   #0e0e1a;
+  --color-dimona-bg2:   #141422;
+  --color-dimona-bg3:   #1c1c2e;
+}
+
+/* ─── Octagonal-corner utility (cornerStyle=octagonal) ──────────────
+   Applies the clip-path corner cut used by the Dimona-pastel design.
+   Two sizes — .holoflow-cp (10px) for cards, .holoflow-cp-sm (6px)
+   for buttons. Opt-in per element so existing pages stay square. */
+.holoflow-cp {
+  --ch: 10px;
+  clip-path: polygon(
+    var(--ch) 0%, calc(100% - var(--ch)) 0%,
+    100% var(--ch), 100% calc(100% - var(--ch)),
+    calc(100% - var(--ch)) 100%, var(--ch) 100%,
+    0% calc(100% - var(--ch)), 0% var(--ch)
+  );
+}
+.holoflow-cp-sm { --ch: 6px; }
+.holoflow-cp-sm.holoflow-cp,
+.holoflow-cp.holoflow-cp-sm { --ch: 6px; }
+
+/* ─── Glow keyframes (glowEffects=on) ───────────────────────────────
+   Reusable pulsing box-shadow rings in the Dimona palette. Apply via
+   the <Glow> component or directly via .holoflow-glow-{mint|pink|lilac}. */
+@keyframes holoflow-glow-mint {
+  0%, 100% { box-shadow: 0 0 6px rgba(127, 255, 212, 0.15), 0 0 20px rgba(127, 255, 212, 0.05); }
+  50%      { box-shadow: 0 0 14px rgba(127, 255, 212, 0.35), 0 0 40px rgba(127, 255, 212, 0.12); }
+}
+@keyframes holoflow-glow-pink {
+  0%, 100% { box-shadow: 0 0 6px rgba(255, 170, 204, 0.15); }
+  50%      { box-shadow: 0 0 14px rgba(255, 170, 204, 0.35), 0 0 40px rgba(255, 170, 204, 0.12); }
+}
+@keyframes holoflow-glow-lilac {
+  0%, 100% { box-shadow: 0 0 6px rgba(204, 153, 255, 0.15); }
+  50%      { box-shadow: 0 0 14px rgba(204, 153, 255, 0.35), 0 0 40px rgba(204, 153, 255, 0.12); }
+}
+.holoflow-glow-mint  { animation: holoflow-glow-mint  3s ease-in-out infinite; }
+.holoflow-glow-pink  { animation: holoflow-glow-pink  3.4s ease-in-out infinite; }
+.holoflow-glow-lilac { animation: holoflow-glow-lilac 2.8s ease-in-out infinite; }
+
+/* ─── 3D card lift (cardHover=lift-3d) ──────────────────────────────
+   Subtle perspective tilt on hover. The HTML candidate uses this on
+   capability cards. Pair with rounded corners + dark bg for the
+   trading-card feel. */
+.holoflow-lift-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.35s, background 0.2s;
+}
+.holoflow-lift-3d:hover {
+  transform: rotateX(-3deg) rotateY(5deg) translateZ(4px);
+}
+
+/* ─── Circuit trace pulse (circuitTraces=on) ────────────────────────
+   Animates SVG <path> dasharray to look like current flowing along
+   PCB-style traces. Used by the <CircuitTraces /> overlay. */
+@keyframes holoflow-trace-pulse {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  30%  { opacity: 0.6; }
+  80%  { opacity: 0.3; }
+  100% { stroke-dashoffset: -400; opacity: 0; }
+}
+.holoflow-trace { stroke-dasharray: 400; animation: holoflow-trace-pulse 3s ease-in-out infinite; }
+@keyframes holoflow-node-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+.holoflow-node { animation: holoflow-node-pulse 2s ease-in-out infinite alternate; }
+
+/* ─── Holo-Flow keyframes — shared by all .holoflow-* components. */
+@keyframes holoflow-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+@keyframes holoflow-flicker {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.4;
+  }
+}
+@keyframes holoflow-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+@keyframes holoflow-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes holoflow-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.holoflow-blink {
+  animation: holoflow-blink 2s ease-in-out infinite;
+}
+.holoflow-flicker {
+  animation: holoflow-flicker 4s ease-in-out infinite;
+}
+.holoflow-bob {
+  animation: holoflow-bob 2.5s ease-in-out infinite;
+}
+.holoflow-fade-up {
+  animation: holoflow-fade-up 0.2s ease-out;
+}
+.holoflow-marquee-track {
+  display: flex;
+  animation: holoflow-marquee 30s linear infinite;
+  white-space: nowrap;
+}
+.holoflow-marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* ─── Workshop shell — IDE/DAW-style chrome around the page ──────────
@@ -209,12 +434,24 @@ button {
 /* Explicit depth planes. Use these to compose layered covers — image
    at lux-z-0, subtitle band at lux-z-2, big title at lux-z-3, edition
    numeral at lux-z-4. */
-.lux-z-0 { transform: translateZ(0px); }
-.lux-z-1 { transform: translateZ(12px); }
-.lux-z-2 { transform: translateZ(24px); }
-.lux-z-3 { transform: translateZ(40px); }
-.lux-z-4 { transform: translateZ(60px); }
-.lux-z-5 { transform: translateZ(88px); }
+.lux-z-0 {
+  transform: translateZ(0px);
+}
+.lux-z-1 {
+  transform: translateZ(12px);
+}
+.lux-z-2 {
+  transform: translateZ(24px);
+}
+.lux-z-3 {
+  transform: translateZ(40px);
+}
+.lux-z-4 {
+  transform: translateZ(60px);
+}
+.lux-z-5 {
+  transform: translateZ(88px);
+}
 
 /* Paper-stack drop shadow — suggests the layer is lifted off the page.
    Soft and warm-tinted to match the pink/warm-black palette. */
@@ -238,7 +475,9 @@ button {
 /* Stack-of-paper effect — pseudo-elements offset behind the main
    element to suggest two sheets beneath the visible one. Apply to a
    positioned element. */
-.lux-paper-stack { position: relative; }
+.lux-paper-stack {
+  position: relative;
+}
 .lux-paper-stack::before,
 .lux-paper-stack::after {
   content: "";
@@ -343,8 +582,13 @@ button {
     animation: lux-foil-sweep 9s ease-in-out infinite;
   }
   @keyframes lux-foil-sweep {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }
 
@@ -379,4 +623,95 @@ button {
   .lux-stage--hover-settle:hover .lux-card {
     transition-duration: 700ms;
   }
+}
+
+/* ─── Sidebar layout tokens ──────────────────────────────────────────
+   --nav-sidebar-w controls the fixed left sidebar width on desktop.
+   Bump this here if you need more room for link labels; the sidebar
+   component and .nav-sidebar-offset both read from this single token. */
+:root {
+  --nav-sidebar-w: 180px;
+}
+
+/* Content wrapper pushed right of the sidebar on desktop, padded top
+   on mobile (to clear the 48px fixed top bar). */
+.nav-sidebar-offset {
+  margin-left: var(--nav-sidebar-w);
+}
+
+@media (max-width: 767px) {
+  .nav-sidebar-offset {
+    margin-left: 0;
+    padding-top: 3rem; /* h-12 = 48px top bar */
+  }
+}
+
+/* ─── Day / gallery theme ────────────────────────────────────────────
+   Applied when <html data-theme="day"> (the default; see layout.tsx).
+   Designed for high-ambient photography viewing: warm parchment page,
+   near-black typography, jewel-toned accent remapping.
+   All colour tokens reference the same --color-* custom properties
+   Tailwind utilities use, so every bg-*/text-*/border-* class
+   automatically picks up the day palette without code changes. */
+
+html[data-theme="day"] {
+  /* ── Page layer stack (warm-black → warm parchment) ────────────── */
+  --color-warm-black-950: #f4f0eb; /* page background */
+  --color-warm-black-925: #ece6de;
+  --color-warm-black-900: #e6e0d6; /* card / panel backgrounds */
+  --color-warm-black-875: #ddd7cc;
+  --color-warm-black-800: #ccc4b4; /* borders */
+  --color-warm-black-700: #a89e8e; /* subtle borders / dividers */
+  --color-warm-black-100: #2c2438; /* secondary text */
+  --color-warm-black-50:  #1a1422; /* primary text */
+
+  /* ── Chrome labels → muted purple-grays on parchment ──────────── */
+  --color-chrome-100: #2a1c40;
+  --color-chrome-200: #4a3868;
+  --color-chrome-300: #6e5a90;
+  --color-chrome-400: #857098;
+  --color-chrome-500: #9a85b0;
+
+  /* ── Pinks → rich magentas, readable on light bg ──────────────── */
+  --color-pink-50:  #f9f0f5;
+  --color-pink-100: #f0d8e8;
+  --color-pink-200: #be005c; /* primary accent / active state */
+  --color-pink-300: #9c0049;
+  --color-pink-400: #7e0038;
+  --color-pink-500: #620028;
+  --color-pink-600: #480018;
+
+  /* ── Lavender → deep purples ───────────────────────────────────── */
+  --color-lavender-100: #ddd0f8;
+  --color-lavender-150: #c8b0f0;
+  --color-lavender-200: #7840c8;
+  --color-lavender-300: #6028a8;
+  --color-lavender-400: #4c1888;
+  --color-lavender-500: #3c0c70;
+
+  /* ── Mint → forest greens ──────────────────────────────────────── */
+  --color-mint-100: #c8f0dc;
+  --color-mint-200: #1a8854;
+  --color-mint-300: #0e6a40;
+  --color-mint-400: #085830;
+  --color-mint-500: #044020;
+
+  /* ── Trail tokens — day equivalents ───────────────────────────── */
+  --color-trail-void:      #f4f0eb;
+  --color-trail-deep:      #ece6de;
+  --color-trail-surface:   #e6e0d6;
+  --color-trail-surface2:  #ddd7cc;
+  --color-trail-border:    rgba(0, 0, 0, 0.06);
+  --color-trail-border-md: rgba(0, 0, 0, 0.12);
+  --color-trail-ink:       #1a1422;
+  --color-trail-ink-2:     #4a3868;
+  --color-trail-ink-3:     #9a85b0;
+  --color-trail-ink-4:     #ccc4b4;
+
+  /* ── Dimona pastel — stays vivid on parchment ─────────────────── */
+  --color-dimona-bg:  #f4f0eb;
+  --color-dimona-bg1: #ece6de;
+  --color-dimona-bg2: #e6e0d6;
+  --color-dimona-bg3: #ddd7cc;
+  --color-dimona-ink: #1a1422;
 }
