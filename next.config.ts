@@ -106,11 +106,11 @@ export default {
       },
       {
         // Cloudinary — all portfolio, project, and gallery images.
-        // Cloud name: dnfjocfit. public_ids live under portfolio/, projects/,
+        // Cloud name: dnfjocflt. public_ids live under portfolio/, projects/,
         // client-work/. The loader in lib/cloudinary.ts builds these URLs.
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/dnfjocfit/**",
+        pathname: "/dnfjocflt/**",
       },
     ],
   },

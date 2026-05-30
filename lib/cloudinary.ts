@@ -18,7 +18,7 @@
  */
 
 const CLOUD_NAME =
-  process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "dnfjocfit";
+  process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "dnfjocflt";
 
 const BASE = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
