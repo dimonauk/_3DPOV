@@ -33,6 +33,17 @@
  *
  * `getCart()` is intentionally NOT in this file — it reads cookies
  * and lives in `./index.ts`. See that file for the rationale.
+ *
+ * RESILIENCE (added 2026-05-30): every read below is wrapped in
+ * `safeRead`. A Shopify outage at build/prerender time — a network
+ * `fetch failed` / non-200 / GraphQL error thrown by `shopifyFetch`
+ * — must NOT throw out of a Server Component, because a single
+ * thrown read while prerendering a page (e.g. the homepage carousel)
+ * fails the whole `next build` export and takes the entire deploy
+ * down. Instead we log and return a safe empty value, so the page
+ * renders without that data. Trade-off: under `"use cache"` the
+ * fallback can be cached until the next revalidation/redeploy — an
+ * empty carousel for a while is strictly better than no deploy at all.
  */
 
 import { TAGS } from "lib/constants";
@@ -77,6 +88,25 @@ import type {
   ShopifyProductsOperation,
 } from "./types";
 
+/**
+ * Run a Shopify read but never throw during render/prerender. On any
+ * failure (network, non-200, GraphQL error) log it and return the
+ * supplied fallback so the calling Server Component still renders and
+ * the build export does not abort. See the file header for rationale.
+ */
+async function safeRead<T>(
+  label: string,
+  run: () => Promise<T>,
+  fallback: T
+): Promise<T> {
+  try {
+    return await run();
+  } catch (err) {
+    log.error(`${label} failed; serving fallback`, { err: String(err) });
+    return fallback;
+  }
+}
+
 // `getCart` is intentionally NOT in this file — it reads cookies(),
 // which a top-level `"use cache"` file is not permitted to import
 // (`next/headers` only works in a Server Component, and a file with
@@ -91,14 +121,20 @@ export async function getCollection(
   cacheTag(TAGS.collections);
   cacheLife("days");
 
-  const res = await shopifyFetch<ShopifyCollectionOperation>({
-    query: getCollectionQuery,
-    variables: {
-      handle,
-    },
-  });
+  return safeRead(
+    "getCollection",
+    async () => {
+      const res = await shopifyFetch<ShopifyCollectionOperation>({
+        query: getCollectionQuery,
+        variables: {
+          handle,
+        },
+      });
 
-  return reshapeCollection(res.body.data.collection);
+      return reshapeCollection(res.body.data.collection);
+    },
+    undefined
+  );
 }
 
 export async function getCollectionProducts({
@@ -121,24 +157,42 @@ export async function getCollectionProducts({
     return [];
   }
 
-  const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
-    query: getCollectionProductsQuery,
-    variables: {
-      handle: collection,
-      reverse,
-      sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
+  return safeRead(
+    "getCollectionProducts",
+    async () => {
+      const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
+        query: getCollectionProductsQuery,
+        variables: {
+          handle: collection,
+          reverse,
+          sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
+        },
+      });
+
+      if (!res.body.data.collection) {
+        log.info("No collection found", { collection });
+        return [];
+      }
+
+      return reshapeProducts(
+        removeEdgesAndNodes(res.body.data.collection.products)
+      );
     },
-  });
-
-  if (!res.body.data.collection) {
-    log.info("No collection found", { collection });
-    return [];
-  }
-
-  return reshapeProducts(
-    removeEdgesAndNodes(res.body.data.collection.products)
+    []
   );
 }
+
+const ALL_COLLECTION: Collection = {
+  handle: "",
+  title: "All",
+  description: "All products",
+  seo: {
+    title: "All",
+    description: "All products",
+  },
+  path: "/search",
+  updatedAt: new Date().toISOString(),
+};
 
 export async function getCollections(): Promise<Collection[]> {
   "use cache";
@@ -147,45 +201,29 @@ export async function getCollections(): Promise<Collection[]> {
 
   if (!endpoint) {
     log.info("Skipping getCollections - Shopify not configured");
-    return [
-      {
-        handle: "",
-        title: "All",
-        description: "All products",
-        seo: {
-          title: "All",
-          description: "All products",
-        },
-        path: "/search",
-        updatedAt: new Date().toISOString(),
-      },
-    ];
+    return [ALL_COLLECTION];
   }
 
-  const res = await shopifyFetch<ShopifyCollectionsOperation>({
-    query: getCollectionsQuery,
-  });
-  const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
-  const collections = [
-    {
-      handle: "",
-      title: "All",
-      description: "All products",
-      seo: {
-        title: "All",
-        description: "All products",
-      },
-      path: "/search",
-      updatedAt: new Date().toISOString(),
+  return safeRead(
+    "getCollections",
+    async () => {
+      const res = await shopifyFetch<ShopifyCollectionsOperation>({
+        query: getCollectionsQuery,
+      });
+      const shopifyCollections = removeEdgesAndNodes(
+        res.body?.data?.collections
+      );
+      return [
+        ALL_COLLECTION,
+        // Filter out the `hidden` collections.
+        // Collections that start with `hidden-*` need to be hidden on the search page.
+        ...reshapeCollections(shopifyCollections).filter(
+          (collection) => !collection.handle.startsWith("hidden")
+        ),
+      ];
     },
-    // Filter out the `hidden` collections.
-    // Collections that start with `hidden-*` need to be hidden on the search page.
-    ...reshapeCollections(shopifyCollections).filter(
-      (collection) => !collection.handle.startsWith("hidden")
-    ),
-  ];
-
-  return collections;
+    [ALL_COLLECTION]
+  );
 }
 
 export async function getMenu(handle: string): Promise<Menu[]> {
@@ -198,21 +236,29 @@ export async function getMenu(handle: string): Promise<Menu[]> {
     return [];
   }
 
-  const res = await shopifyFetch<ShopifyMenuOperation>({
-    query: getMenuQuery,
-    variables: {
-      handle,
-    },
-  });
+  return safeRead(
+    "getMenu",
+    async () => {
+      const res = await shopifyFetch<ShopifyMenuOperation>({
+        query: getMenuQuery,
+        variables: {
+          handle,
+        },
+      });
 
-  return (
-    res.body?.data?.menu?.items.map((item: { title: string; url: string }) => ({
-      title: item.title,
-      path: item.url
-        .replace(domain, "")
-        .replace("/collections", "/search")
-        .replace("/pages", ""),
-    })) || []
+      return (
+        res.body?.data?.menu?.items.map(
+          (item: { title: string; url: string }) => ({
+            title: item.title,
+            path: item.url
+              .replace(domain, "")
+              .replace("/collections", "/search")
+              .replace("/pages", ""),
+          })
+        ) || []
+      );
+    },
+    []
   );
 }
 
@@ -226,14 +272,20 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     return undefined;
   }
 
-  const res = await shopifyFetch<ShopifyProductOperation>({
-    query: getProductQuery,
-    variables: {
-      handle,
-    },
-  });
+  return safeRead(
+    "getProduct",
+    async () => {
+      const res = await shopifyFetch<ShopifyProductOperation>({
+        query: getProductQuery,
+        variables: {
+          handle,
+        },
+      });
 
-  return reshapeProduct(res.body.data.product, false);
+      return reshapeProduct(res.body.data.product, false);
+    },
+    undefined
+  );
 }
 
 export async function getProductRecommendations(
@@ -243,14 +295,20 @@ export async function getProductRecommendations(
   cacheTag(TAGS.products);
   cacheLife("days");
 
-  const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
-    query: getProductRecommendationsQuery,
-    variables: {
-      productId,
-    },
-  });
+  return safeRead(
+    "getProductRecommendations",
+    async () => {
+      const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
+        query: getProductRecommendationsQuery,
+        variables: {
+          productId,
+        },
+      });
 
-  return reshapeProducts(res.body.data.productRecommendations);
+      return reshapeProducts(res.body.data.productRecommendations);
+    },
+    []
+  );
 }
 
 export async function getProducts({
@@ -266,14 +324,20 @@ export async function getProducts({
   cacheTag(TAGS.products);
   cacheLife("days");
 
-  const res = await shopifyFetch<ShopifyProductsOperation>({
-    query: getProductsQuery,
-    variables: {
-      query,
-      reverse,
-      sortKey,
-    },
-  });
+  return safeRead(
+    "getProducts",
+    async () => {
+      const res = await shopifyFetch<ShopifyProductsOperation>({
+        query: getProductsQuery,
+        variables: {
+          query,
+          reverse,
+          sortKey,
+        },
+      });
 
-  return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
+      return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
+    },
+    []
+  );
 }
