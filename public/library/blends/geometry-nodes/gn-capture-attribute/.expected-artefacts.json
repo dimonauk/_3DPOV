@@ -1,0 +1,63 @@
+{
+  "slug": "gn-capture-attribute-named-attribute",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "colour_scatter.blend",
+    "colour_scatter.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-capture-attribute/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-capture-attribute/screen.mp4"
+  ],
+  "outputs": {
+    "blend": "colour_scatter.blend",
+    "glb": "colour_scatter.glb"
+  },
+  "glb_path": "public/library/glbs/geometry-nodes/gn-capture-attribute/colour_scatter.glb",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-distribute-weight-painted-scatter",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Capture Attribute Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Store Named Attribute Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "technique_notes": [
+    "GeometryNodeCaptureAttribute data_type='FLOAT' domain='POINT': inputs[0]=Geometry inputs[1]=Value; outputs[0]=Geometry outputs[1]=Attribute",
+    "CaptureAttribute forces field evaluation at the specified domain at the current position in the node tree — downstream domain changes cannot corrupt the stored value",
+    "GeometryNodeStoreNamedAttribute data_type='FLOAT' domain='INSTANCE': inputs[2]=Name(string) inputs[3]=Value — stores value to mesh data, visible in Spreadsheet, survives export_apply",
+    "INSTANCE domain attrs propagate to every POINT of each realized instance after RealizeInstances — all N vertices of sphere k get the same colour_phase",
+    "ShaderNodeAttribute attribute_type='GEOMETRY' reads a named attribute in the EEVEE material — outputs[2]=Fac is the float scalar for colour ramp input",
+    "GeometryNodeIcoSphere + GeometryNodeSetMaterial assigns material inside GN tree before instancing — no external prototype object required",
+    "export_apply=True required — runtimes do not evaluate GN; 'colour_phase' exports as a custom glTF vertex attribute _COLOUR_PHASE",
+    "Field laziness: Index, Position, RandomValue are field expressions not stored values; they re-evaluate at whatever domain is active at point of consumption"
+  ]
+}

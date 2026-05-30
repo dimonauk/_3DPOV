@@ -93,3 +93,11 @@ than broken.
 
 Env vars are scoped per-environment in Vercel's dashboard so dev-store
 data never reaches production and vice versa.
+
+## For agents working on this repo
+
+Read `AGENTS.md` first. If you are writing or editing in **Aura's voice**
+(articles in `components/articles/entries/`, video narration prompts, any
+in-character text), read `docs/AURA-CANON.md` **before you start.** That
+is the single source of truth for who Aura is on this site; everything
+else defers to it.

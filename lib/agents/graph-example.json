@@ -1,0 +1,106 @@
+{
+  "$schema": "./crew-schema.json",
+  "id": "graph-example",
+  "name": "Graph Example — Anomaly Response with Conditional Routing",
+  "version": "0.1.0",
+  "description": "Reference Phase-3 crew demonstrating graph-mode execution with `edge.when` conditional routing. An anomaly is triaged; depending on its severity (carried in `context_variables.anomaly_severity`), one of two branches runs (`escalate` for high severity, `log_minor` otherwise) while the unconditional `dispatch_brief` always runs. Demonstrates: (a) conditional edge predicates, (b) transitive skipping, (c) `skipped_task_ids` in the result. Phase 3 of agent.crew-run executes this end-to-end against the configured LLM provider.",
+  "tenant_id": "",
+  "lineage": {
+    "template_id": "holoflow.template.v1",
+    "locked_by": "studio.runtime"
+  },
+  "process": "graph",
+  "context_variables": {
+    "anomaly_id": "anom-2026-05-21-001",
+    "anomaly_severity": "high",
+    "detection_channel": "tir_validator"
+  },
+  "guards": {
+    "max_total_iterations": 8,
+    "max_wallclock_ms": 120000
+  },
+  "agents": [
+    {
+      "id": "physicist",
+      "role": "Lighting and Optics — Triage Lead",
+      "goal": "Quickly assess inbound anomalies in the optics/waveguide pipeline. Classify, characterise root cause if obvious, hand off downstream.",
+      "backstory": "From the Physics of Light and Space hall. Treats anomalies as data points; never panics, never sugarcoats.",
+      "system_prompt_suffix": "Triage means: classify the anomaly, name the most likely root cause in one phrase, state whether human intervention is needed. No long prose.",
+      "task_boundaries": "No remediation. No customer comms. Triage only.",
+      "output_format": "Two short paragraphs: (1) classification, (2) most likely root cause + intervention required y/n."
+    },
+    {
+      "id": "logistician",
+      "role": "Logistician — Escalation Routing",
+      "goal": "When a high-severity anomaly is escalated, route it: which team, which channel, which deadline, which contingency.",
+      "backstory": "Tracks lead times the way other people track football scores. Will not hand off an escalation without a deadline.",
+      "system_prompt_suffix": "You only run on high-severity anomalies. Build a concrete escalation plan: team, channel, deadline, contingency.",
+      "task_boundaries": "No optics. No customer voice. Logistics and routing only.",
+      "output_format": "Bullet plan: team, channel, deadline, contingency."
+    },
+    {
+      "id": "scribe",
+      "role": "Scribe — Minor-Anomaly Log Entry Composer",
+      "goal": "When an anomaly is below the escalation threshold, write a one-line log entry for the running studio journal.",
+      "backstory": "The Prefect's writing room. Believes any artefact without a stable id is already lost.",
+      "system_prompt_suffix": "You only run on non-high-severity anomalies. Compose one line for the studio journal. Include anomaly_id. Tone: dry, factual.",
+      "task_boundaries": "No prose beyond one log line. No remediation suggestions. No escalation.",
+      "output_format": "One sentence including anomaly_id and the classification."
+    },
+    {
+      "id": "marcel",
+      "role": "Marcel — Brief Dispatcher",
+      "goal": "Regardless of severity, compose the dispatch brief that goes out to the duty operator at end of incident.",
+      "backstory": "Calm, methodical, never lets a thread go unfinished.",
+      "system_prompt_suffix": "You run after triage regardless of severity. Read the triage output and produce a 2-3 sentence dispatch brief addressed to the duty operator.",
+      "task_boundaries": "No new analysis. No new logistics. Dispatch composition only.",
+      "output_format": "A 2-3 sentence dispatch addressed to 'duty operator'."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "triage",
+      "description": "Triage the inbound anomaly {context.anomaly_id} reported on the {context.detection_channel} channel. Severity per context: {context.anomaly_severity}. Classify and name the most likely root cause.",
+      "assigned_agent": "physicist",
+      "expected_output": "Two short paragraphs: classification + root cause + intervention y/n.",
+      "retries": 0
+    },
+    {
+      "id": "escalate",
+      "description": "Anomaly {context.anomaly_id} was classified as high-severity by the Physicist. Build the escalation plan: which team, which channel, which deadline, which contingency.",
+      "assigned_agent": "logistician",
+      "expected_output": "Bulleted escalation plan (team, channel, deadline, contingency).",
+      "retries": 0
+    },
+    {
+      "id": "log_minor",
+      "description": "Anomaly {context.anomaly_id} did not meet the escalation threshold. Compose one log line for the running studio journal.",
+      "assigned_agent": "scribe",
+      "expected_output": "One sentence including the anomaly_id and the classification.",
+      "retries": 0
+    },
+    {
+      "id": "dispatch_brief",
+      "description": "Compose the dispatch brief for anomaly {context.anomaly_id} addressed to the duty operator. The Physicist's triage output is available in the context; route accordingly.",
+      "assigned_agent": "marcel",
+      "expected_output": "A 2-3 sentence dispatch addressed to the duty operator.",
+      "retries": 0
+    }
+  ],
+  "edges": [
+    {
+      "from_task": "triage",
+      "to_task": "escalate",
+      "when": "anomaly_severity == \"high\""
+    },
+    {
+      "from_task": "triage",
+      "to_task": "log_minor",
+      "when": "anomaly_severity != \"high\""
+    },
+    {
+      "from_task": "triage",
+      "to_task": "dispatch_brief"
+    }
+  ]
+}

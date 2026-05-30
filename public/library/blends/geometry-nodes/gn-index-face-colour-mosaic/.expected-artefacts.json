@@ -1,0 +1,54 @@
+{
+  "slug": "gn-index-face-colour-mosaic",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-index-face-colour-mosaic/mosaic_tile.blend",
+      "description": "16×16 quad grid with GN rainbow mosaic modifier and Emission material",
+      "generated_by": "blueprint.py",
+      "format": "BLEND"
+    },
+    {
+      "path": "public/library/glbs/geometry-nodes/gn-index-face-colour-mosaic/mosaic_tile.glb",
+      "description": "Draco-6 GLB with tile_colour as custom FACE-domain vertex attribute _TILE_COLOUR",
+      "generated_by": "blueprint.py",
+      "format": "GLB",
+      "expected_size_kb_max": 150
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-index-face-colour-mosaic/viewport.mp4",
+      "description": "3-second camera orbit showing rainbow mosaic from top-oblique to side angle",
+      "generated_by": "record.py",
+      "format": "MP4",
+      "expected_duration_s": 3,
+      "expected_size_mb_max": 12
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-index-face-colour-mosaic/screen.mp4",
+      "description": "OBS screen capture — GN tree + Spreadsheet FACE domain + Shader Editor walkthrough",
+      "generated_by": "human — see SCREEN-RECORDING-NOTES.md",
+      "format": "MP4"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-gn-raycast-shadow-mask"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/index.html",
+        "author": "Blender Documentation Team",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "author": "Khronos Group",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}

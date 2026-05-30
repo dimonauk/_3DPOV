@@ -54,6 +54,19 @@ import { entry as blenderTutorialGnExtrudeMeshPanelLinesEntry } from "components
 import { entry as blenderTutorialEeveeToonCelShaderEntry } from "components/tutorials/entries/blender-tutorial-eevee-toon-cel-shader";
 import { entry as blenderTutorialAnimationDriversParametricShaderEntry } from "components/tutorials/entries/blender-tutorial-animation-drivers-parametric-shader";
 import { entry as blenderTutorialGnMeshBooleanHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-boolean-hard-surface";
+import { entry as blenderTutorialGnRepeatZoneCrystalClusterEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-crystal-cluster";
+import { entry as blenderTutorialVrmSpringBonesHairChainEntry } from "components/tutorials/entries/blender-tutorial-vrm-spring-bones-hair-chain";
+import { entry as blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-edge-crease-subdiv-hard-surface";
+import { entry as blenderTutorialGnSimulationZoneWaveRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-wave-reveal";
+import { entry as blenderTutorialGnDistributeWeightPaintedScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-weight-painted-scatter";
+import { entry as blenderTutorialGnGeometryProximityDeformEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-proximity-deform";
+import { entry as blenderTutorialGnCaptureAttributeNamedAttributeEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-named-attribute";
+import { entry as blenderTutorialGnRaycastShadowMaskEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-shadow-mask";
+import { entry as blenderTutorialGnIndexFaceColourMosaicEntry } from "components/tutorials/entries/blender-tutorial-gn-index-face-colour-mosaic";
+import { entry as blenderTutorialCurvesHairGroomingEntry } from "components/tutorials/entries/blender-tutorial-curves-hair-grooming";
+import { entry as blenderTutorialGnDualMeshVoronoiSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-sphere";
+import { entry as blenderTutorialGnAccumulateFieldSpiralTowerEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-spiral-tower";
+import { entry as blenderTutorialGnMeshIslandPerIslandColourEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-island-per-island-colour";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -113,6 +126,19 @@ const ENTRIES: Entry[] = [
   blenderTutorialEeveeToonCelShaderEntry,
   blenderTutorialAnimationDriversParametricShaderEntry,
   blenderTutorialGnMeshBooleanHardSurfaceEntry,
+  blenderTutorialGnRepeatZoneCrystalClusterEntry,
+  blenderTutorialVrmSpringBonesHairChainEntry,
+  blenderTutorialGnEdgeCreaseSubdivHardSurfaceEntry,
+  blenderTutorialGnSimulationZoneWaveRevealEntry,
+  blenderTutorialGnDistributeWeightPaintedScatterEntry,
+  blenderTutorialGnGeometryProximityDeformEntry,
+  blenderTutorialGnCaptureAttributeNamedAttributeEntry,
+  blenderTutorialGnRaycastShadowMaskEntry,
+  blenderTutorialGnIndexFaceColourMosaicEntry,
+  blenderTutorialCurvesHairGroomingEntry,
+  blenderTutorialGnDualMeshVoronoiSphereEntry,
+  blenderTutorialGnAccumulateFieldSpiralTowerEntry,
+  blenderTutorialGnMeshIslandPerIslandColourEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

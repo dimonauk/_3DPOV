@@ -28,6 +28,10 @@ export type Entry = {
   date: string; // ISO YYYY-MM-DD
   kind: EntryKind;
   excerpt: string;
+  /** Optional longer summary (tutorials). Falls back to excerpt when absent. */
+  summary?: string;
+  /** Optional free-form tags (tutorials) for filtering and cross-linking. */
+  tags?: string[];
   Body: ComponentType;
   // Optional hero image at the top of the detail page. When absent,
   // the page falls back to a chrome-sheen gradient plate.

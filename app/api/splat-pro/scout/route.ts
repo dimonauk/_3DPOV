@@ -18,9 +18,9 @@
 
 import { NextResponse } from "next/server";
 
-import { benchInfo, bench } from "lib/splat-pro/bench-client";
-import { scoutFromMetadata } from "lib/splat-pro/scout-web";
-import type { ScoutReport } from "lib/splat-pro/types";
+import { benchInfo, bench } from "lib/capabilities/viz/scout/bench-client";
+import { scoutFromMetadata } from "lib/capabilities/viz/scout/scout-web";
+import type { ScoutReport } from "lib/capabilities/viz/scout/types";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
