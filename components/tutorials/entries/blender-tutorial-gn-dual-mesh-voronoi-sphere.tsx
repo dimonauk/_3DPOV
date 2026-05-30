@@ -151,6 +151,9 @@ const base: Entry = {
   slug: "blender-tutorial-gn-dual-mesh-voronoi-sphere",
   title: "GN Dual Mesh — Geodesic Voronoi Sphere (Blender 5.1)",
   date: "2026-05-29",
+  kind: "tutorial",
+  excerpt:
+    "Convert a subdivided icosphere into a hex/pent geodesic dome with the Geometry Nodes Dual Mesh node.",
   summary:
     "Use the Geometry Nodes Dual Mesh node to convert a subdivided icosphere into a hex/pent geodesic dome. Triangulate first (Dual Mesh requires all-triangle input), then re-project dual vertices from triangle centroids back onto the sphere surface with VectorMath(NORMALIZE) × radius. Flat shading reveals the lattice; the twelve pentagons are topologically inevitable via the Euler characteristic.",
   tags: [
@@ -162,7 +165,7 @@ const base: Entry = {
     "faceted",
     "webxr",
   ],
-  body: GnDualMeshVoronoiSphereBody,
+  Body: GnDualMeshVoronoiSphereBody,
 };
 
 export const entry = buildInstructable(

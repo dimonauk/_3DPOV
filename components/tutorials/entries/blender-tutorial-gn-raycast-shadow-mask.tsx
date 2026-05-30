@@ -102,10 +102,13 @@ const base: Entry = {
   slug: "blender-tutorial-gn-raycast-shadow-mask",
   title: "GN Raycast — Procedural Shadow Mask for Cel Shading",
   date: "2026-05-26",
+  kind: "tutorial",
+  excerpt:
+    "Cast per-vertex rays at a virtual sun and bake a lit/shadow boolean into a shadow_mask attribute for cel shading.",
   summary:
     "Cast per-vertex rays toward a virtual sun, test against a blocker object, and bake the lit/shadowed boolean into a shadow_mask named attribute. A two-tone Emission material reads the attribute — no lamp, no shadow map, no runtime cost.",
   tags: ["blender", "geometry-nodes", "shading", "cel-shading", "webxr"],
-  body: GnRaycastShadowMaskBody,
+  Body: GnRaycastShadowMaskBody,
 };
 
 export const entry = buildInstructable(

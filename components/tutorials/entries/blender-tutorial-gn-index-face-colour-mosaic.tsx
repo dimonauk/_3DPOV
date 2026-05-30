@@ -109,6 +109,9 @@ const base: Entry = {
   slug: "blender-tutorial-gn-index-face-colour-mosaic",
   title: "GN Index + Modulo — Per-Face Colour for Procedural Mosaic Tiles",
   date: "2026-05-29",
+  kind: "tutorial",
+  excerpt:
+    "Assign one rainbow hue per quad face with GeometryNodeInputIndex and a MODULO-driven HSV colour — no UV, no texture.",
   summary:
     "Use GeometryNodeInputIndex at FACE domain to assign one rainbow hue per quad. Math(MODULO) extracts the column bucket; ShaderNodeCombineColor(HSV) converts it to RGB; StoreNamedAttribute writes it as a FACE-domain tile_colour attribute. No UV, no texture, no bake — hard-edge colour per face, exported as a custom glTF vertex attribute.",
   tags: [
@@ -119,7 +122,7 @@ const base: Entry = {
     "webxr",
     "cel-shading",
   ],
-  body: GnIndexFaceColourMosaicBody,
+  Body: GnIndexFaceColourMosaicBody,
 };
 
 export const entry = buildInstructable(

@@ -29,12 +29,12 @@ const PUBLISHABLE_KEY =
 // a "loading…" state — we surface a clearer error in PayForm instead.
 let stripePromise: Promise<Stripe | null> | null = null;
 function getStripe(): Promise<Stripe | null> {
-  if (!stripePromise) {
-    stripePromise = PUBLISHABLE_KEY
-      ? loadStripe(PUBLISHABLE_KEY)
-      : Promise.resolve(null);
-  }
-  return stripePromise;
+  if (stripePromise) return stripePromise;
+  const p: Promise<Stripe | null> = PUBLISHABLE_KEY
+    ? loadStripe(PUBLISHABLE_KEY)
+    : Promise.resolve(null);
+  stripePromise = p;
+  return p;
 }
 
 export default function CheckoutClient({
