@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dollyos.hangar/schemas/crew.schema.json",
+  "title": "DollyOS Crew",
+  "description": "Generic schema for an Aura-orchestrated swarm. Synthesises CrewAI (role/goal/backstory + tasks), OpenAI Swarm (handoffs + context_variables), Anthropic orchestrator-worker (lead spawns parallel subagents with objective / output / tools / boundaries) and LangGraph (explicit process graph). Agents are browser-side clawRuntime instances — tools are MCP calls routed through the existing `mcp_call` handler. Per-user isolation is enforced via `tenant_id` lineage.",
+  "type": "object",
+  "required": ["id", "name", "version", "process", "agents", "tasks"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable machine id (kebab-case).",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "name": { "type": "string", "description": "Human-readable crew name." },
+    "version": { "type": "string", "description": "SemVer of the crew definition." },
+    "description": { "type": "string" },
+    "tenant_id": {
+      "type": "string",
+      "description": "Per-user Aura instance id. Required at runtime; templates may leave blank for lineage-lock to fill in.",
+      "default": ""
+    },
+    "lineage": {
+      "type": "object",
+      "description": "Lineage lock — which Aura template this crew belongs to, so instances can't cross-contaminate.",
+      "properties": {
+        "template_id": { "type": "string" },
+        "locked_by": { "type": "string" }
+      }
+    },
+    "process": {
+      "type": "string",
+      "description": "Orchestration mode. sequential = CrewAI sequential. parallel = Anthropic-style fan-out. hierarchical = CrewAI manager-led. graph = LangGraph-style explicit nodes/edges. swarm = OpenAI Swarm-style dynamic handoffs.",
+      "enum": ["sequential", "parallel", "hierarchical", "graph", "swarm"]
+    },
+    "lead_agent": {
+      "type": "string",
+      "description": "Agent id acting as orchestrator/manager. Required for hierarchical and parallel. Ignored for sequential."
+    },
+    "shared_memory": {
+      "type": "object",
+      "description": "Shared scratchpad available to every agent. Keys namespaced to avoid collision.",
+      "properties": {
+        "backend": {
+          "type": "string",
+          "enum": ["ephemeral", "memory_shard", "mind_palace_mcp", "filesystem"],
+          "default": "ephemeral"
+        },
+        "namespace": { "type": "string" },
+        "capacity_tokens": { "type": "integer", "default": 8000 }
+      }
+    },
+    "context_variables": {
+      "type": "object",
+      "description": "Key/value state passed to every agent and mutated via handoffs (Swarm-style Result.context_variables).",
+      "additionalProperties": true
+    },
+    "agents": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Agent" }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Task" }
+    },
+    "handoffs": {
+      "type": "array",
+      "description": "Dynamic transitions. Used in swarm/graph mode. Pre-declaring the legal handoff graph lets the runtime validate before executing.",
+      "items": { "$ref": "#/$defs/Handoff" }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Graph-mode only. Typed edges between tasks.",
+      "items": { "$ref": "#/$defs/Edge" }
+    },
+    "guards": {
+      "type": "object",
+      "description": "Runtime guardrails for the crew as a whole.",
+      "properties": {
+        "max_total_iterations": { "type": "integer", "default": 50 },
+        "max_wallclock_ms": { "type": "integer", "default": 600000 },
+        "budget_usd": { "type": "number" },
+        "require_human_approval_on": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Task ids that must not auto-execute without a human ack."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Agent": {
+      "type": "object",
+      "required": ["id", "role", "goal", "backstory"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+        "role": {
+          "type": "string",
+          "description": "Short title — the job this agent does. Shapes reasoning. (CrewAI semantic.)"
+        },
+        "goal": {
+          "type": "string",
+          "description": "One-line OKR. What 'done' looks like for this agent."
+        },
+        "backstory": {
+          "type": "string",
+          "description": "Why this agent reasons the way it does. Injected into the system prompt verbatim."
+        },
+        "model": {
+          "type": "string",
+          "description": "LLM id (claude-opus-4-7 | claude-sonnet-4-7 | claude-haiku-4-7 | local-ollama:...).",
+          "default": "claude-sonnet-4-7"
+        },
+        "tools": {
+          "type": "array",
+          "description": "Tools this agent may call. Each entry names an MCP server + tool, or a built-in claw handler tool.",
+          "items": { "$ref": "#/$defs/ToolBinding" }
+        },
+        "max_iterations": {
+          "type": "integer",
+          "description": "Per-agent iteration cap (CrewAI max_iter).",
+          "default": 15
+        },
+        "allow_delegation": {
+          "type": "boolean",
+          "description": "May this agent call into other agents as sub-tools? (CrewAI allow_delegation.)",
+          "default": false
+        },
+        "delegate_to": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Whitelist of agent ids this agent may hand off to. Empty = cannot delegate. Overrides allow_delegation."
+        },
+        "memory": {
+          "type": "object",
+          "description": "Per-agent memory config. Separate from shared_memory.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "scope": { "type": "string", "enum": ["session", "persistent"], "default": "session" }
+          }
+        },
+        "effort_budget": {
+          "type": "object",
+          "description": "Anthropic orchestrator-worker guidance — embed scaling rules in the prompt.",
+          "properties": {
+            "max_tool_calls": { "type": "integer", "default": 20 },
+            "max_context_tokens": { "type": "integer", "default": 80000 }
+          }
+        },
+        "output_format": {
+          "type": "string",
+          "description": "Anthropic principle: tell the subagent its output shape. Free-form string — markdown, JSON schema, or a pointer to a schema id."
+        },
+        "task_boundaries": {
+          "type": "string",
+          "description": "Anthropic principle: what this agent must NOT do. Prevents scope creep."
+        },
+        "system_prompt_suffix": {
+          "type": "string",
+          "description": "Extra instructions appended after role/goal/backstory. Used for persona fine-tuning."
+        }
+      }
+    },
+    "ToolBinding": {
+      "type": "object",
+      "required": ["kind"],
+      "oneOf": [
+        {
+          "properties": {
+            "kind": { "const": "builtin" },
+            "name": {
+              "type": "string",
+              "description": "Built-in claw tool name — read_file, write_file, edit_file, glob_search, grep_search, bash, web_search, see_me, hear_me, body_state, speak_text, comfyui_generate, blender_script, todo_write."
+            }
+          },
+          "required": ["name"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "mcp" },
+            "server": { "type": "string", "description": "MCP server name (e.g. crew, mind_palace, blender, comfy, lore)." },
+            "tool": { "type": "string", "description": "Tool/endpoint on that server." },
+            "default_payload": { "type": "object", "additionalProperties": true }
+          },
+          "required": ["server", "tool"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "subagent" },
+            "agent_id": { "type": "string", "description": "Invoke another agent as a tool. Only legal if listed in delegate_to." }
+          },
+          "required": ["agent_id"]
+        }
+      ]
+    },
+    "Task": {
+      "type": "object",
+      "required": ["id", "description", "assigned_agent", "expected_output"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+        "description": {
+          "type": "string",
+          "description": "Prose instruction handed to the agent. Supports {context.foo} interpolation."
+        },
+        "assigned_agent": {
+          "type": "string",
+          "description": "Agent id responsible. In hierarchical mode this may be 'auto' — lead routes at runtime."
+        },
+        "depends_on": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Task ids whose outputs feed this task's context (CrewAI `context`)."
+        },
+        "expected_output": {
+          "type": "string",
+          "description": "Success criterion. The lead/manager validates outputs against this before accepting."
+        },
+        "output_path": {
+          "type": "string",
+          "description": "Filesystem path where the task result is persisted. Relative to crew run root. Mirrors CrewAI `output_file`."
+        },
+        "output_schema": {
+          "type": "object",
+          "description": "Optional JSON Schema the output must validate against.",
+          "additionalProperties": true
+        },
+        "async_execution": {
+          "type": "boolean",
+          "description": "If true, does not block downstream tasks that don't depend on it.",
+          "default": false
+        },
+        "human_in_the_loop": {
+          "type": "boolean",
+          "description": "Pause after completion for human approval.",
+          "default": false
+        },
+        "retries": {
+          "type": "integer",
+          "default": 1
+        }
+      }
+    },
+    "Handoff": {
+      "type": "object",
+      "required": ["from_agent", "to_agent"],
+      "properties": {
+        "from_agent": { "type": "string" },
+        "to_agent": { "type": "string" },
+        "condition": {
+          "type": "string",
+          "description": "Natural-language or JSON-logic expression evaluated against context_variables."
+        },
+        "context_passed": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Keys from context_variables that should be visible to the receiver. Empty = pass all."
+        },
+        "reason_template": {
+          "type": "string",
+          "description": "Narration string written to shared_memory when this handoff fires. Traceability."
+        }
+      }
+    },
+    "Edge": {
+      "type": "object",
+      "required": ["from_task", "to_task"],
+      "properties": {
+        "from_task": { "type": "string" },
+        "to_task": { "type": "string" },
+        "when": {
+          "type": "string",
+          "description": "Conditional predicate. Empty = unconditional."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Optional reference to a transform fn id — reshape output before feeding the next task."
+        }
+      }
+    }
+  }
+}

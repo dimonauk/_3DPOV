@@ -71,3 +71,7 @@ __pycache__/
 # Google Drive OAuth — bench-only creds, never commit
 .gdrive-oauth.json
 .gdrive-token.json
+
+# Local Claude Code agent tooling / skills — kept local, not published
+# (this repo is public; these are internal working notes, not site content).
+.claude/

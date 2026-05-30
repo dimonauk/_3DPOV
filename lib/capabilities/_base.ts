@@ -87,6 +87,8 @@ export type CapabilityId =
   | "agent.dialogue"
   | "agent.dialogue-webgpu"
   | "agent.dialogue-ollama"
+  | "agent.cast-roster"
+  | "agent.crew-run"
   | "agent.memory"
   | "agent.memory-vector"
   | "input.headpose"

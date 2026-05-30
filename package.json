@@ -59,6 +59,7 @@
     "meyda": "^5.6.3",
     "mind-ar": "^1.2.5",
     "next": "15.6.0-canary.60",
+    "next-cloudinary": "^6.16.0",
     "next-sanity": "^12.4.5",
     "passkit-generator": "^3.5.7",
     "postprocessing": "^6.39.1",

@@ -9,6 +9,7 @@
     "downlevelIteration": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "types": ["node", "react", "react-dom", "three", "qrcode", "jsonwebtoken"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,

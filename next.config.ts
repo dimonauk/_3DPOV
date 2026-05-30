@@ -31,6 +31,15 @@ export default {
   // stack (kokoro-js → @huggingface/transformers → onnxruntime-node) and
   // by Apple Wallet pkpass generation (sharp, passkit-generator) — all
   // of which need Node native bindings, not webpack-bundled JS.
+  //
+  // `canvas` is added because `isomorphic-dompurify` (used in
+  // components/prose.tsx for sanitising Shopify HTML) pulls in `jsdom`
+  // which optionally requires the `canvas` native module for DOM
+  // canvas-API rendering. We don't render canvases on the server, so
+  // the canvas binding is unwanted weight. Marking it external + the
+  // webpack alias below + the tracing exclusion below keeps it out of
+  // every build target. Verified 2026-05-19 after the canon-port build
+  // failure on canvas@2.11.2's missing ../build/Release/canvas.node.
   serverExternalPackages: [
     "onnxruntime-node",
     "@huggingface/transformers",
@@ -38,6 +47,7 @@ export default {
     "sharp",
     "passkit-generator",
     "firebase-admin",
+    "canvas",
   ],
   // Tell Vercel's file-tracer (@vercel/nft) NOT to copy onnxruntime-node
   // into any lambda bundle. `serverExternalPackages` affects webpack
@@ -57,6 +67,14 @@ export default {
       "node_modules/.pnpm/onnxruntime-node@*/**",
       "node_modules/@huggingface/transformers/**",
       "node_modules/.pnpm/@huggingface+transformers@*/**",
+      // canvas — see serverExternalPackages comment above. We don't
+      // need the .node bindings for either canvas@2 (transitive,
+      // shouldn't resolve due to pnpm overrides.canvas=^3) or canvas@3
+      // (declared dep, only needed if we ever render canvas server-side
+      // which we don't). Excluding both stops the @vercel/nft tracer
+      // copying ~30 MB of native bindings into every lambda.
+      "node_modules/canvas/**",
+      "node_modules/.pnpm/canvas@*/**",
       // `services/` (vendored Python ML projects) was moved out of this
       // repo to D:\The_Hangar\holoflow-services\ on 2026-05-18 to fix
       // OOMs (304 files, 12 MB, none imported by Next.js). Exclude
@@ -104,11 +122,21 @@ export default {
   // The mind-ar `fs` fallbacks below are a separate, pre-existing fix
   // for the same family of "client bundle pulls in Node-only branches"
   // problem.
+  //
+  // `canvas` is aliased to false EVERYWHERE (server and client). On the
+  // server: jsdom (via isomorphic-dompurify in components/prose.tsx)
+  // optionally requires `canvas` for DOM canvas-API rendering, which
+  // we don't use. On the client: nothing should import canvas directly
+  // since we use @napi-rs/canvas for image work. Belt-and-braces:
+  // canvas's native bindings should never be reachable from a webpack
+  // bundle. Verified 2026-05-19 against canvas@2.11.2's missing
+  // ../build/Release/canvas.node which was failing the build.
   webpack: (config: any, { isServer }: { isServer: boolean }) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       "onnxruntime-node": false,
+      canvas: false,
     };
     if (!isServer) {
       config.resolve.fallback = {
@@ -143,6 +171,7 @@ export default {
         sharp: false,
         "passkit-generator": false,
         "firebase-admin": false,
+        canvas: false,
       };
     }
     return config;

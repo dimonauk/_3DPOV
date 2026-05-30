@@ -26,6 +26,10 @@ __pycache__/
 
 # Local-only dev artefacts.
 .merge-staging/
+
+# Claude session skills — markdown context for coding agents.
+# Not part of the runtime; should never ship to the Vercel build.
+.claude/
 *.code-workspace
 D:/temp/
 docs/audit-wave9/

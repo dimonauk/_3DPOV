@@ -1,0 +1,54 @@
+{
+  "$schema": "./crew-schema.json",
+  "id": "tooluse-example",
+  "name": "Tool-Use Example — Analyst delegates to Specialist",
+  "version": "0.1.0",
+  "description": "Reference crew demonstrating runtime tool execution (the ReAct loop). The Analyst agent carries a `subagent` tool binding that lets it delegate a focused sub-question to the Specialist mid-task, plus a `builtin` cast-roster lookup and an `mcp` binding (the latter is a stub — no MCP client wired). When the Analyst's task runs, it goes through respondWithTools() instead of plain respond(), and the AI SDK's multi-step loop lets it actually call the delegate. Demonstrates that tool-bearing agents take the ReAct path while tool-less ones (the Specialist) stay on the plain dialogue path.",
+  "tenant_id": "",
+  "lineage": {
+    "template_id": "holoflow.template.v1",
+    "locked_by": "studio.runtime"
+  },
+  "process": "sequential",
+  "context_variables": {
+    "brief_id": "brief-2026-05-21-001",
+    "subject": "waveguide caustic falloff under off-axis LED placement"
+  },
+  "guards": {
+    "max_total_iterations": 6,
+    "max_wallclock_ms": 120000
+  },
+  "agents": [
+    {
+      "id": "physicist",
+      "role": "Lighting and Optics — The Specialist",
+      "goal": "Answer focused optical-physics questions precisely when consulted by a peer agent.",
+      "backstory": "From the Physics of Light and Space hall. Terse, exact, never pads an answer.",
+      "task_boundaries": "Answer the specific question put to you. No scope creep.",
+      "output_format": "Two or three sentences, technical and exact."
+    },
+    {
+      "id": "marcel",
+      "role": "Marcel — The Analyst",
+      "goal": "Produce a short written brief on a given optics subject, consulting the Specialist for any point that needs hard physics.",
+      "backstory": "Calm, methodical synthesiser. Knows what he doesn't know and asks rather than guesses.",
+      "system_prompt_suffix": "You have a tool to ask the Specialist (physicist) a focused question. Use it for the hard physics rather than guessing, then fold their answer into your brief in your own voice.",
+      "task_boundaries": "Produce one tight brief. Delegate physics questions; don't invent physics.",
+      "output_format": "A 3-4 sentence brief that integrates the Specialist's input.",
+      "tools": [
+        { "kind": "subagent", "agent_id": "physicist" },
+        { "kind": "builtin", "name": "cast.roster.lookup" },
+        { "kind": "mcp", "server": "blender", "tool": "execute_blender_code" }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "write_brief",
+      "description": "Write a short brief on {context.subject} (brief id {context.brief_id}). Consult the Specialist for the optical-physics specifics — particularly how caustic sharpness degrades as the LED moves off the waveguide's optical axis — then integrate their answer into a clear brief.",
+      "assigned_agent": "marcel",
+      "expected_output": "A 3-4 sentence brief integrating the Specialist's physics input.",
+      "retries": 0
+    }
+  ]
+}
