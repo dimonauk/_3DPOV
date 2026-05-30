@@ -126,6 +126,8 @@ export type InstructableSupplies = {
 export type InstructableMeta = {
   /** One-paragraph overview rendered above the structured surface. */
   overview?: string;
+  /** One-paragraph statement of what the tutorial builds / achieves. */
+  goal?: string;
   /** Blender version the tutorial targets, e.g. "5.1". */
   blenderVersion?: string;
   /** Optional path into the studio asset/skill library this tutorial maps to. */
