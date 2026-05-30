@@ -1,5 +1,6 @@
 import { CartProvider } from "components/cart/cart-context";
-import { Navbar } from "components/layout/navbar";
+import { NavSidebar } from "components/layout/nav-sidebar";
+import { ThemeProvider } from "components/theme/theme-context";
 import { WorkshopShell } from "components/shell/workshop-shell";
 import { WelcomeToast } from "components/welcome-toast";
 import { PlausibleAnalytics } from "components/analytics/plausible";
@@ -88,21 +89,26 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="day"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body className="bg-warm-black-950 text-warm-black-50 antialiased">
         <AuthProvider>
           <GlitchProvider>
-            <CartProvider cartPromise={cart}>
-              <Navbar />
-              <WorkshopShell>
-                {children}
-                <Toaster closeButton theme="dark" />
-                <WelcomeToast />
-              </WorkshopShell>
-            </CartProvider>
-            {/* Floating Aura chat — visible only on allow-listed pages. */}
-            <AuraLauncher />
+            <ThemeProvider>
+              <CartProvider cartPromise={cart}>
+                <NavSidebar />
+                <div className="nav-sidebar-offset">
+                  <WorkshopShell>
+                    {children}
+                    <Toaster closeButton theme="dark" />
+                    <WelcomeToast />
+                  </WorkshopShell>
+                </div>
+              </CartProvider>
+              {/* Floating Aura chat — visible only on allow-listed pages. */}
+              <AuraLauncher />
+            </ThemeProvider>
           </GlitchProvider>
         </AuthProvider>
         <PlausibleAnalytics />
