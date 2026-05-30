@@ -1,0 +1,46 @@
+{
+  "slug": "gn-mesh-island-per-island-colour",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/record.py",
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/README.md",
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/.expected-artefacts.json",
+    "public/library/blends/geometry-nodes/gn-mesh-island-per-island-colour/mosaic_tiles.blend",
+    "public/library/glbs/geometry-nodes/gn-mesh-island-per-island-colour/mosaic_tiles.glb",
+    "public/library/videos/geometry-nodes/gn-mesh-island-per-island-colour/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-mesh-island-per-island-colour/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-index-face-colour-mosaic",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-distribute-weight-painted-scatter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Mesh Island Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "expert_notes": [
+    "GeometryNodeInputMeshIsland evaluates at the active domain context — FACE domain when consumed by StoreNamedAttribute(domain='FACE'), POINT domain when consumed by SetPosition; no CaptureAttribute wrapper required",
+    "RandomValue(FLOAT_VECTOR, ID=IslandIndex, Seed=N) yields a constant-per-island random vector because all elements of an island share the same IslandIndex value",
+    "Storing island_index as a named INT attribute at FACE domain is the prerequisite for SeparateGeometry island selection — without materialising the field, SeparateGeometry has no stable per-face integer to compare against",
+    "GAP > 0 between tiles is mandatory: if tiles share vertices (GAP == 0), Blender merges connected geometry into fewer islands and IslandIndex counts change unexpectedly",
+    "export_attributes=True in bpy.ops.export_scene.gltf() is required; island_colour exports as _ISLAND_COLOUR and island_index as _ISLAND_INDEX in the glTF extras — accessible in Three.js via geometry.attributes._ISLAND_COLOUR",
+    "Island Count (second output of GeometryNodeInputMeshIsland) is a singular INT — not domain-specific — useful for normalising IslandIndex to 0..1 range: Index / (IslandCount - 1)"
+  ]
+}
