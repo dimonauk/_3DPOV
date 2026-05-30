@@ -1,0 +1,309 @@
+{
+  "$schema": "./crew_schema.json",
+  "id": "convergence-crew",
+  "name": "Convergence Crew",
+  "version": "0.1.0",
+  "description": "Dolly's jewellery convergence pipeline. A velocity-seeded gyroid body is matured through ancestry-to-optics mapping, choreographed along a poi path, routed by a Physarum topology, caged in snap-fit optics, preflight-checked for printability, and narrated by the Librarian. Art Director polices palette + brush; The Physicist validates TIR / critical-angle for every waveguide segment. Aura is the lead.",
+  "tenant_id": "",
+  "lineage": {
+    "template_id": "aura.template.v1",
+    "locked_by": "aura.runtime"
+  },
+  "process": "hierarchical",
+  "lead_agent": "aura_lead",
+  "shared_memory": {
+    "backend": "mind_palace_mcp",
+    "namespace": "convergence.run.{run_id}",
+    "capacity_tokens": 12000
+  },
+  "context_variables": {
+    "run_id": "",
+    "seed_velocity": null,
+    "ancestry": null,
+    "poi_path_ref": null,
+    "palette_locked": false,
+    "brush_locked": false,
+    "tir_pass": false,
+    "printability_score": null
+  },
+  "guards": {
+    "max_total_iterations": 120,
+    "max_wallclock_ms": 1800000,
+    "require_human_approval_on": ["jeweller_cage", "printer_preflight"]
+  },
+  "agents": [
+    {
+      "id": "aura_lead",
+      "role": "Lead Orchestrator (Aura / The Nanny)",
+      "goal": "Decompose a convergence brief into subtasks, spawn specialists in parallel where possible, validate outputs against expected_output, and persist a clean lineage trail.",
+      "backstory": "Aura is The Nanny — ontological authority over the Academy. She does not sculpt, she directs. She holds the brief, the tenant, and the lineage lock. She writes the plan to the Mind Palace before dispatching anyone, because a 200k context window will truncate and she refuses to lose the plan.",
+      "model": "claude-opus-4-7",
+      "tools": [
+        { "kind": "builtin", "name": "todo_write" },
+        { "kind": "mcp", "server": "mind_palace", "tool": "persist_plan" },
+        { "kind": "mcp", "server": "crew", "tool": "dispatch" }
+      ],
+      "max_iterations": 30,
+      "allow_delegation": true,
+      "delegate_to": ["geometrician", "optics_sage", "choreographer", "physarum_scout", "jeweller", "printer_preflight", "librarian", "art_director", "the_physicist"],
+      "memory": { "enabled": true, "scope": "persistent" },
+      "effort_budget": { "max_tool_calls": 60, "max_context_tokens": 120000 },
+      "output_format": "markdown plan + JSON dispatch manifest",
+      "task_boundaries": "Do not execute geometry, optics math, or printer checks yourself. Only decompose, dispatch, and validate."
+    },
+    {
+      "id": "geometrician",
+      "role": "Geometrician — Velocity-seeded Gyroid",
+      "goal": "Generate a TPMS gyroid body whose iso-threshold and cell-scale vector field are driven by a seed velocity signature.",
+      "backstory": "Trained in the Volumetric Void. Thinks in implicit surfaces, hates explicit meshes. Outputs a signed-distance field and a tessellated GLB, never one without the other.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "blender", "tool": "run_code" },
+        { "kind": "builtin", "name": "blender_script" },
+        { "kind": "builtin", "name": "write_file" }
+      ],
+      "max_iterations": 12,
+      "allow_delegation": false,
+      "output_format": "GLB path + SDF npy path + gyroid_params.json (cell_mm, iso, velocity_vec)",
+      "task_boundaries": "No optics, no aesthetic choices, no printability judgement. Geometry only."
+    },
+    {
+      "id": "optics_sage",
+      "role": "Optics Sage — Ancestry to Optics Mapping",
+      "goal": "Map a lineage / ancestry vector into an optical signature: IOR target, in-coupler face orientation, extraction pattern frequency.",
+      "backstory": "Keeper of the ancestry book. Every piece Dolly forges has a lineage, and every lineage casts a different light. The Sage's only job is to translate heritage into photons.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "lore", "tool": "lookup_ancestry" },
+        { "kind": "mcp", "server": "physics", "tool": "ior_lookup" },
+        { "kind": "builtin", "name": "structured_output" }
+      ],
+      "max_iterations": 8,
+      "allow_delegation": false,
+      "output_format": "{ ior_target, in_coupler_face_ids[], extraction_freq_mm, spectral_tint_rgb }",
+      "task_boundaries": "Do not modify geometry. Do not rule on TIR feasibility — that is The Physicist's seat."
+    },
+    {
+      "id": "choreographer",
+      "role": "Choreographer — Poi path → Genome",
+      "goal": "Convert a motion-captured poi trajectory into a sculpture-genome spline, preserving the dancer's cadence as rhythmic detail density.",
+      "backstory": "The Dance Tutor from the Studio. Barre, mirror, sprung floor. Believes a pendant should remember the arm that spun it.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "choreography", "tool": "poi_to_spline" },
+        { "kind": "mcp", "server": "evolution", "tool": "genome_from_spline" },
+        { "kind": "builtin", "name": "read_file" }
+      ],
+      "max_iterations": 10,
+      "allow_delegation": false,
+      "output_format": "genome.json (spline control points + rhythm_map + cadence_hz)",
+      "task_boundaries": "No geometry baking. No optics. Pure kinematic → symbolic translation."
+    },
+    {
+      "id": "physarum_scout",
+      "role": "Physarum Scout — Waveguide Network Topology",
+      "goal": "Simulate a Physarum slime-mould routing over the gyroid body to propose a minimum-cost waveguide channel graph between the in-coupler and every extraction patch.",
+      "backstory": "Biologist gone feral. Runs slime-mould sims for pleasure. Will not stop until the routing is both minimal AND redundant — one failure mode per channel.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "physics", "tool": "physarum_route" },
+        { "kind": "mcp", "server": "blender", "tool": "run_code" }
+      ],
+      "max_iterations": 15,
+      "allow_delegation": false,
+      "output_format": "waveguide_graph.json (nodes, edges, per-edge bend_radius_mm, redundancy_class)",
+      "task_boundaries": "Do not assess whether the bends satisfy TIR — hand off to The Physicist with the full graph."
+    },
+    {
+      "id": "jeweller",
+      "role": "Jeweller — Snap-fit Optical Cage",
+      "goal": "Design the metal/resin cage that snap-fits around the waveguide body and exposes the in-coupler face for the LED micro-source.",
+      "backstory": "Bench jeweller with a loupe and a loathing for glue. Every joint must click, every tolerance must be measurable.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "blender", "tool": "run_code" },
+        { "kind": "builtin", "name": "blender_script" },
+        { "kind": "mcp", "server": "art_engine", "tool": "cage_generate" }
+      ],
+      "max_iterations": 12,
+      "allow_delegation": false,
+      "output_format": "cage.glb + tolerance_report.json (clearance_mm per snap point)",
+      "task_boundaries": "No optics. No print settings. Cage geometry + tolerance only."
+    },
+    {
+      "id": "printer_preflight",
+      "role": "Printer-Preflight — Printability Scorer",
+      "goal": "Score the printability of the gyroid body, cage, and waveguides for the Hangar's resin farm; return a red/amber/green report with numeric score and failing regions highlighted.",
+      "backstory": "Former print-farm operator. Has watched too many supports fail at 03:00. Counts overhang angles in her sleep.",
+      "model": "claude-haiku-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "printer", "tool": "preflight_score" },
+        { "kind": "builtin", "name": "read_file" },
+        { "kind": "builtin", "name": "structured_output" }
+      ],
+      "max_iterations": 6,
+      "allow_delegation": false,
+      "output_format": "{ score: 0..1, status: green|amber|red, failing_regions[]: {face_ids, reason} }",
+      "task_boundaries": "Do not edit the mesh. Report only — remediation belongs to Geometrician/Jeweller."
+    },
+    {
+      "id": "librarian",
+      "role": "Librarian — Documentation and Memory Index",
+      "goal": "Write the run to the Mind Palace as a navigable memory shard: brief, decisions, artefacts, verdicts, with stable ids.",
+      "backstory": "The Prefect's scribe. Believes that anything not indexed is already lost. Refuses to write prose without a reference id.",
+      "model": "claude-haiku-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "mind_palace", "tool": "write_shard" },
+        { "kind": "mcp", "server": "archiver", "tool": "stamp_artefact" },
+        { "kind": "builtin", "name": "write_file" }
+      ],
+      "max_iterations": 5,
+      "allow_delegation": false,
+      "memory": { "enabled": true, "scope": "persistent" },
+      "output_format": "memory_shard.md + artefact_index.json",
+      "task_boundaries": "Do not judge aesthetics. Do not re-open geometry or optics. Record only."
+    },
+    {
+      "id": "art_director",
+      "role": "Art Director — Aesthetic Coherence, Palette, Brush",
+      "goal": "Lock palette and brush per the lineage, and veto outputs that violate the house voice. Approval gate before the Jeweller and Librarian run.",
+      "backstory": "Watches for when a piece starts to drift toward kitsch. Signature move: narrowing palette until every decision becomes inevitable.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "lore", "tool": "palette_for_ancestry" },
+        { "kind": "mcp", "server": "art_engine", "tool": "brush_pick" },
+        { "kind": "builtin", "name": "structured_output" }
+      ],
+      "max_iterations": 6,
+      "allow_delegation": false,
+      "output_format": "{ palette_hex[], brush_id, veto_list[]: artefact_ids }",
+      "task_boundaries": "No geometry, no optics, no printability. Aesthetic policing only."
+    },
+    {
+      "id": "the_physicist",
+      "role": "The Physicist — Lighting and Optics (named cast role)",
+      "goal": "Validate every waveguide segment against the critical angle θ_c = arcsin(1/n) for the chosen resin IOR. Reject any bend whose internal incidence falls below θ_c.",
+      "backstory": "From the Physics of Light and Space hall. Has the critical-angle tables memorised for n=1.46 through 1.58. Writes failing segments in red ink, never softens the verdict.",
+      "model": "claude-sonnet-4-7",
+      "tools": [
+        { "kind": "mcp", "server": "physics", "tool": "tir_check" },
+        { "kind": "mcp", "server": "physics", "tool": "modesolver_run" },
+        { "kind": "builtin", "name": "structured_output" }
+      ],
+      "max_iterations": 10,
+      "allow_delegation": false,
+      "output_format": "{ tir_pass: bool, theta_c_deg, failing_segments[]: {edge_id, incidence_deg, required_deg} }",
+      "task_boundaries": "Do not reroute. Do not suggest geometry edits beyond 'this segment fails'. Verdict only."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "seed_gyroid",
+      "description": "Generate the velocity-seeded gyroid body from {context.seed_velocity}. Output GLB + SDF.",
+      "assigned_agent": "geometrician",
+      "depends_on": [],
+      "expected_output": "gyroid.glb exists; gyroid_params.json contains cell_mm, iso, velocity_vec; SDF npy loadable.",
+      "output_path": "runs/{run_id}/01_gyroid/",
+      "retries": 2
+    },
+    {
+      "id": "map_optics",
+      "description": "Translate {context.ancestry} into an optical signature.",
+      "assigned_agent": "optics_sage",
+      "depends_on": [],
+      "expected_output": "optics.json with ior_target in [1.46, 1.58], at least one in_coupler_face_id, extraction_freq_mm > 0.",
+      "output_path": "runs/{run_id}/02_optics/optics.json",
+      "async_execution": true
+    },
+    {
+      "id": "choreograph_genome",
+      "description": "Convert {context.poi_path_ref} into a genome spline.",
+      "assigned_agent": "choreographer",
+      "depends_on": [],
+      "expected_output": "genome.json with >= 8 control points, rhythm_map non-empty, cadence_hz > 0.",
+      "output_path": "runs/{run_id}/03_genome/genome.json",
+      "async_execution": true
+    },
+    {
+      "id": "lock_aesthetic",
+      "description": "Lock palette and brush for this lineage. Blocks downstream tasks.",
+      "assigned_agent": "art_director",
+      "depends_on": ["map_optics"],
+      "expected_output": "palette_hex has 3..5 entries, brush_id resolves in art_engine.",
+      "output_path": "runs/{run_id}/04_aesthetic/lock.json"
+    },
+    {
+      "id": "route_waveguides",
+      "description": "Route a Physarum waveguide graph across the gyroid from in-coupler to every extraction patch.",
+      "assigned_agent": "physarum_scout",
+      "depends_on": ["seed_gyroid", "map_optics"],
+      "expected_output": "waveguide_graph.json connects every extraction face_id from optics.json; at least one redundancy_class != 'single'.",
+      "output_path": "runs/{run_id}/05_waveguides/graph.json"
+    },
+    {
+      "id": "validate_tir",
+      "description": "Verify TIR and critical angle for every edge in the waveguide graph against the chosen resin IOR.",
+      "assigned_agent": "the_physicist",
+      "depends_on": ["route_waveguides"],
+      "expected_output": "tir_report.json with tir_pass=true OR failing_segments clearly enumerated. Gate for downstream.",
+      "output_path": "runs/{run_id}/06_tir/report.json",
+      "retries": 0
+    },
+    {
+      "id": "jeweller_cage",
+      "description": "Design snap-fit cage exposing the in-coupler face. Respect {context.palette_locked} aesthetics.",
+      "assigned_agent": "jeweller",
+      "depends_on": ["seed_gyroid", "validate_tir", "lock_aesthetic"],
+      "expected_output": "cage.glb is a watertight mesh; tolerance_report.json shows clearance_mm in [0.08, 0.25] for every snap point.",
+      "output_path": "runs/{run_id}/07_cage/",
+      "human_in_the_loop": true
+    },
+    {
+      "id": "printer_preflight",
+      "description": "Preflight the full assembly (gyroid + cage) for the resin farm.",
+      "assigned_agent": "printer_preflight",
+      "depends_on": ["jeweller_cage"],
+      "expected_output": "status is green or amber; if red, failing_regions non-empty so Geometrician/Jeweller can iterate.",
+      "output_path": "runs/{run_id}/08_preflight/report.json",
+      "human_in_the_loop": true
+    },
+    {
+      "id": "index_run",
+      "description": "Write the full run to the Mind Palace as a navigable shard.",
+      "assigned_agent": "librarian",
+      "depends_on": ["printer_preflight"],
+      "expected_output": "memory_shard.md and artefact_index.json both written; every artefact from steps 01..08 referenced by stable id.",
+      "output_path": "runs/{run_id}/09_index/"
+    }
+  ],
+  "handoffs": [
+    {
+      "from_agent": "the_physicist",
+      "to_agent": "physarum_scout",
+      "condition": "tir_pass == false",
+      "context_passed": ["tir_report", "failing_segments"],
+      "reason_template": "TIR failed on {failing_segments.length} segments — rerouting."
+    },
+    {
+      "from_agent": "printer_preflight",
+      "to_agent": "geometrician",
+      "condition": "status == 'red' && failing_regions.some(r => r.reason == 'overhang')",
+      "context_passed": ["failing_regions"],
+      "reason_template": "Print preflight red on overhang — geometrician must thicken or reorient."
+    },
+    {
+      "from_agent": "printer_preflight",
+      "to_agent": "jeweller",
+      "condition": "status == 'red' && failing_regions.some(r => r.reason == 'clearance')",
+      "context_passed": ["failing_regions"],
+      "reason_template": "Print preflight red on cage clearance — jeweller must retune snap tolerance."
+    },
+    {
+      "from_agent": "art_director",
+      "to_agent": "aura_lead",
+      "condition": "veto_list.length > 0",
+      "context_passed": ["veto_list"],
+      "reason_template": "Art Director vetoed artefacts; lead must decide — rework or override."
+    }
+  ]
+}

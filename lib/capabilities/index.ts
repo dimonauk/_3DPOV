@@ -230,6 +230,30 @@ const auraAliveStubs: CapabilityRecord[] = [
     dependsOn: ["agent.memory"],
   },
   {
+    id: "agent.cast-roster",
+    kind: "agent",
+    name: "Cast roster",
+    summary:
+      "Tier-filterable discovery surface joining lib/cast/ bibles with lib/cast/canon-hierarchy.ts (tier / House / named-status / head-kind). Returns RosterMember objects { id, bible, hierarchy } for the 14 canon cast members plus website-only extras (excavation-bot, scribe). Powers any UI or orchestrator that needs 'give me the inner-circle' / 'give me a department-head by kind' without each consumer re-zipping the two registries.",
+    status: "registered",
+    source: "Studio composite: joins lib/cast/index.ts (existing 10 bibles + 6 canon ports: lottie, dottie, shelly, dance-tutor, logistician, physicist) with lib/cast/canon-hierarchy.ts. Canon source: docs/CAST-CANON.md.",
+    load: () => import("./agent/cast-roster"),
+    stateSlices: [],
+    dependsOn: [],
+  },
+  {
+    id: "agent.crew-run",
+    kind: "agent",
+    name: "Crew run",
+    summary:
+      "Orchestrated multi-agent runs over the crew schema at lib/agents/crew-schema.json. Phases 1-2-3 LIVE + Phase 4 extended (retries, HITL pause/resume, output_schema validation, output_path persistence, trace export, design-time tool-binding validation). Sequential, parallel, hierarchical, and graph process modes execute real LLM dispatches via agent.dialogue. DAG modes share a topological executor with cycle detection, parallel waves, transitive-skip propagation. Graph honours `edge.when` predicates via the safe evaluator in crew-predicate.ts. Tasks honour retries (default 1 = two attempts), human_in_the_loop pause/resume via status:paused_for_approval, output_schema validation (minimal JSON Schema subset; failures retry), and output_path filesystem persistence (Node-only, best-effort). Per-run trace export via exportTrace() in crew-trace.ts emits pinned format suitable for memory-vector ingestion. Tool bindings (builtin/mcp/subagent) validated at design time but not yet executed at runtime — needs ReAct loop in respond(). summariseCrew() surfaces tool/HITL/schema/path stats. Three reference instances at lib/agents/: sequential-example.json, convergence-crew.example.json, graph-example.json. Only swarm mode + runtime tool execution remain stubbed.",
+    status: "registered",
+    source:
+      "Studio composite: types narrowed from lib/agents/crew-schema.json (synthesis of CrewAI + OpenAI Swarm + Anthropic orchestrator-worker + LangGraph). Reference instance at lib/agents/convergence-crew.example.json. Architecture recommendation at .claude/skills/aura-swarm-orchestration/SKILL.md.",
+    load: () => import("./agent/crew-run"),
+    stateSlices: [],
+    dependsOn: ["agent.cast-roster", "agent.dialogue"],
+  },  {
     id: "input.headpose",
     kind: "input",
     name: "Head pose",
