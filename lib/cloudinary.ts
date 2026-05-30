@@ -11,11 +11,17 @@
  *
  *   // Raw URL
  *   cloudinaryUrl("portfolio/light-painting-antispin-3petal-blue", { width: 800 })
- *   // → https://res.cloudinary.com/dnfjocfit/image/upload/w_800,f_auto,q_auto/portfolio/light-painting-antispin-3petal-blue
+ *   // → https://res.cloudinary.com/dnfjocflt/image/upload/w_800,f_auto,q_auto/portfolio/light-painting-antispin-3petal-blue
  *
  *   // Next.js <Image> loader — wire via next.config.ts or per-image
  *   <Image src="portfolio/light-painting-antispin-3petal-blue" loader={cloudinaryLoader} ... />
+ *
+ *   // Server-side (admin upload routes, signed URLs)
+ *   import { cld } from "lib/cloudinary";
+ *   await cld.uploader.upload(filePath, { folder: "portfolio" });
  */
+
+import { v2 as _cld } from "cloudinary";
 
 const CLOUD_NAME =
   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "dnfjocflt";
@@ -129,3 +135,20 @@ export function squareThumb(publicId: string, width = 600): string {
     quality: "auto",
   });
 }
+
+/**
+ * Server-side Cloudinary SDK instance — pre-configured with credentials.
+ * Import only in server components / API routes (never in client bundles).
+ *
+ *   import { cld } from "lib/cloudinary";
+ *   await cld.uploader.upload(filePath, { folder: "portfolio" });
+ *   cld.url("portfolio/my-image", { transformation: [...] });
+ */
+_cld.config({
+  cloud_name: CLOUD_NAME,
+  api_key:    process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure:     true,
+});
+
+export const cld = _cld;

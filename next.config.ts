@@ -48,6 +48,7 @@ export default {
     "passkit-generator",
     "firebase-admin",
     "canvas",
+    "cloudinary",
   ],
   // Tell Vercel's file-tracer (@vercel/nft) NOT to copy onnxruntime-node
   // into any lambda bundle. `serverExternalPackages` affects webpack
