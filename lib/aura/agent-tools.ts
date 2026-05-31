@@ -103,7 +103,7 @@ export function getAuraTools(opts: {
             "One-sentence reason you're sending them there — visitor will see this",
           ),
       }),
-      execute: async ({ path, reason }) => {
+      execute: async ({ path, reason }: { path: string; reason: string }) => {
         return {
           summary: `Navigating the visitor to ${path}. Reason: ${reason}`,
           action: { kind: "navigate" as const, path, reason },
@@ -130,7 +130,7 @@ export function getAuraTools(opts: {
           .optional()
           .describe("How many cards to surface — default 3"),
       }),
-      execute: async ({ query, limit }) => {
+      execute: async ({ query, limit }: { query: string; limit?: number }) => {
         try {
           const all = await getAllCards();
           const q = query.toLowerCase();
@@ -192,7 +192,7 @@ export function getAuraTools(opts: {
           .max(80)
           .describe("Card slug, e.g. 'dimona' or 'protean-apex'"),
       }),
-      execute: async ({ slug }) => {
+      execute: async ({ slug }: { slug: string }) => {
         try {
           const card = await getCard(slug);
           if (!card) {
@@ -249,7 +249,7 @@ export function getAuraTools(opts: {
           .optional()
           .describe("Why they're getting in touch"),
       }),
-      execute: async ({ email, name, message, intent }) => {
+      execute: async ({ email, name, message, intent }: { email: string; name?: string; message?: string; intent?: string }) => {
         try {
           // Site-wide leads land on Dimona's card by default — she's
           // the studio owner and that's where she already monitors.
@@ -294,7 +294,7 @@ export function getAuraTools(opts: {
           .optional()
           .describe("Optional starting template style — e.g. 'minimalist'"),
       }),
-      execute: async ({ template_hint }) => {
+      execute: async ({ template_hint }: { template_hint?: string }) => {
         return {
           summary: `Opening the card designer${template_hint ? ` with a ${template_hint} template hint` : ""}.`,
           action: {
@@ -319,7 +319,7 @@ export function getAuraTools(opts: {
             "What the call is about — passed through as the booking title",
           ),
       }),
-      execute: async ({ purpose }) => {
+      execute: async ({ purpose }: { purpose?: string }) => {
         return {
           summary: `Surfacing the booking flow${purpose ? ` for: ${purpose}` : ""}.`,
           action: {

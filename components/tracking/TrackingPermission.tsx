@@ -39,6 +39,7 @@ export type TrackingPermissionProps = {
 const SOURCE_LABEL: Record<TrackingSource, string> = {
   kinect: "Azure Kinect (bench)",
   ultraleap: "Ultraleap (Leap Motion 2)",
+  realsense: "Intel RealSense (depth)",
   "mediapipe-face": "Webcam — face landmarks",
   "mediapipe-hand": "Webcam — hand landmarks",
   pointer: "Pointer fallback",

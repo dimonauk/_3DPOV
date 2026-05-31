@@ -137,7 +137,7 @@ function buildSubagentTool(
         .max(1000)
         .describe("The specific question to put to the sub-agent."),
     }),
-    execute: async ({ question }) => {
+    execute: async ({ question }: { question: string }) => {
       if (!target) {
         return {
           summary: `No agent "${binding.agent_id}" in this crew — cannot delegate.`,
@@ -185,7 +185,7 @@ function buildBuiltinTool(
           .max(80)
           .describe("Cast member id, e.g. 'aura', 'physicist'."),
       }),
-      execute: async ({ member_id }) => {
+      execute: async ({ member_id }: { member_id: string }) => {
         try {
           const m = getMember(member_id as never);
           return {

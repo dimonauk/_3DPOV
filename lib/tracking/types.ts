@@ -28,6 +28,7 @@
 export type TrackingSource =
   | "kinect"
   | "ultraleap"
+  | "realsense"
   | "mediapipe-face"
   | "mediapipe-hand"
   | "pointer";

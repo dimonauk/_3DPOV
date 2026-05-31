@@ -58,3 +58,12 @@ export { ServicesTable, type ServiceRow } from "./ServicesTable";
 export { Glow } from "./Glow";
 export { CircuitTraces } from "./CircuitTraces";
 export { StatusPanel, type StatusRow, type StatusTone } from "./StatusPanel";
+
+// Equation / evolution components. These files shipped with "ship all
+// pending site code" but their barrel re-exports were missing, which broke
+// app/holoflow/poi/page.tsx at Turbopack compile (see .claude/DEPLOYMENT.md).
+export { EquationCard, MoveCatalogue, type EquationMove } from "./EquationCard";
+export { GenePanel, type GeneRow } from "./GenePanel";
+export { GenomeConsole, type Gene } from "./GenomeConsole";
+export { PopulationGrid, type PopulationMember } from "./PopulationGrid";
+export { SkillWebGraph, type SkillNode, type SkillEdge } from "./SkillWebGraph";

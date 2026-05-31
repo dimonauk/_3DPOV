@@ -8,8 +8,18 @@
 
 import type { ReactNode } from "react";
 
-export function Specs({ children }: { children: ReactNode }) {
-  return <div className="border border-warm-black-700">{children}</div>;
+export function Specs({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`border border-warm-black-700${className ? ` ${className}` : ""}`}>
+      {children}
+    </div>
+  );
 }
 
 export function Spec({ k, v }: { k: string; v: ReactNode }) {
