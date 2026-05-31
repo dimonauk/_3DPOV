@@ -22,6 +22,7 @@ import { TrackingPermission } from "./TrackingPermission";
 const SOURCE_GLYPH: Record<TrackingSource, string> = {
   kinect: "K",
   ultraleap: "U",
+  realsense: "R",
   "mediapipe-face": "F",
   "mediapipe-hand": "H",
   pointer: "P",
@@ -30,6 +31,7 @@ const SOURCE_GLYPH: Record<TrackingSource, string> = {
 const SOURCE_LABEL: Record<TrackingSource, string> = {
   kinect: "Kinect",
   ultraleap: "Ultraleap",
+  realsense: "RealSense",
   "mediapipe-face": "Face",
   "mediapipe-hand": "Hand",
   pointer: "Pointer",

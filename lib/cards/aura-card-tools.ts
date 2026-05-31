@@ -123,7 +123,7 @@ export function getCardAuraTools(opts: {
           .optional()
           .describe("Why they're getting in touch"),
       }),
-      execute: async ({ email, name, message, intent }) => {
+      execute: async ({ email, name, message, intent }: { email: string; name?: string; message?: string; intent?: string }) => {
         try {
           const result = await createCardLead({
             slug,
@@ -172,7 +172,7 @@ export function getCardAuraTools(opts: {
           .optional()
           .describe("How many cards — default 3"),
       }),
-      execute: async ({ query, limit }) => {
+      execute: async ({ query, limit }: { query: string; limit?: number }) => {
         try {
           const all = await getAllCards();
           const q = query.toLowerCase();
@@ -248,7 +248,7 @@ export function getCardAuraTools(opts: {
           .optional()
           .describe("What the call is about — passed as the booking title"),
       }),
-      execute: async ({ purpose }) => {
+      execute: async ({ purpose }: { purpose?: string }) => {
         if (!card.calendar?.url) {
           return {
             summary: `${card.name} has no calendar URL configured. Tell the visitor to email ${card.contact?.email ?? "the cardholder"} to set up a time.`,
@@ -312,7 +312,7 @@ export function getCardAuraTools(opts: {
             "Animation name — must match exactly one of the 10 emotes",
           ),
       }),
-      execute: async ({ name }) => {
+      execute: async ({ name }: { name: string }) => {
         if (!(ALL_ANIMATIONS as string[]).includes(name)) {
           return {
             summary: `Unknown animation "${name}". Valid: ${ALL_ANIMATIONS.join(", ")}.`,
@@ -358,7 +358,7 @@ export function getCardAuraTools(opts: {
           ])
           .describe("One emotion word that fits THIS reply's tone."),
       }),
-      execute: async ({ emotion }) => {
+      execute: async ({ emotion }: { emotion: string }) => {
         return {
           summary: `Emotional tone set to ${emotion}. The avatar's posture will reflect this.`,
           action: { kind: "setEmotion" as const, emotion },
@@ -383,7 +383,7 @@ ${OUTFIT_SLUG_LIST.map((s) => `  - ${s}: ${OUTFIT_DESCRIPTIONS[s] ?? "(outfit)"}
           ])
           .describe("Outfit slug from the wardrobe registry"),
       }),
-      execute: async ({ slug }) => {
+      execute: async ({ slug }: { slug: string }) => {
         const outfit = WARDROBE_OUTFITS.find((o) => o.slug === slug);
         if (!outfit) {
           return {
