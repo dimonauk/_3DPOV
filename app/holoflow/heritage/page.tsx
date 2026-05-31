@@ -12,7 +12,6 @@ import {
   BtnPrimary,
   ChromeLabel,
   Card,
-  DemoCanvas,
   DemoLayout,
   Ladder,
   LadderRung,
@@ -25,6 +24,7 @@ import {
   Spec,
   Chip,
 } from "components/holoflow";
+import { HeritagePointCloudDemo } from "components/holoflow/demos";
 
 export const metadata = {
   title: "Heritage Documentation · Holoflow",
@@ -63,27 +63,7 @@ export default function HeritagePage() {
 
       <DemoLayout>
         <div className="flex flex-col gap-4">
-          <DemoCanvas
-            status="CAPTURE SIM"
-            statusTone="gold"
-            hud={[
-              { text: "POINT CLOUD RENDERER · ACTIVE", tone: "teal" },
-              { text: "POINTS: 18,432",                tone: "lavender" },
-              { text: "RESOLUTION: 2 mm · HERITAGE GRADE", tone: "gold" },
-            ]}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="grid grid-cols-12 gap-1 opacity-40">
-                {Array.from({ length: 144 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className="h-1 w-1 rounded-full bg-gold-300"
-                    style={{ opacity: 0.2 + Math.random() * 0.8 }}
-                  />
-                ))}
-              </div>
-            </div>
-          </DemoCanvas>
+          <HeritagePointCloudDemo />
 
           <Specs>
             <Spec k="Sensor" v="Insta360 X4 · gimbal-mounted" />

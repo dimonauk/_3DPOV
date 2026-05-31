@@ -20,7 +20,6 @@ import {
   ChromeLabel,
   Card,
   Chip,
-  DemoCanvas,
   DemoLayout,
   EquationCard,
   GenePanel,
@@ -32,6 +31,7 @@ import {
   Spec,
   MoveCatalogue,
 } from "components/holoflow";
+import { LightStackDemo, PoiCurveDemo } from "components/holoflow/demos";
 
 const MOVES: EquationMove[] = [
   { key: "antispin-2", name: "Antispin 2-petal", equation: "x = sin(t) + sin(−t)\ny = cos(t) + cos(−t)", desc: "Eye-shaped. Simplest antispin." },
@@ -85,22 +85,8 @@ export default function PoiPage() {
 
       <DemoLayout>
         <div className="flex flex-col gap-4">
-          <DemoCanvas
-            status="TRACING LIVE"
-            statusTone="coral"
-            hud={[
-              { text: "SHELL CURVE TRACER · INTERACTIVE", tone: "teal" },
-              { text: `PATTERN: ${move.name.toUpperCase()}`, tone: "lavender" },
-              { text: `n = ${g.n} · petals ${g.petals}`,     tone: "gold" },
-            ]}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="font-display text-5xl italic text-coral-400">
-                ✦
-              </div>
-            </div>
-          </DemoCanvas>
-
+          <PoiCurveDemo />
+          <LightStackDemo />
           <EquationCard move={move} />
         </div>
 
