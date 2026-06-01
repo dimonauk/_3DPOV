@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dolly — The Hangar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./dolly_v3.css" />
+  </head>
+  <body>
+    <div id="C"></div>
+    <div id="CR"></div>
+
+    <!-- NAV -->
+    <nav>
+      <a class="nl" href="#hero">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        DOLLY
+      </a>
+      <div class="nr">
+        <a href="#about">About</a>
+        <a href="#play">Playground</a>
+        <a href="#projects">Work</a>
+        <a href="#cap">Capabilities</a>
+        <a href="#stack">Stack</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <canvas id="hc"></canvas>
+      <div class="hi">
+        <p class="he">
+          // creative technologist · flow artist · digital sculptor · Romford UK
+        </p>
+        <h1>I BUILD<br />THINGS<br />THAT <i>move.</i></h1>
+        <p class="hd">
+          Generative systems. Poi mathematics. Light trail shaders. VRM avatars
+          with feelings. Resin sculptures you can hold. AI agents that
+          occasionally have better taste than I do. Welcome to the Hangar.
+        </p>
+        <div class="hbtns">
+          <a href="#play" class="btn btp">Play with something ↓</a>
+          <a href="#projects" class="btn btg">See the work →</a>
+        </div>
+      </div>
+      <div class="hscr">SCROLL<span></span></div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="tick"><div class="tick-inner" id="ticker"></div></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap sec">
+        <p class="sl reveal">who I am</p>
+        <h2 class="reveal reveal-d1">The Hangar & me</h2>
+        <p class="ss reveal reveal-d2">
+          A creative ecosystem at D:\The_Hangar\ — part studio, part lab, part
+          spacecraft
+        </p>
+        <div class="ag">
+          <div class="at">
+            <p class="reveal">
+              Hello! I'm Dolly. I spin poi, sculpt with code, and build AI
+              agents that occasionally have better taste than I do.
+              <em>The Hangar</em> is my self-hosted creative operating system —
+              a pnpm monorepo containing my life's work, wired together with 50+
+              MCP servers, local LLMs, and probably too much caffeine.
+            </p>
+            <p class="reveal reveal-d1">
+              The through-line in everything I make is
+              <strong>movement</strong>. Poi spinning is what got me into the
+              maths of circular motion — epitrochoids, hypotrochoids, antispin
+              flowers — and those same equations now drive my GLSL shaders,
+              generative sculptures, and 3D visualisers. The body teaches the
+              code.
+            </p>
+            <p class="reveal reveal-d2">
+              I make <em>things that exist in the world</em>: VRM avatars with
+              real breathing, resin sculptures you can hold, light trails you
+              can see on a wall with a long-exposure camera, shader brushes that
+              respond to music. Nothing lives only on screen if I can help it.
+            </p>
+            <div class="code-block reveal reveal-d3">
+              <pre><span class="cm">// poi flower: epitrochoid mathematics</span>
+<span class="cm">// this is what lives inside every shader I write</span>
+<span class="kw">function</span> <span class="fn2">epitrochoid</span>(<span class="va">R</span>, <span class="va">r</span>, <span class="va">d</span>, <span class="va">t</span>) {
+  <span class="kw">return</span> {
+    x: (<span class="va">R</span>+<span class="va">r</span>)*Math.cos(<span class="va">t</span>) - <span class="va">d</span>*Math.cos((<span class="va">R</span>+<span class="va">r</span>)/<span class="va">r</span>*<span class="va">t</span>),
+    y: (<span class="va">R</span>+<span class="va">r</span>)*Math.sin(<span class="va">t</span>) - <span class="va">d</span>*Math.sin((<span class="va">R</span>+<span class="va">r</span>)/<span class="va">r</span>*<span class="va">t</span>)
+  }
+}
+<span class="cm">// antispin: k = -n  →  petal count = n</span>
+<span class="cm">// inspin:   k = +n  →  petal count = n</span>
+<span class="cm">// isolation: k = 1  →  poi traces hand path</span></pre>
+            </div>
+          </div>
+          <div class="stats reveal reveal-d1">
+            <div class="stat">
+              <div class="stat-bar"></div>
+              <div class="stat-body">
+                <div class="stat-n">50+</div>
+                <div class="stat-lbl">MCP servers active</div>
+                <div class="stat-desc">
+                  The Hangar's nervous system. BlenderMCP on port 9876 is the
+                  brain stem.
+                </div>
+              </div>
+            </div>
+            <div class="stat b">
+              <div class="stat-bar"></div>
+              <div class="stat-body">
+                <div class="stat-n">48</div>
+                <div class="stat-lbl">GLSL trail brushes</div>
+                <div class="stat-desc">
+                  Every brush is a different way light can lie about where it's
+                  been.
+                </div>
+              </div>
+            </div>
+            <div class="stat pk">
+              <div class="stat-bar"></div>
+              <div class="stat-body">
+                <div class="stat-n">562KB</div>
+                <div class="stat-lbl">Agent knowledge vault</div>
+                <div class="stat-desc">
+                  Obsidian notes. Neo-London lore. Poi move taxonomy. The usual.
+                </div>
+              </div>
+            </div>
+            <div class="stat am">
+              <div class="stat-bar"></div>
+              <div class="stat-body">
+                <div class="stat-n">897</div>
+                <div class="stat-lbl">Lines, geometry worker</div>
+                <div class="stat-desc">
+                  30 pure-math algorithms. No dependencies. Just vibes and
+                  linear algebra.
+                </div>
+              </div>
+            </div>
+            <div class="stat pu">
+              <div class="stat-bar"></div>
+              <div class="stat-body">
+                <div class="stat-n">Saturn 4</div>
+                <div class="stat-lbl">Elegoo resin printer</div>
+                <div class="stat-desc">
+                  Turning attractor mathematics into objects you can put on a
+                  shelf.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section id="play">
+      <div class="play-head">
+        <p class="sl reveal">interactive playground</p>
+        <h2 class="reveal reveal-d1">Have a play</h2>
+        <p class="ss reveal reveal-d2">
+          Live demos running in your browser. Real maths, real shaders, no
+          server required.
+        </p>
+        <div class="ptabs" id="ptabs">
+          <button class="ptab on" data-toy="poi">Poi Flower</button>
+          <button class="ptab" data-toy="attractor">Attractor</button>
+          <button class="ptab" data-toy="jewel">Jewel 3D</button>
+          <button class="ptab" data-toy="paint">Light Paint</button>
+          <button class="ptab" data-toy="agent">Agent Graph</button>
+          <button class="ptab" data-toy="liss">Lissajous</button>
+        </div>
+      </div>
+      <div class="play-stage">
+        <div class="toy-cv-wrap" id="toy-wrap">
+          <canvas id="toy-cv"></canvas>
+        </div>
+        <div class="toy-panel" id="toy-panel"></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="wrap sec">
+        <p class="sl reveal">selected work</p>
+        <h2 class="reveal reveal-d1">Projects</h2>
+        <p class="ss reveal reveal-d2">
+          What's currently alive inside the Hangar. Always in motion.
+        </p>
+        <div class="pl reveal">
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">01</div>
+              <div>
+                <div class="pi-t">
+                  Light Weiver <span class="pi-badge g">Active</span>
+                </div>
+                <div class="pi-sub">
+                  Poi-spinning game with GLSL trail shaders & Laban movement
+                  system
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    A poi-spinning game with real-time GLSL trail shaders, agent
+                    combat, territory management, and a Laban effort-based
+                    movement system. The ob48 comet trail engine runs 48
+                    distinct brushes — each one a different way light
+                    misbehaves. Lazy-loaded, chunk-split, lovingly
+                    over-engineered.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg g">Three.js / R3F</span
+                    ><span class="ptg g">WebGPU</span
+                    ><span class="ptg g">GLSL</span
+                    ><span class="ptg b">TSL Materials</span
+                    ><span class="ptg">Laban System</span
+                    ><span class="ptg">ob48 Brushes</span
+                    ><span class="ptg pk">Vite / pnpm</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>Three.js</span><span>WebGPU</span><span>R3F</span
+                  ><span>GLSL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">02</div>
+              <div>
+                <div class="pi-t">
+                  Aura VRM <span class="pi-badge b">Active</span>
+                </div>
+                <div class="pi-sub">
+                  Living VRM avatar with procedural animation & autonomous idle
+                  loops
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    A living, breathing VRM avatar — literally. Procedural
+                    bone-level breathing and sway, an autonomous idle life loop,
+                    always-on STT, Kokoro TTS, MediaPipe hand tracking, and a
+                    Kinect integration. She blinks. She sighs. She gets bored if
+                    you ignore her.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg b">VRM</span
+                    ><span class="ptg b">Three.js</span
+                    ><span class="ptg b">Zustand</span
+                    ><span class="ptg">Kokoro TTS</span
+                    ><span class="ptg">MediaPipe</span
+                    ><span class="ptg pk">AI Agents</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>VRM</span><span>Zustand</span><span>MediaPipe</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">03</div>
+              <div>
+                <div class="pi-t">
+                  Jewel Array / Dolly_OS <span class="pi-badge pk">Core</span>
+                </div>
+                <div class="pi-sub">
+                  897-line geometry worker powering a live 3D sculpture studio
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    An 897-line geometry worker with 30 pure-math algorithms
+                    powering a live 3D sculpture studio. Facets, geodesics,
+                    manifold mesh streaming, resin material pipelines. The
+                    DollyOS shell wraps it in a cyberpunk interface that
+                    occasionally compiles first try.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg g">bpy / Blender</span
+                    ><span class="ptg">React / TS</span
+                    ><span class="ptg">Web Workers</span
+                    ><span class="ptg b">STL Export</span
+                    ><span class="ptg">Resin Print</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>bpy</span><span>TypeScript</span><span>Workers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">04</div>
+              <div>
+                <div class="pi-t">
+                  Strange Attractor Sculptures
+                  <span class="pi-badge g">Printed</span>
+                </div>
+                <div class="pi-sub">
+                  Lorenz, Halvorsen, Thomas & Aizawa — scripted, rendered,
+                  printed
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    Fully scripted Blender scenes — tube geometry from ODE
+                    integration, waveguide resin materials, Sweetcore lighting
+                    rig, EEVEE compositor bloom. Then exported to STL and
+                    printed in resin. Chaos theory on a shelf, which is honestly
+                    where it belongs.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg g">Blender bpy</span
+                    ><span class="ptg">EEVEE</span
+                    ><span class="ptg b">Resin Print</span
+                    ><span class="ptg">Elegoo Saturn 4</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>Blender</span><span>Python</span><span>Resin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">05</div>
+              <div>
+                <div class="pi-t">
+                  AURA Agent System
+                  <span class="pi-badge pk">Infrastructure</span>
+                </div>
+                <div class="pi-sub">
+                  Dual-brain AI orchestration with 20 agents, 36 skills, 11
+                  workflows
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    Dual-brain orchestration: Architect (Dolphin) for deep
+                    reasoning, Typist (Qwen) for fast output. 20 agents, 36
+                    skills, 11 workflows, a 562KB Obsidian vault, and a
+                    cyberpunk Neo-London world with AI constructs YOW and PURP.
+                    Yes, the lore is real. Yes, it matters.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg pk">Ollama</span
+                    ><span class="ptg pk">Qdrant</span
+                    ><span class="ptg pk">50+ MCPs</span
+                    ><span class="ptg">MQTT</span
+                    ><span class="ptg">Obsidian</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>Ollama</span><span>Qdrant</span><span>MQTT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pi" data-open="false">
+            <div class="pi-head">
+              <div class="pi-n">06</div>
+              <div>
+                <div class="pi-t">
+                  Temporal Light Accumulator
+                  <span class="pi-badge b">Tool</span>
+                </div>
+                <div class="pi-sub">
+                  DaVinci Resolve Fusion scripting for 360° flow art footage
+                </div>
+              </div>
+              <div class="pi-arr">↗</div>
+            </div>
+            <div class="pi-body">
+              <div class="pi-body-inner">
+                <div>
+                  <p class="pi-desc">
+                    Stacks 360° video frames with opacity weighting and blend
+                    modes to burn poi light trails into single glow-hot
+                    composites. The mathematical equivalent of long-exposure
+                    photography, but you can parametrically control the burn.
+                    Built for fire and LED staff sessions.
+                  </p>
+                  <div class="pi-tags">
+                    <span class="ptg">Fusion Script</span
+                    ><span class="ptg g">360° Video</span
+                    ><span class="ptg">Light Painting</span
+                    ><span class="ptg b">Python</span>
+                  </div>
+                </div>
+                <div class="pi-meta">
+                  <span>DaVinci</span><span>Fusion</span><span>Python</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="cap">
+      <div class="wrap sec">
+        <p class="sl reveal">what I actually do</p>
+        <h2 class="reveal reveal-d1">Capabilities</h2>
+        <p class="ss reveal reveal-d2">
+          Not a list of buzzwords. Things I've built, broken, fixed, and
+          shipped.
+        </p>
+        <div class="cg reveal">
+          <div class="cc g">
+            <div class="cc-icon">🌊</div>
+            <div class="cc-t">Real-time Shader Dev</div>
+            <div class="cc-b">
+              GLSL fragment shaders, WebGPU TSL node materials, quad-strip
+              ribbon geometry, 48-brush comet trail systems. If it glows, I can
+              build it.
+            </div>
+          </div>
+          <div class="cc b">
+            <div class="cc-icon">🤖</div>
+            <div class="cc-t">AI Agent Architecture</div>
+            <div class="cc-b">
+              Multi-brain orchestration with Ollama, Qdrant vector memory, 50+
+              MCP servers, dual Architect/Typist design. Agents that actually do
+              things.
+            </div>
+          </div>
+          <div class="cc pk">
+            <div class="cc-icon">🫀</div>
+            <div class="cc-t">Procedural Animation</div>
+            <div class="cc-b">
+              Bone-level VRM breathing/sway, autonomous idle life loops, Laban
+              effort-based movement for game characters. Animation that feels
+              alive, not scripted.
+            </div>
+          </div>
+          <div class="cc g">
+            <div class="cc-icon">⬡</div>
+            <div class="cc-t">Generative 3D Sculpture</div>
+            <div class="cc-b">
+              Blender bpy scripting for procedural geometry: attractors, poi
+              manifolds, jewel arrays, biological branching. Scripted at the
+              millimetre, printable in resin.
+            </div>
+          </div>
+          <div class="cc b">
+            <div class="cc-icon">🔄</div>
+            <div class="cc-t">Full-stack Ecosystem Design</div>
+            <div class="cc-b">
+              pnpm monorepos, React/TypeScript, Vite, Zustand slices, Web
+              Workers, WebSockets, MQTT. 50 moving parts that boot reliably.
+              Mostly.
+            </div>
+          </div>
+          <div class="cc pk">
+            <div class="cc-icon">🪩</div>
+            <div class="cc-t">Flow Art & Poi Mathematics</div>
+            <div class="cc-b">
+              I don't just code poi simulations — I spin poi. Epitrochoids,
+              hypotrochoids, antispin flowers. The practice feeds the
+              mathematics. Both are training data.
+            </div>
+          </div>
+          <div class="cc g">
+            <div class="cc-icon">🖨️</div>
+            <div class="cc-t">Physical Fabrication</div>
+            <div class="cc-b">
+              Elegoo Saturn 4 resin printing. STL export pipelines. Manifold
+              validation, wall thickness, articulated joint design. Code that
+              becomes objects.
+            </div>
+          </div>
+          <div class="cc b">
+            <div class="cc-icon">🎞️</div>
+            <div class="cc-t">Computational Cinematography</div>
+            <div class="cc-b">
+              DaVinci Resolve Fusion scripting, temporal light accumulation,
+              EEVEE compositor, Blender animation rigs. Light painting, made
+              programmable.
+            </div>
+          </div>
+          <div class="cc pk">
+            <div class="cc-icon">🧠</div>
+            <div class="cc-t">Creative Technologist</div>
+            <div class="cc-b">
+              The connector: poi maths → shaders. Agent memory → avatar
+              personality. Sculpture → slicer → object in hand. Disciplines that
+              don't usually talk, made to talk.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="wrap sec">
+        <p class="sl reveal">the arsenal</p>
+        <h2 class="reveal reveal-d1">Tech Stack</h2>
+        <p class="ss reveal reveal-d2">
+          What powers the Hangar. No gatekeeping — this is exactly how it works.
+        </p>
+        <div class="sg reveal">
+          <div class="scat">
+            <h3>3D & Visual</h3>
+            <div class="si">Blender 5.1 + bpy scripting</div>
+            <div class="si">Three.js / WebGPU renderer</div>
+            <div class="si">React Three Fiber</div>
+            <div class="si">GLSL / TSL node shaders</div>
+            <div class="si">VRM avatar system</div>
+            <div class="si">DaVinci Resolve Fusion</div>
+            <div class="si">Elegoo Saturn 4 (resin)</div>
+            <div class="si">EEVEE + Cycles rendering</div>
+          </div>
+          <div class="scat b">
+            <h3>Frontend</h3>
+            <div class="si">React 18 + TypeScript</div>
+            <div class="si">Zustand (slice arch)</div>
+            <div class="si">Vite + pnpm monorepo</div>
+            <div class="si">Web Workers (typed)</div>
+            <div class="si">MediaPipe hand tracking</div>
+            <div class="si">WebSockets + MQTT</div>
+            <div class="si">Phaser (Pixel Academy)</div>
+            <div class="si">Lazy load / chunk split</div>
+          </div>
+          <div class="scat pk">
+            <h3>AI & Agents</h3>
+            <div class="si">Ollama (local LLMs)</div>
+            <div class="si">Qdrant (vector DB)</div>
+            <div class="si">50+ MCP servers</div>
+            <div class="si">Kokoro TTS engine</div>
+            <div class="si">Kinect WebSocket bridge</div>
+            <div class="si">Obsidian knowledge vault</div>
+            <div class="si">Dual-brain orchestration</div>
+            <div class="si">Antigravity Agent Kit</div>
+          </div>
+          <div class="scat am">
+            <h3>Fabrication & Math</h3>
+            <div class="si">Resin 3D printing</div>
+            <div class="si">STL / 3MF pipelines</div>
+            <div class="si">Manifold mesh validation</div>
+            <div class="si">Articulated joint design</div>
+            <div class="si">Wall thickness checking</div>
+            <div class="si">Poi move manifolds</div>
+            <div class="si">Epitrochoid / hypotrochoid</div>
+            <div class="si">Laban effort system</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="fl">✦ Dolly</div>
+      <div class="fli">
+        <a href="#about">About</a><a href="#play">Playground</a
+        ><a href="#projects">Work</a><a href="#stack">Stack</a>
+      </div>
+      <div class="fc">The Hangar — D:\The_Hangar\ — Romford, UK</div>
+    </footer>
+
+    <script src="./dolly_v3.js"></script>
+  </body>
+</html>
