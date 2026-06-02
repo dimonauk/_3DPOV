@@ -71,6 +71,7 @@ import { entry as blenderTutorialGnShortestEdgePathCircuitTraceEntry } from "com
 import { entry as blenderTutorialGnSplineParameterVineTendrilEntry } from "components/tutorials/entries/blender-tutorial-gn-spline-parameter-vine-tendril";
 import { entry as blenderTutorialGnSampleIndexEchoGridEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-index-echo-grid";
 import { entry as blenderTutorialGnBlurAttributeHeatDiffusionEntry } from "components/tutorials/entries/blender-tutorial-gn-blur-attribute-heat-diffusion";
+import { entry as blenderTutorialGnForEachElementHexPanelEntry } from "components/tutorials/entries/blender-tutorial-gn-for-each-element-hex-panel";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -147,6 +148,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSplineParameterVineTendrilEntry,
   blenderTutorialGnSampleIndexEchoGridEntry,
   blenderTutorialGnBlurAttributeHeatDiffusionEntry,
+  blenderTutorialGnForEachElementHexPanelEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

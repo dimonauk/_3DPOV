@@ -1,0 +1,40 @@
+{
+  "blend": "hex_panel.blend",
+  "glb": "hex_panel.glb",
+  "video": "../../videos/geometry-nodes/gn-for-each-element-hex-panel/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-for-each-element-hex-panel/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-for-each-element-hex-panel",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-sphere",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-mesh-island-per-island-colour",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-index-face-colour-mosaic"
+    ],
+    "external": [
+      {
+        "title": "For Each Geometry Element Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/for_each_geometry_element.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "Blender Manual — Dual Mesh Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}
