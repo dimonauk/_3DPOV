@@ -42,3 +42,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-02 | blend + glb | geometry-nodes | gn-shortest-edge-path-circuit-trace | 5.1 | CC0 | circuit_trace_sphere.blend · circuit_trace_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-shortest-edge-path-circuit-trace |
 
 | 2026-06-02 | blend + glb | geometry-nodes | gn-spline-parameter-vine-tendril | 5.1 | CC0 | vine_tendril.blend · vine_tendril.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-spline-parameter-vine-tendril |
+
+| 2026-06-02 | blend + glb | geometry-nodes | gn-sample-index-echo-grid | 5.1 | CC0 | echo_grid.blend · echo_grid.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-index-echo-grid |

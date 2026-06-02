@@ -69,6 +69,7 @@ import { entry as blenderTutorialGnAccumulateFieldSpiralTowerEntry } from "compo
 import { entry as blenderTutorialGnMeshIslandPerIslandColourEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-island-per-island-colour";
 import { entry as blenderTutorialGnShortestEdgePathCircuitTraceEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-path-circuit-trace";
 import { entry as blenderTutorialGnSplineParameterVineTendrilEntry } from "components/tutorials/entries/blender-tutorial-gn-spline-parameter-vine-tendril";
+import { entry as blenderTutorialGnSampleIndexEchoGridEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-index-echo-grid";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -143,6 +144,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnMeshIslandPerIslandColourEntry,
   blenderTutorialGnShortestEdgePathCircuitTraceEntry,
   blenderTutorialGnSplineParameterVineTendrilEntry,
+  blenderTutorialGnSampleIndexEchoGridEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
