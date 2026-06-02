@@ -70,6 +70,7 @@ import { entry as blenderTutorialGnMeshIslandPerIslandColourEntry } from "compon
 import { entry as blenderTutorialGnShortestEdgePathCircuitTraceEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-path-circuit-trace";
 import { entry as blenderTutorialGnSplineParameterVineTendrilEntry } from "components/tutorials/entries/blender-tutorial-gn-spline-parameter-vine-tendril";
 import { entry as blenderTutorialGnSampleIndexEchoGridEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-index-echo-grid";
+import { entry as blenderTutorialGnBlurAttributeHeatDiffusionEntry } from "components/tutorials/entries/blender-tutorial-gn-blur-attribute-heat-diffusion";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -145,6 +146,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnShortestEdgePathCircuitTraceEntry,
   blenderTutorialGnSplineParameterVineTendrilEntry,
   blenderTutorialGnSampleIndexEchoGridEntry,
+  blenderTutorialGnBlurAttributeHeatDiffusionEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
