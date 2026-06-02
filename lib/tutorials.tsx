@@ -67,6 +67,7 @@ import { entry as blenderTutorialCurvesHairGroomingEntry } from "components/tuto
 import { entry as blenderTutorialGnDualMeshVoronoiSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-sphere";
 import { entry as blenderTutorialGnAccumulateFieldSpiralTowerEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-spiral-tower";
 import { entry as blenderTutorialGnMeshIslandPerIslandColourEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-island-per-island-colour";
+import { entry as blenderTutorialGnShortestEdgePathCircuitTraceEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-path-circuit-trace";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -139,6 +140,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDualMeshVoronoiSphereEntry,
   blenderTutorialGnAccumulateFieldSpiralTowerEntry,
   blenderTutorialGnMeshIslandPerIslandColourEntry,
+  blenderTutorialGnShortestEdgePathCircuitTraceEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

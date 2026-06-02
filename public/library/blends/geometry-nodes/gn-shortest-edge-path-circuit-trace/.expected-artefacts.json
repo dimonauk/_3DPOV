@@ -1,0 +1,54 @@
+{
+  "slug": "gn-shortest-edge-path-circuit-trace",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/record.py",
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/README.md",
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/.expected-artefacts.json",
+    "public/library/blends/geometry-nodes/gn-shortest-edge-path-circuit-trace/circuit_trace_sphere.blend",
+    "public/library/glbs/geometry-nodes/gn-shortest-edge-path-circuit-trace/circuit_trace_sphere.glb",
+    "public/library/videos/geometry-nodes/gn-shortest-edge-path-circuit-trace/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-shortest-edge-path-circuit-trace/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-mesh-island-per-island-colour",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Shortest Edge Paths Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/shortest_edge_paths.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Manual — Curve to Mesh Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "expert_notes": [
+    "GeometryNodeShortestEdgePaths is a field node with no Geometry input — evaluation context is set by EdgePathsToCurves.Mesh socket",
+    "Random per-edge cost via RandomValue(FLOAT, ID=InputIndex, Seed=COST_SEED) breaks geodesic symmetry; COST_MAX/COST_MIN ratio is the zigzag factor",
+    "EdgePathsToCurves traces FROM start vertices TOWARD nearest end vertex, following the Dijkstra next-hop tree built by ShortestEdgePaths",
+    "Two-stage start vertex selection: FunctionNodeCompare(LESS_THAN, START_EQ_Z) gates the equatorial band; RandomValue(BOOLEAN, Probability=START_PROB) thins to a controllable fraction",
+    "Empty base mesh + IcoSphere node inside GN = fully portable asset with no dependency on a pre-built mesh data block",
+    "export_apply=True is mandatory — Three.js and Babylon.js do not evaluate GN modifiers; the GLB must contain realised mesh data",
+    "Start Density group socket (Input_2 in modifier) drives RandomValue(BOOLEAN).Probability — animating 0 → 0.60 reveals traces progressively without touching the node graph"
+  ]
+}
