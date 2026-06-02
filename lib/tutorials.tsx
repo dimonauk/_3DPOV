@@ -68,6 +68,7 @@ import { entry as blenderTutorialGnDualMeshVoronoiSphereEntry } from "components
 import { entry as blenderTutorialGnAccumulateFieldSpiralTowerEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-spiral-tower";
 import { entry as blenderTutorialGnMeshIslandPerIslandColourEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-island-per-island-colour";
 import { entry as blenderTutorialGnShortestEdgePathCircuitTraceEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-path-circuit-trace";
+import { entry as blenderTutorialGnSplineParameterVineTendrilEntry } from "components/tutorials/entries/blender-tutorial-gn-spline-parameter-vine-tendril";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -141,6 +142,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnAccumulateFieldSpiralTowerEntry,
   blenderTutorialGnMeshIslandPerIslandColourEntry,
   blenderTutorialGnShortestEdgePathCircuitTraceEntry,
+  blenderTutorialGnSplineParameterVineTendrilEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
