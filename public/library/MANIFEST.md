@@ -48,3 +48,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-02 | blend + glb | geometry-nodes | gn-blur-attribute-heat-diffusion | 5.1 | CC0 | heat_diffusion_dome.blend · heat_diffusion_dome.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion |
 
 | 2026-06-02 | blend + glb | geometry-nodes | gn-for-each-element-hex-panel | 5.1 | CC0 | hex_panel.blend · hex_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-for-each-element-hex-panel |
+
+| 2026-06-03 | blend + glb | geometry-nodes | gn-sample-nearest-surface-mesh-conform | 5.1 | CC0 | tile_armour.blend · tile_armour.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-nearest-surface-mesh-conform |

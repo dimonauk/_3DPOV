@@ -72,6 +72,7 @@ import { entry as blenderTutorialGnSplineParameterVineTendrilEntry } from "compo
 import { entry as blenderTutorialGnSampleIndexEchoGridEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-index-echo-grid";
 import { entry as blenderTutorialGnBlurAttributeHeatDiffusionEntry } from "components/tutorials/entries/blender-tutorial-gn-blur-attribute-heat-diffusion";
 import { entry as blenderTutorialGnForEachElementHexPanelEntry } from "components/tutorials/entries/blender-tutorial-gn-for-each-element-hex-panel";
+import { entry as blenderTutorialGnSampleNearestSurfaceMeshConformEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-nearest-surface-mesh-conform";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -149,6 +150,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSampleIndexEchoGridEntry,
   blenderTutorialGnBlurAttributeHeatDiffusionEntry,
   blenderTutorialGnForEachElementHexPanelEntry,
+  blenderTutorialGnSampleNearestSurfaceMeshConformEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
