@@ -75,6 +75,7 @@ import { entry as blenderTutorialGnForEachElementHexPanelEntry } from "component
 import { entry as blenderTutorialGnSampleNearestSurfaceMeshConformEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-nearest-surface-mesh-conform";
 import { entry as blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry } from "components/tutorials/entries/blender-tutorial-gn-attribute-statistic-evaluate-on-domain";
 import { entry as blenderTutorialGnPointsToVolumeOrganicCoralEntry } from "components/tutorials/entries/blender-tutorial-gn-points-to-volume-organic-coral";
+import { entry as blenderTutorialGnFilletCurveNeonSignEntry } from "components/tutorials/entries/blender-tutorial-gn-fillet-curve-neon-sign";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -155,6 +156,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSampleNearestSurfaceMeshConformEntry,
   blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry,
   blenderTutorialGnPointsToVolumeOrganicCoralEntry,
+  blenderTutorialGnFilletCurveNeonSignEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
