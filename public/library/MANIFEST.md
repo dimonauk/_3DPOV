@@ -52,3 +52,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-03 | blend + glb | geometry-nodes | gn-sample-nearest-surface-mesh-conform | 5.1 | CC0 | tile_armour.blend · tile_armour.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-nearest-surface-mesh-conform |
 
 | 2026-06-03 | blend + glb | geometry-nodes | gn-attribute-statistic-evaluate-on-domain | 5.1 | CC0 | area_heat_map.blend · area_heat_map.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain |
+| 2026-06-03 | blend + glb | geometry-nodes | gn-points-to-volume-organic-coral | 5.1 | CC0 | organic_coral.blend · organic_coral.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-points-to-volume-organic-coral |

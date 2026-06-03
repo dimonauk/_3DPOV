@@ -74,6 +74,7 @@ import { entry as blenderTutorialGnBlurAttributeHeatDiffusionEntry } from "compo
 import { entry as blenderTutorialGnForEachElementHexPanelEntry } from "components/tutorials/entries/blender-tutorial-gn-for-each-element-hex-panel";
 import { entry as blenderTutorialGnSampleNearestSurfaceMeshConformEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-nearest-surface-mesh-conform";
 import { entry as blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry } from "components/tutorials/entries/blender-tutorial-gn-attribute-statistic-evaluate-on-domain";
+import { entry as blenderTutorialGnPointsToVolumeOrganicCoralEntry } from "components/tutorials/entries/blender-tutorial-gn-points-to-volume-organic-coral";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -153,6 +154,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnForEachElementHexPanelEntry,
   blenderTutorialGnSampleNearestSurfaceMeshConformEntry,
   blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry,
+  blenderTutorialGnPointsToVolumeOrganicCoralEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

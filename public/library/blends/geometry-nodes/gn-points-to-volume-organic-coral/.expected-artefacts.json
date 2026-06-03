@@ -1,0 +1,45 @@
+{
+  "blend": "organic_coral.blend",
+  "glb": "organic_coral.glb",
+  "video": "../../videos/geometry-nodes/gn-points-to-volume-organic-coral/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-points-to-volume-organic-coral/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-points-to-volume-organic-coral",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-sphere"
+    ],
+    "external": [
+      {
+        "title": "Points to Volume Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Volume to Mesh Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "OpenVDB — the underlying VDB library used by Blender's volume pipeline",
+        "url": "https://github.com/AcademySoftwareFoundation/openvdb",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation"
+      }
+    ]
+  }
+}
