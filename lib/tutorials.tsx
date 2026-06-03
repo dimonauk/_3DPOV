@@ -73,6 +73,7 @@ import { entry as blenderTutorialGnSampleIndexEchoGridEntry } from "components/t
 import { entry as blenderTutorialGnBlurAttributeHeatDiffusionEntry } from "components/tutorials/entries/blender-tutorial-gn-blur-attribute-heat-diffusion";
 import { entry as blenderTutorialGnForEachElementHexPanelEntry } from "components/tutorials/entries/blender-tutorial-gn-for-each-element-hex-panel";
 import { entry as blenderTutorialGnSampleNearestSurfaceMeshConformEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-nearest-surface-mesh-conform";
+import { entry as blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry } from "components/tutorials/entries/blender-tutorial-gn-attribute-statistic-evaluate-on-domain";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -151,6 +152,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnBlurAttributeHeatDiffusionEntry,
   blenderTutorialGnForEachElementHexPanelEntry,
   blenderTutorialGnSampleNearestSurfaceMeshConformEntry,
+  blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
