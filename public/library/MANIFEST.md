@@ -63,3 +63,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-05 | blend + glb | rigging | armature-ik-robot-arm | 5.1 | CC0 | robot_arm_ik.blend · robot_arm_ik.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-armature-ik-robot-arm |
 
 | 2026-06-05 | blend + glb | geometry-nodes | gn-set-position-noise-displacement | 5.1 | CC0 | blob_planet.blend · blob_planet.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-position-noise-displacement |
+
+| 2026-06-05 | blend + glb | shading | grease-pencil-lineart-toon-outline | 5.1 | CC0 | grease_pencil_lineart.blend · grease_pencil_lineart.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-grease-pencil-lineart-toon-outline |
