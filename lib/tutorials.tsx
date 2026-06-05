@@ -79,6 +79,7 @@ import { entry as blenderTutorialGnFilletCurveNeonSignEntry } from "components/t
 import { entry as blenderTutorialShaderPrincipledTransmissionIridescenceEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-transmission-iridescence";
 import { entry as blenderTutorialGnTrimCurveLineDrawEntry } from "components/tutorials/entries/blender-tutorial-gn-trim-curve-line-draw";
 import { entry as blenderTutorialArmatureIkRobotArmEntry } from "components/tutorials/entries/blender-tutorial-armature-ik-robot-arm";
+import { entry as blenderTutorialGnSetPositionNoiseDisplacementEntry } from "components/tutorials/entries/blender-tutorial-gn-set-position-noise-displacement";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -163,6 +164,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderPrincipledTransmissionIridescenceEntry,
   blenderTutorialGnTrimCurveLineDrawEntry,
   blenderTutorialArmatureIkRobotArmEntry,
+  blenderTutorialGnSetPositionNoiseDisplacementEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
