@@ -77,6 +77,7 @@ import { entry as blenderTutorialGnAttributeStatisticEvaluateOnDomainEntry } fro
 import { entry as blenderTutorialGnPointsToVolumeOrganicCoralEntry } from "components/tutorials/entries/blender-tutorial-gn-points-to-volume-organic-coral";
 import { entry as blenderTutorialGnFilletCurveNeonSignEntry } from "components/tutorials/entries/blender-tutorial-gn-fillet-curve-neon-sign";
 import { entry as blenderTutorialShaderPrincipledTransmissionIridescenceEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-transmission-iridescence";
+import { entry as blenderTutorialGnTrimCurveLineDrawEntry } from "components/tutorials/entries/blender-tutorial-gn-trim-curve-line-draw";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -159,6 +160,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnPointsToVolumeOrganicCoralEntry,
   blenderTutorialGnFilletCurveNeonSignEntry,
   blenderTutorialShaderPrincipledTransmissionIridescenceEntry,
+  blenderTutorialGnTrimCurveLineDrawEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

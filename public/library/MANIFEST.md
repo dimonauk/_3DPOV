@@ -57,3 +57,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-03 | blend + glb | geometry-nodes | gn-fillet-curve-neon-sign | 5.1 | CC0 | neon_sign.blend · neon_sign.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-fillet-curve-neon-sign |
 
 | 2026-06-03 | blend + glb | shading | shader-principled-transmission-iridescence | 5.1 | CC0 | holographic_gem.blend · holographic_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-transmission-iridescence |
+
+| 2026-06-05 | blend + glb | geometry-nodes | gn-trim-curve-line-draw | 5.1 | CC0 | spiral_trace.blend · spiral_trace.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-trim-curve-line-draw |
