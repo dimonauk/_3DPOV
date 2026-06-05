@@ -78,6 +78,7 @@ import { entry as blenderTutorialGnPointsToVolumeOrganicCoralEntry } from "compo
 import { entry as blenderTutorialGnFilletCurveNeonSignEntry } from "components/tutorials/entries/blender-tutorial-gn-fillet-curve-neon-sign";
 import { entry as blenderTutorialShaderPrincipledTransmissionIridescenceEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-transmission-iridescence";
 import { entry as blenderTutorialGnTrimCurveLineDrawEntry } from "components/tutorials/entries/blender-tutorial-gn-trim-curve-line-draw";
+import { entry as blenderTutorialArmatureIkRobotArmEntry } from "components/tutorials/entries/blender-tutorial-armature-ik-robot-arm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -161,6 +162,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnFilletCurveNeonSignEntry,
   blenderTutorialShaderPrincipledTransmissionIridescenceEntry,
   blenderTutorialGnTrimCurveLineDrawEntry,
+  blenderTutorialArmatureIkRobotArmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

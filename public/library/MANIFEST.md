@@ -59,3 +59,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-03 | blend + glb | shading | shader-principled-transmission-iridescence | 5.1 | CC0 | holographic_gem.blend · holographic_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-transmission-iridescence |
 
 | 2026-06-05 | blend + glb | geometry-nodes | gn-trim-curve-line-draw | 5.1 | CC0 | spiral_trace.blend · spiral_trace.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-trim-curve-line-draw |
+
+| 2026-06-05 | blend + glb | rigging | armature-ik-robot-arm | 5.1 | CC0 | robot_arm_ik.blend · robot_arm_ik.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-armature-ik-robot-arm |
