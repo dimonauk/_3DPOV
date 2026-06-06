@@ -84,6 +84,7 @@ import { entry as blenderTutorialGpLineartToonOutlineEntry } from "components/tu
 import { entry as blenderTutorialGnIndexOfNearestNeuralWebEntry } from "components/tutorials/entries/blender-tutorial-gn-index-of-nearest-neural-web";
 import { entry as blenderTutorialGnScaleInstancesSpineGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-instances-spine-growth";
 import { entry as blenderTutorialGnUvUnwrapPackIslandsGlbEntry } from "components/tutorials/entries/blender-tutorial-gn-uv-unwrap-pack-islands-glb";
+import { entry as blenderTutorialGnSeparateGeometryExplodedViewEntry } from "components/tutorials/entries/blender-tutorial-gn-separate-geometry-exploded-view";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -173,6 +174,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnIndexOfNearestNeuralWebEntry,
   blenderTutorialGnScaleInstancesSpineGrowthEntry,
   blenderTutorialGnUvUnwrapPackIslandsGlbEntry,
+  blenderTutorialGnSeparateGeometryExplodedViewEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

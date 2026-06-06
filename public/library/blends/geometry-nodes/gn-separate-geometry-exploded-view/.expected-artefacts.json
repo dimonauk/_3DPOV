@@ -1,0 +1,56 @@
+{
+  "slug": "gn-separate-geometry-exploded-view",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "dissection_exploded.blend",
+    "dissection_exploded.glb",
+    "../../videos/geometry-nodes/gn-separate-geometry-exploded-view/viewport.mp4",
+    "../../videos/geometry-nodes/gn-separate-geometry-exploded-view/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-bounding-box"
+    ],
+    "outside_sources": [
+      {
+        "title": "Separate Geometry Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/separate_geometry.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://www.blender.org/",
+          "https://developer.blender.org/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}
