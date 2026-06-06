@@ -65,3 +65,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-05 | blend + glb | geometry-nodes | gn-set-position-noise-displacement | 5.1 | CC0 | blob_planet.blend · blob_planet.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-position-noise-displacement |
 
 | 2026-06-05 | blend + glb | shading | grease-pencil-lineart-toon-outline | 5.1 | CC0 | grease_pencil_lineart.blend · grease_pencil_lineart.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-grease-pencil-lineart-toon-outline |
+
+| 2026-06-06 | blend + glb | geometry-nodes | gn-index-of-nearest-neural-web | 5.1 | CC0 | neural_web.blend · neural_web.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-index-of-nearest-neural-web |
