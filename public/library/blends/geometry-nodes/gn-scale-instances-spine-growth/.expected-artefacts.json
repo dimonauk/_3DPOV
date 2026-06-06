@@ -1,0 +1,58 @@
+{
+  "slug": "gn-scale-instances-spine-growth",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "spine_growth.blend",
+    "spine_growth.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Scale Instances Node",
+        "author": "Blender Documentation Team",
+        "licence": "CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html"
+      },
+      {
+        "title": "blender-scripting",
+        "author": "Nicolas Janakiev",
+        "licence": "MIT",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "related": ["blender-osm", "blender-gis"]
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "author": "Khronos Group",
+        "licence": "Apache-2.0",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "related": ["glTF Validator", "three.js glTF loader"]
+      }
+    ]
+  },
+  "gn_nodes_demonstrated": [
+    "GeometryNodeScaleInstances",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeInputPosition",
+    "GeometryNodeInputNormal",
+    "FunctionNodeAlignEulerToVector",
+    "GeometryNodeObjectInfo",
+    "GeometryNodeSetShadeSmooth",
+    "ShaderNodeTexNoise",
+    "ShaderNodeMapRange",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeMath",
+    "ShaderNodeCombineXYZ"
+  ]
+}

@@ -82,6 +82,7 @@ import { entry as blenderTutorialArmatureIkRobotArmEntry } from "components/tuto
 import { entry as blenderTutorialGnSetPositionNoiseDisplacementEntry } from "components/tutorials/entries/blender-tutorial-gn-set-position-noise-displacement";
 import { entry as blenderTutorialGpLineartToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-lineart-toon-outline";
 import { entry as blenderTutorialGnIndexOfNearestNeuralWebEntry } from "components/tutorials/entries/blender-tutorial-gn-index-of-nearest-neural-web";
+import { entry as blenderTutorialGnScaleInstancesSpineGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-instances-spine-growth";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -169,6 +170,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSetPositionNoiseDisplacementEntry,
   blenderTutorialGpLineartToonOutlineEntry,
   blenderTutorialGnIndexOfNearestNeuralWebEntry,
+  blenderTutorialGnScaleInstancesSpineGrowthEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
