@@ -69,3 +69,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-06 | blend + glb | geometry-nodes | gn-index-of-nearest-neural-web | 5.1 | CC0 | neural_web.blend · neural_web.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-index-of-nearest-neural-web |
 
 | 2026-06-06 | blend + glb | geometry-nodes | gn-scale-instances-spine-growth | 5.1 | CC0 | spine_growth.blend · spine_growth.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scale-instances-spine-growth |
+| 2026-06-06 | blend + glb | geometry-nodes | gn-uv-unwrap-pack-islands-glb | 5.1 | CC0 | crystal_geode.blend · crystal_geode.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb |
