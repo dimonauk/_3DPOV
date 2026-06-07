@@ -1,0 +1,56 @@
+{
+  "slug": "python-bpy-bmesh-dodecahedron",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "dodecahedron.blend",
+    "dodecahedron.glb",
+    "../../videos/scripting/python-bpy-bmesh-dodecahedron/viewport.mp4",
+    "../../videos/scripting/python-bpy-bmesh-dodecahedron/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bmesh module",
+        "url": "https://docs.blender.org/api/current/bmesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://www.blender.org/",
+          "https://developer.blender.org/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

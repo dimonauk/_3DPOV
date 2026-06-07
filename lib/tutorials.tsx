@@ -85,6 +85,7 @@ import { entry as blenderTutorialGnIndexOfNearestNeuralWebEntry } from "componen
 import { entry as blenderTutorialGnScaleInstancesSpineGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-instances-spine-growth";
 import { entry as blenderTutorialGnUvUnwrapPackIslandsGlbEntry } from "components/tutorials/entries/blender-tutorial-gn-uv-unwrap-pack-islands-glb";
 import { entry as blenderTutorialGnSeparateGeometryExplodedViewEntry } from "components/tutorials/entries/blender-tutorial-gn-separate-geometry-exploded-view";
+import { entry as blenderTutorialPythonBpyBmeshDodecahedronEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bmesh-dodecahedron";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -175,6 +176,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnScaleInstancesSpineGrowthEntry,
   blenderTutorialGnUvUnwrapPackIslandsGlbEntry,
   blenderTutorialGnSeparateGeometryExplodedViewEntry,
+  blenderTutorialPythonBpyBmeshDodecahedronEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
