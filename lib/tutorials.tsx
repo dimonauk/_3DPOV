@@ -87,6 +87,7 @@ import { entry as blenderTutorialGnUvUnwrapPackIslandsGlbEntry } from "component
 import { entry as blenderTutorialGnSeparateGeometryExplodedViewEntry } from "components/tutorials/entries/blender-tutorial-gn-separate-geometry-exploded-view";
 import { entry as blenderTutorialPythonBpyBmeshDodecahedronEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bmesh-dodecahedron";
 import { entry as blenderTutorialShaderProceduralWornMetalEdgeWearEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-worn-metal-edge-wear";
+import { entry as blenderTutorialGnConvexHullArtDecoLampEntry } from "components/tutorials/entries/blender-tutorial-gn-convex-hull-art-deco-lamp";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -179,6 +180,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSeparateGeometryExplodedViewEntry,
   blenderTutorialPythonBpyBmeshDodecahedronEntry,
   blenderTutorialShaderProceduralWornMetalEdgeWearEntry,
+  blenderTutorialGnConvexHullArtDecoLampEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
