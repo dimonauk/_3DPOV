@@ -76,3 +76,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-08 | blend + glb | geometry-nodes | gn-convex-hull-art-deco-lamp | 5.1 | CC0 | convex_hull_lamp.blend · convex_hull_lamp.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-convex-hull-art-deco-lamp |
 | 2026-06-08 | blend + glb | shading | shader-procedural-woven-fabric | 5.1 | CC0 | woven_fabric.blend · woven_fabric.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-procedural-woven-fabric |
 | 2026-06-09 | blend + glb | shading | shader-principled-hair-bsdf-vrm | 5.1 | CC0 | vrm_hair.blend · vrm_hair.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-hair-bsdf-vrm |
+
+| 2026-06-09 | blend + glb | geometry-nodes | gn-simulation-zone-reaction-diffusion-turing | 5.1 | CC0 | reaction_diffusion.blend · reaction_diffusion.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing |

@@ -90,6 +90,7 @@ import { entry as blenderTutorialShaderProceduralWornMetalEdgeWearEntry } from "
 import { entry as blenderTutorialGnConvexHullArtDecoLampEntry } from "components/tutorials/entries/blender-tutorial-gn-convex-hull-art-deco-lamp";
 import { entry as blenderTutorialShaderProceduralWovenFabricEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-woven-fabric";
 import { entry as blenderTutorialShaderPrincipledHairBsdfVrmEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-hair-bsdf-vrm";
+import { entry as blenderTutorialGnSimulationZoneReactionDiffusionTuringEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -185,6 +186,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnConvexHullArtDecoLampEntry,
   blenderTutorialShaderProceduralWovenFabricEntry,
   blenderTutorialShaderPrincipledHairBsdfVrmEntry,
+  blenderTutorialGnSimulationZoneReactionDiffusionTuringEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
