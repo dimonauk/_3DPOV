@@ -92,6 +92,7 @@ import { entry as blenderTutorialShaderProceduralWovenFabricEntry } from "compon
 import { entry as blenderTutorialShaderPrincipledHairBsdfVrmEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-hair-bsdf-vrm";
 import { entry as blenderTutorialGnSimulationZoneReactionDiffusionTuringEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing";
 import { entry as blenderTutorialGnMeshTopologyVertexValenceHeatMapEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map";
+import { entry as blenderTutorialGnAccumulateFieldSpiralStaircaseEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-spiral-staircase";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -189,6 +190,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderPrincipledHairBsdfVrmEntry,
   blenderTutorialGnSimulationZoneReactionDiffusionTuringEntry,
   blenderTutorialGnMeshTopologyVertexValenceHeatMapEntry,
+  blenderTutorialGnAccumulateFieldSpiralStaircaseEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
