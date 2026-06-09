@@ -89,6 +89,7 @@ import { entry as blenderTutorialPythonBpyBmeshDodecahedronEntry } from "compone
 import { entry as blenderTutorialShaderProceduralWornMetalEdgeWearEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-worn-metal-edge-wear";
 import { entry as blenderTutorialGnConvexHullArtDecoLampEntry } from "components/tutorials/entries/blender-tutorial-gn-convex-hull-art-deco-lamp";
 import { entry as blenderTutorialShaderProceduralWovenFabricEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-woven-fabric";
+import { entry as blenderTutorialShaderPrincipledHairBsdfVrmEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-hair-bsdf-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -183,6 +184,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderProceduralWornMetalEdgeWearEntry,
   blenderTutorialGnConvexHullArtDecoLampEntry,
   blenderTutorialShaderProceduralWovenFabricEntry,
+  blenderTutorialShaderPrincipledHairBsdfVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
