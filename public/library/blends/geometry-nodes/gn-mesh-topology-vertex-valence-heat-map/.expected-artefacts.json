@@ -1,0 +1,56 @@
+{
+  "slug": "gn-mesh-topology-vertex-valence-heat-map",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "vertex_valence_heat_map.blend",
+    "vertex_valence_heat_map.glb",
+    "../../videos/geometry-nodes/gn-mesh-topology-vertex-valence-heat-map/viewport.mp4",
+    "../../videos/geometry-nodes/gn-mesh-topology-vertex-valence-heat-map/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-armature-weight-paint"
+    ],
+    "outside_sources": [
+      {
+        "title": "Edges of Vertex Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/",
+          "https://developer.blender.org/docs/release_notes/4.0/geometry_nodes/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

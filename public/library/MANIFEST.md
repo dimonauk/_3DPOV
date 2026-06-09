@@ -78,3 +78,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-09 | blend + glb | shading | shader-principled-hair-bsdf-vrm | 5.1 | CC0 | vrm_hair.blend · vrm_hair.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-hair-bsdf-vrm |
 
 | 2026-06-09 | blend + glb | geometry-nodes | gn-simulation-zone-reaction-diffusion-turing | 5.1 | CC0 | reaction_diffusion.blend · reaction_diffusion.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing |
+| 2026-06-09 | blend + glb | geometry-nodes | gn-mesh-topology-vertex-valence-heat-map | 5.1 | CC0 | vertex_valence_heat_map.blend · vertex_valence_heat_map.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map |
