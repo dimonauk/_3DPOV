@@ -91,3 +91,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb | geometry-nodes | gn-face-group-boundaries-panel-grooves | 5.1 | CC0 | panel_grooves.blend · panel_grooves.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-face-group-boundaries-panel-grooves |
 
 | 2026-06-10 | blend + glb | shading | shader-subsurface-scattering-stylised-skin | 5.1 | CC0 | sss_skin.blend · sss_skin.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin |
+
+| 2026-06-10 | blend + glb | geometry-nodes | gn-realize-instances-crystal-grotto | 5.1 | CC0 | crystal_grotto.blend · crystal_grotto.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-realize-instances-crystal-grotto |

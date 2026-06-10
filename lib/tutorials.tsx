@@ -99,6 +99,7 @@ import { entry as blenderTutorialCompositorCryptomatteMultilayerExrEntry } from 
 import { entry as blenderTutorialShaderProceduralWoodGrainEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-wood-grain";
 import { entry as blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry } from "components/tutorials/entries/blender-tutorial-gn-face-group-boundaries-panel-grooves";
 import { entry as blenderTutorialShaderSssStylisedSkinEntry } from "components/tutorials/entries/blender-tutorial-shader-subsurface-scattering-stylised-skin";
+import { entry as blenderTutorialGnRealizeInstancesCrystalGrottoEntry } from "components/tutorials/entries/blender-tutorial-gn-realize-instances-crystal-grotto";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -203,6 +204,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderProceduralWoodGrainEntry,
   blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry,
   blenderTutorialShaderSssStylisedSkinEntry,
+  blenderTutorialGnRealizeInstancesCrystalGrottoEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
