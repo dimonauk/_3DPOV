@@ -1,0 +1,38 @@
+{
+  "slug": "compositor-cryptomatte-multilayer-exr",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "compositor_cryptomatte_multilayer.blend",
+    "compositor_scene.glb",
+    "public/library/videos/compositing/compositor-cryptomatte-multilayer-exr/viewport.mp4",
+    "public/library/videos/compositing/compositor-cryptomatte-multilayer-exr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-grease-pencil-lineart-toon-outline"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/Psyop/Cryptomatte",
+        "licence": "BSD 2-Clause",
+        "author": "Psyop Inc."
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/compositing/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/sobotka/filmic-blender",
+        "licence": "MIT",
+        "author": "Troy Sobotka"
+      }
+    ]
+  }
+}

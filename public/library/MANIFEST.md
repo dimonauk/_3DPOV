@@ -83,3 +83,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-09 | blend + glb | geometry-nodes | gn-rotate-instances-phyllotaxis-sunflower | 5.1 | CC0 | phyllotaxis_sunflower.blend · phyllotaxis_sunflower.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower |
 
 | 2026-06-10 | blend + glb | geometry-nodes | gn-string-to-curves-3d-text | 5.1 | CC0 | procedural_text.blend · procedural_text.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-string-to-curves-3d-text |
+
+| 2026-06-10 | blend + glb | compositing | compositor-cryptomatte-multilayer-exr | 5.1 | CC0 | compositor_cryptomatte_multilayer.blend · compositor_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr |
