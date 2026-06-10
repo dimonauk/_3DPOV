@@ -103,6 +103,7 @@ import { entry as blenderTutorialGnRealizeInstancesCrystalGrottoEntry } from "co
 import { entry as blenderTutorialPython3dPrintMeshAnalysisEntry } from "components/tutorials/entries/blender-tutorial-python-3d-print-mesh-analysis";
 import { entry as blenderTutorialEeveeNextVolumetricLightConeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-volumetric-light-cone";
 import { entry as blenderTutorialPhysicsClothSimulationWavingFlagEntry } from "components/tutorials/entries/blender-tutorial-physics-cloth-simulation-waving-flag";
+import { entry as blenderTutorialPhysicsRigidBodyDominoChainEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-domino-chain";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -211,6 +212,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPython3dPrintMeshAnalysisEntry,
   blenderTutorialEeveeNextVolumetricLightConeEntry,
   blenderTutorialPhysicsClothSimulationWavingFlagEntry,
+  blenderTutorialPhysicsRigidBodyDominoChainEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
