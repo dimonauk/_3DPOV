@@ -98,6 +98,7 @@ import { entry as blenderTutorialGnStringToCurves3dTextEntry } from "components/
 import { entry as blenderTutorialCompositorCryptomatteMultilayerExrEntry } from "components/tutorials/entries/blender-tutorial-compositor-cryptomatte-multilayer-exr";
 import { entry as blenderTutorialShaderProceduralWoodGrainEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-wood-grain";
 import { entry as blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry } from "components/tutorials/entries/blender-tutorial-gn-face-group-boundaries-panel-grooves";
+import { entry as blenderTutorialShaderSssStylisedSkinEntry } from "components/tutorials/entries/blender-tutorial-shader-subsurface-scattering-stylised-skin";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -201,6 +202,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorCryptomatteMultilayerExrEntry,
   blenderTutorialShaderProceduralWoodGrainEntry,
   blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry,
+  blenderTutorialShaderSssStylisedSkinEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

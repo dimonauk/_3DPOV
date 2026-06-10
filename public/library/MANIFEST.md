@@ -89,3 +89,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb | shading | shader-procedural-wood-grain | 5.1 | CC0 | wood_grain.blend · wood_grain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-procedural-wood-grain |
 
 | 2026-06-10 | blend + glb | geometry-nodes | gn-face-group-boundaries-panel-grooves | 5.1 | CC0 | panel_grooves.blend · panel_grooves.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-face-group-boundaries-panel-grooves |
+
+| 2026-06-10 | blend + glb | shading | shader-subsurface-scattering-stylised-skin | 5.1 | CC0 | sss_skin.blend · sss_skin.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin |
