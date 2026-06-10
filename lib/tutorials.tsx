@@ -100,6 +100,7 @@ import { entry as blenderTutorialShaderProceduralWoodGrainEntry } from "componen
 import { entry as blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry } from "components/tutorials/entries/blender-tutorial-gn-face-group-boundaries-panel-grooves";
 import { entry as blenderTutorialShaderSssStylisedSkinEntry } from "components/tutorials/entries/blender-tutorial-shader-subsurface-scattering-stylised-skin";
 import { entry as blenderTutorialGnRealizeInstancesCrystalGrottoEntry } from "components/tutorials/entries/blender-tutorial-gn-realize-instances-crystal-grotto";
+import { entry as blenderTutorialPython3dPrintMeshAnalysisEntry } from "components/tutorials/entries/blender-tutorial-python-3d-print-mesh-analysis";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -205,6 +206,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry,
   blenderTutorialShaderSssStylisedSkinEntry,
   blenderTutorialGnRealizeInstancesCrystalGrottoEntry,
+  blenderTutorialPython3dPrintMeshAnalysisEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -93,3 +93,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb | shading | shader-subsurface-scattering-stylised-skin | 5.1 | CC0 | sss_skin.blend · sss_skin.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin |
 
 | 2026-06-10 | blend + glb | geometry-nodes | gn-realize-instances-crystal-grotto | 5.1 | CC0 | crystal_grotto.blend · crystal_grotto.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-realize-instances-crystal-grotto |
+
+| 2026-06-10 | blend + glb + stl | scripting | python-3d-print-mesh-analysis | 5.1 | CC0 | pawn_print_ready.blend · pawn_print_ready.glb · pawn_print_ready.stl · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-3d-print-mesh-analysis |
