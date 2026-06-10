@@ -1,0 +1,56 @@
+{
+  "slug": "physics-cloth-simulation-waving-flag",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "waving_flag.blend",
+    "waving_flag.glb",
+    "../../videos/physics/physics-cloth-simulation-waving-flag/viewport.mp4",
+    "../../videos/physics/physics-cloth-simulation-waving-flag/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-shader-procedural-woven-fabric",
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-faceted-gem-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Cloth Physics Settings",
+        "url": "https://docs.blender.org/manual/en/latest/physics/cloth/settings/physics.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/physics/cloth/",
+          "https://docs.blender.org/manual/en/latest/physics/force_fields/types/wind.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  }
+}

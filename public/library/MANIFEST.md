@@ -97,3 +97,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb + stl | scripting | python-3d-print-mesh-analysis | 5.1 | CC0 | pawn_print_ready.blend · pawn_print_ready.glb · pawn_print_ready.stl · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-3d-print-mesh-analysis |
 
 | 2026-06-10 | blend + glb | lighting | eevee-next-volumetric-light-cone | 5.1 | CC0 | volumetric_light_cone.blend · volumetric_light_cone.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-next-volumetric-light-cone |
+
+| 2026-06-10 | blend + glb | physics | physics-cloth-simulation-waving-flag | 5.1 | CC0 | waving_flag.blend · waving_flag.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-cloth-simulation-waving-flag |
