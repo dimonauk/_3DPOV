@@ -85,3 +85,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb | geometry-nodes | gn-string-to-curves-3d-text | 5.1 | CC0 | procedural_text.blend · procedural_text.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-string-to-curves-3d-text |
 
 | 2026-06-10 | blend + glb | compositing | compositor-cryptomatte-multilayer-exr | 5.1 | CC0 | compositor_cryptomatte_multilayer.blend · compositor_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr |
+
+| 2026-06-10 | blend + glb | shading | shader-procedural-wood-grain | 5.1 | CC0 | wood_grain.blend · wood_grain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-procedural-wood-grain |

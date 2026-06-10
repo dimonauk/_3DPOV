@@ -96,6 +96,7 @@ import { entry as blenderTutorialGnAccumulateFieldSpiralStaircaseEntry } from "c
 import { entry as blenderTutorialGnRotateInstancesPhyllotaxisSunflowerEntry } from "components/tutorials/entries/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower";
 import { entry as blenderTutorialGnStringToCurves3dTextEntry } from "components/tutorials/entries/blender-tutorial-gn-string-to-curves-3d-text";
 import { entry as blenderTutorialCompositorCryptomatteMultilayerExrEntry } from "components/tutorials/entries/blender-tutorial-compositor-cryptomatte-multilayer-exr";
+import { entry as blenderTutorialShaderProceduralWoodGrainEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-wood-grain";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -197,6 +198,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnRotateInstancesPhyllotaxisSunflowerEntry,
   blenderTutorialGnStringToCurves3dTextEntry,
   blenderTutorialCompositorCryptomatteMultilayerExrEntry,
+  blenderTutorialShaderProceduralWoodGrainEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
