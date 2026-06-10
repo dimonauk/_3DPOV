@@ -1,0 +1,38 @@
+{
+  "slug": "gn-string-to-curves-3d-text",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "procedural_text.blend",
+    "procedural_text.glb",
+    "public/library/videos/geometry-nodes/gn-string-to-curves-3d-text/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-string-to-curves-3d-text/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-string-to-curves-3d-text",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-lines",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/rsms/inter",
+        "licence": "OFL 1.1",
+        "author": "Rasmus Andersson"
+      },
+      {
+        "url": "https://github.com/google/fonts",
+        "licence": "Apache-2.0 / OFL",
+        "author": "Google Fonts contributors"
+      }
+    ]
+  }
+}

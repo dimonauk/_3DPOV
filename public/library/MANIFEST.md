@@ -81,3 +81,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-09 | blend + glb | geometry-nodes | gn-mesh-topology-vertex-valence-heat-map | 5.1 | CC0 | vertex_valence_heat_map.blend · vertex_valence_heat_map.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map |
 | 2026-06-09 | blend + glb | geometry-nodes | gn-accumulate-field-spiral-staircase | 5.1 | CC0 | spiral_staircase.blend · spiral_staircase.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-accumulate-field-spiral-staircase |
 | 2026-06-09 | blend + glb | geometry-nodes | gn-rotate-instances-phyllotaxis-sunflower | 5.1 | CC0 | phyllotaxis_sunflower.blend · phyllotaxis_sunflower.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower |
+
+| 2026-06-10 | blend + glb | geometry-nodes | gn-string-to-curves-3d-text | 5.1 | CC0 | procedural_text.blend · procedural_text.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-string-to-curves-3d-text |
