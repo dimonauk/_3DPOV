@@ -97,6 +97,7 @@ import { entry as blenderTutorialGnRotateInstancesPhyllotaxisSunflowerEntry } fr
 import { entry as blenderTutorialGnStringToCurves3dTextEntry } from "components/tutorials/entries/blender-tutorial-gn-string-to-curves-3d-text";
 import { entry as blenderTutorialCompositorCryptomatteMultilayerExrEntry } from "components/tutorials/entries/blender-tutorial-compositor-cryptomatte-multilayer-exr";
 import { entry as blenderTutorialShaderProceduralWoodGrainEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-wood-grain";
+import { entry as blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry } from "components/tutorials/entries/blender-tutorial-gn-face-group-boundaries-panel-grooves";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -199,6 +200,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnStringToCurves3dTextEntry,
   blenderTutorialCompositorCryptomatteMultilayerExrEntry,
   blenderTutorialShaderProceduralWoodGrainEntry,
+  blenderTutorialGnFaceGroupBoundariesPanelGroovesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
