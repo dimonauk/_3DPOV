@@ -101,3 +101,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-10 | blend + glb | physics | physics-cloth-simulation-waving-flag | 5.1 | CC0 | waving_flag.blend · waving_flag.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-cloth-simulation-waving-flag |
 
 | 2026-06-10 | blend + glb | physics | physics-rigid-body-domino-chain | 5.1 | CC0 | domino_chain.blend · domino_chain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-rigid-body-domino-chain |
+
+| 2026-06-11 | blend + glb | geometry-nodes | gn-matrix-compose-iris-fold | 5.1 | CC0 | iris_fold.blend · iris_fold.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-matrix-compose-iris-fold |
