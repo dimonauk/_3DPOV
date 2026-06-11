@@ -116,3 +116,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-11 | blend | shading | shader-principled-volume-fog-column | 5.1 | CC0 | fog_column.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-volume-fog-column |
 
 | 2026-06-11 | blend + glb | geometry-nodes | gn-distribute-points-ground-cover-scatter | 5.1 | CC0 | ground_cover_scatter.blend · ground_cover_scatter.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter |
+
+| 2026-06-11 | blend + glb | lighting | eevee-next-irradiance-sphere-probe | 5.1 | CC0 | irradiance_sphere_probe.blend · irradiance_sphere_probe.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-next-irradiance-sphere-probe |

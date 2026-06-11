@@ -112,6 +112,7 @@ import { entry as blenderTutorialSculptDyntopoVoxelRemeshEntry } from "component
 import { entry as blenderTutorialArmatureSplineIkTentacleEntry } from "components/tutorials/entries/blender-tutorial-armature-spline-ik-tentacle";
 import { entry as blenderTutorialShaderPrincipledVolumeFogColumnEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-volume-fog-column";
 import { entry as blenderTutorialGnDistributePointsGroundCoverScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-ground-cover-scatter";
+import { entry as blenderTutorialEeveeNextIrradianceSphereProbeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-irradiance-sphere-probe";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -231,6 +232,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialArmatureSplineIkTentacleEntry,
   blenderTutorialShaderPrincipledVolumeFogColumnEntry,
   blenderTutorialGnDistributePointsGroundCoverScatterEntry,
+  blenderTutorialEeveeNextIrradianceSphereProbeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
