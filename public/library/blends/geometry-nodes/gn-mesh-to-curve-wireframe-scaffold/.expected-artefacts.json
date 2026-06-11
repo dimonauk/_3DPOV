@@ -1,0 +1,43 @@
+{
+  "slug": "gn-mesh-to-curve-wireframe-scaffold",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "wireframe_scaffold.blend",
+    "wireframe_scaffold.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-mesh-to-curve-wireframe-scaffold/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-mesh-to-curve-wireframe-scaffold/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-staircase",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/nortikin/sverchok",
+        "licence": "MIT",
+        "author": "Nikita Gorodetskiy et al."
+      }
+    ]
+  }
+}

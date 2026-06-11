@@ -105,3 +105,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-11 | blend + glb | geometry-nodes | gn-matrix-compose-iris-fold | 5.1 | CC0 | iris_fold.blend · iris_fold.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-matrix-compose-iris-fold |
 
 | 2026-06-11 | blend + glb | geometry-nodes | gn-dual-mesh-voronoi-cell-sphere | 5.1 | CC0 | voronoi_cell_sphere.blend · voronoi_cell_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere |
+
+| 2026-06-11 | blend + glb | geometry-nodes | gn-mesh-to-curve-wireframe-scaffold | 5.1 | CC0 | wireframe_scaffold.blend · wireframe_scaffold.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-to-curve-wireframe-scaffold |
