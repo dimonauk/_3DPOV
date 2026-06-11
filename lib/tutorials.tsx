@@ -110,6 +110,7 @@ import { entry as blenderTutorialGnDualMeshVoronoiCellSphereEntry } from "compon
 import { entry as blenderTutorialShaderProceduralLavaMagmaFlowEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-lava-magma-flow";
 import { entry as blenderTutorialSculptDyntopoVoxelRemeshEntry } from "components/tutorials/entries/blender-tutorial-sculpt-dyntopo-voxel-remesh";
 import { entry as blenderTutorialArmatureSplineIkTentacleEntry } from "components/tutorials/entries/blender-tutorial-armature-spline-ik-tentacle";
+import { entry as blenderTutorialShaderPrincipledVolumeFogColumnEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-volume-fog-column";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -227,6 +228,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderProceduralLavaMagmaFlowEntry,
   blenderTutorialSculptDyntopoVoxelRemeshEntry,
   blenderTutorialArmatureSplineIkTentacleEntry,
+  blenderTutorialShaderPrincipledVolumeFogColumnEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

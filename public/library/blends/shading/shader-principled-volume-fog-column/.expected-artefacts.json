@@ -1,0 +1,36 @@
+{
+  "slug": "shader-principled-volume-fog-column",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "fog_column.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-eevee-next-volumetric-light-cone",
+      "/tutorials/blender-tutorial-shader-procedural-lava-magma-flow",
+      "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_principled.html",
+        "title": "Blender Manual — Principled Volume Shader",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_volume/README.md",
+        "title": "KHR_materials_volume — Khronos glTF Extension",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
