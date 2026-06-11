@@ -1,0 +1,45 @@
+{
+  "slug": "cycles-light-path-glass-fireflies",
+  "topic": "rendering",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "crystal_prism.blend",
+    "crystal_prism.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/rendering/cycles-light-path-glass-fireflies/viewport.mp4",
+    "public/library/videos/rendering/cycles-light-path-glass-fireflies/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Light Path Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/input/light_path.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "KHR_materials_transmission — glTF Extension Spec",
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_transmission",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "glTF-Blender-IO (related project — Khronos exporter)",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
