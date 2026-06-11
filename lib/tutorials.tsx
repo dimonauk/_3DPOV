@@ -111,6 +111,7 @@ import { entry as blenderTutorialShaderProceduralLavaMagmaFlowEntry } from "comp
 import { entry as blenderTutorialSculptDyntopoVoxelRemeshEntry } from "components/tutorials/entries/blender-tutorial-sculpt-dyntopo-voxel-remesh";
 import { entry as blenderTutorialArmatureSplineIkTentacleEntry } from "components/tutorials/entries/blender-tutorial-armature-spline-ik-tentacle";
 import { entry as blenderTutorialShaderPrincipledVolumeFogColumnEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-volume-fog-column";
+import { entry as blenderTutorialGnDistributePointsGroundCoverScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-ground-cover-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -229,6 +230,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialSculptDyntopoVoxelRemeshEntry,
   blenderTutorialArmatureSplineIkTentacleEntry,
   blenderTutorialShaderPrincipledVolumeFogColumnEntry,
+  blenderTutorialGnDistributePointsGroundCoverScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,53 @@
+{
+  "slug": "gn-distribute-points-ground-cover-scatter",
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "licence": "CC0",
+  "artefacts": [
+    "ground_cover_scatter.blend",
+    "ground_cover_scatter.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_paths": {
+    "viewport": "public/library/videos/geometry-nodes/gn-distribute-points-ground-cover-scatter/viewport.mp4",
+    "screen":   "public/library/videos/geometry-nodes/gn-distribute-points-ground-cover-scatter/screen.mp4"
+  },
+  "key_nodes": [
+    "GeometryNodeDistributePointsOnFaces",
+    "GeometryNodeInstanceOnPoints",
+    "FunctionNodeAlignEulerToVector",
+    "FunctionNodeRandomValue",
+    "GeometryNodeCollectionInfo",
+    "GeometryNodeInputNamedAttribute",
+    "GeometryNodeScaleInstances",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeJoinGeometry"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-gn-scale-instances-spine-growth",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "title": "Distribute Points on Faces — Blender Manual",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      },
+      {
+        "url": "https://polyhaven.com",
+        "title": "Poly Haven — CC0 3D Assets",
+        "author": "Jarrod Hasler, Rico Cilliers et al.",
+        "licence": "CC0"
+      }
+    ]
+  }
+}
