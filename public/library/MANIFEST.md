@@ -109,3 +109,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-11 | blend + glb | geometry-nodes | gn-mesh-to-curve-wireframe-scaffold | 5.1 | CC0 | wireframe_scaffold.blend · wireframe_scaffold.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-to-curve-wireframe-scaffold |
 
 | 2026-06-11 | blend + glb | shading | shader-procedural-lava-magma-flow | 5.1 | CC0 | lava_magma_flow.blend · lava_magma_flow.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-procedural-lava-magma-flow |
+
+| 2026-06-11 | blend + glb | sculpting | sculpt-dyntopo-voxel-remesh | 5.1 | CC0 | sculpt_organic_head.blend · sculpt_organic_head.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-sculpt-dyntopo-voxel-remesh |

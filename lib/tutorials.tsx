@@ -108,6 +108,7 @@ import { entry as blenderTutorialGnMatrixComposeIrisFoldEntry } from "components
 import { entry as blenderTutorialGnMeshToCurveWireframeScaffoldEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-to-curve-wireframe-scaffold";
 import { entry as blenderTutorialGnDualMeshVoronoiCellSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere";
 import { entry as blenderTutorialShaderProceduralLavaMagmaFlowEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-lava-magma-flow";
+import { entry as blenderTutorialSculptDyntopoVoxelRemeshEntry } from "components/tutorials/entries/blender-tutorial-sculpt-dyntopo-voxel-remesh";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -223,6 +224,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCaptureAttributeNamedAttributeEntry,
   blenderTutorialGnMeshToCurveWireframeScaffoldEntry,
   blenderTutorialShaderProceduralLavaMagmaFlowEntry,
+  blenderTutorialSculptDyntopoVoxelRemeshEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
