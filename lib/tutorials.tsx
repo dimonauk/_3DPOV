@@ -105,6 +105,7 @@ import { entry as blenderTutorialEeveeNextVolumetricLightConeEntry } from "compo
 import { entry as blenderTutorialPhysicsClothSimulationWavingFlagEntry } from "components/tutorials/entries/blender-tutorial-physics-cloth-simulation-waving-flag";
 import { entry as blenderTutorialPhysicsRigidBodyDominoChainEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-domino-chain";
 import { entry as blenderTutorialGnMatrixComposeIrisFoldEntry } from "components/tutorials/entries/blender-tutorial-gn-matrix-compose-iris-fold";
+import { entry as blenderTutorialGnDualMeshVoronoiCellSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -215,6 +216,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsClothSimulationWavingFlagEntry,
   blenderTutorialPhysicsRigidBodyDominoChainEntry,
   blenderTutorialGnMatrixComposeIrisFoldEntry,
+  blenderTutorialGnDualMeshVoronoiCellSphereEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

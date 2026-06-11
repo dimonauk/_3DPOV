@@ -1,0 +1,55 @@
+{
+  "slug": "gn-dual-mesh-voronoi-cell-sphere",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "voronoi_cell_sphere.blend",
+    "voronoi_cell_sphere.glb",
+    "../../videos/geometry-nodes/gn-dual-mesh-voronoi-cell-sphere/viewport.mp4",
+    "../../videos/geometry-nodes/gn-dual-mesh-voronoi-cell-sphere/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-scale-instances-spine-growth"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Dual Mesh Node (Geometry Nodes)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html"
+        ]
+      },
+      {
+        "title": "Sverchok — Node-based Parametric Modelling for Blender (MIT)",
+        "url": "https://github.com/nortikin/sverchok",
+        "licence": "MIT",
+        "author": "Nikita Gorodetskiy et al.",
+        "related": [
+          "https://github.com/nortikin/sverchok/blob/master/nodes/spatial/voronoi_on_sphere.py"
+        ]
+      },
+      {
+        "title": "geometry-processing-js — Fortune Voronoi reference implementation (MIT)",
+        "url": "https://github.com/geometryprocessing/geometry-processing-js",
+        "licence": "MIT",
+        "author": "Geometry Processing Group, Columbia University",
+        "related": [
+          "https://github.com/geometryprocessing/geometry-processing-js/tree/master/docs"
+        ]
+      }
+    ]
+  }
+}
