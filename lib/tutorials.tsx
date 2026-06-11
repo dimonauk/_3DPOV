@@ -107,6 +107,7 @@ import { entry as blenderTutorialPhysicsRigidBodyDominoChainEntry } from "compon
 import { entry as blenderTutorialGnMatrixComposeIrisFoldEntry } from "components/tutorials/entries/blender-tutorial-gn-matrix-compose-iris-fold";
 import { entry as blenderTutorialGnMeshToCurveWireframeScaffoldEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-to-curve-wireframe-scaffold";
 import { entry as blenderTutorialGnDualMeshVoronoiCellSphereEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere";
+import { entry as blenderTutorialShaderProceduralLavaMagmaFlowEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-lava-magma-flow";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -221,6 +222,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnRepeatZoneCrystalClusterEntry,
   blenderTutorialGnCaptureAttributeNamedAttributeEntry,
   blenderTutorialGnMeshToCurveWireframeScaffoldEntry,
+  blenderTutorialShaderProceduralLavaMagmaFlowEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
