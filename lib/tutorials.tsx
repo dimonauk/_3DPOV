@@ -120,6 +120,7 @@ import { entry as blenderTutorialShaderHolographicPanelEmissionFresnelEntry } fr
 import { entry as blenderTutorialGnBakeNodeSimulationGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-bake-node-simulation-growth";
 import { entry as blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry } from "components/tutorials/entries/blender-tutorial-shader-cycles-displacement-adaptive-subdivision";
 import { entry as blenderTutorialPhysicsSoftBodyJellySquashStretchEntry } from "components/tutorials/entries/blender-tutorial-physics-soft-body-jelly-squash-stretch";
+import { entry as blenderTutorialGnVolumeCubeProceduralCloudEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-cube-procedural-cloud";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -247,6 +248,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnBakeNodeSimulationGrowthEntry,
   blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry,
   blenderTutorialPhysicsSoftBodyJellySquashStretchEntry,
+  blenderTutorialGnVolumeCubeProceduralCloudEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
