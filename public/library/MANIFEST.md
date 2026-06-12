@@ -131,3 +131,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-12 | blend + glb | physics | physics-soft-body-jelly-squash-stretch | 5.1 | CC0 | jelly_blob.blend · jelly_blob_morphs.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-soft-body-jelly-squash-stretch |
 | 2026-06-12 | blend | geometry-nodes | gn-volume-cube-procedural-cloud | 5.1 | CC0 | cumulus_cloud.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-volume-cube-procedural-cloud |
+
+| 2026-06-12 | blend | rendering | render-cycles-dof-motion-blur-bokeh | 5.1 | CC0 | dof_bokeh_scene.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh |
