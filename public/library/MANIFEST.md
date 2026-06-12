@@ -133,3 +133,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-12 | blend | geometry-nodes | gn-volume-cube-procedural-cloud | 5.1 | CC0 | cumulus_cloud.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-volume-cube-procedural-cloud |
 
 | 2026-06-12 | blend | rendering | render-cycles-dof-motion-blur-bokeh | 5.1 | CC0 | dof_bokeh_scene.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh |
+| 2026-06-12 | blend + glb | lighting | eevee-next-reflection-plane-mirror-floor | 5.1 | CC0 | mirror_floor_scene.blend · mirror_floor_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-next-reflection-plane-mirror-floor |

@@ -122,6 +122,7 @@ import { entry as blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry } f
 import { entry as blenderTutorialPhysicsSoftBodyJellySquashStretchEntry } from "components/tutorials/entries/blender-tutorial-physics-soft-body-jelly-squash-stretch";
 import { entry as blenderTutorialGnVolumeCubeProceduralCloudEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-cube-procedural-cloud";
 import { entry as blenderTutorialRenderCyclesDofMotionBlurBokehEntry } from "components/tutorials/entries/blender-tutorial-render-cycles-dof-motion-blur-bokeh";
+import { entry as blenderTutorialEeveeNextReflectionPlaneMirrorFloorEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-reflection-plane-mirror-floor";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -251,6 +252,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsSoftBodyJellySquashStretchEntry,
   blenderTutorialGnVolumeCubeProceduralCloudEntry,
   blenderTutorialRenderCyclesDofMotionBlurBokehEntry,
+  blenderTutorialEeveeNextReflectionPlaneMirrorFloorEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
