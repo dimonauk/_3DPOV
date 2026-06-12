@@ -126,3 +126,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-12 | blend | compositing | compositor-glare-filmgrain-tonemapping | 5.1 | CC0 | compositor_cinematic_grade.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping |
 | 2026-06-12 | blend + glb | shading | shader-holographic-panel-emission-fresnel | 5.1 | CC0 | holographic_panel.blend · holographic_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-holographic-panel-emission-fresnel |
 | 2026-06-12 | blend + glb | geometry-nodes | gn-bake-node-simulation-growth | 5.1 | CC0 | crystal_spread_growth.blend · crystal_spread_growth.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-bake-node-simulation-growth |
+
+| 2026-06-12 | blend | shading | shader-cycles-displacement-adaptive-subdivision | 5.1 | CC0 | stone_displaced.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision |

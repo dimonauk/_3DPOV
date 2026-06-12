@@ -1,0 +1,37 @@
+{
+  "slug": "shader-cycles-displacement-adaptive-subdivision",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC-0",
+  "artefacts": [
+    "stone_displaced.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/shading/shader-cycles-displacement-adaptive-subdivision/viewport.mp4",
+    "../../videos/shading/shader-cycles-displacement-adaptive-subdivision/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-cycles-light-path-glass-fireflies",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin"
+    ],
+    "outside": [
+      {
+        "title": "Blender Manual — Displacement Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Adaptive Subdivision",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/object_settings/adaptive_subdiv.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

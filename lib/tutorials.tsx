@@ -118,6 +118,7 @@ import { entry as blenderTutorialEeveeLightLinkingCharacterRigEntry } from "comp
 import { entry as blenderTutorialCompositorGlareFilmGrainToneMappingEntry } from "components/tutorials/entries/blender-tutorial-compositor-glare-filmgrain-tonemapping";
 import { entry as blenderTutorialShaderHolographicPanelEmissionFresnelEntry } from "components/tutorials/entries/blender-tutorial-shader-holographic-panel-emission-fresnel";
 import { entry as blenderTutorialGnBakeNodeSimulationGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-bake-node-simulation-growth";
+import { entry as blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry } from "components/tutorials/entries/blender-tutorial-shader-cycles-displacement-adaptive-subdivision";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -243,6 +244,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorGlareFilmGrainToneMappingEntry,
   blenderTutorialShaderHolographicPanelEmissionFresnelEntry,
   blenderTutorialGnBakeNodeSimulationGrowthEntry,
+  blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
