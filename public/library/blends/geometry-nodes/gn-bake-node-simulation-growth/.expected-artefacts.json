@@ -1,0 +1,46 @@
+{
+  "slug": "gn-bake-node-simulation-growth",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "crystal_spread_growth.blend",
+    "crystal_spread_growth.glb",
+    "../../videos/geometry-nodes/gn-bake-node-simulation-growth/viewport.mp4",
+    "../../videos/geometry-nodes/gn-bake-node-simulation-growth/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/atelier"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Bake Node (Geometry Nodes)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/bake.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — Node-tree scripting examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+        ]
+      }
+    ]
+  }
+}
