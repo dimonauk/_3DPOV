@@ -124,3 +124,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-12 | blend | lighting | eevee-light-linking-character-rig | 5.1 | CC0 | light_linking_hero.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-light-linking-character-rig |
 
 | 2026-06-12 | blend | compositing | compositor-glare-filmgrain-tonemapping | 5.1 | CC0 | compositor_cinematic_grade.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping |
+| 2026-06-12 | blend + glb | shading | shader-holographic-panel-emission-fresnel | 5.1 | CC0 | holographic_panel.blend · holographic_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-holographic-panel-emission-fresnel |
