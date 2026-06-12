@@ -1,0 +1,44 @@
+{
+  "slug": "eevee-light-linking-character-rig",
+  "topic": "lighting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "light_linking_hero.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/lighting/eevee-light-linking-character-rig/viewport.mp4",
+    "public/library/videos/lighting/eevee-light-linking-character-rig/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-next-irradiance-sphere-probe",
+      "/tutorials/blender-tutorial-eevee-next-volumetric-light-cone",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shader-principled-hair-bsdf-vrm",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Light Linking",
+        "url": "https://docs.blender.org/manual/en/latest/render/lights/light_object.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender 4.0 Release Notes — Light Linking Feature",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.0/Rendering",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Three.js — Object3D.layers (lighting layer masking for WebXR)",
+        "url": "https://github.com/mrdoob/three.js",
+        "licence": "MIT",
+        "author": "mrdoob et al."
+      }
+    ]
+  }
+}

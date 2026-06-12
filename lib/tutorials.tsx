@@ -114,6 +114,7 @@ import { entry as blenderTutorialShaderPrincipledVolumeFogColumnEntry } from "co
 import { entry as blenderTutorialGnDistributePointsGroundCoverScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-ground-cover-scatter";
 import { entry as blenderTutorialEeveeNextIrradianceSphereProbeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-irradiance-sphere-probe";
 import { entry as blenderTutorialCyclesLightPathGlassFirefliesEntry } from "components/tutorials/entries/blender-tutorial-cycles-light-path-glass-fireflies";
+import { entry as blenderTutorialEeveeLightLinkingCharacterRigEntry } from "components/tutorials/entries/blender-tutorial-eevee-light-linking-character-rig";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -235,6 +236,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDistributePointsGroundCoverScatterEntry,
   blenderTutorialEeveeNextIrradianceSphereProbeEntry,
   blenderTutorialCyclesLightPathGlassFirefliesEntry,
+  blenderTutorialEeveeLightLinkingCharacterRigEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
