@@ -119,6 +119,7 @@ import { entry as blenderTutorialCompositorGlareFilmGrainToneMappingEntry } from
 import { entry as blenderTutorialShaderHolographicPanelEmissionFresnelEntry } from "components/tutorials/entries/blender-tutorial-shader-holographic-panel-emission-fresnel";
 import { entry as blenderTutorialGnBakeNodeSimulationGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-bake-node-simulation-growth";
 import { entry as blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry } from "components/tutorials/entries/blender-tutorial-shader-cycles-displacement-adaptive-subdivision";
+import { entry as blenderTutorialPhysicsSoftBodyJellySquashStretchEntry } from "components/tutorials/entries/blender-tutorial-physics-soft-body-jelly-squash-stretch";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -245,6 +246,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderHolographicPanelEmissionFresnelEntry,
   blenderTutorialGnBakeNodeSimulationGrowthEntry,
   blenderTutorialShaderCyclesDisplacementAdaptiveSubdivEntry,
+  blenderTutorialPhysicsSoftBodyJellySquashStretchEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

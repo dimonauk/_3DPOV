@@ -1,0 +1,42 @@
+{
+  "slug": "physics-soft-body-jelly-squash-stretch",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "jelly_blob.blend",
+    "jelly_blob_morphs.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/physics/physics-soft-body-jelly-squash-stretch/viewport.mp4",
+    "public/library/videos/physics/physics-soft-body-jelly-squash-stretch/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-physics-rigid-body-domino-chain",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets",
+      "/tutorials/blender-tutorial-gn-bake-node-simulation-growth",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/physics/soft_body/index.html",
+        "title": "Blender Manual — Soft Body",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/physics/soft_body/settings/object.html",
+        "title": "Blender Manual — Soft Body Settings",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      }
+    ]
+  }
+}

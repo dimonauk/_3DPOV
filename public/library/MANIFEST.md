@@ -128,3 +128,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-12 | blend + glb | geometry-nodes | gn-bake-node-simulation-growth | 5.1 | CC0 | crystal_spread_growth.blend · crystal_spread_growth.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-bake-node-simulation-growth |
 
 | 2026-06-12 | blend | shading | shader-cycles-displacement-adaptive-subdivision | 5.1 | CC0 | stone_displaced.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision |
+
+| 2026-06-12 | blend + glb | physics | physics-soft-body-jelly-squash-stretch | 5.1 | CC0 | jelly_blob.blend · jelly_blob_morphs.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-soft-body-jelly-squash-stretch |
