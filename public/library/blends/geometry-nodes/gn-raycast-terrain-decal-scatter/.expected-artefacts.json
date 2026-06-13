@@ -1,0 +1,46 @@
+{
+  "slug": "gn-raycast-terrain-decal-scatter",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "terrain_decal_scatter.blend",
+    "terrain_decal_scatter.glb",
+    "../../videos/geometry-nodes/gn-raycast-terrain-decal-scatter/viewport.mp4",
+    "../../videos/geometry-nodes/gn-raycast-terrain-decal-scatter/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere",
+      "/tutorials/blender-tutorial-gn-bake-node-simulation-growth",
+      "/atelier"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Raycast Node (Geometry Nodes)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/raycast.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/index.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — Node-tree scripting examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+        ]
+      }
+    ]
+  }
+}
