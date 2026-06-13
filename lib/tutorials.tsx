@@ -123,6 +123,7 @@ import { entry as blenderTutorialPhysicsSoftBodyJellySquashStretchEntry } from "
 import { entry as blenderTutorialGnVolumeCubeProceduralCloudEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-cube-procedural-cloud";
 import { entry as blenderTutorialRenderCyclesDofMotionBlurBokehEntry } from "components/tutorials/entries/blender-tutorial-render-cycles-dof-motion-blur-bokeh";
 import { entry as blenderTutorialEeveeNextReflectionPlaneMirrorFloorEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-reflection-plane-mirror-floor";
+import { entry as blenderTutorialShaderProceduralMarbleVeinsEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-marble-veins";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -253,6 +254,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnVolumeCubeProceduralCloudEntry,
   blenderTutorialRenderCyclesDofMotionBlurBokehEntry,
   blenderTutorialEeveeNextReflectionPlaneMirrorFloorEntry,
+  blenderTutorialShaderProceduralMarbleVeinsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
