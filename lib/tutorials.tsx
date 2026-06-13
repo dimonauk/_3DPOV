@@ -128,6 +128,7 @@ import { entry as blenderTutorialGnRaycastTerrainDecalScatterEntry } from "compo
 import { entry as blenderTutorialModifierArrayCurveDeformChainRopeEntry } from "components/tutorials/entries/blender-tutorial-modifier-array-curve-deform-chain-rope";
 import { entry as blenderTutorialAnimationConstraintsFollowPathTrackToEntry } from "components/tutorials/entries/blender-tutorial-animation-constraints-follow-path-track-to";
 import { entry as blenderTutorialEeveeNextRayTracingSsrGlossyEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-ray-tracing-ssr-glossy";
+import { entry as blenderTutorialPhysicsMantaflowLiquidDamBreakEntry } from "components/tutorials/entries/blender-tutorial-physics-mantaflow-liquid-dam-break";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -263,6 +264,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierArrayCurveDeformChainRopeEntry,
   blenderTutorialAnimationConstraintsFollowPathTrackToEntry,
   blenderTutorialEeveeNextRayTracingSsrGlossyEntry,
+  blenderTutorialPhysicsMantaflowLiquidDamBreakEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
