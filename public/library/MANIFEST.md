@@ -139,3 +139,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-13 | blend + glb | modifiers | modifier-array-curve-deform-chain-rope | 5.1 | CC0 | chain_rope.blend · chain_rope.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-array-curve-deform-chain-rope |
 
 | 2026-06-13 | blend | animation | animation-constraints-follow-path-track-to | 5.1 | CC0 | orbital_cam_rig.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-animation-constraints-follow-path-track-to |
+| 2026-06-13 | blend + glb | rendering | eevee-next-ray-tracing-ssr-glossy | 5.1 | CC0 | ssr_metal_spheres.blend · ssr_metal_spheres.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy |

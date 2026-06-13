@@ -127,6 +127,7 @@ import { entry as blenderTutorialShaderProceduralMarbleVeinsEntry } from "compon
 import { entry as blenderTutorialGnRaycastTerrainDecalScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-terrain-decal-scatter";
 import { entry as blenderTutorialModifierArrayCurveDeformChainRopeEntry } from "components/tutorials/entries/blender-tutorial-modifier-array-curve-deform-chain-rope";
 import { entry as blenderTutorialAnimationConstraintsFollowPathTrackToEntry } from "components/tutorials/entries/blender-tutorial-animation-constraints-follow-path-track-to";
+import { entry as blenderTutorialEeveeNextRayTracingSsrGlossyEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-ray-tracing-ssr-glossy";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -261,6 +262,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnRaycastTerrainDecalScatterEntry,
   blenderTutorialModifierArrayCurveDeformChainRopeEntry,
   blenderTutorialAnimationConstraintsFollowPathTrackToEntry,
+  blenderTutorialEeveeNextRayTracingSsrGlossyEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
