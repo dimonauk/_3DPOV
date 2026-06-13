@@ -126,6 +126,7 @@ import { entry as blenderTutorialEeveeNextReflectionPlaneMirrorFloorEntry } from
 import { entry as blenderTutorialShaderProceduralMarbleVeinsEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-marble-veins";
 import { entry as blenderTutorialGnRaycastTerrainDecalScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-terrain-decal-scatter";
 import { entry as blenderTutorialModifierArrayCurveDeformChainRopeEntry } from "components/tutorials/entries/blender-tutorial-modifier-array-curve-deform-chain-rope";
+import { entry as blenderTutorialAnimationConstraintsFollowPathTrackToEntry } from "components/tutorials/entries/blender-tutorial-animation-constraints-follow-path-track-to";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -259,6 +260,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderProceduralMarbleVeinsEntry,
   blenderTutorialGnRaycastTerrainDecalScatterEntry,
   blenderTutorialModifierArrayCurveDeformChainRopeEntry,
+  blenderTutorialAnimationConstraintsFollowPathTrackToEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
