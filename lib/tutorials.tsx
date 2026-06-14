@@ -130,6 +130,7 @@ import { entry as blenderTutorialAnimationConstraintsFollowPathTrackToEntry } fr
 import { entry as blenderTutorialEeveeNextRayTracingSsrGlossyEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-ray-tracing-ssr-glossy";
 import { entry as blenderTutorialPhysicsMantaflowLiquidDamBreakEntry } from "components/tutorials/entries/blender-tutorial-physics-mantaflow-liquid-dam-break";
 import { entry as blenderTutorialPhysicsMantaflowSmokeFireTorchEntry } from "components/tutorials/entries/blender-tutorial-physics-mantaflow-smoke-fire-torch";
+import { entry as blenderTutorialGnSampleCurveTrackSleepersEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-curve-track-sleepers";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -267,6 +268,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialEeveeNextRayTracingSsrGlossyEntry,
   blenderTutorialPhysicsMantaflowLiquidDamBreakEntry,
   blenderTutorialPhysicsMantaflowSmokeFireTorchEntry,
+  blenderTutorialGnSampleCurveTrackSleepersEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

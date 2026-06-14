@@ -143,3 +143,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-13 | blend + glb | physics | physics-mantaflow-liquid-dam-break | 5.1 | CC0 | dam_break.blend · dam_break_splash.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-mantaflow-liquid-dam-break |
 
 | 2026-06-14 | blend | physics | physics-mantaflow-smoke-fire-torch | 5.1 | CC0 | flame_torch.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-mantaflow-smoke-fire-torch |
+
+| 2026-06-14 | blend + glb | geometry-nodes | gn-sample-curve-track-sleepers | 5.1 | CC0 | track_sleepers.blend · track_sleepers.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-curve-track-sleepers |
