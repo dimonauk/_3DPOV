@@ -1,0 +1,55 @@
+{
+  "slug": "compositor-keying-green-screen-despill",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "filename": "keying_demo.blend",
+      "type": "blend",
+      "description": "Blender scene with Suzanne subject, green emission plane, key+spill lights, and configured compositor Keying node chain."
+    },
+    {
+      "filename": "blueprint.py",
+      "type": "script",
+      "description": "Full bpy setup: scene geometry, materials, render settings, compositor Keying node with all expert parameters."
+    },
+    {
+      "filename": "record.py",
+      "type": "script",
+      "description": "Animation render script: 150-frame Suzanne slide, MP4 output."
+    },
+    {
+      "filename": "../../videos/compositor/compositor-keying-green-screen-despill/viewport.mp4",
+      "type": "video",
+      "description": "5-second rendered animation showing Suzanne keyed over navy background. Written by record.py."
+    },
+    {
+      "filename": "../../videos/compositor/compositor-keying-green-screen-despill/screen.mp4",
+      "type": "video",
+      "description": "Screen recording of the compositor walkthrough (OBS). Captured by Dimona per SCREEN-RECORDING-NOTES.md."
+    }
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-eevee-light-linking-character-rig"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Keying Node",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/types/matte/keying.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

@@ -144,6 +144,7 @@ import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "compone
 import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
 import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
 import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
+import { entry as blenderTutorialCompositorKeyingGreenScreenDespillEntry } from "components/tutorials/entries/blender-tutorial-compositor-keying-green-screen-despill";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -295,6 +296,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorOidnDenoiseCyclesPassesEntry,
   blenderTutorialPythonAddonCustomPanelPropertyGroupEntry,
   blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry,
+  blenderTutorialCompositorKeyingGreenScreenDespillEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
