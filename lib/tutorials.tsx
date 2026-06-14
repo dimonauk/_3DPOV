@@ -135,6 +135,7 @@ import { entry as blenderTutorialArmatureBoneCollectionsCustomShapesEntry } from
 import { entry as blenderTutorialModifierLatticeShrinkwrapPropCageEntry } from "components/tutorials/entries/blender-tutorial-modifier-lattice-shrinkwrap-prop-cage";
 import { entry as blenderTutorialPythonBpyGenodesTreeApiEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-geonodes-tree-api";
 import { entry as blenderTutorialModifierOceanFourierWaterShaderEntry } from "components/tutorials/entries/blender-tutorial-modifier-ocean-fourier-water-shader";
+import { entry as blenderTutorialShaderAoPointinessEdgeHighlightEntry } from "components/tutorials/entries/blender-tutorial-shader-ao-pointiness-edge-highlight";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -277,6 +278,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierLatticeShrinkwrapPropCageEntry,
   blenderTutorialPythonBpyGenodesTreeApiEntry,
   blenderTutorialModifierOceanFourierWaterShaderEntry,
+  blenderTutorialShaderAoPointinessEdgeHighlightEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

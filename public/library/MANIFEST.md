@@ -152,3 +152,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-14 | blend + glb | scripting | python-bpy-geonodes-tree-api | 5.1 | CC0 | spike_ball.blend · spike_ball.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-geonodes-tree-api |
 
 | 2026-06-14 | blend + glb | modifiers | modifier-ocean-fourier-water-shader | 5.1 | CC0 | ocean_surface.blend · ocean_surface.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-ocean-fourier-water-shader |
+| 2026-06-14 | blend + glb | shading | shader-ao-pointiness-edge-highlight | 5.1 | CC0 | hull_panel.blend · hull_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight |
