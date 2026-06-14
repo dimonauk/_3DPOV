@@ -146,3 +146,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-14 | blend + glb | geometry-nodes | gn-sample-curve-track-sleepers | 5.1 | CC0 | track_sleepers.blend · track_sleepers.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-curve-track-sleepers |
 | 2026-06-14 | blend + glb | rigging | armature-bone-collections-custom-shapes | 5.1 | CC0 | armature_control_rig.blend · armature_control_rig.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-armature-bone-collections-custom-shapes |
+
+| 2026-06-14 | blend + glb | modifiers | modifier-lattice-shrinkwrap-prop-cage | 5.1 | CC0 | modifier_lattice_shrinkwrap_prop.blend · pauldron_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-lattice-shrinkwrap-prop-cage |

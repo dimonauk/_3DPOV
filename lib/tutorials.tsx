@@ -132,6 +132,7 @@ import { entry as blenderTutorialPhysicsMantaflowLiquidDamBreakEntry } from "com
 import { entry as blenderTutorialPhysicsMantaflowSmokeFireTorchEntry } from "components/tutorials/entries/blender-tutorial-physics-mantaflow-smoke-fire-torch";
 import { entry as blenderTutorialGnSampleCurveTrackSleepersEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-curve-track-sleepers";
 import { entry as blenderTutorialArmatureBoneCollectionsCustomShapesEntry } from "components/tutorials/entries/blender-tutorial-armature-bone-collections-custom-shapes";
+import { entry as blenderTutorialModifierLatticeShrinkwrapPropCageEntry } from "components/tutorials/entries/blender-tutorial-modifier-lattice-shrinkwrap-prop-cage";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -271,6 +272,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsMantaflowSmokeFireTorchEntry,
   blenderTutorialGnSampleCurveTrackSleepersEntry,
   blenderTutorialArmatureBoneCollectionsCustomShapesEntry,
+  blenderTutorialModifierLatticeShrinkwrapPropCageEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
