@@ -150,3 +150,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-14 | blend + glb | modifiers | modifier-lattice-shrinkwrap-prop-cage | 5.1 | CC0 | modifier_lattice_shrinkwrap_prop.blend · pauldron_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-lattice-shrinkwrap-prop-cage |
 
 | 2026-06-14 | blend + glb | scripting | python-bpy-geonodes-tree-api | 5.1 | CC0 | spike_ball.blend · spike_ball.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-geonodes-tree-api |
+
+| 2026-06-14 | blend | color-management | color-management-agx-ocio-pipeline | 5.1 | CC0 | color_stress_test.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-color-management-agx-ocio-pipeline |

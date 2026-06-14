@@ -134,6 +134,7 @@ import { entry as blenderTutorialGnSampleCurveTrackSleepersEntry } from "compone
 import { entry as blenderTutorialArmatureBoneCollectionsCustomShapesEntry } from "components/tutorials/entries/blender-tutorial-armature-bone-collections-custom-shapes";
 import { entry as blenderTutorialModifierLatticeShrinkwrapPropCageEntry } from "components/tutorials/entries/blender-tutorial-modifier-lattice-shrinkwrap-prop-cage";
 import { entry as blenderTutorialPythonBpyGenodesTreeApiEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-geonodes-tree-api";
+import { entry as blenderTutorialColorManagementAgxOcioPipelineEntry } from "components/tutorials/entries/blender-tutorial-color-management-agx-ocio-pipeline";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -275,6 +276,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialArmatureBoneCollectionsCustomShapesEntry,
   blenderTutorialModifierLatticeShrinkwrapPropCageEntry,
   blenderTutorialPythonBpyGenodesTreeApiEntry,
+  blenderTutorialColorManagementAgxOcioPipelineEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
