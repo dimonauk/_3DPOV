@@ -1,0 +1,39 @@
+{
+  "slug": "shader-automotive-paint-coat-metallic-flake",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "automotive_paint.blend",
+    "automotive_paint.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/shading/shader-automotive-paint-coat-metallic-flake/viewport.mp4",
+    "../../videos/shading/shader-automotive-paint-coat-metallic-flake/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-anisotropic-bsdf-brushed-metal",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision"
+    ],
+    "external": [
+      {
+        "title": "Google Filament — Materials Guide (Clearcoat Layer)",
+        "url": "https://google.github.io/filament/Materials.md.html",
+        "licence": "Apache-2.0",
+        "author": "Google LLC"
+      },
+      {
+        "title": "Physically Based Rendering 4th Ed. — Chapter 9: Reflection Models",
+        "url": "https://www.pbr-book.org/4ed/Reflection_Models",
+        "licence": "CC-BY-NC-SA (book) / BSD (code)",
+        "author": "Matt Pharr, Wenzel Jakob, Greg Humphreys"
+      }
+    ]
+  }
+}

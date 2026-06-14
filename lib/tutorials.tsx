@@ -138,6 +138,7 @@ import { entry as blenderTutorialModifierOceanFourierWaterShaderEntry } from "co
 import { entry as blenderTutorialShaderAoPointinessEdgeHighlightEntry } from "components/tutorials/entries/blender-tutorial-shader-ao-pointiness-edge-highlight";
 import { entry as blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry } from "components/tutorials/entries/blender-tutorial-shader-anisotropic-bsdf-brushed-metal";
 import { entry as blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry } from "components/tutorials/entries/blender-tutorial-shader-sky-nishita-sun-position-hdri-rig";
+import { entry as blenderTutorialShaderAutomotivePaintCoatMetallicFlakeEntry } from "components/tutorials/entries/blender-tutorial-shader-automotive-paint-coat-metallic-flake";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -283,6 +284,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderAoPointinessEdgeHighlightEntry,
   blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry,
   blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry,
+  blenderTutorialShaderAutomotivePaintCoatMetallicFlakeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
