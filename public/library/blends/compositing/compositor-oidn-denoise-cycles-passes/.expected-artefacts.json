@@ -1,0 +1,76 @@
+{
+  "slug": "compositor-oidn-denoise-cycles-passes",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/compositing/compositor-oidn-denoise-cycles-passes/blueprint.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-oidn-denoise-cycles-passes/record.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-oidn-denoise-cycles-passes/README.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-oidn-denoise-cycles-passes/SCREEN-RECORDING-NOTES.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "stone_denoise.blend",
+      "type": "blend",
+      "status": "pending_local_save",
+      "note": "Save via Ctrl+S after running blueprint.py"
+    },
+    {
+      "path": "render/stone_denoise_001.exr",
+      "type": "render",
+      "status": "pending_render",
+      "codec": "DWAA float32"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-oidn-denoise-cycles-passes/viewport.mp4",
+      "type": "video",
+      "status": "pending_record",
+      "note": "Run record.py from Text Editor"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-oidn-denoise-cycles-passes/screen.mp4",
+      "type": "video",
+      "status": "pending_obs",
+      "note": "See SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-compositor-motion-vector-blur",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision"
+    ],
+    "outside_sources": [
+      {
+        "name": "Intel Open Image Denoise",
+        "url": "https://github.com/OpenImageDenoise/oidn",
+        "licence": "Apache-2.0",
+        "author": "Intel Corporation",
+        "related_projects": ["embree", "ospray", "ispc"]
+      },
+      {
+        "name": "Blender Cycles Sampling Documentation",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/render_settings/sampling.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors"
+      }
+    ]
+  }
+}

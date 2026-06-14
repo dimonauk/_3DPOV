@@ -141,6 +141,7 @@ import { entry as blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry } from 
 import { entry as blenderTutorialShaderAutomotivePaintCoatMetallicFlakeEntry } from "components/tutorials/entries/blender-tutorial-shader-automotive-paint-coat-metallic-flake";
 import { entry as blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry } from "components/tutorials/entries/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped";
 import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "components/tutorials/entries/blender-tutorial-compositor-motion-vector-blur";
+import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -289,6 +290,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderAutomotivePaintCoatMetallicFlakeEntry,
   blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry,
   blenderTutorialCompositorMotionVectorBlurEntry,
+  blenderTutorialCompositorOidnDenoiseCyclesPassesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
