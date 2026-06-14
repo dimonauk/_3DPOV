@@ -137,6 +137,7 @@ import { entry as blenderTutorialPythonBpyGenodesTreeApiEntry } from "components
 import { entry as blenderTutorialModifierOceanFourierWaterShaderEntry } from "components/tutorials/entries/blender-tutorial-modifier-ocean-fourier-water-shader";
 import { entry as blenderTutorialShaderAoPointinessEdgeHighlightEntry } from "components/tutorials/entries/blender-tutorial-shader-ao-pointiness-edge-highlight";
 import { entry as blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry } from "components/tutorials/entries/blender-tutorial-shader-anisotropic-bsdf-brushed-metal";
+import { entry as blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry } from "components/tutorials/entries/blender-tutorial-shader-sky-nishita-sun-position-hdri-rig";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -281,6 +282,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierOceanFourierWaterShaderEntry,
   blenderTutorialShaderAoPointinessEdgeHighlightEntry,
   blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry,
+  blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

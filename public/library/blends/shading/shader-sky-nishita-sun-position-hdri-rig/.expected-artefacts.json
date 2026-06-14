@@ -1,0 +1,40 @@
+{
+  "slug": "shader-sky-nishita-sun-position-hdri-rig",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "sky_nishita_hdri_rig.blend",
+    "sky_nishita_hdri_rig.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-sky-nishita-sun-position-hdri-rig",
+      "/tutorials/blender-tutorial-eevee-next-irradiance-sphere-probe",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-eevee-light-linking-character-rig",
+      "/codex",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "url": "https://dl.acm.org/doi/10.1145/166117.166140",
+        "licence": "PD (academic, SIGGRAPH 1993)",
+        "author": "T. Nishita, T. Sirai, K. Tadamura, E. Nakamae"
+      },
+      {
+        "url": "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/objects/Sky.js",
+        "licence": "MIT",
+        "author": "mrdoob / three.js contributors"
+      }
+    ]
+  }
+}
