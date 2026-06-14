@@ -1,0 +1,48 @@
+{
+  "slug": "grease-pencil-3-line-art-toon-outline",
+  "blender_version": "5.1",
+  "topic": "grease-pencil",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "manual_outputs": [
+    "gem_ink.blend"
+  ],
+  "rendered_outputs": [
+    "public/library/videos/grease-pencil/grease-pencil-3-line-art-toon-outline/viewport.mp4",
+    "public/library/videos/grease-pencil/grease-pencil-3-line-art-toon-outline/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_routes": [
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-gn-raycast-terrain-decal-scatter"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/grease_pencil/modifiers/generate/line_art.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "notes": "Edge type definitions, crease threshold, source type options, GP3 modifier stack"
+      },
+      {
+        "url": "https://github.com/chsh2/nijiGPen",
+        "licence": "MIT",
+        "author": "chsh2",
+        "notes": "GP3 brushes, fill utilities, and stroke processing operators for manga-style illustration"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/shader_to_rgb.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "notes": "Shader to RGB EEVEE-only evaluation, shadow interaction, Cycles caveat"
+      }
+    ]
+  }
+}

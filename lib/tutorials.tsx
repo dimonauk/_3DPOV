@@ -145,6 +145,7 @@ import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "
 import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
 import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
 import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-corrective-shape-keys-driver";
+import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-line-art-toon-outline";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -297,6 +298,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonAddonCustomPanelPropertyGroupEntry,
   blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry,
   blenderTutorialRiggingCorrectiveShapeKeysDriverEntry,
+  blenderTutorialGreasePencil3LineArtToonOutlineEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
