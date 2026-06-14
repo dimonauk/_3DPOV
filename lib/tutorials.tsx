@@ -86,6 +86,7 @@ import { entry as blenderTutorialGnScaleInstancesSpineGrowthEntry } from "compon
 import { entry as blenderTutorialGnUvUnwrapPackIslandsGlbEntry } from "components/tutorials/entries/blender-tutorial-gn-uv-unwrap-pack-islands-glb";
 import { entry as blenderTutorialGnSeparateGeometryExplodedViewEntry } from "components/tutorials/entries/blender-tutorial-gn-separate-geometry-exploded-view";
 import { entry as blenderTutorialPythonBpyBmeshDodecahedronEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bmesh-dodecahedron";
+import { entry as blenderTutorialPythonBpyAddonOperatorPanelPropsEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-addon-operator-panel-props";
 import { entry as blenderTutorialShaderProceduralWornMetalEdgeWearEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-worn-metal-edge-wear";
 import { entry as blenderTutorialGnConvexHullArtDecoLampEntry } from "components/tutorials/entries/blender-tutorial-gn-convex-hull-art-deco-lamp";
 import { entry as blenderTutorialShaderProceduralWovenFabricEntry } from "components/tutorials/entries/blender-tutorial-shader-procedural-woven-fabric";
@@ -283,6 +284,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderAoPointinessEdgeHighlightEntry,
   blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry,
   blenderTutorialShaderSkyNishitaSunPositionHdriRigEntry,
+  blenderTutorialPythonBpyAddonOperatorPanelPropsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,38 @@
+{
+  "slug": "python-bpy-addon-operator-panel-props",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-addon-operator-panel-props/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-addon-operator-panel-props/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-armature-bone-collections-custom-shapes"
+    ],
+    "external": [
+      {
+        "name": "fake-bpy-module",
+        "author": "Nutti",
+        "licence": "MIT",
+        "url": "https://github.com/nutti/fake-bpy-module"
+      },
+      {
+        "name": "Blender glTF 2.0 I/O",
+        "author": "Julien Duroure / Khronos Group",
+        "licence": "Apache-2.0",
+        "url": "https://extensions.blender.org/add-ons/io-scene-gltf2/"
+      }
+    ]
+  }
+}
