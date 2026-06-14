@@ -1,0 +1,56 @@
+{
+  "slug": "color-management-agx-ocio-pipeline",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "color-management",
+  "artefacts": [
+    {
+      "path": "public/library/blends/color-management/color-management-agx-ocio-pipeline/color_stress_test.blend",
+      "type": "blend",
+      "produced_by": "blueprint.py",
+      "notes": "AgX-configured colour stress test scene; chrome sphere, red plastic ball, emissive panel, near-black rubber ball"
+    },
+    {
+      "path": "public/library/videos/color-management/color-management-agx-ocio-pipeline/viewport.mp4",
+      "type": "video",
+      "produced_by": "record.py",
+      "notes": "5-second render cycling AgX → AgX Punchy → Filmic → Standard → AgX with slow camera arc"
+    },
+    {
+      "path": "public/library/videos/color-management/color-management-agx-ocio-pipeline/screen.mp4",
+      "type": "video",
+      "produced_by": "SCREEN-RECORDING-NOTES.md",
+      "notes": "OBS screen recording: Color Management panel, live transform comparison, exposure slider, GLB texture colour spaces"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-eevee-next-irradiance-sphere-probe",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/color_management.html",
+        "title": "Color Management — Blender Manual",
+        "licence": "CC BY",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/sobotka/AgX",
+        "title": "AgX by Troy Sobotka",
+        "licence": "MIT",
+        "author": "Troy Sobotka",
+        "related": ["https://github.com/sobotka/AgX-S2O3"]
+      },
+      {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#materials",
+        "title": "glTF 2.0 — Material Colour Spaces",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
