@@ -160,3 +160,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-14 | blend | compositing | compositor-motion-vector-blur | 5.1 | CC0 | vecblur_demo.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-motion-vector-blur |
 | 2026-06-14 | blend | compositing | compositor-oidn-denoise-cycles-passes | 5.1 | CC0 | stone_denoise.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes |
 | 2026-06-14 | extension + blend | scripting | python-addon-custom-panel-property-group | 5.1 | CC0 | blueprint.py · quick_facet/__init__.py · blender_manifest.toml · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-addon-custom-panel-property-group |
+
+| 2026-06-14 | blend | animation | animation-sound-bake-fcurve-audio-reactive | 5.1 | CC0 | beat_grid.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-animation-sound-bake-fcurve-audio-reactive |

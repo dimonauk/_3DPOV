@@ -143,6 +143,7 @@ import { entry as blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry
 import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "components/tutorials/entries/blender-tutorial-compositor-motion-vector-blur";
 import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
 import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
+import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -293,6 +294,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorMotionVectorBlurEntry,
   blenderTutorialCompositorOidnDenoiseCyclesPassesEntry,
   blenderTutorialPythonAddonCustomPanelPropertyGroupEntry,
+  blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
