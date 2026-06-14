@@ -162,3 +162,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-14 | extension + blend | scripting | python-addon-custom-panel-property-group | 5.1 | CC0 | blueprint.py · quick_facet/__init__.py · blender_manifest.toml · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-addon-custom-panel-property-group |
 
 | 2026-06-14 | blend | animation | animation-sound-bake-fcurve-audio-reactive | 5.1 | CC0 | beat_grid.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-animation-sound-bake-fcurve-audio-reactive |
+| 2026-06-14 | blend | rigging | rigging-corrective-shape-keys-driver | 5.1 | CC0 | corrective_arm_rig.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-rigging-corrective-shape-keys-driver |
