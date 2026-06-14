@@ -136,6 +136,7 @@ import { entry as blenderTutorialModifierLatticeShrinkwrapPropCageEntry } from "
 import { entry as blenderTutorialPythonBpyGenodesTreeApiEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-geonodes-tree-api";
 import { entry as blenderTutorialModifierOceanFourierWaterShaderEntry } from "components/tutorials/entries/blender-tutorial-modifier-ocean-fourier-water-shader";
 import { entry as blenderTutorialShaderAoPointinessEdgeHighlightEntry } from "components/tutorials/entries/blender-tutorial-shader-ao-pointiness-edge-highlight";
+import { entry as blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry } from "components/tutorials/entries/blender-tutorial-shader-anisotropic-bsdf-brushed-metal";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -279,6 +280,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyGenodesTreeApiEntry,
   blenderTutorialModifierOceanFourierWaterShaderEntry,
   blenderTutorialShaderAoPointinessEdgeHighlightEntry,
+  blenderTutorialShaderAnisotropicBsdfBrushedMetalEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
