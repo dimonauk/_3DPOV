@@ -142,6 +142,7 @@ import { entry as blenderTutorialShaderAutomotivePaintCoatMetallicFlakeEntry } f
 import { entry as blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry } from "components/tutorials/entries/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped";
 import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "components/tutorials/entries/blender-tutorial-compositor-motion-vector-blur";
 import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
+import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -291,6 +292,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry,
   blenderTutorialCompositorMotionVectorBlurEntry,
   blenderTutorialCompositorOidnDenoiseCyclesPassesEntry,
+  blenderTutorialPythonAddonCustomPanelPropertyGroupEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

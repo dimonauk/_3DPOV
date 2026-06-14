@@ -1,0 +1,18 @@
+schema_version = "1.0.0"
+
+id      = "holoflow_quick_facet"
+version = "1.0.0"
+name    = "Holoflow Quick Facet"
+tagline = "One-click flat-shade + bevel for hard-surface faceted props"
+
+maintainer = "Holoflow Studio <hello@holoflow.co.uk>"
+type       = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:Apache-2.0"]
+
+tags = ["Mesh", "Modeling", "Pipeline"]
+
+[permissions]
+# No file system, network, or clipboard access needed.
