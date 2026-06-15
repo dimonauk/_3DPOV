@@ -150,6 +150,7 @@ import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } fr
 import { entry as blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry } from "components/tutorials/entries/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector";
 import { entry as blenderTutorialSculptMultiresNormalBakeGlbEntry } from "components/tutorials/entries/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb";
 import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer";
+import { entry as blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry } from "components/tutorials/entries/blender-tutorial-cycles-light-groups-non-destructive-relight";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -307,6 +308,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry,
   blenderTutorialSculptMultiresNormalBakeGlbEntry,
   blenderTutorialGnBevelMeshEdgeAngleChamferEntry,
+  blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
