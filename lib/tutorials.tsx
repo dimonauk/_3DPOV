@@ -149,6 +149,7 @@ import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "co
 import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-fk-ik-switch-custom-property-driver";
 import { entry as blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry } from "components/tutorials/entries/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector";
 import { entry as blenderTutorialSculptMultiresNormalBakeGlbEntry } from "components/tutorials/entries/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb";
+import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -305,6 +306,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry,
   blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry,
   blenderTutorialSculptMultiresNormalBakeGlbEntry,
+  blenderTutorialGnBevelMeshEdgeAngleChamferEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
