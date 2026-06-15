@@ -146,6 +146,7 @@ import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from
 import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
 import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-corrective-shape-keys-driver";
 import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-line-art-toon-outline";
+import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-fk-ik-switch-custom-property-driver";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -299,6 +300,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry,
   blenderTutorialRiggingCorrectiveShapeKeysDriverEntry,
   blenderTutorialGreasePencil3LineArtToonOutlineEntry,
+  blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

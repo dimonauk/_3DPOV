@@ -1,0 +1,44 @@
+{
+  "slug": "rigging-fk-ik-switch-custom-property-driver",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "rigging",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "fk_ik_arm.blend"
+  ],
+  "video_artefacts": [
+    "public/library/videos/rigging/rigging-fk-ik-switch-custom-property-driver/viewport.mp4",
+    "public/library/videos/rigging/rigging-fk-ik-switch-custom-property-driver/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-armature-bone-collections-custom-shapes",
+      "/tutorials/blender-tutorial-rigging-corrective-shape-keys-driver",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-armature-weight-paint"
+    ],
+    "internal_docs": [
+      "/docs/BLENDER-EXTENSIONS.md",
+      "/docs/BLENDER-MCP-TUTORIALS.md"
+    ],
+    "external_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/animation/armatures/posing/bone_constraints/inverse_kinematics/introduction.html",
+        "title": "Blender Manual — Inverse Kinematics",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/animation/drivers/introduction.html",
+        "title": "Blender Manual — Drivers",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}
