@@ -148,6 +148,7 @@ import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "c
 import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-line-art-toon-outline";
 import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-fk-ik-switch-custom-property-driver";
 import { entry as blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry } from "components/tutorials/entries/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector";
+import { entry as blenderTutorialSculptMultiresNormalBakeGlbEntry } from "components/tutorials/entries/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -303,6 +304,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGreasePencil3LineArtToonOutlineEntry,
   blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry,
   blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry,
+  blenderTutorialSculptMultiresNormalBakeGlbEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
