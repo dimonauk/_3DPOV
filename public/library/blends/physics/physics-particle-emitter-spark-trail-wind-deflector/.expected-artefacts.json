@@ -1,0 +1,50 @@
+{
+  "slug": "physics-particle-emitter-spark-trail-wind-deflector",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "physics",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "spark_trail.blend"
+  ],
+  "video_artefacts": [
+    "public/library/videos/physics/physics-particle-emitter-spark-trail-wind-deflector/viewport.mp4",
+    "public/library/videos/physics/physics-particle-emitter-spark-trail-wind-deflector/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-physics-mantaflow-smoke-fire-torch",
+      "/tutorials/blender-tutorial-physics-soft-body-jelly-squash-stretch",
+      "/tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal"
+    ],
+    "internal_docs": [
+      "/docs/BLENDER-EXTENSIONS.md",
+      "/docs/BLENDER-MCP-TUTORIALS.md"
+    ],
+    "external_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/particles/introduction.html",
+        "title": "Blender Manual — Particle System Introduction",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/force_fields/index.html",
+        "title": "Blender Manual — Force Fields",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "title": "blender-scripting — bpy Python scripting examples",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev"
+      }
+    ]
+  }
+}

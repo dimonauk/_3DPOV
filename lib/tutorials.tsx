@@ -147,6 +147,7 @@ import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } fr
 import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-corrective-shape-keys-driver";
 import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-line-art-toon-outline";
 import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-fk-ik-switch-custom-property-driver";
+import { entry as blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry } from "components/tutorials/entries/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -301,6 +302,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialRiggingCorrectiveShapeKeysDriverEntry,
   blenderTutorialGreasePencil3LineArtToonOutlineEntry,
   blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry,
+  blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
