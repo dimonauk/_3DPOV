@@ -151,6 +151,7 @@ import { entry as blenderTutorialPhysicsParticleEmitterSparkTrailWindDeflectorEn
 import { entry as blenderTutorialSculptMultiresNormalBakeGlbEntry } from "components/tutorials/entries/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb";
 import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer";
 import { entry as blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry } from "components/tutorials/entries/blender-tutorial-cycles-light-groups-non-destructive-relight";
+import { entry as blenderTutorialTexturePaintStylisedLowPolyCharacterEntry } from "components/tutorials/entries/blender-tutorial-texture-paint-stylised-low-poly-character";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -309,6 +310,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialSculptMultiresNormalBakeGlbEntry,
   blenderTutorialGnBevelMeshEdgeAngleChamferEntry,
   blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry,
+  blenderTutorialTexturePaintStylisedLowPolyCharacterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
