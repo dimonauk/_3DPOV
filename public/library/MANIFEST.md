@@ -176,3 +176,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-17 | blend + glb | geometry-nodes | gn-simulation-zone-boid-flock | 5.1 | CC0 | boid_flock.blend · boid_flock.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-boid-flock |
 | 2026-06-17 | blend | rendering | shader-aov-custom-render-passes | 5.1 | CC0 | aov_amulet.blend · blueprint.py · record.py · output/aov_passes_0001.exr · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-aov-custom-render-passes |
+
+| 2026-06-17 | blend | compositing | compositor-kuwahara-painterly-stylisation | 5.1 | CC0 | kuwahara_painterly.blend · blueprint.py · record.py · output/kuwahara_painterly_001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-kuwahara-painterly-stylisation |

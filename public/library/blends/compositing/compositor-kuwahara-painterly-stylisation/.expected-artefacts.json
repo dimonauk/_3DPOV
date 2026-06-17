@@ -1,0 +1,76 @@
+{
+  "slug": "compositor-kuwahara-painterly-stylisation",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/compositing/compositor-kuwahara-painterly-stylisation/blueprint.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-kuwahara-painterly-stylisation/record.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-kuwahara-painterly-stylisation/README.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-kuwahara-painterly-stylisation/SCREEN-RECORDING-NOTES.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "kuwahara_painterly.blend",
+      "type": "blend",
+      "status": "pending_local_save",
+      "note": "Save via Ctrl+S after running blueprint.py in Blender"
+    },
+    {
+      "path": "output/kuwahara_painterly_001.png",
+      "type": "render",
+      "status": "pending_render",
+      "note": "F12 after running blueprint.py"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-kuwahara-painterly-stylisation/viewport.mp4",
+      "type": "video",
+      "status": "pending_record",
+      "note": "Run record.py from Text Editor after blueprint.py"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-kuwahara-painterly-stylisation/screen.mp4",
+      "type": "video",
+      "status": "pending_obs",
+      "note": "See SCREEN-RECORDING-NOTES.md — OBS window capture of Blender session"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence"
+    ],
+    "outside_sources": [
+      {
+        "name": "Kyprianidis et al. — Anisotropic Kuwahara Filtering (2009)",
+        "url": "https://doi.org/10.1111/j.1467-8659.2009.01574.x",
+        "licence": "academic-reference",
+        "author": "Jan Eric Kyprianidis, John Collomosse, Tinghuai Wang, Tobias Isenberg",
+        "note": "Original paper introducing the structure-tensor-guided anisotropic sectors"
+      },
+      {
+        "name": "Blender Compositor Nodes Documentation",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/types/filter/kuwahara.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors"
+      }
+    ]
+  }
+}
