@@ -154,6 +154,7 @@ import { entry as blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry } f
 import { entry as blenderTutorialTexturePaintStylisedLowPolyCharacterEntry } from "components/tutorials/entries/blender-tutorial-texture-paint-stylised-low-poly-character";
 import { entry as blenderTutorialShaderVoronoiCrackedCeramicIridescenceEntry } from "components/tutorials/entries/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence";
 import { entry as blenderTutorialGnSimulationZoneBoidFlockEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-boid-flock";
+import { entry as blenderTutorialShaderAovCustomRenderPassesEntry } from "components/tutorials/entries/blender-tutorial-shader-aov-custom-render-passes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -315,6 +316,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialTexturePaintStylisedLowPolyCharacterEntry,
   blenderTutorialShaderVoronoiCrackedCeramicIridescenceEntry,
   blenderTutorialGnSimulationZoneBoidFlockEntry,
+  blenderTutorialShaderAovCustomRenderPassesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
