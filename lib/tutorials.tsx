@@ -153,6 +153,7 @@ import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferEntry } from "compon
 import { entry as blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry } from "components/tutorials/entries/blender-tutorial-cycles-light-groups-non-destructive-relight";
 import { entry as blenderTutorialTexturePaintStylisedLowPolyCharacterEntry } from "components/tutorials/entries/blender-tutorial-texture-paint-stylised-low-poly-character";
 import { entry as blenderTutorialShaderVoronoiCrackedCeramicIridescenceEntry } from "components/tutorials/entries/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence";
+import { entry as blenderTutorialShaderStainedGlassVoronoiShadowCausticsEntry } from "components/tutorials/entries/blender-tutorial-shader-stained-glass-voronoi-shadow-caustics";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -313,6 +314,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCyclesLightGroupsNonDestructiveRelightEntry,
   blenderTutorialTexturePaintStylisedLowPolyCharacterEntry,
   blenderTutorialShaderVoronoiCrackedCeramicIridescenceEntry,
+  blenderTutorialShaderStainedGlassVoronoiShadowCausticsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
