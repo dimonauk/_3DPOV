@@ -171,3 +171,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-15 | blend | rendering | cycles-light-groups-non-destructive-relight | 5.1 | CC0 | relight_scene.blend · blueprint.py · record.py · output/relight_scene0001.exr · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight |
 
 | 2026-06-17 | blend + glb | shading | texture-paint-stylised-low-poly-character | 5.1 | CC0 | gem_totem.blend · gem_totem.glb · gem_totem_base.png · gem_totem_rough.png · gem_totem_emit.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-texture-paint-stylised-low-poly-character |
+
+| 2026-06-17 | blend + glb | shading | shader-voronoi-cracked-ceramic-iridescence | 5.1 | CC0 | celadon_bowl.blend · celadon_bowl.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence |
