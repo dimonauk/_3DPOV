@@ -173,3 +173,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-17 | blend + glb | shading | texture-paint-stylised-low-poly-character | 5.1 | CC0 | gem_totem.blend · gem_totem.glb · gem_totem_base.png · gem_totem_rough.png · gem_totem_emit.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-texture-paint-stylised-low-poly-character |
 
 | 2026-06-17 | blend + glb | shading | shader-voronoi-cracked-ceramic-iridescence | 5.1 | CC0 | celadon_bowl.blend · celadon_bowl.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence |
+
+| 2026-06-17 | blend + glb | geometry-nodes | gn-simulation-zone-boid-flock | 5.1 | CC0 | boid_flock.blend · boid_flock.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-boid-flock |

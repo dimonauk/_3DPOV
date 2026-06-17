@@ -1,0 +1,56 @@
+{
+  "slug": "gn-simulation-zone-boid-flock",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "boid_flock.blend"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-boid-flock/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-boid-flock/screen.mp4"
+  ],
+  "outputs": {
+    "blend": "boid_flock.blend",
+    "glb":   "boid_flock.glb"
+  },
+  "glb_path": "public/library/glbs/geometry-nodes/gn-simulation-zone-boid-flock/boid_flock.glb",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-index-of-nearest-neural-web"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Index of Nearest Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/index_of_nearest.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Attribute Statistic Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation"
+      }
+    ]
+  },
+  "technique_notes": [
+    "GeometryNodeSimulationInput/Output — pair_with_output(); only Geometry state item needed",
+    "Per-boid velocity stored as FLOAT_VECTOR named attribute 'vel' on Points cloud (POINT domain)",
+    "GeometryNodeIndexOfNearest — implicit position, excludes self, returns index of nearest OTHER point",
+    "GeometryNodeSampleIndex data_type='FLOAT_VECTOR' — reads vec3 attribute at arbitrary index",
+    "GeometryNodeAttributeStatistic data_type='FLOAT_VECTOR' — Mean output gives flock centroid",
+    "Speed clamp: ShaderNodeVectorMath NORMALIZE → ShaderNodeMath MIN → ShaderNodeVectorMath SCALE",
+    "FunctionNodeAlignEulerToVector axis='Z' — rotates cone Z-axis to face velocity direction",
+    "Sequential frame_set(1..N) + view_layer.update() mandatory to build simulation cache headlessly",
+    "Marsaglia method for uniform random sphere direction (no trig needed for velocity init)"
+  ]
+}
