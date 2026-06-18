@@ -2,54 +2,12 @@ import Link from "next/link";
 
 import Footer from "components/layout/footer";
 import { allProfiles } from "lib/people/registry";
+import { scenes } from "lib/scenes";
 
 export const metadata = {
   title: "People",
   description:
     "Every person named in the studio's who's-who lists has a profile page here. Real names, real public URLs, the work celebrated by name.",
-};
-
-// Group profiles by primary scene for the index. A person in many
-// scenes appears under each — the entry is the same, the surface
-// is multiple.
-const SCENE_ORDER = [
-  "fire-art",
-  "light-painting",
-  "vr",
-  "ar",
-  "motion-capture",
-  "pixel-art",
-  "splat-360",
-  "3d-printing",
-  "pov",
-  "led-programming",
-  "projection",
-  "holography",
-  "jewellery",
-  "drones",
-  "generative-ai",
-  "vrm",
-  "performance",
-] as const;
-
-const SCENE_LABELS: Record<string, string> = {
-  "fire-art": "Fire art + flow",
-  "light-painting": "Light painting + long exposure",
-  vr: "VR",
-  ar: "AR",
-  "motion-capture": "Motion capture",
-  "pixel-art": "Pixel art",
-  "splat-360": "Splat + 360 capture",
-  "3d-printing": "3D printing",
-  pov: "POV + spinning LED",
-  "led-programming": "LED programming",
-  projection: "Projection + VJ",
-  holography: "Holography",
-  jewellery: "Jewellery",
-  drones: "Drones",
-  "generative-ai": "Generative AI",
-  vrm: "VRM + avatars",
-  performance: "Live performance",
 };
 
 export default function PeopleIndexPage() {
@@ -71,24 +29,32 @@ export default function PeopleIndexPage() {
         </p>
         <p className="mt-4 max-w-2xl text-sm text-chrome-300">
           The list grows as the studio publishes new who&rsquo;s-who
-          articles. The fuller version &mdash; emails, deeper
-          biographies, outreach notes &mdash; lives in the
-          subscriber-only side. Public profiles are gloss + link.
+          articles. Section headings below link to a{" "}
+          <Link href="/scenes" className="text-pink-200 hover:underline">
+            scene page
+          </Link>{" "}
+          that aggregates the people + the writing for that scene.
+          The fuller version &mdash; emails, deeper biographies,
+          outreach notes &mdash; lives in the subscriber-only side.
+          Public profiles are gloss + link.
         </p>
 
-        {SCENE_ORDER.map((scene) => {
-          const profiles = all.filter((p) => p.scenes.includes(scene));
+        {scenes.map((scene) => {
+          const profiles = all.filter((p) => p.scenes.includes(scene.slug));
           if (profiles.length === 0) return null;
           return (
-            <section key={scene} className="mt-14">
-              <div className="chrome-label text-pink-200">
-                {SCENE_LABELS[scene]}
-              </div>
+            <section key={scene.slug} className="mt-14">
+              <Link
+                href={`/scenes/${scene.slug}`}
+                className="chrome-label text-pink-200 hover:underline"
+              >
+                {scene.label}
+              </Link>
               <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {profiles
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((p) => (
-                    <li key={`${scene}-${p.id}`}>
+                    <li key={`${scene.slug}-${p.id}`}>
                       <Link
                         href={`/people/${p.id}`}
                         className="block rounded-sm border border-warm-black-700 bg-warm-black-900/30 px-4 py-3 transition-colors hover:border-pink-200"
@@ -134,6 +100,11 @@ export default function PeopleIndexPage() {
         <section className="mt-12 border-t border-warm-black-800 pt-8">
           <div className="chrome-label">Read first</div>
           <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link href="/scenes" className="text-pink-200 hover:underline">
+                Scenes &rarr;
+              </Link>
+            </li>
             <li>
               <Link
                 href="/whoswho"

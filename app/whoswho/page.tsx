@@ -41,7 +41,15 @@ export default function WhosWhoIndexPage() {
           Every who&rsquo;s-who below uses a different editorial shape
           on purpose. The voice is the studio&rsquo;s; the structure
           varies so a reader who lands on three of them in a row still
-          finds something fresh.
+          finds something fresh. For the people-side view, jump to{" "}
+          <Link href="/scenes" className="text-pink-200 hover:underline">
+            Scenes
+          </Link>{" "}
+          or{" "}
+          <Link href="/people" className="text-pink-200 hover:underline">
+            People
+          </Link>
+          .
         </p>
 
         {entries.length === 0 ? (

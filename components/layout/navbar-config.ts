@@ -40,6 +40,9 @@ export const GROUPS: NavGroup[] = [
       { label: "Tutorials", href: "/tutorials" },
       { label: "Codex", href: "/codex" },
       { label: "Learn", href: "/learn" },
+      { label: "Who's who", href: "/whoswho" },
+      { label: "People", href: "/people" },
+      { label: "Scenes", href: "/scenes" },
     ],
   },
   {
