@@ -1,0 +1,30 @@
+{
+  "blend": "retopo_mesh.blend",
+  "record_output": "public/library/videos/sculpting/retopology-polybuild-shrinkwrap/viewport.mp4",
+  "screen_recording": "public/library/videos/sculpting/retopology-polybuild-shrinkwrap/screen.mp4",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-sculpt-dyntopo-voxel-remesh",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/retopology.html",
+        "title": "Blender Manual: Retopology",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      },
+      {
+        "url": "https://studio.blender.org/characters/",
+        "title": "Blender Studio — Open Character Production Files",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "topic": "sculpting",
+  "slug": "retopology-polybuild-shrinkwrap"
+}

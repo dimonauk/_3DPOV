@@ -163,6 +163,7 @@ import { entry as blenderTutorialShaderUdimMultitileVrmCharacterEntry } from "co
 import { entry as blenderTutorialFreestyleNprLineRenderingEntry } from "components/tutorials/entries/blender-tutorial-freestyle-npr-line-rendering";
 import { entry as blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry } from "components/tutorials/entries/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite";
 import { entry as blenderTutorialPythonBatchGlbExporterEntry } from "components/tutorials/entries/blender-tutorial-python-batch-glb-exporter";
+import { entry as blenderTutorialRetopologyPolybuildShrinkwrapEntry } from "components/tutorials/entries/blender-tutorial-retopology-polybuild-shrinkwrap";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -333,6 +334,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialFreestyleNprLineRenderingEntry,
   blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry,
   blenderTutorialPythonBatchGlbExporterEntry,
+  blenderTutorialRetopologyPolybuildShrinkwrapEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

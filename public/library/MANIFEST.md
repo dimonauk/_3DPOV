@@ -190,3 +190,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-18 | blend | rendering | eevee-shadow-catcher-holdout-ar-composite | 5.1 | CC0 | ar_composite.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite |
 
 | 2026-06-18 | blend + glb | scripting | python-batch-glb-exporter | 5.1 | CC0 | batch_pipeline.blend · arch_column.glb · gem_cluster.glb · cable_bundle.glb · manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-batch-glb-exporter |
+| 2026-06-18 | blend | sculpting | retopology-polybuild-shrinkwrap | 5.1 | CC0 | retopo_mesh.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-retopology-polybuild-shrinkwrap |
