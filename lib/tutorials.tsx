@@ -162,6 +162,7 @@ import { entry as blenderTutorialRiggingBboneCartoonSpineVrmEntry } from "compon
 import { entry as blenderTutorialShaderUdimMultitileVrmCharacterEntry } from "components/tutorials/entries/blender-tutorial-shader-udim-multitile-vrm-character";
 import { entry as blenderTutorialFreestyleNprLineRenderingEntry } from "components/tutorials/entries/blender-tutorial-freestyle-npr-line-rendering";
 import { entry as blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry } from "components/tutorials/entries/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite";
+import { entry as blenderTutorialPythonBatchGlbExporterEntry } from "components/tutorials/entries/blender-tutorial-python-batch-glb-exporter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -331,6 +332,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderUdimMultitileVrmCharacterEntry,
   blenderTutorialFreestyleNprLineRenderingEntry,
   blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry,
+  blenderTutorialPythonBatchGlbExporterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

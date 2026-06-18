@@ -188,3 +188,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-18 | blend | rendering | freestyle-npr-line-rendering | 5.1 | CC0 | freestyle_npr_lines.blend · freestyle_npr_lines.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-freestyle-npr-line-rendering |
 | 2026-06-18 | blend | rendering | eevee-shadow-catcher-holdout-ar-composite | 5.1 | CC0 | ar_composite.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite |
+
+| 2026-06-18 | blend + glb | scripting | python-batch-glb-exporter | 5.1 | CC0 | batch_pipeline.blend · arch_column.glb · gem_cluster.glb · cable_bundle.glb · manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-batch-glb-exporter |

@@ -1,0 +1,74 @@
+{
+  "slug": "python-batch-glb-exporter",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "batch_pipeline.blend"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-batch-glb-exporter/viewport.mp4",
+    "public/library/videos/scripting/python-batch-glb-exporter/screen.mp4"
+  ],
+  "outputs": {
+    "blend": "batch_pipeline.blend",
+    "glb": [
+      "arch_column.glb",
+      "gem_cluster.glb",
+      "cable_bundle.glb"
+    ],
+    "manifest": "manifest.json"
+  },
+  "glb_paths": [
+    "public/library/glbs/scripting/python-batch-glb-exporter/arch_column.glb",
+    "public/library/glbs/scripting/python-batch-glb-exporter/gem_cluster.glb",
+    "public/library/glbs/scripting/python-batch-glb-exporter/cable_bundle.glb"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — glTF 2.0 Exporter",
+        "url": "https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team / Blender Foundation",
+        "related_projects": [
+          "glTF-Blender-IO (Apache-2.0) — https://github.com/KhronosGroup/glTF-Blender-IO",
+          "glTF-Sample-Assets (MIT) — https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — Khronos Group official Blender glTF plugin",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_projects": [
+          "glTF-Validator (Apache-2.0) — https://github.com/KhronosGroup/glTF-Validator",
+          "glTF-Sample-Viewer (BSD-2-Clause) — https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  },
+  "technique_notes": [
+    "bpy.data.collections iteration with startswith(EXPORT_PREFIX) — prefix convention avoids exporting utility/helper collections",
+    "LayerCollection vs Collection distinction — view_layer.active_layer_collection requires LayerCollection, not Collection",
+    "find_layer_collection() recursive traversal maps Collection → LayerCollection for the active view layer",
+    "bpy.ops.export_scene.gltf(use_active_collection=True) scopes export to the active LayerCollection without touching selection state",
+    "export_apply=True bakes modifiers + transforms at export time without mutating source data in .blend",
+    "export_yup=True enforces +Y-up convention (glTF spec); Blender is +Z-up so the exporter applies a -90° X rotation at the root",
+    "Draco quantisation: position=14 bits (near-lossless), normals=10 bits, UVs=12 bits — lower bits = smaller file but visible error",
+    "snake_case() renames root objects before export so glTF node names are clean identifiers (no spaces, dots, or capitals)",
+    "manifest JSON written after all exports: blender_version, draco_level, per-export slug/path/polygon/size_kb",
+    "os.makedirs(exist_ok=True) — idempotent; safe to re-run the script without manual directory cleanup"
+  ]
+}
