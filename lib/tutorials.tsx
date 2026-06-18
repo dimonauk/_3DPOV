@@ -161,6 +161,7 @@ import { entry as blenderTutorialPythonModalOperatorVertexColourPainterEntry } f
 import { entry as blenderTutorialRiggingBboneCartoonSpineVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-bbone-cartoon-spine-vrm";
 import { entry as blenderTutorialShaderUdimMultitileVrmCharacterEntry } from "components/tutorials/entries/blender-tutorial-shader-udim-multitile-vrm-character";
 import { entry as blenderTutorialFreestyleNprLineRenderingEntry } from "components/tutorials/entries/blender-tutorial-freestyle-npr-line-rendering";
+import { entry as blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry } from "components/tutorials/entries/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -329,6 +330,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialRiggingBboneCartoonSpineVrmEntry,
   blenderTutorialShaderUdimMultitileVrmCharacterEntry,
   blenderTutorialFreestyleNprLineRenderingEntry,
+  blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -187,3 +187,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-18 | blend | shading | shader-udim-multitile-vrm-character | 5.1 | CC0 | udim_character_torso.blend · udim_character_torso.1001.png · udim_character_torso.1002.png · udim_character_torso.1003.png · udim_character_torso_atlas.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-udim-multitile-vrm-character |
 
 | 2026-06-18 | blend | rendering | freestyle-npr-line-rendering | 5.1 | CC0 | freestyle_npr_lines.blend · freestyle_npr_lines.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-freestyle-npr-line-rendering |
+| 2026-06-18 | blend | rendering | eevee-shadow-catcher-holdout-ar-composite | 5.1 | CC0 | ar_composite.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite |
