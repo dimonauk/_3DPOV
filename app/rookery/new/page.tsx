@@ -12,12 +12,17 @@ import {
 } from "lib/rookery/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Status =
   | { kind: "idle" }
   | { kind: "submitting" }
   | { kind: "error"; message: string };
+
+type SubState =
+  | { kind: "loading" }
+  | { kind: "anonymous" }
+  | { kind: "checked"; active: boolean; tier: string | null };
 
 export default function NewThreadPage() {
   const { user, loading } = useAuth();
@@ -25,6 +30,45 @@ export default function NewThreadPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [sub, setSub] = useState<SubState>({ kind: "loading" });
+
+  // Once auth resolves, query the user's Rookery subscription state.
+  // Server-side gate (firestore.rules) blocks unauthorised writes
+  // regardless, so this check is for the UX (show the right CTA).
+  useEffect(() => {
+    if (loading) return;
+    if (!user) {
+      setSub({ kind: "anonymous" });
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      try {
+        const token = await user.getIdToken();
+        const res = await fetch("/api/rookery/me", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) throw new Error(`me ${res.status}`);
+        const data = (await res.json()) as {
+          active: boolean;
+          tier: string | null;
+        };
+        if (cancelled) return;
+        setSub({ kind: "checked", active: data.active, tier: data.tier });
+      } catch {
+        // Foundation-phase fallback: if the API isn't reachable (e.g.
+        // Stripe not wired yet so the rookery_subscriptions doc never
+        // appeared), assume the founding-member posture from the
+        // tiers page and let the form render. The firestore rules
+        // are still the load-bearing gate.
+        if (cancelled) return;
+        setSub({ kind: "checked", active: true, tier: null });
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [loading, user]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,6 +121,35 @@ export default function NewThreadPage() {
                 className="rounded-sm border border-pink-200/60 bg-pink-200/10 px-5 py-3 chrome-label text-pink-200 transition-colors hover:bg-pink-200/20"
               >
                 Sign in &rarr;
+              </Link>
+            </div>
+          </div>
+        ) : sub.kind === "loading" ? (
+          <p className="mt-10 chrome-label text-chrome-500">
+            Checking your perch&hellip;
+          </p>
+        ) : sub.kind === "checked" && !sub.active ? (
+          <div className="mt-10 rounded-sm border border-warm-black-800 bg-warm-black-900/60 p-6">
+            <div className="chrome-label">Door fee</div>
+            <h2 className="mt-2 text-xl text-chrome-100">
+              Pick a perch to post from.
+            </h2>
+            <p className="mt-3 text-sm text-chrome-300">
+              The Rookery&rsquo;s door fee covers hosting and works as
+              the bouncer. Pick a tier and the form opens.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/rookery/tiers"
+                className="rounded-sm border border-pink-200/60 bg-pink-200/10 px-5 py-3 chrome-label text-pink-200 transition-colors hover:bg-pink-200/20"
+              >
+                Tiers &rarr;
+              </Link>
+              <Link
+                href="/rookery/about"
+                className="rounded-sm border border-warm-black-700 bg-warm-black-900/40 px-5 py-3 chrome-label text-chrome-300 transition-colors hover:border-pink-200 hover:text-pink-200"
+              >
+                About the Rookery
               </Link>
             </div>
           </div>
