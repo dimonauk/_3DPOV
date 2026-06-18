@@ -157,6 +157,7 @@ import { entry as blenderTutorialGnSimulationZoneBoidFlockEntry } from "componen
 import { entry as blenderTutorialShaderAovCustomRenderPassesEntry } from "components/tutorials/entries/blender-tutorial-shader-aov-custom-render-passes";
 import { entry as blenderTutorialCompositorKuwaharaPainterlyStylisationEntry } from "components/tutorials/entries/blender-tutorial-compositor-kuwahara-painterly-stylisation";
 import { entry as blenderTutorialModifierSubdivCreaseBevelWeightHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface";
+import { entry as blenderTutorialPythonModalOperatorVertexColourPainterEntry } from "components/tutorials/entries/blender-tutorial-python-modal-operator-vertex-colour-painter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -321,6 +322,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderAovCustomRenderPassesEntry,
   blenderTutorialCompositorKuwaharaPainterlyStylisationEntry,
   blenderTutorialModifierSubdivCreaseBevelWeightHardSurfaceEntry,
+  blenderTutorialPythonModalOperatorVertexColourPainterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

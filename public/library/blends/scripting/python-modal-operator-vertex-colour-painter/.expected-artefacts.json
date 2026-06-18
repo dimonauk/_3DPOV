@@ -1,0 +1,45 @@
+{
+  "slug": "python-modal-operator-vertex-colour-painter",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "paint_canvas.blend",
+    "public/library/videos/scripting/python-modal-operator-vertex-colour-painter/viewport.mp4",
+    "public/library/videos/scripting/python-modal-operator-vertex-colour-painter/screen.mp4"
+  ],
+  "tutorial_route": "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-texture-paint-stylised-low-poly-character"
+    ],
+    "external": [
+      {
+        "title": "Blender Python API — bpy.types.Operator.modal",
+        "url": "https://docs.blender.org/api/current/bpy.types.Operator.html#bpy.types.Operator.modal",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting — bpy scripting patterns library",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related_projects": [
+          "https://github.com/njanakiev/blender-scripting/blob/master/scripts/vertex_color.py",
+          "https://github.com/njanakiev/blender-scripting/blob/master/scripts/spherical_texture.py"
+        ]
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO — colour attribute export reference",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

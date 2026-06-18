@@ -180,3 +180,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-17 | blend | compositing | compositor-kuwahara-painterly-stylisation | 5.1 | CC0 | kuwahara_painterly.blend · blueprint.py · record.py · output/kuwahara_painterly_001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-kuwahara-painterly-stylisation |
 
 | 2026-06-17 | blend + glb | modifiers | modifier-subdiv-crease-bevel-weight-hard-surface | 5.1 | CC0 | mount_block.blend · mount_block.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface |
+
+| 2026-06-18 | blend | scripting | python-modal-operator-vertex-colour-painter | 5.1 | CC0 | paint_canvas.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter |
