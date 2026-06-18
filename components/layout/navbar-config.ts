@@ -35,6 +35,7 @@ export const GROUPS: NavGroup[] = [
   {
     label: "Read",
     links: [
+      { label: "Magazine", href: "/magazine" },
       { label: "Articles", href: "/articles" },
       { label: "Journal", href: "/journal" },
       { label: "Tutorials", href: "/tutorials" },
