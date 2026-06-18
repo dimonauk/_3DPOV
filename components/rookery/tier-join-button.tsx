@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { useAuth } from "components/auth/auth-provider";
+
 type TierSlug = "perch" | "nest" | "fledge";
 
 /**
@@ -20,6 +22,7 @@ export function TierJoinButton({
   tier: TierSlug;
   label: string;
 }) {
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -31,7 +34,11 @@ export function TierJoinButton({
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier }),
+        body: JSON.stringify({
+          tier,
+          ...(user?.uid ? { uid: user.uid } : {}),
+          ...(user?.email ? { email: user.email } : {}),
+        }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         url?: string;

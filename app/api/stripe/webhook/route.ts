@@ -36,6 +36,14 @@ import {
   sendCustomerReceipt,
   sendOperatorNotification,
 } from "lib/bureau/order-emails";
+import { ROOKERY_EMAILS } from "lib/rookery/emails";
+import { sendRookeryEmail } from "lib/rookery/mailer";
+import { enqueueRookeryEmail } from "lib/rookery/pending-emails";
+import {
+  updateSubscriptionStatusByStripeId,
+  upsertSubscription,
+  type RookeryTierSlug,
+} from "lib/rookery/subscriptions";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +82,15 @@ export async function POST(req: Request): Promise<Response> {
       break;
     case "charge.refunded":
       await onChargeRefunded(event);
+      break;
+    case "checkout.session.completed":
+      await onCheckoutSessionCompleted(event);
+      break;
+    case "customer.subscription.updated":
+      await onSubscriptionUpdated(event);
+      break;
+    case "customer.subscription.deleted":
+      await onSubscriptionDeleted(event);
       break;
     default:
       log.info("event type not handled", { type: event.type });
@@ -165,4 +182,160 @@ async function onChargeRefunded(event: StripeEvent): Promise<void> {
   // TODO: lookup order by PI id, transition status to "refunded",
   // notify operator. Skip if order is already shipped (operator handles
   // refund-after-ship manually because of return logistics).
+}
+
+type StripeCheckoutSession = {
+  id?: string;
+  customer?: string;
+  customer_email?: string;
+  customer_details?: { email?: string };
+  subscription?: string;
+  metadata?: Record<string, string>;
+};
+
+type StripeSubscriptionObject = {
+  id?: string;
+  status?: string;
+  current_period_end?: number; // unix seconds
+};
+
+const VALID_ROOKERY_TIERS = new Set<RookeryTierSlug>([
+  "perch",
+  "nest",
+  "fledge",
+]);
+
+function isRookeryTier(v: unknown): v is RookeryTierSlug {
+  return typeof v === "string" && VALID_ROOKERY_TIERS.has(v as RookeryTierSlug);
+}
+
+/**
+ * Fired when Stripe Checkout completes. Routes Rookery tier purchases
+ * to the subscription mirror + onboarding emails. Other Checkout
+ * Sessions (none yet, but room for the bezel pre-order, the workshop
+ * SKUs, etc.) get logged and ignored here.
+ */
+async function onCheckoutSessionCompleted(event: StripeEvent): Promise<void> {
+  const session = event.data?.object as StripeCheckoutSession | undefined;
+  const tier = session?.metadata?.rookery_tier;
+  if (!isRookeryTier(tier)) {
+    log.info("checkout.session.completed with no rookery_tier; skipping", {
+      sessionId: session?.id,
+      metadataKeys: session?.metadata ? Object.keys(session.metadata) : [],
+    });
+    return;
+  }
+
+  const uid = session?.metadata?.uid;
+  const email =
+    session?.customer_email ?? session?.customer_details?.email ?? "";
+  const stripeCustomerId = session?.customer ?? "";
+  const stripeSubscriptionId = session?.subscription ?? null;
+
+  // Subscription mirror — only when we have both a uid (signed-in
+  // buyer) and a customer id. Anonymous buyers still get the email
+  // sequence via the email path below.
+  if (uid && stripeCustomerId) {
+    try {
+      await upsertSubscription({
+        uid,
+        tier,
+        status: "active",
+        stripeCustomerId,
+        stripeSubscriptionId,
+        currentPeriodEndMs: null, // populated by subscription.updated
+        email,
+      });
+    } catch (err) {
+      log.error("upsertSubscription failed in webhook", {
+        sessionId: session?.id,
+        err: errToObject(err),
+      });
+    }
+  } else {
+    log.info("checkout completed without uid; skipping subscription doc", {
+      sessionId: session?.id,
+      hasCustomer: Boolean(stripeCustomerId),
+      hasUid: Boolean(uid),
+    });
+  }
+
+  // Onboarding email sequence. Welcome (Day 0) fires immediately;
+  // Orient (Day 3) and Perch (Day 7) are enqueued for the cron sweep.
+  if (email) {
+    try {
+      await sendRookeryEmail(email, "welcome", {
+        idempotencyKey: `rookery-welcome:${session?.id ?? email}`,
+      });
+    } catch (err) {
+      log.error("rookery welcome send failed in webhook", {
+        sessionId: session?.id,
+        err: errToObject(err),
+      });
+    }
+    const dayMs = 24 * 60 * 60 * 1000;
+    for (const e of ROOKERY_EMAILS) {
+      if (e.delayDays <= 0) continue;
+      try {
+        await enqueueRookeryEmail({
+          email,
+          slug: e.slug,
+          sendAfter: Date.now() + e.delayDays * dayMs,
+        });
+      } catch (err) {
+        log.warn("rookery enqueue failed in webhook (already-queued is fine)", {
+          slug: e.slug,
+          err: errToObject(err),
+        });
+      }
+    }
+  }
+
+  log.info("rookery checkout processed", {
+    tier,
+    uid: uid ?? "(anonymous)",
+    sessionId: session?.id,
+  });
+}
+
+async function onSubscriptionUpdated(event: StripeEvent): Promise<void> {
+  const sub = event.data?.object as StripeSubscriptionObject | undefined;
+  if (!sub?.id) {
+    log.warn("customer.subscription.updated missing id", { eventId: event.id });
+    return;
+  }
+  // Map Stripe statuses onto our smaller enum. We collapse trialing /
+  // active into "active"; everything else into a sensible neighbour.
+  const status = mapStripeSubscriptionStatus(sub.status);
+  await updateSubscriptionStatusByStripeId(sub.id, {
+    status,
+    currentPeriodEndMs: sub.current_period_end
+      ? sub.current_period_end * 1000
+      : null,
+  });
+}
+
+async function onSubscriptionDeleted(event: StripeEvent): Promise<void> {
+  const sub = event.data?.object as StripeSubscriptionObject | undefined;
+  if (!sub?.id) return;
+  await updateSubscriptionStatusByStripeId(sub.id, { status: "canceled" });
+}
+
+function mapStripeSubscriptionStatus(s: string | undefined):
+  | "active"
+  | "past_due"
+  | "canceled"
+  | "incomplete" {
+  switch (s) {
+    case "active":
+    case "trialing":
+      return "active";
+    case "past_due":
+    case "unpaid":
+      return "past_due";
+    case "canceled":
+      return "canceled";
+    default:
+      return "incomplete";
+  }
 }

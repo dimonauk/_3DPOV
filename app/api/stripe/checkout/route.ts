@@ -50,7 +50,7 @@ function isTierSlug(v: unknown): v is TierSlug {
 }
 
 export async function POST(req: Request) {
-  let payload: { tier?: unknown; email?: unknown };
+  let payload: { tier?: unknown; email?: unknown; uid?: unknown };
   try {
     payload = await req.json();
   } catch {
@@ -67,6 +67,14 @@ export async function POST(req: Request) {
   const email =
     typeof payload.email === "string" && payload.email.trim().length > 0
       ? payload.email.trim()
+      : undefined;
+  // uid is optional — when the buyer is signed in, the client passes
+  // their Firebase uid so the webhook can write the subscription doc
+  // keyed to them. Anonymous buyers can still check out; the webhook
+  // logs + sends the welcome email but skips the Firestore write.
+  const uid =
+    typeof payload.uid === "string" && payload.uid.trim().length > 0
+      ? payload.uid.trim()
       : undefined;
 
   const priceId = process.env[TIER_PRICE_ENV[tier]];
@@ -99,7 +107,10 @@ export async function POST(req: Request) {
       successUrl: `${base}${successPath}`,
       cancelUrl: `${base}${cancelPath}`,
       customerEmail: email,
-      metadata: { rookery_tier: tier },
+      metadata: {
+        rookery_tier: tier,
+        ...(uid ? { uid } : {}),
+      },
       allowPromotionCodes: false,
     });
     log.info("checkout session created", { tier, sessionId: session.id });

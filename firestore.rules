@@ -187,5 +187,15 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Rookery subscriptions — the local mirror of Stripe subscription
+    // state, keyed by Firebase uid. Reads would expose member emails
+    // + the perch roster; writes would let a visitor forge a
+    // subscription and bypass the gate. Webhook writes via admin SDK;
+    // server-component reads via admin SDK. Client-side reads + writes
+    // are denied entirely.
+    match /rookery_subscriptions/{uid} {
+      allow read, write: if false;
+    }
+
   }
 }
