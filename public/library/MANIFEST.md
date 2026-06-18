@@ -182,3 +182,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-17 | blend + glb | modifiers | modifier-subdiv-crease-bevel-weight-hard-surface | 5.1 | CC0 | mount_block.blend · mount_block.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface |
 
 | 2026-06-18 | blend | scripting | python-modal-operator-vertex-colour-painter | 5.1 | CC0 | paint_canvas.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter |
+| 2026-06-18 | blend | rigging | rigging-bbone-cartoon-spine-vrm | 5.1 | CC0 | spine_cartoon_bbone.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm |

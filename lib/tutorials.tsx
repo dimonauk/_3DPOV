@@ -158,6 +158,7 @@ import { entry as blenderTutorialShaderAovCustomRenderPassesEntry } from "compon
 import { entry as blenderTutorialCompositorKuwaharaPainterlyStylisationEntry } from "components/tutorials/entries/blender-tutorial-compositor-kuwahara-painterly-stylisation";
 import { entry as blenderTutorialModifierSubdivCreaseBevelWeightHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface";
 import { entry as blenderTutorialPythonModalOperatorVertexColourPainterEntry } from "components/tutorials/entries/blender-tutorial-python-modal-operator-vertex-colour-painter";
+import { entry as blenderTutorialRiggingBboneCartoonSpineVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-bbone-cartoon-spine-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -323,6 +324,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorKuwaharaPainterlyStylisationEntry,
   blenderTutorialModifierSubdivCreaseBevelWeightHardSurfaceEntry,
   blenderTutorialPythonModalOperatorVertexColourPainterEntry,
+  blenderTutorialRiggingBboneCartoonSpineVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
