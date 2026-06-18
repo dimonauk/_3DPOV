@@ -160,6 +160,7 @@ import { entry as blenderTutorialModifierSubdivCreaseBevelWeightHardSurfaceEntry
 import { entry as blenderTutorialPythonModalOperatorVertexColourPainterEntry } from "components/tutorials/entries/blender-tutorial-python-modal-operator-vertex-colour-painter";
 import { entry as blenderTutorialRiggingBboneCartoonSpineVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-bbone-cartoon-spine-vrm";
 import { entry as blenderTutorialShaderUdimMultitileVrmCharacterEntry } from "components/tutorials/entries/blender-tutorial-shader-udim-multitile-vrm-character";
+import { entry as blenderTutorialFreestyleNprLineRenderingEntry } from "components/tutorials/entries/blender-tutorial-freestyle-npr-line-rendering";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -327,6 +328,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonModalOperatorVertexColourPainterEntry,
   blenderTutorialRiggingBboneCartoonSpineVrmEntry,
   blenderTutorialShaderUdimMultitileVrmCharacterEntry,
+  blenderTutorialFreestyleNprLineRenderingEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
