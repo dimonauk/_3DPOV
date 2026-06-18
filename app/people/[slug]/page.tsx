@@ -172,12 +172,13 @@ export default async function PersonPage({
             <div className="chrome-label">Scenes</div>
             <div className="mt-1 flex flex-wrap gap-1.5 text-chrome-200">
               {profile.scenes.map((s) => (
-                <span
+                <Link
                   key={s}
-                  className="rounded-full border border-warm-black-700 px-2 py-0.5 text-xs"
+                  href={`/scenes/${s}`}
+                  className="rounded-full border border-warm-black-700 px-2 py-0.5 text-xs hover:border-pink-200 hover:text-pink-200"
                 >
                   {s}
-                </span>
+                </Link>
               ))}
             </div>
           </div>

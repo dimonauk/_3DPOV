@@ -84,8 +84,20 @@ function encodeStripeBody(input: Record<string, unknown>, prefix = ""): string {
       continue;
     }
     if (Array.isArray(v)) {
-      for (const item of v) {
-        parts.push(`${encodeURIComponent(`${key}[]`)}=${encodeURIComponent(String(item))}`);
+      for (let i = 0; i < v.length; i++) {
+        const item = v[i];
+        if (item !== null && typeof item === "object") {
+          // Stripe expects line_items[0][price]=...&line_items[0][quantity]=1
+          const nested = encodeStripeBody(
+            item as Record<string, unknown>,
+            `${key}[${i}]`,
+          );
+          if (nested) parts.push(nested);
+        } else {
+          parts.push(
+            `${encodeURIComponent(`${key}[${i}]`)}=${encodeURIComponent(String(item))}`,
+          );
+        }
       }
       continue;
     }
@@ -286,6 +298,98 @@ export function verifyWebhookSignature(
     signaturesChecked: envelope.signatures.length,
   });
   return false;
+}
+
+export type CreateCheckoutSessionInput = {
+  /**
+   * Existing Stripe Price id (`price_...`). Configured in env per
+   * tier — see app/api/stripe/checkout/route.ts.
+   */
+  priceId: string;
+  /**
+   * "subscription" for recurring tiers; "payment" for one-off
+   * (Fledge founding-member). Stripe rejects mismatches against the
+   * price's billing mode at session-create time.
+   */
+  mode: "subscription" | "payment";
+  successUrl: string;
+  cancelUrl: string;
+  /** Customer email, used to prefill checkout. Optional. */
+  customerEmail?: string;
+  /** Order / tier metadata stored on the session for the webhook. */
+  metadata?: Record<string, string>;
+  /** Whether to allow promotion codes at checkout. */
+  allowPromotionCodes?: boolean;
+};
+
+export type CheckoutSessionResult = {
+  id: string;
+  url: string;
+};
+
+/**
+ * Create a Stripe Checkout Session. Returns the hosted-checkout URL
+ * the caller redirects the buyer to. Used by Rookery tier signup +
+ * any other "single SKU, hosted checkout" flow.
+ *
+ * Throws when STRIPE_SECRET_KEY isn't set; caller decides whether
+ * to surface a 503 or fall through to a different signup path.
+ */
+export async function createCheckoutSession(
+  input: CreateCheckoutSessionInput,
+): Promise<CheckoutSessionResult> {
+  if (!isConfigured()) {
+    const detail: StripeError = {
+      code: "service-unavailable",
+      message:
+        "STRIPE_SECRET_KEY not set. Add it in Vercel project env (Production + Preview).",
+    };
+    log.warn("createCheckoutSession skipped — not configured");
+    throw Object.assign(new Error(detail.message), detail);
+  }
+  const key = process.env.STRIPE_SECRET_KEY!;
+
+  const body = encodeStripeBody({
+    mode: input.mode,
+    success_url: input.successUrl,
+    cancel_url: input.cancelUrl,
+    customer_email: input.customerEmail,
+    metadata: input.metadata,
+    allow_promotion_codes: input.allowPromotionCodes ? "true" : undefined,
+    line_items: [
+      {
+        price: input.priceId,
+        quantity: 1,
+      },
+    ],
+  });
+
+  const res = await fetch(`${STRIPE_API_BASE}/checkout/sessions`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body,
+  });
+
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    log.error("createCheckoutSession failed", {
+      status: res.status,
+      detail: detail.slice(0, 400),
+    });
+    throw Object.assign(
+      new Error(`Stripe ${res.status}: ${detail.slice(0, 200)}`),
+      { code: "stripe-error" as const },
+    );
+  }
+
+  const json = (await res.json()) as { id?: string; url?: string };
+  if (!json.id || !json.url) {
+    throw new Error("Stripe response missing id / url");
+  }
+  return { id: json.id, url: json.url };
 }
 
 /**

@@ -1,6 +1,7 @@
 // `Footer` is rendered by `app/rookery/layout.tsx`.
 import Link from "next/link";
 import { tiers, PRICING_STATUS, type Tier } from "lib/rookery/tiers";
+import { TierJoinButton } from "components/rookery/tier-join-button";
 
 export const metadata = {
   title: "The Rookery — tiers",
@@ -117,6 +118,15 @@ function TierCard({ tier }: { tier: Tier }) {
           {tier.caveat}
         </p>
       ) : null}
+
+      <TierJoinButton
+        tier={tier.slug}
+        label={
+          isFledge
+            ? `Become a Fledge — £75 once`
+            : `Join the ${tier.name} — ${tier.price}`
+        }
+      />
     </section>
   );
 }
