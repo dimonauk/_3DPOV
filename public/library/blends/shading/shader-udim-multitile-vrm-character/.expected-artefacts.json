@@ -1,0 +1,40 @@
+{
+  "slug": "shader-udim-multitile-vrm-character",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "udim_character_torso.blend",
+    "textures/udim_character_torso.1001.png",
+    "textures/udim_character_torso.1002.png",
+    "textures/udim_character_torso.1003.png",
+    "textures/udim_character_torso_atlas.png"
+  ],
+  "video_artefacts": [
+    "public/library/videos/shading/shader-udim-multitile-vrm-character/viewport.mp4",
+    "public/library/videos/shading/shader-udim-multitile-vrm-character/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-texture-paint-stylised-low-poly-character",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-armature-weight-paint"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Multi-Tile UVs (UDIM)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/uv/uv_mapping/udim.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "OpenImageIO UDIM Specification",
+        "url": "https://github.com/AcademySoftwareFoundation/OpenImageIO/blob/main/src/doc/imageioproc.rst",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation (ASWF)"
+      }
+    ]
+  }
+}
