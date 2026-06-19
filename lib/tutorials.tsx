@@ -167,6 +167,7 @@ import { entry as blenderTutorialRetopologyPolybuildShrinkwrapEntry } from "comp
 import { entry as blenderTutorialMetaballOrganicBlobCreatureGlbEntry } from "components/tutorials/entries/blender-tutorial-metaball-organic-blob-creature-glb";
 import { entry as blenderTutorialGnSocketGroupsParametricCrystalUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-groups-parametric-crystal-ui";
 import { entry as blenderTutorialCompositorColorGradingRgbCurvesCdlEntry } from "components/tutorials/entries/blender-tutorial-compositor-color-grading-rgb-curves-cdl";
+import { entry as blenderTutorialModifierScrewRevolveColumnEntry } from "components/tutorials/entries/blender-tutorial-modifier-screw-revolve-column";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -341,6 +342,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialMetaballOrganicBlobCreatureGlbEntry,
   blenderTutorialGnSocketGroupsParametricCrystalUiEntry,
   blenderTutorialCompositorColorGradingRgbCurvesCdlEntry,
+  blenderTutorialModifierScrewRevolveColumnEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

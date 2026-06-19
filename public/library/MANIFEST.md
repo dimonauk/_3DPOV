@@ -196,3 +196,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend | geometry-nodes | gn-socket-groups-parametric-crystal-ui | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui |
 
 | 2026-06-19 | blend | compositing | compositor-color-grading-rgb-curves-cdl | 5.1 | CC0 | colour_grade_demo.blend · blueprint.py · record.py · output/colour_grade_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl |
+| 2026-06-19 | blend + glb | modifiers | modifier-screw-revolve-column | 5.1 | CC0 | column_capital.blend · column_capital.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-screw-revolve-column |
