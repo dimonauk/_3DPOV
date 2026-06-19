@@ -202,3 +202,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend | rendering | cycles-path-guiding-caustics-glass | 5.1 | CC0 | caustic_glass.blend · blueprint.py · record.py · output/caustic_glass_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-cycles-path-guiding-caustics-glass |
 
 | 2026-06-19 | blend | physics | physics-rigid-body-dominoes-brick-wall | 5.1 | CC0 | domino_chain.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-rigid-body-dominoes-brick-wall |
+
+| 2026-06-19 | blend + glb | geometry-nodes | gn-image-texture-heightmap-terrain | 5.1 | CC0 | terrain_heightmap.blend · terrain_heightmap.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-image-texture-heightmap-terrain |

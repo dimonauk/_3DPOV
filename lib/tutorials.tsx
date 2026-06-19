@@ -172,6 +172,7 @@ import { entry as blenderTutorialGnMenuSwitchTileVariantKitEntry } from "compone
 import { entry as blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry } from "components/tutorials/entries/blender-tutorial-gn-store-named-attribute-shader-data-bridge";
 import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "components/tutorials/entries/blender-tutorial-cycles-path-guiding-caustics-glass";
 import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-dominoes-brick-wall";
+import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -351,6 +352,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry,
   blenderTutorialCyclesPathGuidingCausticsGlassEntry,
   blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry,
+  blenderTutorialGnImageTextureHeightmapTerrainEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
