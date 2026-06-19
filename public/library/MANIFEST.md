@@ -204,3 +204,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend | physics | physics-rigid-body-dominoes-brick-wall | 5.1 | CC0 | domino_chain.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-rigid-body-dominoes-brick-wall |
 
 | 2026-06-19 | blend + glb | geometry-nodes | gn-image-texture-heightmap-terrain | 5.1 | CC0 | terrain_heightmap.blend · terrain_heightmap.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-image-texture-heightmap-terrain |
+| 2026-06-19 | blend + glb | rigging | weight-paint-vrm-deformation-envelope | 5.1 | CC0 | weight_paint_vrm.blend · weight_paint_vrm.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope |

@@ -173,6 +173,7 @@ import { entry as blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry } fr
 import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "components/tutorials/entries/blender-tutorial-cycles-path-guiding-caustics-glass";
 import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-dominoes-brick-wall";
 import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
+import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -353,6 +354,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCyclesPathGuidingCausticsGlassEntry,
   blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry,
   blenderTutorialGnImageTextureHeightmapTerrainEntry,
+  blenderTutorialWeightPaintVrmDeformationEnvelopeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
