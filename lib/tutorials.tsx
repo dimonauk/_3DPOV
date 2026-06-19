@@ -185,6 +185,7 @@ import { entry as blenderTutorialGnGizmoNodesInteractiveViewportControlsEntry } 
 import { entry as blenderTutorialVseScreenRecordingToTutorialExportEntry } from "components/tutorials/entries/blender-tutorial-vse-screen-recording-to-tutorial-export";
 import { entry as blenderTutorialRiggingStretchyIkVolumePreserveVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm";
 import { entry as blenderTutorialModifierSurfaceDeformVrmClothBindingEntry } from "components/tutorials/entries/blender-tutorial-modifier-surface-deform-vrm-cloth-binding";
+import { entry as blenderTutorialGnSimulationZoneGameOfLifeMeshFacesEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -377,6 +378,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialVseScreenRecordingToTutorialExportEntry,
   blenderTutorialRiggingStretchyIkVolumePreserveVrmEntry,
   blenderTutorialModifierSurfaceDeformVrmClothBindingEntry,
+  blenderTutorialGnSimulationZoneGameOfLifeMeshFacesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

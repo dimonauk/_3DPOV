@@ -220,3 +220,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-19 | blend + glb | rigging | rigging-stretchy-ik-volume-preserve-vrm | 5.1 | CC0 | stretchy_ik_vrm.blend · stretchy_ik_vrm.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm |
 | 2026-06-19 | blend + glb | modifiers | modifier-surface-deform-vrm-cloth-binding | 5.1 | CC0 | vrm_cloth_binding.blend · vrm_cloth_binding.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-surface-deform-vrm-cloth-binding |
+| 2026-06-19 | blend | geometry-nodes | gn-simulation-zone-game-of-life-mesh-faces | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces |
