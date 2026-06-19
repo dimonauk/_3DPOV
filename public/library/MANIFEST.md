@@ -215,3 +215,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | physics | physics-cloth-simulation-flag-banner | 5.1 | CC0 | cloth_flag_banner.blend · cloth_flag_banner.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-cloth-simulation-flag-banner |
 
 | 2026-06-19 | blend + glb | geometry-nodes | gn-gizmo-nodes-interactive-viewport-controls | 5.1 | CC0 | roman_arch_gizmos.blend · roman_arch_gizmos.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-gizmo-nodes-interactive-viewport-controls |
+
+| 2026-06-19 | blend | video-editing | vse-screen-recording-to-tutorial-export | 5.1 | CC0 | blueprint.py · record.py · output/tutorial_export.mp4 · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-vse-screen-recording-to-tutorial-export |
