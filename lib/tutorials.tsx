@@ -170,6 +170,7 @@ import { entry as blenderTutorialCompositorColorGradingRgbCurvesCdlEntry } from 
 import { entry as blenderTutorialModifierScrewRevolveColumnEntry } from "components/tutorials/entries/blender-tutorial-modifier-screw-revolve-column";
 import { entry as blenderTutorialGnMenuSwitchTileVariantKitEntry } from "components/tutorials/entries/blender-tutorial-gn-menu-switch-tile-variant-kit";
 import { entry as blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry } from "components/tutorials/entries/blender-tutorial-gn-store-named-attribute-shader-data-bridge";
+import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "components/tutorials/entries/blender-tutorial-cycles-path-guiding-caustics-glass";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -347,6 +348,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierScrewRevolveColumnEntry,
   blenderTutorialGnMenuSwitchTileVariantKitEntry,
   blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry,
+  blenderTutorialCyclesPathGuidingCausticsGlassEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
