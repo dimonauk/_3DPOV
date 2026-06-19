@@ -174,6 +174,7 @@ import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "com
 import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-dominoes-brick-wall";
 import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
 import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
+import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -355,6 +356,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry,
   blenderTutorialGnImageTextureHeightmapTerrainEntry,
   blenderTutorialWeightPaintVrmDeformationEnvelopeEntry,
+  blenderTutorialPythonAssetLibraryMarkCatalogueEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

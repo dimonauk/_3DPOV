@@ -205,3 +205,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-19 | blend + glb | geometry-nodes | gn-image-texture-heightmap-terrain | 5.1 | CC0 | terrain_heightmap.blend · terrain_heightmap.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-image-texture-heightmap-terrain |
 | 2026-06-19 | blend + glb | rigging | weight-paint-vrm-deformation-envelope | 5.1 | CC0 | weight_paint_vrm.blend · weight_paint_vrm.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope |
+| 2026-06-19 | blend | scripting | python-asset-library-mark-catalogue | 5.1 | CC0 | blueprint.py · record.py · ~/holoflow_asset_lib.blend · ~/holoflow_asset_lib.cats.txt · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-asset-library-mark-catalogue |
