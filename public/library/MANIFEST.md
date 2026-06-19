@@ -197,3 +197,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-19 | blend | compositing | compositor-color-grading-rgb-curves-cdl | 5.1 | CC0 | colour_grade_demo.blend · blueprint.py · record.py · output/colour_grade_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl |
 | 2026-06-19 | blend + glb | modifiers | modifier-screw-revolve-column | 5.1 | CC0 | column_capital.blend · column_capital.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-screw-revolve-column |
+| 2026-06-19 | blend + glb | geometry-nodes | gn-menu-switch-tile-variant-kit | 5.1 | CC0 | tile_flat.glb · tile_raised.glb · tile_diamond.glb · tile_grate.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit |

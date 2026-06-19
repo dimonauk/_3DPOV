@@ -1,0 +1,43 @@
+{
+  "slug": "gn-menu-switch-tile-variant-kit",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "tile_flat.glb",
+    "tile_raised.glb",
+    "tile_diamond.glb",
+    "tile_grate.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-menu-switch-tile-variant-kit/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-menu-switch-tile-variant-kit/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui",
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel"
+    ],
+    "external": [
+      {
+        "title": "Blender 4.1 Release Notes — Menu Switch Node",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.1/Nodes_and_Physics",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Wiki contributors"
+      },
+      {
+        "title": "Blender Python API — NodeEnumDefinition",
+        "url": "https://docs.blender.org/api/current/bpy.types.NodeEnumDefinition.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

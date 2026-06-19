@@ -168,6 +168,7 @@ import { entry as blenderTutorialMetaballOrganicBlobCreatureGlbEntry } from "com
 import { entry as blenderTutorialGnSocketGroupsParametricCrystalUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-groups-parametric-crystal-ui";
 import { entry as blenderTutorialCompositorColorGradingRgbCurvesCdlEntry } from "components/tutorials/entries/blender-tutorial-compositor-color-grading-rgb-curves-cdl";
 import { entry as blenderTutorialModifierScrewRevolveColumnEntry } from "components/tutorials/entries/blender-tutorial-modifier-screw-revolve-column";
+import { entry as blenderTutorialGnMenuSwitchTileVariantKitEntry } from "components/tutorials/entries/blender-tutorial-gn-menu-switch-tile-variant-kit";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -343,6 +344,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSocketGroupsParametricCrystalUiEntry,
   blenderTutorialCompositorColorGradingRgbCurvesCdlEntry,
   blenderTutorialModifierScrewRevolveColumnEntry,
+  blenderTutorialGnMenuSwitchTileVariantKitEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
