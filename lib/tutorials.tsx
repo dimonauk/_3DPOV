@@ -144,6 +144,7 @@ import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "compone
 import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
 import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
 import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
+import { entry as blenderTutorialAnimationCameraRigDollyFocusPullEntry } from "components/tutorials/entries/blender-tutorial-animation-camera-rig-dolly-focus-pull";
 import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-corrective-shape-keys-driver";
 import { entry as blenderTutorialGreasePencil3LineArtToonOutlineEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-line-art-toon-outline";
 import { entry as blenderTutorialRiggingFkIkSwitchCustomPropertyDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-fk-ik-switch-custom-property-driver";
@@ -361,6 +362,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonAssetLibraryMarkCatalogueEntry,
   blenderTutorialGnDistributePointsFacesPoissonScatterEntry,
   blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry,
+  blenderTutorialAnimationCameraRigDollyFocusPullEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

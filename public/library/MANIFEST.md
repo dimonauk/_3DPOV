@@ -209,3 +209,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | geometry-nodes | gn-distribute-points-faces-poisson-scatter | 5.1 | CC0 | scatter_terrain.blend · scatter_terrain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter |
 
 | 2026-06-19 | blend + glb | rendering | eevee-light-probes-sphere-reflection-irradiance-webxr | 5.1 | CC0 | probe_scene.blend · probe_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr |
+| 2026-06-19 | blend | animation | animation-camera-rig-dolly-focus-pull | 5.1 | CC0 | camera_dolly_rig.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-animation-camera-rig-dolly-focus-pull |

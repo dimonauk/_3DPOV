@@ -1,0 +1,41 @@
+{
+  "slug": "animation-camera-rig-dolly-focus-pull",
+  "topic": "animation",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "camera_dolly_rig.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-animation-constraints-follow-path-track-to",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm"
+    ],
+    "outside_sources": [
+      {
+        "title": "Follow Path Constraint — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/relationship/follow_path.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Depth of Field — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/render/cameras.html#depth-of-field",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting / camera_animation.py",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
