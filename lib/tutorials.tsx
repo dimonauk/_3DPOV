@@ -176,6 +176,7 @@ import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "com
 import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
 import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
 import { entry as blenderTutorialGnDistributePointsFacesPoissonScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-faces-poisson-scatter";
+import { entry as blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry } from "components/tutorials/entries/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -359,6 +360,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialWeightPaintVrmDeformationEnvelopeEntry,
   blenderTutorialPythonAssetLibraryMarkCatalogueEntry,
   blenderTutorialGnDistributePointsFacesPoissonScatterEntry,
+  blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
