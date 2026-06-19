@@ -1,0 +1,45 @@
+{
+  "slug": "rigging-stretchy-ik-volume-preserve-vrm",
+  "topic": "rigging",
+  "type": "blend + glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "stretchy_ik_vrm.blend",
+    "stretchy_ik_vrm.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm",
+      "/tutorials/blender-tutorial-rigging-corrective-shape-keys-driver",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.BoneIKConstraint.html",
+        "title": "Blender Python API — BoneIKConstraint",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "related_projects": [
+          "https://projects.blender.org",
+          "https://developer.blender.org"
+        ]
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/animation/armatures/posing/bone_constraints/inverse_kinematics/introduction.html",
+        "title": "Blender Manual — Inverse Kinematics: Introduction",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "related_projects": [
+          "https://projects.blender.org",
+          "https://docs.blender.org"
+        ]
+      }
+    ]
+  }
+}

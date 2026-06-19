@@ -183,6 +183,7 @@ import { entry as blenderTutorialGnCollectionInfoPickInstanceAssetScatterEntry }
 import { entry as blenderTutorialPhysicsClothSimulationFlagBannerEntry } from "components/tutorials/entries/blender-tutorial-physics-cloth-simulation-flag-banner";
 import { entry as blenderTutorialGnGizmoNodesInteractiveViewportControlsEntry } from "components/tutorials/entries/blender-tutorial-gn-gizmo-nodes-interactive-viewport-controls";
 import { entry as blenderTutorialVseScreenRecordingToTutorialExportEntry } from "components/tutorials/entries/blender-tutorial-vse-screen-recording-to-tutorial-export";
+import { entry as blenderTutorialRiggingStretchyIkVolumePreserveVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -373,6 +374,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsClothSimulationFlagBannerEntry,
   blenderTutorialGnGizmoNodesInteractiveViewportControlsEntry,
   blenderTutorialVseScreenRecordingToTutorialExportEntry,
+  blenderTutorialRiggingStretchyIkVolumePreserveVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
