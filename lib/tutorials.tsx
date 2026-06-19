@@ -180,6 +180,7 @@ import { entry as blenderTutorialGnDistributePointsFacesPoissonScatterEntry } fr
 import { entry as blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry } from "components/tutorials/entries/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr";
 import { entry as blenderTutorialGnInterpolateCurvesStrandHairVrmEntry } from "components/tutorials/entries/blender-tutorial-gn-interpolate-curves-strand-hair-vrm";
 import { entry as blenderTutorialGnCollectionInfoPickInstanceAssetScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-collection-info-pick-instance-asset-scatter";
+import { entry as blenderTutorialPhysicsClothSimulationFlagBannerEntry } from "components/tutorials/entries/blender-tutorial-physics-cloth-simulation-flag-banner";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -367,6 +368,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialAnimationCameraRigDollyFocusPullEntry,
   blenderTutorialGnInterpolateCurvesStrandHairVrmEntry,
   blenderTutorialGnCollectionInfoPickInstanceAssetScatterEntry,
+  blenderTutorialPhysicsClothSimulationFlagBannerEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

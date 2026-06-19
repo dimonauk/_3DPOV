@@ -1,0 +1,35 @@
+{
+  "slug": "physics-cloth-simulation-flag-banner",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "cloth_flag_banner.blend", "type": "blend", "note": "Animated cloth scene with baked cache" },
+    { "path": "cloth_flag_banner.glb",   "type": "glb",   "note": "Static snapshot at frame 30, Draco L6, WebP textures" },
+    { "path": "viewport.mp4",            "type": "video", "note": "Rendered viewport animation (60 frames)" },
+    { "path": "screen.mp4",              "type": "video", "note": "OBS screen capture of workflow" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-physics-rigid-body-dominoes-brick-wall",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/cloth/index.html",
+        "title": "Blender Manual — Cloth Physics",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.0/Physics",
+        "title": "Blender 4.0 Physics Release Notes",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
