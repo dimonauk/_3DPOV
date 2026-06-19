@@ -194,3 +194,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | procedural | metaball-organic-blob-creature-glb | 5.1 | CC0 | blob_creature.blend · blob_creature.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-metaball-organic-blob-creature-glb |
 
 | 2026-06-19 | blend | geometry-nodes | gn-socket-groups-parametric-crystal-ui | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui |
+
+| 2026-06-19 | blend | compositing | compositor-color-grading-rgb-curves-cdl | 5.1 | CC0 | colour_grade_demo.blend · blueprint.py · record.py · output/colour_grade_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl |

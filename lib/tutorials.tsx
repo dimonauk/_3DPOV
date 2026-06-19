@@ -166,6 +166,7 @@ import { entry as blenderTutorialPythonBatchGlbExporterEntry } from "components/
 import { entry as blenderTutorialRetopologyPolybuildShrinkwrapEntry } from "components/tutorials/entries/blender-tutorial-retopology-polybuild-shrinkwrap";
 import { entry as blenderTutorialMetaballOrganicBlobCreatureGlbEntry } from "components/tutorials/entries/blender-tutorial-metaball-organic-blob-creature-glb";
 import { entry as blenderTutorialGnSocketGroupsParametricCrystalUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-groups-parametric-crystal-ui";
+import { entry as blenderTutorialCompositorColorGradingRgbCurvesCdlEntry } from "components/tutorials/entries/blender-tutorial-compositor-color-grading-rgb-curves-cdl";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -339,6 +340,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialRetopologyPolybuildShrinkwrapEntry,
   blenderTutorialMetaballOrganicBlobCreatureGlbEntry,
   blenderTutorialGnSocketGroupsParametricCrystalUiEntry,
+  blenderTutorialCompositorColorGradingRgbCurvesCdlEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
