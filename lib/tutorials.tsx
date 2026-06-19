@@ -179,6 +179,7 @@ import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "co
 import { entry as blenderTutorialGnDistributePointsFacesPoissonScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-faces-poisson-scatter";
 import { entry as blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry } from "components/tutorials/entries/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr";
 import { entry as blenderTutorialGnInterpolateCurvesStrandHairVrmEntry } from "components/tutorials/entries/blender-tutorial-gn-interpolate-curves-strand-hair-vrm";
+import { entry as blenderTutorialGnCollectionInfoPickInstanceAssetScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-collection-info-pick-instance-asset-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -365,6 +366,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry,
   blenderTutorialAnimationCameraRigDollyFocusPullEntry,
   blenderTutorialGnInterpolateCurvesStrandHairVrmEntry,
+  blenderTutorialGnCollectionInfoPickInstanceAssetScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
