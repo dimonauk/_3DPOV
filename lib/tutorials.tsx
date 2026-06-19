@@ -178,6 +178,7 @@ import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "
 import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
 import { entry as blenderTutorialGnDistributePointsFacesPoissonScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-faces-poisson-scatter";
 import { entry as blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry } from "components/tutorials/entries/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr";
+import { entry as blenderTutorialGnInterpolateCurvesStrandHairVrmEntry } from "components/tutorials/entries/blender-tutorial-gn-interpolate-curves-strand-hair-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -363,6 +364,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDistributePointsFacesPoissonScatterEntry,
   blenderTutorialEeveeLightProbesSphereReflectionIrradianceWebxrEntry,
   blenderTutorialAnimationCameraRigDollyFocusPullEntry,
+  blenderTutorialGnInterpolateCurvesStrandHairVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
