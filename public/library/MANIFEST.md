@@ -213,3 +213,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | geometry-nodes | gn-interpolate-curves-strand-hair-vrm | 5.1 | CC0 | scalp_hair.blend · scalp_hair.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-interpolate-curves-strand-hair-vrm |
 | 2026-06-19 | blend + glb | geometry-nodes | gn-collection-info-pick-instance-asset-scatter | 5.1 | CC0 | prop_scatter.blend · prop_scatter.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-collection-info-pick-instance-asset-scatter |
 | 2026-06-19 | blend + glb | physics | physics-cloth-simulation-flag-banner | 5.1 | CC0 | cloth_flag_banner.blend · cloth_flag_banner.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-cloth-simulation-flag-banner |
+
+| 2026-06-19 | blend + glb | geometry-nodes | gn-gizmo-nodes-interactive-viewport-controls | 5.1 | CC0 | roman_arch_gizmos.blend · roman_arch_gizmos.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-gizmo-nodes-interactive-viewport-controls |

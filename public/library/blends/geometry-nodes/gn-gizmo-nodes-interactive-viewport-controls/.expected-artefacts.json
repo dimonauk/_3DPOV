@@ -1,0 +1,50 @@
+{
+  "slug": "gn-gizmo-nodes-interactive-viewport-controls",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "roman_arch_gizmos.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/geometry-nodes/gn-gizmo-nodes-interactive-viewport-controls/viewport.mp4",
+    "../../videos/geometry-nodes/gn-gizmo-nodes-interactive-viewport-controls/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui",
+      "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/5.0/Nodes_and_Physics",
+        "title": "Blender 5.0 Release Notes — Geometry Nodes: Gizmos",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Wiki contributors"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.GeometryNodeGizmoLinear.html",
+        "title": "Blender Python API — GeometryNodeGizmoLinear",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  },
+  "gizmo_nodes_used": [
+    "GeometryNodeGizmoLinear"
+  ],
+  "new_in_blender": "5.0",
+  "tags": [
+    "gizmo",
+    "parametric",
+    "interactive",
+    "viewport-handles",
+    "roman-arch",
+    "architecture",
+    "linear-gizmo",
+    "node-socket-gizmo"
+  ]
+}
