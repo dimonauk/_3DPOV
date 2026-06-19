@@ -175,6 +175,7 @@ import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "
 import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
 import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
 import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
+import { entry as blenderTutorialGnDistributePointsFacesPoissonScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-faces-poisson-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -357,6 +358,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnImageTextureHeightmapTerrainEntry,
   blenderTutorialWeightPaintVrmDeformationEnvelopeEntry,
   blenderTutorialPythonAssetLibraryMarkCatalogueEntry,
+  blenderTutorialGnDistributePointsFacesPoissonScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

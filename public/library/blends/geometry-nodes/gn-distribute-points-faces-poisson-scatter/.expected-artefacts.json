@@ -1,0 +1,33 @@
+{
+  "blend": "scatter_terrain.blend",
+  "glb": "../../glbs/geometry-nodes/gn-distribute-points-faces-poisson-scatter/scatter_terrain.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../videos/geometry-nodes/gn-distribute-points-faces-poisson-scatter/viewport.mp4",
+    "../../videos/geometry-nodes/gn-distribute-points-faces-poisson-scatter/screen.mp4"
+  ],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-image-texture-heightmap-terrain",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope",
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer",
+      "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Distribute Points on Faces",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting — Nicolas Janakiev",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+      }
+    ]
+  }
+}
