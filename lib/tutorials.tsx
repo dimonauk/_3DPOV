@@ -165,6 +165,7 @@ import { entry as blenderTutorialEeveeShadowCatcherHoldoutArCompositeEntry } fro
 import { entry as blenderTutorialPythonBatchGlbExporterEntry } from "components/tutorials/entries/blender-tutorial-python-batch-glb-exporter";
 import { entry as blenderTutorialRetopologyPolybuildShrinkwrapEntry } from "components/tutorials/entries/blender-tutorial-retopology-polybuild-shrinkwrap";
 import { entry as blenderTutorialMetaballOrganicBlobCreatureGlbEntry } from "components/tutorials/entries/blender-tutorial-metaball-organic-blob-creature-glb";
+import { entry as blenderTutorialGnSocketGroupsParametricCrystalUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-groups-parametric-crystal-ui";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -337,6 +338,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBatchGlbExporterEntry,
   blenderTutorialRetopologyPolybuildShrinkwrapEntry,
   blenderTutorialMetaballOrganicBlobCreatureGlbEntry,
+  blenderTutorialGnSocketGroupsParametricCrystalUiEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

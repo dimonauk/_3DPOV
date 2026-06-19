@@ -1,0 +1,43 @@
+{
+  "slug": "gn-socket-groups-parametric-crystal-ui",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-socket-groups-parametric-crystal-ui/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-socket-groups-parametric-crystal-ui/record.py",
+    "public/library/blends/geometry-nodes/gn-socket-groups-parametric-crystal-ui/README.md",
+    "public/library/blends/geometry-nodes/gn-socket-groups-parametric-crystal-ui/SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/geometry-nodes/gn-socket-groups-parametric-crystal-ui/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-socket-groups-parametric-crystal-ui/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-faceted-gem-flat-normals",
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API: NodeTreeInterface",
+        "url": "https://docs.blender.org/api/current/bpy.types.NodeTreeInterface.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Developer Blog — Geometry Nodes: Node Group Interface Redesign (4.3)",
+        "url": "https://devtalk.blender.org/t/node-group-interface-redesign-notes/",
+        "licence": "CC0 (developer notes)",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "recording": {
+    "viewport_mp4": "public/library/videos/geometry-nodes/gn-socket-groups-parametric-crystal-ui/viewport.mp4",
+    "screen_mp4": "public/library/videos/geometry-nodes/gn-socket-groups-parametric-crystal-ui/screen.mp4",
+    "duration_seconds": 120,
+    "fps": 30,
+    "resolution": "1920x1080"
+  }
+}
