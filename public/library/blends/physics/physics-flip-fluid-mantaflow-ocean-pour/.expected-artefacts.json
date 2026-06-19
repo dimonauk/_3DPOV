@@ -1,0 +1,47 @@
+{
+  "slug": "physics-flip-fluid-mantaflow-ocean-pour",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "fluid_pour.blend",
+    "fluid_snapshot_frame40.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-physics-cloth-simulation-flag-banner",
+      "/tutorials/blender-tutorial-physics-rigid-body-dominoes-brick-wall",
+      "/tutorials/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Fluid Simulation",
+        "url": "https://docs.blender.org/manual/en/latest/physics/fluid/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Mantaflow — Unified Particle-Grid Fluid Solver",
+        "url": "https://github.com/blender/blender/tree/main/intern/mantaflow",
+        "licence": "Apache-2.0",
+        "author": "Nils Thuerey, Philipp Jörg, Florian Ferstl et al.",
+        "related_projects": [
+          {
+            "name": "OpenVDB",
+            "url": "https://github.com/AcademySoftwareFoundation/openvdb",
+            "licence": "MPL-2.0"
+          }
+        ]
+      }
+    ]
+  },
+  "notes": "The fluid mesh object ('fluid_surface') is auto-named by Mantaflow at bake time. The .blend archive should include the cache/ folder alongside it for the bake to be reproducible."
+}
