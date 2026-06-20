@@ -1,0 +1,38 @@
+{
+  "slug": "gn-scene-time-rotation-mechanical-clockwork",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "../../videos/geometry-nodes/gn-scene-time-rotation-mechanical-clockwork/viewport.mp4",
+    "../../videos/geometry-nodes/gn-scene-time-rotation-mechanical-clockwork/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-gizmo-nodes-interactive-viewport-controls",
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/scene_time.html",
+        "title": "Scene Time — Blender Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html",
+        "title": "Euler to Rotation — Blender Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/"
+      }
+    ]
+  }
+}

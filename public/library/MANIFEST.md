@@ -222,3 +222,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | modifiers | modifier-surface-deform-vrm-cloth-binding | 5.1 | CC0 | vrm_cloth_binding.blend · vrm_cloth_binding.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-surface-deform-vrm-cloth-binding |
 | 2026-06-19 | blend | geometry-nodes | gn-simulation-zone-game-of-life-mesh-faces | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces |
 | 2026-06-19 | blend + glb | physics | physics-flip-fluid-mantaflow-ocean-pour | 5.1 | CC0 | fluid_pour.blend · fluid_snapshot_frame40.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-flip-fluid-mantaflow-ocean-pour |
+
+| 2026-06-20 | blend + glb | geometry-nodes | gn-scene-time-rotation-mechanical-clockwork | 5.1 | CC0 | blueprint.py · record.py · clockwork.glb · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork |
