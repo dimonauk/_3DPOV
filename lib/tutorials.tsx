@@ -190,6 +190,7 @@ import { entry as blenderTutorialPhysicsFlipFluidMantaflowOceanPourEntry } from 
 import { entry as blenderTutorialGnSceneTimeRotationMechanicalClockworkEntry } from "components/tutorials/entries/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork";
 import { entry as blenderTutorialCyclesLightmapBakeWebxrUv2Entry } from "components/tutorials/entries/blender-tutorial-cycles-lightmap-bake-webxr-uv2";
 import { entry as blenderTutorialCompositorKeyingGreenScreenDespillEntry } from "components/tutorials/entries/blender-tutorial-compositor-keying-green-screen-despill-tutorial-production";
+import { entry as blenderTutorialModifierDataTransferSmoothNormalsEntry } from "components/tutorials/entries/blender-tutorial-modifier-data-transfer-smooth-normals";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -387,6 +388,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSceneTimeRotationMechanicalClockworkEntry,
   blenderTutorialCyclesLightmapBakeWebxrUv2Entry,
   blenderTutorialCompositorKeyingGreenScreenDespillEntry,
+  blenderTutorialModifierDataTransferSmoothNormalsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
