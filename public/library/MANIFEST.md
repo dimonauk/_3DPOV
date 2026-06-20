@@ -225,3 +225,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-20 | blend + glb | geometry-nodes | gn-scene-time-rotation-mechanical-clockwork | 5.1 | CC0 | blueprint.py · record.py · clockwork.glb · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork |
 | 2026-06-20 | blend + glb | rendering | cycles-lightmap-bake-webxr-uv2 | 5.1 | CC0 | lightmap_room.blend · lightmap_room.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-cycles-lightmap-bake-webxr-uv2 |
+
+| 2026-06-20 | blend | compositing | compositor-keying-green-screen-despill-tutorial-production | 5.1 | CC0 | green_screen_comp.blend · blueprint.py · record.py · output/frame_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-keying-green-screen-despill-tutorial-production |
