@@ -1,0 +1,38 @@
+{
+  "slug": "gn-index-switch-per-instance-geometry-variant",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "colonnade_index_switch.blend",
+    "colonnade_index_switch.glb",
+    "../../videos/geometry-nodes/gn-index-switch-per-instance-geometry-variant/viewport.mp4",
+    "../../videos/geometry-nodes/gn-index-switch-per-instance-geometry-variant/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-collection-info-pick-instance-asset-scatter",
+      "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-gn-instance-on-points"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Index Switch Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch/index_switch.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Random Value Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
