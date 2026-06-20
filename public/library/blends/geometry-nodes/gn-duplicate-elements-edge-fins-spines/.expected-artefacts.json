@@ -1,0 +1,51 @@
+{
+  "slug": "gn-duplicate-elements-edge-fins-spines",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "gn_edge_fins_spike_sphere.glb",
+    "../../videos/geometry-nodes/gn-duplicate-elements-edge-fins-spines/viewport.mp4",
+    "../../videos/geometry-nodes/gn-duplicate-elements-edge-fins-spines/screen.mp4"
+  ],
+  "gn_nodes_used": [
+    "GeometryNodeInputNormal",
+    "GeometryNodeFieldOnDomain",
+    "GeometryNodeStoreNamedAttribute",
+    "GeometryNodeDuplicateElements",
+    "GeometryNodeInputNamedAttribute",
+    "ShaderNodeTexNoise",
+    "ShaderNodeMath",
+    "ShaderNodeVectorMath",
+    "GeometryNodeExtrudeMesh",
+    "GeometryNodeSetMaterial",
+    "GeometryNodeJoinGeometry"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-gn-collection-info-pick-instance-asset-scatter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Duplicate Elements Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicates/duplicate_elements.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": "https://projects.blender.org/blender/blender-manual"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": "https://github.com/njanakiev"
+      }
+    ]
+  }
+}
