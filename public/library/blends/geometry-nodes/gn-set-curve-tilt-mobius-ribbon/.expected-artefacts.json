@@ -1,0 +1,37 @@
+{
+  "slug": "gn-set-curve-tilt-mobius-ribbon",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "mobius_ribbon.blend",
+    "mobius_ribbon.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril",
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-tower",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_tilt.html",
+        "label": "Blender Manual: Set Curve Tilt (CC BY-SA 4.0 — Blender Foundation)",
+        "related": ["https://projects.blender.org/blender/blender-manual"]
+      },
+      {
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/geometries/ParametricGeometry.js",
+        "label": "Three.js ParametricGeometry (MIT — mrdoob and contributors)",
+        "related": ["https://github.com/pmndrs/react-three-fiber"]
+      }
+    ]
+  }
+}
