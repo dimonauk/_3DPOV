@@ -234,3 +234,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-20 | blend + glb | scripting | python-app-handler-frame-change-depsgraph | 5.1 | CC0 | ripple_grid_frame40.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph |
 
 | 2026-06-20 | blend + glb | geometry-nodes | gn-set-curve-tilt-mobius-ribbon | 5.1 | CC0 | mobius_ribbon.blend · mobius_ribbon.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-curve-tilt-mobius-ribbon |
+
+| 2026-06-20 | blend + glb | geometry-nodes | gn-mesh-to-volume-sdf-blob-fusion | 5.1 | CC0 | blob_fusion.blend · blob_fusion.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion |

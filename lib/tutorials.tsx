@@ -194,6 +194,7 @@ import { entry as blenderTutorialModifierDataTransferSmoothNormalsEntry } from "
 import { entry as blenderTutorialGreasePencil3StrokeDrawingFillTaperExportEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-stroke-drawing-fill-taper-export";
 import { entry as blenderTutorialPythonAppHandlerFrameChangeDepsgraphEntry } from "components/tutorials/entries/blender-tutorial-python-app-handler-frame-change-depsgraph";
 import { entry as blenderTutorialGnSetCurveTiltMobiusRibbonEntry } from "components/tutorials/entries/blender-tutorial-gn-set-curve-tilt-mobius-ribbon";
+import { entry as blenderTutorialGnMeshToVolumeSdfBlobFusionEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -395,6 +396,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGreasePencil3StrokeDrawingFillTaperExportEntry,
   blenderTutorialPythonAppHandlerFrameChangeDepsgraphEntry,
   blenderTutorialGnSetCurveTiltMobiusRibbonEntry,
+  blenderTutorialGnMeshToVolumeSdfBlobFusionEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
