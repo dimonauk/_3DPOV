@@ -1,0 +1,43 @@
+{
+  "slug": "gn-extrude-mesh-panel-inset-procedural",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "panel_inset.blend",
+    "panel_inset.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html",
+        "label": "Blender Manual: Extrude Mesh Node (CC BY-SA 4.0 — Blender Foundation)",
+        "related": [
+          "https://projects.blender.org/blender/blender-manual",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_edge_crease.html"
+        ]
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_edge_crease.html",
+        "label": "Blender Manual: Set Edge Crease Node (CC BY-SA 4.0 — Blender Foundation)",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/",
+          "https://projects.blender.org/blender/blender"
+        ]
+      }
+    ]
+  }
+}

@@ -238,3 +238,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-20 | blend + glb | geometry-nodes | gn-mesh-to-volume-sdf-blob-fusion | 5.1 | CC0 | blob_fusion.blend · blob_fusion.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion |
 
 | 2026-06-20 | blend + glb | modifiers | modifier-decimate-lod-webxr-planar-collapse | 5.1 | CC0 | decimate_lod.blend · lod_sphere_unsubdiv.glb · lod_box_planar.glb · lod_blob_collapse.glb · blueprint.py · record.py · output/lod_comparison_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse |
+
+| 2026-06-20 | blend + glb | geometry-nodes | gn-extrude-mesh-panel-inset-procedural | 5.1 | CC0 | panel_inset.blend · panel_inset.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural |

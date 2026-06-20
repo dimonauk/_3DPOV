@@ -196,6 +196,7 @@ import { entry as blenderTutorialPythonAppHandlerFrameChangeDepsgraphEntry } fro
 import { entry as blenderTutorialGnSetCurveTiltMobiusRibbonEntry } from "components/tutorials/entries/blender-tutorial-gn-set-curve-tilt-mobius-ribbon";
 import { entry as blenderTutorialGnMeshToVolumeSdfBlobFusionEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion";
 import { entry as blenderTutorialModifierDecimateLodWebxrPlanarCollapseEntry } from "components/tutorials/entries/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse";
+import { entry as blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-inset-procedural";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -399,6 +400,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSetCurveTiltMobiusRibbonEntry,
   blenderTutorialGnMeshToVolumeSdfBlobFusionEntry,
   blenderTutorialModifierDecimateLodWebxrPlanarCollapseEntry,
+  blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
