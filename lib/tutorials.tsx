@@ -192,6 +192,7 @@ import { entry as blenderTutorialCyclesLightmapBakeWebxrUv2Entry } from "compone
 import { entry as blenderTutorialCompositorKeyingGreenScreenDespillEntry } from "components/tutorials/entries/blender-tutorial-compositor-keying-green-screen-despill-tutorial-production";
 import { entry as blenderTutorialModifierDataTransferSmoothNormalsEntry } from "components/tutorials/entries/blender-tutorial-modifier-data-transfer-smooth-normals";
 import { entry as blenderTutorialGreasePencil3StrokeDrawingFillTaperExportEntry } from "components/tutorials/entries/blender-tutorial-grease-pencil-3-stroke-drawing-fill-taper-export";
+import { entry as blenderTutorialPythonAppHandlerFrameChangeDepsgraphEntry } from "components/tutorials/entries/blender-tutorial-python-app-handler-frame-change-depsgraph";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -391,6 +392,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorKeyingGreenScreenDespillEntry,
   blenderTutorialModifierDataTransferSmoothNormalsEntry,
   blenderTutorialGreasePencil3StrokeDrawingFillTaperExportEntry,
+  blenderTutorialPythonAppHandlerFrameChangeDepsgraphEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

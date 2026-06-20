@@ -1,0 +1,40 @@
+{
+  "slug": "python-app-handler-frame-change-depsgraph",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "ripple_grid_frame40.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group"
+    ],
+    "external": [
+      {
+        "title": "bpy.app.handlers — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bpy.app.handlers.html",
+        "licence": "CC-BY",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Developer Wiki — Dependency Graph",
+        "url": "https://wiki.blender.org/wiki/Source/Depsgraph",
+        "licence": "CC-BY-SA",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "tutorial_path": "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph"
+}

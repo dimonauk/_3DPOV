@@ -231,3 +231,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-20 | blend + glb | modifiers | modifier-data-transfer-smooth-normals | 5.1 | CC0 | data_transfer_gem.blend · data_transfer_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-data-transfer-smooth-normals |
 
 | 2026-06-20 | blend | grease-pencil | grease-pencil-3-stroke-drawing-fill-taper-export | 5.1 | CC0 | gp3_ink_logo.blend · gp3_ink_logo_record.blend · blueprint.py · record.py · output/gp3_ink_logo_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-grease-pencil-3-stroke-drawing-fill-taper-export |
+| 2026-06-20 | blend + glb | scripting | python-app-handler-frame-change-depsgraph | 5.1 | CC0 | ripple_grid_frame40.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph |
