@@ -224,3 +224,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-19 | blend + glb | physics | physics-flip-fluid-mantaflow-ocean-pour | 5.1 | CC0 | fluid_pour.blend · fluid_snapshot_frame40.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-flip-fluid-mantaflow-ocean-pour |
 
 | 2026-06-20 | blend + glb | geometry-nodes | gn-scene-time-rotation-mechanical-clockwork | 5.1 | CC0 | blueprint.py · record.py · clockwork.glb · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork |
+| 2026-06-20 | blend + glb | rendering | cycles-lightmap-bake-webxr-uv2 | 5.1 | CC0 | lightmap_room.blend · lightmap_room.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-cycles-lightmap-bake-webxr-uv2 |

@@ -188,6 +188,7 @@ import { entry as blenderTutorialModifierSurfaceDeformVrmClothBindingEntry } fro
 import { entry as blenderTutorialGnSimulationZoneGameOfLifeMeshFacesEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces";
 import { entry as blenderTutorialPhysicsFlipFluidMantaflowOceanPourEntry } from "components/tutorials/entries/blender-tutorial-physics-flip-fluid-mantaflow-ocean-pour";
 import { entry as blenderTutorialGnSceneTimeRotationMechanicalClockworkEntry } from "components/tutorials/entries/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork";
+import { entry as blenderTutorialCyclesLightmapBakeWebxrUv2Entry } from "components/tutorials/entries/blender-tutorial-cycles-lightmap-bake-webxr-uv2";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -383,6 +384,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneGameOfLifeMeshFacesEntry,
   blenderTutorialPhysicsFlipFluidMantaflowOceanPourEntry,
   blenderTutorialGnSceneTimeRotationMechanicalClockworkEntry,
+  blenderTutorialCyclesLightmapBakeWebxrUv2Entry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
