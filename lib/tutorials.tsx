@@ -203,6 +203,7 @@ import { entry as blenderTutorialPythonGpuViewportDrawOverlayEntry } from "compo
 import { entry as blenderTutorialModifierBooleanExactHardSurfaceTrimEntry } from "components/tutorials/entries/blender-tutorial-modifier-boolean-exact-hard-surface-trim";
 import { entry as blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry } from "components/tutorials/entries/blender-tutorial-modifier-solidify-shell-architecture-3d-print";
 import { entry as blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry } from "components/tutorials/entries/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton";
+import { entry as blenderTutorialModifierSkinRemeshCharacterBlockingEntry } from "components/tutorials/entries/blender-tutorial-modifier-skin-remesh-character-blocking";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -413,6 +414,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierBooleanExactHardSurfaceTrimEntry,
   blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry,
   blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry,
+  blenderTutorialModifierSkinRemeshCharacterBlockingEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
