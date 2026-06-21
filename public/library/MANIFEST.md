@@ -246,3 +246,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | modifiers | modifier-boolean-exact-hard-surface-trim | 5.1 | CC0 | hard_surface_panel.blend · hard_surface_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim |
 
 | 2026-06-21 | blend + glb | modifiers | modifier-solidify-shell-architecture-3d-print | 5.1 | CC0 | wall_corner_solidify.blend · wall_corner_solidify.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print |
+
+| 2026-06-21 | blend + glb | modifiers | modifier-wireframe-edge-tube-neon-skeleton | 5.1 | CC0 | wire_sphere.blend · wire_skeleton.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton |

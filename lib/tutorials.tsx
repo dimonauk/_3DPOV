@@ -202,6 +202,7 @@ import { entry as blenderTutorialGnIndexSwitchLodMeshKitEntry } from "components
 import { entry as blenderTutorialPythonGpuViewportDrawOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-gpu-viewport-draw-overlay";
 import { entry as blenderTutorialModifierBooleanExactHardSurfaceTrimEntry } from "components/tutorials/entries/blender-tutorial-modifier-boolean-exact-hard-surface-trim";
 import { entry as blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry } from "components/tutorials/entries/blender-tutorial-modifier-solidify-shell-architecture-3d-print";
+import { entry as blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry } from "components/tutorials/entries/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -411,6 +412,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonGpuViewportDrawOverlayEntry,
   blenderTutorialModifierBooleanExactHardSurfaceTrimEntry,
   blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry,
+  blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
