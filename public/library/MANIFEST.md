@@ -244,3 +244,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | geometry-nodes | gn-index-switch-lod-mesh-kit | 5.1 | CC0 | lod_sphere_hi.glb · lod_sphere_mid.glb · lod_sphere_lo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-index-switch-lod-mesh-kit |
 | 2026-06-21 | blend | scripting | python-gpu-viewport-draw-overlay | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gpu-viewport-draw-overlay |
 | 2026-06-21 | blend + glb | modifiers | modifier-boolean-exact-hard-surface-trim | 5.1 | CC0 | hard_surface_panel.blend · hard_surface_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim |
+
+| 2026-06-21 | blend + glb | modifiers | modifier-solidify-shell-architecture-3d-print | 5.1 | CC0 | wall_corner_solidify.blend · wall_corner_solidify.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print |
