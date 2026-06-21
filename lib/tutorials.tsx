@@ -199,6 +199,7 @@ import { entry as blenderTutorialModifierDecimateLodWebxrPlanarCollapseEntry } f
 import { entry as blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-inset-procedural";
 import { entry as blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry } from "components/tutorials/entries/blender-tutorial-gn-duplicate-elements-edge-fins-spines";
 import { entry as blenderTutorialGnIndexSwitchLodMeshKitEntry } from "components/tutorials/entries/blender-tutorial-gn-index-switch-lod-mesh-kit";
+import { entry as blenderTutorialPythonGpuViewportDrawOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-gpu-viewport-draw-overlay";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -405,6 +406,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry,
   blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry,
   blenderTutorialGnIndexSwitchLodMeshKitEntry,
+  blenderTutorialPythonGpuViewportDrawOverlayEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
