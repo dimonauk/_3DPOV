@@ -1,0 +1,56 @@
+{
+  "slug": "gn-offset-point-in-curve-chain-links",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "chain_links.blend",
+    "chain_links.glb",
+    "../../videos/geometry-nodes/gn-offset-point-in-curve-chain-links/viewport.mp4",
+    "../../videos/geometry-nodes/gn-offset-point-in-curve-chain-links/screen.mp4"
+  ],
+  "gn_nodes_used": [
+    "GeometryNodeResampleCurve",
+    "GeometryNodeCurveToPoints",
+    "GeometryNodeInputIndex",
+    "GeometryNodeOffsetPointInCurve",
+    "GeometryNodeEvaluateAtIndex",
+    "GeometryNodeInputPosition",
+    "ShaderNodeVectorMath",
+    "FunctionNodeAlignEulerToVector",
+    "ShaderNodeMath",
+    "FunctionNodeRotateEuler",
+    "GeometryNodeMeshTorus",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeSetMaterial"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align",
+      "/tutorials/blender-tutorial-gn-sample-curve-track-sleepers",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Offset Point in Curve",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation / Blender Documentation Team",
+        "related": "https://projects.blender.org/blender/blender-manual"
+      },
+      {
+        "title": "blender-scripting — procedural GN tree construction via bpy",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": "https://github.com/njanakiev"
+      }
+    ]
+  }
+}
