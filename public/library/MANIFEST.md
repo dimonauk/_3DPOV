@@ -270,3 +270,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | geometry-nodes | gn-triangulate-mesh-webxr-tri-safe-export | 5.1 | CC0 | tri_safe_demo.blend · tri_safe_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export |
 
 | 2026-06-21 | blend + glb | geometry-nodes | gn-smooth-by-angle-normal-split | 5.1 | CC0 | smooth_prism.blend · smooth_prism_30deg.glb · smooth_prism_15deg.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-smooth-by-angle-normal-split |
+| 2026-06-21 | blend | shading | shader-osl-script-node-cycles-custom-noise | 5.1 | CC0 | osl_lava_crack.blend · hs_lava_crack.osl · blueprint.py · record.py · output/osl_lava_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-osl-script-node-cycles-custom-noise |

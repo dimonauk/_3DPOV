@@ -216,6 +216,7 @@ import { entry as blenderTutorialGnCornersOfFaceVertexOfCornerFacetedGemGradient
 import { entry as blenderTutorialGnSetHandlePositionsBezierSCurveTaperEntry } from "components/tutorials/entries/blender-tutorial-gn-set-handle-positions-bezier-s-curve-taper";
 import { entry as blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry } from "components/tutorials/entries/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export";
 import { entry as blenderTutorialGnSmoothByAngleNormalSplitEntry } from "components/tutorials/entries/blender-tutorial-gn-smooth-by-angle-normal-split";
+import { entry as blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry } from "components/tutorials/entries/blender-tutorial-shader-osl-script-node-cycles-custom-noise";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -439,6 +440,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSetHandlePositionsBezierSCurveTaperEntry,
   blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry,
   blenderTutorialGnSmoothByAngleNormalSplitEntry,
+  blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
