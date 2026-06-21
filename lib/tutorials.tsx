@@ -210,6 +210,7 @@ import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } fro
 import { entry as blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry } from "components/tutorials/entries/blender-tutorial-particle-emitter-force-field-glb-snapshot";
 import { entry as blenderTutorialGnCurveToPointsBeadNecklaceInstanceAlignEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align";
 import { entry as blenderTutorialPythonGeonodesTreeBuildBpyEntry } from "components/tutorials/entries/blender-tutorial-python-geonodes-tree-build-bpy";
+import { entry as blenderTutorialBmeshBridgeLoopsFuselageHullEntry } from "components/tutorials/entries/blender-tutorial-bmesh-bridge-loops-fuselage-hull";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -427,6 +428,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry,
   blenderTutorialGnCurveToPointsBeadNecklaceInstanceAlignEntry,
   blenderTutorialPythonGeonodesTreeBuildBpyEntry,
+  blenderTutorialBmeshBridgeLoopsFuselageHullEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

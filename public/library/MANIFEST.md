@@ -259,3 +259,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | geometry-nodes | gn-curve-to-points-bead-necklace-instance-align | 5.1 | CC0 | bead_necklace.blend · bead_necklace.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align |
 
 | 2026-06-21 | blend + glb | scripting | python-geonodes-tree-build-bpy | 5.1 | CC0 | geonodes_script_demo.blend · geonodes_script_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-geonodes-tree-build-bpy |
+
+| 2026-06-21 | blend + glb | scripting | bmesh-bridge-loops-fuselage-hull | 5.1 | CC0 | fuselage_hull.blend · fuselage_hull.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-bmesh-bridge-loops-fuselage-hull |
