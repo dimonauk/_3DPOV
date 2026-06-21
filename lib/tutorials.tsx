@@ -198,6 +198,7 @@ import { entry as blenderTutorialGnMeshToVolumeSdfBlobFusionEntry } from "compon
 import { entry as blenderTutorialModifierDecimateLodWebxrPlanarCollapseEntry } from "components/tutorials/entries/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse";
 import { entry as blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-panel-inset-procedural";
 import { entry as blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry } from "components/tutorials/entries/blender-tutorial-gn-duplicate-elements-edge-fins-spines";
+import { entry as blenderTutorialGnIndexSwitchLodMeshKitEntry } from "components/tutorials/entries/blender-tutorial-gn-index-switch-lod-mesh-kit";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -403,6 +404,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierDecimateLodWebxrPlanarCollapseEntry,
   blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry,
   blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry,
+  blenderTutorialGnIndexSwitchLodMeshKitEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

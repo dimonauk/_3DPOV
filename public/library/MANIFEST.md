@@ -241,3 +241,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-20 | blend + glb | geometry-nodes | gn-extrude-mesh-panel-inset-procedural | 5.1 | CC0 | panel_inset.blend · panel_inset.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural |
 | 2026-06-20 | blend + glb | geometry-nodes | gn-duplicate-elements-edge-fins-spines | 5.1 | CC0 | gn_edge_fins_spike_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-duplicate-elements-edge-fins-spines |
+| 2026-06-21 | blend + glb | geometry-nodes | gn-index-switch-lod-mesh-kit | 5.1 | CC0 | lod_sphere_hi.glb · lod_sphere_mid.glb · lod_sphere_lo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-index-switch-lod-mesh-kit |
