@@ -200,6 +200,7 @@ import { entry as blenderTutorialGnExtrudeMeshPanelInsetProceduralEntry } from "
 import { entry as blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry } from "components/tutorials/entries/blender-tutorial-gn-duplicate-elements-edge-fins-spines";
 import { entry as blenderTutorialGnIndexSwitchLodMeshKitEntry } from "components/tutorials/entries/blender-tutorial-gn-index-switch-lod-mesh-kit";
 import { entry as blenderTutorialPythonGpuViewportDrawOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-gpu-viewport-draw-overlay";
+import { entry as blenderTutorialModifierBooleanExactHardSurfaceTrimEntry } from "components/tutorials/entries/blender-tutorial-modifier-boolean-exact-hard-surface-trim";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -407,6 +408,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDuplicateElementsEdgeFinsSpinesEntry,
   blenderTutorialGnIndexSwitchLodMeshKitEntry,
   blenderTutorialPythonGpuViewportDrawOverlayEntry,
+  blenderTutorialModifierBooleanExactHardSurfaceTrimEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
