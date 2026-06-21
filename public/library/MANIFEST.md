@@ -253,3 +253,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | scripting | python-shader-node-group-batch-material | 5.1 | CC0 | cel_shader_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-shader-node-group-batch-material |
 
 | 2026-06-21 | blend + glb | scripting | python-bmesh-extrude-scale-fractal-spikes | 5.1 | CC0 | fractal_spike_ball.blend · fractal_spike_ball.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes |
+| 2026-06-21 | blend + glb | physics | particle-emitter-force-field-glb-snapshot | 5.1 | CC0 | particle_shard_burst.blend · particle_shard_burst.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-particle-emitter-force-field-glb-snapshot |

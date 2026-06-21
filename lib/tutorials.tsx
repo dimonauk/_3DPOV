@@ -206,6 +206,7 @@ import { entry as blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry } fr
 import { entry as blenderTutorialModifierSkinRemeshCharacterBlockingEntry } from "components/tutorials/entries/blender-tutorial-modifier-skin-remesh-character-blocking";
 import { entry as blenderTutorialPythonShaderNodeGroupBatchMaterialEntry } from "components/tutorials/entries/blender-tutorial-python-shader-node-group-batch-material";
 import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes";
+import { entry as blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry } from "components/tutorials/entries/blender-tutorial-particle-emitter-force-field-glb-snapshot";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -419,6 +420,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierSkinRemeshCharacterBlockingEntry,
   blenderTutorialPythonShaderNodeGroupBatchMaterialEntry,
   blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry,
+  blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

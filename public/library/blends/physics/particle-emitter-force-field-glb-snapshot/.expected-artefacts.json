@@ -1,0 +1,47 @@
+{
+  "slug": "particle-emitter-force-field-glb-snapshot",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "physics",
+  "artefacts": [
+    "particle_shard_burst.blend",
+    "particle_shard_burst.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/physics/particle-emitter-force-field-glb-snapshot/viewport.mp4",
+    "public/library/videos/physics/particle-emitter-force-field-glb-snapshot/screen.mp4"
+  ],
+  "cross_references": {
+    "tutorial_page": "/tutorials/blender-tutorial-particle-emitter-force-field-glb-snapshot",
+    "studio_links": [
+      "/tutorials/blender-tutorial-curves-hair-grooming",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-physics-flip-fluid-mantaflow-ocean-pour",
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-gn-collection-info-pick-instance-asset-scatter",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Particle System Emitter",
+        "url": "https://docs.blender.org/manual/en/latest/physics/particles/emitter/index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
