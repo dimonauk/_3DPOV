@@ -268,3 +268,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | geometry-nodes | gn-set-handle-positions-bezier-s-curve-taper | 5.1 | CC0 | s_curve_ribbon.blend · s_curve_ribbon.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-handle-positions-bezier-s-curve-taper |
 
 | 2026-06-21 | blend + glb | geometry-nodes | gn-triangulate-mesh-webxr-tri-safe-export | 5.1 | CC0 | tri_safe_demo.blend · tri_safe_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export |
+
+| 2026-06-21 | blend + glb | geometry-nodes | gn-smooth-by-angle-normal-split | 5.1 | CC0 | smooth_prism.blend · smooth_prism_30deg.glb · smooth_prism_15deg.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-smooth-by-angle-normal-split |

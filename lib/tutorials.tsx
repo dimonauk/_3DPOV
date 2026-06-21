@@ -215,6 +215,7 @@ import { entry as blenderTutorialGnOffsetPointInCurveChainLinksEntry } from "com
 import { entry as blenderTutorialGnCornersOfFaceVertexOfCornerFacetedGemGradientEntry } from "components/tutorials/entries/blender-tutorial-gn-corners-of-face-vertex-of-corner-faceted-gem-gradient";
 import { entry as blenderTutorialGnSetHandlePositionsBezierSCurveTaperEntry } from "components/tutorials/entries/blender-tutorial-gn-set-handle-positions-bezier-s-curve-taper";
 import { entry as blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry } from "components/tutorials/entries/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export";
+import { entry as blenderTutorialGnSmoothByAngleNormalSplitEntry } from "components/tutorials/entries/blender-tutorial-gn-smooth-by-angle-normal-split";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -437,6 +438,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCornersOfFaceVertexOfCornerFacetedGemGradientEntry,
   blenderTutorialGnSetHandlePositionsBezierSCurveTaperEntry,
   blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry,
+  blenderTutorialGnSmoothByAngleNormalSplitEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
