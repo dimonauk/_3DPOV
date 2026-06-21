@@ -250,3 +250,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | modifiers | modifier-wireframe-edge-tube-neon-skeleton | 5.1 | CC0 | wire_sphere.blend · wire_skeleton.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton |
 
 | 2026-06-21 | blend + glb | modifiers | modifier-skin-remesh-character-blocking | 5.1 | CC0 | character_block.blend · character_block.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-skin-remesh-character-blocking |
+| 2026-06-21 | blend + glb | scripting | python-shader-node-group-batch-material | 5.1 | CC0 | cel_shader_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-shader-node-group-batch-material |
