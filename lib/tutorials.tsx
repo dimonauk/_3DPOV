@@ -204,6 +204,7 @@ import { entry as blenderTutorialModifierBooleanExactHardSurfaceTrimEntry } from
 import { entry as blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry } from "components/tutorials/entries/blender-tutorial-modifier-solidify-shell-architecture-3d-print";
 import { entry as blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry } from "components/tutorials/entries/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton";
 import { entry as blenderTutorialModifierSkinRemeshCharacterBlockingEntry } from "components/tutorials/entries/blender-tutorial-modifier-skin-remesh-character-blocking";
+import { entry as blenderTutorialModifierCastSphereCartoonSquashEntry } from "components/tutorials/entries/blender-tutorial-modifier-cast-sphere-cuboid-cartoon-squash";
 import { entry as blenderTutorialPythonShaderNodeGroupBatchMaterialEntry } from "components/tutorials/entries/blender-tutorial-python-shader-node-group-batch-material";
 import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes";
 import { entry as blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry } from "components/tutorials/entries/blender-tutorial-particle-emitter-force-field-glb-snapshot";
@@ -418,6 +419,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry,
   blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry,
   blenderTutorialModifierSkinRemeshCharacterBlockingEntry,
+  blenderTutorialModifierCastSphereCartoonSquashEntry,
   blenderTutorialPythonShaderNodeGroupBatchMaterialEntry,
   blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry,
   blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry,
