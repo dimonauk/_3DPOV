@@ -251,3 +251,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-21 | blend + glb | modifiers | modifier-skin-remesh-character-blocking | 5.1 | CC0 | character_block.blend · character_block.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-skin-remesh-character-blocking |
 | 2026-06-21 | blend + glb | scripting | python-shader-node-group-batch-material | 5.1 | CC0 | cel_shader_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-shader-node-group-batch-material |
+
+| 2026-06-21 | blend + glb | scripting | python-bmesh-extrude-scale-fractal-spikes | 5.1 | CC0 | fractal_spike_ball.blend · fractal_spike_ball.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes |

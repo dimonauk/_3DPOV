@@ -1,0 +1,56 @@
+{
+  "slug": "python-bmesh-extrude-scale-fractal-spikes",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "fractal_spike_ball.blend",
+    "fractal_spike_ball.glb",
+    "../../videos/scripting/python-bmesh-extrude-scale-fractal-spikes/viewport.mp4",
+    "../../videos/scripting/python-bmesh-extrude-scale-fractal-spikes/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bmesh.ops module",
+        "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/api/current/bmesh.html",
+          "https://developer.blender.org/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

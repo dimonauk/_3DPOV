@@ -205,6 +205,7 @@ import { entry as blenderTutorialModifierSolidifyShellArchitecture3dPrintEntry }
 import { entry as blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry } from "components/tutorials/entries/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton";
 import { entry as blenderTutorialModifierSkinRemeshCharacterBlockingEntry } from "components/tutorials/entries/blender-tutorial-modifier-skin-remesh-character-blocking";
 import { entry as blenderTutorialPythonShaderNodeGroupBatchMaterialEntry } from "components/tutorials/entries/blender-tutorial-python-shader-node-group-batch-material";
+import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -417,6 +418,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierWireframeEdgeTubeNeonSkeletonEntry,
   blenderTutorialModifierSkinRemeshCharacterBlockingEntry,
   blenderTutorialPythonShaderNodeGroupBatchMaterialEntry,
+  blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
