@@ -1,0 +1,38 @@
+{
+  "slug": "python-geonodes-tree-build-bpy",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "geonodes_script_demo.blend",
+    "geonodes_script_demo.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-shader-node-group-batch-material",
+      "/tutorials/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes",
+      "/tutorials/blender-tutorial-python-gpu-viewport-draw-overlay",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — NodeTreeInterface",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NodeTreeInterface.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Python API — GeometryNodeSetPosition",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.GeometryNodeSetPosition.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

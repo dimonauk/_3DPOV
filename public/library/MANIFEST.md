@@ -257,3 +257,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-21 | blend + glb | modifiers | modifier-cast-sphere-cuboid-cartoon-squash | 5.1 | CC0 | cartoon_blob.blend · cartoon_blob_squash.glb · cartoon_blob_stretch.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-cast-sphere-cuboid-cartoon-squash |
 | 2026-06-21 | blend + glb | geometry-nodes | gn-curve-to-points-bead-necklace-instance-align | 5.1 | CC0 | bead_necklace.blend · bead_necklace.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align |
+
+| 2026-06-21 | blend + glb | scripting | python-geonodes-tree-build-bpy | 5.1 | CC0 | geonodes_script_demo.blend · geonodes_script_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-geonodes-tree-build-bpy |

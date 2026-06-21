@@ -209,6 +209,7 @@ import { entry as blenderTutorialPythonShaderNodeGroupBatchMaterialEntry } from 
 import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes";
 import { entry as blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry } from "components/tutorials/entries/blender-tutorial-particle-emitter-force-field-glb-snapshot";
 import { entry as blenderTutorialGnCurveToPointsBeadNecklaceInstanceAlignEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align";
+import { entry as blenderTutorialPythonGeonodesTreeBuildBpyEntry } from "components/tutorials/entries/blender-tutorial-python-geonodes-tree-build-bpy";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -425,6 +426,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry,
   blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry,
   blenderTutorialGnCurveToPointsBeadNecklaceInstanceAlignEntry,
+  blenderTutorialPythonGeonodesTreeBuildBpyEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
