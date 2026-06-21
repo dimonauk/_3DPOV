@@ -1,0 +1,42 @@
+{
+  "blend": "tri_safe_demo.blend",
+  "glb": "tri_safe_demo.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-triangulate-mesh-webxr-tri-safe-export/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-triangulate-mesh-webxr-tri-safe-export/screen.mp4"
+  ],
+  "notes": ["SCREEN-RECORDING-NOTES.md"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Triangulate Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/",
+          "https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html"
+        ]
+      },
+      {
+        "title": "Khronos Group — glTF 2.0 Specification",
+        "url": "https://github.com/KhronosGroup/glTF",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Assets",
+          "https://github.com/KhronosGroup/glTF-Blender-IO"
+        ]
+      }
+    ]
+  }
+}
