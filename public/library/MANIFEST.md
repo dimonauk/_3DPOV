@@ -264,3 +264,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend + glb | geometry-nodes | gn-offset-point-in-curve-chain-links | 5.1 | CC0 | chain_links.blend · chain_links.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-offset-point-in-curve-chain-links |
 
 | 2026-06-21 | blend + glb | geometry-nodes | gn-corners-of-face-vertex-of-corner-faceted-gem-gradient | 5.1 | CC0 | faceted_gem_gradient.blend · faceted_gem_gradient.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-corners-of-face-vertex-of-corner-faceted-gem-gradient |
+
+| 2026-06-21 | blend + glb | geometry-nodes | gn-set-handle-positions-bezier-s-curve-taper | 5.1 | CC0 | s_curve_ribbon.blend · s_curve_ribbon.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-handle-positions-bezier-s-curve-taper |

@@ -1,0 +1,42 @@
+{
+  "blend": "s_curve_ribbon.blend",
+  "glb": "s_curve_ribbon.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-set-handle-positions-bezier-s-curve-taper/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-set-handle-positions-bezier-s-curve-taper/screen.mp4"
+  ],
+  "notes": ["SCREEN-RECORDING-NOTES.md"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-set-curve-tilt-mobius-ribbon",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Set Handle Positions",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/",
+          "https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": [
+          "https://github.com/njanakiev",
+          "https://github.com/njanakiev/blender-python-examples"
+        ]
+      }
+    ]
+  }
+}
