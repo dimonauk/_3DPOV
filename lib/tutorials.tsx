@@ -222,6 +222,7 @@ import { entry as blenderTutorialGnSmoothByAngleNormalSplitEntry } from "compone
 import { entry as blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry } from "components/tutorials/entries/blender-tutorial-shader-osl-script-node-cycles-custom-noise";
 import { entry as blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter";
 import { entry as blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry } from "components/tutorials/entries/blender-tutorial-gn-set-material-index-voronoi-cell-zones";
+import { entry as blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -451,6 +452,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierSimpleDeformTwistBendCartoonEntry,
   blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry,
   blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry,
+  blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

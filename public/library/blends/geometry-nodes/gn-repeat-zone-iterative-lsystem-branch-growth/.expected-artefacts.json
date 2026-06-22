@@ -1,0 +1,44 @@
+{
+  "slug": "gn-repeat-zone-iterative-lsystem-branch-growth",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "branch_ball.blend",
+    "branch_ball.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-repeat-zone-iterative-lsystem-branch-growth/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-repeat-zone-iterative-lsystem-branch-growth/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-conways-game-of-life",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-procedural-panel-inset",
+      "/tutorials/blender-tutorial-python-geonodes-tree-build-bpy"
+    ],
+    "studio_codex": ["/codex/geometry-nodes"],
+    "studio_articles": [],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Repeat Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/repeat_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  }
+}
