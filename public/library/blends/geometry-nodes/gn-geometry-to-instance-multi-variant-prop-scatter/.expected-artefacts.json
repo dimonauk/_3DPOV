@@ -1,0 +1,40 @@
+{
+  "slug": "gn-geometry-to-instance-multi-variant-prop-scatter",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "boulder_scatter.blend",
+    "boulder_scatter.glb",
+    "../../videos/geometry-nodes/gn-geometry-to-instance-multi-variant-prop-scatter/viewport.mp4",
+    "../../videos/geometry-nodes/gn-geometry-to-instance-multi-variant-prop-scatter/screen.mp4"
+  ],
+  "gn_nodes_used": [
+    "GeometryNodeDistributePointsOnFaces",
+    "GeometryNodeObjectInfo",
+    "GeometryNodeGeometryToInstance",
+    "GeometryNodeJoinGeometry",
+    "GeometryNodeRandomValue",
+    "ShaderNodeCombineXYZ",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRealizeInstances",
+    "NodeGroupInput",
+    "NodeGroupOutput"
+  ],
+  "technique": "GeometryToInstance + JoinGeometry prop library with Pick Instance per-point variant selection",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-distribute-weight-painted-scatter",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface"
+    ],
+    "external": [
+      "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/geometry_to_instance.html",
+      "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html"
+    ]
+  }
+}

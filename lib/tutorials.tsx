@@ -220,6 +220,7 @@ import { entry as blenderTutorialGnSetHandlePositionsBezierSCurveTaperEntry } fr
 import { entry as blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry } from "components/tutorials/entries/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export";
 import { entry as blenderTutorialGnSmoothByAngleNormalSplitEntry } from "components/tutorials/entries/blender-tutorial-gn-smooth-by-angle-normal-split";
 import { entry as blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry } from "components/tutorials/entries/blender-tutorial-shader-osl-script-node-cycles-custom-noise";
+import { entry as blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -447,6 +448,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsRigidBodyConstraintsHingeSpringMotorEntry,
   blenderTutorialPythonNlaBakeIkFkActionPushEntry,
   blenderTutorialModifierSimpleDeformTwistBendCartoonEntry,
+  blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
