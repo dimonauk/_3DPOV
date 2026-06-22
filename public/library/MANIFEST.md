@@ -275,3 +275,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-22 | blend + glb | physics | physics-rigid-body-constraints-hinge-spring-motor | 5.1 | CC0 | constraints_demo.blend · constraints_demo_frame60.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-rigid-body-constraints-hinge-spring-motor |
 
 | 2026-06-22 | blend + glb | scripting | python-nla-bake-ik-fk-action-push | 5.1 | CC0 | ik_arm_baked.blend · ik_arm_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push |
+
+| 2026-06-22 | blend + glb | modifiers | modifier-simple-deform-twist-bend-cartoon | 5.1 | CC0 | twisted_column.blend · twisted_column.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-simple-deform-twist-bend-cartoon |

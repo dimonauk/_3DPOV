@@ -175,6 +175,7 @@ import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "com
 import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-dominoes-brick-wall";
 import { entry as blenderTutorialPhysicsRigidBodyConstraintsHingeSpringMotorEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-constraints-hinge-spring-motor";
 import { entry as blenderTutorialPythonNlaBakeIkFkActionPushEntry } from "components/tutorials/entries/blender-tutorial-python-nla-bake-ik-fk-action-push";
+import { entry as blenderTutorialModifierSimpleDeformTwistBendCartoonEntry } from "components/tutorials/entries/blender-tutorial-modifier-simple-deform-twist-bend-cartoon";
 import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
 import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
 import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
@@ -445,6 +446,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry,
   blenderTutorialPhysicsRigidBodyConstraintsHingeSpringMotorEntry,
   blenderTutorialPythonNlaBakeIkFkActionPushEntry,
+  blenderTutorialModifierSimpleDeformTwistBendCartoonEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

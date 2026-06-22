@@ -1,0 +1,42 @@
+{
+  "blenderVersion": "5.1",
+  "licence": "CC0",
+  "slug": "modifier-simple-deform-twist-bend-cartoon",
+  "topic": "modifiers",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "twisted_column.blend",
+    "twisted_column.glb"
+  ],
+  "videos": [
+    "public/library/videos/modifiers/modifier-simple-deform-twist-bend-cartoon/viewport.mp4",
+    "public/library/videos/modifiers/modifier-simple-deform-twist-bend-cartoon/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-modifier-cast-sphere-cuboid-cartoon-squash",
+      "/tutorials/blender-tutorial-modifier-array-curve-deform-chain-rope",
+      "/tutorials/blender-tutorial-modifier-screw-revolve-column",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/simple_deform.html",
+        "title": "Simple Deform Modifier — Blender Reference Manual",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.SimpleDeformModifier.html",
+        "title": "bpy.types.SimpleDeformModifier — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0"
+      }
+    ]
+  }
+}
