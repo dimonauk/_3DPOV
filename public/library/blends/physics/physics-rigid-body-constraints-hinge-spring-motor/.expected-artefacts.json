@@ -1,0 +1,40 @@
+{
+  "slug": "physics-rigid-body-constraints-hinge-spring-motor",
+  "category": "blends",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "constraints_demo.blend",
+    "constraints_demo_frame60.glb",
+    "../../videos/physics/physics-rigid-body-constraints-hinge-spring-motor/viewport.mp4",
+    "../../videos/physics/physics-rigid-body-constraints-hinge-spring-motor/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-physics-rigid-body-domino-chain",
+      "/tutorials/blender-tutorial-physics-rigid-body-dominoes-brick-wall",
+      "/tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-physics-soft-body-jelly-squash-stretch"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/bulletphysics/bullet3",
+        "licence": "zlib",
+        "author": "Erwin Coumans / Google",
+        "note": "Bullet Physics SDK — PGS constraint solver implementation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/rigid_body/constraints/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "note": "Blender Manual: Rigid Body Constraints reference"
+      }
+    ]
+  }
+}

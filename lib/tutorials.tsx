@@ -173,6 +173,7 @@ import { entry as blenderTutorialGnMenuSwitchTileVariantKitEntry } from "compone
 import { entry as blenderTutorialGnStoreNamedAttributeShaderDataBridgeEntry } from "components/tutorials/entries/blender-tutorial-gn-store-named-attribute-shader-data-bridge";
 import { entry as blenderTutorialCyclesPathGuidingCausticsGlassEntry } from "components/tutorials/entries/blender-tutorial-cycles-path-guiding-caustics-glass";
 import { entry as blenderTutorialPhysicsRigidBodyDominoesBrickWallEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-dominoes-brick-wall";
+import { entry as blenderTutorialPhysicsRigidBodyConstraintsHingeSpringMotorEntry } from "components/tutorials/entries/blender-tutorial-physics-rigid-body-constraints-hinge-spring-motor";
 import { entry as blenderTutorialGnImageTextureHeightmapTerrainEntry } from "components/tutorials/entries/blender-tutorial-gn-image-texture-heightmap-terrain";
 import { entry as blenderTutorialWeightPaintVrmDeformationEnvelopeEntry } from "components/tutorials/entries/blender-tutorial-weight-paint-vrm-deformation-envelope";
 import { entry as blenderTutorialPythonAssetLibraryMarkCatalogueEntry } from "components/tutorials/entries/blender-tutorial-python-asset-library-mark-catalogue";
@@ -441,6 +442,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry,
   blenderTutorialGnSmoothByAngleNormalSplitEntry,
   blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry,
+  blenderTutorialPhysicsRigidBodyConstraintsHingeSpringMotorEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
