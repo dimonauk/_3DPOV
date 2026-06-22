@@ -273,3 +273,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-21 | blend | shading | shader-osl-script-node-cycles-custom-noise | 5.1 | CC0 | osl_lava_crack.blend · hs_lava_crack.osl · blueprint.py · record.py · output/osl_lava_0001.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-osl-script-node-cycles-custom-noise |
 
 | 2026-06-22 | blend + glb | physics | physics-rigid-body-constraints-hinge-spring-motor | 5.1 | CC0 | constraints_demo.blend · constraints_demo_frame60.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-rigid-body-constraints-hinge-spring-motor |
+
+| 2026-06-22 | blend + glb | scripting | python-nla-bake-ik-fk-action-push | 5.1 | CC0 | ik_arm_baked.blend · ik_arm_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push |
