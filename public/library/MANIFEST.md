@@ -278,3 +278,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-22 | blend + glb | modifiers | modifier-simple-deform-twist-bend-cartoon | 5.1 | CC0 | twisted_column.blend · twisted_column.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-simple-deform-twist-bend-cartoon |
 | 2026-06-22 | blend + glb | geometry-nodes | gn-geometry-to-instance-multi-variant-prop-scatter | 5.1 | CC0 | boulder_scatter.blend · boulder_scatter.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter |
+| 2026-06-22 | blend + glb | geometry-nodes | gn-set-material-index-voronoi-cell-zones | 5.1 | CC0 | voronoi_gem.blend · voronoi_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-set-material-index-voronoi-cell-zones |

@@ -221,6 +221,7 @@ import { entry as blenderTutorialGnTriangulateMeshWebxrTriSafeExportEntry } from
 import { entry as blenderTutorialGnSmoothByAngleNormalSplitEntry } from "components/tutorials/entries/blender-tutorial-gn-smooth-by-angle-normal-split";
 import { entry as blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry } from "components/tutorials/entries/blender-tutorial-shader-osl-script-node-cycles-custom-noise";
 import { entry as blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter";
+import { entry as blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry } from "components/tutorials/entries/blender-tutorial-gn-set-material-index-voronoi-cell-zones";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -449,6 +450,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNlaBakeIkFkActionPushEntry,
   blenderTutorialModifierSimpleDeformTwistBendCartoonEntry,
   blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry,
+  blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
