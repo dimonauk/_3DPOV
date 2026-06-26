@@ -1,0 +1,61 @@
+{
+  "slug": "gn-distribute-points-on-faces-poisson-disk-terrain-scatter",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": {
+    "blend": "terrain_scatter.blend",
+    "glb": "public/library/glbs/geometry-nodes/gn-distribute-points-on-faces-poisson-disk-terrain-scatter/terrain_scatter.glb",
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "viewport_video": "public/library/videos/geometry-nodes/gn-distribute-points-on-faces-poisson-disk-terrain-scatter/viewport.mp4",
+    "screen_video": "public/library/videos/geometry-nodes/gn-distribute-points-on-faces-poisson-disk-terrain-scatter/screen.mp4"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-gn-index-switch-lod-mesh-kit",
+      "/tutorials/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Distribute Points on Faces",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Fast Poisson Disk Sampling in Arbitrary Dimensions (Robert Bridson, SIGGRAPH 2007)",
+        "url": "https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf",
+        "licence": "Academic / Public Domain algorithm",
+        "author": "Robert Bridson, University of British Columbia"
+      }
+    ]
+  },
+  "gn_nodes_used": [
+    "GeometryNodeDistributePointsOnFaces",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRotateInstances",
+    "GeometryNodeScaleInstances",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeJoinGeometry",
+    "GeometryNodeInputNormal",
+    "GeometryNodeInputIndex",
+    "GeometryNodeObjectInfo",
+    "GeometryNodeIndexSwitch",
+    "FunctionNodeCompare",
+    "FunctionNodeRandomValue",
+    "FunctionNodeAxisAngleToRotation",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeCombineXYZ",
+    "ShaderNodeMath"
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "textures": "none",
+    "apply_modifiers": true
+  }
+}
