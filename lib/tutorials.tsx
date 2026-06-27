@@ -234,6 +234,7 @@ import { entry as blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry } from "com
 import { entry as blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-in-volume-crystal-geode";
 import { entry as blenderTutorialGnSampleGridVolumeFieldProbeLatticeEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-grid-volume-field-probe-lattice";
 import { entry as blenderTutorialGnRaycastTerrainDecalProjectionEntry } from "components/tutorials/entries/blender-tutorial-gn-raycast-terrain-decal-projection";
+import { entry as blenderTutorialPythonShapeKeyDriverRigVrmFacialEntry } from "components/tutorials/entries/blender-tutorial-python-shape-key-driver-rig-vrm-facial";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -475,6 +476,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPhysicsDynamicPaintCanvasBrushWetnessTrailEntry,
   blenderTutorialGnSampleGridVolumeFieldProbeLatticeEntry,
   blenderTutorialGnRaycastTerrainDecalProjectionEntry,
+  blenderTutorialPythonShapeKeyDriverRigVrmFacialEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
