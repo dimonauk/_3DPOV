@@ -1,0 +1,54 @@
+{
+  "slug": "gn-sample-uv-surface-rivet-grid",
+  "blender_version": "5.1",
+  "category": "geometry-nodes",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "rivet_hull.blend",
+    "rivet_hull.glb"
+  ],
+  "videos": [
+    "../../videos/geometry-nodes/gn-sample-uv-surface-rivet-grid/viewport.mp4",
+    "../../videos/geometry-nodes/gn-sample-uv-surface-rivet-grid/screen.mp4"
+  ],
+  "licence": "CC0",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-raycast-terrain-decal-projection",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-sample-nearest-surface-mesh-conform"
+    ],
+    "external_sources": [
+      {
+        "title": "Blender Manual — Sample UV Surface Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Python API — GeometryNodeSampleUVSurface",
+        "url": "https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "node_types_demonstrated": [
+    "GeometryNodeSampleUVSurface",
+    "GeometryNodeMeshGrid",
+    "GeometryNodeMeshToPoints",
+    "GeometryNodeSetPosition",
+    "GeometryNodeDeleteGeometry",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeJoinGeometry",
+    "FunctionNodeAlignEulerToVector",
+    "FunctionNodeBooleanMath",
+    "ShaderNodeTexNoise",
+    "ShaderNodeMapRange"
+  ]
+}
