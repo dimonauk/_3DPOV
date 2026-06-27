@@ -293,3 +293,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | geometry-nodes | gn-distribute-points-in-volume-crystal-geode | 5.1 | CC0 | crystal_geode.blend · crystal_geode.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-distribute-points-in-volume-crystal-geode |
 | 2026-06-27 | blend | physics | physics-dynamic-paint-canvas-brush-wetness-trail | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-physics-dynamic-paint-canvas-brush-wetness-trail |
 | 2026-06-27 | blend + glb | geometry-nodes | gn-sample-grid-volume-field-probe-lattice | 5.1 | CC0 | field_probe.blend · field_probe.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sample-grid-volume-field-probe-lattice |
+
+| 2026-06-27 | blend + glb | geometry-nodes | gn-raycast-terrain-decal-projection | 5.1 | CC0 | terrain_decal.blend · terrain_decal.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-raycast-terrain-decal-projection |
