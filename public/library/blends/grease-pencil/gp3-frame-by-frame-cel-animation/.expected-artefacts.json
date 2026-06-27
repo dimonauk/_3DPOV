@@ -1,0 +1,51 @@
+{
+  "slug": "gp3-frame-by-frame-cel-animation",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "grease-pencil",
+  "files": [
+    "bounce_ball.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/bounce_0001.png",
+    "output/bounce_0007.png",
+    "output/bounce_0012.png",
+    "output/bounce_0014.png",
+    "output/bounce_0024.png"
+  ],
+  "video_artefacts": [
+    "public/library/videos/grease-pencil/gp3-frame-by-frame-cel-animation/viewport.mp4",
+    "public/library/videos/grease-pencil/gp3-frame-by-frame-cel-animation/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-grease-pencil-3-stroke-drawing-fill-taper-export",
+      "/tutorials/blender-tutorial-grease-pencil-3-line-art-toon-outline",
+      "/tutorials/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual: Grease Pencil Layers",
+        "url": "https://docs.blender.org/manual/en/latest/grease_pencil/animation/layers.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.GreasePencil Python API",
+        "url": "https://docs.blender.org/api/current/bpy.types.GreasePencil.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
