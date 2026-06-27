@@ -243,6 +243,7 @@ import { entry as blenderTutorialModifierSubdivisionSurfaceCreaseSupportLoopsWeb
 import { entry as blenderTutorialGp3FrameByFrameCelAnimationEntry } from "components/tutorials/entries/blender-tutorial-gp3-frame-by-frame-cel-animation";
 import { entry as blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo } from "components/tutorials/entries/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo";
 import { entry as blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-spiral-helical-spring-webxr";
+import { entry as blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -493,6 +494,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGp3FrameByFrameCelAnimationEntry,
   blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo,
   blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry,
+  blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
