@@ -237,6 +237,7 @@ import { entry as blenderTutorialGnRaycastTerrainDecalProjectionEntry } from "co
 import { entry as blenderTutorialPythonShapeKeyDriverRigVrmFacialEntry } from "components/tutorials/entries/blender-tutorial-python-shape-key-driver-rig-vrm-facial";
 import { entry as blenderTutorialGnSampleUvSurfaceRivetGridEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-uv-surface-rivet-grid";
 import { entry as blenderTutorialPythonImagePixelBufferProceduralBakeEntry } from "components/tutorials/entries/blender-tutorial-python-image-pixel-buffer-procedural-bake";
+import { entry as blenderTutorialGnExtrudeMeshCityBlockAttributeHeightEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-city-block-attribute-height";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -481,6 +482,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonShapeKeyDriverRigVrmFacialEntry,
   blenderTutorialGnSampleUvSurfaceRivetGridEntry,
   blenderTutorialPythonImagePixelBufferProceduralBakeEntry,
+  blenderTutorialGnExtrudeMeshCityBlockAttributeHeightEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

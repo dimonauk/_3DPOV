@@ -1,0 +1,58 @@
+{
+  "slug": "gn-extrude-mesh-city-block-attribute-height",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "city_block.blend",
+    "city_block.glb",
+    "../../videos/geometry-nodes/gn-extrude-mesh-city-block-attribute-height/viewport.mp4",
+    "../../videos/geometry-nodes/gn-extrude-mesh-city-block-attribute-height/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "url": "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural",
+        "reason": "Sibling Extrude Mesh tutorial: random selection + two-tier inset + SubD crease — contrast with per-face Offset Scale approach"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-set-material-index-voronoi-cell-zones",
+        "reason": "SetMaterialIndex with field-driven selection — same pattern used to assign rooftop and wall materials here"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+        "reason": "Required downstream step to tri-safe the extruded mesh before WebXR GLB export"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-sort-elements-sequential-face-reveal",
+        "reason": "Sort Elements on the extruded face set enables bottom-to-top tower animation using the same face-domain index approach"
+      }
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Extrude Mesh node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": ["njanakiev/blender-jupyter"]
+      },
+      {
+        "title": "cityjson/cjio — CityJSON I/O library",
+        "url": "https://github.com/cityjson/cjio",
+        "licence": "MIT",
+        "author": "3D Geoinformation Research Group, TU Delft",
+        "related": ["cityjson/cityjson-spec"]
+      }
+    ]
+  }
+}
