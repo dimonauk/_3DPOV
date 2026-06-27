@@ -230,6 +230,7 @@ import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from 
 import { entry as blenderTutorialGnMergeByDistanceWeldTiledModuleEntry } from "components/tutorials/entries/blender-tutorial-gn-merge-by-distance-weld-tiled-module";
 import { entry as blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-paths-watershed-river-network";
 import { entry as blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry } from "components/tutorials/entries/blender-tutorial-gn-deform-curves-on-surface-vrm-hair";
+import { entry as blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-in-volume-crystal-geode";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -467,6 +468,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnMergeByDistanceWeldTiledModuleEntry,
   blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry,
   blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry,
+  blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
