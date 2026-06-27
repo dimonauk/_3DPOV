@@ -1,0 +1,48 @@
+{
+  "slug": "gn-sort-elements-sequential-face-reveal",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "sequential_face_reveal.blend",
+    "sequential_face_reveal.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-sort-elements-sequential-face-reveal/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-sort-elements-sequential-face-reveal/screen.mp4"
+  ],
+  "tutorial_route": "/tutorials/blender-tutorial-gn-sort-elements-sequential-face-reveal",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-tower",
+      "/tutorials/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite",
+      "/tutorials/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map"
+    ],
+    "outside_sources": [
+      {
+        "title": "Sort Elements Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sort_elements.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

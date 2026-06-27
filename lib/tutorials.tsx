@@ -226,6 +226,7 @@ import { entry as blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry }
 import { entry as blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite";
 import { entry as blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry } from "components/tutorials/entries/blender-tutorial-gn-field-at-index-edge-tangent-flow-map";
 import { entry as blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-weighted-stripe-tube";
+import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-sort-elements-sequential-face-reveal";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -459,6 +460,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry,
   blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry,
   blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry,
+  blenderTutorialGnSortElementsSequentialFaceRevealEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

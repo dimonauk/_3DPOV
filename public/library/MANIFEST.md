@@ -283,3 +283,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | geometry-nodes | gn-simulation-zone-dla-crystal-dendrite | 5.1 | CC0 | dla_crystal.blend · dla_crystal_frame120.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite |
 | 2026-06-27 | blend + glb | geometry-nodes | gn-field-at-index-edge-tangent-flow-map | 5.1 | CC0 | edge_flow_sphere.blend · edge_flow_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map |
 | 2026-06-27 | blend + glb | geometry-nodes | gn-accumulate-field-weighted-stripe-tube | 5.1 | CC0 | weighted_stripe_tube.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-accumulate-field-weighted-stripe-tube |
+
+| 2026-06-27 | blend + glb | geometry-nodes | gn-sort-elements-sequential-face-reveal | 5.1 | CC0 | sequential_face_reveal.blend · sequential_face_reveal.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sort-elements-sequential-face-reveal |
