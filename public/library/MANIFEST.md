@@ -289,3 +289,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | geometry-nodes | gn-merge-by-distance-weld-tiled-module | 5.1 | CC0 | tile_wall_welded.blend · tile_wall_welded.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-merge-by-distance-weld-tiled-module |
 
 | 2026-06-27 | blend + glb | geometry-nodes | gn-shortest-edge-paths-watershed-river-network | 5.1 | CC0 | watershed_river.blend · watershed_river.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-shortest-edge-paths-watershed-river-network |
+| 2026-06-27 | blend + glb | geometry-nodes | gn-deform-curves-on-surface-vrm-hair | 5.1 | CC0 | deform_curves_demo.blend · deform_curves_demo_posed.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-deform-curves-on-surface-vrm-hair |
