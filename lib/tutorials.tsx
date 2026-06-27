@@ -211,6 +211,7 @@ import { entry as blenderTutorialModifierCastSphereCartoonSquashEntry } from "co
 import { entry as blenderTutorialPythonShaderNodeGroupBatchMaterialEntry } from "components/tutorials/entries/blender-tutorial-python-shader-node-group-batch-material";
 import { entry as blenderTutorialPythonBmeshExtrudeScaleFractalSpikesEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes";
 import { entry as blenderTutorialParticleEmitterForceFieldGlbSnapshotEntry } from "components/tutorials/entries/blender-tutorial-particle-emitter-force-field-glb-snapshot";
+import { entry as blenderTutorialPhysicsDynamicPaintCanvasBrushWetnessTrailEntry } from "components/tutorials/entries/blender-tutorial-physics-dynamic-paint-canvas-brush-wetness-trail";
 import { entry as blenderTutorialGnCurveToPointsBeadNecklaceInstanceAlignEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align";
 import { entry as blenderTutorialPythonGeonodesTreeBuildBpyEntry } from "components/tutorials/entries/blender-tutorial-python-geonodes-tree-build-bpy";
 import { entry as blenderTutorialBmeshBridgeLoopsFuselageHullEntry } from "components/tutorials/entries/blender-tutorial-bmesh-bridge-loops-fuselage-hull";
@@ -469,6 +470,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry,
   blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry,
   blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry,
+  blenderTutorialPhysicsDynamicPaintCanvasBrushWetnessTrailEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
