@@ -1,0 +1,58 @@
+{
+  "slug": "gn-field-at-index-edge-tangent-flow-map",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "edge_flow_sphere.blend",
+    "edge_flow_sphere.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-field-at-index-edge-tangent-flow-map/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-field-at-index-edge-tangent-flow-map/screen.mp4"
+  ],
+  "key_nodes": [
+    "GeometryNodeFieldAtIndex — domain='POINT', data_type='FLOAT': pure field node, reads per-vertex 'altitude' at integer indices supplied by EdgeVertices",
+    "GeometryNodeInputEdgeVertices — outputs Vertex Index 1/2 (INT, EDGE domain) and Position 1/2 (FLOAT_VECTOR, EDGE domain)",
+    "ShaderNodeTexNoise + GeometryNodeSetPosition — Z-axis displacement creates altitude variation across the sphere",
+    "GeometryNodeStoreNamedAttribute('altitude', POINT, FLOAT) — materialises displaced Z before Field at Index reads it",
+    "ShaderNodeMath(SUBTRACT) — gradient_raw = altitude_v2 − altitude_v1; negative=downhill, positive=uphill",
+    "ShaderNodeMapRange(−GRAD_MAX, +GRAD_MAX → 0, 1) + ShaderNodeValToRGB — blue/white/red slope colour ramp",
+    "GeometryNodeStoreNamedAttribute('edge_slope', EDGE, FLOAT_COLOR) — per-edge colour storage",
+    "GeometryNodeInputNamedAttribute('edge_slope') + GeometryNodeFieldOnDomain(domain='EDGE') — EDGE→POINT promotion",
+    "GeometryNodeStoreNamedAttribute('vertex_slope', POINT, FLOAT_COLOR) — vertex colour for shader read",
+    "ShaderNodeAttribute(attribute_type='GEOMETRY', attribute_name='vertex_slope') — emission shader input"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-sample-index-echo-grid",
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+      "/tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map",
+      "/tutorials/blender-tutorial-gn-corners-of-face-vertex-of-corner-faceted-gem-gradient"
+    ],
+    "external": [
+      {
+        "title": "Field at Index Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_at_index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Edge Vertices Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
