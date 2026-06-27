@@ -228,6 +228,7 @@ import { entry as blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry } from "c
 import { entry as blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-weighted-stripe-tube";
 import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-sort-elements-sequential-face-reveal";
 import { entry as blenderTutorialGnMergeByDistanceWeldTiledModuleEntry } from "components/tutorials/entries/blender-tutorial-gn-merge-by-distance-weld-tiled-module";
+import { entry as blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-paths-watershed-river-network";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -463,6 +464,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry,
   blenderTutorialGnSortElementsSequentialFaceRevealEntry,
   blenderTutorialGnMergeByDistanceWeldTiledModuleEntry,
+  blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

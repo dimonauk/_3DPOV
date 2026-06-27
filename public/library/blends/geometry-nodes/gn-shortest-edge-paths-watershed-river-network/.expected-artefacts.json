@@ -1,0 +1,62 @@
+{
+  "slug": "gn-shortest-edge-paths-watershed-river-network",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "watershed_river.blend",
+    "watershed_river.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-shortest-edge-paths-watershed-river-network/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-shortest-edge-paths-watershed-river-network/screen.mp4"
+  ],
+  "key_nodes": [
+    "GeometryNodeInputShortestEdgePaths — Dijkstra spanning forest; End Vertex=is_valley boolean field; Edge Cost=remapped elevation float; outputs Next Vertex Index + Total Cost",
+    "GeometryNodeEdgePathsToCurves — traces path strands from Start Vertices (is_ridge) to nearest End Vertex via the Next Vertex Index spanning tree",
+    "GeometryNodeInputNamedAttribute(data_type=FLOAT, name='elevation') — reads pre-computed vertex elevation stored by Python",
+    "GeometryNodeInputNamedAttribute(data_type=BOOLEAN, name='is_valley') — End Vertex source",
+    "GeometryNodeInputNamedAttribute(data_type=BOOLEAN, name='is_ridge') — Start Vertex source",
+    "ShaderNodeMapRange — remaps elevation from [-NOISE_HEIGHT, +NOISE_HEIGHT] to [0, 1] to ensure non-negative Dijkstra costs",
+    "GeometryNodeSplineParameter — Factor 0=ridge tip, 1=valley floor; drives RIVER_MIN_RADIUS→RIVER_MAX_RADIUS taper",
+    "GeometryNodeSetCurveRadius — applies tapered radius to river path curves",
+    "GeometryNodeCurvePrimitiveCircle(mode=POINTS, Resolution=5) — pentagon cross-section for low-poly river tube",
+    "GeometryNodeCurveToMesh(Fill Caps=True) — extrudes profile along each river path strand",
+    "GeometryNodeSetMaterialIndex(1) — assigns river material slot to tube mesh",
+    "GeometryNodeJoinGeometry — combines terrain (slot 0) with river tubes (slot 1) for single GLB export"
+  ],
+  "python_attributes": [
+    "elevation (FLOAT, POINT) — vertex Z after fractal noise displacement; used as edge cost",
+    "is_valley (BOOLEAN, POINT) — True where elevation <= VALLEY_THRESHOLD; marks river mouths",
+    "is_ridge (BOOLEAN, POINT) — True where elevation >= RIDGE_THRESHOLD; marks path origins"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-shortest-edge-path-circuit-trace",
+      "/tutorials/blender-tutorial-gn-accumulate-field-weighted-stripe-tube",
+      "/tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map",
+      "/tutorials/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "licence": "CC-BY-SA 3.0",
+        "author": "Wikipedia contributors (cites Dijkstra 1959 PD)"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
