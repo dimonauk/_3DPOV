@@ -305,3 +305,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend | grease-pencil | gp3-frame-by-frame-cel-animation | 5.1 | CC0 | bounce_ball.blend · blueprint.py · record.py · output/bounce_0001.png … bounce_0024.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gp3-frame-by-frame-cel-animation |
 
 | 2026-06-27 | blend + glb | sculpting | sculpt-face-sets-zone-masking-vrm-retopo | 5.1 | CC0 | sculpt_face_sets_zones.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo |
+
+| 2026-06-27 | blend + glb | geometry-nodes | gn-curve-spiral-helical-spring-webxr | 5.1 | CC0 | spring_coil.blend · spring_coil.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-curve-spiral-helical-spring-webxr |
