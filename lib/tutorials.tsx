@@ -232,6 +232,7 @@ import { entry as blenderTutorialGnMergeByDistanceWeldTiledModuleEntry } from "c
 import { entry as blenderTutorialGnShortestEdgePathsWatershedRiverNetworkEntry } from "components/tutorials/entries/blender-tutorial-gn-shortest-edge-paths-watershed-river-network";
 import { entry as blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry } from "components/tutorials/entries/blender-tutorial-gn-deform-curves-on-surface-vrm-hair";
 import { entry as blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-in-volume-crystal-geode";
+import { entry as blenderTutorialGnSampleGridVolumeFieldProbeLatticeEntry } from "components/tutorials/entries/blender-tutorial-gn-sample-grid-volume-field-probe-lattice";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -471,6 +472,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDeformCurvesOnSurfaceVrmHairEntry,
   blenderTutorialGnDistributePointsInVolumeCrystalGeodeEntry,
   blenderTutorialPhysicsDynamicPaintCanvasBrushWetnessTrailEntry,
+  blenderTutorialGnSampleGridVolumeFieldProbeLatticeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,61 @@
+{
+  "slug": "gn-sample-grid-volume-field-probe-lattice",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "field_probe.blend",
+    "field_probe.glb",
+    "../../videos/geometry-nodes/gn-sample-grid-volume-field-probe-lattice/viewport.mp4",
+    "../../videos/geometry-nodes/gn-sample-grid-volume-field-probe-lattice/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "url": "/tutorials/blender-tutorial-gn-volume-cube-procedural-cloud",
+        "reason": "Volume Cube creates the density grid that Sample Grid reads from"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-distribute-points-in-volume-crystal-geode",
+        "reason": "Sibling technique: distributing points inside a volume (predecessor step in the pipeline)"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+        "reason": "StoreNamedAttribute passes sampled density colour into the shader material"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map",
+        "reason": "Another indexed-field-read pattern — contrasts with Sample Grid's positional sampling"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-physics-dynamic-paint-canvas-brush-wetness-trail",
+        "reason": "Dynamic Paint also maps an environmental field onto geometry — different domain, same principle"
+      }
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Sample Grid node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample_grid.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "AcademySoftwareFoundation/openvdb",
+        "url": "https://github.com/AcademySoftwareFoundation/openvdb",
+        "licence": "Apache-2.0",
+        "author": "ASWF / DreamWorks Animation",
+        "related": ["openvdb/nanovdb"]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
