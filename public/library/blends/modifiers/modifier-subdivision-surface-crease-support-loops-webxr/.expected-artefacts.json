@@ -1,0 +1,43 @@
+{
+  "blenderVersion": "5.1",
+  "licence": "CC0",
+  "slug": "modifier-subdivision-surface-crease-support-loops-webxr",
+  "topic": "modifiers",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "subsurf_console_panel.blend",
+    "subsurf_console_panel_crease.glb",
+    "subsurf_console_panel_bevel_subsurf.glb"
+  ],
+  "videos": [
+    "public/library/videos/modifiers/modifier-subdivision-surface-crease-support-loops-webxr/viewport.mp4",
+    "public/library/videos/modifiers/modifier-subdivision-surface-crease-support-loops-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-gn-smooth-by-angle-normal-split",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
+        "title": "Subdivision Surface Modifier — Blender Reference Manual",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0"
+      },
+      {
+        "url": "https://graphics.pixar.com/opensubdiv/docs/intro.html",
+        "title": "OpenSubdiv Overview — Pixar Animation Studios",
+        "author": "Pixar Animation Studios / DreamWorks Animation",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}
