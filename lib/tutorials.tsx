@@ -223,6 +223,7 @@ import { entry as blenderTutorialShaderOslScriptNodeCyclesCustomNoiseEntry } fro
 import { entry as blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter";
 import { entry as blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry } from "components/tutorials/entries/blender-tutorial-gn-set-material-index-voronoi-cell-zones";
 import { entry as blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth";
+import { entry as blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -453,6 +454,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntry,
   blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry,
   blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry,
+  blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

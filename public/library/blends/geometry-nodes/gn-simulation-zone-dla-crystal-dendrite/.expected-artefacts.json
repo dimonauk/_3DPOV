@@ -1,0 +1,57 @@
+{
+  "slug": "gn-simulation-zone-dla-crystal-dendrite",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "dla_crystal.blend",
+    "dla_crystal_frame120.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-dla-crystal-dendrite/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-dla-crystal-dendrite/screen.mp4"
+  ],
+  "key_nodes": [
+    "GeometryNodeSimulationInput — state persistence across frames (Crystal + Walkers sockets)",
+    "GeometryNodeSimulationOutput — pair_with_output() before state_items.new()",
+    "sim_out.state_items.new('GEOMETRY', 'Walkers') — second geometry state channel",
+    "GeometryNodeProximity — pure field node; Target=Crystal; Distance per walker",
+    "FunctionNodeCompare(FLOAT, LESS_THAN) — aggregation threshold test",
+    "GeometryNodeSeparateGeometry(domain=POINT) — partition aggregating vs continuing",
+    "GeometryNodeInputSceneTime → Store Named Attribute('agg_frame', INT) — age stamp",
+    "FunctionNodeRandomValue(FLOAT_VECTOR) — random walk direction per point per frame",
+    "ShaderNodeVectorMath(NORMALIZE, SCALE) — unit-step generation",
+    "GeometryNodePoints(Count=N) + Position input — fixed-count sphere spawn",
+    "GeometryNodeJoinGeometry × 2 — Crystal merge + Walker pool rebuild",
+    "GeometryNodeDeleteGeometry — cull walkers beyond CULL_RADIUS"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-index-of-nearest-neural-web"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Diffusion-limited_aggregation",
+        "licence": "CC-BY-SA 3.0",
+        "author": "Wikipedia contributors (cites Witten & Sander 1981 PD)"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
