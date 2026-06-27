@@ -303,3 +303,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | modifiers | modifier-subdivision-surface-crease-support-loops-webxr | 5.1 | CC0 | subsurf_console_panel.blend · subsurf_console_panel_crease.glb · subsurf_console_panel_bevel_subsurf.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-subdivision-surface-crease-support-loops-webxr |
 
 | 2026-06-27 | blend | grease-pencil | gp3-frame-by-frame-cel-animation | 5.1 | CC0 | bounce_ball.blend · blueprint.py · record.py · output/bounce_0001.png … bounce_0024.png · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gp3-frame-by-frame-cel-animation |
+
+| 2026-06-27 | blend + glb | sculpting | sculpt-face-sets-zone-masking-vrm-retopo | 5.1 | CC0 | sculpt_face_sets_zones.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo |

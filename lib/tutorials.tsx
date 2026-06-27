@@ -241,6 +241,7 @@ import { entry as blenderTutorialGnExtrudeMeshCityBlockAttributeHeightEntry } fr
 import { entry as blenderTutorialGnFillCurveLogoExtrusionWebxrBadgeEntry } from "components/tutorials/entries/blender-tutorial-gn-fill-curve-logo-extrusion-webxr-badge";
 import { entry as blenderTutorialModifierSubdivisionSurfaceCreaseSupportLoopsWebxrEntry } from "components/tutorials/entries/blender-tutorial-modifier-subdivision-surface-crease-support-loops-webxr";
 import { entry as blenderTutorialGp3FrameByFrameCelAnimationEntry } from "components/tutorials/entries/blender-tutorial-gp3-frame-by-frame-cel-animation";
+import { entry as blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo } from "components/tutorials/entries/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -489,6 +490,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnFillCurveLogoExtrusionWebxrBadgeEntry,
   blenderTutorialModifierSubdivisionSurfaceCreaseSupportLoopsWebxrEntry,
   blenderTutorialGp3FrameByFrameCelAnimationEntry,
+  blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
