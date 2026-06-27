@@ -227,6 +227,7 @@ import { entry as blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry } from 
 import { entry as blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry } from "components/tutorials/entries/blender-tutorial-gn-field-at-index-edge-tangent-flow-map";
 import { entry as blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-weighted-stripe-tube";
 import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-sort-elements-sequential-face-reveal";
+import { entry as blenderTutorialGnMergeByDistanceWeldTiledModuleEntry } from "components/tutorials/entries/blender-tutorial-gn-merge-by-distance-weld-tiled-module";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -461,6 +462,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry,
   blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry,
   blenderTutorialGnSortElementsSequentialFaceRevealEntry,
+  blenderTutorialGnMergeByDistanceWeldTiledModuleEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

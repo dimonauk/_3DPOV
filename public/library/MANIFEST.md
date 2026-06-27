@@ -285,3 +285,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | geometry-nodes | gn-accumulate-field-weighted-stripe-tube | 5.1 | CC0 | weighted_stripe_tube.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-accumulate-field-weighted-stripe-tube |
 
 | 2026-06-27 | blend + glb | geometry-nodes | gn-sort-elements-sequential-face-reveal | 5.1 | CC0 | sequential_face_reveal.blend · sequential_face_reveal.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-sort-elements-sequential-face-reveal |
+
+| 2026-06-27 | blend + glb | geometry-nodes | gn-merge-by-distance-weld-tiled-module | 5.1 | CC0 | tile_wall_welded.blend · tile_wall_welded.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-merge-by-distance-weld-tiled-module |
