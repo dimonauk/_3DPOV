@@ -246,6 +246,7 @@ import { entry as blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry } from "co
 import { entry as blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction";
 import { entry as blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry } from "components/tutorials/entries/blender-tutorial-python-msgbus-reactive-property-subscriptions";
 import { entry as blenderTutorialRiggingActionConstraintExpressionDialVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-action-constraint-expression-dial-vrm";
+import { entry as blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -499,6 +500,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry,
   blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry,
   blenderTutorialRiggingActionConstraintExpressionDialVrmEntry,
+  blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
