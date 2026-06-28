@@ -309,3 +309,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-27 | blend + glb | geometry-nodes | gn-curve-spiral-helical-spring-webxr | 5.1 | CC0 | spring_coil.blend · spring_coil.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-curve-spiral-helical-spring-webxr |
 
 | 2026-06-27 | blend + glb | geometry-nodes | gn-volume-to-mesh-point-cloud-blob-reconstruction | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction |
+| 2026-06-28 | blend | scripting | python-msgbus-reactive-property-subscriptions | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-msgbus-reactive-property-subscriptions |

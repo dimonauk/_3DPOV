@@ -1,0 +1,43 @@
+{
+  "slug": "python-msgbus-reactive-property-subscriptions",
+  "category": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/scripting/python-msgbus-reactive-property-subscriptions/blueprint.py",
+    "public/library/blends/scripting/python-msgbus-reactive-property-subscriptions/record.py",
+    "public/library/blends/scripting/python-msgbus-reactive-property-subscriptions/README.md",
+    "public/library/blends/scripting/python-msgbus-reactive-property-subscriptions/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/scripting/python-msgbus-reactive-property-subscriptions/.expected-artefacts.json",
+    "public/library/videos/scripting/python-msgbus-reactive-property-subscriptions/viewport.mp4",
+    "public/library/videos/scripting/python-msgbus-reactive-property-subscriptions/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-shape-key-driver-rig-vrm-facial"
+    ],
+    "external": [
+      {
+        "title": "bpy.msgbus API — Blender Python API Reference",
+        "url": "https://docs.blender.org/api/current/bpy.msgbus.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Message Bus — Blender Developer Documentation",
+        "url": "https://developer.blender.org/docs/features/message_bus/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

@@ -244,6 +244,7 @@ import { entry as blenderTutorialGp3FrameByFrameCelAnimationEntry } from "compon
 import { entry as blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo } from "components/tutorials/entries/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo";
 import { entry as blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-spiral-helical-spring-webxr";
 import { entry as blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction";
+import { entry as blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry } from "components/tutorials/entries/blender-tutorial-python-msgbus-reactive-property-subscriptions";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -495,6 +496,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo,
   blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry,
   blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry,
+  blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
