@@ -1,0 +1,39 @@
+{
+  "blend": "public/library/blends/geometry-nodes/gn-dual-mesh-hexagonal-hull-armour/hull_armour.blend",
+  "glb":   "public/library/glbs/geometry-nodes/gn-dual-mesh-hexagonal-hull-armour/hull_armour.glb",
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-dual-mesh-hexagonal-hull-armour/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-dual-mesh-hexagonal-hull-armour/screen.mp4"
+  ],
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "slug": "gn-dual-mesh-hexagonal-hull-armour",
+  "licence": "CC0",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-city-block-attribute-height",
+      "/tutorials/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate"
+    ],
+    "external": [
+      {
+        "title": "Dual Mesh — Geometry Nodes Reference",
+        "author": "Blender Foundation",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html",
+        "licence": "CC BY-SA 4.0",
+        "related": ["https://github.com/blender/blender", "https://extensions.blender.org"]
+      },
+      {
+        "title": "polyscope — A viewer for 3D data, with dual mesh examples",
+        "author": "Nicholas Sharp et al.",
+        "url": "https://github.com/nmwsharp/polyscope",
+        "licence": "MIT",
+        "related": [
+          "https://github.com/nmwsharp/potpourri3d",
+          "https://github.com/nmwsharp/robust-laplacians-py"
+        ]
+      }
+    ]
+  }
+}
