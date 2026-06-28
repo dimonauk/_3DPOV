@@ -260,6 +260,7 @@ import { entry as blenderTutorialViewportCompositorRealtimeGlareVignetteColourGr
 import { entry as blenderTutorialGnNodeToolFacePushPanelStampEntry } from "components/tutorials/entries/blender-tutorial-gn-node-tool-face-push-panel-stamp";
 import { entry as blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-position-snapshot-stable-voronoi";
 import { entry as blenderTutorialGnAlignEulerToVectorSignageFacadeEntry } from "components/tutorials/entries/blender-tutorial-gn-align-euler-to-vector-signage-facade";
+import { entry as blenderTutorialGnDualMeshGeodesicHexPentDomeEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-geodesic-hex-pent-dome";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -527,6 +528,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnNodeToolFacePushPanelStampEntry,
   blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry,
   blenderTutorialGnAlignEulerToVectorSignageFacadeEntry,
+  blenderTutorialGnDualMeshGeodesicHexPentDomeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

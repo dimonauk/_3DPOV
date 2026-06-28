@@ -1,0 +1,52 @@
+{
+  "slug": "gn-dual-mesh-geodesic-hex-pent-dome",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "geodesic_dome.blend",
+    "geodesic_dome.glb",
+    "../../../../videos/geometry-nodes/gn-dual-mesh-geodesic-hex-pent-dome/viewport.mp4",
+    "../../../../videos/geometry-nodes/gn-dual-mesh-geodesic-hex-pent-dome/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-merge-by-distance-weld-clean-tiled-module",
+      "/tutorials/blender-tutorial-gn-align-euler-to-vector-signage-facade",
+      "/tutorials/blender-tutorial-workbench-cavity-outline-assembly-diagram",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Dual Mesh Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/mesh/operations/dual_mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_repos": [
+          "https://github.com/blender/blender",
+          "https://github.com/blender/blender-addons"
+        ]
+      },
+      {
+        "title": "Buckminster Fuller Institute — Geodesic Domes",
+        "url": "https://www.bfi.org/about-fuller/big-ideas/geodesic-domes/",
+        "licence": "PD-reference",
+        "author": "Buckminster Fuller Institute",
+        "related_repos": []
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related_repos": [
+          "https://github.com/njanakiev/blender-jupyter"
+        ]
+      }
+    ]
+  }
+}
