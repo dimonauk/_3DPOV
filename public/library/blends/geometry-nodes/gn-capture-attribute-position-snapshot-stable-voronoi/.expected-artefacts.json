@@ -1,0 +1,43 @@
+{
+  "slug": "gn-capture-attribute-position-snapshot-stable-voronoi",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/record.py",
+    "public/library/blends/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/README.md",
+    "public/library/blends/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/.expected-artefacts.json",
+    "public/library/videos/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-capture-attribute-position-snapshot-stable-voronoi/screen.mp4"
+  ],
+  "blender_files": [
+    "capture_column.blend"
+  ],
+  "export_files": [
+    "capture_column.glb"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-set-material-index-voronoi-cell-zones",
+      "/tutorials/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-gn-accumulate-field-weighted-stripe-tube"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Capture Attribute",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/attribute/capture_attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
