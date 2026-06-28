@@ -253,6 +253,7 @@ import { entry as blenderTutorialShaderPrincipledBsdfV2GltfPbrWebxrEntry } from 
 import { entry as blenderTutorialShaderAlphaClipBlendFoliageDecalWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-alpha-clip-blend-foliage-decal-webxr";
 import { entry as blenderTutorialWorkbenchCavityOutlineAssemblyDiagramEntry } from "components/tutorials/entries/blender-tutorial-workbench-cavity-outline-assembly-diagram";
 import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface";
+import { entry as blenderTutorialGnDeleteGeometryNoiseErosionWebxrRockEntry } from "components/tutorials/entries/blender-tutorial-gn-delete-geometry-noise-mask-erosion-webxr-rock";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -513,6 +514,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderAlphaClipBlendFoliageDecalWebxrEntry,
   blenderTutorialWorkbenchCavityOutlineAssemblyDiagramEntry,
   blenderTutorialGnBevelMeshEdgeAngleChamferHardSurfaceEntry,
+  blenderTutorialGnDeleteGeometryNoiseErosionWebxrRockEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

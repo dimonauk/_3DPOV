@@ -321,3 +321,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-28 | blend + glb | rendering | workbench-cavity-outline-assembly-diagram | 5.1 | CC0 | workbench_sensor_pod.blend · workbench_sensor_pod.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-workbench-cavity-outline-assembly-diagram |
 | 2026-06-28 | blend + glb | geometry-nodes | gn-bevel-mesh-edge-angle-chamfer-hard-surface | 5.1 | CC0 | hs_control_panel.blend · hs_control_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface |
+| 2026-06-28 | blend + glb | geometry-nodes | gn-delete-geometry-noise-mask-erosion-webxr-rock | 5.1 | CC0 | eroded_asteroid.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-delete-geometry-noise-mask-erosion-webxr-rock |
