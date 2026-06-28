@@ -259,6 +259,7 @@ import { entry as blenderTutorialCompositorMistPassZDepthDefocusAtmosphericEntry
 import { entry as blenderTutorialViewportCompositorRealtimeGlareVignetteColourGradeEntry } from "components/tutorials/entries/blender-tutorial-viewport-compositor-realtime-glare-vignette-colour-grade";
 import { entry as blenderTutorialGnNodeToolFacePushPanelStampEntry } from "components/tutorials/entries/blender-tutorial-gn-node-tool-face-push-panel-stamp";
 import { entry as blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-position-snapshot-stable-voronoi";
+import { entry as blenderTutorialGnAlignEulerToVectorSignageFacadeEntry } from "components/tutorials/entries/blender-tutorial-gn-align-euler-to-vector-signage-facade";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -525,6 +526,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialViewportCompositorRealtimeGlareVignetteColourGradeEntry,
   blenderTutorialGnNodeToolFacePushPanelStampEntry,
   blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry,
+  blenderTutorialGnAlignEulerToVectorSignageFacadeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
