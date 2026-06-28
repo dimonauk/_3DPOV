@@ -1,0 +1,55 @@
+{
+  "slug": "gn-bevel-mesh-edge-angle-chamfer-hard-surface",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/hs_control_panel.blend",
+    "output/hs_control_panel.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer-hard-surface/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer-hard-surface/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-smooth-by-angle-normal-split",
+      "/tutorials/blender-tutorial-modifier-subdivision-surface-crease-support-loops-webxr",
+      "/tutorials/blender-tutorial-workbench-cavity-outline-assembly-diagram",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Manual — Bevel Mesh node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/bevel_mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://github.com/blender/blender"
+      },
+      {
+        "name": "Khronos glTF 2.0 Specification",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "sibling": "https://github.com/KhronosGroup/glTF-Sample-Models"
+      }
+    ]
+  },
+  "gn_nodes_used": [
+    "GeometryNodeBevelMesh",
+    "GeometryNodeSetShadeSmooth",
+    "FunctionNodeInputBool",
+    "NodeGroupInput",
+    "NodeGroupOutput"
+  ],
+  "modifier_properties": {
+    "mode": "EDGES",
+    "limit_method": "ANGLE"
+  },
+  "webxr_ready": true,
+  "export_notes": "export_apply=True bakes GN bevel into mesh; Draco level 6 compression; Y-up convention"
+}
