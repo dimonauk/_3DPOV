@@ -263,6 +263,7 @@ import { entry as blenderTutorialGnAlignEulerToVectorSignageFacadeEntry } from "
 import { entry as blenderTutorialGnDualMeshGeodesicHexPentDomeEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-geodesic-hex-pent-dome";
 import { entry as blenderTutorialPythonBmeshUvMapReadWriteAtlasPackEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-uv-map-read-write-atlas-pack";
 import { entry as blenderTutorialCyclesPanoramicEquirectangular360WebxrHdriEntry } from "components/tutorials/entries/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri";
+import { entry as blenderTutorialGnViewerNodeDebugInspectAttributesEntry } from "components/tutorials/entries/blender-tutorial-gn-viewer-node-debug-inspect-attributes";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -533,6 +534,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDualMeshGeodesicHexPentDomeEntry,
   blenderTutorialPythonBmeshUvMapReadWriteAtlasPackEntry,
   blenderTutorialCyclesPanoramicEquirectangular360WebxrHdriEntry,
+  blenderTutorialGnViewerNodeDebugInspectAttributesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
