@@ -248,6 +248,7 @@ import { entry as blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry 
 import { entry as blenderTutorialRiggingActionConstraintExpressionDialVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-action-constraint-expression-dial-vrm";
 import { entry as blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade";
 import { entry as blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry } from "components/tutorials/entries/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod";
+import { entry as blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -503,6 +504,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialRiggingActionConstraintExpressionDialVrmEntry,
   blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry,
   blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry,
+  blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
