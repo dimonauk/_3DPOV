@@ -249,6 +249,7 @@ import { entry as blenderTutorialRiggingActionConstraintExpressionDialVrmEntry }
 import { entry as blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade";
 import { entry as blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry } from "components/tutorials/entries/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod";
 import { entry as blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate";
+import { entry as blenderTutorialShaderPrincipledBsdfV2GltfPbrWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -505,6 +506,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry,
   blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry,
   blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry,
+  blenderTutorialShaderPrincipledBsdfV2GltfPbrWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

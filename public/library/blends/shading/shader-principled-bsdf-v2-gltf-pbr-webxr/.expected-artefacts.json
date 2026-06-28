@@ -1,0 +1,33 @@
+{
+  "blend": "hs_control_shard.blend",
+  "glb": "hs_control_shard.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/shading/shader-principled-bsdf-v2-gltf-pbr-webxr/viewport.mp4",
+    "screen": "public/library/videos/shading/shader-principled-bsdf-v2-gltf-pbr-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-automotive-paint-coat-metallic-flake",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender glTF I/O add-on",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": ["glTF-Blender-IO-materials-variants", "KhronosGroup/glTF"]
+      },
+      {
+        "title": "Khronos glTF 2.0 Material Specification",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": ["KhronosGroup/glTF-Sample-Viewer", "KhronosGroup/glTF-Sample-Models"]
+      }
+    ]
+  }
+}

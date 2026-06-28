@@ -314,3 +314,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend + glb | rendering | eevee-next-bloom-emission-glow-cel-shade | 5.1 | CC0 | power_core_prop.blend · power_core_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade |
 | 2026-06-28 | blend + glb | geometry-nodes | gn-subdivide-mesh-adaptive-noise-lod | 5.1 | CC0 | adaptive_terrain.blend · adaptive_terrain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod |
 | 2026-06-28 | blend + glb | geometry-nodes | gn-scale-elements-noise-driven-face-scale-diamond-plate | 5.1 | CC0 | diamond_plate.blend · diamond_plate.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate |
+
+| 2026-06-28 | blend + glb | shading | shader-principled-bsdf-v2-gltf-pbr-webxr | 5.1 | CC0 | hs_control_shard.blend · hs_control_shard.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr |
