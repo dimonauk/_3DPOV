@@ -323,3 +323,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend + glb | geometry-nodes | gn-bevel-mesh-edge-angle-chamfer-hard-surface | 5.1 | CC0 | hs_control_panel.blend · hs_control_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface |
 | 2026-06-28 | blend + glb | geometry-nodes | gn-delete-geometry-noise-mask-erosion-webxr-rock | 5.1 | CC0 | eroded_asteroid.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-delete-geometry-noise-mask-erosion-webxr-rock |
 | 2026-06-28 | blend | grease-pencil | gn-gp3-noise-stroke-wave | 5.1 | CC0 | wave_rings.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-gp3-noise-stroke-wave |
+
+| 2026-06-28 | blend | rendering | compositor-mist-pass-z-depth-defocus-atmospheric | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-mist-pass-z-depth-defocus-atmospheric |

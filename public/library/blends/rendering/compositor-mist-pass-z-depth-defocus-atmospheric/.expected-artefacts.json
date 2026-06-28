@@ -1,0 +1,48 @@
+{
+  "slug": "compositor-mist-pass-z-depth-defocus-atmospheric",
+  "topic": "rendering",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "mist_depth_scene.blend",
+    "renders/mist_depth_0001.png"
+  ],
+  "video_artefacts": [
+    "../../videos/rendering/compositor-mist-pass-z-depth-defocus-atmospheric/viewport.mp4",
+    "../../videos/rendering/compositor-mist-pass-z-depth-defocus-atmospheric/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-eevee-next-volumetric-light-cone"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Render Passes (Mist Pass)",
+        "url": "https://docs.blender.org/manual/en/5.1/render/layers/passes.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Compositor Defocus Node",
+        "url": "https://docs.blender.org/manual/en/5.1/compositing/types/filter/defocus.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Python API — bpy.types.WorldMistSettings",
+        "url": "https://docs.blender.org/api/current/bpy.types.WorldMistSettings.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

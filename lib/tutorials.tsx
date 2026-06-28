@@ -255,6 +255,7 @@ import { entry as blenderTutorialWorkbenchCavityOutlineAssemblyDiagramEntry } fr
 import { entry as blenderTutorialGnBevelMeshEdgeAngleChamferHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface";
 import { entry as blenderTutorialGnDeleteGeometryNoiseErosionWebxrRockEntry } from "components/tutorials/entries/blender-tutorial-gn-delete-geometry-noise-mask-erosion-webxr-rock";
 import { entry as blenderTutorialGnGp3NoiseStrokeWaveEntry } from "components/tutorials/entries/blender-tutorial-gn-gp3-noise-stroke-wave";
+import { entry as blenderTutorialCompositorMistPassZDepthDefocusAtmosphericEntry } from "components/tutorials/entries/blender-tutorial-compositor-mist-pass-z-depth-defocus-atmospheric";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -517,6 +518,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnBevelMeshEdgeAngleChamferHardSurfaceEntry,
   blenderTutorialGnDeleteGeometryNoiseErosionWebxrRockEntry,
   blenderTutorialGnGp3NoiseStrokeWaveEntry,
+  blenderTutorialCompositorMistPassZDepthDefocusAtmosphericEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
