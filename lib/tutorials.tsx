@@ -251,6 +251,7 @@ import { entry as blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry } from "co
 import { entry as blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry } from "components/tutorials/entries/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate";
 import { entry as blenderTutorialShaderPrincipledBsdfV2GltfPbrWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr";
 import { entry as blenderTutorialShaderAlphaClipBlendFoliageDecalWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-alpha-clip-blend-foliage-decal-webxr";
+import { entry as blenderTutorialWorkbenchCavityOutlineAssemblyDiagramEntry } from "components/tutorials/entries/blender-tutorial-workbench-cavity-outline-assembly-diagram";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -509,6 +510,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnScaleElementsNoiseDrivenFaceScaleDiamondPlateEntry,
   blenderTutorialShaderPrincipledBsdfV2GltfPbrWebxrEntry,
   blenderTutorialShaderAlphaClipBlendFoliageDecalWebxrEntry,
+  blenderTutorialWorkbenchCavityOutlineAssemblyDiagramEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
