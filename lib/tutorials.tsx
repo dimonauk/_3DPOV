@@ -261,6 +261,7 @@ import { entry as blenderTutorialGnNodeToolFacePushPanelStampEntry } from "compo
 import { entry as blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry } from "components/tutorials/entries/blender-tutorial-gn-capture-attribute-position-snapshot-stable-voronoi";
 import { entry as blenderTutorialGnAlignEulerToVectorSignageFacadeEntry } from "components/tutorials/entries/blender-tutorial-gn-align-euler-to-vector-signage-facade";
 import { entry as blenderTutorialGnDualMeshGeodesicHexPentDomeEntry } from "components/tutorials/entries/blender-tutorial-gn-dual-mesh-geodesic-hex-pent-dome";
+import { entry as blenderTutorialPythonBmeshUvMapReadWriteAtlasPackEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-uv-map-read-write-atlas-pack";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -529,6 +530,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCaptureAttributePositionSnapshotStableVoronoiEntry,
   blenderTutorialGnAlignEulerToVectorSignageFacadeEntry,
   blenderTutorialGnDualMeshGeodesicHexPentDomeEntry,
+  blenderTutorialPythonBmeshUvMapReadWriteAtlasPackEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

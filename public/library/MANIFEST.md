@@ -332,3 +332,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend + glb | geometry-nodes | gn-align-euler-to-vector-signage-facade | 5.1 | CC0 | signage_facade.blend · signage_facade.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-align-euler-to-vector-signage-facade |
 
 | 2026-06-28 | blend + glb | geometry-nodes | gn-dual-mesh-geodesic-hex-pent-dome | 5.1 | CC0 | geodesic_dome.blend · geodesic_dome.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-dual-mesh-geodesic-hex-pent-dome |
+
+| 2026-06-28 | blend | scripting | python-bmesh-uv-map-read-write-atlas-pack | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-uv-map-read-write-atlas-pack |
