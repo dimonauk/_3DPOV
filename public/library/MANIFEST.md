@@ -325,3 +325,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend | grease-pencil | gn-gp3-noise-stroke-wave | 5.1 | CC0 | wave_rings.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-gp3-noise-stroke-wave |
 
 | 2026-06-28 | blend | rendering | compositor-mist-pass-z-depth-defocus-atmospheric | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-compositor-mist-pass-z-depth-defocus-atmospheric |
+| 2026-06-28 | blend | compositing | viewport-compositor-realtime-glare-vignette-colour-grade | 5.1 | CC0 | vp_comp_scene.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-viewport-compositor-realtime-glare-vignette-colour-grade |
