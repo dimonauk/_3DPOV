@@ -1,0 +1,47 @@
+{
+  "slug": "gn-node-tool-face-push-panel-stamp",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "face_push_panel_stamp.blend",
+    "face_push_panel_stamp.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-node-tool-face-push-panel-stamp/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-node-tool-face-push-panel-stamp/screen.mp4"
+  ],
+  "tutorial_route": "/tutorials/blender-tutorial-gn-node-tool-face-push-panel-stamp",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-extrude-mesh-city-block-attribute-height",
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface",
+      "/tutorials/blender-tutorial-gn-gizmo-nodes-interactive-viewport-controls",
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui"
+    ],
+    "outside_sources": [
+      {
+        "title": "Node Tools — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/meshes/editing/mesh/tools/node_tool.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

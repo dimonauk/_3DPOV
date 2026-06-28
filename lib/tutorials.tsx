@@ -257,6 +257,7 @@ import { entry as blenderTutorialGnDeleteGeometryNoiseErosionWebxrRockEntry } fr
 import { entry as blenderTutorialGnGp3NoiseStrokeWaveEntry } from "components/tutorials/entries/blender-tutorial-gn-gp3-noise-stroke-wave";
 import { entry as blenderTutorialCompositorMistPassZDepthDefocusAtmosphericEntry } from "components/tutorials/entries/blender-tutorial-compositor-mist-pass-z-depth-defocus-atmospheric";
 import { entry as blenderTutorialViewportCompositorRealtimeGlareVignetteColourGradeEntry } from "components/tutorials/entries/blender-tutorial-viewport-compositor-realtime-glare-vignette-colour-grade";
+import { entry as blenderTutorialGnNodeToolFacePushPanelStampEntry } from "components/tutorials/entries/blender-tutorial-gn-node-tool-face-push-panel-stamp";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -521,6 +522,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnGp3NoiseStrokeWaveEntry,
   blenderTutorialCompositorMistPassZDepthDefocusAtmosphericEntry,
   blenderTutorialViewportCompositorRealtimeGlareVignetteColourGradeEntry,
+  blenderTutorialGnNodeToolFacePushPanelStampEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
