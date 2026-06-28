@@ -1,0 +1,35 @@
+{
+  "blend_files": ["adaptive_terrain.blend"],
+  "glb_files": ["adaptive_terrain.glb"],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-subdivide-mesh-adaptive-noise-lod/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-subdivide-mesh-adaptive-noise-lod/screen.mp4"
+  ],
+  "scripts": ["blueprint.py", "record.py"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-smooth-by-angle-normal-split",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html",
+        "title": "Blender Manual — Subdivide Mesh Node",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": ["https://github.com/blender/blender"]
+      },
+      {
+        "url": "https://graphics.pixar.com/opensubdiv/docs/subdivision_surfaces.html",
+        "title": "OpenSubdiv — Subdivision Surfaces Overview",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios",
+        "related": ["https://github.com/PixarAnimationStudios/OpenSubdiv"]
+      }
+    ]
+  }
+}

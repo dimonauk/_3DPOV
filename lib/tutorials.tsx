@@ -247,6 +247,7 @@ import { entry as blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry
 import { entry as blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry } from "components/tutorials/entries/blender-tutorial-python-msgbus-reactive-property-subscriptions";
 import { entry as blenderTutorialRiggingActionConstraintExpressionDialVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-action-constraint-expression-dial-vrm";
 import { entry as blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry } from "components/tutorials/entries/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade";
+import { entry as blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry } from "components/tutorials/entries/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -501,6 +502,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry,
   blenderTutorialRiggingActionConstraintExpressionDialVrmEntry,
   blenderTutorialEeveeNextBloomEmissionGlowCelShadeEntry,
+  blenderTutorialGnSubdivideMeshAdaptiveNoiseLodEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
