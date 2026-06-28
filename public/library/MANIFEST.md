@@ -316,3 +316,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend + glb | geometry-nodes | gn-scale-elements-noise-driven-face-scale-diamond-plate | 5.1 | CC0 | diamond_plate.blend · diamond_plate.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate |
 
 | 2026-06-28 | blend + glb | shading | shader-principled-bsdf-v2-gltf-pbr-webxr | 5.1 | CC0 | hs_control_shard.blend · hs_control_shard.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr |
+
+| 2026-06-28 | blend + glb | shading | shader-alpha-clip-blend-foliage-decal-webxr | 5.1 | CC0 | foliage_decal_alpha.blend · foliage_decal_alpha.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-alpha-clip-blend-foliage-decal-webxr |
