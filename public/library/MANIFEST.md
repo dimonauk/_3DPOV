@@ -310,3 +310,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-06-27 | blend + glb | geometry-nodes | gn-volume-to-mesh-point-cloud-blob-reconstruction | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction |
 | 2026-06-28 | blend | scripting | python-msgbus-reactive-property-subscriptions | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-msgbus-reactive-property-subscriptions |
+| 2026-06-28 | blend | rigging | rigging-action-constraint-expression-dial-vrm | 5.1 | CC0 | expression_dial_rig.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-rigging-action-constraint-expression-dial-vrm |

@@ -1,0 +1,37 @@
+{
+  "blend": "expression_dial_rig.blend",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "public/library/videos/rigging/rigging-action-constraint-expression-dial-vrm/viewport.mp4",
+    "public/library/videos/rigging/rigging-action-constraint-expression-dial-vrm/screen.mp4"
+  ],
+  "licence": "CC0",
+  "blender_version": "5.1",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-rigging-corrective-shape-keys-driver",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-python-shape-key-driver-rig-vrm-facial",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm"
+    ],
+    "outside_sources": [
+      {
+        "title": "Action Constraint — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/transform/action.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "VRM Add-on for Blender — saturday06",
+        "url": "https://github.com/saturday06/VRM-Addon-for-Blender",
+        "licence": "MIT",
+        "author": "saturday06",
+        "related": [
+          "https://github.com/vrm-c/vrm-specification",
+          "https://vrm.dev"
+        ]
+      }
+    ]
+  }
+}

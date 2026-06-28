@@ -245,6 +245,7 @@ import { entry as blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo } from "comp
 import { entry as blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-spiral-helical-spring-webxr";
 import { entry as blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry } from "components/tutorials/entries/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction";
 import { entry as blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry } from "components/tutorials/entries/blender-tutorial-python-msgbus-reactive-property-subscriptions";
+import { entry as blenderTutorialRiggingActionConstraintExpressionDialVrmEntry } from "components/tutorials/entries/blender-tutorial-rigging-action-constraint-expression-dial-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -497,6 +498,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCurveSpiralHelicalSpringWebxrEntry,
   blenderTutorialGnVolumeToMeshPointCloudBlobReconstructionEntry,
   blenderTutorialPythonMsgbusReactivePropertySubscriptionsEntry,
+  blenderTutorialRiggingActionConstraintExpressionDialVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
