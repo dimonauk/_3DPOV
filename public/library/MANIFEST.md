@@ -340,3 +340,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend | geometry-nodes | gn-viewer-node-debug-inspect-attributes | 5.1 | CC0 | gn_viewer_debug.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes |
 
 | 2026-06-29 | blend | scripting | python-depsgraph-object-instances-gn-scatter-glb-export | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export |
+| 2026-06-29 | blend | scripting | python-mathutils-geometry-kdtree-bvhtree-spatial | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial |

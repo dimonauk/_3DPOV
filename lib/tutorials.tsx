@@ -265,6 +265,7 @@ import { entry as blenderTutorialPythonBmeshUvMapReadWriteAtlasPackEntry } from 
 import { entry as blenderTutorialCyclesPanoramicEquirectangular360WebxrHdriEntry } from "components/tutorials/entries/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri";
 import { entry as blenderTutorialGnViewerNodeDebugInspectAttributesEntry } from "components/tutorials/entries/blender-tutorial-gn-viewer-node-debug-inspect-attributes";
 import { entry as blenderTutorialPythonDepsgraphObjectInstancesGnScatterGlbExportEntry } from "components/tutorials/entries/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export";
+import { entry as blenderTutorialPythonMathutilsGeometryKdtreeBvhtreeSpatialEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -537,6 +538,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCyclesPanoramicEquirectangular360WebxrHdriEntry,
   blenderTutorialGnViewerNodeDebugInspectAttributesEntry,
   blenderTutorialPythonDepsgraphObjectInstancesGnScatterGlbExportEntry,
+  blenderTutorialPythonMathutilsGeometryKdtreeBvhtreeSpatialEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
