@@ -338,3 +338,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-28 | blend | rendering | cycles-panoramic-equirectangular-360-webxr-hdri | 5.1 | CC0 | pano_360_hdri.blend · renders/pano_360.exr · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri |
 
 | 2026-06-28 | blend | geometry-nodes | gn-viewer-node-debug-inspect-attributes | 5.1 | CC0 | gn_viewer_debug.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes |
+
+| 2026-06-29 | blend | scripting | python-depsgraph-object-instances-gn-scatter-glb-export | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export |

@@ -1,0 +1,43 @@
+{
+  "slug": "python-depsgraph-object-instances-gn-scatter-glb-export",
+  "topic": "scripting",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-depsgraph-object-instances-gn-scatter-glb-export/viewport.mp4",
+    "public/library/videos/scripting/python-depsgraph-object-instances-gn-scatter-glb-export/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-python-msgbus-reactive-property-subscriptions"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Dependency Graph",
+        "url": "https://docs.blender.org/manual/en/5.1/pipeline/depsgraph.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.DepsgraphObjectInstance API Reference",
+        "url": "https://docs.blender.org/api/current/bpy.types.DepsgraphObjectInstance.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}
