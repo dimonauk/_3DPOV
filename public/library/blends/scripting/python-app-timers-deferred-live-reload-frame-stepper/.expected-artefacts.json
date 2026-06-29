@@ -1,0 +1,38 @@
+{
+  "slug": "python-app-timers-deferred-live-reload-frame-stepper",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "live_params.json",
+    "output/frame_0001.png",
+    "../../videos/scripting/python-app-timers-deferred-live-reload-frame-stepper/viewport.mp4",
+    "../../videos/scripting/python-app-timers-deferred-live-reload-frame-stepper/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-msgbus-reactive-property-subscriptions",
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.app.timers — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bpy.app.timers.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow"
+      }
+    ]
+  }
+}
