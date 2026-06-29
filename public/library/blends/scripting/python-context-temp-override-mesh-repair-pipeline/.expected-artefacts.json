@@ -1,0 +1,46 @@
+{
+  "slug": "python-context-temp-override-mesh-repair-pipeline",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/scripting/python-context-temp-override-mesh-repair-pipeline/viewport.mp4",
+    "../../videos/scripting/python-context-temp-override-mesh-repair-pipeline/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Context Overrides",
+        "url": "https://docs.blender.org/manual/en/latest/advanced/scripting/context_override.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "siblings": [
+          "bpy.ops overview",
+          "bpy.context screen areas",
+          "Writing Add-ons"
+        ]
+      },
+      {
+        "title": "Blender Python API — bpy.types.Context.temp_override",
+        "url": "https://docs.blender.org/api/current/bpy.types.Context.html#bpy.types.Context.temp_override",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "siblings": [
+          "bpy.ops.mesh",
+          "bpy.ops.object",
+          "IDPropertyGroup"
+        ]
+      }
+    ]
+  }
+}

@@ -268,6 +268,7 @@ import { entry as blenderTutorialPythonDepsgraphObjectInstancesGnScatterGlbExpor
 import { entry as blenderTutorialPythonMathutilsGeometryKdtreeBvhtreeSpatialEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial";
 import { entry as blenderTutorialAnimationActionSlotsMultiIdSharedEntry } from "components/tutorials/entries/blender-tutorial-animation-action-slots-multi-id-shared";
 import { entry as blenderTutorialAnimationLayeredActionLayersStripBlendingEntry } from "components/tutorials/entries/blender-tutorial-animation-layered-action-layers-strips-blending";
+import { entry as blenderTutorialPythonContextTempOverrideMeshRepairPipelineEntry } from "components/tutorials/entries/blender-tutorial-python-context-temp-override-mesh-repair-pipeline";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -543,6 +544,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsGeometryKdtreeBvhtreeSpatialEntry,
   blenderTutorialAnimationActionSlotsMultiIdSharedEntry,
   blenderTutorialAnimationLayeredActionLayersStripBlendingEntry,
+  blenderTutorialPythonContextTempOverrideMeshRepairPipelineEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
