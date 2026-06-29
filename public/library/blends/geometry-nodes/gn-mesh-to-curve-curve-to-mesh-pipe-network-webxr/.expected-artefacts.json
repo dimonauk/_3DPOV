@@ -1,0 +1,55 @@
+{
+  "slug": "gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "output/pipe_network_panel.glb",
+    "../../../../videos/geometry-nodes/gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr/viewport.mp4",
+    "../../../../videos/geometry-nodes/gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer-hard-surface",
+      "/tutorials/blender-tutorial-gn-merge-by-distance-weld-tiled-module",
+      "/tutorials/blender-tutorial-gn-fill-curve-logo-extrusion-webxr-badge",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Mesh to Curve Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_repos": [
+          "https://github.com/blender/blender",
+          "https://github.com/blender/blender-addons"
+        ]
+      },
+      {
+        "title": "Blender Manual — Curve to Mesh Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/curve/operations/curve_to_mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_repos": [
+          "https://github.com/blender/blender"
+        ]
+      },
+      {
+        "title": "Khronos glTF 2.0 Specification",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_repos": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}
