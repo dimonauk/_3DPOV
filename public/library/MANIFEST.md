@@ -346,3 +346,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-06-29 | blend | scripting | python-context-temp-override-mesh-repair-pipeline | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline |
 | 2026-06-29 | blend + glb | geometry-nodes | gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr | 5.1 | CC0 | pipe_network_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr |
 | 2026-06-29 | blend | scripting | python-app-timers-deferred-live-reload-frame-stepper | 5.1 | CC0 | blueprint.py · record.py · live_params.json · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-app-timers-deferred-live-reload-frame-stepper |
+
+| 2026-07-01 | blend + glb | geometry-nodes | gn-corners-of-vertex-offset-corner-in-face-topology-chamfer | 5.1 | CC0 | topology_trim_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer |

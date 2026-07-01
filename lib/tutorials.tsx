@@ -271,6 +271,7 @@ import { entry as blenderTutorialAnimationLayeredActionLayersStripBlendingEntry 
 import { entry as blenderTutorialPythonContextTempOverrideMeshRepairPipelineEntry } from "components/tutorials/entries/blender-tutorial-python-context-temp-override-mesh-repair-pipeline";
 import { entry as blenderTutorialGnMeshToCurveCurveToMeshPipeNetworkWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr";
 import { entry as blenderTutorialPythonAppTimersDeferredLiveReloadFrameStepperEntry } from "components/tutorials/entries/blender-tutorial-python-app-timers-deferred-live-reload-frame-stepper";
+import { entry as blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -549,6 +550,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonContextTempOverrideMeshRepairPipelineEntry,
   blenderTutorialGnMeshToCurveCurveToMeshPipeNetworkWebxrEntry,
   blenderTutorialPythonAppTimersDeferredLiveReloadFrameStepperEntry,
+  blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
