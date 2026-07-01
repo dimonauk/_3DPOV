@@ -1,0 +1,41 @@
+{
+  "blender_version": "5.1",
+  "slug": "modifier-displace-voronoi-organic-terrain-webxr",
+  "topic": "modifiers",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "blueprint.py",                          "required": true  },
+    { "path": "record.py",                             "required": true  },
+    { "path": "SCREEN-RECORDING-NOTES.md",             "required": true  },
+    { "path": "README.md",                             "required": true  },
+    { "path": "output/organic_coral_prop.glb",         "required": false },
+    {
+      "path": "../../videos/modifiers/modifier-displace-voronoi-organic-terrain-webxr/viewport.mp4",
+      "required": false
+    },
+    {
+      "path": "../../videos/modifiers/modifier-displace-voronoi-organic-terrain-webxr/screen.mp4",
+      "required": false
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "url": "https://github.com/Maxivz/interactivetoolsblender",
+        "licence": "MIT",
+        "author": "Maxivz"
+      }
+    ]
+  }
+}
