@@ -349,3 +349,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-01 | blend + glb | geometry-nodes | gn-corners-of-vertex-offset-corner-in-face-topology-chamfer | 5.1 | CC0 | topology_trim_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer |
 | 2026-07-01 | blend + glb | modifiers | modifier-displace-voronoi-organic-terrain-webxr | 5.1 | CC0 | blueprint.py · record.py · output/organic_coral_prop.glb · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-modifier-displace-voronoi-organic-terrain-webxr |
+| 2026-07-01 | blend + glb | geometry-nodes | gn-catenary-curve-cable-array-webxr | 5.1 | CC0 | cable_array.blend · cable_array.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-catenary-curve-cable-array-webxr |

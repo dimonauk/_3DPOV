@@ -273,6 +273,7 @@ import { entry as blenderTutorialGnMeshToCurveCurveToMeshPipeNetworkWebxrEntry }
 import { entry as blenderTutorialPythonAppTimersDeferredLiveReloadFrameStepperEntry } from "components/tutorials/entries/blender-tutorial-python-app-timers-deferred-live-reload-frame-stepper";
 import { entry as blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer";
 import { entry as blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry } from "components/tutorials/entries/blender-tutorial-modifier-displace-voronoi-organic-terrain-webxr";
+import { entry as blenderTutorialGnCatenaryCurveCableArrayWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-catenary-curve-cable-array-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -553,6 +554,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonAppTimersDeferredLiveReloadFrameStepperEntry,
   blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry,
   blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry,
+  blenderTutorialGnCatenaryCurveCableArrayWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
