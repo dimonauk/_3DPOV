@@ -1,0 +1,88 @@
+{
+  "slug": "gn-rotation-nodes-axis-angle-fk-robot-arm",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "geometry-nodes",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-rotation-nodes-axis-angle-fk-robot-arm/blueprint.py",
+      "type": "script",
+      "description": "GN tree builder: deg2rad, FunctionNodeAxisAngleToRotation × 3, FunctionNodeRotateRotation(LOCAL) × 2, FunctionNodeRotateVector × 5, TransformGeometry × 7, JoinGeometry, GLB export"
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-rotation-nodes-axis-angle-fk-robot-arm/record.py",
+      "type": "script",
+      "description": "120-frame animation: yaw sweep 0→120°, pitch sweep 0→70°, roll sweep 0→180°, hero compound pose. Orbiting camera, three-point lighting."
+    },
+    {
+      "path": "output/fk_robot_arm.blend",
+      "type": "blend",
+      "description": "Blender source: robot arm scene with HS_FKArm GN modifier, Yaw/Pitch/Roll sliders"
+    },
+    {
+      "path": "output/fk_robot_arm.glb",
+      "type": "glb",
+      "description": "WebXR-ready baked pose: 7-part arm assembly, Draco 6, WebP, Y-up, root 'fk_robot_arm'"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-rotation-nodes-axis-angle-fk-robot-arm/viewport.mp4",
+      "type": "video",
+      "description": "120-frame rendered animation: yaw → pitch → roll → compound pose cycle"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-rotation-nodes-axis-angle-fk-robot-arm/screen.mp4",
+      "type": "video",
+      "description": "Screen recording: full node tree build, Euler comparison, Rotation Space toggle demo"
+    }
+  ],
+  "node_types": [
+    "FunctionNodeAxisAngleToRotation — axis (Vector) + angle (Float radians) → Rotation; added Blender 4.2",
+    "FunctionNodeRotateRotation — LOCAL space = right-multiply (FK); GLOBAL = pre-multiply",
+    "FunctionNodeRotateVector — rotates a position Vector by a Rotation socket value",
+    "GeometryNodeTransformGeometry — Rotation socket (orange) accepts ROTATION type directly in 4.3+"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "GN Matrix Compose — Iris Fold",
+        "path": "/tutorials/blender-tutorial-gn-matrix-compose-iris-fold",
+        "reason": "Also uses FunctionNodeAxisAngleToRotation; demonstrates the matrix alternative to FK composition via GeometryNodeComposeMatrix + GeometryNodeMultiplyMatrices"
+      },
+      {
+        "label": "Armature IK Robot Arm",
+        "path": "/tutorials/blender-tutorial-armature-ik-robot-arm",
+        "reason": "Contrasts Geometry Nodes FK (no runtime, bakes to static GLB) with armature IK (runtime solver, animatable in WebXR via GLB morph targets)"
+      },
+      {
+        "label": "GN Scene Time — Mechanical Clockwork",
+        "path": "/tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork",
+        "reason": "Uses FunctionNodeEulerToRotation (single-axis, no composition) as a gentler introduction to the Rotation socket type before chaining with RotateRotation"
+      },
+      {
+        "label": "Animation Action Slots — Multi-ID Shared",
+        "path": "/tutorials/blender-tutorial-animation-action-slots-multi-id-shared",
+        "reason": "Technique for keyframing the Yaw/Pitch/Roll GN modifier sockets to produce animated GLB sequences from the FK arm"
+      }
+    ],
+    "external_sources": [
+      {
+        "label": "Blender Manual — Axis Angle to Rotation",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "Blender Manual rotation utilities index: https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/"
+        ]
+      },
+      {
+        "label": "Blender 4.2 Release Notes — Rotation socket and new function nodes",
+        "url": "https://www.blender.org/download/releases/4-2/",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "blender/blender (GPL-2+) — source for FunctionNodeAxisAngleToRotation, FunctionNodeRotateRotation, FunctionNodeRotateVector"
+        ]
+      }
+    ]
+  }
+}
