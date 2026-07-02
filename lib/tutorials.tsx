@@ -281,6 +281,7 @@ import { entry as blenderTutorialGnForeachElementZoneStoneChiselWallEntry } from
 import { entry as blenderTutorialGnResampleCurveRailingBalustradeBezierPathEntry } from "components/tutorials/entries/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path";
 import { entry as blenderTutorialGnRotationNodesAxisAngleFkRobotArmEntry } from "components/tutorials/entries/blender-tutorial-gn-rotation-nodes-axis-angle-fk-robot-arm";
 import { entry as blenderTutorialGnInterpolateDomainFaceNormalVertexColourToonEntry } from "components/tutorials/entries/blender-tutorial-gn-interpolate-domain-face-normal-vertex-colour-toon";
+import { entry as blenderTutorialGnFlipFacesDoubleSidedPanelKitWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-flip-faces-double-sided-panel-kit-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -569,6 +570,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderTriplanarProjectionNoUvHardSurfaceWebxrEntry,
   blenderTutorialGnRotationNodesAxisAngleFkRobotArmEntry,
   blenderTutorialGnInterpolateDomainFaceNormalVertexColourToonEntry,
+  blenderTutorialGnFlipFacesDoubleSidedPanelKitWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
