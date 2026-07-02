@@ -274,6 +274,7 @@ import { entry as blenderTutorialPythonAppTimersDeferredLiveReloadFrameStepperEn
 import { entry as blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry } from "components/tutorials/entries/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer";
 import { entry as blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry } from "components/tutorials/entries/blender-tutorial-modifier-displace-voronoi-organic-terrain-webxr";
 import { entry as blenderTutorialGnCatenaryCurveCableArrayWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-catenary-curve-cable-array-webxr";
+import { entry as blenderTutorialGnForeachElementZoneStoneChiselWallEntry } from "components/tutorials/entries/blender-tutorial-gn-foreach-element-zone-stone-chisel-wall";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -555,6 +556,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEntry,
   blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry,
   blenderTutorialGnCatenaryCurveCableArrayWebxrEntry,
+  blenderTutorialGnForeachElementZoneStoneChiselWallEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
