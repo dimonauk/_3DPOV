@@ -227,6 +227,7 @@ import { entry as blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry }
 import { entry as blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite";
 import { entry as blenderTutorialGnSimulationZoneRollingSpherPhysicsEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-rolling-sphere-physics";
 import { entry as blenderTutorialShaderPrincipledSheenCoatVelvetLacquerVrmEntry } from "components/tutorials/entries/blender-tutorial-shader-principled-sheen-coat-velvet-lacquer-vrm";
+import { entry as blenderTutorialShaderTriplanarProjectionNoUvHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-triplanar-projection-no-uv-hard-surface-webxr";
 import { entry as blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry } from "components/tutorials/entries/blender-tutorial-gn-field-at-index-edge-tangent-flow-map";
 import { entry as blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-weighted-stripe-tube";
 import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-sort-elements-sequential-face-reveal";
@@ -563,6 +564,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnResampleCurveRailingBalustradeBezierPathEntry,
   blenderTutorialGnSimulationZoneRollingSpherPhysicsEntry,
   blenderTutorialShaderPrincipledSheenCoatVelvetLacquerVrmEntry,
+  blenderTutorialShaderTriplanarProjectionNoUvHardSurfaceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
