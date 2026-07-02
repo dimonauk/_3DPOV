@@ -242,6 +242,7 @@ import { entry as blenderTutorialGnSampleUvSurfaceRivetGridEntry } from "compone
 import { entry as blenderTutorialPythonImagePixelBufferProceduralBakeEntry } from "components/tutorials/entries/blender-tutorial-python-image-pixel-buffer-procedural-bake";
 import { entry as blenderTutorialGnExtrudeMeshCityBlockAttributeHeightEntry } from "components/tutorials/entries/blender-tutorial-gn-extrude-mesh-city-block-attribute-height";
 import { entry as blenderTutorialGnFillCurveLogoExtrusionWebxrBadgeEntry } from "components/tutorials/entries/blender-tutorial-gn-fill-curve-logo-extrusion-webxr-badge";
+import { entry as blenderTutorialGnCurveArcDialGaugeWebxrHudEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-arc-dial-gauge-webxr-hud";
 import { entry as blenderTutorialModifierSubdivisionSurfaceCreaseSupportLoopsWebxrEntry } from "components/tutorials/entries/blender-tutorial-modifier-subdivision-surface-crease-support-loops-webxr";
 import { entry as blenderTutorialGp3FrameByFrameCelAnimationEntry } from "components/tutorials/entries/blender-tutorial-gp3-frame-by-frame-cel-animation";
 import { entry as blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo } from "components/tutorials/entries/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo";
@@ -529,6 +530,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonImagePixelBufferProceduralBakeEntry,
   blenderTutorialGnExtrudeMeshCityBlockAttributeHeightEntry,
   blenderTutorialGnFillCurveLogoExtrusionWebxrBadgeEntry,
+  blenderTutorialGnCurveArcDialGaugeWebxrHudEntry,
   blenderTutorialModifierSubdivisionSurfaceCreaseSupportLoopsWebxrEntry,
   blenderTutorialGp3FrameByFrameCelAnimationEntry,
   blenderTutorialSculptFaceSetsZoneMaskingVrmRetopo,
