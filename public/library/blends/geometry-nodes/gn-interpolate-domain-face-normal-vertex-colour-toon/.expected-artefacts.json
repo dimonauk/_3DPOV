@@ -1,0 +1,50 @@
+{
+  "slug": "gn-interpolate-domain-face-normal-vertex-colour-toon",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "type": "blend",
+      "path": "public/library/blends/geometry-nodes/gn-interpolate-domain-face-normal-vertex-colour-toon/toon_gem_faceted.blend",
+      "description": "Icosphere with flat shading; HS_InterpolateDomainToon GN node group; vertex colour attribute toon_col; toon_gem_vcol material."
+    },
+    {
+      "type": "glb",
+      "path": "public/library/glbs/geometry-nodes/gn-interpolate-domain-face-normal-vertex-colour-toon/toon_gem_faceted.glb",
+      "description": "Flat-shaded faceted gem with BYTE_COLOR vertex attribute (COLOR_0 in GLB) encoding toon watercolour gradient. Draco-compressed, level 6."
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/geometry-nodes/gn-interpolate-domain-face-normal-vertex-colour-toon/viewport.mp4",
+      "description": "8-second viewport render: grey icosphere → GN modifier applied → vertex colours appear → object slow-spins 270°."
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/geometry-nodes/gn-interpolate-domain-face-normal-vertex-colour-toon/screen.mp4",
+      "description": "Screen recording: full node-tree build from empty scene to GLB export (~3.5 minutes)."
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "external_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/4.3/modeling/geometry_nodes/utilities/field/interpolate_domain.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "note": "Primary node documentation"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "author": "Nikolai Janakiev",
+        "licence": "MIT",
+        "note": "Blender Python scripting patterns reference"
+      }
+    ]
+  }
+}
