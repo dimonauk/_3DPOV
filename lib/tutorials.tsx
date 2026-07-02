@@ -286,6 +286,7 @@ import { entry as blenderTutorialGnFlipFacesDoubleSidedPanelKitWebxrEntry } from
 import { entry as blenderTutorialGnSwitchGeometryVariantToggleWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-switch-geometry-variant-toggle-webxr";
 import { entry as blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry } from "components/tutorials/entries/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor";
 import { entry as blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-parallax-occlusion-mapping-wall-tile-webxr";
+import { entry as blenderTutorialPythonLibraryLinkAppendBlendFilesEntry } from "components/tutorials/entries/blender-tutorial-python-library-link-append-blend-files";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -579,6 +580,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSwitchGeometryVariantToggleWebxrEntry,
   blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry,
   blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry,
+  blenderTutorialPythonLibraryLinkAppendBlendFilesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
