@@ -1,0 +1,55 @@
+{
+  "slug": "python-file-handler-gltf-drag-drop-extension-extractor",
+  "topic": "scripting",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "../../videos/scripting/python-file-handler-gltf-drag-drop-extension-extractor/viewport.mp4",
+    "../../videos/scripting/python-file-handler-gltf-drag-drop-extension-extractor/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export",
+      "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — File Handlers",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.FileHandler.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.Operator.html",
+          "https://docs.blender.org/api/5.1/bpy.types.OperatorFileListElement.html"
+        ]
+      },
+      {
+        "title": "KhronosGroup/glTF-Tutorials — GLB File Format Specification",
+        "url": "https://github.com/KhronosGroup/glTF-Tutorials/blob/main/gltfTutorial/gltfTutorial_002_BasicGltfStructure.md",
+        "licence": "CC-BY-4.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+        ]
+      }
+    ]
+  }
+}
