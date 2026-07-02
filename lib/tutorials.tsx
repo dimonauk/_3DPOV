@@ -292,6 +292,7 @@ import { entry as blenderTutorialRiggingVrmEyeLookAtDampedTrackEntry } from "com
 import { entry as blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-shader-detail-normal-rnm-overlay-hard-surface";
 import { entry as blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry } from "components/tutorials/entries/blender-tutorial-python-pose-bone-constraint-management-export-bake";
 import { entry as blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr";
+import { entry as blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry } from "components/tutorials/entries/blender-tutorial-python-custom-panel-operator-n-panel-sidebar";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -591,6 +592,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry,
   blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry,
   blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry,
+  blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
