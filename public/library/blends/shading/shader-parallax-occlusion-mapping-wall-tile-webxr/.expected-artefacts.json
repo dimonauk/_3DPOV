@@ -1,0 +1,47 @@
+{
+  "blend": "wall_tile_pom.blend",
+  "glb": "output/wall_tile_pom.glb",
+  "images": [
+    "output/pom_colour_baked.png"
+  ],
+  "videos": [
+    "public/library/videos/shading/shader-parallax-occlusion-mapping-wall-tile-webxr/viewport.mp4",
+    "public/library/videos/shading/shader-parallax-occlusion-mapping-wall-tile-webxr/screen.mp4"
+  ],
+  "materials": [
+    "POM_BrickWall"
+  ],
+  "node_group_pattern": "tangent-space dot-product view decomposition + 4-step unrolled steep parallax cascade via GreaterThan + MixRGB nodes",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-triplanar-projection-no-uv-hard-surface-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-python-bmesh-uv-map-read-write-atlas-pack"
+    ],
+    "external": [
+      {
+        "title": "Tangent Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/input/tangent.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Vector Math Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/converter/vector_math.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Three.js NodeMaterial / TSL source",
+        "url": "https://github.com/mrdoob/three.js/tree/dev/src/nodes",
+        "licence": "MIT",
+        "author": "mrdoob and three.js contributors",
+        "repo": "https://github.com/mrdoob/three.js"
+      }
+    ]
+  }
+}

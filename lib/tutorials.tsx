@@ -285,6 +285,7 @@ import { entry as blenderTutorialGnInterpolateDomainFaceNormalVertexColourToonEn
 import { entry as blenderTutorialGnFlipFacesDoubleSidedPanelKitWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-flip-faces-double-sided-panel-kit-webxr";
 import { entry as blenderTutorialGnSwitchGeometryVariantToggleWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-switch-geometry-variant-toggle-webxr";
 import { entry as blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry } from "components/tutorials/entries/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor";
+import { entry as blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-parallax-occlusion-mapping-wall-tile-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -577,6 +578,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnFlipFacesDoubleSidedPanelKitWebxrEntry,
   blenderTutorialGnSwitchGeometryVariantToggleWebxrEntry,
   blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry,
+  blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
