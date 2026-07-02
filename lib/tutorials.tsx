@@ -290,6 +290,7 @@ import { entry as blenderTutorialPythonLibraryLinkAppendBlendFilesEntry } from "
 import { entry as blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter";
 import { entry as blenderTutorialRiggingVrmEyeLookAtDampedTrackEntry } from "components/tutorials/entries/blender-tutorial-rigging-vrm-eye-look-at-damped-track";
 import { entry as blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-shader-detail-normal-rnm-overlay-hard-surface";
+import { entry as blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry } from "components/tutorials/entries/blender-tutorial-python-pose-bone-constraint-management-export-bake";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -587,6 +588,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry,
   blenderTutorialRiggingVrmEyeLookAtDampedTrackEntry,
   blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry,
+  blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
