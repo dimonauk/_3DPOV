@@ -1,0 +1,38 @@
+{
+  "slug": "gn-distribute-points-on-curves-ivy-leaf-scatter",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "geometry-nodes",
+  "files": [
+    "public/library/blends/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/record.py",
+    "public/library/blends/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/README.md",
+    "public/library/blends/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/.expected-artefacts.json",
+    "public/library/glbs/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/ivy_leaf_scatter.glb",
+    "public/library/videos/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-distribute-points-on-curves-ivy-leaf-scatter/screen.mp4",
+    "components/tutorials/entries/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter.tsx",
+    "tools/blender-addon/holoflow_macros/gn_distribute_points_on_curves_ivy.py"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril",
+      "/tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align",
+      "/tutorials/blender-tutorial-shader-alpha-clip-blend-foliage-decal-webxr",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/distribute_points_on_curves.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_unlit/README.md",
+        "licence": "MIT",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

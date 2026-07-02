@@ -287,6 +287,7 @@ import { entry as blenderTutorialGnSwitchGeometryVariantToggleWebxrEntry } from 
 import { entry as blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry } from "components/tutorials/entries/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor";
 import { entry as blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-parallax-occlusion-mapping-wall-tile-webxr";
 import { entry as blenderTutorialPythonLibraryLinkAppendBlendFilesEntry } from "components/tutorials/entries/blender-tutorial-python-library-link-append-blend-files";
+import { entry as blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -581,6 +582,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonFileHandlerGltfDragDropExtensionExtractorEntry,
   blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntry,
   blenderTutorialPythonLibraryLinkAppendBlendFilesEntry,
+  blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
