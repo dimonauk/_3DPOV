@@ -225,6 +225,7 @@ import { entry as blenderTutorialGnGeometryToInstanceMultiVariantPropScatterEntr
 import { entry as blenderTutorialGnSetMaterialIndexVoronoiCellZonesEntry } from "components/tutorials/entries/blender-tutorial-gn-set-material-index-voronoi-cell-zones";
 import { entry as blenderTutorialGnRepeatZoneIterativeLsystemBranchGrowthEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth";
 import { entry as blenderTutorialGnSimulationZoneDlaCrystalDendriteEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite";
+import { entry as blenderTutorialGnSimulationZoneRollingSpherPhysicsEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-rolling-sphere-physics";
 import { entry as blenderTutorialGnFieldAtIndexEdgeTangentFlowMapEntry } from "components/tutorials/entries/blender-tutorial-gn-field-at-index-edge-tangent-flow-map";
 import { entry as blenderTutorialGnAccumulateFieldWeightedStripeTubeEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-weighted-stripe-tube";
 import { entry as blenderTutorialGnSortElementsSequentialFaceRevealEntry } from "components/tutorials/entries/blender-tutorial-gn-sort-elements-sequential-face-reveal";
@@ -559,6 +560,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCatenaryCurveCableArrayWebxrEntry,
   blenderTutorialGnForeachElementZoneStoneChiselWallEntry,
   blenderTutorialGnResampleCurveRailingBalustradeBezierPathEntry,
+  blenderTutorialGnSimulationZoneRollingSpherPhysicsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
