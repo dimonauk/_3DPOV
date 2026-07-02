@@ -289,6 +289,7 @@ import { entry as blenderTutorialShaderParallaxOcclusionMappingWallTileWebxrEntr
 import { entry as blenderTutorialPythonLibraryLinkAppendBlendFilesEntry } from "components/tutorials/entries/blender-tutorial-python-library-link-append-blend-files";
 import { entry as blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter";
 import { entry as blenderTutorialRiggingVrmEyeLookAtDampedTrackEntry } from "components/tutorials/entries/blender-tutorial-rigging-vrm-eye-look-at-damped-track";
+import { entry as blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry } from "components/tutorials/entries/blender-tutorial-shader-detail-normal-rnm-overlay-hard-surface";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -585,6 +586,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonLibraryLinkAppendBlendFilesEntry,
   blenderTutorialGnDistributePointsOnCurvesIvyLeafScatterEntry,
   blenderTutorialRiggingVrmEyeLookAtDampedTrackEntry,
+  blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
