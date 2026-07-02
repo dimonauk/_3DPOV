@@ -1,0 +1,38 @@
+{
+  "slug": "python-cycles-batch-bake-normal-ao-emission-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "videos/scripting/python-cycles-batch-bake-normal-ao-emission-webxr/viewport.mp4",
+    "videos/scripting/python-cycles-batch-bake-normal-ao-emission-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-image-pixel-buffer-procedural-bake",
+      "/tutorials/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow",
+        "description": "blender-python-examples — operator, panel, and property group reference implementations"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.ops.object.html#bpy.ops.object.bake",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "description": "bpy.ops.object.bake() API reference — canonical parameter documentation"
+      }
+    ]
+  },
+  "notes": "No binary .blend shipped; the blueprint.py is the entire deliverable. Run record.py headless to generate viewport.mp4."
+}
