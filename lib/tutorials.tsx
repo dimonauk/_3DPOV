@@ -275,6 +275,7 @@ import { entry as blenderTutorialGnCornersOfVertexOffsetCornerTopologyChamferEnt
 import { entry as blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry } from "components/tutorials/entries/blender-tutorial-modifier-displace-voronoi-organic-terrain-webxr";
 import { entry as blenderTutorialGnCatenaryCurveCableArrayWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-catenary-curve-cable-array-webxr";
 import { entry as blenderTutorialGnForeachElementZoneStoneChiselWallEntry } from "components/tutorials/entries/blender-tutorial-gn-foreach-element-zone-stone-chisel-wall";
+import { entry as blenderTutorialGnResampleCurveRailingBalustradeBezierPathEntry } from "components/tutorials/entries/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -557,6 +558,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialModifierDisplaceVoronoiOrganicTerrainWebxrEntry,
   blenderTutorialGnCatenaryCurveCableArrayWebxrEntry,
   blenderTutorialGnForeachElementZoneStoneChiselWallEntry,
+  blenderTutorialGnResampleCurveRailingBalustradeBezierPathEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

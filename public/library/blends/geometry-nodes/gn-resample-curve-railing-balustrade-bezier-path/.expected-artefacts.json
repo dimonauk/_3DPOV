@@ -1,0 +1,38 @@
+{
+  "slug": "gn-resample-curve-railing-balustrade-bezier-path",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "geometry-nodes",
+  "files": [
+    "public/library/blends/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/record.py",
+    "public/library/blends/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/README.md",
+    "public/library/blends/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/.expected-artefacts.json",
+    "public/library/glbs/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/railing_balustrade.glb",
+    "public/library/videos/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-resample-curve-railing-balustrade-bezier-path/screen.mp4",
+    "components/tutorials/entries/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path.tsx",
+    "tools/blender-addon/holoflow_macros/gn_resample_curve_railing.py"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-catenary-curve-cable-array-webxr",
+      "/tutorials/blender-tutorial-gn-sample-curve-track-sleepers",
+      "/tutorials/blender-tutorial-gn-align-euler-to-vector-signage-facade",
+      "/tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_draco_mesh_compression",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
