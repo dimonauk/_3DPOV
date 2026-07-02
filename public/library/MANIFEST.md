@@ -368,3 +368,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-02 | blend + glb | scripting | python-pose-bone-constraint-management-export-bake | 5.1 | CC0 | constraint_rig_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-pose-bone-constraint-management-export-bake |
 | 2026-07-02 | blend | scripting | python-cycles-batch-bake-normal-ao-emission-webxr | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr |
 | 2026-07-02 | blend | scripting | python-custom-panel-operator-n-panel-sidebar | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar |
+
+| 2026-07-02 | blend + glb | sculpting | sculpt-layer-brush-stencil-fabric-detail-vrm | 5.1 | CC0 | vrm_fabric_jacket.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm |

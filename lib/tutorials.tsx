@@ -293,6 +293,7 @@ import { entry as blenderTutorialShaderDetailNormalRnmOverlayHardSurfaceEntry } 
 import { entry as blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry } from "components/tutorials/entries/blender-tutorial-python-pose-bone-constraint-management-export-bake";
 import { entry as blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr";
 import { entry as blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry } from "components/tutorials/entries/blender-tutorial-python-custom-panel-operator-n-panel-sidebar";
+import { entry as blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry } from "components/tutorials/entries/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -593,6 +594,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonPoseBoneConstraintManagementExportBakeEntry,
   blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry,
   blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry,
+  blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
