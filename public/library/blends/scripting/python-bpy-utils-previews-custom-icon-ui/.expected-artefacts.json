@@ -1,0 +1,67 @@
+{
+  "slug": "python-bpy-utils-previews-custom-icon-ui",
+  "topic": "scripting",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "icons/GLB.png",
+    "icons/GLTF_SEPARATE.png",
+    "icons/render_thumb.png",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Python — bpy.props.CollectionProperty + bpy.types.UIList: Dynamic Export Queue Panel",
+        "url": "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue",
+        "relation": "extends — the export queue panel this tutorial adds icon_value support to"
+      },
+      {
+        "label": "Python bpy.types.Panel + Operator — Custom N-Panel Sidebar Add-on for WebXR Export Prep",
+        "url": "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+        "relation": "prerequisite — base Panel/Operator architecture required before adding previews"
+      },
+      {
+        "label": "Python bpy.types.WorkSpaceTool — Custom Toolbar Tool: Click-Tag holoflow:facet Attribute",
+        "url": "/tutorials/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag",
+        "relation": "sibling — another UI extension pattern that uses custom icons in the toolbar"
+      },
+      {
+        "label": "Python bpy.msgbus — Reactive Property Subscriptions",
+        "url": "/tutorials/blender-tutorial-python-msgbus-reactive-property-subscriptions",
+        "relation": "sibling — reactive update approach complementary to polling icon_id in draw()"
+      }
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.utils.previews",
+        "url": "https://docs.blender.org/api/current/bpy.utils.previews.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "note": "Authoritative API reference for ImagePreviewCollection; no content reproduced"
+      },
+      {
+        "title": "nutti/fake-bpy-module — bpy type stubs for IDEs",
+        "url": "https://github.com/nutti/fake-bpy-module",
+        "author": "nutti",
+        "licence": "MIT",
+        "related": ["nutti/blender-addon-tester"],
+        "note": "Type stubs for ImagePreviewCollection.load(), icon_id and reload() methods"
+      },
+      {
+        "title": "robertguetzkow/blender-python-examples — Add-on patterns collection",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "author": "Robert Guetzkow",
+        "licence": "MIT",
+        "related": ["blender-id-addon (GPL, skip)", "shotify"],
+        "note": "Icon loading patterns in the custom_icon_plain_py example"
+      }
+    ]
+  }
+}

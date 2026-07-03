@@ -309,6 +309,7 @@ import { entry as blenderTutorialGnActiveCameraBillboardSpriteWebxrHudEntry } fr
 import { entry as blenderTutorialGnEdgesOfVertexVerticesOfEdgeBoundaryWeldBeadWindowFrameEntry } from "components/tutorials/entries/blender-tutorial-gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame";
 import { entry as blenderTutorialGnCurveTangentNormalFrenetRibbonBeamWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-tangent-normal-frenet-ribbon-beam-webxr";
 import { entry as blenderTutorialGnIsViewportRenderLodSwitchWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-is-viewport-render-lod-switch-webxr";
+import { entry as blenderTutorialPythonBpyUtilsPreviewsCustomIconUiEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-utils-previews-custom-icon-ui";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -625,6 +626,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnEdgesOfVertexVerticesOfEdgeBoundaryWeldBeadWindowFrameEntry,
   blenderTutorialGnCurveTangentNormalFrenetRibbonBeamWebxrEntry,
   blenderTutorialGnIsViewportRenderLodSwitchWebxrEntry,
+  blenderTutorialPythonBpyUtilsPreviewsCustomIconUiEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
