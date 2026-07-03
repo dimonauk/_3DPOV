@@ -1,0 +1,46 @@
+{
+  "slug": "gn-repeat-zone-crystal-antenna-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "crystal_antenna.blend",
+    "crystal_antenna.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-rolling-sphere-physics",
+      "/tutorials/blender-tutorial-gn-foreach-element-zone-stone-chisel-wall",
+      "/tutorials/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter",
+      "/tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes",
+      "/tutorials/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path",
+      "/tutorials/blender-tutorial-gn-catenary-curve-cable-array-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/repeat_zone.html",
+        "title": "Repeat Zone — Blender 5.1 Manual",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_repos": ["https://github.com/blender/blender"]
+      },
+      {
+        "url": "https://algorithmicbotany.org/papers/abop/abop.pdf",
+        "title": "The Algorithmic Beauty of Plants (Prusinkiewicz & Lindenmayer, 1990)",
+        "licence": "Free-to-read distribution provided by authors",
+        "author": "Przemyslaw Prusinkiewicz, Aristid Lindenmayer",
+        "related_repos": []
+      }
+    ]
+  },
+  "technique_notes": {
+    "repeat_zone_vs_simulation": "Repeat Zone collapses all N iterations into one depsgraph pass; Iterations is a live parameter. Simulation Zone writes one timestep per playback frame.",
+    "curveline_trick": "CurveLine(end=branch_offset) + CurveToMesh bakes direction into instance local geometry — no AlignEulerToVector needed.",
+    "items_mechanism": "Items added to RepeatOutput.items create paired sockets on both RepeatInput and RepeatOutput. RepeatInput.inputs[0]='Iterations', items start at [1].",
+    "vertex_budget": "5 iterations × 3-branch → 363 tubes × 14 verts ≈ 5 100 verts. Draco 6 typically compresses to under 120 KB."
+  }
+}
