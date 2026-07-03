@@ -1,0 +1,47 @@
+{
+  "slug": "python-custom-pie-menu-rigging-export-toolkit",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "expected_artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-custom-pie-menu-rigging-export-toolkit/viewport.mp4",
+    "public/library/videos/scripting/python-custom-pie-menu-rigging-export-toolkit/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-addon-preferences-keymap-hotkey-exporter",
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+      "/tutorials/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender templates — ui_pie_menu.py",
+        "url": "https://projects.blender.org/blender/blender/src/branch/main/scripts/templates_py/ui_pie_menu.py",
+        "licence": "Apache-2.0",
+        "author": "Blender Foundation",
+        "related_repos": [
+          "blender/blender",
+          "blender/blender-addons",
+          "blender/blender-extensions"
+        ]
+      },
+      {
+        "title": "Blender Python API Reference — bpy.types.Menu",
+        "url": "https://docs.blender.org/api/current/bpy.types.Menu.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_repos": [
+          "blender/blender"
+        ]
+      }
+    ]
+  }
+}

@@ -304,6 +304,7 @@ import { entry as blenderTutorialGnIndexOfNearestPointConnectionWebCircuitBoardW
 import { entry as blenderTutorialGnRepeatZoneCrystalAntennaWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr";
 import { entry as blenderTutorialPythonMultiviewCameraRigGaussianSplatRenderEntry } from "components/tutorials/entries/blender-tutorial-python-multiview-camera-rig-gaussian-splat-render";
 import { entry as blenderTutorialPythonBlenderExtensionsPlatformManifestBuildPackageEntry } from "components/tutorials/entries/blender-tutorial-python-blender-extensions-platform-manifest-build-package";
+import { entry as blenderTutorialPythonCustomPieMenuRiggingExportToolkitEntry } from "components/tutorials/entries/blender-tutorial-python-custom-pie-menu-rigging-export-toolkit";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -615,6 +616,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnRepeatZoneCrystalAntennaWebxrEntry,
   blenderTutorialPythonMultiviewCameraRigGaussianSplatRenderEntry,
   blenderTutorialPythonBlenderExtensionsPlatformManifestBuildPackageEntry,
+  blenderTutorialPythonCustomPieMenuRiggingExportToolkitEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
