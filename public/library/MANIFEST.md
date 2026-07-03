@@ -373,3 +373,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-03 | blend | scripting | python-bpy-collection-property-uilist-export-queue | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue |
 
+| 2026-07-03 | blend | grease-pencil | gp3-layer-modifier-build-reveal-animated-ink-diagram | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gp3-layer-modifier-build-reveal-animated-ink-diagram |

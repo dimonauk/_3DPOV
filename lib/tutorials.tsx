@@ -295,6 +295,7 @@ import { entry as blenderTutorialPythonPoseBoneConstraintManagementExportBakeEnt
 import { entry as blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr";
 import { entry as blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry } from "components/tutorials/entries/blender-tutorial-python-custom-panel-operator-n-panel-sidebar";
 import { entry as blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry } from "components/tutorials/entries/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm";
+import { entry as blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry } from "components/tutorials/entries/blender-tutorial-gp3-layer-modifier-build-reveal-animated-ink-diagram";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -597,6 +598,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonCyclesBatchBakeNormalAoEmissionWebxrEntry,
   blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry,
   blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry,
+  blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
