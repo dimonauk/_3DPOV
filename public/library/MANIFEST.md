@@ -370,3 +370,6 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-02 | blend | scripting | python-custom-panel-operator-n-panel-sidebar | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar |
 
 | 2026-07-02 | blend + glb | sculpting | sculpt-layer-brush-stencil-fabric-detail-vrm | 5.1 | CC0 | vrm_fabric_jacket.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm |
+
+| 2026-07-03 | blend | scripting | python-bpy-collection-property-uilist-export-queue | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue |
+

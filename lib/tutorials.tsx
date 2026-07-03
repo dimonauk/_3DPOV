@@ -143,6 +143,7 @@ import { entry as blenderTutorialAnimationFcurveModifiersNoiseCyclesSteppedEntry
 import { entry as blenderTutorialCompositorMotionVectorBlurEntry } from "components/tutorials/entries/blender-tutorial-compositor-motion-vector-blur";
 import { entry as blenderTutorialCompositorOidnDenoiseCyclesPassesEntry } from "components/tutorials/entries/blender-tutorial-compositor-oidn-denoise-cycles-passes";
 import { entry as blenderTutorialPythonAddonCustomPanelPropertyGroupEntry } from "components/tutorials/entries/blender-tutorial-python-addon-custom-panel-property-group";
+import { entry as blenderTutorialPythonBpyCollectionPropertyUilistExportQueueEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-collection-property-uilist-export-queue";
 import { entry as blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry } from "components/tutorials/entries/blender-tutorial-animation-sound-bake-fcurve-audio-reactive";
 import { entry as blenderTutorialAnimationCameraRigDollyFocusPullEntry } from "components/tutorials/entries/blender-tutorial-animation-camera-rig-dolly-focus-pull";
 import { entry as blenderTutorialRiggingCorrectiveShapeKeysDriverEntry } from "components/tutorials/entries/blender-tutorial-rigging-corrective-shape-keys-driver";
@@ -444,6 +445,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialCompositorMotionVectorBlurEntry,
   blenderTutorialCompositorOidnDenoiseCyclesPassesEntry,
   blenderTutorialPythonAddonCustomPanelPropertyGroupEntry,
+  blenderTutorialPythonBpyCollectionPropertyUilistExportQueueEntry,
   blenderTutorialAnimationSoundBakeFcurveAudioReactiveEntry,
   blenderTutorialRiggingCorrectiveShapeKeysDriverEntry,
   blenderTutorialGreasePencil3LineArtToonOutlineEntry,
