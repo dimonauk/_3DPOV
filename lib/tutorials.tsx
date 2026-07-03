@@ -300,6 +300,7 @@ import { entry as blenderTutorialPythonWorkspaceToolCustomToolbarFacetTagEntry }
 import { entry as blenderTutorialPythonGizmoGroupCustomViewportHandleEntry } from "components/tutorials/entries/blender-tutorial-python-gizmo-group-custom-viewport-handle";
 import { entry as blenderTutorialPythonGltfUserExtensionExportExtrasHookEntry } from "components/tutorials/entries/blender-tutorial-python-gltf-user-extension-export-extras-hook";
 import { entry as blenderTutorialPythonAddonPreferencesKeymapHotkeyExporterEntry } from "components/tutorials/entries/blender-tutorial-python-addon-preferences-keymap-hotkey-exporter";
+import { entry as blenderTutorialGnIndexOfNearestPointConnectionWebCircuitBoardWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-index-of-nearest-point-connection-web-circuit-board-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -607,6 +608,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonGizmoGroupCustomViewportHandleEntry,
   blenderTutorialPythonGltfUserExtensionExportExtrasHookEntry,
   blenderTutorialPythonAddonPreferencesKeymapHotkeyExporterEntry,
+  blenderTutorialGnIndexOfNearestPointConnectionWebCircuitBoardWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
