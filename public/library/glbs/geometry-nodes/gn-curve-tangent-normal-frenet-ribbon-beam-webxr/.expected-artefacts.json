@@ -1,0 +1,15 @@
+{
+  "slug": "gn-curve-tangent-normal-frenet-ribbon-beam-webxr",
+  "source_blend": "public/library/blends/geometry-nodes/gn-curve-tangent-normal-frenet-ribbon-beam-webxr/",
+  "output_glb": "energy_beam.glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "export_settings": {
+    "draco_level": 6,
+    "format": "GLB",
+    "export_apply": true,
+    "export_attributes": true,
+    "export_tangents": false
+  },
+  "poly_budget_webxr": "~2048 tris (64 rings × 8 segs × 2 = 1024 quads → 2048 tris with Fill Caps ~16 extra)"
+}

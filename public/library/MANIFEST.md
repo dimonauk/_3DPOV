@@ -395,3 +395,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-03 | blend | geometry-nodes | gn-active-camera-billboard-sprite-webxr-hud | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-active-camera-billboard-sprite-webxr-hud |
 | 2026-07-03 | blend + glb | geometry-nodes | gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame | 5.1 | CC0 | window_frame_weld.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame |
+| 2026-07-03 | blend + glb | geometry-nodes | gn-curve-tangent-normal-frenet-ribbon-beam-webxr | 5.1 | CC0 | energy_beam.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-curve-tangent-normal-frenet-ribbon-beam-webxr |
