@@ -297,6 +297,7 @@ import { entry as blenderTutorialPythonCustomPanelOperatorNPanelSidebarEntry } f
 import { entry as blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry } from "components/tutorials/entries/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm";
 import { entry as blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry } from "components/tutorials/entries/blender-tutorial-gp3-layer-modifier-build-reveal-animated-ink-diagram";
 import { entry as blenderTutorialPythonWorkspaceToolCustomToolbarFacetTagEntry } from "components/tutorials/entries/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag";
+import { entry as blenderTutorialPythonGizmoGroupCustomViewportHandleEntry } from "components/tutorials/entries/blender-tutorial-python-gizmo-group-custom-viewport-handle";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -601,6 +602,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry,
   blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry,
   blenderTutorialPythonWorkspaceToolCustomToolbarFacetTagEntry,
+  blenderTutorialPythonGizmoGroupCustomViewportHandleEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
