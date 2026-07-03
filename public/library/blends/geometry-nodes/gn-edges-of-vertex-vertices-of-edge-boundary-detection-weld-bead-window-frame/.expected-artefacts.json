@@ -1,0 +1,45 @@
+{
+  "slug": "gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/window_frame_weld.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame/screen.mp4"
+  ],
+  "custom_attributes": [
+    { "name": "boundary_excess", "domain": "POINT", "data_type": "INT",          "note": "0=interior, 1=boundary vertex, >=2=non-manifold vertex" },
+    { "name": "edge_dir",        "domain": "EDGE",  "data_type": "FLOAT_VECTOR", "note": "unit tangent V1→V2 per edge; anisotropic tangent in Three.js" }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-corners-of-vertex-offset-corner-in-face-topology-chamfer",
+      "/tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map",
+      "/tutorials/blender-tutorial-gn-mesh-to-curve-curve-to-mesh-pipe-network-webxr",
+      "/tutorials/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/BrendanParmer/NodeToPython",
+        "label": "BrendanParmer/NodeToPython",
+        "licence": "MIT",
+        "author": "Brendan Parmer",
+        "siblings": ["https://github.com/BrendanParmer/NodeToPython/tree/main/tests"]
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "label": "njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "siblings": ["https://github.com/njanakiev/blender-jupyter"]
+      }
+    ]
+  }
+}

@@ -306,6 +306,7 @@ import { entry as blenderTutorialPythonMultiviewCameraRigGaussianSplatRenderEntr
 import { entry as blenderTutorialPythonBlenderExtensionsPlatformManifestBuildPackageEntry } from "components/tutorials/entries/blender-tutorial-python-blender-extensions-platform-manifest-build-package";
 import { entry as blenderTutorialPythonCustomPieMenuRiggingExportToolkitEntry } from "components/tutorials/entries/blender-tutorial-python-custom-pie-menu-rigging-export-toolkit";
 import { entry as blenderTutorialGnActiveCameraBillboardSpriteWebxrHudEntry } from "components/tutorials/entries/blender-tutorial-gn-active-camera-billboard-sprite-webxr-hud";
+import { entry as blenderTutorialGnEdgesOfVertexVerticesOfEdgeBoundaryWeldBeadWindowFrameEntry } from "components/tutorials/entries/blender-tutorial-gn-edges-of-vertex-vertices-of-edge-boundary-detection-weld-bead-window-frame";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -619,6 +620,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBlenderExtensionsPlatformManifestBuildPackageEntry,
   blenderTutorialPythonCustomPieMenuRiggingExportToolkitEntry,
   blenderTutorialGnActiveCameraBillboardSpriteWebxrHudEntry,
+  blenderTutorialGnEdgesOfVertexVerticesOfEdgeBoundaryWeldBeadWindowFrameEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
