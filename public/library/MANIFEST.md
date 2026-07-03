@@ -392,3 +392,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-03 | blend | scripting | python-blender-extensions-platform-manifest-build-package | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-blender-extensions-platform-manifest-build-package |
 
 | 2026-07-03 | blend | scripting | python-custom-pie-menu-rigging-export-toolkit | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-custom-pie-menu-rigging-export-toolkit |
+
+| 2026-07-03 | blend | geometry-nodes | gn-active-camera-billboard-sprite-webxr-hud | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-active-camera-billboard-sprite-webxr-hud |

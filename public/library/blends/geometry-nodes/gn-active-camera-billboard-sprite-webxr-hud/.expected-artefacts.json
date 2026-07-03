@@ -1,0 +1,39 @@
+{
+  "slug": "gn-active-camera-billboard-sprite-webxr-hud",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "public/library/blends/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/record.py",
+    "public/library/blends/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/README.md",
+    "public/library/blends/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/.expected-artefacts.json",
+    "public/library/videos/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-active-camera-billboard-sprite-webxr-hud/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-align-euler-to-vector-signage-facade",
+      "/tutorials/blender-tutorial-gn-rotation-nodes-axis-angle-fk-robot-arm",
+      "/tutorials/blender-tutorial-gn-curve-arc-dial-gauge-webxr-hud",
+      "/tutorials/blender-tutorial-gn-interpolate-domain-face-normal-vertex-colour-toon"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Active Camera Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/active_camera.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Blender Manual — Separate Matrix Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://github.com/blender/blender"
+      }
+    ]
+  }
+}
