@@ -1,0 +1,65 @@
+{
+  "slug": "python-multiview-camera-rig-gaussian-splat-render",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-multiview-camera-rig-gaussian-splat-render/viewport.mp4",
+    "public/library/videos/scripting/python-multiview-camera-rig-gaussian-splat-render/screen.mp4"
+  ],
+  "outputs": {
+    "images_dir": "output/images/",
+    "transforms": "output/transforms.json"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export",
+      "/tutorials/blender-tutorial-animation-camera-rig-dolly-focus-pull",
+      "/tutorials/from-360-to-splat"
+    ],
+    "outside_sources": [
+      {
+        "title": "nerfstudio — neural radiance field and 3DGS training framework",
+        "url": "https://github.com/nerfstudio-project/nerfstudio",
+        "licence": "Apache-2.0",
+        "author": "nerfstudio-project contributors",
+        "related_projects": [
+          "NeRFacto (Apache-2.0) — https://github.com/nerfstudio-project/nerfstudio",
+          "Splatfacto (Apache-2.0) — https://github.com/nerfstudio-project/nerfstudio",
+          "instant-ngp (NVIDIA Research, custom) — https://github.com/NVlabs/instant-ngp"
+        ]
+      },
+      {
+        "title": "BlenderNeRF — Blender add-on for NeRF training data generation",
+        "url": "https://github.com/maximeraafat/BlenderNeRF",
+        "licence": "MIT",
+        "author": "maximeraafat",
+        "related_projects": [
+          "torch-ngp (MIT, ashawkey) — https://github.com/ashawkey/torch-ngp",
+          "nerf_pl (MIT, kwea123) — https://github.com/kwea123/nerf_pl"
+        ]
+      }
+    ]
+  },
+  "technique_notes": [
+    "fibonacci_sphere_positions: θ = arccos(1−2(i+0.5)/n) gives equal-area latitude bands; φ = 2πi/ϕ (ϕ = golden ratio) spaces azimuths to avoid stripes",
+    "to_track_quat('-Z','Y'): Blender cameras look toward -Z in local space; +Y is the up axis — this quaternion orient is applied in QUATERNION rotation mode, never Euler (no gimbal lock)",
+    "blender_to_nerf_c2w: negate cols 1 and 2 of the 3×3 rotation block; does NOT touch the translation column; this is the exact transform in the nerfstudio Blender data-parser",
+    "bpy.context.scene.camera = cam before each render: swaps the active camera that bpy.ops.render.render() uses; reading matrix_world AFTER render ensures depsgraph-evaluated world matrix",
+    "fov_x = 2·atan(sensor_w / (2·focal)): horizontal FoV in radians; camera_angle_x in transforms.json uses horizontal convention (nerfstudio expects horizontal)",
+    "fl_x = (focal_mm / sensor_w_mm) × img_w: pixel-space focal length; fl_y = fl_x × (img_h / img_w) for square pixels",
+    "aabb_scale=4: scene-extent hint for the NeRF/3DGS trainer; RADIUS=3 m fits comfortably inside a 4-unit AABB",
+    "Three-point sun-lamp rig: using SUN type (parallel rays) avoids per-view shadow falloff that would confuse 3DGS per-Gaussian colour estimation",
+    "os.makedirs(exist_ok=True): idempotent; safe re-run without manual directory cleanup",
+    "render to PNG 8-bit: most 3DGS pipelines expect uint8 PNG; EXR/float is not yet supported by mainstream loaders"
+  ]
+}
