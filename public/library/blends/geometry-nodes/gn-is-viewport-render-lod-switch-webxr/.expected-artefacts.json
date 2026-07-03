@@ -1,0 +1,59 @@
+{
+  "slug": "gn-is-viewport-render-lod-switch-webxr",
+  "topic": "geometry-nodes",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "server_panel_lod.blend",
+    "server_panel_lod.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-is-viewport-render-lod-switch-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-is-viewport-render-lod-switch-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-index-switch-lod-mesh-kit",
+      "/tutorials/blender-tutorial-gn-bake-node-simulation-growth",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod",
+      "/atelier"
+    ],
+    "outside": [
+      {
+        "title": "Blender Manual — Is Viewport node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/misc/is_viewport.html",
+        "licence": "CC-BY Blender Foundation",
+        "author": "Blender Documentation Team",
+        "related_repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Blender Developer Docs — Geometry Nodes Field System",
+        "url": "https://developer.blender.org/docs/features/geometry_nodes/",
+        "licence": "CC-BY Blender Foundation",
+        "author": "Blender Foundation Developer Team",
+        "related_repo": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  },
+  "key_nodes": [
+    "GeometryNodeIsViewport",
+    "GeometryNodeSwitch",
+    "GeometryNodeSubdivideMesh",
+    "GeometryNodeExtrudeMesh",
+    "GeometryNodeSetPosition",
+    "ShaderNodeTexNoise"
+  ],
+  "export_format": "GLB",
+  "export_flags": {
+    "draco": true,
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "export_apply": true
+  }
+}
