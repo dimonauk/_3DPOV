@@ -1,0 +1,38 @@
+{
+  "slug": "python-blender-extensions-platform-manifest-build-package",
+  "blender_version": "5.1",
+  "date": "2026-07-03",
+  "licence": "CC0",
+  "files": {
+    "blueprint": "public/library/blends/scripting/python-blender-extensions-platform-manifest-build-package/blueprint.py",
+    "record": "public/library/blends/scripting/python-blender-extensions-platform-manifest-build-package/record.py",
+    "screen_notes": "public/library/blends/scripting/python-blender-extensions-platform-manifest-build-package/SCREEN-RECORDING-NOTES.md",
+    "readme": "public/library/blends/scripting/python-blender-extensions-platform-manifest-build-package/README.md",
+    "macro": "tools/blender-addon/holoflow_macros/extension_manifest_builder.py"
+  },
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-blender-extensions-platform-manifest-build-package/viewport.mp4",
+    "screen": "public/library/videos/scripting/python-blender-extensions-platform-manifest-build-package/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+      "/tutorials/blender-tutorial-python-addon-preferences-keymap-hotkey-exporter",
+      "/tutorials/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor",
+      "/tutorials/blender-tutorial-python-gltf-user-extension-export-extras-hook",
+      "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue"
+    ],
+    "external": [
+      {
+        "title": "Blender 5.1 Extensions Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/extensions/index.html",
+        "licence": "CC-BY Blender Foundation"
+      },
+      {
+        "title": "SPDX Licence List",
+        "url": "https://spdx.org/licenses/",
+        "licence": "CC0-1.0"
+      }
+    ]
+  }
+}

@@ -388,3 +388,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-03 | blend + glb | geometry-nodes | gn-repeat-zone-crystal-antenna-webxr | 5.1 | CC0 | crystal_antenna.blend · crystal_antenna.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr |
 
 | 2026-07-03 | blend | scripting | python-multiview-camera-rig-gaussian-splat-render | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-multiview-camera-rig-gaussian-splat-render |
+
+| 2026-07-03 | blend | scripting | python-blender-extensions-platform-manifest-build-package | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-blender-extensions-platform-manifest-build-package |
