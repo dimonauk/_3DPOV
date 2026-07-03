@@ -1,0 +1,47 @@
+{
+  "slug": "python-fcurve-driver-shape-key-bone-rotation-vrm",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "elbow_corrective_rig.blend",
+    "elbow_corrective_rig_baked.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-shape-keys-morph-targets",
+      "/tutorials/blender-tutorial-rigging-vrm-eye-look-at-damped-track",
+      "/tutorials/blender-tutorial-python-pose-bone-constraint-management-export-bake",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/animation/drivers/drivers_panel.html",
+        "title": "Drivers Panel — Blender 5.1 Manual",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_repos": ["https://github.com/blender/blender"]
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.FCurve.html",
+        "title": "bpy.types.FCurve — Blender Python API",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_repos": ["https://github.com/blender/blender"]
+      }
+    ]
+  },
+  "technique_notes": {
+    "key_id_target": "driver_add() must be called on mesh_obj.data.shape_keys (bpy.types.Key), not the Object. Key inherits from ID and holds its own animation_data.",
+    "local_space": "TRANSFORMS variable with LOCAL_SPACE reads the bone angle relative to its parent — joint-angle semantics. WORLD_SPACE folds in all ancestors.",
+    "scripted_ramp": "max(0.0, min(1.0, (bend - REST) / (FULL - REST))) — linear ramp clamped to [0,1]. No built-in driver type supports arbitrary remapping.",
+    "bake_required": "GLTF exporter samples keyframed FCurves; it does not evaluate live drivers. bake_driver() walks each frame, calls evaluated_get(dg) to read the resolved value, and writes a keyframe on the original shape key.",
+    "driver_remove": "After baking, call key_id.driver_remove(path) so the action FCurves are the sole source; otherwise the driver and keyframes conflict at export time."
+  }
+}
