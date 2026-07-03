@@ -298,6 +298,7 @@ import { entry as blenderTutorialSculptLayerBrushStencilFabricDetailVrmEntry } f
 import { entry as blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry } from "components/tutorials/entries/blender-tutorial-gp3-layer-modifier-build-reveal-animated-ink-diagram";
 import { entry as blenderTutorialPythonWorkspaceToolCustomToolbarFacetTagEntry } from "components/tutorials/entries/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag";
 import { entry as blenderTutorialPythonGizmoGroupCustomViewportHandleEntry } from "components/tutorials/entries/blender-tutorial-python-gizmo-group-custom-viewport-handle";
+import { entry as blenderTutorialPythonGltfUserExtensionExportExtrasHookEntry } from "components/tutorials/entries/blender-tutorial-python-gltf-user-extension-export-extras-hook";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -603,6 +604,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGp3LayerModifierBuildRevealAnimatedInkDiagramEntry,
   blenderTutorialPythonWorkspaceToolCustomToolbarFacetTagEntry,
   blenderTutorialPythonGizmoGroupCustomViewportHandleEntry,
+  blenderTutorialPythonGltfUserExtensionExportExtrasHookEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

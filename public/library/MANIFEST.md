@@ -378,3 +378,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-03 | blend | scripting | python-workspace-tool-custom-toolbar-facet-tag | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag |
 
 | 2026-07-03 | blend | scripting | python-gizmo-group-custom-viewport-handle | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gizmo-group-custom-viewport-handle |
+
+| 2026-07-03 | blend | scripting | python-gltf-user-extension-export-extras-hook | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gltf-user-extension-export-extras-hook |
