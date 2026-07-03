@@ -1,0 +1,38 @@
+{
+  "slug": "python-addon-preferences-keymap-hotkey-exporter",
+  "blender_version": "5.1",
+  "date": "2026-07-03",
+  "licence": "CC0",
+  "files": {
+    "blueprint": "public/library/blends/scripting/python-addon-preferences-keymap-hotkey-exporter/blueprint.py",
+    "record": "public/library/blends/scripting/python-addon-preferences-keymap-hotkey-exporter/record.py",
+    "screen_notes": "public/library/blends/scripting/python-addon-preferences-keymap-hotkey-exporter/SCREEN-RECORDING-NOTES.md",
+    "readme": "public/library/blends/scripting/python-addon-preferences-keymap-hotkey-exporter/README.md",
+    "macro": "tools/blender-addon/holoflow_macros/addon_preferences_keymap.py"
+  },
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-addon-preferences-keymap-hotkey-exporter/viewport.mp4",
+    "screen": "public/library/videos/scripting/python-addon-preferences-keymap-hotkey-exporter/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag",
+      "/tutorials/blender-tutorial-python-gizmo-group-custom-viewport-handle",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "external": [
+      {
+        "title": "Blender Python API — bpy.types.AddonPreferences",
+        "url": "https://docs.blender.org/api/current/bpy.types.AddonPreferences.html",
+        "licence": "CC-BY Blender Foundation"
+      },
+      {
+        "title": "Blender Python API — KeyMap & KeyMapItems",
+        "url": "https://docs.blender.org/api/current/bpy.types.KeyMap.html",
+        "licence": "CC-BY Blender Foundation"
+      }
+    ]
+  }
+}
