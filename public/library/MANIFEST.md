@@ -403,3 +403,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-03 | blend | scripting | python-bpy-curve-data-bezier-nurbs-spline-api | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-curve-data-bezier-nurbs-spline-api |
 
 | 2026-07-03 | blend + glb | scripting | python-fcurve-driver-shape-key-bone-rotation-vrm | 5.1 | CC0 | elbow_corrective_rig.blend · elbow_corrective_rig_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm |
+| 2026-07-03 | blend + glb | shading | shader-gabor-noise-satin-frosted-acrylic-webxr | 5.1 | CC0 | gabor_frosted_acrylic.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-gabor-noise-satin-frosted-acrylic-webxr |

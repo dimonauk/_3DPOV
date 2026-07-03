@@ -314,6 +314,7 @@ import { entry as blenderTutorialPythonBpyCustomShaderNodeTypeExportDiagnosticsE
 import { entry as blenderTutorialGnSelfObjectWorldHeightProximityCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-self-object-world-height-proximity-crystal-webxr";
 import { entry as blenderTutorialPythonBpyCurveDataBezierNurbsSplineApiEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curve-data-bezier-nurbs-spline-api";
 import { entry as blenderTutorialPythonFcurveDriverShapeKeyBoneRotationVrmEntry } from "components/tutorials/entries/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm";
+import { entry as blenderTutorialShaderGaborNoiseSatinFrostedAcrylicWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-gabor-noise-satin-frosted-acrylic-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -635,6 +636,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSelfObjectWorldHeightProximityCrystalWebxrEntry,
   blenderTutorialPythonBpyCurveDataBezierNurbsSplineApiEntry,
   blenderTutorialPythonFcurveDriverShapeKeyBoneRotationVrmEntry,
+  blenderTutorialShaderGaborNoiseSatinFrostedAcrylicWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
