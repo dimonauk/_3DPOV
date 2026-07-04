@@ -434,3 +434,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | scripting | python-bmesh-faceted-gem-topology-construction-webxr | 5.1 | CC0 | faceted_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr |
 
 | 2026-07-04 | blend + glb | scripting | python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop | 5.1 | CC0 | scifi_panel_prop.blend · scifi_panel_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop |
+
+| 2026-07-04 | blend + glb | scripting | python-geometry-nodetree-build-scatter-modifier-api | 5.1 | CC0 | scatter_billboard.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-geometry-nodetree-build-scatter-modifier-api |
