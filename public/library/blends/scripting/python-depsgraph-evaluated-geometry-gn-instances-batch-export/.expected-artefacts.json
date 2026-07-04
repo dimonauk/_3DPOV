@@ -1,0 +1,43 @@
+{
+  "slug": "python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+  "topic": "scripting",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_at_runtime": [
+    "depsgraph_batch/crystal_NNNN.glb  (one per GN instance)"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-depsgraph-evaluated-geometry-gn-instances-batch-export/viewport.mp4",
+    "public/library/videos/scripting/python-depsgraph-evaluated-geometry-gn-instances-batch-export/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+      "/tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr",
+      "/tutorials/blender-tutorial-python-multiview-camera-rig-gaussian-splat-render"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.Depsgraph — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Depsgraph.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.DepsgraphObjectInstance — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.DepsgraphObjectInstance.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

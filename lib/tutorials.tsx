@@ -323,6 +323,7 @@ import { entry as blenderTutorialPythonModalProgressBarCancelLongOperationEntry 
 import { entry as blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-staggered-reveal-webxr";
 import { entry as blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry } from "components/tutorials/entries/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig";
 import { entry as blenderTutorialPythonArmatureEditBonesVrmSpineChainEntry } from "components/tutorials/entries/blender-tutorial-python-armature-edit-bones-vrm-spine-chain";
+import { entry as blenderTutorialPythonDepsgraphEvaluatedGeometryGnInstancesBatchExportEntry } from "components/tutorials/entries/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -653,6 +654,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry,
   blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry,
   blenderTutorialPythonArmatureEditBonesVrmSpineChainEntry,
+  blenderTutorialPythonDepsgraphEvaluatedGeometryGnInstancesBatchExportEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
