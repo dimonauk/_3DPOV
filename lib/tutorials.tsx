@@ -329,6 +329,7 @@ import { entry as blenderTutorialPythonBpyParticleSystemEmitterHairInstanceWebxr
 import { entry as blenderTutorialPythonFcurveKeyframeInsertProceduralAnimationTurntableEntry } from "components/tutorials/entries/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable";
 import { entry as blenderTutorialPythonMathutilsBvhtreeRaycastSurfaceScatterWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr";
 import { entry as blenderTutorialPythonBmeshFacetedGemTopologyConstructionWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr";
+import { entry as blenderTutorialPythonBmeshOpsExtrudeBevelBridgeHardSurfacePropEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -665,6 +666,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonFcurveKeyframeInsertProceduralAnimationTurntableEntry,
   blenderTutorialPythonMathutilsBvhtreeRaycastSurfaceScatterWebxrEntry,
   blenderTutorialPythonBmeshFacetedGemTopologyConstructionWebxrEntry,
+  blenderTutorialPythonBmeshOpsExtrudeBevelBridgeHardSurfacePropEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,36 @@
+{
+  "blend": "scifi_panel_prop.blend",
+  "glb": "scifi_panel_prop.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "video": {
+    "viewport": "public/library/videos/scripting/python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop/screen.mp4"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bmesh.ops Python API — Blender 5.1",
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bmesh.html"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njankowski/blender-scripting",
+        "licence": "MIT",
+        "author": "Nathan Jankowski",
+        "sibling": "https://github.com/njankowski/blenderpy"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop"
+}
