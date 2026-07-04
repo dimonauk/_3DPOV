@@ -428,3 +428,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend | shading | shader-vector-displacement-multires-bake-cycles | 5.1 | CC0 | vdm_armour_panel.exr · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-vector-displacement-multires-bake-cycles |
 
 | 2026-07-04 | blend + glb | scripting | python-fcurve-keyframe-insert-procedural-animation-turntable | 5.1 | CC0 | turntable_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable |
+
+| 2026-07-04 | blend + glb | scripting | python-mathutils-bvhtree-raycast-surface-scatter-webxr | 5.1 | CC0 | scatter_result.glb · collision_proxy.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr |

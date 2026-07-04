@@ -327,6 +327,7 @@ import { entry as blenderTutorialPythonArmatureEditBonesVrmSpineChainEntry } fro
 import { entry as blenderTutorialPythonDepsgraphEvaluatedGeometryGnInstancesBatchExportEntry } from "components/tutorials/entries/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export";
 import { entry as blenderTutorialPythonBpyParticleSystemEmitterHairInstanceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-particle-system-emitter-hair-instance-webxr";
 import { entry as blenderTutorialPythonFcurveKeyframeInsertProceduralAnimationTurntableEntry } from "components/tutorials/entries/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable";
+import { entry as blenderTutorialPythonMathutilsBvhtreeRaycastSurfaceScatterWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -661,6 +662,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyParticleSystemEmitterHairInstanceWebxrEntry,
   blenderTutorialShaderVectorDisplacementMultiresBakeCyclesEntry,
   blenderTutorialPythonFcurveKeyframeInsertProceduralAnimationTurntableEntry,
+  blenderTutorialPythonMathutilsBvhtreeRaycastSurfaceScatterWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
