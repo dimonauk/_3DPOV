@@ -408,3 +408,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | shading | shader-to-rgb-halftone-cel-shade-webxr | 5.1 | CC0 | halftone_cel.blend · halftone_cel.glb · halftone_baked.webp · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr |
 
 | 2026-07-04 | blend | scripting | python-id-properties-ui-custom-prop-schema-rig-controls | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-id-properties-ui-custom-prop-schema-rig-controls |
+
+| 2026-07-04 | blend | scripting | python-bpy-render-engine-webxr-snapshot | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot |
