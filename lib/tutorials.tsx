@@ -324,6 +324,7 @@ import { entry as blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry } fr
 import { entry as blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry } from "components/tutorials/entries/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig";
 import { entry as blenderTutorialPythonArmatureEditBonesVrmSpineChainEntry } from "components/tutorials/entries/blender-tutorial-python-armature-edit-bones-vrm-spine-chain";
 import { entry as blenderTutorialPythonDepsgraphEvaluatedGeometryGnInstancesBatchExportEntry } from "components/tutorials/entries/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export";
+import { entry as blenderTutorialPythonBpyParticleSystemEmitterHairInstanceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-particle-system-emitter-hair-instance-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -655,6 +656,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry,
   blenderTutorialPythonArmatureEditBonesVrmSpineChainEntry,
   blenderTutorialPythonDepsgraphEvaluatedGeometryGnInstancesBatchExportEntry,
+  blenderTutorialPythonBpyParticleSystemEmitterHairInstanceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

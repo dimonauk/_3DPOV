@@ -422,3 +422,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | scripting | python-armature-edit-bones-vrm-spine-chain | 5.1 | CC0 | vrm_spine_skeleton.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain |
 
 | 2026-07-04 | blend | scripting | python-depsgraph-evaluated-geometry-gn-instances-batch-export | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export |
+
+| 2026-07-04 | blend | scripting | python-bpy-particle-system-emitter-hair-instance-webxr | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-particle-system-emitter-hair-instance-webxr |
