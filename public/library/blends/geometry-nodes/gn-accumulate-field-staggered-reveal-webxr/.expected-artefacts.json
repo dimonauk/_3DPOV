@@ -1,0 +1,54 @@
+{
+  "slug": "gn-accumulate-field-staggered-reveal-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "stagger_reveal.blend",
+    "stagger_reveal_frame000.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "url": "/tutorials/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr",
+        "reason": "Companion iterative-zone tutorial — Repeat Zone threads geometry state across N iterations; Accumulate Field threads a running scalar across N points. Different mechanisms, same philosophy of per-element stateful computation."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+        "reason": "Scene Time is the shared driver: in the Simulation Zone it advances one frame per tick; here it is sampled uniformly per point for independent offset timing."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-index-of-nearest-point-connection-web-circuit-board-webxr",
+        "reason": "Both tutorials expose advanced GN field evaluation — Index of Nearest uses topology distance; Accumulate Field uses sorted running sums. Together they show the range of per-element computation available without Simulation Zone overhead."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-interpolate-domain-face-random-hue-vertex-colour-flat-shaded-webxr",
+        "reason": "Interpolate Domain is the complementary cross-domain field transfer node; Accumulate Field is the intra-domain running-sum node. Pair them to produce face-level stagger delays from vertex-level position data."
+      },
+      {
+        "url": "/codex/gaussian-splatting",
+        "reason": "The staggered-reveal GLB export is directly usable as an animated capture rig marker field for Gaussian Splatting shoots — pillars rising to mark capture positions one by one."
+      }
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/utilities/field/accumulate_field.html",
+        "title": "Accumulate Field — Blender Manual 5.1",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0",
+        "sibling": "https://projects.blender.org"
+      },
+      {
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "title": "blender-python-examples",
+        "author": "Robert Guetzkow",
+        "licence": "MIT",
+        "related": "https://github.com/robertguetzkow/blender-addon-clean-up-imported-materials"
+      }
+    ]
+  }
+}

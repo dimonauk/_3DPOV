@@ -320,6 +320,7 @@ import { entry as blenderTutorialPythonIdPropertiesUiCustomPropSchemaRigControls
 import { entry as blenderTutorialPythonBpyRenderEngineWebxrSnapshotEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-render-engine-webxr-snapshot";
 import { entry as blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics";
 import { entry as blenderTutorialPythonModalProgressBarCancelLongOperationEntry } from "components/tutorials/entries/blender-tutorial-python-modal-progress-bar-cancel-long-operation";
+import { entry as blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-staggered-reveal-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -647,6 +648,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyRenderEngineWebxrSnapshotEntry,
   blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry,
   blenderTutorialPythonModalProgressBarCancelLongOperationEntry,
+  blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
