@@ -430,3 +430,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | scripting | python-fcurve-keyframe-insert-procedural-animation-turntable | 5.1 | CC0 | turntable_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable |
 
 | 2026-07-04 | blend + glb | scripting | python-mathutils-bvhtree-raycast-surface-scatter-webxr | 5.1 | CC0 | scatter_result.glb · collision_proxy.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr |
+
+| 2026-07-04 | blend + glb | scripting | python-bmesh-faceted-gem-topology-construction-webxr | 5.1 | CC0 | faceted_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr |
