@@ -1,0 +1,53 @@
+{
+  "slug": "python-world-node-tree-hdri-environment-lighting-rig",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "world_rig_export.json",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "url": "/tutorials/blender-tutorial-shader-sky-nishita-sun-position-hdri-rig",
+        "reason": "Hand-crafted shader counterpart: that tutorial wires the Nishita sky manually in the Shader Editor; this one scripts the same node graph via bpy. Together they show both authoring paths for the same technique."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr",
+        "reason": "The World node tree is the first requirement for EEVEE irradiance baking — the probe system samples the world for background irradiance. Set up the world rig here, then bake probes there."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-compositor-mist-pass-z-depth-defocus-atmospheric",
+        "reason": "The Mist pass configured by configure_mist() feeds directly into that compositor workflow — the Z-depth fog and defocus post-process share the same distance envelope."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-cycles-panoramic-equirectangular-360-webxr-hdri",
+        "reason": "The reverse pipeline: that tutorial renders a 360° equirectangular HDRI from a scene; the result can be loaded back into ShaderNodeTexEnvironment here to close the loop."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot",
+        "reason": "The custom render engine in that tutorial triggers via F12 and exports a GLB — the world rig here provides the lighting context that engine inherits for any EEVEE-baked emission passes."
+      }
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.World.html",
+        "title": "bpy.types.World — Blender 5.1 Python API",
+        "author": "Blender Foundation",
+        "licence": "CC BY-SA 4.0",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.types.ShaderNodeTexSky.html"
+      },
+      {
+        "url": "https://polyhaven.com/hdris",
+        "title": "Poly Haven — Free CC0 HDRI Library",
+        "author": "Greg Zaal + Poly Haven contributors",
+        "licence": "CC0",
+        "related": "https://github.com/Poly-Haven/Public-Asset-Packs"
+      }
+    ]
+  }
+}

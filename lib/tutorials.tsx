@@ -321,6 +321,7 @@ import { entry as blenderTutorialPythonBpyRenderEngineWebxrSnapshotEntry } from 
 import { entry as blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics";
 import { entry as blenderTutorialPythonModalProgressBarCancelLongOperationEntry } from "components/tutorials/entries/blender-tutorial-python-modal-progress-bar-cancel-long-operation";
 import { entry as blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-accumulate-field-staggered-reveal-webxr";
+import { entry as blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry } from "components/tutorials/entries/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -649,6 +650,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry,
   blenderTutorialPythonModalProgressBarCancelLongOperationEntry,
   blenderTutorialGnAccumulateFieldStaggeredRevealWebxrEntry,
+  blenderTutorialPythonWorldNodeTreeHdriEnvironmentLightingRigEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
