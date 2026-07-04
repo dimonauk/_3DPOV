@@ -1,0 +1,40 @@
+{
+  "slug": "python-armature-edit-bones-vrm-spine-chain",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "vrm_spine_skeleton.glb",
+    "../../../../videos/scripting/python-armature-edit-bones-vrm-spine-chain/viewport.mp4",
+    "../../../../videos/scripting/python-armature-edit-bones-vrm-spine-chain/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-pose-bone-constraint-management-export-bake",
+      "/tutorials/blender-tutorial-armature-bone-collections-custom-shapes",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api"
+    ],
+    "external": [
+      {
+        "title": "Blender API — bpy.types.Armature (EditBone, PoseBone, Bone)",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Armature.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "sibling_repo": "https://docs.blender.org/api/5.1/bpy.types.EditBone.html"
+      },
+      {
+        "title": "VRM 1.0 Humanoid Bone Specification — vrm-c",
+        "url": "https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/humanoid.md",
+        "licence": "MIT",
+        "author": "Virtual Cast, Inc. (vrm-c)",
+        "sibling_repo": "https://github.com/vrm-c/UniVRM"
+      }
+    ]
+  }
+}

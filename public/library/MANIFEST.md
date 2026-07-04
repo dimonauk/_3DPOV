@@ -418,3 +418,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | geometry-nodes | gn-accumulate-field-staggered-reveal-webxr | 5.1 | CC0 | stagger_reveal.blend · stagger_reveal_frame000.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-accumulate-field-staggered-reveal-webxr |
 
 | 2026-07-04 | blend | scripting | python-world-node-tree-hdri-environment-lighting-rig | 5.1 | CC0 | blueprint.py · record.py · world_rig_export.json · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig |
+
+| 2026-07-04 | blend + glb | scripting | python-armature-edit-bones-vrm-spine-chain | 5.1 | CC0 | vrm_spine_skeleton.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain |
