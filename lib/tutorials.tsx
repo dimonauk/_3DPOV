@@ -316,6 +316,7 @@ import { entry as blenderTutorialPythonBpyCurveDataBezierNurbsSplineApiEntry } f
 import { entry as blenderTutorialPythonFcurveDriverShapeKeyBoneRotationVrmEntry } from "components/tutorials/entries/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm";
 import { entry as blenderTutorialShaderGaborNoiseSatinFrostedAcrylicWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-gabor-noise-satin-frosted-acrylic-webxr";
 import { entry as blenderTutorialShaderToRgbHalftoneCelShadeWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr";
+import { entry as blenderTutorialPythonIdPropertiesUiCustomPropSchemaRigControlsEntry } from "components/tutorials/entries/blender-tutorial-python-id-properties-ui-custom-prop-schema-rig-controls";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -639,6 +640,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonFcurveDriverShapeKeyBoneRotationVrmEntry,
   blenderTutorialShaderGaborNoiseSatinFrostedAcrylicWebxrEntry,
   blenderTutorialShaderToRgbHalftoneCelShadeWebxrEntry,
+  blenderTutorialPythonIdPropertiesUiCustomPropSchemaRigControlsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

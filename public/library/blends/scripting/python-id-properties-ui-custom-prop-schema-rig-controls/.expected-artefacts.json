@@ -1,0 +1,38 @@
+{
+  "slug": "python-id-properties-ui-custom-prop-schema-rig-controls",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "../../videos/scripting/python-id-properties-ui-custom-prop-schema-rig-controls/viewport.mp4",
+    "../../videos/scripting/python-id-properties-ui-custom-prop-schema-rig-controls/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm",
+      "/tutorials/blender-tutorial-python-shape-key-driver-rig-vrm-facial",
+      "/tutorials/blender-tutorial-python-library-link-append-blend-files",
+      "/tutorials/blender-tutorial-armature-bone-collections-custom-shapes",
+      "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.IDPropertyUIManager.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "title": "IDPropertyUIManager — Blender 5.1 Python API"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "title": "bpy_struct.id_properties_ui() and id_properties_ensure() — Blender 5.1 Python API"
+      }
+    ]
+  }
+}
