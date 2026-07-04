@@ -410,3 +410,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend | scripting | python-id-properties-ui-custom-prop-schema-rig-controls | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-id-properties-ui-custom-prop-schema-rig-controls |
 
 | 2026-07-04 | blend | scripting | python-bpy-render-engine-webxr-snapshot | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot |
+
+| 2026-07-04 | blend + glb | geometry-nodes | gn-simulation-zone-verlet-rope-cable-physics | 5.1 | CC0 | verlet_rope.blend · verlet_rope_frame48.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics |

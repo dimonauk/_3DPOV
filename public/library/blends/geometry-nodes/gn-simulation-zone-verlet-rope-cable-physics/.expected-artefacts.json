@@ -1,0 +1,42 @@
+{
+  "slug": "gn-simulation-zone-verlet-rope-cable-physics",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "verlet_rope.blend",
+    "verlet_rope_frame48.glb",
+    "../../../../videos/geometry-nodes/gn-simulation-zone-verlet-rope-cable-physics/viewport.mp4",
+    "../../../../videos/geometry-nodes/gn-simulation-zone-verlet-rope-cable-physics/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr",
+      "/tutorials/blender-tutorial-gn-bake-node-simulation-growth",
+      "/tutorials/blender-tutorial-gn-catenary-curve-cable-array-webxr",
+      "/tutorials/blender-tutorial-gn-curve-tangent-normal-frenet-ribbon-beam-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual: Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "sibling_repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Müller et al. — Position Based Dynamics (2006)",
+        "url": "https://matthias-research.github.io/pages/publications/posBasedDyn.pdf",
+        "licence": "freely redistributed academic paper; GN implementation is independent CC0",
+        "author": "Matthias Müller, Bruno Heidelberger, Marcus Hennix, John Ratcliff",
+        "sibling_repo": "https://github.com/InteractiveComputerGraphics/PositionBasedDynamics"
+      }
+    ]
+  }
+}

@@ -318,6 +318,7 @@ import { entry as blenderTutorialShaderGaborNoiseSatinFrostedAcrylicWebxrEntry }
 import { entry as blenderTutorialShaderToRgbHalftoneCelShadeWebxrEntry } from "components/tutorials/entries/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr";
 import { entry as blenderTutorialPythonIdPropertiesUiCustomPropSchemaRigControlsEntry } from "components/tutorials/entries/blender-tutorial-python-id-properties-ui-custom-prop-schema-rig-controls";
 import { entry as blenderTutorialPythonBpyRenderEngineWebxrSnapshotEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-render-engine-webxr-snapshot";
+import { entry as blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -643,6 +644,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialShaderToRgbHalftoneCelShadeWebxrEntry,
   blenderTutorialPythonIdPropertiesUiCustomPropSchemaRigControlsEntry,
   blenderTutorialPythonBpyRenderEngineWebxrSnapshotEntry,
+  blenderTutorialGnSimulationZoneVerletRopeCablePhysicsEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
