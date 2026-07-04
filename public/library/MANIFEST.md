@@ -426,3 +426,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend | scripting | python-bpy-particle-system-emitter-hair-instance-webxr | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-particle-system-emitter-hair-instance-webxr |
 
 | 2026-07-04 | blend | shading | shader-vector-displacement-multires-bake-cycles | 5.1 | CC0 | vdm_armour_panel.exr · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-shader-vector-displacement-multires-bake-cycles |
+
+| 2026-07-04 | blend + glb | scripting | python-fcurve-keyframe-insert-procedural-animation-turntable | 5.1 | CC0 | turntable_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable |
