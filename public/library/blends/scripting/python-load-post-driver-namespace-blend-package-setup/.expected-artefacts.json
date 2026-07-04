@@ -1,0 +1,37 @@
+{
+  "slug": "python-load-post-driver-namespace-blend-package-setup",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blends/scripting/python-load-post-driver-namespace-blend-package-setup/blueprint.py",
+    "blends/scripting/python-load-post-driver-namespace-blend-package-setup/record.py",
+    "blends/scripting/python-load-post-driver-namespace-blend-package-setup/SCREEN-RECORDING-NOTES.md",
+    "blends/scripting/python-load-post-driver-namespace-blend-package-setup/README.md",
+    "blends/scripting/python-load-post-driver-namespace-blend-package-setup/holoflow_package_demo.blend",
+    "videos/scripting/python-load-post-driver-namespace-blend-package-setup/viewport.mp4",
+    "videos/scripting/python-load-post-driver-namespace-blend-package-setup/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-python-app-timers-deferred-live-reload-frame-stepper",
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/api/current/bpy.app.handlers.html",
+        "title": "bpy.app.handlers — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.app.html",
+        "title": "bpy.app — Application Data — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      }
+    ]
+  }
+}
