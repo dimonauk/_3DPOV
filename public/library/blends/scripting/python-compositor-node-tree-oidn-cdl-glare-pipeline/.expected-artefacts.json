@@ -1,0 +1,40 @@
+{
+  "slug": "python-compositor-node-tree-oidn-cdl-glare-pipeline",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "oidn_cdl_glare.blend",
+    "../../../../videos/scripting/python-compositor-node-tree-oidn-cdl-glare-pipeline/viewport.mp4",
+    "../../../../videos/scripting/python-compositor-node-tree-oidn-cdl-glare-pipeline/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig",
+      "/tutorials/blender-tutorial-python-geometry-nodetree-build-scatter-modifier-api",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual: Compositing",
+        "url": "https://docs.blender.org/manual/en/5.1/compositing/index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "sibling_repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "ASC-CDL Specification — Colour Decision List",
+        "url": "https://docs.acescentral.com/specifications/acescc-technical-reference/",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation / ACES Central",
+        "sibling_repo": "https://github.com/AcademySoftwareFoundation/aces-dev"
+      }
+    ]
+  }
+}
