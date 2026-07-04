@@ -1,0 +1,43 @@
+{
+  "slug": "python-modal-progress-bar-cancel-long-operation",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_paths": [
+    "public/library/videos/scripting/python-modal-progress-bar-cancel-long-operation/viewport.mp4",
+    "public/library/videos/scripting/python-modal-progress-bar-cancel-long-operation/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter",
+      "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.WindowManager — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bpy.types.WindowManager.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow",
+        "related": [
+          "https://github.com/blender/blender"
+        ]
+      }
+    ]
+  }
+}
