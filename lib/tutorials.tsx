@@ -342,6 +342,7 @@ import { entry as blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBak
 import { entry as blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry } from "components/tutorials/entries/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config";
 import { entry as blenderTutorialPythonModifierStackPreExportApplyEntry } from "components/tutorials/entries/blender-tutorial-python-modifier-stack-pre-export-apply";
 import { entry as blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curves-hair-data-block-strand-sculpt-webxr";
+import { entry as blenderTutorialPythonViewlayerMultiPassCollectionMaskEeveeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -691,6 +692,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry,
   blenderTutorialPythonModifierStackPreExportApplyEntry,
   blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry,
+  blenderTutorialPythonViewlayerMultiPassCollectionMaskEeveeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

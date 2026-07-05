@@ -458,3 +458,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-05 | blend + glb | scripting | python-modifier-stack-pre-export-apply | 5.1 | CC0 | mod_stack_result.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-modifier-stack-pre-export-apply |
 
 | 2026-07-05 | blend + glb | scripting | python-bpy-curves-hair-data-block-strand-sculpt-webxr | 5.1 | CC0 | hair_strands_webxr.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-curves-hair-data-block-strand-sculpt-webxr |
+
+| 2026-07-05 | blend | scripting | python-viewlayer-multi-pass-collection-mask-eevee-webxr | 5.1 | CC0 | viewlayer_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr |
