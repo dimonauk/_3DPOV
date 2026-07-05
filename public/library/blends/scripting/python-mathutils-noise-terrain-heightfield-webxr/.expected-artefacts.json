@@ -1,0 +1,42 @@
+{
+  "slug": "python-mathutils-noise-terrain-heightfield-webxr",
+  "blender_version": "5.1",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "terrain_heightfield.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-mathutils-noise-terrain-heightfield-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-mathutils-noise-terrain-heightfield-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-gn-shortest-edge-paths-watershed-river-network"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/current/mathutils.noise.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

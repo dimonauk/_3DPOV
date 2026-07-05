@@ -331,6 +331,7 @@ import { entry as blenderTutorialPythonMathutilsBvhtreeRaycastSurfaceScatterWebx
 import { entry as blenderTutorialPythonBmeshFacetedGemTopologyConstructionWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr";
 import { entry as blenderTutorialPythonBmeshOpsExtrudeBevelBridgeHardSurfacePropEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop";
 import { entry as blenderTutorialPythonGeometryNodetreeBuildScatterModifierApiEntry } from "components/tutorials/entries/blender-tutorial-python-geometry-nodetree-build-scatter-modifier-api";
+import { entry as blenderTutorialPythonMathutilsNoiseTerrainHeightfieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -669,6 +670,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshFacetedGemTopologyConstructionWebxrEntry,
   blenderTutorialPythonBmeshOpsExtrudeBevelBridgeHardSurfacePropEntry,
   blenderTutorialPythonGeometryNodetreeBuildScatterModifierApiEntry,
+  blenderTutorialPythonMathutilsNoiseTerrainHeightfieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
