@@ -452,3 +452,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-05 | blend | scripting | python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake | 5.1 | CC0 | subject_sphere.glb · light_rig.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake |
 
 | 2026-07-05 | blend | scripting | python-compositor-nodetree-render-passes-eevee-glb-bake | 5.1 | CC0 | compositor_passes_0001.exr · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake |
+
+| 2026-07-05 | blend | scripting | python-eevee-next-shadow-ssr-ao-render-config | 5.1 | CC0 | eevee_preset_holoflow_webxr_preview.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config |
