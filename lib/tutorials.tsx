@@ -340,6 +340,7 @@ import { entry as blenderTutorialPythonMetaballBlobChainRemeshWebxrEntry } from 
 import { entry as blenderTutorialPythonBpyLightRig3pointEeveelightgroupWebxrBakeEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake";
 import { entry as blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry } from "components/tutorials/entries/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake";
 import { entry as blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry } from "components/tutorials/entries/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config";
+import { entry as blenderTutorialPythonModifierStackPreExportApplyEntry } from "components/tutorials/entries/blender-tutorial-python-modifier-stack-pre-export-apply";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -687,6 +688,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyLightRig3pointEeveelightgroupWebxrBakeEntry,
   blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry,
   blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry,
+  blenderTutorialPythonModifierStackPreExportApplyEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

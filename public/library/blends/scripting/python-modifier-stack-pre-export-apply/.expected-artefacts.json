@@ -1,0 +1,37 @@
+{
+  "slug": "python-modifier-stack-pre-export-apply",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "output/mod_stack_result.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop",
+      "/tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim",
+      "/tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.ObjectModifiers.html",
+        "description": "Blender Python API — ObjectModifiers collection",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.BevelModifier.html",
+        "description": "Blender Python API — BevelModifier attributes",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors"
+      }
+    ]
+  }
+}
