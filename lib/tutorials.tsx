@@ -333,6 +333,7 @@ import { entry as blenderTutorialPythonBmeshOpsExtrudeBevelBridgeHardSurfaceProp
 import { entry as blenderTutorialPythonGeometryNodetreeBuildScatterModifierApiEntry } from "components/tutorials/entries/blender-tutorial-python-geometry-nodetree-build-scatter-modifier-api";
 import { entry as blenderTutorialPythonMathutilsNoiseTerrainHeightfieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr";
 import { entry as blenderTutorialPythonSceneColorManagementAgxOcioBakeSafeEntry } from "components/tutorials/entries/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe";
+import { entry as blenderTutorialPythonMovieclipMotionTrackingCameraSolveWebxrArEntry } from "components/tutorials/entries/blender-tutorial-python-movieclip-motion-tracking-camera-solve-webxr-ar";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -673,6 +674,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonGeometryNodetreeBuildScatterModifierApiEntry,
   blenderTutorialPythonMathutilsNoiseTerrainHeightfieldWebxrEntry,
   blenderTutorialPythonSceneColorManagementAgxOcioBakeSafeEntry,
+  blenderTutorialPythonMovieclipMotionTrackingCameraSolveWebxrArEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
