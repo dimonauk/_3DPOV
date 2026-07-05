@@ -463,3 +463,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-05 | blend + glb | scripting | python-nla-track-strip-action-library-vrm-pose-blend | 5.1 | CC0 | vrm_pose_lib.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend |
 | 2026-07-05 | blend + glb | scripting | python-cycles-shader-aov-custom-pass-bake-webxr | 5.1 | CC0 | aov_passes_0001.exr · curvature_bake.webp · aov_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr |
+| 2026-07-05 | blend + glb | scripting | python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr | 5.1 | CC0 | sdf_texture_atlas.webp · sdf_atlas_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr |

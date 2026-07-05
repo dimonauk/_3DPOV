@@ -1,0 +1,49 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "slug": "python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "sdf_texture_atlas.webp",
+    "sdf_atlas_sphere.glb",
+    "../../videos/scripting/python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr/viewport.mp4",
+    "../../videos/scripting/python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline",
+      "/tutorials/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr",
+      "/tutorials/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe"
+    ],
+    "external": [
+      {
+        "title": "bpy.types.Image API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Image.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://projects.blender.org/blender/blender-extensions"
+        ]
+      },
+      {
+        "title": "2D SDF Functions",
+        "url": "https://iquilezles.org/articles/distfunctions2d/",
+        "licence": "MIT",
+        "author": "Inigo Quilez",
+        "related_projects": [
+          "https://github.com/nicktindall/cyclon.p2p",
+          "https://github.com/mrdoob/three.js"
+        ]
+      }
+    ]
+  }
+}
