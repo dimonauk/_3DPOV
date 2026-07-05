@@ -344,6 +344,7 @@ import { entry as blenderTutorialPythonModifierStackPreExportApplyEntry } from "
 import { entry as blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curves-hair-data-block-strand-sculpt-webxr";
 import { entry as blenderTutorialPythonViewlayerMultiPassCollectionMaskEeveeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr";
 import { entry as blenderTutorialPythonNlaTrackStripActionLibraryVrmPoseBlendEntry } from "components/tutorials/entries/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend";
+import { entry as blenderTutorialPythonCyclesShaderAovCustomPassBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -695,6 +696,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry,
   blenderTutorialPythonViewlayerMultiPassCollectionMaskEeveeWebxrEntry,
   blenderTutorialPythonNlaTrackStripActionLibraryVrmPoseBlendEntry,
+  blenderTutorialPythonCyclesShaderAovCustomPassBakeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

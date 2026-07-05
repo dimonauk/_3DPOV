@@ -1,0 +1,36 @@
+{
+  "slug": "python-cycles-shader-aov-custom-pass-bake-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "blends/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/blueprint.py",              "type": "script" },
+    { "path": "blends/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/record.py",                 "type": "script" },
+    { "path": "blends/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/README.md",                 "type": "doc" },
+    { "path": "blends/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/SCREEN-RECORDING-NOTES.md", "type": "doc" },
+    { "path": "glbs/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/aov_sphere.glb",              "type": "binary", "generated_by": "blueprint.py" },
+    { "path": "videos/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/viewport.mp4",              "type": "binary", "generated_by": "record.py" },
+    { "path": "videos/scripting/python-cycles-shader-aov-custom-pass-bake-webxr/screen.mp4",                "type": "binary", "generated_by": "manual-obs" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr",
+      "/tutorials/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.AOVItem.html",
+        "title": "bpy.types.AOVItem API Reference (5.1)",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-4.0"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/render/cycles/render_settings/passes.html",
+        "title": "Cycles Render Passes Manual (5.1)",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}
