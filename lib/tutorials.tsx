@@ -335,6 +335,7 @@ import { entry as blenderTutorialPythonMathutilsNoiseTerrainHeightfieldWebxrEntr
 import { entry as blenderTutorialPythonSceneColorManagementAgxOcioBakeSafeEntry } from "components/tutorials/entries/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe";
 import { entry as blenderTutorialPythonMovieclipMotionTrackingCameraSolveWebxrArEntry } from "components/tutorials/entries/blender-tutorial-python-movieclip-motion-tracking-camera-solve-webxr-ar";
 import { entry as blenderTutorialPythonMeshAttributesForeachSetGnDataPipelineEntry } from "components/tutorials/entries/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline";
+import { entry as blenderTutorialPythonBpyTextCurve3dFontSignageWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-text-curve-3d-font-signage-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -677,6 +678,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonSceneColorManagementAgxOcioBakeSafeEntry,
   blenderTutorialPythonMovieclipMotionTrackingCameraSolveWebxrArEntry,
   blenderTutorialPythonMeshAttributesForeachSetGnDataPipelineEntry,
+  blenderTutorialPythonBpyTextCurve3dFontSignageWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

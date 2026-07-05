@@ -1,0 +1,41 @@
+{
+  "slug": "python-bpy-text-curve-3d-font-signage-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "holoflow_sign.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-string-to-curves-3d-text",
+      "/tutorials/blender-tutorial-python-bpy-curve-data-bezier-nurbs-spline-api",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop"
+    ],
+    "outside": [
+      {
+        "title": "bpy.types.TextCurve API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.TextCurve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.VFont.html",
+          "https://docs.blender.org/manual/en/latest/modeling/texts/introduction.html"
+        ]
+      },
+      {
+        "title": "Nunito Variable Font",
+        "url": "https://github.com/googlefonts/Nunito",
+        "licence": "OFL-1.1",
+        "author": "Vernon Adams",
+        "related": [
+          "https://github.com/google/fonts"
+        ]
+      }
+    ]
+  }
+}
