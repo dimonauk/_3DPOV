@@ -450,3 +450,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-05 | blend + glb | scripting | python-metaball-blob-chain-remesh-webxr | 5.1 | CC0 | blob_chain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-metaball-blob-chain-remesh-webxr |
 
 | 2026-07-05 | blend | scripting | python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake | 5.1 | CC0 | subject_sphere.glb · light_rig.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake |
+
+| 2026-07-05 | blend | scripting | python-compositor-nodetree-render-passes-eevee-glb-bake | 5.1 | CC0 | compositor_passes_0001.exr · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake |

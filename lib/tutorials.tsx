@@ -338,6 +338,7 @@ import { entry as blenderTutorialPythonMeshAttributesForeachSetGnDataPipelineEnt
 import { entry as blenderTutorialPythonBpyTextCurve3dFontSignageWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-text-curve-3d-font-signage-webxr";
 import { entry as blenderTutorialPythonMetaballBlobChainRemeshWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-metaball-blob-chain-remesh-webxr";
 import { entry as blenderTutorialPythonBpyLightRig3pointEeveelightgroupWebxrBakeEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake";
+import { entry as blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry } from "components/tutorials/entries/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -683,6 +684,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyTextCurve3dFontSignageWebxrEntry,
   blenderTutorialPythonMetaballBlobChainRemeshWebxrEntry,
   blenderTutorialPythonBpyLightRig3pointEeveelightgroupWebxrBakeEntry,
+  blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

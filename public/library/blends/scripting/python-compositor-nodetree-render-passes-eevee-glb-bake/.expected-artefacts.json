@@ -1,0 +1,53 @@
+{
+  "slug": "python-compositor-nodetree-render-passes-eevee-glb-bake",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "compositor_passes_0001.exr",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes"
+    ],
+    "outside": [
+      {
+        "title": "Blender Foundation — Compositor Nodes API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.CompositorNode.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.CompositorNodeDenoise.html",
+          "https://docs.blender.org/api/5.1/bpy.types.CompositorNodeOutputFile.html"
+        ]
+      },
+      {
+        "title": "Blender Manual — Compositor Introduction",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/introduction.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/compositing/types/filter/denoise.html",
+          "https://docs.blender.org/manual/en/latest/render/layers/passes.html"
+        ]
+      },
+      {
+        "title": "Intel Open Image Denoise (OIDN)",
+        "url": "https://github.com/RenderKit/oidn",
+        "licence": "Apache-2.0",
+        "author": "Intel / RenderKit contributors",
+        "related": [
+          "https://github.com/RenderKit/oidn/tree/master/doc",
+          "https://openimagedenoise.github.io"
+        ]
+      }
+    ]
+  }
+}
