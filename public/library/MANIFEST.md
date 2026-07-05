@@ -442,3 +442,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-05 | blend | scripting | python-scene-color-management-agx-ocio-bake-safe | 5.1 | CC0 | colour_chart_agx.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe |
 
 | 2026-07-05 | blend + glb | scripting | python-movieclip-motion-tracking-camera-solve-webxr-ar | 5.1 | CC0 | solved_camera.glb · camera_path.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-movieclip-motion-tracking-camera-solve-webxr-ar |
+
+| 2026-07-05 | blend + glb | scripting | python-mesh-attributes-foreach-set-gn-data-pipeline | 5.1 | CC0 | attribute_planet.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline |
