@@ -438,3 +438,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-04 | blend + glb | scripting | python-geometry-nodetree-build-scatter-modifier-api | 5.1 | CC0 | scatter_billboard.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-geometry-nodetree-build-scatter-modifier-api |
 
 | 2026-07-05 | blend + glb | scripting | python-mathutils-noise-terrain-heightfield-webxr | 5.1 | CC0 | terrain_heightfield.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr |
+
+| 2026-07-05 | blend | scripting | python-scene-color-management-agx-ocio-bake-safe | 5.1 | CC0 | colour_chart_agx.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-scene-color-management-agx-ocio-bake-safe |

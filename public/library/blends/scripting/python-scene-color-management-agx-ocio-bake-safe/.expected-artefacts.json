@@ -1,0 +1,36 @@
+{
+  "slug": "python-scene-color-management-agx-ocio-bake-safe",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "colour_chart_agx.blend",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-shader-vector-displacement-multires-bake-cycles",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/color_management.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/AcademySoftwareFoundation/OpenColorIO",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation",
+        "sibling": "https://github.com/AcademySoftwareFoundation/Imath"
+      }
+    ]
+  }
+}
