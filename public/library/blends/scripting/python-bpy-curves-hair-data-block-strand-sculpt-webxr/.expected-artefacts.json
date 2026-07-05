@@ -1,0 +1,45 @@
+{
+  "slug": "python-bpy-curves-hair-data-block-strand-sculpt-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "output/hair_strands_webxr.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-interpolate-curves-strand-hair-vrm",
+      "/tutorials/blender-tutorial-curves-hair-grooming",
+      "/tutorials/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-gn-deform-curves-on-surface-vrm-hair"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Curves.html",
+        "description": "Blender Python API 5.1 — bpy.types.Curves data block reference",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://projects.blender.org/blender/blender-extensions"
+        ]
+      },
+      {
+        "url": "https://developer.blender.org/docs/features/objects/hair/",
+        "description": "Blender Developer Docs — Hair curves object: data format, attribute domains, and surface binding",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://projects.blender.org/blender/blender-addons"
+        ]
+      }
+    ]
+  }
+}

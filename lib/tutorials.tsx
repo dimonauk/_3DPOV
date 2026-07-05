@@ -341,6 +341,7 @@ import { entry as blenderTutorialPythonBpyLightRig3pointEeveelightgroupWebxrBake
 import { entry as blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry } from "components/tutorials/entries/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake";
 import { entry as blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry } from "components/tutorials/entries/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config";
 import { entry as blenderTutorialPythonModifierStackPreExportApplyEntry } from "components/tutorials/entries/blender-tutorial-python-modifier-stack-pre-export-apply";
+import { entry as blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curves-hair-data-block-strand-sculpt-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -689,6 +690,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonCompositorNodetreeRenderPassesEeveeGlbBakeEntry,
   blenderTutorialPythonEeveeNextShadowSsrAoRenderConfigEntry,
   blenderTutorialPythonModifierStackPreExportApplyEntry,
+  blenderTutorialPythonBpyCurvesHairDataBlockStrandSculptWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
