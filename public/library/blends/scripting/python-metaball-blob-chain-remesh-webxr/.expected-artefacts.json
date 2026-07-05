@@ -1,0 +1,42 @@
+{
+  "slug": "python-metaball-blob-chain-remesh-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blob_chain.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain",
+      "/tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion"
+    ],
+    "outside": [
+      {
+        "title": "bpy.types.MetaBall API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.MetaBall.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.MetaElement.html",
+          "https://docs.blender.org/manual/en/latest/modeling/metas/introduction.html"
+        ]
+      },
+      {
+        "title": "Blender Manual — Meta Objects: Introduction",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/metas/introduction.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/metas/properties.html",
+          "https://docs.blender.org/manual/en/latest/modeling/metas/editing.html"
+        ]
+      }
+    ]
+  }
+}
