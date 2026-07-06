@@ -346,6 +346,7 @@ import { entry as blenderTutorialPythonViewlayerMultiPassCollectionMaskEeveeWebx
 import { entry as blenderTutorialPythonNlaTrackStripActionLibraryVrmPoseBlendEntry } from "components/tutorials/entries/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend";
 import { entry as blenderTutorialPythonCyclesShaderAovCustomPassBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr";
 import { entry as blenderTutorialPythonBpyImagePixelBufferSdfTextureAtlasWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr";
+import { entry as blenderTutorialPythonPoseboneMatrixWorldSpaceIkBakeVrmEntry } from "components/tutorials/entries/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -699,6 +700,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNlaTrackStripActionLibraryVrmPoseBlendEntry,
   blenderTutorialPythonCyclesShaderAovCustomPassBakeWebxrEntry,
   blenderTutorialPythonBpyImagePixelBufferSdfTextureAtlasWebxrEntry,
+  blenderTutorialPythonPoseboneMatrixWorldSpaceIkBakeVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
