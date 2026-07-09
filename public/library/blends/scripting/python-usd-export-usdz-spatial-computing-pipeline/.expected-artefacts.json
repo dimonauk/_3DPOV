@@ -1,0 +1,40 @@
+{
+  "slug": "python-usd-export-usdz-spatial-computing-pipeline",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "usd_export/scene_export.usdc",
+    "usd_export/holoflow_scene.usdz",
+    "usd_export/export_manifest.json",
+    "../../videos/scripting/python-usd-export-usdz-spatial-computing-pipeline/viewport.mp4",
+    "../../videos/scripting/python-usd-export-usdz-spatial-computing-pipeline/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-python-gltf-user-extension-export-extras-hook",
+      "/tutorials/blender-tutorial-python-blender-extensions-platform-manifest-build-package"
+    ],
+    "external": [
+      {
+        "title": "Blender Foundation — USD Export documentation",
+        "url": "https://docs.blender.org/manual/en/5.1/files/import_export/usd.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "PixarAnimationStudios/OpenUSD — pxr Python API",
+        "url": "https://github.com/PixarAnimationStudios/OpenUSD",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios",
+        "related": "https://github.com/usd-wg/usd-working-group"
+      }
+    ]
+  }
+}
