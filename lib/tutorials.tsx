@@ -348,6 +348,7 @@ import { entry as blenderTutorialPythonCyclesShaderAovCustomPassBakeWebxrEntry }
 import { entry as blenderTutorialPythonBpyImagePixelBufferSdfTextureAtlasWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr";
 import { entry as blenderTutorialPythonPoseboneMatrixWorldSpaceIkBakeVrmEntry } from "components/tutorials/entries/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm";
 import { entry as blenderTutorialPythonBpyCameraDataWebxrFrustumFovCalibrationEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-camera-data-webxr-frustum-fov-calibration";
+import { entry as blenderTutorialPythonBpySpeakerSpatialAudioPositionalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-speaker-spatial-audio-positional-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -703,6 +704,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyImagePixelBufferSdfTextureAtlasWebxrEntry,
   blenderTutorialPythonPoseboneMatrixWorldSpaceIkBakeVrmEntry,
   blenderTutorialPythonBpyCameraDataWebxrFrustumFovCalibrationEntry,
+  blenderTutorialPythonBpySpeakerSpatialAudioPositionalWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

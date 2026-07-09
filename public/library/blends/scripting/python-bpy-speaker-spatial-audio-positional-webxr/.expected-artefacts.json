@@ -1,0 +1,36 @@
+{
+  "slug": "python-bpy-speaker-spatial-audio-positional-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "speakers_manifest.json",
+    "speaker_scene.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/wiring-spatial-audio-in-the-framework",
+      "/tutorials/blender-tutorial-animation-sound-bake-fcurve-audio-reactive",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-bpy-camera-data-webxr-frustum-fov-calibration",
+      "/tutorials/blender-tutorial-python-bpy-curves-hair-data-block-strand-sculpt-webxr"
+    ],
+    "external": [
+      {
+        "title": "bpy.types.Speaker — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Speaker.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "PositionalAudio — three.js source",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/audio/PositionalAudio.js",
+        "licence": "MIT",
+        "author": "mrdoob / three.js contributors"
+      }
+    ]
+  }
+}

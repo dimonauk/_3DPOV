@@ -467,3 +467,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-06 | blend + glb | scripting | python-posebone-matrix-world-space-ik-bake-vrm | 5.1 | CC0 | pose_arm_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm |
 
 | 2026-07-09 | blend + glb | scripting | python-bpy-camera-data-webxr-frustum-fov-calibration | 5.1 | CC0 | camera_orbit.glb · camera_intrinsics.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-camera-data-webxr-frustum-fov-calibration |
+
+| 2026-07-09 | blend + glb | scripting | python-bpy-speaker-spatial-audio-positional-webxr | 5.1 | CC0 | speakers_manifest.json · speaker_scene.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-speaker-spatial-audio-positional-webxr |
