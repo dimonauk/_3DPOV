@@ -1,0 +1,45 @@
+{
+  "slug": "python-bpy-context-temp-override-ops-headless-scripting",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "context_override_demo.glb",
+    "context_override_demo.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-rigid-body-physics-bake-trajectory-webxr",
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.context — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.context.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.ops.html"
+      },
+      {
+        "title": "Blender 3.2 Python API Release Notes — temp_override introduction",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/3.2/Python_API",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://wiki.blender.org/wiki/Reference/Release_Notes/5.0/Python_API"
+      },
+      {
+        "title": "njanakiev/blender-scripting — headless scripting patterns",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "sibling": "https://github.com/njanakiev"
+      }
+    ]
+  }
+}

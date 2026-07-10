@@ -358,6 +358,7 @@ import { entry as blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchG
 import { entry as blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr";
 import { entry as blenderTutorialPythonMathutilsMatrixTransformComposeDecomposeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr";
 import { entry as blenderTutorialPythonBpyNodeTreeInterfaceGnSocketApi4xEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-node-tree-interface-gn-socket-api-4x";
+import { entry as blenderTutorialPythonBpyContextTempOverrideOpsHeadlessScriptingEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -723,6 +724,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry,
   blenderTutorialPythonMathutilsMatrixTransformComposeDecomposeWebxrEntry,
   blenderTutorialPythonBpyNodeTreeInterfaceGnSocketApi4xEntry,
+  blenderTutorialPythonBpyContextTempOverrideOpsHeadlessScriptingEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -487,3 +487,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-10 | blend | scripting | python-mathutils-matrix-transform-compose-decompose-webxr | 5.1 | CC0 | matrix_demo.blend · matrix_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr |
 
 | 2026-07-10 | blend + glb | scripting | python-bpy-node-tree-interface-gn-socket-api-4x | 5.1 | CC0 | radial_fan.glb · radial_fan.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-node-tree-interface-gn-socket-api-4x |
+| 2026-07-10 | blend + glb | scripting | python-bpy-context-temp-override-ops-headless-scripting | 5.1 | CC0 | context_override_demo.glb · context_override_demo.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting |
