@@ -354,6 +354,7 @@ import { entry as blenderTutorialPythonBpySequenceEditorVseScriptTutorialAssembl
 import { entry as blenderTutorialPythonGpuOffscreenRenderToTextureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-gpu-offscreen-render-to-texture-webxr";
 import { entry as blenderTutorialPythonMeshCustomSplitNormalsSmoothIslandFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr";
 import { entry as blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-rigid-body-physics-bake-trajectory-webxr";
+import { entry as blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -715,6 +716,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonGpuOffscreenRenderToTextureWebxrEntry,
   blenderTutorialPythonMeshCustomSplitNormalsSmoothIslandFacetedWebxrEntry,
   blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry,
+  blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
