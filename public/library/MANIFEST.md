@@ -475,3 +475,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-10 | blend | video-editing | python-bpy-sequence-editor-vse-script-tutorial-assembly | 5.1 | CC0 | assembly_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 · tutorial_assembled.mp4 | /tutorials/blender-tutorial-python-bpy-sequence-editor-vse-script-tutorial-assembly |
 
 | 2026-07-10 | blend + glb | scripting | python-gpu-offscreen-render-to-texture-webxr | 5.1 | CC0 | gpu_offscreen_bake.blend · world_normal_data_tex.webp · normal_data_sphere.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gpu-offscreen-render-to-texture-webxr |
+
+| 2026-07-10 | blend + glb | scripting | python-mesh-custom-split-normals-smooth-island-faceted-webxr | 5.1 | CC0 | custom_normals_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr |

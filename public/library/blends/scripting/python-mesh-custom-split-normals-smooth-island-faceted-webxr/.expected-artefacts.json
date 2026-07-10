@@ -1,0 +1,42 @@
+{
+  "slug": "python-mesh-custom-split-normals-smooth-island-faceted-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "custom_normals_gem.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-mesh-custom-split-normals-smooth-island-faceted-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-mesh-custom-split-normals-smooth-island-faceted-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.Mesh — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Release Notes 4.1: Auto Smooth Removal",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.1/Python_API",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "io_scene_gltf2 — GLTF Exporter",
+        "url": "https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/io_scene_gltf2",
+        "licence": "Apache-2.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
