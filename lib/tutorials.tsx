@@ -356,6 +356,7 @@ import { entry as blenderTutorialPythonMeshCustomSplitNormalsSmoothIslandFaceted
 import { entry as blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-rigid-body-physics-bake-trajectory-webxr";
 import { entry as blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr";
 import { entry as blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr";
+import { entry as blenderTutorialPythonMathutilsMatrixTransformComposeDecomposeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -719,6 +720,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry,
   blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry,
   blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry,
+  blenderTutorialPythonMathutilsMatrixTransformComposeDecomposeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

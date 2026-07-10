@@ -483,3 +483,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-10 | blend + glb | scripting | python-bpy-collection-link-visibility-override-batch-glb-webxr | 5.1 | CC0 | hf_env.glb · hf_props.glb · hf_lights.glb · collection_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr |
 
 | 2026-07-10 | blend + glb | scripting | python-object-constraint-stack-lookat-floor-bake-webxr | 5.1 | CC0 | constraint_baked.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr |
+
+| 2026-07-10 | blend | scripting | python-mathutils-matrix-transform-compose-decompose-webxr | 5.1 | CC0 | matrix_demo.blend · matrix_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr |

@@ -1,0 +1,56 @@
+{
+  "slug": "python-mathutils-matrix-transform-compose-decompose-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "filename": "matrix_demo.blend",
+      "type": "blend",
+      "description": "Hub + 6 orbit satellites + child knobs, post-pivot-rotation scene"
+    },
+    {
+      "filename": "matrix_manifest.json",
+      "type": "json",
+      "description": "Per-object translation / rotation_quat / scale / matrix_threejs (float16 column-major)"
+    },
+    {
+      "filename": "viewport.mp4",
+      "type": "video",
+      "location": "public/library/videos/scripting/python-mathutils-matrix-transform-compose-decompose-webxr/",
+      "description": "Camera-orbit reveal animation rendered via record.py"
+    },
+    {
+      "filename": "screen.mp4",
+      "type": "video",
+      "location": "public/library/videos/scripting/python-mathutils-matrix-transform-compose-decompose-webxr/",
+      "description": "OBS screen recording — Blender UI showing compose_trs / decompose / pivot rotate"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm",
+      "/tutorials/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr",
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/mathutils.html#mathutils.Matrix",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "author": "Nikolai Janakiev",
+        "licence": "MIT"
+      },
+      {
+        "url": "https://threejs.org/docs/#api/en/math/Matrix4",
+        "author": "mrdoob / three.js contributors",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
