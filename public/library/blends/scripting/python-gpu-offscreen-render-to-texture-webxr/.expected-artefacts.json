@@ -1,0 +1,38 @@
+{
+  "schema": "holoflow-library-artefacts/1.0",
+  "slug": "python-gpu-offscreen-render-to-texture-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "gpu_offscreen_bake.blend",
+    "world_normal_data_tex.webp",
+    "normal_data_sphere.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-gpu-viewport-draw-overlay",
+      "/tutorials/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr",
+      "/tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot"
+    ],
+    "outside_sources": [
+      {
+        "title": "gpu.types.GPUOffScreen — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/gpu.types.html#gpu.types.GPUOffScreen",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "gpu module overview — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/gpu.types.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
