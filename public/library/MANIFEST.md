@@ -488,3 +488,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-10 | blend + glb | scripting | python-bpy-node-tree-interface-gn-socket-api-4x | 5.1 | CC0 | radial_fan.glb · radial_fan.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-node-tree-interface-gn-socket-api-4x |
 | 2026-07-10 | blend + glb | scripting | python-bpy-context-temp-override-ops-headless-scripting | 5.1 | CC0 | context_override_demo.glb · context_override_demo.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting |
+| 2026-07-10 | blend + glb | scripting | python-bpy-vertex-group-weight-assign-vrm-deform-envelope | 5.1 | CC0 | vertex_group_vrm_proxy.glb · vertex_group_vrm_proxy.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope |
