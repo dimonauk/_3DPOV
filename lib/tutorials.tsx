@@ -350,6 +350,7 @@ import { entry as blenderTutorialPythonPoseboneMatrixWorldSpaceIkBakeVrmEntry } 
 import { entry as blenderTutorialPythonBpyCameraDataWebxrFrustumFovCalibrationEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-camera-data-webxr-frustum-fov-calibration";
 import { entry as blenderTutorialPythonBpySpeakerSpatialAudioPositionalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-speaker-spatial-audio-positional-webxr";
 import { entry as blenderTutorialPythonUsdExportUsdzSpatialComputingPipelineEntry } from "components/tutorials/entries/blender-tutorial-python-usd-export-usdz-spatial-computing-pipeline";
+import { entry as blenderTutorialPythonBpySequenceEditorVseScriptTutorialAssemblyEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-sequence-editor-vse-script-tutorial-assembly";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -707,6 +708,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyCameraDataWebxrFrustumFovCalibrationEntry,
   blenderTutorialPythonBpySpeakerSpatialAudioPositionalWebxrEntry,
   blenderTutorialPythonUsdExportUsdzSpatialComputingPipelineEntry,
+  blenderTutorialPythonBpySequenceEditorVseScriptTutorialAssemblyEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

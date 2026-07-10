@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-sequence-editor-vse-script-tutorial-assembly",
+  "topic": "video-editing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "assembly_manifest.json",
+    "../../videos/video-editing/python-bpy-sequence-editor-vse-script-tutorial-assembly/viewport.mp4",
+    "../../videos/video-editing/python-bpy-sequence-editor-vse-script-tutorial-assembly/screen.mp4",
+    "../../videos/video-editing/python-bpy-sequence-editor-vse-script-tutorial-assembly/tutorial_assembled.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-vse-screen-recording-to-tutorial-export",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot",
+      "/tutorials/blender-tutorial-python-modal-progress-bar-cancel-long-operation"
+    ],
+    "external": [
+      {
+        "title": "Blender Foundation — bpy.types.SequenceEditor API reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.SequenceEditor.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "related": "https://docs.blender.org/api/5.1/bpy.types.Sequence.html"
+      },
+      {
+        "title": "Blender Foundation — bpy.types.TextSequence API reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.TextSequence.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "related": "https://docs.blender.org/api/5.1/bpy.types.GammaCrossSequence.html"
+      }
+    ]
+  }
+}
