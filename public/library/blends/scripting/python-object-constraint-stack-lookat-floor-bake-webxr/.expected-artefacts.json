@@ -1,0 +1,36 @@
+{
+  "slug": "python-object-constraint-stack-lookat-floor-bake-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "public/library/blends/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/blueprint.py", "type": "script" },
+    { "path": "public/library/blends/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/record.py", "type": "script" },
+    { "path": "public/library/blends/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/README.md", "type": "docs" },
+    { "path": "public/library/blends/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/SCREEN-RECORDING-NOTES.md", "type": "docs" },
+    { "path": "public/library/videos/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/viewport.mp4", "type": "video", "produced_by": "record.py" },
+    { "path": "public/library/videos/scripting/python-object-constraint-stack-lookat-floor-bake-webxr/screen.mp4", "type": "video", "produced_by": "screen-recording" },
+    { "path": "constraint_baked.glb", "type": "glb", "produced_by": "blueprint.py", "note": "exported adjacent to .blend; move to glbs/ after review" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend",
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Constraint.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.types.TrackToConstraint.html"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "sibling": "https://github.com/njanakiev"
+      }
+    ]
+  }
+}

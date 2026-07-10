@@ -355,6 +355,7 @@ import { entry as blenderTutorialPythonGpuOffscreenRenderToTextureWebxrEntry } f
 import { entry as blenderTutorialPythonMeshCustomSplitNormalsSmoothIslandFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr";
 import { entry as blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-rigid-body-physics-bake-trajectory-webxr";
 import { entry as blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr";
+import { entry as blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -717,6 +718,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMeshCustomSplitNormalsSmoothIslandFacetedWebxrEntry,
   blenderTutorialPythonRigidBodyPhysicsBakeTrajectoryWebxrEntry,
   blenderTutorialPythonBpyCollectionLinkVisibilityOverrideBatchGlbWebxrEntry,
+  blenderTutorialPythonObjectConstraintStackLookatFloorBakeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
