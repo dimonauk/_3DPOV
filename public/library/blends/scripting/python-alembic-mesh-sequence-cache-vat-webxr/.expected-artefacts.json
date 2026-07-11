@@ -1,0 +1,35 @@
+{
+  "slug": "python-alembic-mesh-sequence-cache-vat-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "vat_position.exr",       "type": "image",  "format": "EXR/FLOAT32", "note": "VAT texture: width=vertex_count, height=frame_count, RGBA=Δxyz 1" },
+    { "path": "alembic_vat_rest.glb",   "type": "model",  "format": "GLB",         "note": "Rest-pose mesh, Draco-6, WebP textures" },
+    { "path": "alembic_vat_meta.json",  "type": "data",   "format": "JSON",        "note": "Shader decode params: vertex_count, frame_count, GLSL snippet" },
+    { "path": "blueprint.py",           "type": "script",                           "note": "Full Alembic → MSC → VAT → GLB pipeline" },
+    { "path": "record.py",              "type": "script",                           "note": "Viewport animation render → viewport.mp4" },
+    { "path": "../../videos/scripting/python-alembic-mesh-sequence-cache-vat-webxr/viewport.mp4",
+                                        "type": "video",                            "note": "Wave animation, 30 fps, 1920×1080 (Workbench render)" },
+    { "path": "screen.mp4",             "type": "video",                            "note": "OBS screen recording (operator runs blueprint.py + inspector walkthrough)" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-cloth-modifier-sim-bake-vertex-animation-texture-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr",
+      "/tutorials/blender-tutorial-python-usd-export-usdz-spatial-computing-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "Alembic Project (ILM / Sony) — BSD-3-Clause",
+        "url": "https://www.alembic.io/",
+        "licence": "BSD-3-Clause"
+      },
+      {
+        "title": "Blender Foundation — Alembic Import/Export Manual (CC-BY-SA 4.0)",
+        "url": "https://docs.blender.org/manual/en/latest/files/import_export/alembic.html",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}

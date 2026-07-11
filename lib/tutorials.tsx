@@ -363,6 +363,7 @@ import { entry as blenderTutorialPythonBpyVertexGroupWeightAssignVrmDeformEnvelo
 import { entry as blenderTutorialPythonClothModifierSimBakeVertexAnimationTextureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cloth-modifier-sim-bake-vertex-animation-texture-webxr";
 import { entry as blenderTutorialPythonGp3StrokeDrawingApiToonInkWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-gp3-stroke-drawing-api-toon-ink-webxr";
 import { entry as blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget";
+import { entry as blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -733,6 +734,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonClothModifierSimBakeVertexAnimationTextureWebxrEntry,
   blenderTutorialPythonGp3StrokeDrawingApiToonInkWebxrEntry,
   blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetEntry,
+  blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
