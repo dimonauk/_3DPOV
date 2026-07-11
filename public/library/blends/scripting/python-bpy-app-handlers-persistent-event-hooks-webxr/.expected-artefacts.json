@@ -1,0 +1,43 @@
+{
+  "blend": "handlers_demo.blend",
+  "json_outputs": [
+    "light_rig.json",
+    "vat_samples.json"
+  ],
+  "glbs": [
+    "public/library/glbs/scripting/handlers-demo/handlers_demo.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-app-handlers-persistent-event-hooks-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-app-handlers-persistent-event-hooks-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_routes": [
+      "/tutorials/blender-tutorial-python-cloth-modifier-sim-bake-vertex-animation-texture-webxr",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-bpy-sequence-editor-vse-script-tutorial-assembly",
+      "/tutorials/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr",
+      "/tutorials/blender-tutorial-python-bpy-speaker-spatial-audio-positional-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Foundation — bpy.app.handlers API Reference",
+        "licence": "CC-BY-4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.app.handlers.html",
+        "sibling_repos": [
+          "https://projects.blender.org/blender/blender",
+          "https://github.com/blender/blender-manual"
+        ]
+      },
+      {
+        "title": "Blender Foundation — Python Tips & Tricks: Persistent Handler on Frame Change",
+        "licence": "CC-BY-4.0",
+        "url": "https://docs.blender.org/api/5.1/info_tips_and_tricks.html",
+        "sibling_repos": [
+          "https://projects.blender.org/blender/blender",
+          "https://developer.blender.org/docs/"
+        ]
+      }
+    ]
+  }
+}
