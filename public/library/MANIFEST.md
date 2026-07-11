@@ -496,3 +496,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-11 | blend + glb | scripting | python-mathutils-quaternion-slerp-squad-vrm-retarget | 5.1 | CC0 | quat_retarget.blend · quat_retarget_arm.glb · quat_retarget_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget |
 
 | 2026-07-11 | blend + glb | scripting | python-alembic-mesh-sequence-cache-vat-webxr | 5.1 | CC0 | vat_position.exr · alembic_vat_rest.glb · alembic_vat_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr |
+
+| 2026-07-11 | blend + glb | scripting | python-bpy-app-handlers-persistent-event-hooks-webxr | 5.1 | CC0 | light_rig.json · vat_samples.json · handlers_demo.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-app-handlers-persistent-event-hooks-webxr |
