@@ -365,6 +365,7 @@ import { entry as blenderTutorialPythonGp3StrokeDrawingApiToonInkWebxrEntry } fr
 import { entry as blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget";
 import { entry as blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr";
 import { entry as blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr";
+import { entry as blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry } from "components/tutorials/entries/blender-tutorial-python-load-post-driver-namespace-blend-package-setup";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -737,6 +738,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetEntry,
   blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry,
   blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry,
+  blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

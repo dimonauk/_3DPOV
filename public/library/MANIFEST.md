@@ -498,3 +498,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-11 | blend + glb | scripting | python-alembic-mesh-sequence-cache-vat-webxr | 5.1 | CC0 | vat_position.exr · alembic_vat_rest.glb · alembic_vat_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr |
 
 | 2026-07-11 | blend + glb | scripting | python-bpy-volume-openvdb-domain-field-sample-webxr | 5.1 | CC0 | density_cloud.glb · vdb_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr |
+
+| 2026-07-07 | blend | scripting | python-load-post-driver-namespace-blend-package-setup | 5.1 | CC0 | holoflow_package_demo.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-load-post-driver-namespace-blend-package-setup |
