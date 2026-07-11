@@ -1,0 +1,43 @@
+{
+  "slug": "python-bpy-volume-openvdb-domain-field-sample-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "density_cloud.glb",  "type": "model",  "format": "GLB",        "note": "Instanced icosphere point cloud, Draco-6, WebP vertex colours" },
+    { "path": "vdb_meta.json",      "type": "data",   "format": "JSON",       "note": "voxel_size, point_count, density_range, TSL/GLSL decode snippet" },
+    { "path": "blueprint.py",       "type": "script",                          "note": "Full pyopenvdb + bpy.types.Volume pipeline" },
+    { "path": "record.py",          "type": "script",                          "note": "90-frame orbit viewport render → viewport.mp4" },
+    { "path": "../../videos/scripting/python-bpy-volume-openvdb-domain-field-sample-webxr/viewport.mp4",
+                                    "type": "video",                           "note": "EEVEE Next volume + point cloud orbit, 1920×1080, 30 fps" },
+    { "path": "screen.mp4",         "type": "video",                           "note": "OBS screen recording of full blueprint.py run + viewport inspection" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-volume-cube-procedural-cloud",
+      "/tutorials/blender-tutorial-gn-volume-to-mesh-point-cloud-blob-reconstruction",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr",
+      "/tutorials/blender-tutorial-physics-mantaflow-smoke-fire-torch",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export"
+    ],
+    "outside_sources": [
+      {
+        "title": "OpenVDB — Academy Software Foundation (Apache-2.0)",
+        "url": "https://www.openvdb.org/",
+        "licence": "Apache-2.0",
+        "related_projects": [
+          "https://github.com/AcademySoftwareFoundation/openvdb",
+          "https://github.com/AcademySoftwareFoundation/openvdb/tree/master/openvdb/openvdb/python"
+        ]
+      },
+      {
+        "title": "Blender Manual — Volumes (CC-BY-SA 4.0)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/volumes/",
+        "licence": "CC-BY-SA-4.0",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://developer.blender.org/docs/"
+        ]
+      }
+    ]
+  }
+}
