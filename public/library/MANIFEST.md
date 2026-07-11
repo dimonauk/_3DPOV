@@ -500,3 +500,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-11 | blend + glb | scripting | python-bpy-volume-openvdb-domain-field-sample-webxr | 5.1 | CC0 | density_cloud.glb · vdb_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr |
 
 | 2026-07-07 | blend | scripting | python-load-post-driver-namespace-blend-package-setup | 5.1 | CC0 | holoflow_package_demo.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-load-post-driver-namespace-blend-package-setup |
+
+| 2026-07-11 | blend + glb | scripting | python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr | 5.1 | CC0 | holoflow_uv_atlas.glb · holoflow_uv_atlas.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr |

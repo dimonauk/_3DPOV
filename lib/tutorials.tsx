@@ -366,6 +366,7 @@ import { entry as blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetE
 import { entry as blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr";
 import { entry as blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr";
 import { entry as blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry } from "components/tutorials/entries/blender-tutorial-python-load-post-driver-namespace-blend-package-setup";
+import { entry as blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -739,6 +740,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry,
   blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry,
   blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry,
+  blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
