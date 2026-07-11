@@ -1,0 +1,40 @@
+{
+  "slug": "python-gp3-stroke-drawing-api-toon-ink-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "type": ["blend", "glb"],
+  "licence": "CC0",
+  "files": [
+    "gp3_ink_wave.blend",
+    "gp3_toon_wave.glb",
+    "gp3_meta.json",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-grease-pencil-3-stroke-drawing-fill-taper-export",
+      "/tutorials/blender-tutorial-gn-gp3-noise-stroke-wave",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.GreasePencil API Reference",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.GreasePencil.html"
+      },
+      {
+        "title": "Grease Pencil 3.0 Developer Notes",
+        "author": "Blender Foundation",
+        "licence": "CC0",
+        "url": "https://developer.blender.org/docs/features/grease_pencil/"
+      }
+    ]
+  }
+}
