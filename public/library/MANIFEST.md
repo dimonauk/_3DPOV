@@ -492,3 +492,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-10 | blend + glb | scripting | python-cloth-modifier-sim-bake-vertex-animation-texture-webxr | 5.1 | CC0 | cloth_vat.blend · cloth_flag_rest.glb · vat_position.exr · vat_normal.exr · vat_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-cloth-modifier-sim-bake-vertex-animation-texture-webxr |
 
 | 2026-07-11 | blend + glb | scripting | python-gp3-stroke-drawing-api-toon-ink-webxr | 5.1 | CC0 | gp3_ink_wave.blend · gp3_toon_wave.glb · gp3_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gp3-stroke-drawing-api-toon-ink-webxr |
+
+| 2026-07-11 | blend + glb | scripting | python-mathutils-quaternion-slerp-squad-vrm-retarget | 5.1 | CC0 | quat_retarget.blend · quat_retarget_arm.glb · quat_retarget_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget |
