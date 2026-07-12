@@ -374,6 +374,7 @@ import { entry as blenderTutorialPythonArmatureBoneCollectionsVrmRigClassificati
 import { entry as blenderTutorialPythonBpyCurveSplineBezierMotionPathCameraRailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr";
 import { entry as blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-shape-key-data-block-morph-target-vrm-webxr";
 import { entry as blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr";
+import { entry as blenderTutorialPythonCyclesLightLinkingReceiverBlockerBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-light-linking-receiver-blocker-bake-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -755,6 +756,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEntry,
   blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry,
   blenderTutorialPythonBpyKeyingSetVrmAutoKeyCaptureEntry,
+  blenderTutorialPythonCyclesLightLinkingReceiverBlockerBakeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

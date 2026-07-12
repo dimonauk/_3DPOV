@@ -510,3 +510,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-12 | blend | scripting | python-gp3-lineart-modifier-toon-outline-batch-vrm | 5.1 | CC0 | gp3_lineart_vrm_proxy.blend · gp3_lineart_vrm_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-gp3-lineart-modifier-toon-outline-batch-vrm |
 
 | 2026-07-12 | blend + glb | scripting | python-bpy-keying-set-vrm-auto-key-capture | 5.1 | CC0 | keying_set_vrm_capture.glb · keying_set_vrm_capture.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-keying-set-vrm-auto-key-capture |
+
+| 2026-07-12 | blend + glb | scripting | python-cycles-light-linking-receiver-blocker-bake-webxr | 5.1 | CC0 | hero_prop_lightmap.webp · light_linking_export.glb · ll_meta.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-cycles-light-linking-receiver-blocker-bake-webxr |
