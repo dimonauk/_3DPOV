@@ -363,6 +363,7 @@ import { entry as blenderTutorialPythonBpyVertexGroupWeightAssignVrmDeformEnvelo
 import { entry as blenderTutorialPythonClothModifierSimBakeVertexAnimationTextureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cloth-modifier-sim-bake-vertex-animation-texture-webxr";
 import { entry as blenderTutorialPythonGp3StrokeDrawingApiToonInkWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-gp3-stroke-drawing-api-toon-ink-webxr";
 import { entry as blenderTutorialPythonGp3LineartModifierToonOutlineBatchVrmEntry } from "components/tutorials/entries/blender-tutorial-python-gp3-lineart-modifier-toon-outline-batch-vrm";
+import { entry as blenderTutorialPythonBpyKeyingSetVrmAutoKeyCaptureEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-keying-set-vrm-auto-key-capture";
 import { entry as blenderTutorialPythonMathutilsQuaternionSlerpSquadVrmRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget";
 import { entry as blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-alembic-mesh-sequence-cache-vat-webxr";
 import { entry as blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr";
@@ -753,6 +754,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyCurveSplineBezierMotionPathCameraRailWebxrEntry,
   blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEntry,
   blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry,
+  blenderTutorialPythonBpyKeyingSetVrmAutoKeyCaptureEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

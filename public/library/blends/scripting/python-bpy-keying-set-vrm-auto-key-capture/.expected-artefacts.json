@@ -1,0 +1,50 @@
+{
+  "slug": "python-bpy-keying-set-vrm-auto-key-capture",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "keying_set_vrm_capture.glb",
+    "keying_set_vrm_capture.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-keying-set-vrm-auto-key-capture/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-keying-set-vrm-auto-key-capture/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-shape-key-data-block-morph-target-vrm-webxr",
+      "/tutorials/blender-tutorial-python-armature-bone-collections-vrm-rig-classification-webxr",
+      "/tutorials/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend",
+      "/tutorials/blender-tutorial-python-id-properties-ui-custom-prop-schema-rig-controls"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.KeyingSet — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.KeyingSet.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.KeyingSetInfo.html",
+          "https://docs.blender.org/api/5.1/bpy.types.KeyingSetPath.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "VRMC_vrm-1.0 — Expression Preset Specification",
+        "url": "https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/expressions.md",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "siblings": [
+          "https://github.com/vrm-c/vrm-specification",
+          "https://github.com/pixiv/three-vrm",
+          "https://github.com/vrm-c/UniVRM"
+        ]
+      }
+    ]
+  }
+}
