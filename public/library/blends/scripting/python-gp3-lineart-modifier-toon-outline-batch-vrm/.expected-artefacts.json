@@ -1,0 +1,37 @@
+{
+  "slug": "python-gp3-lineart-modifier-toon-outline-batch-vrm",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "gp3_lineart_vrm_proxy.blend",
+    "gp3_lineart_vrm_manifest.json",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-gp3-stroke-drawing-api-toon-ink-webxr",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-gp3-frame-by-frame-cel-animation",
+      "/tutorials/blender-tutorial-grease-pencil-3-line-art-toon-outline",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-armature-bone-collections-vrm-rig-classification-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender 5.1 Line Art Modifier Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/grease_pencil/modifiers/generate/lineart.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.LineartGpencilModifier API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.LineartGpencilModifier.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
