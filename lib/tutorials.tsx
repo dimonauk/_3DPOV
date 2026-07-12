@@ -368,6 +368,7 @@ import { entry as blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEnt
 import { entry as blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry } from "components/tutorials/entries/blender-tutorial-python-load-post-driver-namespace-blend-package-setup";
 import { entry as blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr";
 import { entry as blenderTutorialPythonBpyLatticeCageDeformMorphBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-cage-deform-morph-bake-webxr";
+import { entry as blenderTutorialPythonArmatureBoneCollectionsVrmRigClassificationWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-armature-bone-collections-vrm-rig-classification-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -743,6 +744,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry,
   blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry,
   blenderTutorialPythonBpyLatticeCageDeformMorphBakeWebxrEntry,
+  blenderTutorialPythonArmatureBoneCollectionsVrmRigClassificationWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
