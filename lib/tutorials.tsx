@@ -371,6 +371,7 @@ import { entry as blenderTutorialPythonBpyLatticeCageDeformMorphBakeWebxrEntry }
 import { entry as blenderTutorialPythonArmatureBoneCollectionsVrmRigClassificationWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-armature-bone-collections-vrm-rig-classification-webxr";
 import { entry as blenderTutorialPythonBpyCurveSplineBezierMotionPathCameraRailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr";
 import { entry as blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-shape-key-data-block-morph-target-vrm-webxr";
+import { entry as blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -749,6 +750,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonArmatureBoneCollectionsVrmRigClassificationWebxrEntry,
   blenderTutorialPythonBpyCurveSplineBezierMotionPathCameraRailWebxrEntry,
   blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEntry,
+  blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
