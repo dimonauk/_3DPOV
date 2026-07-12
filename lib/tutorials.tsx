@@ -367,6 +367,7 @@ import { entry as blenderTutorialPythonAlembicMeshSequenceCacheVatWebxrEntry } f
 import { entry as blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-volume-openvdb-domain-field-sample-webxr";
 import { entry as blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry } from "components/tutorials/entries/blender-tutorial-python-load-post-driver-namespace-blend-package-setup";
 import { entry as blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr";
+import { entry as blenderTutorialPythonBpyLatticeCageDeformMorphBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-cage-deform-morph-bake-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -741,6 +742,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyVolumeOpenvdbDomainFieldSampleWebxrEntry,
   blenderTutorialPythonLoadPostDriverNamespaceBlendPackageSetupEntry,
   blenderTutorialPythonBpyMeshUvLayerAtlasPackMultiObjectWebxrEntry,
+  blenderTutorialPythonBpyLatticeCageDeformMorphBakeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

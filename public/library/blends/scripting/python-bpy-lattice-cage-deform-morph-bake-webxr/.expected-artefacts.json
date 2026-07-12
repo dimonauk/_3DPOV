@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-lattice-cage-deform-morph-bake-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "holoflow_lattice_baked.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Blender Python API — bpy.types.Lattice",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Lattice.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.types.LatticePoint.html"
+      },
+      {
+        "title": "Blender Manual — Lattice Modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/lattice.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  }
+}
