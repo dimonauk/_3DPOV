@@ -1,0 +1,45 @@
+{
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "ornament_faceted.blend",
+    "ornament_faceted.glb"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop",
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr"
+    ],
+    "outside_sources": [
+      {
+        "url":      "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "title":    "bmesh.ops — Blender 5.1 Python API",
+        "author":   "Blender Foundation & Contributors",
+        "licence":  "CC-BY-SA-4.0",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bmesh.html",
+          "https://docs.blender.org/api/5.1/bmesh.types.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "url":      "https://github.com/njanakiev/blender-scripting",
+        "title":    "blender-scripting — Python mesh scripting examples",
+        "author":   "Nicolas Janakiev",
+        "licence":  "MIT",
+        "siblings": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts",
+          "https://github.com/njanakiev"
+        ]
+      }
+    ]
+  }
+}

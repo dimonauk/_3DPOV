@@ -376,6 +376,7 @@ import { entry as blenderTutorialPythonBpyShapeKeyDataBlockMorphTargetVrmWebxrEn
 import { entry as blenderTutorialPythonBpyMeshFromPydataEnneperMinimalSurfaceFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr";
 import { entry as blenderTutorialPythonCyclesLightLinkingReceiverBlockerBakeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-cycles-light-linking-receiver-blocker-bake-webxr";
 import { entry as blenderTutorialPythonLibraryOverrideIdOverrideLibraryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-library-override-id-override-library-webxr";
+import { entry as blenderTutorialPythonBmeshOpsLimitedDissolvePokeFacetedOrnamentWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -759,6 +760,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyKeyingSetVrmAutoKeyCaptureEntry,
   blenderTutorialPythonCyclesLightLinkingReceiverBlockerBakeWebxrEntry,
   blenderTutorialPythonLibraryOverrideIdOverrideLibraryWebxrEntry,
+  blenderTutorialPythonBmeshOpsLimitedDissolvePokeFacetedOrnamentWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
