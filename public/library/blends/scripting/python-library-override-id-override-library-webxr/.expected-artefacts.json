@@ -1,0 +1,46 @@
+{
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "hero_library.blend",
+    "library_override_demo.blend",
+    "override_composed.glb",
+    "override_meta.json"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-library-override-id-override-library-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-library-override-id-override-library-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-library-link-append-blend-files",
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr",
+      "/tutorials/blender-tutorial-python-asset-library-mark-catalogue",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "outside_sources": [
+      {
+        "url":     "https://docs.blender.org/manual/en/5.1/files/linked_libraries/library_overrides.html",
+        "title":   "Library Overrides — Blender 5.1 Manual",
+        "author":  "Blender Foundation & Contributors",
+        "licence": "CC-BY-SA-4.0",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.IDOverrideLibrary.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "url":     "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "title":   "glTF 2.0 Specification — scene composition model",
+        "author":  "The Khronos Group",
+        "licence": "Apache-2.0",
+        "siblings": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}
