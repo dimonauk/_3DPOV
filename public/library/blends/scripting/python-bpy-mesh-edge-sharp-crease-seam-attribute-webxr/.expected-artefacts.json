@@ -1,0 +1,45 @@
+{
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "faceted_dome.blend",
+    "faceted_dome.glb"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr"
+    ],
+    "outside_sources": [
+      {
+        "url":      "https://docs.blender.org/api/5.1/bpy.types.MeshEdge.html",
+        "title":    "bpy.types.MeshEdge — Blender 5.1 Python API",
+        "author":   "Blender Foundation & Contributors",
+        "licence":  "CC-BY-SA-4.0",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.Mesh.html",
+          "https://docs.blender.org/api/5.1/bpy.types.AttributeGroup.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "url":      "https://github.com/njanakiev/blender-scripting",
+        "title":    "blender-scripting — Python mesh scripting examples",
+        "author":   "Nicolas Janakiev",
+        "licence":  "MIT",
+        "siblings": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts",
+          "https://github.com/njanakiev"
+        ]
+      }
+    ]
+  }
+}
