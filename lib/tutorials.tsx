@@ -379,6 +379,7 @@ import { entry as blenderTutorialPythonLibraryOverrideIdOverrideLibraryWebxrEntr
 import { entry as blenderTutorialPythonBmeshOpsLimitedDissolvePokeFacetedOrnamentWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr";
 import { entry as blenderTutorialPythonBpyMeshEdgeSharpCreaseSeamAttributeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr";
 import { entry as blenderTutorialPythonMathutilsKdtreeNearestAttributeTransferWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-kdtree-nearest-attribute-transfer-webxr";
+import { entry as blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-asset-metadata-mark-tag-batch-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -765,6 +766,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsLimitedDissolvePokeFacetedOrnamentWebxrEntry,
   blenderTutorialPythonBpyMeshEdgeSharpCreaseSeamAttributeWebxrEntry,
   blenderTutorialPythonMathutilsKdtreeNearestAttributeTransferWebxrEntry,
+  blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
