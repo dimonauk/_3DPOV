@@ -383,6 +383,7 @@ import { entry as blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry
 import { blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export";
 import { entry as blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr";
 import { entry as blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr";
+import { entry as blenderTutorialPythonBpyBooleanWeldModifierUnionCleanMeshGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -773,6 +774,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry,
   blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry,
   blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry,
+  blenderTutorialPythonBpyBooleanWeldModifierUnionCleanMeshGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

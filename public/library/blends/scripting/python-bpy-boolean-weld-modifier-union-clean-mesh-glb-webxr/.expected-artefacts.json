@@ -1,0 +1,58 @@
+{
+  "slug": "python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "file": "hf_boolean_weld_prop.blend",
+      "type": "blend",
+      "notes": "Pedestal prop — plate + hexagonal column joined by Boolean UNION + Weld; flat-shaded; Principled BSDF"
+    },
+    {
+      "file": "hf_boolean_weld_prop.glb",
+      "type": "glb",
+      "notes": "WebXR-ready GLB; Draco L6; WebP textures; export_yup=True; single-mesh clean topology"
+    },
+    {
+      "file": "viewport.mp4",
+      "type": "video",
+      "notes": "120-frame Workbench turntable; 1920x1080 24fps; faceted merged prop"
+    },
+    {
+      "file": "screen.mp4",
+      "type": "video",
+      "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export"
+    ],
+    "external": [
+      {
+        "title": "Boolean Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/booleans.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/current/bpy.types.BooleanModifier.html"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — KhronosGroup",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "KhronosGroup contributors",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}
