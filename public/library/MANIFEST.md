@@ -518,3 +518,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-16 | blend + glb | scripting | python-mathutils-kdtree-nearest-attribute-transfer-webxr | 5.1 | CC0 | attr_transfer.blend · attr_transfer.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-kdtree-nearest-attribute-transfer-webxr |
 
 | 2026-07-16 | blend + glb | scripting | python-bpy-asset-metadata-mark-tag-batch-glb-webxr | 5.1 | CC0 | asset_library_demo.blend · hf_crate_a.glb · hf_lantern_b.glb · hf_spike_c.glb · asset_manifest.json · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-asset-metadata-mark-tag-batch-glb-webxr |
+
+| 2026-07-16 | blend + glb | scripting | python-bpy-depsgraph-object-instances-gn-scatter-webxr-export | 5.1 | CC0 | hf_depsgraph_scatter.blend · hf_scatter_resolved.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export |
