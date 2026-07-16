@@ -1,0 +1,34 @@
+{
+  "slug": "python-mathutils-kdtree-nearest-attribute-transfer-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    { "file": "attr_transfer.blend", "type": "blend", "notes": "scene with hires_source (FLOAT ao_value) and lores_proxy (FLOAT_COLOR ao_baked)" },
+    { "file": "attr_transfer.glb",   "type": "glb",   "notes": "low-poly proxy, Draco L6, WebP, COLOR_0 vertex-colour accessor" },
+    { "file": "viewport.mp4",        "type": "video",  "notes": "90-frame turntable, Workbench VERTEX shading" },
+    { "file": "screen.mp4",          "type": "video",  "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md" }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mathutils-matrix-transform-compose-decompose-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr",
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr"
+    ],
+    "external": [
+      {
+        "title": "SciPy spatial algorithms",
+        "url": "https://docs.scipy.org/doc/scipy/reference/spatial.html",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy contributors"
+      },
+      {
+        "title": "NumPy array buffer API",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tobytes.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}
