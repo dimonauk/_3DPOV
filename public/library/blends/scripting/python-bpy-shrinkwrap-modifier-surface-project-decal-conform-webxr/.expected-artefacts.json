@@ -1,0 +1,58 @@
+{
+  "slug": "python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "file": "hf_shrinkwrap_decal.blend",
+      "type": "blend",
+      "notes": "Noise-displaced dome + conformed emissive decal quad; Workbench-cavity preview"
+    },
+    {
+      "file": "hf_shrinkwrap_decal.glb",
+      "type": "glb",
+      "notes": "WebXR-ready GLB; Draco L6; WebP textures; export_yup=True; two-object scene"
+    },
+    {
+      "file": "viewport.mp4",
+      "type": "video",
+      "notes": "120-frame Workbench orbit with height oscillation; 1920×1080 24 fps; teal decal on dome"
+    },
+    {
+      "file": "screen.mp4",
+      "type": "video",
+      "notes": "OBS screen recording of blueprint.py execution — see SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr",
+      "/tutorials/blender-tutorial-gn-raycast-terrain-decal-projection",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr"
+    ],
+    "external": [
+      {
+        "title": "Shrinkwrap Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/shrinkwrap.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://docs.blender.org/api/5.1/bpy.types.ShrinkwrapModifier.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — KhronosGroup",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "KhronosGroup contributors",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}
