@@ -382,6 +382,7 @@ import { entry as blenderTutorialPythonMathutilsKdtreeNearestAttributeTransferWe
 import { entry as blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-asset-metadata-mark-tag-batch-glb-webxr";
 import { blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export";
 import { entry as blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr";
+import { entry as blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -771,6 +772,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry,
   blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry,
   blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry,
+  blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,43 @@
+{
+  "slug": "python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    { "file": "vrm_euler_audit.blend", "type": "blend", "notes": "VRM-style skeleton with QUATERNION spine, YXZ arms, XYZ forearms; XYZ vs YXZ gimbal demo animation on UpperArm" },
+    { "file": "vrm_euler_audit.glb",   "type": "glb",   "notes": "GLB with mixed-mode rig; Draco L6; rotation_quaternion channels exported for all bones" },
+    { "file": "viewport.mp4",           "type": "video", "notes": "90-frame Workbench Bone-Pose render: frames 1–45 XYZ gimbal visible, frames 46–90 YXZ clean" },
+    { "file": "screen.mp4",             "type": "video", "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md" }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget",
+      "/tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm",
+      "/tutorials/blender-tutorial-python-bpy-keying-set-vrm-auto-key-capture",
+      "/tutorials/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm"
+    ],
+    "external": [
+      {
+        "title": "mathutils.Euler API reference",
+        "url": "https://docs.blender.org/api/current/mathutils.html#mathutils.Euler",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/current/"
+        ]
+      },
+      {
+        "title": "Euler angles — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Euler_angles",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia contributors",
+        "related_projects": [
+          "https://en.wikipedia.org/wiki/Gimbal_lock",
+          "https://en.wikipedia.org/wiki/Quaternion",
+          "https://en.wikipedia.org/wiki/Tait%E2%80%93Bryan_angles"
+        ]
+      }
+    ]
+  }
+}
