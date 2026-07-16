@@ -1,0 +1,30 @@
+{
+  "slug": "python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "studio": "Holoflow",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr/hf_hook_earring.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr/hf_hook_earring.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr/screen.mp4",
+      "type": "video",
+      "generated_by": "manual-obs",
+      "note": "See SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_refs": [
+    "/tutorials/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export",
+    "/tutorials/blender-tutorial-python-bpy-asset-metadata-mark-tag-batch-glb-webxr",
+    "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute"
+  ]
+}

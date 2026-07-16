@@ -381,6 +381,7 @@ import { entry as blenderTutorialPythonBpyMeshEdgeSharpCreaseSeamAttributeWebxrE
 import { entry as blenderTutorialPythonMathutilsKdtreeNearestAttributeTransferWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-kdtree-nearest-attribute-transfer-webxr";
 import { entry as blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-asset-metadata-mark-tag-batch-glb-webxr";
 import { blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export";
+import { entry as blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -769,6 +770,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsKdtreeNearestAttributeTransferWebxrEntry,
   blenderTutorialPythonBpyAssetMetadataMarkTagBatchGlbWebxrEntry,
   blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEntry,
+  blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
