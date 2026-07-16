@@ -524,3 +524,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-16 | blend + glb | scripting | python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr | 5.1 | CC0 | vrm_euler_audit.blend · vrm_euler_audit.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr |
 
 | 2026-07-16 | blend + glb | scripting | python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr | 5.1 | CC0 | hf_boolean_weld_prop.blend · hf_boolean_weld_prop.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr |
+| 2026-07-16 | blend + glb | scripting | python-bpy-wireframe-modifier-toon-ink-geometry-webxr | 5.1 | CC0 | hf_wireframe_toon.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-wireframe-modifier-toon-ink-geometry-webxr |

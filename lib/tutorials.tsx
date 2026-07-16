@@ -384,6 +384,7 @@ import { blenderTutorialPythonBpyDepsgraphObjectInstancesGnScatterWebxrExportEnt
 import { entry as blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr";
 import { entry as blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-euler-rotation-order-gimbal-safe-vrm-webxr";
 import { entry as blenderTutorialPythonBpyBooleanWeldModifierUnionCleanMeshGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr";
+import { entry as blenderTutorialPythonBpyWireframeModifierToonInkGeometryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-wireframe-modifier-toon-ink-geometry-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -775,6 +776,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyHookModifierVertexBindEmptyDeformVrmWebxrEntry,
   blenderTutorialPythonMathutilsEulerRotationOrderGimbalSafeVrmWebxrEntry,
   blenderTutorialPythonBpyBooleanWeldModifierUnionCleanMeshGlbWebxrEntry,
+  blenderTutorialPythonBpyWireframeModifierToonInkGeometryWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
