@@ -1,0 +1,44 @@
+{
+  "slug": "python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_deform_props.glb",
+    "hf_deform_props.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr",
+      "/tutorials/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr",
+      "/tutorials/blender-tutorial-python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-lattice-cage-deform-morph-bake-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.SimpleDeformModifier — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.SimpleDeformModifier.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Simple Deform Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/simple_deform.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Khronos Group",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

@@ -392,6 +392,7 @@ import { entry as blenderTutorialPythonBpySmoothByAngleModifierAutoSmoothMigrati
 import { entry as blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr";
 import { entry as blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr";
 import { entry as blenderTutorialPythonBpyScrewModifierProfileLatheRevolutionVaseWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr";
+import { entry as blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -791,6 +792,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry,
   blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry,
   blenderTutorialPythonBpyScrewModifierProfileLatheRevolutionVaseWebxrEntry,
+  blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
