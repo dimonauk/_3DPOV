@@ -389,6 +389,7 @@ import { entry as blenderTutorialPythonBpyShrinkwrapModifierSurfaceProjectDecalC
 import { entry as blenderTutorialPythonBpyArrayModifierObjectOffsetRadialHelixWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr";
 import { entry as blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr";
 import { entry as blenderTutorialPythonBpySmoothByAngleModifierAutoSmoothMigrationNormalsWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr";
+import { entry as blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -785,6 +786,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyArrayModifierObjectOffsetRadialHelixWebxrEntry,
   blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry,
   blenderTutorialPythonBpySmoothByAngleModifierAutoSmoothMigrationNormalsWebxrEntry,
+  blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
