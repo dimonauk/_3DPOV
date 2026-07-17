@@ -390,6 +390,7 @@ import { entry as blenderTutorialPythonBpyArrayModifierObjectOffsetRadialHelixWe
 import { entry as blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr";
 import { entry as blenderTutorialPythonBpySmoothByAngleModifierAutoSmoothMigrationNormalsWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr";
 import { entry as blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr";
+import { entry as blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -787,6 +788,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry,
   blenderTutorialPythonBpySmoothByAngleModifierAutoSmoothMigrationNormalsWebxrEntry,
   blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGlbWebxrEntry,
+  blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
