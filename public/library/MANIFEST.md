@@ -536,3 +536,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-17 | blend + glb | scripting | python-bpy-displace-modifier-texture-height-terrain-glb-webxr | 5.1 | CC0 | hf_displace_terrain.blend · hf_displace_terrain.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr |
 
 | 2026-07-17 | blend + glb | scripting | python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr | 5.1 | CC0 | hf_normal_edit_gem.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr |
+
+| 2026-07-17 | blend + glb | scripting | python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr | 5.1 | CC0 | hf_lathe_vase.blend · hf_lathe_vase.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr |
