@@ -539,3 +539,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-17 | blend + glb | scripting | python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr | 5.1 | CC0 | hf_lathe_vase.blend · hf_lathe_vase.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr |
 | 2026-07-17 | blend + glb | scripting | python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr | 5.1 | CC0 | hf_deform_props.glb · hf_deform_props.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr |
+
+| 2026-07-17 | blend + glb | scripting | python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr | 5.1 | CC0 | hf_weighted_console_lid.blend · hf_weighted_console_lid.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr |

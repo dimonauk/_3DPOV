@@ -393,6 +393,7 @@ import { entry as blenderTutorialPythonBpyDisplaceModifierTextureHeightTerrainGl
 import { entry as blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr";
 import { entry as blenderTutorialPythonBpyScrewModifierProfileLatheRevolutionVaseWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr";
 import { entry as blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr";
+import { entry as blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -793,6 +794,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyNormalEditModifierRadialCelShadeVrmGlbWebxrEntry,
   blenderTutorialPythonBpyScrewModifierProfileLatheRevolutionVaseWebxrEntry,
   blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry,
+  blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
