@@ -529,3 +529,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-16 | blend + glb | scripting | python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr | 5.1 | CC0 | hf_shrinkwrap_decal.blend · hf_shrinkwrap_decal.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr |
 
 | 2026-07-16 | blend + glb | scripting | python-bpy-array-modifier-object-offset-radial-helix-webxr | 5.1 | CC0 | hf_array_crown_helix.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr |
+
+| 2026-07-17 | blend + glb | scripting | python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr | 5.1 | CC0 | hf_console_panel.blend · hf_console_panel.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr |

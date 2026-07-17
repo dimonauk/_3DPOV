@@ -1,0 +1,38 @@
+{
+  "blend": "hf_console_panel.blend",
+  "exports": [
+    "hf_console_panel.glb"
+  ],
+  "scripts": [
+    "blueprint.py",
+    "record.py"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop"
+    ],
+    "external": [
+      {
+        "title": "Subdivision Surface Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.SubsurfModifier — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bpy.types.SubsurfModifier.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

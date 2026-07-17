@@ -387,6 +387,7 @@ import { entry as blenderTutorialPythonBpyBooleanWeldModifierUnionCleanMeshGlbWe
 import { entry as blenderTutorialPythonBpyWireframeModifierToonInkGeometryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-wireframe-modifier-toon-ink-geometry-webxr";
 import { entry as blenderTutorialPythonBpyShrinkwrapModifierSurfaceProjectDecalConformWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr";
 import { entry as blenderTutorialPythonBpyArrayModifierObjectOffsetRadialHelixWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr";
+import { entry as blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -781,6 +782,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyWireframeModifierToonInkGeometryWebxrEntry,
   blenderTutorialPythonBpyShrinkwrapModifierSurfaceProjectDecalConformWebxrEntry,
   blenderTutorialPythonBpyArrayModifierObjectOffsetRadialHelixWebxrEntry,
+  blenderTutorialPythonBpySubsurfModifierCreaseEdgeRenderLevelGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
