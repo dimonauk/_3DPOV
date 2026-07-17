@@ -1,0 +1,44 @@
+{
+  "slug": "python-bpy-corrective-smooth-modifier-joint-pinch-vrm-glb-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_corrective_smooth_arm.blend",
+    "hf_corrective_smooth_arm.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.CorrectiveSmoothModifier — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.CorrectiveSmoothModifier.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Corrective Smooth Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/corrective_smooth.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "libigl — Laplacian Smoothing Tutorial",
+        "url": "https://libigl.github.io/tutorial/#laplacian-smoothing",
+        "licence": "MIT",
+        "author": "Olga Sorkine-Hornung et al."
+      }
+    ]
+  }
+}
