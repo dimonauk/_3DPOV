@@ -1,0 +1,49 @@
+{
+  "slug": "python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr",
+  "category": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_smooth_demo.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Edge sharp / crease / seam attribute API",
+        "path": "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr"
+      },
+      {
+        "label": "Custom Split Normals — per-loop normal authoring",
+        "path": "/tutorials/blender-tutorial-python-bpy-mesh-custom-split-normals-smooth-island-faceted-webxr"
+      },
+      {
+        "label": "SubsurfModifier — crease-controlled SubD for WebXR",
+        "path": "/tutorials/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr"
+      }
+    ],
+    "external": [
+      {
+        "label": "Blender Python API — bpy.types.SmoothByAngleModifier",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.SmoothByAngleModifier.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Blender Manual — Smooth by Angle modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/smooth_by_angle.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "label": "glTF-Blender-IO — normal export pipeline",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
