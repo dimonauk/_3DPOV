@@ -409,6 +409,7 @@ import { entry as blenderTutorialPythonBpyUvProjectModifierCameraProjectorDecalS
 import { entry as blenderTutorialPythonBpyWaveModifierAnimatedRippleFalloffWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-wave-modifier-animated-ripple-falloff-webxr";
 import { entry as blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-spin-lathe-arch-faceted-webxr";
 import { entry as blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr";
+import { entry as blenderTutorialPythonBmeshOpsGridFillQuadPatchDisplayPanelWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-grid-fill-quad-patch-display-panel-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -825,6 +826,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyWaveModifierAnimatedRippleFalloffWebxrEntry,
   blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry,
   blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry,
+  blenderTutorialPythonBmeshOpsGridFillQuadPatchDisplayPanelWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
