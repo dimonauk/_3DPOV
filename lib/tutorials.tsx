@@ -399,6 +399,7 @@ import { entry as blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbW
 import { entry as blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr";
 import { entry as blenderTutorialPythonBpyCurveModifierRibbonArrayFitPathVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr";
 import { entry as blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-remesh-modifier-voxel-sharp-topology-clean-glb-webxr";
+import { entry as blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -805,6 +806,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry,
   blenderTutorialPythonBpyCurveModifierRibbonArrayFitPathVrmWebxrEntry,
   blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry,
+  blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
