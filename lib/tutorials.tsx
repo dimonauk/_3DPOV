@@ -405,6 +405,7 @@ import { entry as blenderTutorialPythonBpyCorrectiveSmoothModifierDeformArtifact
 import { entry as blenderTutorialPythonBpyLaplacianDeformModifierAnchorCageSecondaryMotionVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-laplacian-deform-modifier-anchor-cage-secondary-motion-vrm-webxr";
 import { entry as blenderTutorialPythonBpyOceanModifierBeaufortWaveSpectrumFoamSeascapeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-ocean-modifier-beaufort-wave-spectrum-foam-seascape-webxr";
 import { entry as blenderTutorialPythonBpyMeshDeformModifierCageBindVrmClothingWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mesh-deform-modifier-cage-bind-vrm-clothing-webxr";
+import { entry as blenderTutorialPythonBpyUvProjectModifierCameraProjectorDecalStampGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-uv-project-modifier-camera-projector-decal-stamp-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -817,6 +818,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyLaplacianDeformModifierAnchorCageSecondaryMotionVrmWebxrEntry,
   blenderTutorialPythonBpyOceanModifierBeaufortWaveSpectrumFoamSeascapeWebxrEntry,
   blenderTutorialPythonBpyMeshDeformModifierCageBindVrmClothingWebxrEntry,
+  blenderTutorialPythonBpyUvProjectModifierCameraProjectorDecalStampGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
