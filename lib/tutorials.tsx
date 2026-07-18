@@ -395,6 +395,7 @@ import { entry as blenderTutorialPythonBpyScrewModifierProfileLatheRevolutionVas
 import { entry as blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-simple-deform-modifier-twist-bend-taper-prop-webxr";
 import { entry as blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr";
 import { entry as blenderTutorialPythonBpyBevelModifierHardSurfaceEdgeChamferWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bevel-modifier-hard-surface-edge-chamfer-webxr";
+import { entry as blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -797,6 +798,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperPropWebxrEntry,
   blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry,
   blenderTutorialPythonBpyBevelModifierHardSurfaceEdgeChamferWebxrEntry,
+  blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
