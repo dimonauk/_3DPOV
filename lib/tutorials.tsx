@@ -398,6 +398,7 @@ import { entry as blenderTutorialPythonBpyBevelModifierHardSurfaceEdgeChamferWeb
 import { entry as blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr";
 import { entry as blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr";
 import { entry as blenderTutorialPythonBpyCurveModifierRibbonArrayFitPathVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr";
+import { entry as blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-remesh-modifier-voxel-sharp-topology-clean-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -803,6 +804,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry,
   blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry,
   blenderTutorialPythonBpyCurveModifierRibbonArrayFitPathVrmWebxrEntry,
+  blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
