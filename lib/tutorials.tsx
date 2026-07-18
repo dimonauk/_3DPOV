@@ -401,6 +401,7 @@ import { entry as blenderTutorialPythonBpyCurveModifierRibbonArrayFitPathVrmWebx
 import { entry as blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-remesh-modifier-voxel-sharp-topology-clean-glb-webxr";
 import { entry as blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm";
 import { entry as blenderTutorialPythonBpySkinModifierWireToMeshBmeshRadiusCharacterBlockoutWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr";
+import { entry as blenderTutorialPythonBpyCorrectiveSmoothModifierDeformArtifactFixVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -809,6 +810,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanGlbWebxrEntry,
   blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry,
   blenderTutorialPythonBpySkinModifierWireToMeshBmeshRadiusCharacterBlockoutWebxrEntry,
+  blenderTutorialPythonBpyCorrectiveSmoothModifierDeformArtifactFixVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
