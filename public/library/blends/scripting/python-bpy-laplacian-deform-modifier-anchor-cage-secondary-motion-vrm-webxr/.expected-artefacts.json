@@ -1,0 +1,60 @@
+{
+  "slug": "python-bpy-laplacian-deform-modifier-anchor-cage-secondary-motion-vrm-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "hf_lapdeform_tail.blend",
+    "hf_lapdeform_tail.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      {
+        "label": "Holoflow WebXR Exporter — install & scan docs",
+        "path": "/docs/INSTALL-SCAN-BLENDER"
+      },
+      {
+        "label": "HookModifier — vertex bind to Empty, headless matrix_inverse pattern",
+        "path": "/tutorials/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr"
+      },
+      {
+        "label": "CorrectiveSmoothModifier — Laplacian joint-volume recovery",
+        "path": "/tutorials/blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr"
+      },
+      {
+        "label": "SkinModifier — wire-to-mesh character blockout",
+        "path": "/tutorials/blender-tutorial-python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr"
+      },
+      {
+        "label": "Blender Extensions docs",
+        "path": "/docs/BLENDER-EXTENSIONS"
+      }
+    ],
+    "outside": [
+      {
+        "label": "Blender Manual — LaplacianDeform Modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/laplacian_deform.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.LaplacianDeformModifier.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "label": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

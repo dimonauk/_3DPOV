@@ -402,6 +402,7 @@ import { entry as blenderTutorialPythonBpyRemeshModifierVoxelSharpTopologyCleanG
 import { entry as blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm";
 import { entry as blenderTutorialPythonBpySkinModifierWireToMeshBmeshRadiusCharacterBlockoutWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr";
 import { entry as blenderTutorialPythonBpyCorrectiveSmoothModifierDeformArtifactFixVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr";
+import { entry as blenderTutorialPythonBpyLaplacianDeformModifierAnchorCageSecondaryMotionVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-laplacian-deform-modifier-anchor-cage-secondary-motion-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -811,6 +812,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyVertexWeightProximityModifierDistanceMaskPhysicsVrmEntry,
   blenderTutorialPythonBpySkinModifierWireToMeshBmeshRadiusCharacterBlockoutWebxrEntry,
   blenderTutorialPythonBpyCorrectiveSmoothModifierDeformArtifactFixVrmWebxrEntry,
+  blenderTutorialPythonBpyLaplacianDeformModifierAnchorCageSecondaryMotionVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
