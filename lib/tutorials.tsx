@@ -408,6 +408,7 @@ import { entry as blenderTutorialPythonBpyMeshDeformModifierCageBindVrmClothingW
 import { entry as blenderTutorialPythonBpyUvProjectModifierCameraProjectorDecalStampGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-uv-project-modifier-camera-projector-decal-stamp-glb-webxr";
 import { entry as blenderTutorialPythonBpyWaveModifierAnimatedRippleFalloffWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-wave-modifier-animated-ripple-falloff-webxr";
 import { entry as blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-spin-lathe-arch-faceted-webxr";
+import { entry as blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -823,6 +824,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyUvProjectModifierCameraProjectorDecalStampGlbWebxrEntry,
   blenderTutorialPythonBpyWaveModifierAnimatedRippleFalloffWebxrEntry,
   blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry,
+  blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
