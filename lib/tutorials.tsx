@@ -410,6 +410,7 @@ import { entry as blenderTutorialPythonBpyWaveModifierAnimatedRippleFalloffWebxr
 import { entry as blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-spin-lathe-arch-faceted-webxr";
 import { entry as blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr";
 import { entry as blenderTutorialPythonBmeshOpsGridFillQuadPatchDisplayPanelWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-grid-fill-quad-patch-display-panel-webxr";
+import { entry as blenderTutorialPythonBmeshOpsBridgeLoopsTunnelPortSocketWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-bridge-loops-tunnel-port-socket-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -827,6 +828,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsSpinLatheArchFacetedWebxrEntry,
   blenderTutorialPythonBmeshOpsInsetFacesPanelLinesRecessHardSurfaceWebxrEntry,
   blenderTutorialPythonBmeshOpsGridFillQuadPatchDisplayPanelWebxrEntry,
+  blenderTutorialPythonBmeshOpsBridgeLoopsTunnelPortSocketWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
