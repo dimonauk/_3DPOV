@@ -1,0 +1,38 @@
+{
+  "slug": "python-bmesh-ops-spin-lathe-arch-faceted-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_spin_toroid.blend",
+    "hf_spin_toroid.glb",
+    "hf_spin_arch.glb"
+  ],
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-wave-modifier-animated-ripple-falloff-webxr",
+      "/tutorials/blender-tutorial-python-bpy-ocean-modifier-beaufort-wave-spectrum-foam-seascape-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender bmesh.ops API Reference — 5.1",
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0"
+      }
+    ]
+  }
+}
