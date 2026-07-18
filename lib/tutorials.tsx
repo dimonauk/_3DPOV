@@ -396,6 +396,7 @@ import { entry as blenderTutorialPythonBpySimpleDeformModifierTwistBendTaperProp
 import { entry as blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr";
 import { entry as blenderTutorialPythonBpyBevelModifierHardSurfaceEdgeChamferWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bevel-modifier-hard-surface-edge-chamfer-webxr";
 import { entry as blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr";
+import { entry as blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -799,6 +800,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyWeightedNormalModifierFaceAreaCornerAngleHardSurfaceWebxrEntry,
   blenderTutorialPythonBpyBevelModifierHardSurfaceEdgeChamferWebxrEntry,
   blenderTutorialPythonBpyMirrorModifierBisectMergeSymmetricGlbWebxrEntry,
+  blenderTutorialPythonBpySolidifyModifierShellRimComplexModeHardSurfaceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
