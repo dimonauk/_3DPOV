@@ -422,6 +422,7 @@ import { entry as blenderTutorialPythonBmeshOpsExtrudeDiscreteFacesPerFaceSpikeU
 import { entry as blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr";
 import { entry as blenderTutorialPythonBmeshOpsRotateEdgesBeautifyFillDirectedTriangulationWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr";
 import { entry as blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr";
+import { entry as blenderTutorialPythonBmeshOpsFindDoublesRecalcNormalsHolesFillMeshIntegrityGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-find-doubles-recalc-normals-holes-fill-mesh-integrity-glb-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -851,6 +852,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry,
   blenderTutorialPythonBmeshOpsRotateEdgesBeautifyFillDirectedTriangulationWebxrEntry,
   blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry,
+  blenderTutorialPythonBmeshOpsFindDoublesRecalcNormalsHolesFillMeshIntegrityGlbWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
