@@ -1,0 +1,34 @@
+{
+  "slug": "python-bmesh-ops-find-doubles-recalc-normals-holes-fill-mesh-integrity-glb-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_gem_pendant.blend",
+    "hf_gem_pendant.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
