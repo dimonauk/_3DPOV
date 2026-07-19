@@ -576,3 +576,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-19 | glb | scripting | python-bmesh-ops-wireframe-edge-tube-crystal-cage-webxr | 5.1 | CC0 | hf_wireframe_cage.glb · hf_wireframe_grid_hud.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-ops-wireframe-edge-tube-crystal-cage-webxr |
 
 | 2026-07-19 | glb | scripting | python-bmesh-ops-offset-edgeloops-support-loop-panel-trench-armour-webxr | 5.1 | CC0 | hf_armour_plate.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-ops-offset-edgeloops-support-loop-panel-trench-armour-webxr |
+
+| 2026-07-19 | glb | scripting | python-bmesh-ops-create-primitives-modular-crystal-tile-webxr | 5.1 | CC0 | hf_crystal_tile.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bmesh-ops-create-primitives-modular-crystal-tile-webxr |
