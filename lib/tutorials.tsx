@@ -427,6 +427,7 @@ import { entry as blenderTutorialPythonBmeshOpsWireframeEdgeTubeCrystalCageWebxr
 import { entry as blenderTutorialPythonBmeshOpsOffsetEdgeloopsSupportLoopPanelTrenchArmourWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-offset-edgeloops-support-loop-panel-trench-armour-webxr";
 import { entry as blenderTutorialPythonBmeshOpsCreatePrimitivesModularCrystalTileWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-create-primitives-modular-crystal-tile-webxr";
 import { entry as blenderTutorialPythonBmeshOpsSmoothVertLaplacianZoneSmoothingVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-smooth-vert-laplacian-zone-smoothing-vrm-webxr";
+import { entry as blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-solidify-hollow-shell-faceted-crystal-case-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -861,6 +862,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsOffsetEdgeloopsSupportLoopPanelTrenchArmourWebxrEntry,
   blenderTutorialPythonBmeshOpsCreatePrimitivesModularCrystalTileWebxrEntry,
   blenderTutorialPythonBmeshOpsSmoothVertLaplacianZoneSmoothingVrmWebxrEntry,
+  blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
