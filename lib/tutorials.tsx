@@ -424,6 +424,7 @@ import { entry as blenderTutorialPythonBmeshOpsRotateEdgesBeautifyFillDirectedTr
 import { entry as blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr";
 import { entry as blenderTutorialPythonBmeshOpsFindDoublesRecalcNormalsHolesFillMeshIntegrityGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-find-doubles-recalc-normals-holes-fill-mesh-integrity-glb-webxr";
 import { entry as blenderTutorialPythonBmeshOpsWireframeEdgeTubeCrystalCageWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-wireframe-edge-tube-crystal-cage-webxr";
+import { entry as blenderTutorialPythonBmeshOpsOffsetEdgeloopsSupportLoopPanelTrenchArmourWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-offset-edgeloops-support-loop-panel-trench-armour-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -855,6 +856,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry,
   blenderTutorialPythonBmeshOpsFindDoublesRecalcNormalsHolesFillMeshIntegrityGlbWebxrEntry,
   blenderTutorialPythonBmeshOpsWireframeEdgeTubeCrystalCageWebxrEntry,
+  blenderTutorialPythonBmeshOpsOffsetEdgeloopsSupportLoopPanelTrenchArmourWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
