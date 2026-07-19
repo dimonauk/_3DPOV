@@ -1,0 +1,38 @@
+{
+  "slug": "python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr",
+  "version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "hf_terrain_tile.glb",
+    "../../../../videos/scripting/python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-poke-face-faceted-crystal-boss-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-discrete-faces-per-face-spike-urchin-crystal-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+        "title": "bmesh.ops module — Blender 5.1 Python API",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/CGArtPython/blender_plus_python",
+        "title": "blender_plus_python — Blender scripting cookbook",
+        "author": "Victor Stepanov",
+        "licence": "MIT",
+        "related": "https://github.com/CGArtPython/bpy_building_blocks"
+      }
+    ]
+  }
+}
