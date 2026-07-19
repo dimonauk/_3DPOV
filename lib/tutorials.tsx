@@ -419,6 +419,7 @@ import { entry as blenderTutorialPythonBmeshOpsExtrudeFaceRegionPanelPushControl
 import { entry as blenderTutorialPythonBmeshOpsTriangulateJoinTrianglesQuadRetopoGlbWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr";
 import { entry as blenderTutorialPythonBmeshOpsPokeFaceFacetedCrystalBossWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-poke-face-faceted-crystal-boss-webxr";
 import { entry as blenderTutorialPythonBmeshOpsExtrudeDiscreteFacesPerFaceSpikeUrchinCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-extrude-discrete-faces-per-face-spike-urchin-crystal-webxr";
+import { entry as blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -845,6 +846,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsTriangulateJoinTrianglesQuadRetopoGlbWebxrEntry,
   blenderTutorialPythonBmeshOpsPokeFaceFacetedCrystalBossWebxrEntry,
   blenderTutorialPythonBmeshOpsExtrudeDiscreteFacesPerFaceSpikeUrchinCrystalWebxrEntry,
+  blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
