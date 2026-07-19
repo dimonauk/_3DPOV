@@ -1,0 +1,37 @@
+{
+  "glb": "hf_spike_urchin.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../../../videos/scripting/python-bmesh-ops-extrude-discrete-faces-per-face-spike-urchin-crystal-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-bmesh-ops-extrude-discrete-faces-per-face-spike-urchin-crystal-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-face-region-panel-push-control-deck-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-poke-face-faceted-crystal-boss-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "title": "bmesh.ops API Reference — Blender 5.1",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/5.1/bmesh.types.html"
+        ]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO — official Blender glTF exporter",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html"
+        ]
+      }
+    ]
+  }
+}
