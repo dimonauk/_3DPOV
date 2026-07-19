@@ -421,6 +421,7 @@ import { entry as blenderTutorialPythonBmeshOpsPokeFaceFacetedCrystalBossWebxrEn
 import { entry as blenderTutorialPythonBmeshOpsExtrudeDiscreteFacesPerFaceSpikeUrchinCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-extrude-discrete-faces-per-face-spike-urchin-crystal-webxr";
 import { entry as blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr";
 import { entry as blenderTutorialPythonBmeshOpsRotateEdgesBeautifyFillDirectedTriangulationWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr";
+import { entry as blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -849,6 +850,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsExtrudeDiscreteFacesPerFaceSpikeUrchinCrystalWebxrEntry,
   blenderTutorialPythonBmeshOpsSplitEdgesHardNormalsAngleThresholdUvSeamWebxrEntry,
   blenderTutorialPythonBmeshOpsRotateEdgesBeautifyFillDirectedTriangulationWebxrEntry,
+  blenderTutorialPythonBmeshOpsDissolveTopologyReductionDegenerateCleanupWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
