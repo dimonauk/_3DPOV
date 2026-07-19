@@ -1,0 +1,41 @@
+{
+  "slug": "python-bmesh-ops-convex-hull-pointcloud-crystal-gem-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_convex_gem.blend",
+    "hf_convex_gem.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-bisect-plane-cross-section-cutaway-symmetry-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-kdtree-nearest-attribute-transfer-webxr",
+      "/tutorials/blender-tutorial-python-bpy-remesh-modifier-voxel-sharp-topology-clean-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/convex_hull.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
