@@ -1,0 +1,54 @@
+{
+  "slug": "python-bmesh-ops-symmetrize-half-mesh-vrm-character-helmet-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_sym_helmet.blend",
+    "hf_sym_helmet.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bmesh-ops-symmetrize-half-mesh-vrm-character-helmet-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bmesh-ops-symmetrize-half-mesh-vrm-character-helmet-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-bisect-plane-cross-section-cutaway-symmetry-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr",
+      "/tutorials/blender-tutorial-python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bmesh.ops API Reference 5.1",
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "Symmetrize — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/symmetrize.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://projects.blender.org/blender/blender-manual"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF"
+        ]
+      }
+    ]
+  }
+}
