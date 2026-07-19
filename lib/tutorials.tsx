@@ -413,6 +413,7 @@ import { entry as blenderTutorialPythonBmeshOpsGridFillQuadPatchDisplayPanelWebx
 import { entry as blenderTutorialPythonBmeshOpsBridgeLoopsTunnelPortSocketWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-bridge-loops-tunnel-port-socket-webxr";
 import { entry as blenderTutorialPythonBmeshOpsBisectPlaneCrossSectionCutawaySymmetryWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-bisect-plane-cross-section-cutaway-symmetry-webxr";
 import { entry as blenderTutorialPythonBmeshOpsConvexHullPointcloudCrystalGemWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-convex-hull-pointcloud-crystal-gem-webxr";
+import { entry as blenderTutorialPythonBmeshOpsSubdivideEdgesCatmullLoopCutFacetedPlinthWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-subdivide-edges-catmull-loop-cut-faceted-plinth-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -833,6 +834,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsBridgeLoopsTunnelPortSocketWebxrEntry,
   blenderTutorialPythonBmeshOpsBisectPlaneCrossSectionCutawaySymmetryWebxrEntry,
   blenderTutorialPythonBmeshOpsConvexHullPointcloudCrystalGemWebxrEntry,
+  blenderTutorialPythonBmeshOpsSubdivideEdgesCatmullLoopCutFacetedPlinthWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
