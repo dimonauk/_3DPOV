@@ -432,6 +432,7 @@ import { entry as blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWe
 import { entry as blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr";
 import { entry as blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr";
 import { entry as blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr";
+import { entry as blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-laplacian-smooth-modifier-volume-preserve-iteration-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -871,6 +872,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry,
   blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry,
   blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry,
+  blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
