@@ -431,6 +431,7 @@ import { entry as blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystal
 import { entry as blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-build-modifier-face-reveal-crystal-growth-webxr";
 import { entry as blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr";
 import { entry as blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr";
+import { entry as blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -869,6 +870,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry,
   blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry,
   blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry,
+  blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

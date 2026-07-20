@@ -1,0 +1,47 @@
+{
+  "slug": "python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "public/library/blends/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/blueprint.py",
+    "public/library/blends/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/record.py",
+    "public/library/blends/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/README.md",
+    "public/library/blends/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/.expected-artefacts.json",
+    "public/library/glbs/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/hf_warp_sleeve.glb",
+    "public/library/videos/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-deform-modifier-cage-bind-vrm-clothing-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.WarpModifier — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.WarpModifier.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "Warp Modifier — Blender Manual 5.1",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/deform/warp.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": "https://github.com/KhronosGroup/glTF-Sample-Models"
+      }
+    ]
+  }
+}
