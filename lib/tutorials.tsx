@@ -430,6 +430,7 @@ import { entry as blenderTutorialPythonBmeshOpsSmoothVertLaplacianZoneSmoothingV
 import { entry as blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-solidify-hollow-shell-faceted-crystal-case-webxr";
 import { entry as blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-build-modifier-face-reveal-crystal-growth-webxr";
 import { entry as blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr";
+import { entry as blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -867,6 +868,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry,
   blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry,
   blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry,
+  blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
