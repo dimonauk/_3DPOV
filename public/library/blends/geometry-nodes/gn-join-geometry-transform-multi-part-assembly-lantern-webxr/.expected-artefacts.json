@@ -1,0 +1,40 @@
+{
+  "blend": "hf_lantern.blend",
+  "glb": "hf_lantern.glb",
+  "video": "../../videos/geometry-nodes/gn-join-geometry-transform-multi-part-assembly-lantern-webxr/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-join-geometry-transform-multi-part-assembly-lantern-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-join-geometry-transform-multi-part-assembly-lantern-webxr",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-set-material-index-voronoi-cell-zones",
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes"
+    ],
+    "external": [
+      {
+        "title": "Join Geometry Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/join_geometry.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Transform Geometry Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

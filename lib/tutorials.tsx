@@ -429,6 +429,7 @@ import { entry as blenderTutorialPythonBmeshOpsCreatePrimitivesModularCrystalTil
 import { entry as blenderTutorialPythonBmeshOpsSmoothVertLaplacianZoneSmoothingVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-smooth-vert-laplacian-zone-smoothing-vrm-webxr";
 import { entry as blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-solidify-hollow-shell-faceted-crystal-case-webxr";
 import { entry as blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-build-modifier-face-reveal-crystal-growth-webxr";
+import { entry as blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -865,6 +866,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsSmoothVertLaplacianZoneSmoothingVrmWebxrEntry,
   blenderTutorialPythonBmeshOpsSolidifyHollowShellFacetedCrystalCaseWebxrEntry,
   blenderTutorialPythonBpyBuildModifierFaceRevealCrystalGrowthWebxrEntry,
+  blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLanternWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
