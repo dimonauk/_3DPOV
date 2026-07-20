@@ -1,0 +1,68 @@
+{
+  "slug": "python-bpy-build-modifier-face-reveal-crystal-growth-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "studio": "Holoflow",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_geode.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_geode.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6",
+      "notes": "Final-state GLB; carries _reveal_order FACE INT attribute"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_stage_0.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_stage_1.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_stage_2.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_stage_3.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/hf_crystal_stage_4.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "compression": "draco-6"
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/viewport.mp4",
+      "type": "video",
+      "generated_by": "record.py",
+      "note": "80-frame crystal growth render, camera orbit"
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-build-modifier-face-reveal-crystal-growth-webxr/screen.mp4",
+      "type": "video",
+      "generated_by": "manual-obs",
+      "note": "See SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_refs": [
+    "/tutorials/blender-tutorial-python-bpy-depsgraph-object-instances-gn-scatter-webxr-export",
+    "/tutorials/blender-tutorial-python-bmesh-ops-poke-face-faceted-crystal-boss-webxr",
+    "/tutorials/blender-tutorial-python-bpy-wireframe-modifier-toon-ink-geometry-webxr",
+    "/tutorials/blender-tutorial-gn-sort-elements-sequential-face-reveal"
+  ]
+}
