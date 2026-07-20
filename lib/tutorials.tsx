@@ -433,6 +433,7 @@ import { entry as blenderTutorialGnJoinGeometryTransformMultiPartAssemblyLantern
 import { entry as blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr";
 import { entry as blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr";
 import { entry as blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-laplacian-smooth-modifier-volume-preserve-iteration-vrm-webxr";
+import { entry as blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -873,6 +874,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapGroupBlendVrmWebxrEntry,
   blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry,
   blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry,
+  blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
