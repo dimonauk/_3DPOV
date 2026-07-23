@@ -437,6 +437,7 @@ import { entry as blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrE
 import { entry as blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem";
 import { entry as blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-abelian-sandpile-soc-fractal-cascade";
 import { entry as blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr";
+import { entry as blenderTutorialGnSimulationZoneCoupledPendulumsMathieuResonanceEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -881,6 +882,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry,
   blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry,
   blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry,
+  blenderTutorialGnSimulationZoneCoupledPendulumsMathieuResonanceEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

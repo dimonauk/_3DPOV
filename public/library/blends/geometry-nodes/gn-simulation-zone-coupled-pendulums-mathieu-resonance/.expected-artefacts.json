@@ -1,0 +1,52 @@
+{
+  "slug": "gn-simulation-zone-coupled-pendulums-mathieu-resonance",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-simulation-zone-coupled-pendulums-mathieu-resonance/hf_pendulums.blend",
+      "type": "blend",
+      "description": "Baked coupled-pendulums Simulation Zone with 20 bobs, 300 frames"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-coupled-pendulums-mathieu-resonance/viewport.mp4",
+      "type": "video",
+      "description": "EEVEE render, 240 frames, 1920×1080, 24fps"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-coupled-pendulums-mathieu-resonance/screen.mp4",
+      "type": "video",
+      "description": "OBS screen capture of Blender session (Dimona records)"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-sample-index-echo-grid",
+      "/tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://dlmf.nist.gov/28",
+        "licence": "Public Domain",
+        "author": "NIST / US Government",
+        "related": "https://github.com/NIST-DLMF"
+      },
+      {
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-introduction",
+        "licence": "CC-BY-4.0",
+        "author": "OpenStax",
+        "related": "https://github.com/openstax"
+      }
+    ]
+  }
+}
