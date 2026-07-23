@@ -434,6 +434,7 @@ import { entry as blenderTutorialPythonBpyVertexWeightEditMixModifierCurveRemapG
 import { entry as blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-warp-modifier-object-space-deform-magnet-vrm-webxr";
 import { entry as blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-laplacian-smooth-modifier-volume-preserve-iteration-vrm-webxr";
 import { entry as blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr";
+import { entry as blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -875,6 +876,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyWarpModifierObjectSpaceDeformMagnetVrmWebxrEntry,
   blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveIterationVrmWebxrEntry,
   blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry,
+  blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
