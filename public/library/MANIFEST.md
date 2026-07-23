@@ -596,3 +596,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-23 | blend | geometry-nodes | gn-simulation-zone-bz-oregonator-spiral-waves | 5.1 | CC0 | hf_bz_oscillator.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves |
 | 2026-07-23 | blend + glb | geometry-nodes | gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting | 5.1 | CC0 | hf_poi_lissajous.blend · hf_poi_lissajous.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting |
+| 2026-07-23 | blend + glb | scripting | python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr | 5.1 | CC0 | hf_stage_floor.blend · hf_stage_floor.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr |

@@ -1,0 +1,47 @@
+{
+  "slug": "python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_stage_floor.blend",
+    "hf_stage_floor.glb"
+  ],
+  "video_artefacts": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "tutorial_path": "/tutorials/blender-tutorial-python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr",
+      "/tutorials/spinning-fire-poi-safely",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter"
+    ],
+    "external": [
+      {
+        "title": "Blender Python API — mathutils.geometry",
+        "url": "https://docs.blender.org/api/current/mathutils.geometry.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "CGAL 2D Triangulations — Documentation",
+        "url": "https://doc.cgal.org/latest/Triangulation_2/index.html",
+        "licence": "CC BY 4.0",
+        "author": "CGAL Project",
+        "related": "https://github.com/CGAL/cgal"
+      },
+      {
+        "title": "glTF 2.0 Specification",
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/README.md",
+        "licence": "MIT",
+        "author": "Khronos Group",
+        "related": "https://github.com/KhronosGroup/glTF-Blender-IO"
+      }
+    ]
+  }
+}
