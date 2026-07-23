@@ -1,0 +1,53 @@
+{
+  "blend": "hf_sandpile.blend",
+  "outputs": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-simulation-zone-abelian-sandpile-soc-fractal-cascade/hf_sandpile.blend",
+      "type": "blend",
+      "description": "Abelian Sandpile scene: 32×32 quad grid with GN Simulation Zone and emission material"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-abelian-sandpile-soc-fractal-cascade/viewport.mp4",
+      "type": "video",
+      "description": "200-frame top-down orthographic render, avalanche frames 0–200 at 30fps"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-abelian-sandpile-soc-fractal-cascade/screen.mp4",
+      "type": "video",
+      "description": "Screen recording: interactive Blender walkthrough of bake + timeline scrub"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces",
+      "/tutorials/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite"
+    ],
+    "outside_sources": [
+      {
+        "label": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Bak, Tang, Wiesenfeld (1987) Self-organised criticality",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.59.381",
+        "licence": "Public Domain",
+        "author": "Per Bak, Chao Tang, Kurt Wiesenfeld"
+      },
+      {
+        "label": "rosamc/SandpileModel",
+        "url": "https://github.com/rosamc/SandpileModel",
+        "licence": "MIT",
+        "author": "Rosa MC"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "slug": "gn-simulation-zone-abelian-sandpile-soc-fractal-cascade",
+  "licence": "CC0"
+}
