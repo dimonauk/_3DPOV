@@ -436,6 +436,7 @@ import { entry as blenderTutorialPythonBpyLaplacianSmoothModifierVolumePreserveI
 import { entry as blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr";
 import { entry as blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem";
 import { entry as blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-abelian-sandpile-soc-fractal-cascade";
+import { entry as blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -879,6 +880,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnDistributePointsInstanceOnPointsScatterWebxrEntry,
   blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosystemEntry,
   blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry,
+  blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

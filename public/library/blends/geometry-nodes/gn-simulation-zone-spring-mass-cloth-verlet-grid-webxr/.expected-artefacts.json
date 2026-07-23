@@ -1,0 +1,53 @@
+{
+  "blend": "hf_cloth_verlet.blend",
+  "outputs": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr/hf_cloth_verlet.blend",
+      "type": "blend",
+      "description": "Spring-mass cloth scene: 20×16 vertex quad grid in XZ plane with GN Simulation Zone Verlet integrator and red Principled BSDF material"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr/viewport.mp4",
+      "type": "video",
+      "description": "200-frame side-view rendered animation at 24 fps showing cloth sag, wind deflection, and damped oscillation"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr/screen.mp4",
+      "type": "video",
+      "description": "Screen recording: interactive Blender walkthrough of bake, timeline scrub, and GN editor node overview"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-gn-simulation-zone-abelian-sandpile-soc-fractal-cascade"
+    ],
+    "outside_sources": [
+      {
+        "label": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Thomas Jakobsen — Advanced Character Physics (GDC 2001)",
+        "url": "https://resources.mtu.edu/courses/cs5621/papers/AdvancedCharPhys.pdf",
+        "licence": "Public Domain",
+        "author": "Thomas Jakobsen"
+      },
+      {
+        "label": "David Baraff & Andrew Witkin — Large Steps in Cloth Simulation (SIGGRAPH 1998)",
+        "url": "https://www.cs.cmu.edu/~baraff/papers/sig98.pdf",
+        "licence": "Public Domain",
+        "author": "David Baraff, Andrew Witkin"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "slug": "gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr",
+  "licence": "CC0"
+}
