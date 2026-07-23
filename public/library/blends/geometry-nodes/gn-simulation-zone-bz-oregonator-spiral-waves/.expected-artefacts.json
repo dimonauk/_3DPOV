@@ -1,0 +1,47 @@
+{
+  "slug": "gn-simulation-zone-bz-oregonator-spiral-waves",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_bz_oscillator.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-game-of-life-mesh-faces",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "note": "Simulation Zone manual — state items, geometry body, bake, Python pair_with_output"
+      },
+      {
+        "url": "https://github.com/pmneila/jsexp",
+        "licence": "MIT",
+        "author": "Juan Pablo de la Cruz (pmneila)",
+        "note": "JavaScript reaction-diffusion explorer — Grey-Scott and FitzHugh-Nagumo excitable media; same Blur-as-Laplacian technique adapted here for the Oregonator"
+      }
+    ]
+  },
+  "simulation_params": {
+    "model": "Oregonator (Field-Körös-Noyes 1972, Tyson-Fife 1980 reduction)",
+    "grid": "64x64 vertices",
+    "epsilon": 0.04,
+    "f": 1.4,
+    "q": 0.002,
+    "D_u": 0.25,
+    "D_v": 0.0,
+    "dt": 0.01,
+    "spiral_onset_frame": 30,
+    "mature_spirals_frame": 80
+  }
+}

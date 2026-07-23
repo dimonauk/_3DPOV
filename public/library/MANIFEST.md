@@ -593,3 +593,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-23 | blend | geometry-nodes | gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr | 5.1 | CC0 | hf_cloth_verlet.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr |
 | 2026-07-23 | blend | geometry-nodes | gn-simulation-zone-coupled-pendulums-mathieu-resonance | 5.1 | CC0 | hf_pendulums.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance |
 | 2026-07-23 | blend + glb | geometry-nodes | gn-points-to-curves-poi-trail-ribbon-webxr | 5.1 | CC0 | hf_poi_trails.blend · hf_poi_trails.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr |
+
+| 2026-07-23 | blend | geometry-nodes | gn-simulation-zone-bz-oregonator-spiral-waves | 5.1 | CC0 | hf_bz_oscillator.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves |
