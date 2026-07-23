@@ -438,6 +438,7 @@ import { entry as blenderTutorialGnSimulationZonePredatorPreyLotkaVolterraEcosys
 import { entry as blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-abelian-sandpile-soc-fractal-cascade";
 import { entry as blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr";
 import { entry as blenderTutorialGnSimulationZoneCoupledPendulumsMathieuResonanceEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance";
+import { entry as blenderTutorialGnPointsToCurvesPoiTrailRibbonWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -883,6 +884,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneAbelianSandpileSocFractalCascadeEntry,
   blenderTutorialGnSimulationZoneSpringMassClothVerletGridWebxrEntry,
   blenderTutorialGnSimulationZoneCoupledPendulumsMathieuResonanceEntry,
+  blenderTutorialGnPointsToCurvesPoiTrailRibbonWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
