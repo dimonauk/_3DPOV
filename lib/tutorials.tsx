@@ -442,6 +442,7 @@ import { entry as blenderTutorialGnPointsToCurvesPoiTrailRibbonWebxrEntry } from
 import { entry as blenderTutorialGnSimulationZoneBzOregonatorSpiralWavesEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves";
 import { entry as blenderTutorialGnSimulationZoneSpringPendulumPoiLissajousLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting";
 import { entry as blenderTutorialPythonMathutilsGeometryDelaunay2dCdtConvexHullStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr";
+import { entry as blenderTutorialGnSimulationZoneWaveEquationChladniStandingWavesEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-wave-equation-chladni-standing-waves";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -891,6 +892,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneBzOregonatorSpiralWavesEntry,
   blenderTutorialGnSimulationZoneSpringPendulumPoiLissajousLightPaintingEntry,
   blenderTutorialPythonMathutilsGeometryDelaunay2dCdtConvexHullStageFloorWebxrEntry,
+  blenderTutorialGnSimulationZoneWaveEquationChladniStandingWavesEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
