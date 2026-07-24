@@ -451,6 +451,7 @@ import { entry as blenderTutorialPythonLennardJonesMdCrystalNucleationBerendsenE
 import { entry as blenderTutorialPythonKuramotoCoupledOscillatorsPhasesSyncPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr";
 import { entry as blenderTutorialPythonBpyActionNlaFcurveKeyframePoiPerformanceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr";
 import { entry as blenderTutorialPythonHopfFibrationLinkedToriLightSculptureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr";
+import { entry as blenderTutorialGnSimulationZoneIsingModelSpinLatticePhaseTransitionEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -909,6 +910,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonKuramotoCoupledOscillatorsPhasesSyncPoiWebxrEntry,
   blenderTutorialPythonBpyActionNlaFcurveKeyframePoiPerformanceWebxrEntry,
   blenderTutorialPythonHopfFibrationLinkedToriLightSculptureWebxrEntry,
+  blenderTutorialGnSimulationZoneIsingModelSpinLatticePhaseTransitionEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
