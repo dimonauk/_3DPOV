@@ -608,3 +608,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 
 | 2026-07-24 | blend + glb | scripting | python-hopf-fibration-linked-tori-light-sculpture-webxr | 5.1 | CC0 | hf_hopf_fibration.blend · hf_hopf_fibration.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr |
 | 2026-07-24 | blend | geometry-nodes | gn-simulation-zone-ising-model-spin-lattice-phase-transition | 5.1 | CC0 | hf_ising_model.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition |
+| 2026-07-24 | blend | geometry-nodes | gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott | 5.1 | CC0 | hf_kh_vortex.blend · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott |
