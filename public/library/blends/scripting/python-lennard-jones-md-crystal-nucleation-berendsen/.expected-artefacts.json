@@ -1,0 +1,49 @@
+{
+  "slug": "python-lennard-jones-md-crystal-nucleation-berendsen",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_lj_crystal.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-lennard-jones-md-crystal-nucleation-berendsen/viewport.mp4",
+    "public/library/videos/scripting/python-lennard-jones-md-crystal-nucleation-berendsen/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-double-pendulum-chaos-butterfly",
+      "/tutorials/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr",
+      "/tutorials/blender-tutorial-faceted-gem-flat-normals"
+    ],
+    "external_sources": [
+      {
+        "title": "jax-md — Differentiable Molecular Dynamics in JAX",
+        "url": "https://github.com/google/jax-md",
+        "licence": "Apache-2.0",
+        "author": "Google Brain",
+        "related": ["https://github.com/google/jax"]
+      },
+      {
+        "title": "OpenMM — High-Performance Molecular Dynamics",
+        "url": "https://github.com/openmm/openmm",
+        "licence": "MIT",
+        "author": "Stanford / OpenMM contributors",
+        "related": ["https://github.com/openmm/openmmtools"]
+      },
+      {
+        "title": "NumPy — Vectorised Array Computing",
+        "url": "https://github.com/numpy/numpy",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors",
+        "related": ["https://github.com/scipy/scipy"]
+      }
+    ]
+  }
+}
