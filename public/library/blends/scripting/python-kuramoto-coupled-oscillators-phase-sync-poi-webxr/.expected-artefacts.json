@@ -1,0 +1,45 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "hf_kuramoto.blend",
+    "hf_kuramoto.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-kuramoto-coupled-oscillators-phase-sync-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-kuramoto-coupled-oscillators-phase-sync-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-lennard-jones-md-crystal-nucleation-berendsen",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["https://projects.blender.org/blender/blender"]
+      },
+      {
+        "title": "NumPy User Guide",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors",
+        "related": ["https://github.com/scipy/scipy", "https://github.com/cupy/cupy"]
+      },
+      {
+        "title": "fabridamicelli/kuramoto — Python Kuramoto model",
+        "url": "https://github.com/fabridamicelli/kuramoto",
+        "licence": "MIT",
+        "author": "Fabrizio Damicelli",
+        "related": ["https://github.com/fabridamicelli/echoes"]
+      }
+    ]
+  }
+}

@@ -448,6 +448,7 @@ import { entry as blenderTutorialGnSimulationZoneDoublePendulumChaosButterflyEnt
 import { entry as blenderTutorialGnSimulationZoneLorenzAttractorPoiLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting";
 import { entry as blenderTutorialPythonNbodyGravityStarClusterLeapfrogLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting";
 import { entry as blenderTutorialPythonLennardJonesMdCrystalNucleationBerendsenEntry } from "components/tutorials/entries/blender-tutorial-python-lennard-jones-md-crystal-nucleation-berendsen";
+import { entry as blenderTutorialPythonKuramotoCoupledOscillatorsPhasesSyncPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -903,6 +904,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneLorenzAttractorPoiLightPaintingEntry,
   blenderTutorialPythonNbodyGravityStarClusterLeapfrogLightPaintingEntry,
   blenderTutorialPythonLennardJonesMdCrystalNucleationBerendsenEntry,
+  blenderTutorialPythonKuramotoCoupledOscillatorsPhasesSyncPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
