@@ -1,0 +1,36 @@
+{
+  "slug": "gn-simulation-zone-double-pendulum-chaos-butterfly",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_double_pendulum.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "Matplotlib double_pendulum.py",
+        "licence": "BSD-3-Clause",
+        "author": "The Matplotlib Contributors",
+        "url": "https://github.com/matplotlib/matplotlib/blob/main/galleries/examples/animation/double_pendulum.py"
+      },
+      {
+        "title": "Mécanique analytique — Lagrange 1788",
+        "licence": "Public Domain",
+        "author": "Joseph-Louis Lagrange",
+        "url": "https://archive.org/details/mcaniqueanalytiq00lagr"
+      }
+    ]
+  }
+}
