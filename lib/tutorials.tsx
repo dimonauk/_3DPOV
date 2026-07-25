@@ -467,6 +467,7 @@ import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripe
 import { entry as blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr";
 import { entry as blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr";
 import { entry as blenderTutorialPythonNumpyEulerRigidBodySpinningTopPrecessionPoiStaffEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-euler-rigid-body-spinning-top-precession-poi-staff";
+import { entry as blenderTutorialGnSocketPanelsInterfaceCollapsibleModifierUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-panels-interface-collapsible-modifier-ui";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -941,6 +942,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry,
   blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry,
   blenderTutorialPythonNumpyEulerRigidBodySpinningTopPrecessionPoiStaffEntry,
+  blenderTutorialGnSocketPanelsInterfaceCollapsibleModifierUiEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

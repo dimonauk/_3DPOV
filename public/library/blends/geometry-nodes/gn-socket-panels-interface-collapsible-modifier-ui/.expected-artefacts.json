@@ -1,0 +1,36 @@
+{
+  "slug": "gn-socket-panels-interface-collapsible-modifier-ui",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "generated_by": "blueprint.py",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_poi_energy_ribbon.glb",
+    "../../videos/geometry-nodes/gn-socket-panels-interface-collapsible-modifier-ui/viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-antenna-webxr",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting"
+    ],
+    "external_sources": [
+      {
+        "label": "Blender 5.0 Release Notes — Geometry Nodes: Socket Panels — CC0",
+        "url": "https://www.blender.org/download/releases/5-0/",
+        "licence": "CC0"
+      },
+      {
+        "label": "Blender Python API — bpy.types.NodeTreeInterface — CC-BY-SA-4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NodeTreeInterface.html",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}
