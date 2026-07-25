@@ -465,6 +465,7 @@ import { entry as blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEnt
 import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr";
 import { entry as blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr";
+import { entry as blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -937,6 +938,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry,
   blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry,
+  blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
