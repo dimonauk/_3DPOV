@@ -456,6 +456,7 @@ import { entry as blenderTutorialGnSimulationZoneKelvinHelmholtzVortexFilamentBi
 import { entry as blenderTutorialGnSimulationZoneVicsekActiveMatterPolarFlockEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-vicsek-active-matter-polar-flock";
 import { entry as blenderTutorialGnSimulationZoneVanDerPolNonlinearLimitCyclePoiEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi";
 import { entry as blenderTutorialPythonBpyFcurveModifiersNoiseCyclesSteppedEnvelopePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr";
+import { entry as blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry } from "components/tutorials/entries/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -919,6 +920,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneVicsekActiveMatterPolarFlockEntry,
   blenderTutorialGnSimulationZoneVanDerPolNonlinearLimitCyclePoiEntry,
   blenderTutorialPythonBpyFcurveModifiersNoiseCyclesSteppedEnvelopePoiWebxrEntry,
+  blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
