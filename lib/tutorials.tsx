@@ -460,6 +460,7 @@ import { entry as blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry } 
 import { entry as blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr";
 import { entry as blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget";
 import { entry as blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr";
+import { entry as blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -927,6 +928,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry,
   blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry,
   blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry,
+  blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

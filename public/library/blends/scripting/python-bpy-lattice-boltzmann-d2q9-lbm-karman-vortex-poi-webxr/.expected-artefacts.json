@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_karman_vortex.blend"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott",
+      "/tutorials/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr",
+      "/tutorials/blender-tutorial-python-bpy-ocean-modifier-beaufort-wave-spectrum-foam-seascape-webxr"
+    ],
+    "external": [
+      {
+        "title": "PyLBM — Python Lattice Boltzmann library",
+        "authors": "Loïc Gouarin et al.",
+        "licence": "BSD-3-Clause",
+        "url": "https://github.com/pylbm/pylbm",
+        "related": ["pylbm/pylbm-doc", "pylbm/pylbm-gallery"]
+      },
+      {
+        "title": "Blender Python API 5.1 — bpy.types.Mesh",
+        "authors": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Mesh.html",
+        "related": ["projects.blender.org/blender/blender"]
+      }
+    ]
+  }
+}
