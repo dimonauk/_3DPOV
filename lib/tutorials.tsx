@@ -459,6 +459,7 @@ import { entry as blenderTutorialPythonBpyFcurveModifiersNoiseCyclesSteppedEnvel
 import { entry as blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry } from "components/tutorials/entries/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff";
 import { entry as blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr";
 import { entry as blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget";
+import { entry as blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -925,6 +926,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry,
   blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry,
   blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry,
+  blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

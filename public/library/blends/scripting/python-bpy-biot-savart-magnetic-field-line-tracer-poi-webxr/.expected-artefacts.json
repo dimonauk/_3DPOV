@@ -1,0 +1,56 @@
+{
+  "artefacts": [
+    {
+      "path": "blends/scripting/python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr/blueprint.py",
+      "type": "script",
+      "description": "Production Biot-Savart field-line tracer: helix wire → RK4 integrator → POLY curves → GLB export"
+    },
+    {
+      "path": "blends/scripting/python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr/record.py",
+      "type": "script",
+      "description": "Compact 12-trail version with 90-frame camera orbit; EEVEE bloom render → viewport.mp4"
+    },
+    {
+      "path": "blends/scripting/python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr/hf_biot_savart.glb",
+      "type": "glb",
+      "description": "24 field-line tube meshes + helix coil, Draco L6, WebP, +Y up"
+    },
+    {
+      "path": "videos/scripting/python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr/viewport.mp4",
+      "type": "video",
+      "description": "90-frame EEVEE render: coloured field lines draw on while camera orbits the helix coil"
+    },
+    {
+      "path": "videos/scripting/python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen capture: blueprint.py walkthrough, script execution, viewport orbit, GLB export"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr"
+    ],
+    "external": [
+      {
+        "name": "magpylib — Python package for magnetic field computation",
+        "url": "https://github.com/magpylib/magpylib",
+        "licence": "MIT",
+        "author": "Michael Ortner et al.",
+        "related": "https://github.com/magpylib/magpylib/tree/main/examples"
+      },
+      {
+        "name": "Blender Python API — bpy.types.Curve",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Curve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
