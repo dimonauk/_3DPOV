@@ -461,6 +461,7 @@ import { entry as blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry } from "c
 import { entry as blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget";
 import { entry as blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr";
 import { entry as blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr";
+import { entry as blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -929,6 +930,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry,
   blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry,
   blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry,
+  blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
