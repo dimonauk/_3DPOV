@@ -1,0 +1,39 @@
+{
+  "slug": "python-dft-epicycles-poi-path-phasors-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_epicycles.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-dft-epicycles-poi-path-phasors-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-dft-epicycles-poi-path-phasors-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr",
+      "/tutorials/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr",
+      "/tutorials/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting"
+    ],
+    "external_sources": [
+      {
+        "label": "Python cmath module — PSF Licence (BSD-compatible)",
+        "url": "https://docs.python.org/3/library/cmath.html",
+        "licence": "PSF",
+        "author": "Python Software Foundation"
+      },
+      {
+        "label": "Blender Manual — Keyframe Animation (CC-BY-SA 4.0)",
+        "url": "https://docs.blender.org/manual/en/5.1/animation/keyframes/introduction.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}
