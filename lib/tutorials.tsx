@@ -458,6 +458,7 @@ import { entry as blenderTutorialGnSimulationZoneVanDerPolNonlinearLimitCyclePoi
 import { entry as blenderTutorialPythonBpyFcurveModifiersNoiseCyclesSteppedEnvelopePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr";
 import { entry as blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry } from "components/tutorials/entries/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff";
 import { entry as blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr";
+import { entry as blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -923,6 +924,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyFcurveModifiersNoiseCyclesSteppedEnvelopePoiWebxrEntry,
   blenderTutorialGnMatrixNodesFkChainArticulatedPoiStaffEntry,
   blenderTutorialGnCurveToMeshRibbonTrimTiltWebxrEntry,
+  blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
