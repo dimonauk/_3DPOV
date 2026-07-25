@@ -1,0 +1,53 @@
+{
+  "slug": "gn-simulation-zone-fitzhugh-nagumo-excitable-medium-spiral-reentry-poi",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_fitzhugh_nagumo.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "tutorial_url": "/tutorials/blender-tutorial-gn-simulation-zone-fitzhugh-nagumo-excitable-medium-spiral-reentry-poi",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-equation-chladni-standing-waves",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr"
+    ],
+    "outside": [
+      {
+        "label": "FitzHugh R. (1961) Impulses and Physiological States in Theoretical Models of Nerve Membrane — Biophysical Journal — Public Domain (NIH PMC Open Access)",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1366333/"
+      },
+      {
+        "label": "Blender Foundation — Blur Attribute node reference — CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/attribute/blur_attribute.html"
+      }
+    ]
+  },
+  "key_gn_nodes": [
+    "GeometryNodeSimulationInput",
+    "GeometryNodeSimulationOutput",
+    "GeometryNodeBlurAttribute",
+    "GeometryNodeInputNamedAttribute",
+    "GeometryNodeStoreNamedAttribute",
+    "GeometryNodeSetPosition",
+    "GeometryNodeSceneTime",
+    "GeometryNodeSwitch",
+    "FunctionNodeCompare",
+    "FunctionNodeBooleanMath",
+    "ShaderNodeMath",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeCombineXYZ",
+    "ShaderNodeMapRange"
+  ],
+  "mechanism_note": "BlurAttribute with 1 iteration on a 4-connected grid computes blur(u)=(u_self+u_N+u_S+u_E+u_W)/5; therefore blur(u)-u = Laplacian/5 and D_EFF=D*5 recovers the physical diffusion term. FHN cubic kinetics u-u^3/3-v+I decomposed as three ShaderNodeMath(MULTIPLY) chains. Cross-field spiral initiation uses GeometryNodeSceneTime.Frame + FunctionNodeCompare + FunctionNodeBooleanMath(AND/OR) + GeometryNodeSwitch to gate two stimulus patches at specific frame ranges."
+}
