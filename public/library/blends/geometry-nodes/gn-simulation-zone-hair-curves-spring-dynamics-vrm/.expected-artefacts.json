@@ -1,0 +1,38 @@
+{
+  "blend": "hf_hair_spring.blend",
+  "glb": "hf_hair_spring.glb",
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-hair-curves-spring-dynamics-vrm/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-hair-curves-spring-dynamics-vrm/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-deform-curves-on-surface-vrm-hair",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+      "/tutorials/blender-tutorial-curves-hair-grooming"
+    ],
+    "studio_articles": [],
+    "studio_codex": ["https://holoflow.co.uk/codex"],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Simulation Zone (Geometry Nodes)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Manual — Offset Point in Curve",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "bpy.types.HairCurve API (Blender 5.1)",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Curves.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

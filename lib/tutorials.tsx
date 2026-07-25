@@ -468,6 +468,7 @@ import { entry as blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWeb
 import { entry as blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr";
 import { entry as blenderTutorialPythonNumpyEulerRigidBodySpinningTopPrecessionPoiStaffEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-euler-rigid-body-spinning-top-precession-poi-staff";
 import { entry as blenderTutorialGnSocketPanelsInterfaceCollapsibleModifierUiEntry } from "components/tutorials/entries/blender-tutorial-gn-socket-panels-interface-collapsible-modifier-ui";
+import { entry as blenderTutorialGnSimulationZoneHairCurvesSpringDynamicsVrmEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-hair-curves-spring-dynamics-vrm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -943,6 +944,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMandelbrotJuliaFractalPoiWebxrEntry,
   blenderTutorialPythonNumpyEulerRigidBodySpinningTopPrecessionPoiStaffEntry,
   blenderTutorialGnSocketPanelsInterfaceCollapsibleModifierUiEntry,
+  blenderTutorialGnSimulationZoneHairCurvesSpringDynamicsVrmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
