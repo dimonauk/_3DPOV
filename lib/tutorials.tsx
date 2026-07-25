@@ -471,6 +471,7 @@ import { entry as blenderTutorialGnSocketPanelsInterfaceCollapsibleModifierUiEnt
 import { entry as blenderTutorialGnSimulationZoneHairCurvesSpringDynamicsVrmEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-hair-curves-spring-dynamics-vrm";
 import { entry as blenderTutorialPythonNumpyStftAudioSpectrum3dBarsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-stft-audio-spectrum-3d-bars-poi-webxr";
 import { entry as blenderTutorialPythonNumpySmoothlifeFourierContinuousAutomatonWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-smoothlife-fourier-continuous-automaton-webxr";
+import { entry as blenderTutorialPythonNumpyNavierStokesVorticityStreamfunctionLidCavityPoiEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-navier-stokes-vorticity-streamfunction-lid-cavity-poi";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -949,6 +950,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneHairCurvesSpringDynamicsVrmEntry,
   blenderTutorialPythonNumpyStftAudioSpectrum3dBarsPoiWebxrEntry,
   blenderTutorialPythonNumpySmoothlifeFourierContinuousAutomatonWebxrEntry,
+  blenderTutorialPythonNumpyNavierStokesVorticityStreamfunctionLidCavityPoiEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

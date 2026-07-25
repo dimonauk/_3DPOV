@@ -1,0 +1,38 @@
+{
+  "slug": "python-numpy-navier-stokes-vorticity-streamfunction-lid-cavity-poi",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_lid_cavity.blend",
+    "hf_lid_cavity.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-tether",
+      "/lab/poi-sculptor"
+    ],
+    "external_sources": [
+      {
+        "title": "Ghia, Ghia & Shin (1982) — High-Re Solutions for Incompressible Flow Using the Navier-Stokes Equations and a Multigrid Method",
+        "url": "https://www.sciencedirect.com/science/article/pii/0021999182900584",
+        "licence": "academic reference"
+      },
+      {
+        "title": "Barba & Forsyth (2012) — 12 Steps to Navier-Stokes",
+        "url": "https://github.com/barbagroup/CFDPython",
+        "licence": "MIT"
+      },
+      {
+        "title": "NumPy Developers — numpy.ndarray slicing and ufuncs",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
