@@ -463,6 +463,7 @@ import { entry as blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWe
 import { entry as blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr";
 import { entry as blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting";
 import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr";
+import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -933,6 +934,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry,
   blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry,
   blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry,
+  blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
