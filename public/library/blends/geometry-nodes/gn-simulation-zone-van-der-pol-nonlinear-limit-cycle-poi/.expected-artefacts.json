@@ -1,0 +1,39 @@
+{
+  "slug": "gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_vdp.blend"
+  ],
+  "video_outputs": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-vicsek-active-matter-polar-flock",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock"
+    ],
+    "external": [
+      {
+        "title": "On Relaxation-Oscillations",
+        "authors": "B. van der Pol",
+        "year": 1926,
+        "licence": "Public Domain",
+        "url": "https://en.wikipedia.org/wiki/Van_der_Pol_oscillator"
+      },
+      {
+        "title": "Blur Attribute — Blender Manual",
+        "authors": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/attribute/blur_attribute.html"
+      }
+    ]
+  }
+}

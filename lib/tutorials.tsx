@@ -454,6 +454,7 @@ import { entry as blenderTutorialPythonHopfFibrationLinkedToriLightSculptureWebx
 import { entry as blenderTutorialGnSimulationZoneIsingModelSpinLatticePhaseTransitionEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition";
 import { entry as blenderTutorialGnSimulationZoneKelvinHelmholtzVortexFilamentBirkhoffRottEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott";
 import { entry as blenderTutorialGnSimulationZoneVicsekActiveMatterPolarFlockEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-vicsek-active-matter-polar-flock";
+import { entry as blenderTutorialGnSimulationZoneVanDerPolNonlinearLimitCyclePoiEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -915,6 +916,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneIsingModelSpinLatticePhaseTransitionEntry,
   blenderTutorialGnSimulationZoneKelvinHelmholtzVortexFilamentBirkhoffRottEntry,
   blenderTutorialGnSimulationZoneVicsekActiveMatterPolarFlockEntry,
+  blenderTutorialGnSimulationZoneVanDerPolNonlinearLimitCyclePoiEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
