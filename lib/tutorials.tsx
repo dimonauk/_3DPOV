@@ -462,6 +462,7 @@ import { entry as blenderTutorialPythonBpyBvhImportVrmBoneRemapNlaBakeRetargetEn
 import { entry as blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr";
 import { entry as blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-lattice-boltzmann-d2q9-lbm-karman-vortex-poi-webxr";
 import { entry as blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting";
+import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -931,6 +932,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyBiotSavartMagneticFieldLineTracerPoiWebxrEntry,
   blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoiWebxrEntry,
   blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry,
+  blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

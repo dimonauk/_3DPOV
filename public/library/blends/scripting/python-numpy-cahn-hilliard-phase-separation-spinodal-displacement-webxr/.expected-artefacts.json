@@ -1,0 +1,49 @@
+{
+  "slug": "python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+  "topic": "scripting",
+  "type": "glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_cahn_hilliard.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-python-mathutils-noise-terrain-heightfield-webxr",
+      "/tutorials/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-equation-chladni-standing-waves",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr"
+    ],
+    "external": [
+      {
+        "title": "Cahn & Hilliard 1958 — Free Energy of a Nonuniform System",
+        "url": "https://doi.org/10.1063/1.1744102",
+        "author": "John W. Cahn & John E. Hilliard",
+        "licence": "Public domain (mathematical result)"
+      },
+      {
+        "title": "numpy.fft — Discrete Fourier Transform",
+        "url": "https://numpy.org/doc/stable/reference/routines.fft.html",
+        "author": "NumPy Developers",
+        "licence": "BSD-3-Clause",
+        "related": ["https://github.com/numpy/numpy"]
+      },
+      {
+        "title": "bpy.types.Image — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Image.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "related": ["https://projects.blender.org/blender/blender"]
+      }
+    ]
+  }
+}
