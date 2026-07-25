@@ -1,0 +1,36 @@
+{
+  "slug": "gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_light_ribbon.blend",
+    "hf_light_ribbon.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-curve-to-mesh-ribbon-trim-tilt-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-curve-to-mesh-ribbon-trim-tilt-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr"
+    ],
+    "external": [
+      {
+        "label": "Blender Foundation — GN Curve Nodes manual (CC-BY-SA 4.0)",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/curve/"
+      },
+      {
+        "label": "Khronos Group — glTF 2.0 Specification (Apache-2.0)",
+        "url": "https://github.com/KhronosGroup/glTF"
+      }
+    ]
+  }
+}
