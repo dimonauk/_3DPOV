@@ -464,6 +464,7 @@ import { entry as blenderTutorialPythonBpyLatticeBoltzmannD2q9LbmKarmanVortexPoi
 import { entry as blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting";
 import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr";
+import { entry as blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -935,6 +936,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyRosslerAttractorRk4PoiLightPaintingEntry,
   blenderTutorialPythonNumpyCahnHilliardPhaseSeperationSpinoidalDisplacementWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionSpotStripeWebxrEntry,
+  blenderTutorialPythonNumpyFftEpicyclesFourierPhasorChainPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
