@@ -1,0 +1,37 @@
+{
+  "slug": "python-numpy-euler-rigid-body-spinning-top-precession-poi-staff",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_poi_staff_precession.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Euler 1758 — Du mouvement de rotation des corps solides (Public Domain)",
+        "url": "https://scholarlycommons.pacific.edu/euler-works/336/"
+      },
+      {
+        "title": "numpy — BSD-3-Clause — NumPy Developers",
+        "url": "https://github.com/numpy/numpy",
+        "related": "https://numpy.org/doc/stable/reference/routines.linalg.html"
+      },
+      {
+        "title": "Blender Python API 5.1 — bpy.types.Object.rotation_quaternion — CC-BY-SA-4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Object.html#bpy.types.Object.rotation_quaternion",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  }
+}
