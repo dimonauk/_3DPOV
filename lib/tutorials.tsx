@@ -491,6 +491,7 @@ import { entry as blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebx
 import { entry as blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr";
 import { entry as blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr";
 import { entry as blenderTutorialPythonBpyReynoldsBoids3dSeparationAlignmentCohesionNumpyWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr";
+import { entry as blenderTutorialGnForeachElementZoneCurvePerSplineAccumulationPoiRibbonWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-foreach-element-zone-curve-per-spline-accumulation-poi-ribbon-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -989,6 +990,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry,
   blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry,
   blenderTutorialPythonBpyReynoldsBoids3dSeparationAlignmentCohesionNumpyWebxrEntry,
+  blenderTutorialGnForeachElementZoneCurvePerSplineAccumulationPoiRibbonWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
