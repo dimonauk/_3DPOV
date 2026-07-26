@@ -483,6 +483,7 @@ import { entry as blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransp
 import { entry as blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail";
 import { entry as blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay";
 import { entry as blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr";
+import { entry as blenderTutorialGnRotationMathAnalytical2jointIkLawCosinesPoiArmEntry } from "components/tutorials/entries/blender-tutorial-gn-rotation-math-analytical-2joint-ik-law-cosines-poi-arm";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -973,6 +974,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry,
   blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry,
   blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry,
+  blenderTutorialGnRotationMathAnalytical2jointIkLawCosinesPoiArmEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
