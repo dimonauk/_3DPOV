@@ -477,6 +477,7 @@ import { entry as blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSp
 import { entry as blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr";
 import { entry as blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit } from "components/tutorials/entries/blender-tutorial-python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr";
 import { entry as blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr";
+import { entry as blenderTutorialPythonNumpyLeniaContinuousCellularAutomatonFftSolitonWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -961,6 +962,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry,
   blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit,
   blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry,
+  blenderTutorialPythonNumpyLeniaContinuousCellularAutomatonFftSolitonWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
