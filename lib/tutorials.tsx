@@ -479,6 +479,7 @@ import { entry as blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit } fro
 import { entry as blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr";
 import { entry as blenderTutorialPythonNumpyLeniaContinuousCellularAutomatonFftSolitonWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr";
 import { entry as blenderTutorialPythonMathutilsMobiusStripNtwistParametricMeshWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr";
+import { entry as blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -965,6 +966,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry,
   blenderTutorialPythonNumpyLeniaContinuousCellularAutomatonFftSolitonWebxrEntry,
   blenderTutorialPythonMathutilsMobiusStripNtwistParametricMeshWebxrEntry,
+  blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
