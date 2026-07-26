@@ -1,0 +1,44 @@
+{
+  "slug": "python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_light_sculpture_preview.glb",
+    "hf_sculpture_outer.stl",
+    "hf_sculpture_inner.stl"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/codex/waveguide-object",
+      "/codex/waveguide-optics-deep-dive",
+      "/tutorials/blender-tutorial-python-bmesh-ops-solidify-hollow-shell-faceted-crystal-case-webxr",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis"
+    ],
+    "outside_sources": [
+      {
+        "label": "Blender 5.1 Manual — Boolean Modifier",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/booleans.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "label": "Blender Python API 5.1 — bpy.ops.wm.stl_export",
+        "url": "https://docs.blender.org/api/5.1/bpy.ops.wm.html#bpy.ops.wm.stl_export",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  },
+  "technique_summary": "Two-part nested shell: sub=4 icosphere inner waveguide core (INNER_R=48mm, smooth, Transmission Weight=0.92 IOR=1.49) + sub=2 icosphere outer decorative shell (OUTER_R=50mm, flat-shaded, WALL_MM=2mm); LED cavity via BooleanModifier EXACT solver (CAVITY_R=2.7mm CAVITY_DEPTH=8mm) at −Z pole; 6×Ø2mm drainage holes at lat=55° below equator (> 47.8° TIR safety margin for n=1.49); overhang analysis via face.normal.z tagged as FLOAT named attribute 'overhang'; STL export via bpy.ops.wm.stl_export global_scale=1000 (m→mm) forward_axis='Y' up_axis='Z' ascii_format=False; GLB preview Draco L6 WebP Y-up; TIR critical angle θ_c=arcsin(1/1.49)≈42.2°"
+}
