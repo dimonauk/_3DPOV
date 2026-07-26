@@ -1,0 +1,43 @@
+{
+  "slug": "python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "filename": "hf_fairing.glb",   "type": "glb",  "note": "sphere + 3 morph targets + deviation colour attribute" },
+    { "filename": "blueprint.py",     "type": "script" },
+    { "filename": "record.py",        "type": "script" },
+    { "filename": "viewport.mp4",     "type": "video", "note": "240-frame EEVEE Next render, produced by record.py" },
+    { "filename": "screen.mp4",       "type": "video", "note": "OBS screen capture per SCREEN-RECORDING-NOTES.md" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr",
+      "/tutorials/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Implicit Fairing of Irregular Meshes using Diffusion and Curvature Flow",
+        "authors": "Desbrun, Meyer, Schröder, Barr",
+        "venue": "ACM SIGGRAPH 1999",
+        "url": "http://multires.caltech.edu/pubs/ImplicitFairing.pdf",
+        "licence": "academic-free"
+      },
+      {
+        "title": "scipy.sparse.linalg",
+        "authors": "SciPy Contributors",
+        "url": "https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html",
+        "licence": "BSD-3-Clause",
+        "related": "https://github.com/scipy/scipy"
+      },
+      {
+        "title": "geometry-central — cotangent Laplacian reference implementation",
+        "authors": "Nicholas Sharp et al.",
+        "url": "https://github.com/nmwsharp/geometry-central",
+        "licence": "MIT",
+        "related": "https://github.com/nmwsharp/polyscope"
+      }
+    ]
+  }
+}
