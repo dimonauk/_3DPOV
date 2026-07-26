@@ -490,6 +490,7 @@ import { entry as blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFlo
 import { entry as blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr";
 import { entry as blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr";
 import { entry as blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr";
+import { entry as blenderTutorialPythonBpyReynoldsBoids3dSeparationAlignmentCohesionNumpyWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -987,6 +988,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry,
   blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry,
   blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry,
+  blenderTutorialPythonBpyReynoldsBoids3dSeparationAlignmentCohesionNumpyWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

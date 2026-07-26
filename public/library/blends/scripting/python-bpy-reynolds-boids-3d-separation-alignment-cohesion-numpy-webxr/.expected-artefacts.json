@@ -1,0 +1,36 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_boids.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-vicsek-active-matter-polar-flock",
+      "/tutorials/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr",
+      "/docs/BLENDER-EXTENSIONS.md"
+    ],
+    "external": [
+      {
+        "url": "https://dl.acm.org/doi/10.1145/37402.37406",
+        "title": "Reynolds (1987) — Flocks, Herds, and Schools — SIGGRAPH",
+        "licence": "Public domain"
+      },
+      {
+        "url": "https://natureofcode.com/autonomous-agents/",
+        "title": "Nature of Code §5 — Autonomous Agents — Daniel Shiffman",
+        "licence": "MIT (code) / CC-BY-NC-SA 4.0 (prose)"
+      }
+    ]
+  }
+}
