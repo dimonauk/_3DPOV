@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_tdse.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-stft-audio-spectrum-3d-bar-poi-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr"
+    ],
+    "studio_codex": [],
+    "studio_articles": [],
+    "outside_sources": [
+      {
+        "title": "Feit, Fleck & Steiger (1982) — Solution of the Schrödinger equation by a spectral method — J. Comput. Phys. 47:412",
+        "url": "https://doi.org/10.1016/0021-9991(82)90091-2",
+        "licence": "PD",
+        "author": "M. D. Feit, J. A. Fleck Jr., A. Steiger",
+        "related": "https://www.sciencedirect.com/journal/journal-of-computational-physics"
+      },
+      {
+        "title": "Split-step method — Wikipedia — CC BY-SA 4.0 — Wikipedia Contributors",
+        "url": "https://en.wikipedia.org/wiki/Split-step_method",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia Contributors",
+        "related": "https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation"
+      },
+      {
+        "title": "NumPy — numpy.fft.fft2 — BSD-3-Clause — NumPy Developers",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.fft2.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

@@ -475,6 +475,7 @@ import { entry as blenderTutorialPythonNumpyNavierStokesVorticityStreamfunctionL
 import { entry as blenderTutorialPythonNumpyHaarDwtPoiCurvatureRibbonEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-haar-dwt-poi-curvature-ribbon";
 import { entry as blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-fitzhugh-nagumo-excitable-medium-spiral-reentry-poi";
 import { entry as blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr";
+import { entry as blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit } from "components/tutorials/entries/blender-tutorial-python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -957,6 +958,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHaarDwtPoiCurvatureRibbonEntry,
   blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry,
   blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry,
+  blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
