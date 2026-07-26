@@ -484,6 +484,7 @@ import { entry as blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMa
 import { entry as blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay";
 import { entry as blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr";
 import { entry as blenderTutorialGnRotationMathAnalytical2jointIkLawCosinesPoiArmEntry } from "components/tutorials/entries/blender-tutorial-gn-rotation-math-analytical-2joint-ik-law-cosines-poi-arm";
+import { entry as blenderTutorialPythonNumpySphericalHarmonicsRealShShapeKeysAtomicOrbitalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -975,6 +976,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry,
   blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry,
   blenderTutorialGnRotationMathAnalytical2jointIkLawCosinesPoiArmEntry,
+  blenderTutorialPythonNumpySphericalHarmonicsRealShShapeKeysAtomicOrbitalWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,35 @@
+{
+  "glb": "hf_sh_orbitals.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "notes": ["SCREEN-RECORDING-NOTES.md"],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets"
+    ],
+    "external": [
+      {
+        "label": "Blender Python API 5.1 — bmesh module",
+        "url": "https://docs.blender.org/api/5.1/bmesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "NumPy — numpy array operations and ufuncs",
+        "url": "https://numpy.org/doc/stable/reference/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors"
+      },
+      {
+        "label": "KhronosGroup/glTF-Blender-IO — GLB export pipeline",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}
