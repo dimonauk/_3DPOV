@@ -638,3 +638,4 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-07-26 | blend + glb | scripting | python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr | 5.1 | CC0 | hf_torus_knot.blend · hf_torus_knot.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr |
 
 | 2026-07-26 | blend + glb | scripting | python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail | 5.1 | CC0 | hf_longexp_helix.glb · hf_longexp_composite.png · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail |
+| 2026-07-26 | blend | scripting | python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay | 5.1 | CC0 | blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay |

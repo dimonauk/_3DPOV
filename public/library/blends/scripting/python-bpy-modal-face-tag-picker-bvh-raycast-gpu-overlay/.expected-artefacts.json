@@ -1,0 +1,37 @@
+{
+  "slug": "python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-modal-operator-vertex-colour-painter",
+      "/tutorials/blender-tutorial-python-gpu-viewport-draw-overlay",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-modal-progress-bar-cancel-long-operation",
+      "/tutorials/blender-tutorial-python-bpy-render-engine-webxr-snapshot"
+    ],
+    "external_sources": [
+      {
+        "label": "Blender Python API — bpy_extras.view3d_utils — CC BY-SA 4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/current/bpy_extras.view3d_utils.html"
+      },
+      {
+        "label": "Blender Python API — mathutils.bvhtree — CC BY-SA 4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/current/mathutils.bvhtree.html"
+      },
+      {
+        "label": "Blender Python API — gpu module — CC BY-SA 4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/current/gpu.html"
+      }
+    ]
+  },
+  "notes": "blueprint.py registers HF_OT_FaceTagPicker; record.py drives 150-frame demo; screen.mp4 captured via OBS showing live face painting"
+}

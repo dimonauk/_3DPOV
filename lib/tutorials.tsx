@@ -481,6 +481,7 @@ import { entry as blenderTutorialPythonNumpyLeniaContinuousCellularAutomatonFftS
 import { entry as blenderTutorialPythonMathutilsMobiusStripNtwistParametricMeshWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr";
 import { entry as blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr";
 import { entry as blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail";
+import { entry as blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -969,6 +970,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsMobiusStripNtwistParametricMeshWebxrEntry,
   blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry,
   blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry,
+  blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
