@@ -487,6 +487,7 @@ import { entry as blenderTutorialGnRotationMathAnalytical2jointIkLawCosinesPoiAr
 import { entry as blenderTutorialPythonNumpySphericalHarmonicsRealShShapeKeysAtomicOrbitalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr";
 import { entry as blenderTutorialPythonBpyResinMslaLightSculptureNestedShellLedCavityTirDrainageEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage";
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -981,6 +982,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySphericalHarmonicsRealShShapeKeysAtomicOrbitalWebxrEntry,
   blenderTutorialPythonBpyResinMslaLightSculptureNestedShellLedCavityTirDrainageEntry,
   blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

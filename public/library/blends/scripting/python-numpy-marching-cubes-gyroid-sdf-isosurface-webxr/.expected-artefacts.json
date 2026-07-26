@@ -1,0 +1,29 @@
+{
+  "blend": "hf_gyroid.blend",
+  "glb": "hf_gyroid.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage",
+      "/tutorials/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr"
+    ],
+    "external": [
+      {
+        "label": "Gibson (1998) — Surface Nets MERL-TR98-19",
+        "url": "https://www.merl.com/publications/TR98-19.pdf",
+        "licence": "Academic free-use"
+      },
+      {
+        "label": "scikit-image — skimage.measure.marching_cubes",
+        "url": "https://github.com/scikit-image/scikit-image",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
