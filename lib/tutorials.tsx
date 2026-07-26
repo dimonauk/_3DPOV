@@ -489,6 +489,7 @@ import { entry as blenderTutorialPythonBpyResinMslaLightSculptureNestedShellLedC
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr";
 import { entry as blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr";
+import { entry as blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -985,6 +986,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry,
   blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry,
+  blenderTutorialPythonNumpyDlaDiffusionLimitedAggregationDendriticCrystalWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

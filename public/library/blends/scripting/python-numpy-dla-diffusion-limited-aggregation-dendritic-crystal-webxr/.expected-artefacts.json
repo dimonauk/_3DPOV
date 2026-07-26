@@ -1,0 +1,66 @@
+{
+  "slug": "python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_artefacts": [
+    "hf_dla_crystal.glb",
+    "../../videos/scripting/python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Gray-Scott Reaction-Diffusion",
+        "path": "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+        "reason": "Turing-pattern formation — analogous local-rule system producing organic spatial structure"
+      },
+      {
+        "label": "L-System Branching Coral",
+        "path": "/tutorials/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr",
+        "reason": "Deterministic branching algorithm — contrast with DLA's stochastic Brownian-walker growth"
+      },
+      {
+        "label": "Resin MSLA Light Sculpture",
+        "path": "/tutorials/blender-tutorial-python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage",
+        "reason": "DLA crystal can be printed in clear MSLA resin for TIR light-conduction sculpture"
+      },
+      {
+        "label": "GN Simulation Zone: Vicsek SPP",
+        "path": "/tutorials/blender-tutorial-gn-simulation-zone-vicsek-self-propelled-particles-active-matter-poi",
+        "reason": "GN Simulation Zone multi-particle approach — contrast with Python-driven DLA sequential update"
+      },
+      {
+        "label": "Lenia Continuous CA",
+        "path": "/tutorials/blender-tutorial-python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr",
+        "reason": "Another spatial-growth algorithm with emergent soliton forms — compare soliton to DLA dendrite"
+      }
+    ],
+    "external": [
+      {
+        "label": "Witten & Sander (1981) — Diffusion-Limited Aggregation, a Kinetic Critical Phenomenon — Physical Review Letters 47(19) p. 1400",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1400",
+        "licence": "Public domain (pre-1978 US publication; authors deceased)",
+        "author": "Thomas A. Witten & Leonard M. Sander — University of Michigan",
+        "related": []
+      },
+      {
+        "label": "The Nature of Code §1.4 Random Walks — Daniel Shiffman — MIT licence (code)",
+        "url": "https://natureofcode.com/random-walks/",
+        "licence": "MIT (code) / CC-BY-NC-SA 4.0 (prose)",
+        "author": "Daniel Shiffman — The Coding Train",
+        "related": [
+          "https://github.com/nature-of-code/noc-book-2",
+          "https://github.com/CodingTrain/website-archive"
+        ]
+      }
+    ]
+  }
+}
