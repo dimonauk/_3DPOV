@@ -1,0 +1,35 @@
+{
+  "slug": "python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_geodesic.blend",
+    "hf_geodesic.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-sphere",
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr"
+    ],
+    "external_sources": [
+      {
+        "label": "George W. Hart — Geodesic Spheres — CC BY Attribution",
+        "url": "https://www.georgehart.com/virtual-polyhedra/geodesic.html"
+      },
+      {
+        "label": "Paul Bourke — Geodesic Sphere — Educational freeware",
+        "url": "http://paulbourke.net/geometry/geodesic/"
+      },
+      {
+        "label": "Blender Python API — bmesh.ops — CC BY-SA 4.0",
+        "url": "https://docs.blender.org/api/current/bmesh.ops.html"
+      }
+    ]
+  },
+  "notes": "blueprint.py produces hf_geodesic.blend + hf_geodesic.glb; record.py drives the 300-frame rotation render; screen.mp4 captured via OBS"
+}

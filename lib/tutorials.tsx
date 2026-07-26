@@ -476,6 +476,7 @@ import { entry as blenderTutorialPythonNumpyHaarDwtPoiCurvatureRibbonEntry } fro
 import { entry as blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-fitzhugh-nagumo-excitable-medium-spiral-reentry-poi";
 import { entry as blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr";
 import { entry as blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit } from "components/tutorials/entries/blender-tutorial-python-numpy-tdse-split-operator-fft-double-slit-quantum-interference-webxr";
+import { entry as blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -959,6 +960,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry,
   blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry,
   blenderTutorialPythonNumpyTdseSplitOperatorFftDoubleSlit,
+  blenderTutorialPythonBmeshOpsGeodesicSphereIcosahedronFrequencySubdivisionVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
