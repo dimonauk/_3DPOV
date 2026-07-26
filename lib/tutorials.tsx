@@ -488,6 +488,7 @@ import { entry as blenderTutorialPythonNumpySphericalHarmonicsRealShShapeKeysAto
 import { entry as blenderTutorialPythonBpyResinMslaLightSculptureNestedShellLedCavityTirDrainageEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage";
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr";
+import { entry as blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -983,6 +984,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBpyResinMslaLightSculptureNestedShellLedCavityTirDrainageEntry,
   blenderTutorialPythonNumpyPenroseP3RhombusQuasicrystalStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMarchingCubesGyroidSdfIsosurfaceWebxrEntry,
+  blenderTutorialPythonNumpyLSystemLindenmayerTurtle3dCoralWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
