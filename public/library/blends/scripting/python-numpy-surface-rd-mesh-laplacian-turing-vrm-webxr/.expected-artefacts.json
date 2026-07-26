@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_surface_rd.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr"
+    ],
+    "studio_codex": [],
+    "studio_articles": [],
+    "outside_sources": [
+      {
+        "title": "Gray & Scott (1985) — Autocatalytic reactions in the isothermal, continuous stirred tank reactor — Chem. Eng. Sci. 39:1087",
+        "url": "https://doi.org/10.1016/0009-2509(84)87017-7",
+        "licence": "PD",
+        "author": "P. Gray and S. K. Scott",
+        "related": "https://www.sciencedirect.com/journal/chemical-engineering-science"
+      },
+      {
+        "title": "Discrete Laplace–Beltrami operator — Wikipedia — CC BY-SA 4.0 — Wikipedia Contributors",
+        "url": "https://en.wikipedia.org/wiki/Discrete_Laplace%E2%80%93Beltrami_operator",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia Contributors",
+        "related": "https://en.wikipedia.org/wiki/Laplace%E2%80%93Beltrami_operator"
+      },
+      {
+        "title": "NumPy — numpy.add.at — BSD-3-Clause — NumPy Developers",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.ufunc.at.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

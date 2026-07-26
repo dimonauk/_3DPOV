@@ -474,6 +474,7 @@ import { entry as blenderTutorialPythonNumpySmoothlifeFourierContinuousAutomaton
 import { entry as blenderTutorialPythonNumpyNavierStokesVorticityStreamfunctionLidCavityPoiEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-navier-stokes-vorticity-streamfunction-lid-cavity-poi";
 import { entry as blenderTutorialPythonNumpyHaarDwtPoiCurvatureRibbonEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-haar-dwt-poi-curvature-ribbon";
 import { entry as blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-fitzhugh-nagumo-excitable-medium-spiral-reentry-poi";
+import { entry as blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -955,6 +956,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyNavierStokesVorticityStreamfunctionLidCavityPoiEntry,
   blenderTutorialPythonNumpyHaarDwtPoiCurvatureRibbonEntry,
   blenderTutorialGnSimulationZoneFitzHughNagumoExcitableMediumSpiralReentryPoiEntry,
+  blenderTutorialPythonNumpySurfaceRdMeshLaplacianTuringVrmWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
