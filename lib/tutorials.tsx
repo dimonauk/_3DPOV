@@ -482,6 +482,7 @@ import { entry as blenderTutorialPythonMathutilsMobiusStripNtwistParametricMeshW
 import { entry as blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr";
 import { entry as blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail";
 import { entry as blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay";
+import { entry as blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -971,6 +972,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsTorusKnotPqWindingParallelTransportTubeWebxrEntry,
   blenderTutorialPythonBpyCyclesLongExposureRenderLoopNumpyExrMaxFoldLightTrailEntry,
   blenderTutorialPythonBpyModalFaceTagPickerBvhRaycastGpuOverlayEntry,
+  blenderTutorialPythonBpyGnTreeFromPythonIndexSwitchPoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
