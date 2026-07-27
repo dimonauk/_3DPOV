@@ -494,6 +494,7 @@ import { entry as blenderTutorialPythonBpyReynoldsBoids3dSeparationAlignmentCohe
 import { entry as blenderTutorialGnForeachElementZoneCurvePerSplineAccumulationPoiRibbonWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-foreach-element-zone-curve-per-spline-accumulation-poi-ribbon-webxr";
 import { entry as blenderTutorialPythonMathutilsHopfFibrationLinkedToriLightSculptureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr";
 import { entry as blenderTutorialPythonScipyCotangentLaplacianMeshFairingDirichletEnergyVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr";
+import { entry as blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -995,6 +996,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialGnForeachElementZoneCurvePerSplineAccumulationPoiRibbonWebxrEntry,
   blenderTutorialPythonMathutilsHopfFibrationLinkedToriLightSculptureWebxrEntry,
   blenderTutorialPythonScipyCotangentLaplacianMeshFairingDirichletEnergyVrmWebxrEntry,
+  blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

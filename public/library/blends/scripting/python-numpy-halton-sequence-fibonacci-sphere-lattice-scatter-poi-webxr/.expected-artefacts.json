@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "filename": "hf_scatter.glb",  "type": "glb",  "note": "144-point halton + fibonacci + random clusters, Draco L6" },
+    { "filename": "blueprint.py",    "type": "script" },
+    { "filename": "record.py",       "type": "script" },
+    { "filename": "viewport.mp4",    "type": "video", "note": "180-frame EEVEE Next render, produced by record.py" },
+    { "filename": "screen.mp4",      "type": "video", "note": "OBS screen capture per SCREEN-RECORDING-NOTES.md" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr",
+      "/tutorials/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr",
+      "/tutorials/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "On the efficiency of certain quasi-random sequences of points in evaluating multi-dimensional integrals",
+        "authors": "J.H. Halton",
+        "venue": "Numerische Mathematik 2(1), 1960",
+        "url": "https://link.springer.com/article/10.1007/BF01386213",
+        "licence": "academic-public-domain"
+      },
+      {
+        "title": "A better way to construct the sunflower head",
+        "authors": "H. Vogel",
+        "venue": "Mathematical Biosciences 44(3-4), 1979",
+        "url": "https://www.sciencedirect.com/science/article/pii/0025556479900804",
+        "licence": "academic-public-domain"
+      },
+      {
+        "title": "NumPy — fundamental package for scientific computing",
+        "authors": "NumPy Contributors",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
