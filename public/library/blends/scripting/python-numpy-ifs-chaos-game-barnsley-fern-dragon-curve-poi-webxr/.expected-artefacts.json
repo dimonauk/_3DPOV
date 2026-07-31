@@ -1,0 +1,37 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr",
+  "artefacts": [
+    "hf_ifs_fern.glb",
+    "hf_ifs_sierpinski.glb",
+    "hf_ifs_dragon_3d.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+      "/tutorials/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Fractals Everywhere (Barnsley 1988) — IFS parameters public domain",
+        "url": "https://www.sciencedirect.com/book/9780120790692/fractals-everywhere",
+        "licence": "PD (mathematical constants)",
+        "author": "Michael F. Barnsley"
+      },
+      {
+        "title": "The Chaos Hypertextbook — IFS chaos game educational resource",
+        "url": "https://hypertextbook.com/chaos/",
+        "licence": "free educational use",
+        "author": "Glenn Elert"
+      }
+    ]
+  }
+}

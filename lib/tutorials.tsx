@@ -495,6 +495,7 @@ import { entry as blenderTutorialGnForeachElementZoneCurvePerSplineAccumulationP
 import { entry as blenderTutorialPythonMathutilsHopfFibrationLinkedToriLightSculptureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr";
 import { entry as blenderTutorialPythonScipyCotangentLaplacianMeshFairingDirichletEnergyVrmWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr";
 import { entry as blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr";
+import { entry as blenderTutorialPythonNumpyIfsChaosGameBarnsleyFernDragonCurvePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -997,6 +998,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonMathutilsHopfFibrationLinkedToriLightSculptureWebxrEntry,
   blenderTutorialPythonScipyCotangentLaplacianMeshFairingDirichletEnergyVrmWebxrEntry,
   blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry,
+  blenderTutorialPythonNumpyIfsChaosGameBarnsleyFernDragonCurvePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
