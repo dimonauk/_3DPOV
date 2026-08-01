@@ -1,0 +1,40 @@
+{
+  "slug": "python-bmesh-catmull-clark-subdivision-from-scratch-valence-weight-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_poi_head_cc.blend",
+    "hf_poi_head_cc.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-smooth-vert-laplacian-zone-smoothing-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-find-doubles-recalc-normals-holes-fill-mesh-integrity-glb-webxr"
+    ],
+    "external": [
+      {
+        "title": "Catmull-Clark 1978 original paper",
+        "url": "https://www.sciencedirect.com/science/article/pii/0010448578901100",
+        "licence": "historical-academic",
+        "author": "Edwin Catmull, James Clark"
+      },
+      {
+        "title": "OpenSubdiv — Pixar Animation Studios",
+        "url": "https://github.com/PixarAnimationStudios/OpenSubdiv",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios"
+      },
+      {
+        "title": "OpenSubdiv subdivision surfaces documentation",
+        "url": "https://graphics.pixar.com/opensubdiv/docs/subdivision_surfaces.html",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios"
+      }
+    ]
+  }
+}
