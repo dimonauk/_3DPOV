@@ -1,0 +1,65 @@
+{
+  "slug": "python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    {
+      "path": "hf_sdf_csg_poi.glb",
+      "type": "glb",
+      "desc": "Poi head CSG mesh: sphere + torus ring smooth-unioned, dome smooth-subtracted, capsule stem; Draco-6, violet emissive PBR"
+    },
+    {
+      "path": "hf_sdf_csg_poi.blend",
+      "type": "blend",
+      "desc": "Blender scene with Surface Nets mesh, violet material, orbit camera"
+    }
+  ],
+  "video_outputs": [
+    {
+      "path": "public/library/videos/scripting/python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr/viewport.mp4",
+      "desc": "10-second 360° orbit render, EEVEE Next bloom, 1920×1080 30fps"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr/screen.mp4",
+      "desc": "OBS screen recording per SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "stats": {
+    "grid_n": 72,
+    "grid_cells": 373248,
+    "smooth_k": 0.12,
+    "primitives": ["sphere", "torus", "sphere(dome)", "capsule(stem)"],
+    "boolean_ops": ["smin(body+ring)", "sdiff(-dome)", "smin(+stem)"]
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-superquadric-lame-curve-barr-signed-powers-shape-space-poi-head-webxr",
+      "/tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion"
+    ],
+    "external": [
+      {
+        "title": "Signed Distance Functions",
+        "author": "Inigo Quilez",
+        "licence": "CC0",
+        "url": "https://iquilezles.org/articles/distfunctions/",
+        "related": [
+          "https://www.shadertoy.com/user/iq",
+          "https://github.com/fogleman/sdf"
+        ]
+      },
+      {
+        "title": "Constrained Elastic Surface Nets",
+        "author": "Sarah F. Gibson",
+        "year": 1998,
+        "publisher": "MERL Technical Report TR98-19",
+        "licence": "academic free-use",
+        "url": "https://www.merl.com/publications/TR98-19.pdf",
+        "related": [
+          "https://github.com/scikit-image/scikit-image"
+        ]
+      }
+    ]
+  }
+}
