@@ -497,6 +497,7 @@ import { entry as blenderTutorialPythonScipyCotangentLaplacianMeshFairingDirichl
 import { entry as blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr";
 import { entry as blenderTutorialPythonNumpyIfsChaosGameBarnsleyFernDragonCurvePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr";
 import { entry as blenderTutorialPythonNumpySpaceColonisationAlgorithmBranchingCoralWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-space-colonisation-algorithm-branching-coral-webxr";
+import { entry as blenderTutorialPythonNumpyApollonianCirclePackingSoddyDescartesStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1001,6 +1002,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHaltonSequenceFibonacciSphereLatticeScatterPoiWebxrEntry,
   blenderTutorialPythonNumpyIfsChaosGameBarnsleyFernDragonCurvePoiWebxrEntry,
   blenderTutorialPythonNumpySpaceColonisationAlgorithmBranchingCoralWebxrEntry,
+  blenderTutorialPythonNumpyApollonianCirclePackingSoddyDescartesStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
