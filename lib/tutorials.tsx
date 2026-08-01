@@ -512,6 +512,7 @@ import { entry as blenderTutorialPythonNumpyCurlNoiseIncompressibleRk4FluidPoiLi
 import { entry as blenderTutorialPythonNumpyScipyDecHodgeStarHarmonic1formPerturbedTorusWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr";
 import { entry as blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr";
 import { entry as blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1031,6 +1032,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScipyDecHodgeStarHarmonic1formPerturbedTorusWebxrEntry,
   blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry,
   blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
