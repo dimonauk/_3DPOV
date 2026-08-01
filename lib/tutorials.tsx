@@ -500,6 +500,7 @@ import { entry as blenderTutorialPythonNumpySpaceColonisationAlgorithmBranchingC
 import { entry as blenderTutorialPythonNumpyApollonianCirclePackingSoddyDescartesStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyPhyllotaxisGoldenAngleTorusSpiralSculptureWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr";
 import { entry as blenderTutorialPythonBmeshCatmullClarkSubdivisionFromScratchValenceWeightPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-catmull-clark-subdivision-from-scratch-valence-weight-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyLevyFlightBrownianCauchySuperdiffusionPoiTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-levy-flight-brownian-cauchy-superdiffusion-poi-trail-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1007,6 +1008,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyApollonianCirclePackingSoddyDescartesStageFloorWebxrEntry,
   blenderTutorialPythonNumpyPhyllotaxisGoldenAngleTorusSpiralSculptureWebxrEntry,
   blenderTutorialPythonBmeshCatmullClarkSubdivisionFromScratchValenceWeightPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyLevyFlightBrownianCauchySuperdiffusionPoiTrailWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
