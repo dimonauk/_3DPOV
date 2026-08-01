@@ -513,6 +513,7 @@ import { entry as blenderTutorialPythonNumpyScipyDecHodgeStarHarmonic1formPertur
 import { entry as blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr";
 import { entry as blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr";
+import { blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1033,6 +1034,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry,
   blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry,
+  blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
