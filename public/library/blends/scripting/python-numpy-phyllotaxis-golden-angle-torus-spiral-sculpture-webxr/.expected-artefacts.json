@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_phyllotaxis.glb",
+    "../../videos/scripting/python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr"
+    ],
+    "outside": [
+      {
+        "author": "H. Vogel",
+        "year": 1979,
+        "title": "A better way to construct the sunflower head — Mathematical Biosciences 44(3-4):145-199",
+        "licence": "Public Domain (mathematical content)",
+        "url": "https://en.wikipedia.org/wiki/Fermat%27s_spiral"
+      },
+      {
+        "author": "Adrien Douady & Jacques Couder",
+        "year": 1992,
+        "title": "Phyllotaxis as a Physical Self-Organised Growth Process — Physical Review Letters 68(13)",
+        "licence": "Public Domain (mathematical content)",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.68.2098"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
