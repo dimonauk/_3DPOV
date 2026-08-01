@@ -510,6 +510,7 @@ import { entry as blenderTutorialPythonScipySparseLaplaceBeltramiEigenmodesSpect
 import { entry as blenderTutorialPythonNumpySuperquadricLameCurveBarrSignedPowersShapeSpacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-superquadric-lame-curve-barr-signed-powers-shape-space-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyCurlNoiseIncompressibleRk4FluidPoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-curl-noise-incompressible-rk4-fluid-poi-light-trail-webxr";
 import { entry as blenderTutorialPythonNumpyScipyDecHodgeStarHarmonic1formPerturbedTorusWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr";
+import { entry as blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1027,6 +1028,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySuperquadricLameCurveBarrSignedPowersShapeSpacePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyCurlNoiseIncompressibleRk4FluidPoiLightTrailWebxrEntry,
   blenderTutorialPythonNumpyScipyDecHodgeStarHarmonic1formPerturbedTorusWebxrEntry,
+  blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralStereographicShadowWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
