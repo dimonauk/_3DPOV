@@ -502,6 +502,7 @@ import { entry as blenderTutorialPythonNumpyPhyllotaxisGoldenAngleTorusSpiralScu
 import { entry as blenderTutorialPythonBmeshCatmullClarkSubdivisionFromScratchValenceWeightPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-bmesh-catmull-clark-subdivision-from-scratch-valence-weight-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyLevyFlightBrownianCauchySuperdiffusionPoiTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-levy-flight-brownian-cauchy-superdiffusion-poi-trail-webxr";
 import { entry as blenderTutorialPythonNumpyPhysarumSlimeMouldTransportNetworkPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-physarum-slime-mould-transport-network-poi-webxr";
+import { entry as blenderTutorialPythonScipySphericalVoronoiLloydCvtFacetedPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1011,6 +1012,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonBmeshCatmullClarkSubdivisionFromScratchValenceWeightPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyLevyFlightBrownianCauchySuperdiffusionPoiTrailWebxrEntry,
   blenderTutorialPythonNumpyPhysarumSlimeMouldTransportNetworkPoiWebxrEntry,
+  blenderTutorialPythonScipySphericalVoronoiLloydCvtFacetedPoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
