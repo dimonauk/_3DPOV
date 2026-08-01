@@ -508,6 +508,7 @@ import { entry as blenderTutorialPythonNumpyWeierstrassEnneperMinimalSurfacesCat
 import { entry as blenderTutorialPythonScipyThomasCyclicallySymmetricAttractorLabyrinthChaosPoi } from "components/tutorials/entries/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr";
 import { entry as blenderTutorialPythonScipySparseLaplaceBeltramiEigenmodesSpectralMeshPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpySuperquadricLameCurveBarrSignedPowersShapeSpacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-superquadric-lame-curve-barr-signed-powers-shape-space-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyCurlNoiseIncompressibleRk4FluidPoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-curl-noise-incompressible-rk4-fluid-poi-light-trail-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1023,6 +1024,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonScipyThomasCyclicallySymmetricAttractorLabyrinthChaosPoi,
   blenderTutorialPythonScipySparseLaplaceBeltramiEigenmodesSpectralMeshPoiHeadWebxrEntry,
   blenderTutorialPythonNumpySuperquadricLameCurveBarrSignedPowersShapeSpacePoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyCurlNoiseIncompressibleRk4FluidPoiLightTrailWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
