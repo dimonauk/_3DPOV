@@ -1,0 +1,63 @@
+{
+  "slug": "python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr",
+  "blender_version": "5.1",
+  "artefacts": [
+    {
+      "path": "blends/scripting/python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr/blueprint.py",
+      "type": "script",
+      "description": "Full Blender 5.1 Python script: Thomas ODE integration + NURBS tube build + GLB export"
+    },
+    {
+      "path": "blends/scripting/python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr/record.py",
+      "type": "script",
+      "description": "192-frame viewport orbit render script"
+    },
+    {
+      "path": "blends/scripting/python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "docs",
+      "description": "OBS screen-recording instructions"
+    },
+    {
+      "path": "glbs/scripting/hf_thomas.glb",
+      "type": "glb",
+      "description": "Three interlocked attractor tubes, Draco-6, WebXR-ready",
+      "expected_objects": 3,
+      "expected_materials": 3,
+      "webxr_ready": true
+    },
+    {
+      "path": "videos/scripting/python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr/viewport.mp4",
+      "type": "video",
+      "description": "192-frame OpenGL orbit render (run record.py)"
+    },
+    {
+      "path": "videos/scripting/python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of blueprint.py execution and viewport inspection"
+    }
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "René Thomas",
+        "title": "Deterministic chaos seen in terms of feedback circuits: Analysis, synthesis, 'labyrinth chaos'",
+        "journal": "International Journal of Bifurcation and Chaos",
+        "year": 1999,
+        "doi": "10.1142/S0218127499001383",
+        "licence": "public_domain_mathematics"
+      },
+      {
+        "author": "SciPy developers",
+        "title": "scipy.integrate.solve_ivp",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html",
+        "licence": "BSD-3-Clause",
+        "github": "https://github.com/scipy/scipy"
+      }
+    ]
+  }
+}
