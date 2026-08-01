@@ -514,6 +514,7 @@ import { entry as blenderTutorialPythonNumpy600CellQuaternionBinaryIcosahedralSt
 import { entry as blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr";
 import { blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpyKleinianLimitSetSchottkyGroupIndrasPearlsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1035,6 +1036,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySdfCsgQuilezSmoothBooleanPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLoxodromicPoiWebxrEntry,
   blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpyKleinianLimitSetSchottkyGroupIndrasPearlsPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

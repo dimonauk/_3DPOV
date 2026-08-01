@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "hf_kleinian.blend",
+    "hf_kleinian.glb"
+  ],
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://archive.org/details/indraspearlsthev0000mumf",
+        "licence": "CC0 preview",
+        "author": "Mumford, Series & Wright (2002)"
+      },
+      {
+        "url": "https://github.com/erleben/indras-pearls",
+        "licence": "MIT",
+        "author": "Kenny Erleben (2021)"
+      },
+      {
+        "url": "https://github.com/Finistrex/kleinian-groups",
+        "licence": "MIT",
+        "author": "Finistrex"
+      }
+    ]
+  }
+}
