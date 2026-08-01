@@ -1,0 +1,38 @@
+{
+  "artefacts": [
+    "hf_superquadric_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-catmull-clark-subdivision-from-scratch-valence-weight-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr",
+      "/tutorials/blender-tutorial-python-bpy-resin-msla-light-sculpture-nested-shell-led-cavity-tir-drainage",
+      "/tutorials/blender-tutorial-python-bpy-shape-key-data-block-morph-target-vrm-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Barr, Alan H.",
+        "title": "Superquadrics and Angle-Preserving Transformations",
+        "venue": "IEEE Computer Graphics and Applications 1(1):11–23",
+        "year": 1981,
+        "licence": "PD-mathematical",
+        "url": "https://doi.org/10.1109/MCG.1981.1673799"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy — Fundamental package for scientific computing with Python",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
