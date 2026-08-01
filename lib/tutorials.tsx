@@ -506,6 +506,7 @@ import { entry as blenderTutorialPythonScipySphericalVoronoiLloydCvtFacetedPoiHe
 import { entry as blenderTutorialPythonNumpyDuffingOscillatorPeriodDoublingPoincareChaosPoi } from "components/tutorials/entries/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr";
 import { entry as blenderTutorialPythonNumpyWeierstrassEnneperMinimalSurfacesCatenoidEnneperWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr";
 import { entry as blenderTutorialPythonScipyThomasCyclicallySymmetricAttractorLabyrinthChaosPoi } from "components/tutorials/entries/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr";
+import { entry as blenderTutorialPythonScipySparseLaplaceBeltramiEigenmodesSpectralMeshPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1019,6 +1020,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyDuffingOscillatorPeriodDoublingPoincareChaosPoi,
   blenderTutorialPythonNumpyWeierstrassEnneperMinimalSurfacesCatenoidEnneperWebxrEntry,
   blenderTutorialPythonScipyThomasCyclicallySymmetricAttractorLabyrinthChaosPoi,
+  blenderTutorialPythonScipySparseLaplaceBeltramiEigenmodesSpectralMeshPoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

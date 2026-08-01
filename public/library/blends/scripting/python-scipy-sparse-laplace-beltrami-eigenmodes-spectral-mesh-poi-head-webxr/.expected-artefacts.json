@@ -1,0 +1,42 @@
+{
+  "slug": "python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "hf_lbo_poi.blend",
+    "hf_lbo_poi.glb"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-numpy-surface-rd-mesh-laplacian-turing-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr"
+    ],
+    "external": [
+      {
+        "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds",
+        "authors": "Meyer, Desbrun, Schröder, Barr",
+        "year": 2003,
+        "url": "https://www.cs.jhu.edu/~misha/Fall09/Meyer02.pdf",
+        "licence": "public domain mathematics",
+        "related": "https://multires.caltech.edu/pubs/"
+      },
+      {
+        "title": "scipy.sparse.linalg.eigsh",
+        "authors": "SciPy developers (ARPACK wrapper)",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.eigsh.html",
+        "licence": "BSD-3-Clause",
+        "related": "https://github.com/scipy/scipy"
+      }
+    ]
+  }
+}
