@@ -1,0 +1,32 @@
+{
+  "blends": [],
+  "glbs": ["hf_duffing.glb"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-euler-rigid-body-spinning-top-precession-poi-staff",
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-double-pendulum-chaos-butterfly",
+      "/tutorials/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi"
+    ],
+    "outside_sources": [
+      {
+        "title": "Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields — Guckenheimer & Holmes (1983)",
+        "url": "https://doi.org/10.1007/978-1-4612-1140-2",
+        "licence": "Public Domain (Springer Applied Mathematical Sciences — academic reference)",
+        "author": "Guckenheimer, J. & Holmes, P."
+      },
+      {
+        "title": "NumPy — fundamental package for scientific computing with Python",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
