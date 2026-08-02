@@ -1,0 +1,39 @@
+{
+  "slug": "python-numpy-quaternion-julia-set-4d-hyperplane-sweep-de-height-field-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_qjulia.blend",
+    "hf_qjulia.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr",
+      "/tutorials/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Generation and Display of Geometric Fractals Using Quaternion Algebra",
+        "author": "Alan Norton",
+        "year": 1989,
+        "publisher": "ACM SIGGRAPH Computer Graphics",
+        "url": "https://dl.acm.org/doi/10.1145/74334.74373",
+        "licence": "public domain (mathematical content)"
+      },
+      {
+        "title": "Dynamics in One Complex Variable",
+        "author": "John Milnor",
+        "year": 2006,
+        "publisher": "Princeton University Press",
+        "url": "https://arxiv.org/abs/math/9201272",
+        "licence": "public domain (mathematical content)"
+      }
+    ]
+  }
+}
