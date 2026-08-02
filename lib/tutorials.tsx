@@ -518,6 +518,7 @@ import { entry as blenderTutorialPythonNumpyKleinianLimitSetSchottkyGroupIndrasP
 import { entry as blenderTutorialPythonNumpyHenonMapStrangeAttractorFractalBasinPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr";
 import { entry as blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-sparse-heat-method-geodesic-crane-2013-isoline-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr";
+import { entry as blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1043,6 +1044,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHenonMapStrangeAttractorFractalBasinPoiWebxrEntry,
   blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry,
   blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry,
+  blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
