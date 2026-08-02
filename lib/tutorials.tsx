@@ -521,6 +521,7 @@ import { entry as blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013Iso
 import { entry as blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr";
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr";
+import { entry as blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1049,6 +1050,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry,
   blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry,
+  blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

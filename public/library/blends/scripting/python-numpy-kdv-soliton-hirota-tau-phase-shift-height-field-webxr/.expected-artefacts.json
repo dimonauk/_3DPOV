@@ -1,0 +1,39 @@
+{
+  "slug": "python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "outputs": [
+    "hf_kdv_soliton.glb",
+    "../../videos/scripting/python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Hirota (1971) — Exact Solution of the KdV Equation for Multiple Collisions of Solitons",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.27.1192",
+        "licence": "PD (mathematical content)",
+        "author": "Ryogo Hirota"
+      },
+      {
+        "title": "Drazin & Johnson — Solitons: An Introduction (Cambridge, 1989) §2.3–2.5",
+        "url": "https://www.cambridge.org/core/books/solitons/4BD7EC7E1FAD7FD636BB3E5D5AEE59A3",
+        "licence": "PD (mathematical content, published 1989)",
+        "author": "P.G. Drazin, R.S. Johnson"
+      }
+    ]
+  },
+  "notes": "Run blueprint.py from Blender Scripting workspace. The .blend file must be saved before GLB export so bpy.path.abspath('//...') resolves. record.py outputs viewport.mp4 via EEVEE Next OpenGL render. screen.mp4 requires OBS/Game Bar (see SCREEN-RECORDING-NOTES.md)."
+}
