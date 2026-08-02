@@ -1,0 +1,56 @@
+{
+  "artefacts": [
+    "hf_thompson_poi.blend",
+    "hf_thompson_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr",
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr",
+      "/tutorials/blender-tutorial-python-numpy-superquadric-lame-curve-barr-signed-powers-shape-space-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "title": "Thomson, J.J. (1904). On the Structure of the Atom: an Investigation of the Stability and Periods of Oscillation of a number of Corpuscles arranged at equal intervals around the Circumference of a Circle.",
+        "url": "https://doi.org/10.1080/14786440409463107",
+        "licence": "PD-mathematical",
+        "author": "J.J. Thomson",
+        "related": [
+          "https://en.wikipedia.org/wiki/Thomson_problem",
+          "https://en.wikipedia.org/wiki/Tammes_problem"
+        ]
+      },
+      {
+        "title": "Sloane, N.J.A., Hardin, R.H., Smith, W.D. (1994–2014). Putnam Tables of Spherical Codes / Tammes Problem Data.",
+        "url": "http://neilsloane.com/packings/",
+        "licence": "CC0",
+        "author": "Neil J.A. Sloane",
+        "related": [
+          "https://oeis.org/A005891",
+          "https://en.wikipedia.org/wiki/Neil_Sloane"
+        ]
+      },
+      {
+        "title": "NumPy — Fundamental package for scientific computing with Python",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community",
+        "related": ["https://github.com/numpy/numpy"]
+      },
+      {
+        "title": "SciPy — Fundamental algorithms for scientific computing in Python (ConvexHull from scipy.spatial)",
+        "url": "https://scipy.org",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy community",
+        "related": ["https://github.com/scipy/scipy"]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
