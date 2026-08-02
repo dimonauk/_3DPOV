@@ -529,6 +529,7 @@ import { entry as blenderTutorialPythonNumpyNewtonFractalBasinAttractionComplexR
 import { entry as blenderTutorialPythonNumpyChladniFiguresStandingWaveEigenmodesNodalLinesHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyZernikePolynomialsNollWavefrontAberrationDiscPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-zernike-polynomials-noll-wavefront-aberration-disc-poi-webxr";
 import { entry as blenderTutorialPythonNumpyGielisSuperformulaPolar3dOrganicPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyIsingModelMetropolisMonteCarloPhaseTransitionCriticalHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ising-model-metropolis-monte-carlo-phase-transition-critical-height-field-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1065,6 +1066,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyChladniFiguresStandingWaveEigenmodesNodalLinesHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyZernikePolynomialsNollWavefrontAberrationDiscPoiWebxrEntry,
   blenderTutorialPythonNumpyGielisSuperformulaPolar3dOrganicPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyIsingModelMetropolisMonteCarloPhaseTransitionCriticalHeightFieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
