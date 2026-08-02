@@ -1,0 +1,39 @@
+{
+  "slug": "python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "outputs": [
+    "hf_gray_scott.glb",
+    "../../videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-physarum-slime-mould-transport-network-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Pearson 1993 — Complex Patterns in a Simple System",
+        "url": "https://www.sciencemag.org/content/261/5118/189",
+        "licence": "PD (mathematical content)",
+        "author": "John E. Pearson"
+      },
+      {
+        "title": "pmneila/jsexp — JavaScript Gray-Scott visualiser",
+        "url": "https://github.com/pmneila/jsexp",
+        "licence": "MIT",
+        "author": "pmneila"
+      }
+    ]
+  },
+  "notes": "Run blueprint.py from Blender Scripting workspace. record.py outputs viewport.mp4 via OpenGL animation render. screen.mp4 requires OBS/Game Bar (see SCREEN-RECORDING-NOTES.md)."
+}

@@ -519,6 +519,7 @@ import { entry as blenderTutorialPythonNumpyHenonMapStrangeAttractorFractalBasin
 import { entry as blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-sparse-heat-method-geodesic-crane-2013-isoline-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr";
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr";
+import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1045,6 +1046,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry,
   blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLightTrailWebxrEntry,
   blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry,
+  blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
