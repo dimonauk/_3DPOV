@@ -516,6 +516,7 @@ import { entry as blenderTutorialPythonNumpyMobiusTransformationRiemannSphereLox
 import { blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyKleinianLimitSetSchottkyGroupIndrasPearlsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHenonMapStrangeAttractorFractalBasinPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr";
+import { entry as blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-sparse-heat-method-geodesic-crane-2013-isoline-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1039,6 +1040,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyArnoldTongueCircleMapModeLockingPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyKleinianLimitSetSchottkyGroupIndrasPearlsPoiWebxrEntry,
   blenderTutorialPythonNumpyHenonMapStrangeAttractorFractalBasinPoiWebxrEntry,
+  blenderTutorialPythonScipySparseHeatMethodGeodesicCrane2013IsolinePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

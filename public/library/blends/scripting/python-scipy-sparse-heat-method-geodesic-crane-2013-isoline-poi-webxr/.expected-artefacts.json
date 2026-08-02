@@ -1,0 +1,45 @@
+{
+  "slug": "python-scipy-sparse-heat-method-geodesic-crane-2013-isoline-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_geodesic_heat.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_geodesic_heat.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion"
+    ],
+    "external": [
+      {
+        "title": "Crane, de Goes, Desbrun & Alliez — Geodesics in Heat (2013)",
+        "url": "https://www.cs.cmu.edu/~kmcrane/Projects/HeatMethod/",
+        "licence": "PD (algorithm)",
+        "author": "Keenan Crane, Fernando de Goes, Mathieu Desbrun, Peter Alliez"
+      },
+      {
+        "title": "geometry-central — C++ discrete geometry library (MIT)",
+        "url": "https://github.com/nmwsharp/geometry-central",
+        "licence": "MIT",
+        "author": "Nicholas Sharp et al."
+      }
+    ]
+  }
+}
