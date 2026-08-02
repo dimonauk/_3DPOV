@@ -526,6 +526,7 @@ import { entry as blenderTutorialPythonNumpyQuaternionJuliaSet4dHyperplaneSweepD
 import { entry as blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ikeda-map-complex-laser-cavity-attractor-basin-poi-webxr";
 import { entry as blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr";
 import { entry as blenderTutorialPythonNumpyNewtonFractalBasinAttractionComplexRootsStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-newton-fractal-basin-attraction-complex-roots-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyChladniFiguresStandingWaveEigenmodesNodalLinesHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1059,6 +1060,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry,
   blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry,
   blenderTutorialPythonNumpyNewtonFractalBasinAttractionComplexRootsStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyChladniFiguresStandingWaveEigenmodesNodalLinesHeightFieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

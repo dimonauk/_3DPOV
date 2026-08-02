@@ -1,0 +1,52 @@
+{
+  "slug": "python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_chladni.blend",
+    "hf_chladni.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_chladni.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-newton-fractal-basin-attraction-complex-roots-stage-floor-webxr",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr"
+    ],
+    "external": [
+      {
+        "title": "Chladni, E.F.F. — Entdeckungen über die Theorie des Klanges (1787)",
+        "url": "https://archive.org/details/entdeckungenbert00chla",
+        "licence": "Public Domain",
+        "author": "Ernst Florens Friedrich Chladni"
+      },
+      {
+        "title": "njanakiev/blender-scripting — Blender Python mesh patterns",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "NumPy User Guide",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}
