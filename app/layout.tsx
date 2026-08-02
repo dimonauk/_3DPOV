@@ -1,4 +1,5 @@
 import { CartProvider } from "components/cart/cart-context";
+import { FlockBackground } from "components/flock/flock-background";
 import { NavSidebar } from "components/layout/nav-sidebar";
 import { ThemeProvider } from "components/theme/theme-context";
 import { WorkshopShell } from "components/shell/workshop-shell";
@@ -93,6 +94,7 @@ export default async function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body className="bg-warm-black-950 text-warm-black-50 antialiased">
+        <FlockBackground />
         <AuthProvider>
           <GlitchProvider>
             <ThemeProvider>
