@@ -524,6 +524,7 @@ import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatt
 import { entry as blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyQuaternionJuliaSet4dHyperplaneSweepDeHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-quaternion-julia-set-4d-hyperplane-sweep-de-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ikeda-map-complex-laser-cavity-attractor-basin-poi-webxr";
+import { entry as blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1055,6 +1056,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyQuaternionJuliaSet4dHyperplaneSweepDeHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry,
+  blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

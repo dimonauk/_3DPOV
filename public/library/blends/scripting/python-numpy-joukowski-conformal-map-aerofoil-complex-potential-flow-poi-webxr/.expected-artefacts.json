@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_joukowski_aerofoil.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_joukowski_aerofoil.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-navier-stokes-vorticity-streamfunction-lid-cavity-poi",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-bpy-curve-data-bezier-nurbs-spline-api"
+    ],
+    "external": [
+      {
+        "title": "Milne-Thomson — Theoretical Hydrodynamics §10 (Joukowski aerofoils)",
+        "url": "https://archive.org/details/theoreticalhydro0000miln",
+        "licence": "public domain (1938)",
+        "author": "L. M. Milne-Thomson"
+      },
+      {
+        "title": "njanakiev/blender-scripting — Blender Python mesh primitives",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "NumPy User Guide — complex-number operations",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}
