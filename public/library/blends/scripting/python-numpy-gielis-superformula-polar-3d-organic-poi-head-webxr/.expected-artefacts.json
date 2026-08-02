@@ -1,0 +1,35 @@
+{
+  "blend": "hf_superformula_poi.blend",
+  "glb": "hf_superformula_poi.glb",
+  "videos": [
+    "../../videos/scripting/python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr/screen.mp4"
+  ],
+  "scripts": ["blueprint.py", "record.py"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-superquadric-lame-curve-barr-signed-powers-shape-space-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr"
+    ],
+    "external": [
+      {
+        "title": "Gielis 2003 — A generic geometric transformation that unifies a wide range of natural and abstract shapes",
+        "url": "https://doi.org/10.3732/ajb.90.3.333",
+        "licence": "PD-algorithm",
+        "author": "Gielis, J.",
+        "related": "https://github.com/jvliet/superformula"
+      },
+      {
+        "title": "Bourke — Superformula reference implementation and parameter gallery",
+        "url": "https://paulbourke.net/geometry/superformula/",
+        "licence": "PD",
+        "author": "Bourke, Paul",
+        "related": "https://paulbourke.net/geometry/supershape3d/"
+      }
+    ]
+  }
+}
