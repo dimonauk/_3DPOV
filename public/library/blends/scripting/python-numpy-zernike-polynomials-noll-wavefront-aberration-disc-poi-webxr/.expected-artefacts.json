@@ -1,0 +1,34 @@
+{
+  "blend": "hf_zernike_poi.blend",
+  "glb": "hf_zernike_poi.glb",
+  "videos": [
+    "../../videos/scripting/python-numpy-zernike-polynomials-noll-wavefront-aberration-disc-poi-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-zernike-polynomials-noll-wavefront-aberration-disc-poi-webxr/screen.mp4"
+  ],
+  "scripts": ["blueprint.py", "record.py"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-heat-method-geodesic-crane-2013-isoline-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Noll 1976 — Zernike polynomials and atmospheric turbulence",
+        "url": "https://opg.optica.org/josa/abstract.cfm?uri=josa-66-3-207",
+        "licence": "PD algorithm",
+        "author": "Noll, R.J."
+      },
+      {
+        "title": "AOtools — Python adaptive-optics toolkit",
+        "url": "https://github.com/AOtools/aotools",
+        "licence": "MIT",
+        "author": "AOtools contributors",
+        "related": "https://github.com/ehpor/hcipy"
+      }
+    ]
+  }
+}
