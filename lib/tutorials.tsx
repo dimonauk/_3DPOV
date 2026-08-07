@@ -531,6 +531,7 @@ import { entry as blenderTutorialPythonNumpyZernikePolynomialsNollWavefrontAberr
 import { entry as blenderTutorialPythonNumpyGielisSuperformulaPolar3dOrganicPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyIsingModelMetropolisMonteCarloPhaseTransitionCriticalHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ising-model-metropolis-monte-carlo-phase-transition-critical-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyScipyThompsonProblemCoulombEnergyTammesSpherePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-thompson-problem-coulomb-energy-tammes-s2-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyWeierstrassPEllipticLatticeDoublyPeriodicHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-weierstrass-p-elliptic-lattice-doubly-periodic-height-field-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1069,6 +1070,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyGielisSuperformulaPolar3dOrganicPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyIsingModelMetropolisMonteCarloPhaseTransitionCriticalHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyScipyThompsonProblemCoulombEnergyTammesSpherePoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyWeierstrassPEllipticLatticeDoublyPeriodicHeightFieldWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
