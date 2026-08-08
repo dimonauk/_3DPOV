@@ -550,6 +550,7 @@ import { entry as blenderTutorialPythonNumpyCostaMinimalSurfaceWeierstrassEnnepe
 import { entry as blenderTutorialPythonNumpySwallowtailCatastropheA4GermThomDiscriminantSurfacePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-swallowtail-catastrophe-a4-germ-thom-discriminant-surface-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHopfFibrationS3S2FiberBundleLinkedCirclesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr";
 import { entry as blenderTutorialPythonNumpySchwarzPDGyrOidTpmsMarchingTetsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr";
+import { entry as blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1107,6 +1108,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySwallowtailCatastropheA4GermThomDiscriminantSurfacePoiWebxrEntry,
   blenderTutorialPythonNumpyHopfFibrationS3S2FiberBundleLinkedCirclesPoiWebxrEntry,
   blenderTutorialPythonNumpySchwarzPDGyrOidTpmsMarchingTetsPoiWebxrEntry,
+  blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
