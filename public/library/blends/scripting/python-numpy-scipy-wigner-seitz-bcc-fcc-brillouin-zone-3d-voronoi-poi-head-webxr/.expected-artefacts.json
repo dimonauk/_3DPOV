@@ -1,0 +1,52 @@
+{
+  "artefacts": [
+    "hf_wigner_seitz.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-lennard-jones-md-crystal-nucleation-berendsen",
+      "/tutorials/blender-tutorial-gn-distribute-points-in-volume-crystal-geode",
+      "/tutorials/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr"
+    ],
+    "external": [
+      {
+        "title": "Wigner, E. & Seitz, F. (1933). On the Constitution of Metallic Sodium. Physical Review 43, 804.",
+        "url": "https://doi.org/10.1103/PhysRev.43.804",
+        "licence": "PD-mathematical",
+        "author": "Eugene Wigner & Frederick Seitz",
+        "related": [
+          "https://en.wikipedia.org/wiki/Wigner%E2%80%93Seitz_cell",
+          "https://en.wikipedia.org/wiki/Brillouin_zone"
+        ]
+      },
+      {
+        "title": "scipy.spatial.Voronoi — N-dimensional Voronoi diagrams (BSD-3-Clause)",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy community",
+        "related": [
+          "https://github.com/scipy/scipy",
+          "https://docs.scipy.org/doc/scipy/reference/spatial.html"
+        ]
+      },
+      {
+        "title": "Kittel, C. Introduction to Solid State Physics, Chapter 2: Crystal Diffraction and the Reciprocal Lattice. 8th ed., Wiley (2004). Pre-1927 sections public domain.",
+        "url": "https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268",
+        "licence": "PD-mathematical (classical content)",
+        "author": "Charles Kittel",
+        "related": [
+          "https://en.wikipedia.org/wiki/Bravais_lattice",
+          "https://en.wikipedia.org/wiki/Truncated_octahedron",
+          "https://en.wikipedia.org/wiki/Rhombic_dodecahedron"
+        ]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
