@@ -699,3 +699,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-08 | blend + glb | scripting | python-numpy-barth-sextic-65-nodes-algebraic-surface-poi-head-webxr | 5.1 | CC0 | barth_sextic.blend · barth_sextic.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-barth-sextic-65-nodes-algebraic-surface-poi-head-webxr |
 
 | 2026-08-08 | blend + glb | scripting | python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr | 5.1 | CC0 | hf_barkley_spiral.blend · hf_barkley_spiral.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr |
+
+| 2026-08-08 | blend + glb | scripting | python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr | 5.1 | CC0 | hf_lorenz.blend · hf_lorenz.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr |

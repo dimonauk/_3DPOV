@@ -538,6 +538,7 @@ import { entry as blenderTutorialPythonNumpyFraunhoferDiffractionFftAperturePsfA
 import { entry as blenderTutorialPythonNumpyScipyWignerSeitzBccFccBrillouinZone3dVoronoiPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barth-sextic-65-nodes-algebraic-surface-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyBarkleyExcitableMediumSpiralWaveUvSpherePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyLorenzAttractorRk4ButterflyOrbitTubePoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1083,6 +1084,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScipyWignerSeitzBccFccBrillouinZone3dVoronoiPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyBarkleyExcitableMediumSpiralWaveUvSpherePoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyLorenzAttractorRk4ButterflyOrbitTubePoiLightTrailWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

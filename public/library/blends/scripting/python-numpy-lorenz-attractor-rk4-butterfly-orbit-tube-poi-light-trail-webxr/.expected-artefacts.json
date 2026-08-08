@@ -1,0 +1,50 @@
+{
+  "slug": "python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr/hf_lorenz.blend",
+      "type": "blend",
+      "description": "Blender scene: two RK4 Lorenz orbit tubes (Wing A ice-blue, Wing B amber) with emission materials and LorenzAttractor root empty"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr/hf_lorenz.glb",
+      "type": "glb",
+      "description": "Draco-6 / WebP GLB — two butterfly-wing tubes, +Y up, transforms applied, WebXR-ready"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr/viewport.mp4",
+      "type": "video",
+      "description": "7-second orbit turntable render (210 frames @ 30 fps, 1920×1080, EEVEE Next with bloom)"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-lorenz-attractor-rk4-butterfly-orbit-tube-poi-light-trail-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen-capture of script execution and viewport inspection (1920×1080, 30 fps)"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-chaos-poincare-sections-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr"
+    ],
+    "external": [
+      {
+        "author": "Edward N. Lorenz",
+        "title": "Deterministic Nonperiodic Flow. Journal of the Atmospheric Sciences 20(2): 130–141, 1963",
+        "url": "https://doi.org/10.1175/1520-0469(1963)020%3C0130:DNF%3E2.0.CO;2",
+        "licence": "Public Domain"
+      },
+      {
+        "author": "Sparrow, C.",
+        "title": "The Lorenz Equations: Bifurcations, Chaos, and Strange Attractors. Springer, 1982 — errata-corrected parameter tables (Public Domain mathematical content)",
+        "url": "https://doi.org/10.1007/978-1-4612-5767-7",
+        "licence": "Public Domain (mathematical content)"
+      }
+    ]
+  }
+}
