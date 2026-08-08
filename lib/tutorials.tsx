@@ -539,6 +539,7 @@ import { entry as blenderTutorialPythonNumpyScipyWignerSeitzBccFccBrillouinZone3
 import { entry as blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barth-sextic-65-nodes-algebraic-surface-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyBarkleyExcitableMediumSpiralWaveUvSpherePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyAbcFlowBeltramiForceFreerRk4StreamlinesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr";
+import { entry as blenderTutorialPythonNumpyDupinCyclideConfocalConicsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1085,6 +1086,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyBarkleyExcitableMediumSpiralWaveUvSpherePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyAbcFlowBeltramiForceFreerRk4StreamlinesPoiWebxrEntry,
+  blenderTutorialPythonNumpyDupinCyclideConfocalConicsPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

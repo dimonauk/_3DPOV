@@ -701,3 +701,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-08 | blend + glb | scripting | python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr | 5.1 | CC0 | hf_barkley_spiral.blend · hf_barkley_spiral.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr |
 
 | 2026-08-08 | blend + glb | scripting | python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr | 5.1 | CC0 | hf_abc_flow.blend · hf_abc_flow.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr |
+
+| 2026-08-08 | blend + glb | scripting | python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr | 5.1 | CC0 | hf_dupin_cyclide.blend · hf_dupin_cyclide.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr |
