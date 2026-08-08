@@ -545,6 +545,7 @@ import { entry as blenderTutorialPythonNumpyKummerQuartic16NodeTetrahedralK3PoiH
 import { entry as blenderTutorialPythonNumpyScipySitePercolationHoshenKopelmanSpanningClusterPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-3d-site-percolation-hoshen-kopelman-spanning-cluster-poi-webxr";
 import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceSaddleTowerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr";
 import { entry as blenderTutorialPythonScipyWeairePhelanA15VoronoiKelvinFoamPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr";
+import { entry as blenderTutorialPythonNumpyDelaunayCmcSurfacesUnduloidNodoidRouletteRevolutionPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-delaunay-cmc-surfaces-unduloid-nodoid-roulette-revolution-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1097,6 +1098,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScipySitePercolationHoshenKopelmanSpanningClusterPoiWebxrEntry,
   blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceSaddleTowerPoiWebxrEntry,
   blenderTutorialPythonScipyWeairePhelanA15VoronoiKelvinFoamPoiWebxrEntry,
+  blenderTutorialPythonNumpyDelaunayCmcSurfacesUnduloidNodoidRouletteRevolutionPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
