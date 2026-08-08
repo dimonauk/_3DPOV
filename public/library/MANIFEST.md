@@ -708,3 +708,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-08 | blend + glb | scripting | python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr | 5.1 | CC0 | hf_kummer_poi.blend · hf_kummer_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr |
 
 | 2026-08-08 | blend + glb | scripting | python-numpy-scipy-3d-site-percolation-hoshen-kopelman-spanning-cluster-poi-webxr | 5.1 | CC0 | hf_percolation_poi.blend · hf_percolation_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-scipy-3d-site-percolation-hoshen-kopelman-spanning-cluster-poi-webxr |
+
+| 2026-08-08 | blend + glb | scripting | python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr | 5.1 | CC0 | hf_scherk_poi.blend · hf_scherk_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr |

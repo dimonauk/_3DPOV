@@ -543,6 +543,7 @@ import { entry as blenderTutorialPythonNumpyDupinCyclideConfocalConicsPoiWebxrEn
 import { entry as blenderTutorialPythonNumpy24CellIcositetrachoronD4RootLatticeStereographicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr";
 import { entry as blenderTutorialPythonNumpyKummerQuartic16NodeTetrahedralK3PoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyScipySitePercolationHoshenKopelmanSpanningClusterPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-3d-site-percolation-hoshen-kopelman-spanning-cluster-poi-webxr";
+import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceSaddleTowerPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1093,6 +1094,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpy24CellIcositetrachoronD4RootLatticeStereographicPoiWebxrEntry,
   blenderTutorialPythonNumpyKummerQuartic16NodeTetrahedralK3PoiHeadWebxrEntry,
   blenderTutorialPythonNumpyScipySitePercolationHoshenKopelmanSpanningClusterPoiWebxrEntry,
+  blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceSaddleTowerPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
