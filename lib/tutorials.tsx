@@ -533,6 +533,7 @@ import { entry as blenderTutorialPythonNumpyIsingModelMetropolisMonteCarloPhaseT
 import { entry as blenderTutorialPythonNumpyScipyThompsonProblemCoulombEnergyTammesSpherePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-thompson-problem-coulomb-energy-tammes-s2-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyWeierstrassPEllipticLatticeDoublyPeriodicHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-weierstrass-p-elliptic-lattice-doubly-periodic-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyRaupMollusShellMorphospaceHelicoidalCoilingPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-raup-mollusc-shell-morphospace-helicoidal-coiling-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyKuenDiniPseudosphereKMinus1SineGordonPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kuen-dini-pseudosphere-k-minus-1-sine-gordon-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1073,6 +1074,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScipyThompsonProblemCoulombEnergyTammesSpherePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyWeierstrassPEllipticLatticeDoublyPeriodicHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyRaupMollusShellMorphospaceHelicoidalCoilingPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyKuenDiniPseudosphereKMinus1SineGordonPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
