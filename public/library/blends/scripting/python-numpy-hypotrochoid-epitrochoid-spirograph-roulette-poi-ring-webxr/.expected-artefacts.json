@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "type": "blend", "filename": "hf_spirograph_poi.blend" },
+    { "type": "glb",   "filename": "hf_spirograph_poi.glb" },
+    { "type": "video", "filename": "viewport.mp4",
+      "path": "public/library/videos/scripting/python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr/" },
+    { "type": "video", "filename": "screen.mp4",
+      "path": "public/library/videos/scripting/python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr/" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-delaunay-cmc-surfaces-unduloid-nodoid-roulette-revolution-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "matplotlib Gallery — Animated Spirograph",
+        "url": "https://matplotlib.org/stable/gallery/animation/animated_spiral.html",
+        "licence": "BSD-3-Clause",
+        "author": "Matplotlib Contributors",
+        "related_project": "https://github.com/matplotlib/matplotlib"
+      },
+      {
+        "title": "Wikipedia — Hypotrochoid",
+        "url": "https://en.wikipedia.org/wiki/Hypotrochoid",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia Contributors",
+        "related_project": "https://en.wikipedia.org/wiki/Spirograph"
+      },
+      {
+        "title": "NumPy Reference — Mathematical functions",
+        "url": "https://numpy.org/doc/stable/reference/routines.math.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors",
+        "related_project": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
