@@ -541,6 +541,7 @@ import { entry as blenderTutorialPythonNumpyBarkleyExcitableMediumSpiralWaveUvSp
 import { entry as blenderTutorialPythonNumpyAbcFlowBeltramiForceFreerRk4StreamlinesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr";
 import { entry as blenderTutorialPythonNumpyDupinCyclideConfocalConicsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr";
 import { entry as blenderTutorialPythonNumpy24CellIcositetrachoronD4RootLatticeStereographicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr";
+import { entry as blenderTutorialPythonNumpyKummerQuartic16NodeTetrahedralK3PoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1089,6 +1090,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyAbcFlowBeltramiForceFreerRk4StreamlinesPoiWebxrEntry,
   blenderTutorialPythonNumpyDupinCyclideConfocalConicsPoiWebxrEntry,
   blenderTutorialPythonNumpy24CellIcositetrachoronD4RootLatticeStereographicPoiWebxrEntry,
+  blenderTutorialPythonNumpyKummerQuartic16NodeTetrahedralK3PoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
