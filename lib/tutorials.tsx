@@ -536,6 +536,7 @@ import { entry as blenderTutorialPythonNumpyRaupMollusShellMorphospaceHelicoidal
 import { entry as blenderTutorialPythonNumpyKuenDiniPseudosphereKMinus1SineGordonPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kuen-dini-pseudosphere-k-minus-1-sine-gordon-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFraunhoferDiffractionFftAperturePsfAiryDiskStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fraunhofer-diffraction-fft-aperture-psf-airy-disk-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyScipyWignerSeitzBccFccBrillouinZone3dVoronoiPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barth-sextic-65-nodes-algebraic-surface-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1079,6 +1080,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyKuenDiniPseudosphereKMinus1SineGordonPoiWebxrEntry,
   blenderTutorialPythonNumpyFraunhoferDiffractionFftAperturePsfAiryDiskStageFloorWebxrEntry,
   blenderTutorialPythonNumpyScipyWignerSeitzBccFccBrillouinZone3dVoronoiPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyBarthSextic65NodesAlgebraicSurfacePoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
