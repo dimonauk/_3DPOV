@@ -548,6 +548,7 @@ import { entry as blenderTutorialPythonScipyWeairePhelanA15VoronoiKelvinFoamPoiW
 import { entry as blenderTutorialPythonNumpyDelaunayCmcSurfacesUnduloidNodoidRouletteRevolutionPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-delaunay-cmc-surfaces-unduloid-nodoid-roulette-revolution-poi-webxr";
 import { entry as blenderTutorialPythonNumpyCostaMinimalSurfaceWeierstrassEnneperEllipticThreeEndsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-costa-minimal-surface-weierstrass-enneper-elliptic-three-ends-poi-webxr";
 import { entry as blenderTutorialPythonNumpySwallowtailCatastropheA4GermThomDiscriminantSurfacePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-swallowtail-catastrophe-a4-germ-thom-discriminant-surface-poi-webxr";
+import { entry as blenderTutorialPythonNumpyHopfFibrationS3S2FiberBundleLinkedCirclesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1103,6 +1104,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyDelaunayCmcSurfacesUnduloidNodoidRouletteRevolutionPoiWebxrEntry,
   blenderTutorialPythonNumpyCostaMinimalSurfaceWeierstrassEnneperEllipticThreeEndsPoiWebxrEntry,
   blenderTutorialPythonNumpySwallowtailCatastropheA4GermThomDiscriminantSurfacePoiWebxrEntry,
+  blenderTutorialPythonNumpyHopfFibrationS3S2FiberBundleLinkedCirclesPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

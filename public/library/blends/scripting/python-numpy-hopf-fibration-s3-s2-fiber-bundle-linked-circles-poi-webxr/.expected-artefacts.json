@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_artefacts": [
+    "hf_hopf.blend",
+    "../../glbs/scripting/python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr/hf_hopf.glb",
+    "../../videos/scripting/python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "Hopf, Heinz (1931). Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche. Mathematische Annalen 104: 637–665.",
+        "url": "https://link.springer.com/article/10.1007/BF01457962",
+        "licence": "Public Domain (1931, mathematical content)"
+      },
+      {
+        "title": "Lyons, David W. (2003). An Elementary Introduction to the Hopf Fibration. Mathematics Magazine 76(2): 87–98.",
+        "url": "https://www.jstor.org/stable/3219300",
+        "licence": "JSTOR open access — educational fair use; mathematical content PD"
+      },
+      {
+        "title": "NumPy contributors. NumPy Reference Documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
