@@ -562,6 +562,7 @@ import { entry as blenderTutorialPythonNumpyInvoluteGearProfileModuleSystemTroch
 import { entry as blenderTutorialPythonNumpyClebschDiagonalCubic27LinesAlgebraicSurfaceStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-clebsch-diagonal-cubic-27-lines-algebraic-surface-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyPhyllotaxisGoldenAngleVogelFibonacciParastichyPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-phyllotaxis-golden-angle-vogel-fibonacci-parastichy-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1131,6 +1132,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyClebschDiagonalCubic27LinesAlgebraicSurfaceStageFloorWebxrEntry,
   blenderTutorialPythonNumpyPhyllotaxisGoldenAngleVogelFibonacciParastichyPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
