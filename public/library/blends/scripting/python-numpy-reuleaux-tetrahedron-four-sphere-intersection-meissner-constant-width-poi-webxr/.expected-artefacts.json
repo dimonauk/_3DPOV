@@ -1,0 +1,41 @@
+{
+  "blend": "hf_reuleaux_tet_poi.blend",
+  "glb": "hf_reuleaux_tet_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "shape_keys": ["Basis", "Puffed", "Sphere"],
+  "vertex_attributes": ["CapColor"],
+  "poi_diameter_m": 0.10,
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-costa-minimal-surface-weierstrass-enneper-elliptic-three-ends-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr"
+    ],
+    "external": [
+      {
+        "label": "Reuleaux F (1875) Theoretische Kinematik. Vieweg, Braunschweig. §VII describes the Reuleaux triangle and its extension to solids. Public Domain.",
+        "url": "https://archive.org/details/theoretischekine00reul",
+        "licence": "Public Domain",
+        "author": "Franz Reuleaux"
+      },
+      {
+        "label": "Meissner E, Schilling F (1912) Über Punktmengen konstanter Breite. Vierteljahrsschr. Naturforsch. Ges. Zürich 56:42–50. First proof of a 3-D body of constant width via rounding three alternate edges of the Reuleaux tetrahedron. Public Domain.",
+        "url": "https://www.e-periodica.ch/digbib/view?pid=vng-001:1912:56",
+        "licence": "Public Domain",
+        "author": "Ernst Meissner, Friedrich Schilling"
+      },
+      {
+        "label": "Lachand-Robert T, Oudet É (2005) Minimizing within Convex Bodies Using a Convex Hull Method. SIAM J. Optim. 16(2):368–379. Computational evidence for Meissner's conjecture. CC-BY (journal open-access).",
+        "url": "https://doi.org/10.1137/040603968",
+        "licence": "CC-BY",
+        "author": "Thomas Lachand-Robert, Édouard Oudet"
+      }
+    ]
+  }
+}
