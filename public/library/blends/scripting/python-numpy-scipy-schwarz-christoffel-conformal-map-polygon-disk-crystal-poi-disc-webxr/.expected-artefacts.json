@@ -1,0 +1,42 @@
+{
+  "blend": "hf_sc_crystal_disc.blend",
+  "glb": "hf_sc_crystal_disc.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-scipy-schwarz-christoffel-conformal-map-polygon-disk-crystal-poi-disc-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-scipy-schwarz-christoffel-conformal-map-polygon-disk-crystal-poi-disc-webxr/screen.mp4"
+  ],
+  "shape_keys": ["Basis", "Poly_03", "Poly_04", "Poly_06", "Poly_08"],
+  "vertex_attributes": ["SCDistortion"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr"
+    ],
+    "outside_sources": [
+      {
+        "label": "Driscoll & Trefethen (2002) Schwarz-Christoffel Mapping, Cambridge University Press",
+        "url": "https://people.maths.bris.ac.uk/~marp/SC/",
+        "licence": "Mathematical content PD",
+        "author": "Tobin A. Driscoll & Lloyd N. Trefethen"
+      },
+      {
+        "label": "DLMF §15 Hypergeometric Function — NIST Digital Library",
+        "url": "https://dlmf.nist.gov/15",
+        "licence": "Public Domain",
+        "author": "NIST Digital Library of Mathematical Functions"
+      },
+      {
+        "label": "NumPy BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      }
+    ]
+  }
+}

@@ -557,6 +557,7 @@ import { entry as blenderTutorialPythonNumpyLorenzAttractorRk4StrangeButterflyPo
 import { entry as blenderTutorialPythonNumpyHenonHeilesHamiltonianKamToriPoincarePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr";
 import { entry as blenderTutorialPythonNumpyIcosahedralQuasicrystalCutProjectZ6ShechtmanPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyScipySchwarzChristoffelConformalMapPolygonDiskCrystalPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-schwarz-christoffel-conformal-map-polygon-disk-crystal-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1121,6 +1122,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHenonHeilesHamiltonianKamToriPoincarePoiWebxrEntry,
   blenderTutorialPythonNumpyIcosahedralQuasicrystalCutProjectZ6ShechtmanPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyScipySchwarzChristoffelConformalMapPolygonDiskCrystalPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
