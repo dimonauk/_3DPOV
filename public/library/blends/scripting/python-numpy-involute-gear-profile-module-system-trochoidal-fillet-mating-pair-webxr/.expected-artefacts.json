@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-involute-gear-profile-module-system-trochoidal-fillet-mating-pair-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "expected_files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "expected_outputs": [
+    "output/hf_involute_gear_pair.glb",
+    "output/hf_involute_gear_pair.blend"
+  ],
+  "expected_videos": [
+    "../../videos/scripting/python-numpy-involute-gear-profile-module-system-trochoidal-fillet-mating-pair-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-involute-gear-profile-module-system-trochoidal-fillet-mating-pair-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-scene-time-rotation-mechanical-clockwork",
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["https://projects.blender.org/blender/blender"]
+      },
+      {
+        "name": "NumPy User Guide",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors",
+        "related": ["https://github.com/scipy/scipy"]
+      },
+      {
+        "name": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": ["https://github.com/KhronosGroup/glTF-Sample-Assets"]
+      }
+    ]
+  }
+}
