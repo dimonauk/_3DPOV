@@ -559,6 +559,7 @@ import { entry as blenderTutorialPythonNumpyIcosahedralQuasicrystalCutProjectZ6S
 import { entry as blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyScipySchwarzChristoffelConformalMapPolygonDiskCrystalPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-schwarz-christoffel-conformal-map-polygon-disk-crystal-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyInvoluteGearProfileModuleSystemTrochoidalFilletMatingPairWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-involute-gear-profile-module-system-trochoidal-fillet-mating-pair-webxr";
+import { entry as blenderTutorialPythonNumpyClebschDiagonalCubic27LinesAlgebraicSurfaceStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-clebsch-diagonal-cubic-27-lines-algebraic-surface-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1125,6 +1126,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyScipySchwarzChristoffelConformalMapPolygonDiskCrystalPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyInvoluteGearProfileModuleSystemTrochoidalFilletMatingPairWebxrEntry,
+  blenderTutorialPythonNumpyClebschDiagonalCubic27LinesAlgebraicSurfaceStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
