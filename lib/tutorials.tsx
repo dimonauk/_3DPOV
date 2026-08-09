@@ -564,6 +564,7 @@ import { entry as blenderTutorialPythonNumpyPhyllotaxisGoldenAngleVogelFibonacci
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr";
 import { entry as blenderTutorialPythonNumpySchwarzschieldGeodesicsGrEffectivePotentialIscoMercuryPrecessionPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpyVillarceauCirclesTorusHopfFiberInterlockedPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1135,6 +1136,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry,
   blenderTutorialPythonNumpySchwarzschieldGeodesicsGrEffectivePotentialIscoMercuryPrecessionPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpyVillarceauCirclesTorusHopfFiberInterlockedPoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,58 @@
+{
+  "slug": "python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_villarceau_poi.blend",
+    "hf_villarceau_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json"
+  ],
+  "video_artefacts": [
+    "public/library/videos/scripting/python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr/screen.mp4"
+  ],
+  "mesh_stats": {
+    "vertices": 7680,
+    "quads": 7680,
+    "circles_total": 16,
+    "circles_per_family": 8,
+    "shape_keys": 5,
+    "tube_sides": 8,
+    "segs_per_circle": 60
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-curvature-lines-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "M. Yvon Villarceau",
+        "year": 1848,
+        "title": "Théorème sur le tore",
+        "journal": "Nouvelles Annales de Mathématiques",
+        "url": "https://gallica.bnf.fr/ark:/12148/bpt6k29791n",
+        "licence": "Public Domain"
+      },
+      {
+        "author": "NumPy contributors",
+        "title": "NumPy Reference Documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      },
+      {
+        "author": "Nicolas Janakiev",
+        "title": "blender-scripting (MIT)",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT"
+      }
+    ]
+  }
+}
