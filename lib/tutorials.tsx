@@ -552,6 +552,7 @@ import { entry as blenderTutorialPythonNumpyHopfFibrationS3S2FiberBundleLinkedCi
 import { entry as blenderTutorialPythonNumpySchwarzPDGyrOidTpmsMarchingTetsPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr";
 import { entry as blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr";
+import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1111,6 +1112,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySchwarzPDGyrOidTpmsMarchingTetsPoiWebxrEntry,
   blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry,
   blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry,
+  blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

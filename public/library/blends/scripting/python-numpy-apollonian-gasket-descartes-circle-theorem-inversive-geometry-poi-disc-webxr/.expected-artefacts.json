@@ -1,0 +1,38 @@
+{
+  "slug": "python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_apollonian_gasket.blend",
+    "hf_apollonian_gasket.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Lagarias, Mallows, Wilks — Beyond the Descartes Circle Theorem (2002)",
+        "url": "https://arxiv.org/abs/math/0010065",
+        "licence": "arXiv open access / mathematical content Public Domain",
+        "related": ["Graham, Lagarias, Mallows, Wilks, Yan 2003 Apollonian Circle Packings: Number Theory"]
+      },
+      {
+        "title": "Sarnak — Integral Apollonian Packings, American Mathematical Monthly (2011)",
+        "url": "https://www.ams.org/notices/201103/rtx110300330p.pdf",
+        "licence": "AMS open access / mathematical content Public Domain",
+        "related": ["Bourgain-Gamburd-Sarnak 2012 Affine Linear Sieve"]
+      }
+    ]
+  },
+  "mesh_stats_expected": {
+    "circle_count_approx": "900-1800 (varies with MIN_RADIUS=0.018)",
+    "vertex_count_approx": "58000-115000",
+    "face_count_approx": "29000-58000"
+  }
+}
