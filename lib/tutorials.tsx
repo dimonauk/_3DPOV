@@ -553,6 +553,7 @@ import { entry as blenderTutorialPythonNumpySchwarzPDGyrOidTpmsMarchingTetsPoiWe
 import { entry as blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr";
 import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpyLorenzAttractorRk4StrangeButterflyPoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1113,6 +1114,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlicePoiWebxrEntry,
   blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry,
   blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpyLorenzAttractorRk4StrangeButterflyPoiLightTrailWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
