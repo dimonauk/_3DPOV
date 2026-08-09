@@ -563,6 +563,7 @@ import { entry as blenderTutorialPythonNumpyClebschDiagonalCubic27LinesAlgebraic
 import { entry as blenderTutorialPythonNumpyPhyllotaxisGoldenAngleVogelFibonacciParastichyPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-phyllotaxis-golden-angle-vogel-fibonacci-parastichy-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr";
+import { entry as blenderTutorialPythonNumpySchwarzschieldGeodesicsGrEffectivePotentialIscoMercuryPrecessionPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1133,6 +1134,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyPhyllotaxisGoldenAngleVogelFibonacciParastichyPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyPenroseP3RhombusRobinsonDeflationAperiodicStageFloorWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringMorphogenesisPoiSphereWebxrEntry,
+  blenderTutorialPythonNumpySchwarzschieldGeodesicsGrEffectivePotentialIscoMercuryPrecessionPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
