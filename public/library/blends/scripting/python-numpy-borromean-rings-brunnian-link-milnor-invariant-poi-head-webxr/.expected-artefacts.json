@@ -1,0 +1,41 @@
+{
+  "slug": "python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_borromean_poi.blend",
+    "hf_borromean_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Freedman MH, Skora R (1987): Strange actions of groups on spheres",
+        "url": "https://doi.org/10.4310/jdg/1214441486",
+        "licence": "Public Domain (mathematical content)",
+        "author": "Michael H. Freedman, Richard Skora"
+      },
+      {
+        "title": "Milnor JW (1954): Link groups. Annals of Mathematics 59(2):177–195",
+        "url": "https://doi.org/10.2307/1969685",
+        "licence": "Public Domain (mathematical content)",
+        "author": "John W. Milnor"
+      },
+      {
+        "title": "NumPy documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      }
+    ]
+  }
+}
