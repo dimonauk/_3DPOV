@@ -1,0 +1,41 @@
+{
+  "slug": "python-scipy-oloid-convex-hull-schatz-1929-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "oloid_poi.blend",
+    "oloid_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dupin-cyclide-confocal-conics-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Dirnböck H, Stachel H (1997). The Development of the Oloid. Journal for Geometry and Graphics 1(2):105–118.",
+        "url": "https://heldermann-verlag.de/jgg/jgg01_05/jgg0113.pdf",
+        "licence": "Public Domain (mathematical content)",
+        "author": "Hans Dirnböck, Hellmuth Stachel"
+      },
+      {
+        "title": "SciPy — scipy.spatial.ConvexHull. BSD-3-Clause.",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.ConvexHull.html",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy community"
+      },
+      {
+        "title": "Schatz P (1975). Rhythmusforschung und Technik. Freies Geistesleben, Stuttgart. Mathematical content Public Domain.",
+        "url": "https://www.paul-schatz.ch/",
+        "licence": "Public Domain (mathematical content)",
+        "author": "Paul Schatz"
+      }
+    ]
+  }
+}

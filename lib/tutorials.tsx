@@ -567,6 +567,7 @@ import { entry as blenderTutorialPythonNumpySchwarzschieldGeodesicsGrEffectivePo
 import { entry as blenderTutorialPythonNumpyVillarceauCirclesTorusHopfFiberInterlockedPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyEulerElasticaJacobiDnCurvatureLemniscateRibbonPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr";
 import { entry as blenderTutorialPythonNumpyBorromeanRingsBrunnianLinkMilnorInvariantPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr";
+import { entry as blenderTutorialPythonScipyOloidConvexHullSchatz1929PoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-oloid-convex-hull-schatz-1929-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1141,6 +1142,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyVillarceauCirclesTorusHopfFiberInterlockedPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyEulerElasticaJacobiDnCurvatureLemniscateRibbonPoiWebxrEntry,
   blenderTutorialPythonNumpyBorromeanRingsBrunnianLinkMilnorInvariantPoiHeadWebxrEntry,
+  blenderTutorialPythonScipyOloidConvexHullSchatz1929PoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
