@@ -1,0 +1,56 @@
+{
+  "slug": "python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr",
+  "blender_version": "5.1",
+  "category": "stage-floor",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "penrose_p3_floor.blend",
+    "penrose_p3_floor.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-vogel-fibonacci-parastichy-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr"
+    ],
+    "external_sources": [
+      {
+        "author": "Penrose R",
+        "year": 1974,
+        "title": "Role of Aesthetics in Pure and Applied Mathematical Research",
+        "journal": "Bull. Inst. Math. Appl.",
+        "volume": "10",
+        "pages": "266-271",
+        "licence": "PD",
+        "url": "https://www.ias.edu/sites/default/files/sns/files/Penrose-Aesthetics-1974.pdf"
+      },
+      {
+        "author": "de Bruijn NG",
+        "year": 1981,
+        "title": "Algebraic theory of Penrose's non-periodic tilings",
+        "journal": "Koninkl. Akad. Wetensch. Proc. Ser. A",
+        "volume": "84",
+        "pages": "39-66",
+        "licence": "PD",
+        "url": "https://www.win.tue.nl/~aeb/combinatorics/penrose/debruijn.pdf"
+      },
+      {
+        "author": "Wikipedia contributors",
+        "title": "Penrose tiling",
+        "licence": "CC-BY-SA-4.0",
+        "url": "https://en.wikipedia.org/wiki/Penrose_tiling"
+      }
+    ]
+  },
+  "tutorial_url": "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr"
+}
