@@ -1,0 +1,83 @@
+{
+  "slug": "python-numpy-phyllotaxis-golden-angle-vogel-fibonacci-parastichy-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    {
+      "filename": "phyllotaxis_poi_disc.blend",
+      "type": "blend",
+      "description": "Full scene with 280 seed platelets, five shape keys, PhylloArm vertex colour."
+    },
+    {
+      "filename": "phyllotaxis_poi_disc.glb",
+      "type": "glb",
+      "description": "Draco-6 WebP GLB; morph targets for all five divergence-angle keys; +Y-up."
+    },
+    {
+      "filename": "viewport.mp4",
+      "type": "video",
+      "description": "8-second viewport animation: overhead → orbit → morph demo → pull-back."
+    },
+    {
+      "filename": "screen.mp4",
+      "type": "video",
+      "description": "Full screen recording of the tutorial session (OBS capture)."
+    }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      {
+        "url": "/tutorials/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr",
+        "note": "Apollonian gasket — another disc-packing problem; compare recursive inversive geometry vs iterative Vogel model."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+        "note": "Icosahedral quasicrystal — 6D cut-and-project also uses irrational numbers to avoid periodicity; Fibonacci parastichies are the 2D analogue."
+      },
+      {
+        "url": "/tutorials/blender-tutorial-python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr",
+        "note": "Hypotrochoid / spirograph — also uses GCD to determine closed-curve periodicity vs open spirals; compare with the role of rational/irrational α."
+      },
+      {
+        "url": "/codex/phyllotaxis",
+        "note": "Holoflow Codex entry explaining phyllotaxis in the context of light-painting and structured patterning."
+      }
+    ],
+    "outside_sources": [
+      {
+        "url": "https://doi.org/10.1016/0025-5564(79)90072-X",
+        "title": "Vogel H (1979) — A better way to construct the sunflower head. Mathematical Biosciences 44(3–4):179–189",
+        "licence": "Mathematical content in Public Domain; journal article © Elsevier (fair-use citation only)",
+        "author": "Helmut Vogel",
+        "note": "Original paper establishing r=√n, θ=n·α as the canonical phyllotaxis model. The blueprint derives the scale constant C from this paper's Figure 1.",
+        "related_projects": [
+          "https://en.wikipedia.org/wiki/Phyllotaxis",
+          "https://github.com/nicolewhite/algebra.js"
+        ]
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Phyllotaxis",
+        "title": "Phyllotaxis — Wikipedia",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia contributors",
+        "note": "Mathematical derivation of the golden angle α = 2π(2−φ) and Bravais-Bravais theorem on parastichy counts. Used for cross-checking the continued-fraction argument.",
+        "related_projects": [
+          "https://en.wikipedia.org/wiki/Golden_angle",
+          "https://en.wikipedia.org/wiki/Fibonacci_number"
+        ]
+      },
+      {
+        "url": "https://numpy.org/doc/stable/",
+        "title": "NumPy documentation — BSD-3-Clause",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors",
+        "note": "np.arange, np.sqrt, np.cos, np.sin, np.column_stack used throughout Vogel-model parametrisation and shape-key coordinate generation.",
+        "related_projects": [
+          "https://github.com/numpy/numpy",
+          "https://scipy.org/"
+        ]
+      }
+    ]
+  }
+}
