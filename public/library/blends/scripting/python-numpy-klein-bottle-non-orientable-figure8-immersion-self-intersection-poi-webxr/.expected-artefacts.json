@@ -1,0 +1,53 @@
+{
+  "slug": "python-numpy-klein-bottle-non-orientable-figure8-immersion-self-intersection-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_klein_bottle.blend",
+    "hf_klein_bottle.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "type": "tutorial",
+        "slug": "blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+        "relation": "Möbius strip — one-sided surface with boundary; the Klein bottle is two Möbius strips glued along their shared boundary"
+      },
+      {
+        "type": "tutorial",
+        "slug": "blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+        "relation": "Hopf fibration — another S³ topology; Lawson's Klein bottle embeds cleanly in S³ as a Clifford torus with identification"
+      },
+      {
+        "type": "tutorial",
+        "slug": "blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+        "relation": "Parallel-transport tube on closed curves — same Bishop-frame technique applied to the Klein bottle spine"
+      }
+    ],
+    "external": [
+      {
+        "label": "Apéry, François (1994). Models of the Real Projective Plane. Vieweg. PD mathematical content.",
+        "url": "https://link.springer.com/book/9783322895691",
+        "licence": "Public Domain (mathematical content)",
+        "author": "François Apéry"
+      },
+      {
+        "label": "Weeks, Jeffrey (2002). The Shape of Space. CRC Press. CC0 concept.",
+        "url": "https://www.geometrygames.org/",
+        "licence": "CC0 (conceptual description)",
+        "author": "Jeffrey Weeks"
+      },
+      {
+        "label": "NumPy contributors. NumPy Reference Documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      }
+    ]
+  }
+}
