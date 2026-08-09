@@ -569,6 +569,7 @@ import { entry as blenderTutorialPythonNumpyEulerElasticaJacobiDnCurvatureLemnis
 import { entry as blenderTutorialPythonNumpyBorromeanRingsBrunnianLinkMilnorInvariantPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr";
 import { entry as blenderTutorialPythonScipyOloidConvexHullSchatz1929PoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-scipy-oloid-convex-hull-schatz-1929-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyReuleauxTetrahedronFourSphereIntersectionMeissnerConstantWidthPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-reuleaux-tetrahedron-four-sphere-intersection-meissner-constant-width-poi-webxr";
+import { entry as blenderTutorialPythonNumpyTodaLatticeIntegrableChainFlaschkaLaxSolitonPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-toda-lattice-integrable-chain-flaschka-lax-soliton-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1145,6 +1146,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyBorromeanRingsBrunnianLinkMilnorInvariantPoiHeadWebxrEntry,
   blenderTutorialPythonScipyOloidConvexHullSchatz1929PoiHeadWebxrEntry,
   blenderTutorialPythonNumpyReuleauxTetrahedronFourSphereIntersectionMeissnerConstantWidthPoiWebxrEntry,
+  blenderTutorialPythonNumpyTodaLatticeIntegrableChainFlaschkaLaxSolitonPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
