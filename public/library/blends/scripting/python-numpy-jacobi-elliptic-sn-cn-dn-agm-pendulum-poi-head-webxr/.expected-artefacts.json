@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_artefacts": [
+    "hf_jacobi_poi.blend",
+    "../../glbs/scripting/python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr/hf_jacobi_poi.glb",
+    "../../videos/scripting/python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-p-elliptic-lattice-doubly-periodic-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kuen-dini-pseudosphere-k-minus-1-sine-gordon-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "Abramowitz, M. & Stegun, I.A. (1964). Handbook of Mathematical Functions §16 — Jacobian Elliptic Functions. NBS Applied Mathematics Series 55.",
+        "url": "https://personal.math.ubc.ca/~cbm/aands/toc.htm",
+        "licence": "Public Domain (US Government work, 1964)"
+      },
+      {
+        "title": "NIST Digital Library of Mathematical Functions §22 — Jacobian Elliptic Functions. DLMF release 1.1.12.",
+        "url": "https://dlmf.nist.gov/22",
+        "licence": "Public Domain (NIST, US Government)"
+      },
+      {
+        "title": "SciPy contributors. scipy.special.ellipj — Jacobi elliptic functions. SciPy documentation. BSD-3-Clause.",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.ellipj.html",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
