@@ -1,0 +1,52 @@
+{
+  "slug": "python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "scripting",
+  "topic": "torus-knots",
+  "files": {
+    "blend": "hf_torus_knot.blend",
+    "glb": "../../glbs/scripting/python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr/hf_torus_knot.glb",
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "screen_recording_notes": "SCREEN-RECORDING-NOTES.md",
+    "readme": "README.md",
+    "viewport_video": "../../../videos/scripting/python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr/viewport.mp4",
+    "screen_video": "../../../videos/scripting/python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "expected_mesh": {
+    "vertices": 4800,
+    "faces": 4800,
+    "shape_keys": ["Basis", "Trefoil_T23", "Solomon_T25", "Torus_T34", "Torus_T35"],
+    "vertex_color_attribute": "Col",
+    "material": "hf_torus_knot_mat"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "label": "Knot Atlas — torus knot invariant tables",
+        "url": "https://katlas.org/wiki/Torus_Knots",
+        "licence": "CC-BY-SA",
+        "author": "Bar-Natan D, Morrison S et al."
+      },
+      {
+        "label": "Bishop RL (1975) There is more than one way to frame a curve. Amer. Math. Monthly 82(3):246-251",
+        "url": "https://www.jstor.org/stable/2319846",
+        "licence": "MAA journal (JSTOR open access for non-commercial)",
+        "author": "Richard L. Bishop"
+      },
+      {
+        "label": "NumPy — array programming library",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}
