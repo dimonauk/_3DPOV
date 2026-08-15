@@ -1,0 +1,52 @@
+{
+  "slug": "python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "scripting",
+  "topic": "fractals",
+  "files": {
+    "blend": "hf_mandelbulb.blend",
+    "glb": "../../glbs/scripting/python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr/hf_mandelbulb.glb",
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "screen_recording_notes": "SCREEN-RECORDING-NOTES.md",
+    "readme": "README.md",
+    "viewport_video": "../../../videos/scripting/python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr/viewport.mp4",
+    "screen_video": "../../../videos/scripting/python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr/screen.mp4"
+  },
+  "expected_mesh": {
+    "vertices_approx": 8000,
+    "faces_approx": 15000,
+    "shape_keys": ["Basis", "Mandelbulb"],
+    "vertex_color_attribute": "Col",
+    "material": "hf_mandelbulb_mat"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr"
+    ],
+    "outside_sources": [
+      {
+        "label": "White D (2009) 'Triplex Number Mandelbulb' — Fractalforums.com — PD mathematical description",
+        "url": "https://www.fractalforums.com/3d-fractal-generation/true-3d-mandlebrot-type-fractal/",
+        "licence": "PD (mathematical description)",
+        "author": "Daniel White, Paul Nylander"
+      },
+      {
+        "label": "Quílez I 'Smooth Iteration Count for the Mandelbrot Set' — iquilezles.org — MIT",
+        "url": "https://iquilezles.org/articles/mset_smooth/",
+        "licence": "MIT",
+        "author": "Iñigo Quílez"
+      },
+      {
+        "label": "NumPy Developers (2020) Array programming with NumPy. Nature 585:357–362 — BSD-3-Clause",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}
