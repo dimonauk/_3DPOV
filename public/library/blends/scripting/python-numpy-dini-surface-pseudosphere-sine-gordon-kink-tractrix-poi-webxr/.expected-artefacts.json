@@ -1,0 +1,71 @@
+{
+  "slug": "python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/blueprint.py",
+      "type": "script",
+      "required": true
+    },
+    {
+      "path": "public/library/blends/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/record.py",
+      "type": "script",
+      "required": true
+    },
+    {
+      "path": "public/library/blends/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/README.md",
+      "type": "doc",
+      "required": true
+    },
+    {
+      "path": "public/library/blends/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc",
+      "required": true
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/hf_dini_poi.glb",
+      "type": "binary",
+      "required": false,
+      "note": "Generated when blueprint.py is run in Blender 5.1"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/viewport.mp4",
+      "type": "binary",
+      "required": false,
+      "note": "Generated when record.py is run after blueprint.py"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr/screen.mp4",
+      "type": "binary",
+      "required": false,
+      "note": "Captured via OBS following SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hyperbolic-poincare-disk-tiling-5-4-triangle-group-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Beltrami (1868) Saggio di interpretazione della geometria non-euclidea",
+        "url": "https://www.bdim.eu/item?id=BUMI_1868_1_2_267_0",
+        "licence": "Public Domain"
+      },
+      {
+        "title": "Hilbert (1901) Über Flächen von konstanter Gaußscher Krümmung",
+        "url": "https://doi.org/10.2307/1986383",
+        "licence": "Public Domain"
+      },
+      {
+        "title": "NumPy documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
