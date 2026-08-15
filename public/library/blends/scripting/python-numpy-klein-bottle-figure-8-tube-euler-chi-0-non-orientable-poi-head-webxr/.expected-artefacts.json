@@ -1,0 +1,33 @@
+{
+  "blend": "hf_klein_bottle.blend",
+  "glb": "hf_klein_bottle.glb",
+  "viewport_mp4": "../../videos/scripting/python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr/viewport.mp4",
+  "screen_mp4": "../../videos/scripting/python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr/screen.mp4",
+  "shape_keys": ["Basis", "SK_Wide", "SK_Flat", "SK_Tall"],
+  "vertex_colour_attribute": "KleinCol",
+  "holoflow_category": "poi-head",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr"
+    ],
+    "external": [
+      {
+        "label": "Klein F (1882) Über Riemanns Theorie der algebraischen Funktionen und ihrer Integrale. Teubner, Leipzig. Public Domain (1882). Digitised: archive.org/details/berriemanstheor00kleigoog",
+        "url": "https://archive.org/details/berriemanstheor00kleigoog",
+        "licence": "Public Domain",
+        "author": "Felix Klein"
+      },
+      {
+        "label": "NumPy Developers (2020) Array programming with NumPy. Nature 585:357–362. BSD-3-Clause — https://numpy.org. Related: github.com/numpy/numpy, SciPy for surface differential geometry.",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}
