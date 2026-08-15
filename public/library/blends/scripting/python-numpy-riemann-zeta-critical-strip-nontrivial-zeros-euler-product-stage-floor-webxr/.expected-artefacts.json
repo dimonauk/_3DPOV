@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "stage-floor",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_riemann_zeta.blend",
+    "hf_riemann_zeta.glb",
+    "../../glbs/scripting/python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr/hf_riemann_zeta.glb",
+    "../../../../videos/scripting/python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr/screen.mp4"
+  ],
+  "holoflow_tags": {
+    "facet": true,
+    "category": "stage-floor"
+  },
+  "mesh_stats": {
+    "vertices": 12800,
+    "faces": 12561,
+    "grid_sigma": 80,
+    "grid_t": 160
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-newton-fractal-basin-attraction-complex-roots-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-p-elliptic-lattice-doubly-periodic-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Riemann B (1859) Über die Anzahl der Primzahlen unter einer gegebenen Grösse",
+        "url": "https://www.claymath.org/sites/default/files/ezeta.pdf",
+        "licence": "Public Domain"
+      },
+      {
+        "title": "NIST DLMF Chapter 25 — Zeta and Related Functions",
+        "url": "https://dlmf.nist.gov/25",
+        "licence": "US Government work (public domain)"
+      }
+    ]
+  },
+  "mathematical_notes": {
+    "computation": "Euler-Maclaurin with N=100, B2 and B4 Bernoulli corrections",
+    "error_bound": "|error| < 5e-4 for Im(s) <= 50",
+    "zeros_marked": [14.134725, 21.022040, 25.010858, 30.424876, 32.935062],
+    "functional_equation": "xi(s) = xi(1-s), xi(s) = 0.5*s*(s-1)*pi^(-s/2)*Gamma(s/2)*zeta(s)"
+  }
+}

@@ -572,6 +572,7 @@ import { entry as blenderTutorialPythonNumpyReuleauxTetrahedronFourSphereInterse
 import { entry as blenderTutorialPythonNumpyTodaLatticeIntegrableChainFlaschkaLaxSolitonPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-toda-lattice-integrable-chain-flaschka-lax-soliton-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyBoySurfaceAperyRp2Immersion3foldPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyHyperbolicPoincareDiskTiling54TriangleGroupStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hyperbolic-poincare-disk-tiling-5-4-triangle-group-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyRiemannZetaCriticalStripNontrivialZerosEulerProductStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1151,6 +1152,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyTodaLatticeIntegrableChainFlaschkaLaxSolitonPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyBoySurfaceAperyRp2Immersion3foldPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyHyperbolicPoincareDiskTiling54TriangleGroupStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyRiemannZetaCriticalStripNontrivialZerosEulerProductStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
