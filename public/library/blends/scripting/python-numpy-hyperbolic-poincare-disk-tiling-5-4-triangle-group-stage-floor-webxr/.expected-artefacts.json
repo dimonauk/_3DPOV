@@ -1,0 +1,50 @@
+{
+  "blend": "hf_hyp_tiling_5_4.blend",
+  "glb": "hf_hyp_tiling_5_4.glb",
+  "viewport_mp4": "../../videos/scripting/python-numpy-hyperbolic-poincare-disk-tiling-5-4-triangle-group-stage-floor-webxr/viewport.mp4",
+  "screen_mp4": "../../videos/scripting/python-numpy-hyperbolic-poincare-disk-tiling-5-4-triangle-group-stage-floor-webxr/screen.mp4",
+  "shape_keys": ["Basis", "SK_Dome", "SK_Bowl", "SK_Ripple"],
+  "vertex_colour_attribute": "HypDepth",
+  "holoflow_category": "stage-floor",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "tiling_parameters": {
+    "p": 5,
+    "q": 4,
+    "schlafli": "{5,4}",
+    "vertex_angle_deg": 90.0,
+    "circumradius_disk": 0.3073,
+    "hyperbolic_circumradius": 0.6348,
+    "max_tiles": 450,
+    "disk_cutoff": 0.92,
+    "scale_m": 1.2
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr"
+    ],
+    "external": [
+      {
+        "label": "Thurston WP (1997) Three-Dimensional Geometry and Topology, §2.3 Poincaré Disk. Princeton UP. Mathematical content CC0/PD — defines the Poincaré disk model, geodesics as arcs orthogonal to the boundary, isometries as Möbius transformations in PSL(2,R), and the {p,q} tessellation conditions. Related: Thurston (1982) Three-dimensional manifolds, Kleinian groups and hyperbolic geometry. Bulletin AMS 6:357–381.",
+        "url": "https://press.princeton.edu/books/hardcover/9780691083049/three-dimensional-geometry-and-topology-volume-1",
+        "licence": "Mathematical content Public Domain",
+        "author": "William P. Thurston"
+      },
+      {
+        "label": "Coxeter HSM (1954) Regular honeycombs in hyperbolic space. Proc. ICM Amsterdam 3:155–169. CC0/Public Domain — introduces the notation and enumeration of {p,q,r} and {p,q} hyperbolic tessellations, proves (p−2)(q−2)>4 for the hyperbolic case, gives circumradius and inradius formulas via Napier's rules for right spherical triangles (adapted to H²). Related: Coxeter (1956) On Laves' graph of girth ten; Coxeter-Dynkin diagrams for reflection groups.",
+        "url": "https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1954.3/ICM1954.3.ocr.pdf",
+        "licence": "Public Domain",
+        "author": "H.S.M. Coxeter"
+      },
+      {
+        "label": "NumPy Developers (2020) Array programming with NumPy. Nature 585:357–362. BSD-3-Clause — https://numpy.org — complex-number array arithmetic for Möbius transformations; np.conj, np.angle, np.exp for the three-step reflection; math.atanh for hyperbolic distance. Related: https://github.com/numpy/numpy.",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}
