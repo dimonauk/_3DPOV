@@ -1,0 +1,72 @@
+{
+  "slug": "python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "generated_by": "blueprint.py",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr/hf_lissajous_poi.blend",
+      "type": "blend",
+      "description": "Blender 5.1 scene: Lissajous knot tube mesh with five shape keys and vertex colour attribute"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr/hf_lissajous_poi.glb",
+      "type": "glb",
+      "description": "Draco-6 compressed GLB with WebP textures, morph targets (shape keys), FLOAT_COLOR vertex colours, +Y-up"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "description": "90-frame OpenGL viewport render: orbit + Basis→Trefoil→Basis morph at 30 fps, 1920×1080",
+      "generated_by": "record.py"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording: shape key scrubbing, vertex colour attribute, GLB export walkthrough",
+      "generated_by": "operator (see SCREEN-RECORDING-NOTES.md)"
+    }
+  ],
+  "mesh_stats": {
+    "N_CURVE": 600,
+    "N_TUBE": 12,
+    "vertices": 7200,
+    "quads": 7200,
+    "shape_keys": ["Basis", "SK_Trefoil", "SK_Cinquefoil", "SK_Nine", "SK_Twelve"],
+    "colour_attribute": "Col",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Lissajous knots",
+        "authors": "Bogle MGV, Hearst JE, Jones VFR, Stoilov LI",
+        "year": 1994,
+        "journal": "Journal of Knot Theory and Its Ramifications",
+        "doi": "10.1142/S0218216594000095",
+        "licence": "math-PD (pre-1996)"
+      },
+      {
+        "title": "Chebyshev knots",
+        "authors": "Koseleff P-V, Pecker D",
+        "year": 2011,
+        "arxiv": "0812.1089",
+        "url": "https://arxiv.org/abs/0812.1089",
+        "licence": "arXiv open access"
+      },
+      {
+        "title": "NumPy array programming",
+        "authors": "NumPy Developers",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
