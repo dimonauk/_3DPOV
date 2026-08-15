@@ -577,6 +577,7 @@ import { entry as blenderTutorialPythonNumpyTorusKnotTpqBraidWordSeifertFiberBis
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8TriplexAlgebraWhiteNylanderFractalPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyLissajousKnotsChebyshevAmphichiralBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyDiniSurfacePseudosphereSineGordonKinkTractrixPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr";
+import { entry as blenderTutorialPythonNumpyMengerSpongeLevel3HausdorffFractalVoidCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-menger-sponge-level3-hausdorff-fractal-void-cage-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1161,6 +1162,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMandelbulbPower8TriplexAlgebraWhiteNylanderFractalPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyLissajousKnotsChebyshevAmphichiralBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyDiniSurfacePseudosphereSineGordonKinkTractrixPoiWebxrEntry,
+  blenderTutorialPythonNumpyMengerSpongeLevel3HausdorffFractalVoidCagePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
