@@ -583,6 +583,7 @@ import { entry as blenderTutorialPythonNumpyBarthSextic65NodesMiyaokaBoundIcosah
 import { entry as blenderTutorialPythonNumpyRomanSurfaceSteinerRp2WhitneyUmbrellaPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyCayleyNodalCubic4Nodes9LinesAlgebraicSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyButterflyA5GermThomBifurcationSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1173,6 +1174,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyRomanSurfaceSteinerRp2WhitneyUmbrellaPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyCayleyNodalCubic4Nodes9LinesAlgebraicSurfacePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyButterflyA5GermThomBifurcationSurfacePoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

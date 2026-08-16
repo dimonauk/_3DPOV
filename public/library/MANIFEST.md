@@ -756,3 +756,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-16 | blend + glb | scripting | python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr | 5.1 | CC0 | hf_cayley_cubic.blend · hf_cayley_cubic.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr |
 
 | 2026-08-16 | blend + glb | scripting | python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr | 5.1 | CC0 | hf_butterfly_a5.blend · hf_butterfly_a5.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr |
+
+| 2026-08-16 | blend + glb | scripting | python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr | 5.1 | CC0 | hf_gauss_bonnet_torus.blend · hf_gauss_bonnet_torus.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr |
