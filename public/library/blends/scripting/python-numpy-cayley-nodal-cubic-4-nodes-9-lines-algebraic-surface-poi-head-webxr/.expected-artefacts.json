@@ -1,0 +1,63 @@
+{
+  "slug": "python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr",
+  "blender_version": "5.1",
+  "artefacts": [
+    "hf_cayley_cubic.blend",
+    "hf_cayley_cubic.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "../../../../../../videos/scripting/python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr/viewport.mp4",
+    "../../../../../../videos/scripting/python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Holoflow tutorial: Kummer Quartic (degree 4, 16 nodes, K3 surface, tetrahedral symmetry)",
+        "url": "/tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Barth Sextic (degree 6, 65 nodes, Miyaoka bound, icosahedral symmetry)",
+        "url": "/tutorials/blender-tutorial-python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Clebsch Diagonal Cubic (smooth degree-3, 27 lines, E₆ root system)",
+        "url": "/tutorials/blender-tutorial-python-numpy-clebsch-diagonal-cubic-27-lines-algebraic-surface-stage-floor-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Boy Surface (smooth RP² immersion — contrasts with Cayley's singular cubic)",
+        "url": "/tutorials/blender-tutorial-python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Schwarz P/D/Gyroid TPMS — marching-tetrahedra technique shared with this blueprint",
+        "url": "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr"
+      }
+    ],
+    "outside_sources": [
+      {
+        "label": "Cayley A (1849) On the triple tangent planes of surfaces of the third order. Cambridge & Dublin Mathematical Journal 4:118–132. Mathematical content is public domain.",
+        "licence": "PD"
+      },
+      {
+        "label": "Segre C (1887) Étude des différentes surfaces du quatrième ordre à conique double ou cuspidale. Mathematische Annalen 24:313–444 — classification of singular cubic surfaces and 9-line count. Mathematical content is public domain.",
+        "licence": "PD"
+      },
+      {
+        "label": "NumPy Developers (2020) Array programming with NumPy. Nature 585:357–362. BSD-3-Clause.",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  },
+  "mesh_stats": {
+    "expected_vertices_approx": 30000,
+    "expected_faces_approx": 60000,
+    "nodes": 4,
+    "degree": 3,
+    "symmetry_group": "S4",
+    "symmetry_order": 24,
+    "lines": 9
+  }
+}
