@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "files": {
+    "blend":    "public/library/blends/scripting/python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr/hf_butterfly_a5.blend",
+    "glb":      "public/library/blends/scripting/python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr/hf_butterfly_a5.glb",
+    "viewport": "public/library/videos/scripting/python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr/screen.mp4"
+  },
+  "expected_vertex_count": 4800,
+  "expected_face_count":   4661,
+  "expected_shape_keys":   3,
+  "expected_glb_kb_max":   120,
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-swallowtail-catastrophe-a4-germ-thom-discriminant-surface-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-cayley-nodal-cubic-4-nodes-9-lines-algebraic-surface-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://archive.org/details/structuralstabil0000thom",
+        "title": "Thom, René (1972). Stabilité Structurelle et Morphogenèse",
+        "licence": "Public Domain (mathematical content — uncopyrightable facts and theorems)",
+        "author": "René Thom",
+        "related_projects": [
+          "https://doi.org/10.1007/BF01077644",
+          "https://www.jstor.org/stable/24902788"
+        ]
+      },
+      {
+        "url": "https://numpy.org/doc/stable/",
+        "title": "NumPy Reference Documentation",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors",
+        "related_projects": [
+          "https://github.com/numpy/numpy",
+          "https://scipy.org"
+        ]
+      }
+    ]
+  }
+}
