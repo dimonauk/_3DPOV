@@ -1,0 +1,61 @@
+{
+  "slug": "python-numpy-scipy-wulff-crystal-equilibrium-morphology-halfspace-poi-webxr",
+  "blender_version": "5.1",
+  "category": "poi-head",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_wulff_crystal.blend",
+    "hf_wulff_crystal.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-scipy-wulff-crystal-equilibrium-morphology-halfspace-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-scipy-wulff-crystal-equilibrium-morphology-halfspace-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-scipy-oloid-convex-hull-schatz-1929-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-reuleaux-tetrahedron-four-sphere-intersection-meissner-constant-width-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "author": "Wulff G",
+        "year": 1901,
+        "title": "Zur Frage der Geschwindigkeit des Wachsthums und der Auflösung der Krystallflächen",
+        "journal": "Zeitschrift für Krystallographie und Mineralogie",
+        "volume": "34",
+        "pages": "449-530",
+        "licence": "PD",
+        "url": "https://www.biodiversitylibrary.org/page/35535673"
+      },
+      {
+        "author": "Curie P",
+        "year": 1885,
+        "title": "Sur la formation des cristaux et sur les constantes capillaires de leurs différentes faces",
+        "journal": "Bulletin de la Société minéralogique de France",
+        "volume": "8",
+        "pages": "145-150",
+        "licence": "PD",
+        "url": "https://archive.org/details/bulletindelasoci08soci/page/145"
+      },
+      {
+        "author": "SciPy Developers",
+        "year": 2020,
+        "title": "SciPy 1.0: Fundamental algorithms for scientific computing in Python",
+        "journal": "Nature Methods",
+        "volume": "17",
+        "pages": "261-272",
+        "licence": "BSD-3-Clause",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.HalfspaceIntersection.html"
+      }
+    ]
+  },
+  "tutorial_url": "/tutorials/blender-tutorial-python-numpy-scipy-wulff-crystal-equilibrium-morphology-halfspace-poi-webxr"
+}

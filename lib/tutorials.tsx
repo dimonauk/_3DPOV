@@ -1,3 +1,4 @@
+import { entry as blenderTutorialPythonNumpyScipyWulffCrystalEquilibriumMorphologyHalfspacePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-wulff-crystal-equilibrium-morphology-halfspace-poi-webxr";
 import { entry as buildingAPovLedRigEntry } from "components/tutorials/entries/building-a-pov-led-rig";
 import { entry as calibratingTheImageprografPro1100Entry } from "components/tutorials/entries/calibrating-the-imageprograf-pro-1100";
 import { entry as editioningASingleExposureEntry } from "components/tutorials/entries/editioning-a-single-exposure";
@@ -1181,6 +1182,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliSymbolFourRegularStarPoiWebxrEntry,
   blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry,
   blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSilverRatioMultigridStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyScipyWulffCrystalEquilibriumMorphologyHalfspacePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
