@@ -1,0 +1,65 @@
+{
+  "slug": "python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_diff_growth.blend",
+    "hf_diff_growth.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr",
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr",
+      "/tutorials/blender-tutorial-python-numpy-space-colonisation-algorithm-branching-coral-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/jasonwebb/morphogenesis-resources",
+        "title": "Jason Webb — Morphogenesis Resources: comprehensive MIT-licenced compendium of growth algorithms including differential growth",
+        "licence": "MIT",
+        "author": "Jason Webb"
+      },
+      {
+        "url": "https://n-e-r-v-o-u-s.com/blog/?p=1830",
+        "title": "Nervous System — Differential Growth explorations (CC0 art, educational blog post by Jesse Louis-Rosenberg & Jessica Rosenkrantz)",
+        "licence": "CC0",
+        "author": "Jesse Louis-Rosenberg, Jessica Rosenkrantz (Nervous System)"
+      },
+      {
+        "url": "https://gdz.sub.uni-goettingen.de/id/PPN35283028X_0006",
+        "title": "Gauss, C.F. (1827). Disquisitiones generales circa superficies curvas. Theorema Egregium — intrinsic curvature, public domain.",
+        "licence": "Public Domain",
+        "author": "Carl Friedrich Gauss"
+      }
+    ]
+  },
+  "console_checks": [
+    "Seed:",
+    "Running 160 growth steps",
+    "Final mesh:",
+    "Exported"
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "textures": "WebP",
+    "yup": true,
+    "morph_targets": false
+  },
+  "simulation": {
+    "n_steps": 160,
+    "growth_boundary": 0.016,
+    "growth_interior": 0.004,
+    "growth_ratio": 4.0,
+    "smooth_factor": 0.40,
+    "smooth_iters": 3,
+    "max_edge_len": 0.20,
+    "expected_final_verts_approx": 5200
+  }
+}

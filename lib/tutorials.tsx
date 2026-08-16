@@ -585,6 +585,7 @@ import { entry as blenderTutorialPythonNumpyCayleyNodalCubic4Nodes9LinesAlgebrai
 import { entry as blenderTutorialPythonNumpyButterflyA5GermThomBifurcationSurfacePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-butterfly-catastrophe-a5-germ-thom-bifurcation-surface-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr";
 import { entry as blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliSymbolFourRegularStarPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr";
+import { entry as blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1177,6 +1178,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyButterflyA5GermThomBifurcationSurfacePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry,
   blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliSymbolFourRegularStarPoiWebxrEntry,
+  blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
