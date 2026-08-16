@@ -1,0 +1,56 @@
+{
+  "generated": [
+    "hf_roman_surface.blend",
+    "hf_roman_surface.glb"
+  ],
+  "recorded": [
+    "../../../../videos/scripting/python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Boy Surface — Werner Boy's 1901 smooth RP² immersion (complementary)",
+        "path": "/tutorials/blender-tutorial-python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr"
+      },
+      {
+        "label": "Klein Bottle — Euler χ=0 non-orientable surface",
+        "path": "/tutorials/blender-tutorial-python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr"
+      },
+      {
+        "label": "Kummer Quartic — degree-4 algebraic surface with 16 nodes",
+        "path": "/tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr"
+      },
+      {
+        "label": "Barth Sextic — degree-6 algebraic surface, 65 real nodes",
+        "path": "/tutorials/blender-tutorial-python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr"
+      }
+    ],
+    "external": [
+      {
+        "label": "Steiner J (1844) 'Questions proposées', Nouvelles Annales de Mathématiques 3",
+        "url": "https://www.numdam.org/item/NAM_1844__3__1_0/",
+        "licence": "Public Domain"
+      },
+      {
+        "label": "NumPy Developers — Array programming with NumPy, Nature 585 (2020)",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      },
+      {
+        "label": "3D-XplorMath Consortium — Virtual Mathematics Museum (Roman surface entry)",
+        "url": "https://3d-xplormath.org",
+        "licence": "MIT"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "mesh_stats": {
+    "vertices": 6400,
+    "quads": 6241,
+    "triangles_approx": 12482
+  },
+  "shape_keys": ["Basis", "SK_Oblate", "SK_Elongate", "SK_Compact"],
+  "holoflow_category": "poi-head",
+  "licence": "CC0"
+}

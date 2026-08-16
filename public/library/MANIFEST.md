@@ -750,3 +750,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-15 | blend + glb | scripting | python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr | 5.1 | CC0 | hf_klein_bottle.blend · hf_klein_bottle.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr |
 
 | 2026-08-16 | blend + glb | scripting | python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr | 5.1 | CC0 | hf_barth_sextic.blend · hf_barth_sextic.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr |
+
+| 2026-08-16 | blend + glb | scripting | python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr | 5.1 | CC0 | hf_roman_surface.blend · hf_roman_surface.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr |

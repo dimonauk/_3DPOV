@@ -580,6 +580,7 @@ import { entry as blenderTutorialPythonNumpyDiniSurfacePseudosphereSineGordonKin
 import { entry as blenderTutorialPythonNumpyMengerSpongeLevel3HausdorffFractalVoidCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-menger-sponge-level3-hausdorff-fractal-void-cage-poi-webxr";
 import { entry as blenderTutorialPythonNumpyKleinBottleFigure8TubeEulerChi0NonOrientablePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyBarthSextic65NodesMiyaokaBoundIcosahedralSymmetryPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyRomanSurfaceSteinerRp2WhitneyUmbrellaPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-roman-surface-steiner-rp2-whitney-umbrella-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1167,6 +1168,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMengerSpongeLevel3HausdorffFractalVoidCagePoiWebxrEntry,
   blenderTutorialPythonNumpyKleinBottleFigure8TubeEulerChi0NonOrientablePoiHeadWebxrEntry,
   blenderTutorialPythonNumpyBarthSextic65NodesMiyaokaBoundIcosahedralSymmetryPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyRomanSurfaceSteinerRp2WhitneyUmbrellaPoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
