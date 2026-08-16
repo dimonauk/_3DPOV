@@ -586,6 +586,7 @@ import { entry as blenderTutorialPythonNumpyButterflyA5GermThomBifurcationSurfac
 import { entry as blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr";
 import { entry as blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliSymbolFourRegularStarPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr";
 import { entry as blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr";
+import { entry as blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSilverRatioMultigridStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1179,6 +1180,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyGaussBonnetAngleDefectDiscreteCurvatureTorusPoiWebxrEntry,
   blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliSymbolFourRegularStarPoiWebxrEntry,
   blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry,
+  blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSilverRatioMultigridStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
