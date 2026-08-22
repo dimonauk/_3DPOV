@@ -1,0 +1,53 @@
+{
+  "blend": "hf_gyroid.blend",
+  "glb": "hf_gyroid.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "grid_resolution": 60,
+  "domain": "[-2π, 2π]³",
+  "shape_keys": ["Basis", "SK_LevelP4", "SK_LevelN4"],
+  "colour_attributes": ["Gyroid_Nz"],
+  "poi_object": "hf_gyroid",
+  "holoflow_facet": true,
+  "space_group": "Ia-3d",
+  "genus_per_unit_cell": 3,
+  "h_min": true,
+  "export": {
+    "draco_compression_level": 6,
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true
+  },
+  "cross_references": {
+    "enneper_surface": "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr",
+    "differential_growth": "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr",
+    "mean_curvature_flow": "/tutorials/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr"
+  },
+  "outside_sources": [
+    {
+      "author": "Schoen AH",
+      "year": 1970,
+      "title": "Infinite Periodic Minimal Surfaces Without Self-Intersections",
+      "report": "NASA Technical Note D-5541",
+      "licence": "public-domain (US government work)",
+      "url": "https://ntrs.nasa.gov/citations/19700020490"
+    },
+    {
+      "author": "Lord EA, Mackay AL",
+      "year": 2003,
+      "title": "Periodic minimal surfaces of cubic symmetry",
+      "journal": "Current Science",
+      "volume": "85(3)",
+      "pages": "346-362",
+      "licence": "open-access",
+      "url": "https://www.currentscience.ac.in/Volumes/85/03/0346.pdf"
+    },
+    {
+      "name": "NumPy",
+      "licence": "BSD-3-Clause",
+      "url": "https://numpy.org/"
+    }
+  ]
+}
