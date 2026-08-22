@@ -600,6 +600,7 @@ import { entry as blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDe
 import { entry as blenderTutorialPythonNumpyMiuraOriRigidOrigamiKawasakiFlatFoldAuxeticPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-miura-ori-rigid-origami-kawasaki-flat-fold-auxetic-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-3d-hilbert-space-filling-curve-moore-1900-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCheckerboardSaddleTileStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1207,6 +1208,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMiuraOriRigidOrigamiKawasakiFlatFoldAuxeticPoiDiscWebxrEntry,
   blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCheckerboardSaddleTileStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
