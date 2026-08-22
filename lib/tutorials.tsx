@@ -595,6 +595,7 @@ import { entry as blenderTutorialPythonNumpyMathieuInceStruttStabilityDiagramFlo
 import { entry as blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr";
 import { entry as blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-willmore-flow-h2-bending-energy-conformal-invariant-marques-neves-poi-webxr";
+import { entry as blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1197,6 +1198,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry,
   blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry,
+  blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
