@@ -594,6 +594,7 @@ import { entry as blenderTutorialPythonNumpyBunimovichStadiumErgodicBilliardPoin
 import { entry as blenderTutorialPythonNumpyMathieuInceStruttStabilityDiagramFloquetMonodromyPaulTrapStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr";
 import { entry as blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-willmore-flow-h2-bending-energy-conformal-invariant-marques-neves-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1195,6 +1196,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMathieuInceStruttStabilityDiagramFloquetMonodromyPaulTrapStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry,
   blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

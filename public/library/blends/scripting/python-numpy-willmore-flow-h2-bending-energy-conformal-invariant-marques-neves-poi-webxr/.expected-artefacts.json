@@ -1,0 +1,71 @@
+{
+  "blend": "hf_willmore_torus.blend",
+  "glb": "hf_willmore_torus.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "vertices": 1800,
+  "triangles": 7200,
+  "shape_keys": ["Basis", "SK_Step015", "SK_Step040", "SK_Step070", "SK_Step120"],
+  "colour_attributes": ["Willmore_Density"],
+  "poi_object": "Willmore_Torus",
+  "holoflow_facet": true,
+  "torus_R": 1.0,
+  "torus_r": 0.45,
+  "flow_steps": 120,
+  "dt": 8e-6,
+  "initial_W_approx": "computed at runtime",
+  "W_minimum_bound": "2π² ≈ 19.739 (Marques-Neves 2012)",
+  "export": {
+    "draco_compression_level": 6,
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true
+  },
+  "cross_references": {
+    "mean_curvature_flow": "/tutorials/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr",
+    "gauss_bonnet": "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr",
+    "dupin_cyclide": "/tutorials/blender-tutorial-python-numpy-dupin-cyclide-ring-horn-spindle-principal-curvature-circle-poi-webxr",
+    "mobius_transformation": "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr"
+  },
+  "outside_sources": [
+    {
+      "author": "Marques FC & Neves A",
+      "year": 2012,
+      "title": "Min-max theory and the Willmore conjecture",
+      "journal": "Annals of Mathematics",
+      "volume": 179,
+      "pages": "683-782",
+      "url": "https://arxiv.org/abs/1202.6076",
+      "licence": "CC-BY (arXiv preprint)"
+    },
+    {
+      "author": "Crane K, Pinkall U, Schröder P",
+      "year": 2013,
+      "title": "Robust fairing via conformal curvature flow",
+      "journal": "ACM Transactions on Graphics",
+      "volume": 32,
+      "issue": 4,
+      "article": 61,
+      "url": "https://www.cs.cmu.edu/~kmcrane/Projects/ConformalWillmoreFlow/",
+      "licence": "MIT",
+      "code_repo": "https://github.com/GeometryCollective/ddg-exercises"
+    },
+    {
+      "author": "Li P & Yau ST",
+      "year": 1982,
+      "title": "A new conformal invariant and its applications to the Willmore conjecture and the first eigenvalue of compact surfaces",
+      "journal": "Inventiones Mathematicae",
+      "volume": 69,
+      "pages": "269-291",
+      "doi": "10.1007/BF01399507",
+      "licence": "open-access"
+    },
+    {
+      "name": "NumPy",
+      "licence": "BSD-3-Clause",
+      "url": "https://numpy.org/"
+    }
+  ]
+}
