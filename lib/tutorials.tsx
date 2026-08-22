@@ -593,6 +593,7 @@ import { entry as blenderTutorialPythonNumpyDupinCyclideRingHornSpindlePrincipal
 import { entry as blenderTutorialPythonNumpyBunimovichStadiumErgodicBilliardPoincareSectionDensityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyMathieuInceStruttStabilityDiagramFloquetMonodromyPaulTrapStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr";
+import { entry as blenderTutorialPythonNumpySchoenGyroidTpmsChiralIa3dZeroMeanCurvaturePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-schoen-gyroid-tpms-chiral-ia3d-zero-mean-curvature-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1193,6 +1194,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyBunimovichStadiumErgodicBilliardPoincareSectionDensityPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyMathieuInceStruttStabilityDiagramFloquetMonodromyPaulTrapStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLaplacianSphereSmoothingPoiWebxrEntry,
+  blenderTutorialPythonNumpySchoenGyroidTpmsChiralIa3dZeroMeanCurvaturePoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
