@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "date": "2026-08-22",
+  "category": "scripting",
+  "type": "blend + glb",
+  "artefacts": [
+    "hf_bunimovich_poi.blend",
+    "hf_bunimovich_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Circle"],
+  "vertex_colour": "dc",
+  "export_settings": {
+    "up_axis": "+Y",
+    "draco_compression": 6,
+    "texture_format": "WEBP",
+    "apply_transforms": true,
+    "root_name": "hf_bunimovich_poi"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Bunimovich (1979) — On the ergodic properties of nowhere dispersing billiards",
+        "url": "https://doi.org/10.1007/BF01197884",
+        "licence": "academic-citation",
+        "author": "L. A. Bunimovich"
+      },
+      {
+        "title": "Birkhoff (1927) — Dynamical Systems",
+        "url": "https://www.ams.org/books/coll/009/",
+        "licence": "PD",
+        "author": "G. D. Birkhoff"
+      },
+      {
+        "title": "ChaosBook.org — Billiards chapter",
+        "url": "https://chaosbook.org",
+        "licence": "ChaosBook-CC",
+        "related_project": "https://github.com/cvitanov/reducesymm",
+        "author": "Cvitanović et al."
+      }
+    ]
+  }
+}

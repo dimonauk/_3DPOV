@@ -590,6 +590,7 @@ import { entry as blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSi
 import { entry as blenderTutorialPythonNumpyGoldbergPolyhedraGp11C60TruncatedIcosahedronHexagonalCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-goldberg-polyhedra-gp11-c60-truncated-icosahedron-hexagonal-cage-poi-webxr";
 import { entry as blenderTutorialPythonNumpyEnneperSurfaceWeierstrassRepresentationMinimalGaussCurvatureSaddlePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr";
 import { entry as blenderTutorialPythonNumpyDupinCyclideRingHornSpindlePrincipalCurvatureCirclePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dupin-cyclide-ring-horn-spindle-principal-curvature-circle-poi-webxr";
+import { entry as blenderTutorialPythonNumpyBunimovichStadiumErgodicBilliardPoincareSectionDensityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1187,6 +1188,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyGoldbergPolyhedraGp11C60TruncatedIcosahedronHexagonalCagePoiWebxrEntry,
   blenderTutorialPythonNumpyEnneperSurfaceWeierstrassRepresentationMinimalGaussCurvatureSaddlePoiWebxrEntry,
   blenderTutorialPythonNumpyDupinCyclideRingHornSpindlePrincipalCurvatureCirclePoiWebxrEntry,
+  blenderTutorialPythonNumpyBunimovichStadiumErgodicBilliardPoincareSectionDensityPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
