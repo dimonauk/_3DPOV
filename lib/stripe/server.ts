@@ -288,6 +288,118 @@ export function verifyWebhookSignature(
   return false;
 }
 
+// ──────────────────────────────────────────────────────────────────────────────
+// Rookery Subscription Checkout Session
+// ──────────────────────────────────────────────────────────────────────────────
+
+export type RookeryTierSlug = "perch" | "nest" | "fledge";
+
+export type CreateCheckoutSessionInput = {
+  tierSlug: RookeryTierSlug;
+  customerEmail: string;
+  successUrl: string;
+  cancelUrl: string;
+};
+
+export type CheckoutSessionResult = {
+  id: string;
+  url: string;
+};
+
+const TIER_META: Record<
+  RookeryTierSlug,
+  { name: string; amountPence: number; recurring: boolean }
+> = {
+  perch: { name: "Rookery — Perch", amountPence: 600, recurring: true },
+  nest: { name: "Rookery — Nest", amountPence: 1200, recurring: true },
+  fledge: {
+    name: "Rookery — Fledge (Founding Member)",
+    amountPence: 7500,
+    recurring: false,
+  },
+};
+
+/**
+ * Create a Stripe Checkout Session for a Rookery subscription tier.
+ *
+ * Uses pre-created Stripe Price IDs when the env vars are set
+ * (STRIPE_PRICE_PERCH / STRIPE_PRICE_NEST / STRIPE_PRICE_FLEDGE).
+ * Falls back to inline price_data so the flow works without pre-created
+ * products (useful during initial setup).
+ *
+ * The session carries `metadata.kind = "rookery"` and `metadata.tierSlug`
+ * so the webhook can route `checkout.session.completed` correctly.
+ */
+export async function createCheckoutSession(
+  input: CreateCheckoutSessionInput,
+): Promise<CheckoutSessionResult> {
+  if (!isConfigured()) {
+    throw Object.assign(
+      new Error(
+        "STRIPE_SECRET_KEY not set. Add it in Vercel project env (Production + Preview).",
+      ),
+      { code: "service-unavailable" as const },
+    );
+  }
+
+  const tier = TIER_META[input.tierSlug];
+  const priceEnvKey = `STRIPE_PRICE_${input.tierSlug.toUpperCase()}` as keyof NodeJS.ProcessEnv;
+  const priceId = process.env[priceEnvKey] as string | undefined;
+
+  const params = new URLSearchParams();
+  params.set("mode", tier.recurring ? "subscription" : "payment");
+  params.set("customer_email", input.customerEmail);
+  params.set("success_url", input.successUrl);
+  params.set("cancel_url", input.cancelUrl);
+  params.set("metadata[tierSlug]", input.tierSlug);
+  params.set("metadata[kind]", "rookery");
+
+  if (priceId) {
+    params.set("line_items[0][price]", priceId);
+    params.set("line_items[0][quantity]", "1");
+  } else {
+    params.set("line_items[0][quantity]", "1");
+    params.set("line_items[0][price_data][currency]", "gbp");
+    params.set("line_items[0][price_data][product_data][name]", tier.name);
+    params.set("line_items[0][price_data][unit_amount]", String(tier.amountPence));
+    if (tier.recurring) {
+      params.set("line_items[0][price_data][recurring][interval]", "month");
+    }
+  }
+
+  const res = await fetch(`${STRIPE_API_BASE}/checkout/sessions`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY!}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Stripe-Version": "2024-12-18.acacia",
+    },
+    body: params.toString(),
+  });
+
+  const json = (await res.json()) as {
+    id?: string;
+    url?: string;
+    error?: { message?: string };
+  };
+
+  if (!res.ok || !json.id || !json.url) {
+    log.error("createCheckoutSession failed", {
+      status: res.status,
+      error: json.error?.message,
+    });
+    throw Object.assign(
+      new Error(`Stripe ${res.status}: ${json.error?.message ?? "unknown"}`),
+      { code: "stripe-error" as const },
+    );
+  }
+
+  log.info("checkout session created", { id: json.id, tier: input.tierSlug });
+  return { id: json.id, url: json.url };
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+
 /**
  * Retrieve a Payment Intent by id. Used by the checkout page to get
  * the `client_secret` after the order route created the PI.

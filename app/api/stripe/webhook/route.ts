@@ -36,6 +36,8 @@ import {
   sendCustomerReceipt,
   sendOperatorNotification,
 } from "lib/bureau/order-emails";
+import { getFirebaseAdminAuth, getFirebaseAdminDb } from "lib/firebase/admin";
+import { sendRookeryEmail } from "lib/rookery/mailer";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +76,12 @@ export async function POST(req: Request): Promise<Response> {
       break;
     case "charge.refunded":
       await onChargeRefunded(event);
+      break;
+    case "checkout.session.completed":
+      await onCheckoutSessionCompleted(event);
+      break;
+    case "customer.subscription.deleted":
+      await onSubscriptionDeleted(event);
       break;
     default:
       log.info("event type not handled", { type: event.type });
@@ -165,4 +173,135 @@ async function onChargeRefunded(event: StripeEvent): Promise<void> {
   // TODO: lookup order by PI id, transition status to "refunded",
   // notify operator. Skip if order is already shipped (operator handles
   // refund-after-ship manually because of return logistics).
+}
+
+/**
+ * Grant Rookery access after a successful Checkout Session.
+ *
+ * Fired for both one-time (Fledge) and subscription (Perch, Nest) payments.
+ * We write the subscription record to Firestore and set a Firebase Auth
+ * custom claim so subsequent ID token refreshes carry the tier.
+ */
+async function onCheckoutSessionCompleted(event: StripeEvent): Promise<void> {
+  const session = event.data?.object as
+    | {
+        id?: string;
+        customer_email?: string;
+        customer_details?: { email?: string };
+        metadata?: Record<string, string>;
+        subscription?: string;
+      }
+    | undefined;
+
+  const kind = session?.metadata?.kind;
+  if (kind !== "rookery") {
+    // Not a Rookery checkout — handled by payment_intent.succeeded instead.
+    return;
+  }
+
+  const email = session?.customer_email ?? session?.customer_details?.email;
+  const tierSlug = session?.metadata?.tierSlug ?? "perch";
+  const sessionId = session?.id ?? "unknown";
+  const subscriptionId = session?.subscription;
+
+  log.info("rookery checkout.session.completed", { email, tierSlug, sessionId });
+
+  // 1. Write Firestore subscription record (keyed by email — no uid yet).
+  const db = getFirebaseAdminDb();
+  if (db && email) {
+    try {
+      await db.collection("rookery_subscriptions").doc(email).set(
+        {
+          tier: tierSlug,
+          status: "active",
+          stripeSessionId: sessionId,
+          stripeSubscriptionId: subscriptionId ?? null,
+          grantedAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        },
+        { merge: true },
+      );
+      log.info("rookery subscription written to Firestore", { email, tier: tierSlug });
+    } catch (err) {
+      log.error("Firestore write failed for rookery subscription", {
+        email,
+        err: errToObject(err),
+      });
+    }
+  }
+
+  // 2. Set Firebase Auth custom claim on the user (if account exists).
+  const auth = getFirebaseAdminAuth();
+  if (auth && email) {
+    try {
+      const user = await auth.getUserByEmail(email);
+      await auth.setCustomUserClaims(user.uid, { rookeryTier: tierSlug });
+      log.info("rookery custom claim set", { uid: user.uid, tier: tierSlug });
+    } catch (err) {
+      // User may not have a Firebase account yet — they might sign up later.
+      // The Firestore record is the fallback truth source.
+      log.warn("could not set custom claim (user may not exist yet)", {
+        email,
+        err: errToObject(err),
+      });
+    }
+  }
+
+  // 3. Send welcome email via rookery mailer.
+  if (email) {
+    try {
+      await sendRookeryEmail({
+        to: email,
+        slug: "welcome",
+        vars: { tier: tierSlug },
+      });
+      log.info("rookery welcome email sent", { email });
+    } catch (err) {
+      log.warn("welcome email failed", { email, err: errToObject(err) });
+    }
+  }
+}
+
+/**
+ * Revoke Rookery access when a subscription is cancelled.
+ */
+async function onSubscriptionDeleted(event: StripeEvent): Promise<void> {
+  const sub = event.data?.object as
+    | { id?: string; customer?: string; metadata?: Record<string, string> }
+    | undefined;
+
+  log.info("customer.subscription.deleted", { subscriptionId: sub?.id });
+
+  const db = getFirebaseAdminDb();
+  if (!db || !sub?.id) return;
+
+  // Find the subscription record by Stripe subscription ID.
+  try {
+    const snapshot = await db
+      .collection("rookery_subscriptions")
+      .where("stripeSubscriptionId", "==", sub.id)
+      .limit(1)
+      .get();
+
+    if (snapshot.empty) {
+      log.warn("no Firestore record for deleted subscription", { subscriptionId: sub.id });
+      return;
+    }
+
+    const doc = snapshot.docs[0];
+    const email = doc.id;
+    await doc.ref.update({ status: "cancelled", updatedAt: new Date().toISOString() });
+    log.info("rookery subscription marked cancelled", { email, subscriptionId: sub.id });
+
+    // Remove custom claim.
+    const auth = getFirebaseAdminAuth();
+    if (auth && email) {
+      const user = await auth.getUserByEmail(email).catch(() => null);
+      if (user) {
+        await auth.setCustomUserClaims(user.uid, { rookeryTier: null });
+      }
+    }
+  } catch (err) {
+    log.error("onSubscriptionDeleted failed", { err: errToObject(err) });
+  }
 }
