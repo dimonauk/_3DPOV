@@ -588,6 +588,7 @@ import { entry as blenderTutorialPythonNumpyKeplerPoinsotStarPolyhedraSchlaefliS
 import { entry as blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr";
 import { entry as blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSilverRatioMultigridStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyGoldbergPolyhedraGp11C60TruncatedIcosahedronHexagonalCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-goldberg-polyhedra-gp11-c60-truncated-icosahedron-hexagonal-cage-poi-webxr";
+import { entry as blenderTutorialPythonNumpyEnneperSurfaceWeierstrassRepresentationMinimalGaussCurvatureSaddlePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1183,6 +1184,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyDifferentialGrowthLaplacianSmoothRufflePoiWebxrEntry,
   blenderTutorialPythonNumpyAmmannBeenkerOctagonalQuasicrystalSilverRatioMultigridStageFloorWebxrEntry,
   blenderTutorialPythonNumpyGoldbergPolyhedraGp11C60TruncatedIcosahedronHexagonalCagePoiWebxrEntry,
+  blenderTutorialPythonNumpyEnneperSurfaceWeierstrassRepresentationMinimalGaussCurvatureSaddlePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
