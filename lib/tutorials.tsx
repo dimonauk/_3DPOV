@@ -597,6 +597,7 @@ import { entry as blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4Bisho
 import { entry as blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-willmore-flow-h2-bending-energy-conformal-invariant-marques-neves-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDeflationStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyChirikovStandardMapKamToriStochasticityThresholdPoincareStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1201,6 +1202,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry,
   blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDeflationStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyChirikovStandardMapKamToriStochasticityThresholdPoincareStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,73 @@
+{
+  "slug": "python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr",
+  "blender_version": "5.1",
+  "category": "stage-floor",
+  "series": "scripting",
+  "licence": "CC0",
+  "files": [
+    {
+      "path": "public/library/glbs/scripting/python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr/hf_chirikov_floor.blend",
+      "type": "blend",
+      "description": "Blender 5.1 scene with Chirikov Standard Map stage floor"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr/hf_chirikov_floor.glb",
+      "type": "glb",
+      "description": "Draco-6 compressed GLB with morph targets (five K values) and Chirikov_Density vertex colour"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr/viewport.mp4",
+      "type": "video",
+      "description": "Viewport render: shape-key morph animation cycling through K=0 → K=0.9716 → K=5.0"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-chirikov-standard-map-kam-tori-stochasticity-threshold-poincare-stage-floor-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of Blender session (see SCREEN-RECORDING-NOTES.md)"
+    }
+  ],
+  "mesh": {
+    "vertices": 9216,
+    "quads": 9025,
+    "shape_keys": ["Basis", "SK_Integrable", "SK_Partial", "SK_Chaotic", "SK_Wild"],
+    "vertex_colour_attr": "Chirikov_Density",
+    "vertex_colour_domain": "CORNER",
+    "floor_size_m": 4.0,
+    "max_height_m": 0.35,
+    "grid_resolution": 96
+  },
+  "simulation": {
+    "map": "Chirikov-Taylor standard map",
+    "K_basis": 0.9716,
+    "n_trajectories": 180,
+    "n_iterations": 3500,
+    "histogram_bins": [96, 96]
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Chirikov BV",
+        "year": 1979,
+        "title": "A universal instability of many-dimensional oscillator systems",
+        "journal": "Physics Reports 52(5):263-379",
+        "url": "https://cds.cern.ch/record/185478",
+        "licence": "CERN open institutional report"
+      },
+      {
+        "author": "Meiss JD",
+        "year": 1992,
+        "title": "Symplectic maps, variational principles, and transport",
+        "journal": "Rev. Mod. Phys. 64(3):795-848",
+        "url": "https://amath.colorado.edu/faculty/jdm/papers/SymplecticMaps.pdf",
+        "licence": "author-posted PDF"
+      }
+    ]
+  }
+}
