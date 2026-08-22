@@ -1,0 +1,60 @@
+{
+  "slug": "python-numpy-tensegrity-simplex-3prism-force-density-snelson-self-stress-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_tensegrity_t3.blend",
+    "hf_tensegrity_t3.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh_stats_expected": {
+    "node_count": 6,
+    "strut_count": 3,
+    "cable_count": 9,
+    "vertex_count": 156,
+    "shape_key_count": 3,
+    "colour_attribute": "Col",
+    "glb_size_approx_kb": 28
+  },
+  "force_density": {
+    "q_strut": -1.0,
+    "q_saddle": 1.0,
+    "q_triangle": 0.5773502691896258,
+    "nullity_D_expected": 4,
+    "rank_D_expected": 2,
+    "max_equilibrium_residual_tol": 1e-12
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-reuleaux-tetrahedron-four-sphere-intersection-meissner-constant-width-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-borromean-rings-brunnian-link-milnor-invariant-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr",
+      "/tutorials/blender-tutorial-python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-goldberg-polyhedra-gp11-c60-truncated-icosahedron-hexagonal-cage-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Snelson KD (1965) US Patent 3,169,611 — Continuous tension, discontinuous compression structures",
+        "url": "https://patents.google.com/patent/US3169611A/en",
+        "licence": "Public Domain (patent expired)",
+        "author": "Kenneth D. Snelson",
+        "related": [
+          "https://patents.google.com/patent/US2986241A (Buckminster Fuller geodesic dome)",
+          "https://www.kennethsnelson.net/"
+        ]
+      },
+      {
+        "title": "Schek H-J (1974) The force density method for form finding and computation of general networks",
+        "url": "https://doi.org/10.1016/0045-7825(74)90045-0",
+        "licence": "Academic — abstract publicly accessible",
+        "author": "Hans-Joachim Schek",
+        "related": [
+          "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigvalsh.html (BSD-3-Clause, NumPy Developers)",
+          "https://github.com/numpy/numpy"
+        ]
+      }
+    ]
+  }
+}
