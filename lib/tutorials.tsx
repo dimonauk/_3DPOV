@@ -598,6 +598,7 @@ import { entry as blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformal
 import { entry as blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDeflationStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMiuraOriRigidOrigamiKawasakiFlatFoldAuxeticPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-miura-ori-rigid-origami-kawasaki-flat-fold-auxetic-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-3d-hilbert-space-filling-curve-moore-1900-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1203,6 +1204,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDeflationStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMiuraOriRigidOrigamiKawasakiFlatFoldAuxeticPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
