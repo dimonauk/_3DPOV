@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_arnold_tongue.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/scripting/python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-physarum-slime-mould-transport-network-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr"
+    ],
+    "external": [
+      {
+        "title": "Arnol'd Standard Map — Scholarpedia",
+        "url": "http://www.scholarpedia.org/article/Arnold_standard_map",
+        "licence": "CC BY-NC-SA 3.0",
+        "author": "Jordi-Lluís Figueras, Àlex Haro, Alejandro Luque"
+      },
+      {
+        "title": "Jensen, Bak, Bohr — Transition to Chaos by Interaction of Resonances (Phys. Rev. Lett. 50, 1637, 1984)",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.50.1637",
+        "licence": "academic reference / fair use",
+        "author": "Mogens H. Jensen, Per Bak, Tomas Bohr"
+      },
+      {
+        "title": "Blender 5.1 Python API — Color Attributes",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Mesh.html#bpy.types.Mesh.color_attributes",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "notes": "blueprint.py runs in ~60 s on a modern CPU (GRID_RES=180, N_ITER=1200). GLB export requires Draco extension enabled in Blender preferences."
+}

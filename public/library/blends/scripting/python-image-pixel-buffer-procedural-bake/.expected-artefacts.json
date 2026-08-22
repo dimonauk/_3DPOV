@@ -1,0 +1,28 @@
+{
+  "blend_file": "voronoi_bake_scene.blend",
+  "output_textures": ["voronoi_bake_0001.png"],
+  "viewport_animation": "public/library/videos/scripting/python-image-pixel-buffer-procedural-bake/viewport.mp4",
+  "screen_recording": "public/library/videos/scripting/python-image-pixel-buffer-procedural-bake/screen.mp4",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-python-shader-node-group-batch-material",
+      "/tutorials/blender-tutorial-shader-procedural-marble-veins",
+      "/tutorials/blender-tutorial-gn-image-texture-heightmap-terrain"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.Image.html",
+        "title": "bpy.types.Image — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC-BY"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection.foreach_set",
+        "title": "bpy_prop_collection.foreach_set — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC-BY"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "cycles-lightmap-bake-webxr-uv2",
+  "topic": "rendering",
+  "type": "blend + glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "lightmap_room.blend",
+    "lightmap_room.glb",
+    "blueprint.py",
+    "record.py",
+    "../../videos/rendering/cycles-lightmap-bake-webxr-uv2/viewport.mp4",
+    "../../videos/rendering/cycles-lightmap-bake-webxr-uv2/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/baking.html",
+        "title": "Blender Manual — Cycles Baking",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "title": "glTF 2.0 Specification — Texture Coordinates",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_repos": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

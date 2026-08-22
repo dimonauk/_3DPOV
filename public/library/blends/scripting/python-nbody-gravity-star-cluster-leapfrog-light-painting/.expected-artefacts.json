@@ -1,0 +1,39 @@
+{
+  "slug": "python-nbody-gravity-star-cluster-leapfrog-light-painting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_nbody.blend",
+    "hf_nbody.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-double-pendulum-chaos-butterfly",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "REBOUND N-body integrator",
+        "licence": "MIT",
+        "author": "Hanno Rein & David S. Spiegel",
+        "url": "https://github.com/hannorein/rebound",
+        "related": "https://rebound.readthedocs.io/"
+      },
+      {
+        "title": "pytreegrav treecode gravity solver",
+        "licence": "MIT",
+        "author": "Mike Grudic & Lehman Garrison",
+        "url": "https://github.com/mikegrudic/pytreegrav",
+        "related": "https://github.com/mikegrudic/flathub"
+      }
+    ]
+  }
+}

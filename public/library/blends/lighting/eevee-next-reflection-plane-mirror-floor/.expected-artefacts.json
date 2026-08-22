@@ -1,0 +1,40 @@
+{
+  "slug": "eevee-next-reflection-plane-mirror-floor",
+  "topic": "lighting",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": {
+    "blend": "public/library/blends/lighting/eevee-next-reflection-plane-mirror-floor/mirror_floor_scene.blend",
+    "glb":   "public/library/glbs/lighting/eevee-next-reflection-plane-mirror-floor/mirror_floor_scene.glb",
+    "viewport_video": "public/library/videos/lighting/eevee-next-reflection-plane-mirror-floor/viewport.mp4",
+    "screen_video":   "public/library/videos/lighting/eevee-next-reflection-plane-mirror-floor/screen.mp4"
+  },
+  "scripts": [
+    "public/library/blends/lighting/eevee-next-reflection-plane-mirror-floor/blueprint.py",
+    "public/library/blends/lighting/eevee-next-reflection-plane-mirror-floor/record.py"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-next-irradiance-sphere-probe",
+      "/tutorials/blender-tutorial-eevee-light-linking-character-rig",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "title": "Three.js PMREMGenerator",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/renderers/common/PMREMGenerator.js",
+        "licence": "MIT",
+        "author": "mrdoob and Three.js contributors",
+        "related": ["@react-three/fiber", "@react-three/drei", "@pmndrs/tunnel-rat"]
+      },
+      {
+        "title": "Blender Foundation EEVEE Next Release Notes 4.2",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.2/EEVEE",
+        "licence": "CC-BY",
+        "author": "Blender Foundation",
+        "related": ["extensions.blender.org", "github.com/blender/blender"]
+      }
+    ]
+  }
+}

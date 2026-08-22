@@ -1,0 +1,34 @@
+{
+  "blend": "vrm_eye_lookat_rig.blend",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../videos/rigging/rigging-vrm-eye-look-at-damped-track/viewport.mp4",
+    "../../videos/rigging/rigging-vrm-eye-look-at-damped-track/screen.mp4"
+  ],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-rigging-action-constraint-expression-dial-vrm",
+      "/tutorials/blender-tutorial-blender-addon-vrm-format",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm",
+      "/tutorials/blender-tutorial-animation-constraints-follow-path-track-to"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/animation/constraints/tracking/damped_track.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://docs.blender.org/manual/en/5.1/animation/constraints/index.html"
+      },
+      {
+        "url": "https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/lookAt.md",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "related": "https://github.com/vrm-c/vrm-specification"
+      }
+    ]
+  }
+}

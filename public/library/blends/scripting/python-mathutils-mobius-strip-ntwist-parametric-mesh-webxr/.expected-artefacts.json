@@ -1,0 +1,38 @@
+{
+  "slug": "python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    { "path": "hf_mobius.blend", "type": "blend", "note": "Möbius strip mesh with two-tone material and solidified shell" },
+    { "path": "hf_mobius.glb",   "type": "glb",   "note": "Draco L6 compressed, WebP textures, WebXR-ready" },
+    { "path": "blueprint.py",    "type": "script" },
+    { "path": "record.py",       "type": "script" },
+    { "path": "README.md",       "type": "doc" },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "doc" },
+    { "path": "../../videos/scripting/python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr/viewport.mp4", "type": "video", "note": "Rendered by record.py" },
+    { "path": "../../videos/scripting/python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr/screen.mp4",   "type": "video", "note": "OBS screen capture" }
+  ],
+  "mesh_stats": {
+    "verts": 1573,
+    "quads": 1440,
+    "formula": "verts = THETA_SEGS × (T_SEGS+1) = 120×13; quads = THETA_SEGS × T_SEGS = 120×12"
+  },
+  "topology": {
+    "N_TWISTS": 1,
+    "orientable": false,
+    "boundary_loops": 1,
+    "euler_characteristic": "χ=V−E+F=1573−(1440+120×13)−1440=... for thin strip: χ=0 (genus-1 with one boundary)"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-shader-to-rgb-halftone-cel-shade-webxr",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "external": [
+      { "title": "Paul Bourke — Möbius Strip", "url": "http://paulbourke.net/geometry/mobius/", "licence": "freeware" },
+      { "title": "Wikipedia — Möbius strip", "url": "https://en.wikipedia.org/wiki/M%C3%B6bius_strip", "licence": "CC BY-SA 4.0" }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "python-nla-track-strip-action-library-vrm-pose-blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "blends/scripting/python-nla-track-strip-action-library-vrm-pose-blend/blueprint.py", "type": "script" },
+    { "path": "blends/scripting/python-nla-track-strip-action-library-vrm-pose-blend/record.py",    "type": "script" },
+    { "path": "blends/scripting/python-nla-track-strip-action-library-vrm-pose-blend/README.md",    "type": "doc" },
+    { "path": "blends/scripting/python-nla-track-strip-action-library-vrm-pose-blend/SCREEN-RECORDING-NOTES.md", "type": "doc" },
+    { "path": "glbs/scripting/python-nla-track-strip-action-library-vrm-pose-blend/vrm_pose_lib.glb", "type": "binary", "generated_by": "blueprint.py" },
+    { "path": "videos/scripting/python-nla-track-strip-action-library-vrm-pose-blend/viewport.mp4",   "type": "binary", "generated_by": "record.py" },
+    { "path": "videos/scripting/python-nla-track-strip-action-library-vrm-pose-blend/screen.mp4",     "type": "binary", "generated_by": "manual-obs" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain",
+      "/tutorials/blender-tutorial-python-bpy-driver-bone-rotation-shape-key-corrective-blend",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NlaTrack.html",
+        "title": "bpy.types.NlaTrack API Reference (5.1)",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-4.0"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NlaStrip.html",
+        "title": "bpy.types.NlaStrip API Reference (5.1)",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-4.0"
+      }
+    ]
+  }
+}

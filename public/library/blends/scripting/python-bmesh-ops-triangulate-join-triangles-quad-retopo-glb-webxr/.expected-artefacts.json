@@ -1,0 +1,39 @@
+{
+  "blend": "hf_shield_disc.blend",
+  "glb": "hf_shield_disc.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../../../videos/scripting/python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-bridge-loops-tunnel-port-socket-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-grid-fill-quad-patch-display-panel-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-face-region-panel-push-control-deck-webxr"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "title": "bmesh.ops API Reference — Blender 5.1",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/5.1/bmesh.types.html"
+        ]
+      },
+      {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#meshes",
+        "title": "glTF 2.0 Specification — Mesh Primitives",
+        "licence": "CC-BY-4.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Blender-IO",
+          "https://github.com/KhronosGroup/glTF"
+        ]
+      }
+    ]
+  }
+}

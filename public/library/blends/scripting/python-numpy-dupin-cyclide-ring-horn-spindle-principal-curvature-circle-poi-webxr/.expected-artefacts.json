@@ -1,0 +1,89 @@
+{
+  "slug": "python-numpy-dupin-cyclide-ring-horn-spindle-principal-curvature-circle-poi-webxr",
+  "blend": "hf_cyclide_poi.blend",
+  "glb": "hf_cyclide_poi.glb",
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "mesh": {
+    "vertices": 5184,
+    "faces": 5184,
+    "face_type": "quad",
+    "wrap_around": true,
+    "shape_keys": ["Basis", "SK_Wide", "SK_Spindle"],
+    "colour_attributes": ["K_curvature"],
+    "materials": ["hf_cyclide_poi_mat"]
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "morph_targets": true,
+    "vertex_colours": true,
+    "yup": true
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-schwarz-christoffel-conformal-map-polygon-disk-crystal-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-triply-periodic-minimal-surfaces-webxr"
+    ],
+    "external": [
+      {
+        "title": "Applications de Géométrie et de Méchanique",
+        "author": "Dupin C",
+        "year": 1822,
+        "publisher": "Bachelier, Paris",
+        "licence": "PD",
+        "url": "https://archive.org/details/applicationsdog00dupigoog",
+        "related": [
+          "https://mathworld.wolfram.com/DupinCyclide.html"
+        ]
+      },
+      {
+        "title": "Generating Blend Surfaces Using Partial Differential Equations",
+        "author": "Bloor MI & Wilson MJ",
+        "year": 1989,
+        "journal": "Computer-Aided Design",
+        "volume": 21,
+        "issue": 3,
+        "pages": "165–171",
+        "licence": "mathematical content PD",
+        "url": "https://www.sciencedirect.com/science/article/pii/0010448589900073",
+        "related": [
+          "https://en.wikipedia.org/wiki/Dupin_cyclide",
+          "https://www.geometrictools.com"
+        ]
+      },
+      {
+        "title": "3D-XplorMath — Interactive Visualisation (cyclide module)",
+        "author": "3D-XplorMath Consortium",
+        "licence": "MIT",
+        "url": "https://3d-xplormath.org",
+        "related": [
+          "https://github.com/3DXplorMath/3DXplorMath-J"
+        ]
+      },
+      {
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  },
+  "holoflow": {
+    "facet": true,
+    "category": "poi-head",
+    "surface_type": "cyclide",
+    "parameters": {
+      "a": 5.0,
+      "b": 4.0,
+      "c": 3.0,
+      "d_basis": 2.0,
+      "d_wide": 0.4,
+      "d_spindle": 3.9
+    },
+    "K_sign": "mixed (positive outer, negative inner, zero on two waist circles)",
+    "inversive_origin": "inversion of torus in off-axis sphere"
+  }
+}

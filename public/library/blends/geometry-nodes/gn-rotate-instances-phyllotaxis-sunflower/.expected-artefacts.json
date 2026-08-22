@@ -1,0 +1,38 @@
+{
+  "slug": "gn-rotate-instances-phyllotaxis-sunflower",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "phyllotaxis_sunflower.blend",
+    "phyllotaxis_sunflower.glb",
+    "public/library/videos/geometry-nodes/gn-rotate-instances-phyllotaxis-sunflower/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-rotate-instances-phyllotaxis-sunflower/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-scale-instances-spine-growth",
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-staircase",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://doi.org/10.1016/0025-5564(79)90080-4",
+        "licence": "public domain",
+        "author": "Vogel H. (1979)"
+      },
+      {
+        "url": "https://github.com/znoblitt/blender-python-scripts",
+        "licence": "MIT",
+        "author": "Zach Noblitt"
+      }
+    ]
+  }
+}

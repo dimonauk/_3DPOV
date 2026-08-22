@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_ssd_poi.glb",
+    "hf_kp_star_polyhedra.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://archive.org/details/harmonicesmvndi00kepl",
+        "title": "Kepler, J. (1619). Harmonices Mundi. Original description of {5/2,5} and {5/2,3}.",
+        "licence": "Public Domain",
+        "author": "Johannes Kepler"
+      },
+      {
+        "url": "https://github.com/antiprism/antiprism",
+        "title": "Antiprism — polyhedra modelling and exploration tools.",
+        "licence": "MIT",
+        "author": "Adrian Rossiter"
+      },
+      {
+        "url": "https://numpy.org",
+        "title": "NumPy Reference Documentation.",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  },
+  "console_checks": [
+    "[holoflow] SSD GLB",
+    "[holoflow] SSD vertices:",
+    "[holoflow] SSD faces:"
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "textures": "WebP",
+    "yup": true,
+    "morph_targets": false
+  }
+}

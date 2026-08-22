@@ -1,0 +1,52 @@
+{
+  "slug": "shader-gabor-noise-satin-frosted-acrylic-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "gabor_frosted_acrylic.glb",
+    "../../videos/shading/shader-gabor-noise-satin-frosted-acrylic-webxr/viewport.mp4",
+    "../../videos/shading/shader-gabor-noise-satin-frosted-acrylic-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Shader: Anisotropic BSDF — Brushed Metal",
+        "url": "/tutorials/blender-tutorial-shader-anisotropic-bsdf-brushed-metal",
+        "note": "Complements Gabor: anisotropy in BSDF vs anisotropy in the noise field itself."
+      },
+      {
+        "label": "Shader: Principled Transmission & Iridescence",
+        "url": "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+        "note": "Full Transmission + IOR pipeline used by the acrylic material here."
+      },
+      {
+        "label": "Shader: Procedural Woven Fabric",
+        "url": "/tutorials/blender-tutorial-shader-procedural-woven-fabric",
+        "note": "Alternative directional noise approach (Wave chains) vs Gabor kernel field."
+      },
+      {
+        "label": "Python: Cycles Batch Bake — Normal, AO, Emission",
+        "url": "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+        "note": "bpy.ops.object.bake() pipeline extended here for Roughness + Normal WebP bake."
+      }
+    ],
+    "outside_sources": [
+      {
+        "label": "Blender Foundation — Gabor Texture Node Manual",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/gabor.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "KhronosGroup/glTF — KHR_materials_transmission",
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_transmission",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

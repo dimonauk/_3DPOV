@@ -1,0 +1,41 @@
+{
+  "slug": "python-bpy-custom-shader-node-type-export-diagnostics",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-custom-shader-node-type-export-diagnostics/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-custom-shader-node-type-export-diagnostics/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-shader-node-group-batch-material",
+      "/tutorials/blender-tutorial-python-gltf-user-extension-export-extras-hook",
+      "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue",
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.types.Node + nodeitems_utils",
+        "url": "https://docs.blender.org/api/current/bpy.types.Node.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling_repos": ["blender/blender", "blender/blender-developer-docs"]
+      },
+      {
+        "title": "njanakiev/blender-scripting — Python scripting examples for Blender",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "sibling_repos": ["njanakiev/scikit-spatial", "njanakiev/python-snippets"]
+      }
+    ]
+  },
+  "holoflow_macro": "tools/blender-addon/holoflow_macros/custom_shader_node_type.py"
+}

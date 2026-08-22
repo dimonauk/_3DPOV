@@ -1,0 +1,38 @@
+{
+  "slug": "gn-index-of-nearest-point-connection-web-circuit-board-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/record.py",
+    "public/library/blends/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/README.md",
+    "public/library/blends/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/.expected-artefacts.json",
+    "public/library/glbs/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/circuit_board_panel.glb",
+    "public/library/videos/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-index-of-nearest-point-connection-web-circuit-board-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-shortest-edge-path-circuit-trace",
+      "/tutorials/blender-tutorial-python-mathutils-geometry-kdtree-bvhtree-spatial",
+      "/tutorials/blender-tutorial-gn-sample-nearest-surface-mesh-conform",
+      "/tutorials/blender-tutorial-gn-distribute-points-on-curves-ivy-leaf-scatter",
+      "/tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Index of Nearest node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      },
+      {
+        "title": "Blender API — GeometryNodeIndexOfNearest",
+        "url": "https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html",
+        "author": "Blender Foundation",
+        "licence": "CC0"
+      }
+    ]
+  }
+}

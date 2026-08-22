@@ -1,0 +1,34 @@
+{
+  "slug": "python-bpy-screw-modifier-profile-lathe-revolution-vase-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_lathe_vase.blend",
+    "hf_lathe_vase.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr",
+      "/tutorials/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-from-pydata-enneper-minimal-surface-faceted-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.ScrewModifier.html",
+        "title": "bpy.types.ScrewModifier — Blender Python API 5.1",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/screw.html",
+        "title": "Screw Modifier — Blender Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

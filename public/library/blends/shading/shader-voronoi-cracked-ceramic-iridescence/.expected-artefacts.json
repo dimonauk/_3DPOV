@@ -1,0 +1,45 @@
+{
+  "slug": "shader-voronoi-cracked-ceramic-iridescence",
+  "category": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "celadon_bowl.blend",
+    "celadon_bowl.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "../../videos/shading/shader-voronoi-cracked-ceramic-iridescence/viewport.mp4",
+    "../../videos/shading/shader-voronoi-cracked-ceramic-iridescence/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-procedural-marble-veins",
+      "/tutorials/blender-tutorial-shader-holographic-panel-emission-fresnel",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Voronoi Texture Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/voronoi.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "title": "Inigo Quilez — Voronoi Noise (mathematical reference)",
+        "url": "https://iquilezles.org/articles/voronoi/",
+        "licence": "MIT (code samples)",
+        "author": "Inigo Quilez"
+      },
+      {
+        "title": "OpenShadingLanguage — stdosl.h (Fresnel / Dielectric closures reference)",
+        "url": "https://github.com/AcademySoftwareFoundation/OpenShadingLanguage",
+        "licence": "BSD-3-Clause",
+        "author": "Academy Software Foundation"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "vse-screen-recording-to-tutorial-export",
+  "topic": "video-editing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "output/tutorial_export.mp4",
+    "frames/",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl",
+      "/tutorials/blender-tutorial-animation-camera-rig-dolly-focus-pull",
+      "/tutorials/blender-tutorial-freestyle-npr-line-rendering",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Video Editing (VSE) Manual",
+        "url": "https://docs.blender.org/manual/en/latest/video_editing/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation and Contributors",
+        "related": [
+          "https://docs.blender.org/api/current/bpy.types.SequenceEditor.html",
+          "https://docs.blender.org/manual/en/latest/video_editing/sequencer/strips/"
+        ]
+      },
+      {
+        "title": "OpenTimelineIO",
+        "url": "https://github.com/AcademySoftwareFoundation/OpenTimelineIO",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios / Academy Software Foundation",
+        "related": [
+          "https://github.com/AcademySoftwareFoundation/openexr",
+          "https://github.com/AcademySoftwareFoundation/OpenColorIO"
+        ]
+      }
+    ]
+  }
+}

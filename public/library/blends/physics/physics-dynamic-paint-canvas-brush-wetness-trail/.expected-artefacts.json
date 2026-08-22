@@ -1,0 +1,36 @@
+{
+  "slug": "physics-dynamic-paint-canvas-brush-wetness-trail",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "dynamic_paint_trail.blend",
+    "../../videos/physics/physics-dynamic-paint-canvas-brush-wetness-trail/viewport.mp4",
+    "../../videos/physics/physics-dynamic-paint-canvas-brush-wetness-trail/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-particle-emitter-force-field-glb-snapshot",
+      "/tutorials/blender-tutorial-physics-cloth-simulation-flag-banner",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/dynamic_paint/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "The Blender Foundation & Contributors"
+      },
+      {
+        "url": "https://code.blender.org/2011/06/dynamic-paint/",
+        "licence": "informational",
+        "author": "Miika Hämäläinen / Blender Foundation"
+      }
+    ]
+  }
+}

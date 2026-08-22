@@ -1,0 +1,54 @@
+{
+  "slug": "gn-fill-curve-logo-extrusion-webxr-badge",
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "output/hex_badge.glb",  "type": "glb",   "produced_by": "blueprint.py" },
+    { "path": "public/library/videos/geometry-nodes/gn-fill-curve-logo-extrusion-webxr-badge/viewport.mp4",
+      "type": "video", "produced_by": "record.py" },
+    { "path": "public/library/videos/geometry-nodes/gn-fill-curve-logo-extrusion-webxr-badge/screen.mp4",
+      "type": "video", "produced_by": "screen recording (OBS)" }
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-string-to-curves-3d-text",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-city-block-attribute-height",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+      "/tutorials/blender-tutorial-gn-smooth-by-angle-normal-split",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html",
+        "title": "Fill Curve Node — Blender Manual",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html"
+        ]
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html",
+        "title": "Set Spline Type Node — Blender Manual",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_cyclic.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_resolution.html"
+        ]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

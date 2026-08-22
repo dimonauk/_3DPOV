@@ -1,0 +1,31 @@
+{
+  "blend": "dof_bokeh_scene.blend",
+  "render_sequence": "renders/dof_bokeh_####.png",
+  "viewport_mp4": "../../videos/rendering/render-cycles-dof-motion-blur-bokeh/viewport.mp4",
+  "screen_mp4": "../../videos/rendering/render-cycles-dof-motion-blur-bokeh/screen.mp4",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-cycles-light-path-glass-fireflies",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-eevee-light-linking-character-rig",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/cameras/depth_of_field.html",
+        "licence": "CC0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/mmp/pbrt-v4",
+        "licence": "Apache-2.0",
+        "author": "Matt Pharr, Wenzel Jakob, Greg Humphreys",
+        "note": "Physically Based Rendering reference implementation — aperture sampling and motion blur mathematics in src/cameras/",
+        "related": [
+          "https://github.com/mmp/pbrt-v3",
+          "https://pbr-book.org"
+        ]
+      }
+    ]
+  }
+}

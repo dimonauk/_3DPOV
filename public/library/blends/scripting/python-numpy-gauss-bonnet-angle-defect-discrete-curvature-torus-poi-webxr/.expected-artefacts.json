@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_gauss_bonnet_torus.blend",
+    "hf_gauss_bonnet_torus.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://gdz.sub.uni-goettingen.de/id/PPN35283028X_0006",
+        "title": "Gauss, C.F. (1827). Disquisitiones generales circa superficies curvas.",
+        "licence": "Public Domain",
+        "author": "Carl Friedrich Gauss"
+      },
+      {
+        "url": "https://www.cs.cmu.edu/~kmcrane/Projects/ConformalWillmoreFlow/",
+        "title": "Crane et al. (2013). Robust fairing via conformal curvature flow. SIGGRAPH 2013.",
+        "licence": "MIT",
+        "author": "Keenan Crane, Ulrich Pinkall, Peter Schröder"
+      }
+    ]
+  },
+  "console_checks": [
+    "Σ δ_v = "
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "textures": "WebP",
+    "yup": true,
+    "morph_targets": true
+  }
+}

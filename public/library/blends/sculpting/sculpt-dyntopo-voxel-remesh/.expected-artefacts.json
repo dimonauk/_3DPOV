@@ -1,0 +1,41 @@
+{
+  "slug": "sculpt-dyntopo-voxel-remesh",
+  "topic": "sculpting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/sculpting/sculpt-dyntopo-voxel-remesh/sculpt_organic_head.blend",
+    "public/library/blends/sculpting/sculpt-dyntopo-voxel-remesh/sculpt_organic_head.glb",
+    "public/library/videos/sculpting/sculpt-dyntopo-voxel-remesh/viewport.mp4",
+    "public/library/videos/sculpting/sculpt-dyntopo-voxel-remesh/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/sculpting/tool_settings/dyntopo.html",
+        "title": "Blender Manual — Dynamic Topology",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/tools/voxel_remesh.html",
+        "title": "Blender Manual — Voxel Remesh",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/hisprofile/blenderstuff/blob/main/Tools/Sculpting/dyntopo_notes.md",
+        "title": "hisprofile/blenderstuff — Dyntopo Notes",
+        "licence": "MIT",
+        "author": "hisprofile"
+      }
+    ]
+  }
+}

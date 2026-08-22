@@ -1,0 +1,41 @@
+{
+  "slug": "metaball-organic-blob-creature-glb",
+  "topic": "procedural",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "blob_creature.blend",
+    "blob_creature.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/procedural/metaball-organic-blob-creature-glb/viewport.mp4",
+    "public/library/videos/procedural/metaball-organic-blob-creature-glb/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Meta Objects",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/metas/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Paul Bourke — Metaballs",
+        "url": "http://paulbourke.net/geometry/metaballs/",
+        "licence": "permissive-attribution",
+        "author": "Paul Bourke"
+      }
+    ]
+  }
+}

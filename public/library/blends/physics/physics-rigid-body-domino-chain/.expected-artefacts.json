@@ -1,0 +1,57 @@
+{
+  "slug": "physics-rigid-body-domino-chain",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "domino_chain.blend",
+    "domino_chain.glb",
+    "../../videos/physics/physics-rigid-body-domino-chain/viewport.mp4",
+    "../../videos/physics/physics-rigid-body-domino-chain/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Rigid Body Physics",
+        "url": "https://docs.blender.org/manual/en/latest/physics/rigid_body/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/physics/rigid_body/constraints/",
+          "https://docs.blender.org/manual/en/latest/physics/rigid_body/world.html"
+        ]
+      },
+      {
+        "title": "Bullet Physics SDK",
+        "url": "https://github.com/bulletphysics/bullet3",
+        "licence": "zlib",
+        "author": "Erwin Coumans / Google",
+        "related": [
+          "https://github.com/bulletphysics/bullet3/tree/master/docs",
+          "https://pybullet.org/Bullet/BulletFull/classbtDiscreteDynamicsWorld.html"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "blend": "hf_corrective_smooth_arm.blend",
+  "glb": "public/library/glbs/scripting/hf_corrective_smooth_arm.glb",
+  "video_viewport": "public/library/videos/scripting/python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr/viewport.mp4",
+  "video_screen": "public/library/videos/scripting/python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "export_conventions": {
+    "y_up": true,
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "apply_modifiers": true
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-rigging-corrective-shape-keys-driver",
+      "/tutorials/blender-tutorial-python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr",
+      "/tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/corrective_smooth.html",
+        "title": "Corrective Smooth Modifier — Blender 5.1 Manual",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/CGArtPython/blender_plus_python",
+        "title": "CGArtPython/blender_plus_python",
+        "author": "Victor Stepanov",
+        "licence": "MIT",
+        "related": "https://github.com/CGArtPython/bpy_building_blocks"
+      }
+    ]
+  }
+}

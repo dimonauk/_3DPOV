@@ -1,0 +1,33 @@
+{
+  "blend": "hf_control_deck.blend",
+  "glb": "hf_control_deck.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../../../videos/scripting/python-bmesh-ops-extrude-face-region-panel-push-control-deck-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-bmesh-ops-extrude-face-region-panel-push-control-deck-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-inset-faces-panel-lines-recess-hard-surface-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-bridge-loops-tunnel-port-socket-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-subdivide-edges-catmull-loop-cut-faceted-plinth-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-grid-fill-quad-patch-display-panel-webxr"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+        "title": "bmesh.ops — Blender Python API",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": "https://github.com/KhronosGroup/glTF"
+      }
+    ]
+  }
+}

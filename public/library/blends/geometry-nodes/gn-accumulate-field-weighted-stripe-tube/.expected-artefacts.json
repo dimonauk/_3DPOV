@@ -1,0 +1,51 @@
+{
+  "slug": "gn-accumulate-field-weighted-stripe-tube",
+  "blender_version": "5.1",
+  "topic": "geometry-nodes",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "output/weighted_stripe_tube.glb", "type": "glb",   "produced_by": "blueprint.py" },
+    { "path": "public/library/videos/geometry-nodes/gn-accumulate-field-weighted-stripe-tube/viewport.mp4",
+      "type": "video", "produced_by": "record.py" },
+    { "path": "public/library/videos/geometry-nodes/gn-accumulate-field-weighted-stripe-tube/screen.mp4",
+      "type": "video", "produced_by": "screen recording (OBS)" }
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align",
+      "/tutorials/blender-tutorial-gn-set-handle-positions-bezier-s-curve-taper",
+      "/tutorials/blender-tutorial-gn-offset-point-in-curve-chain-links",
+      "/tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map",
+      "/tutorials/blender-tutorial-gn-repeat-zone-iterative-lsystem-branch-growth",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html",
+        "title": "Accumulate Field Node — Blender Manual",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_at_index.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html"
+        ]
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "title": "blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": []
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

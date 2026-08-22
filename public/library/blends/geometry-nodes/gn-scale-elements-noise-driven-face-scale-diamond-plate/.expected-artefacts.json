@@ -1,0 +1,51 @@
+{
+  "slug": "gn-scale-elements-noise-driven-face-scale-diamond-plate",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/diamond_plate.blend",
+    "output/diamond_plate.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/geometry-nodes/gn-scale-elements-noise-driven-face-scale-diamond-plate/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-scale-elements-noise-driven-face-scale-diamond-plate/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Manual — Scale Elements node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html"
+      },
+      {
+        "name": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "sibling": "https://github.com/njanakiev/blender-jupyter"
+      }
+    ]
+  },
+  "gn_nodes_used": [
+    "GeometryNodeScaleElements",
+    "GeometryNodeInputPosition",
+    "ShaderNodeTexNoise",
+    "ShaderNodeMapRange",
+    "GeometryNodeStoreNamedAttribute"
+  ],
+  "webxr_ready": true,
+  "glb_vertex_attributes": ["hs_panel_scale"]
+}

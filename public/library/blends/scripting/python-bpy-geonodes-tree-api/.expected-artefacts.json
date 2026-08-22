@@ -1,0 +1,35 @@
+{
+  "slug": "python-bpy-geonodes-tree-api",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "public/library/blends/scripting/python-bpy-geonodes-tree-api/spike_ball.blend", "type": "blend" },
+    { "path": "public/library/blends/scripting/python-bpy-geonodes-tree-api/spike_ball.glb",   "type": "glb" },
+    { "path": "public/library/videos/scripting/python-bpy-geonodes-tree-api/viewport.mp4",     "type": "video" },
+    { "path": "public/library/videos/scripting/python-bpy-geonodes-tree-api/screen.mp4",       "type": "video" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter",
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-gn-instance-on-points"
+    ],
+    "external": [
+      {
+        "title": "Blender Python API — bpy.types.NodeTree",
+        "url": "https://docs.blender.org/api/current/bpy.types.NodeTree.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Geometry Nodes Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

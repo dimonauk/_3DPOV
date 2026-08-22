@@ -1,0 +1,63 @@
+{
+  "slug": "python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_weaire_phelan.blend",
+    "hf_weaire_phelan.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/scripting/python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Gyroid TPMS — Surface Nets level-set extraction",
+        "url": "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr"
+      },
+      {
+        "label": "Wigner-Seitz BCC/FCC — scipy Voronoi on crystal lattice",
+        "url": "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr"
+      },
+      {
+        "label": "Thomson Problem — Coulomb energy minimisation on S²",
+        "url": "/tutorials/blender-tutorial-python-numpy-scipy-thompson-problem-coulomb-energy-tammes-s2-poi-head-webxr"
+      },
+      {
+        "label": "Scherk Minimal Surface — doubly-periodic soap-film lattice",
+        "url": "/tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr"
+      },
+      {
+        "label": "holoflow_webxr_exporter — Draco GLB pipeline & holoflow:facet flag",
+        "url": "/docs/blender-extensions"
+      }
+    ],
+    "external": [
+      {
+        "label": "Weaire & Phelan (1994) — A counter-example to Kelvin's conjecture. Phil. Mag. Lett. 69(2):107-110",
+        "url": "https://doi.org/10.1080/09500839408241577",
+        "licence": "Academic journal — cited for attribution",
+        "related_repos": []
+      },
+      {
+        "label": "SciPy spatial.Voronoi — BSD-3-Clause",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html",
+        "licence": "BSD-3-Clause",
+        "related_repos": ["https://github.com/scipy/scipy"]
+      }
+    ]
+  },
+  "cell_counts": {
+    "pyritohedra_A": 2,
+    "tetrakaidecahedra_B": 6,
+    "unit_cell_total": 8,
+    "faces_A": 12,
+    "faces_B": 14
+  }
+}

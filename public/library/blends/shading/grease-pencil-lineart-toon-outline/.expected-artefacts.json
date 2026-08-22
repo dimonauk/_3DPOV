@@ -1,0 +1,39 @@
+{
+  "blend": "grease_pencil_lineart.blend",
+  "glb": "grease_pencil_lineart.glb",
+  "video": "../../videos/shading/grease-pencil-lineart-toon-outline/viewport.mp4",
+  "screen_recording": "../../videos/shading/grease-pencil-lineart-toon-outline/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "shading",
+  "slug": "grease-pencil-lineart-toon-outline",
+  "tutorial_route": "/tutorials/blender-tutorial-grease-pencil-lineart-toon-outline",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-addon-vrm-format",
+      "/tutorials/blender-tutorial-armature-weight-paint"
+    ],
+    "external": [
+      {
+        "title": "Line Art Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/grease_pencil/modifiers/generate/line_art.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting — bpy workflow reference",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

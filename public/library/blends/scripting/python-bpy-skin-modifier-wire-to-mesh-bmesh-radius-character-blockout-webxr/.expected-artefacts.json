@@ -1,0 +1,74 @@
+{
+  "slug": "python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/blueprint.py",
+      "type": "script",
+      "description": "Wire mesh + bmesh skin vertex radii + SkinModifier + SubsurfModifier + GLB export"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/record.py",
+      "type": "script",
+      "description": "360° rotation Eevee render → viewport.mp4"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc",
+      "description": "OBS setup and recording walkthrough for screen.mp4"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/README.md",
+      "type": "doc",
+      "description": "Quick-start, gotchas, and file inventory"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/hf_skin_blockout.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/glbs/scripting/hf_skin_blockout.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/viewport.mp4",
+      "type": "video",
+      "description": "96-frame Eevee render: 360° rotation showing wire-to-skin silhouette (~4 s @ 24 fps)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-skin-modifier-wire-to-mesh-bmesh-radius-character-blockout-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of full interactive Blender workflow",
+      "committed": false
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-subsurf-modifier-crease-edge-render-level-glb-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr",
+      "/tutorials/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/skin.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/CGArtPython/blender_plus_python",
+        "licence": "MIT",
+        "author": "Victor Stepanov",
+        "related": "https://github.com/CGArtPython/bpy_building_blocks"
+      }
+    ]
+  }
+}

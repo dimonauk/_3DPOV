@@ -1,0 +1,48 @@
+{
+  "slug": "python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_tpms_poi.blend",
+    "hf_tpms_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "objects": [
+    { "name": "schwarz_p",  "type": "MESH", "x_offset": -0.22 },
+    { "name": "gyroid",     "type": "MESH", "x_offset":  0.00 },
+    { "name": "schwarz_d",  "type": "MESH", "x_offset": +0.22 }
+  ],
+  "colour_attribute": "GaussMap",
+  "material": "HoloflowTPMSMat",
+  "glb": {
+    "filename": "hf_tpms_poi.glb",
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "y_up": true,
+    "apply_transforms": true
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-saddle-tower-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-costa-minimal-surface-weierstrass-enneper-elliptic-three-ends-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-scipy-weaire-phelan-a15-voronoi-kelvin-foam-poi-webxr"
+    ],
+    "external": [
+      {
+        "label": "Schoen, Alan H. (1970). Infinite Periodic Minimal Surfaces Without Self-Intersections. NASA Technical Note D-5541.",
+        "url": "https://ntrs.nasa.gov/citations/19700020472",
+        "licence": "Public Domain (US Government work)"
+      },
+      {
+        "label": "Doi, Akio & Koide, Akio (1991). An Efficient Method of Triangulating Equi-Valued Surfaces by Using Tetrahedral Cells. IEICE Transactions E74-D(1):214-224.",
+        "url": "https://search.ieice.org/bin/summary.php?id=e74-d_1_214",
+        "licence": "Public Domain (factual algorithm, 1991)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "python-nla-bake-ik-fk-action-push",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "ik_arm_baked.blend",
+    "ik_arm_baked.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/scripting/python-nla-bake-ik-fk-action-push/viewport.mp4",
+    "public/library/videos/scripting/python-nla-bake-ik-fk-action-push/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "external": [
+      {
+        "name": "Blender Manual — NLA Editor",
+        "url": "https://docs.blender.org/manual/en/latest/editors/nla/introduction.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      },
+      {
+        "name": "KhronosGroup glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "name": "pixiv/three-vrm",
+        "url": "https://github.com/pixiv/three-vrm",
+        "licence": "MIT",
+        "author": "pixiv Inc."
+      }
+    ]
+  }
+}

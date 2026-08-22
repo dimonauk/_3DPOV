@@ -1,0 +1,42 @@
+{
+  "slug": "python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_lorenz_poi.blend",
+    "hf_lorenz_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Lorenz, E.N. (1963). Deterministic Nonperiodic Flow. Journal of Atmospheric Sciences, 20(2):130-141.",
+        "url": "https://journals.ametsoc.org/view/journals/atsc/20/2/1520-0469_1963_020_0130_dnf_2_0_co_2.xml",
+        "licence": "AMS open access / mathematical content Public Domain",
+        "related": ["Saltzman 1962 predecessor", "Strogatz 2018 Nonlinear Dynamics and Chaos"]
+      },
+      {
+        "title": "Saltzman, B. (1962). Finite Amplitude Free Convection as an Initial Value Problem. Journal of Atmospheric Sciences, 19(4):329-341.",
+        "url": "https://journals.ametsoc.org/view/journals/atsc/19/4/1520-0469_1962_019_0329_fafcaa_2_0_co_2.xml",
+        "licence": "AMS open access / mathematical content Public Domain",
+        "related": ["Lorenz 1963 simplification", "Rayleigh-Benard convection"]
+      }
+    ]
+  },
+  "mesh_stats_expected": {
+    "waypoints": 2000,
+    "tube_sides": 8,
+    "vertex_count": 16000,
+    "face_count": 15992,
+    "shape_key_count": 3,
+    "glb_size_approx_kb": 480
+  }
+}

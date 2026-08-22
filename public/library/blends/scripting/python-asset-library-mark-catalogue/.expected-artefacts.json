@@ -1,0 +1,37 @@
+{
+  "slug": "python-asset-library-mark-catalogue",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "~/holoflow_asset_lib.blend",
+    "~/holoflow_asset_lib.cats.txt",
+    "public/library/videos/scripting/python-asset-library-mark-catalogue/viewport.mp4",
+    "public/library/videos/scripting/python-asset-library-mark-catalogue/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api",
+      "/tutorials/blender-tutorial-shader-udim-multitile-vrm-character"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Asset Libraries",
+        "url": "https://docs.blender.org/manual/en/latest/files/asset_libraries/introduction.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors"
+      },
+      {
+        "title": "Blender Python API — bpy.types.AssetMetaData",
+        "url": "https://docs.blender.org/api/current/bpy.types.AssetMetaData.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation & contributors"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "blend": "hf_mcf_sphere_poi.blend",
+  "glb": "hf_mcf_sphere_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "vertices": 2562,
+  "triangles": 5120,
+  "shape_keys": ["Basis", "SK_Step050", "SK_Step200", "SK_Step500", "SK_Step800"],
+  "colour_attributes": ["MCF_Curvature"],
+  "poi_object": "POI_MCF_Sphere",
+  "holoflow_facet": true,
+  "export": {
+    "draco_compression_level": 6,
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true
+  },
+  "cross_references": {
+    "enneper_surface": "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr",
+    "laplace_beltrami": "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+    "differential_growth": "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr",
+    "gauss_bonnet": "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr"
+  },
+  "outside_sources": [
+    {
+      "author": "Huisken G",
+      "year": 1984,
+      "title": "Flow by mean curvature of convex surfaces into spheres",
+      "journal": "Journal of Differential Geometry",
+      "volume": 20,
+      "pages": "237-266",
+      "doi": "10.4310/jdg/1214438998",
+      "licence": "open-access"
+    },
+    {
+      "author": "Meyer M, Desbrun M, Schröder P, Barr AH",
+      "year": 2003,
+      "title": "Discrete differential-geometry operators for triangulated 2-manifolds",
+      "book": "Visualization and Mathematics III",
+      "publisher": "Springer",
+      "pages": "35-57",
+      "doi": "10.1007/978-3-662-05105-4_2",
+      "licence": "academic-reference"
+    },
+    {
+      "name": "NumPy",
+      "licence": "BSD-3-Clause",
+      "url": "https://numpy.org/"
+    }
+  ]
+}

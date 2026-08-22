@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "holoflow_uv_atlas.glb",
+    "holoflow_uv_atlas.json",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-python-mesh-attributes-foreach-set-gn-data-pipeline",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "outside": [
+      {
+        "title": "Blender Python API — bpy.types.MeshUVLoop",
+        "url": "https://docs.blender.org/api/current/bpy.types.MeshUVLoop.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Khronos glTF 2.0 Specification — TEXCOORD_n attribute",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

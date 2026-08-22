@@ -1,0 +1,43 @@
+{
+  "glb": "output/rnm_panel.glb",
+  "videos": [
+    "public/library/videos/shading/shader-detail-normal-rnm-overlay-hard-surface/viewport.mp4",
+    "public/library/videos/shading/shader-detail-normal-rnm-overlay-hard-surface/screen.mp4"
+  ],
+  "materials": [
+    "RNM_Panel"
+  ],
+  "node_group_pattern": "SepXYZ(T) + SepXYZ(D) → Add-X, Add-Y, Mul-Z → CombineXYZ → Normalize → BSDF Normal",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-parallax-occlusion-mapping-wall-tile-webxr",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-gn-interpolate-domain-face-normal-vertex-colour-toon"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Bump Node",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/vector/bump.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Blender Manual — Vector Math Node",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/converter/vector_math.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "\"Normal Mapping for a Triplanar Shader\" — Ben Golus (2017, educational use, no licence change clause)",
+        "url": "https://bgolus.medium.com/normal-mapping-for-a-triplanar-shader-10bf39dca05a",
+        "licence": "educational reference",
+        "author": "Ben Golus",
+        "repo": "https://github.com/bgolus"
+      }
+    ]
+  }
+}

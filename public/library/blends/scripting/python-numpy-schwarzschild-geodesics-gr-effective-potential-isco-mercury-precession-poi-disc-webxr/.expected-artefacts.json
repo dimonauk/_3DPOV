@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "generated_files": [
+    "hf_schwarzschild_poi.blend",
+    "hf_schwarzschild_poi.glb"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr/screen.mp4"
+  ],
+  "object_name": "hf_schwarzschild_poi",
+  "holoflow_category": "poi-head",
+  "shape_keys": ["Basis", "SK_NearISCO", "SK_Keplerian"],
+  "vertex_colour_layer": "GRSpeed",
+  "export_settings": {
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "export_yup": true,
+    "export_morph": true,
+    "export_colors": true
+  },
+  "physics": {
+    "units": "G=c=M=1",
+    "r_schwarzschild": 2.0,
+    "r_isco": 6.0,
+    "L_isco": 3.464,
+    "E_isco": 0.9428,
+    "orbits": {
+      "Basis":       { "L": 3.70, "r_apo": 9.0,  "precession_per_orbit_deg": 28 },
+      "SK_NearISCO": { "L": 3.54, "r_apo": 7.6,  "precession_per_orbit_deg": 55 },
+      "SK_Keplerian":{ "L": 5.00, "r_apo": 14.0, "precession_per_orbit_deg":  7 }
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr"
+    ],
+    "external": [
+      "https://arxiv.org/abs/physics/9905030",
+      "https://numpy.org/doc/stable/"
+    ]
+  }
+}

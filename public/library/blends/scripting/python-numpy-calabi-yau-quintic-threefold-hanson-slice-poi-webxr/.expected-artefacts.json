@@ -1,0 +1,48 @@
+{
+  "slug": "python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_artefacts": [
+    "hf_calabi_yau_poi.blend",
+    "../../glbs/scripting/python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr/hf_calabi_yau_poi.glb",
+    "../../videos/scripting/python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-calabi-yau-quintic-threefold-hanson-slice-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "Yau, S.-T. (1977). Calabi's conjecture and some new results in algebraic geometry. PNAS 74(5): 1798-1799.",
+        "url": "https://www.pnas.org/doi/10.1073/pnas.74.5.1798",
+        "licence": "Public Domain (US government open access; mathematical content PD)",
+        "author": "Shing-Tung Yau"
+      },
+      {
+        "title": "Candelas, P., de la Ossa, X., Green, P. & Parkes, L. (1991). A pair of Calabi-Yau manifolds as an exactly soluble superconformal theory. Nuclear Physics B 359(1): 21-74.",
+        "url": "https://www.sciencedirect.com/science/article/pii/0550321391904438",
+        "licence": "Mathematical content PD; Elsevier open access for this foundational work",
+        "author": "Candelas, de la Ossa, Green, Parkes"
+      },
+      {
+        "title": "NumPy contributors. NumPy Reference Documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      }
+    ]
+  }
+}

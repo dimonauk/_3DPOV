@@ -1,0 +1,46 @@
+{
+  "slug": "gn-gp3-noise-stroke-wave",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "grease-pencil",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "gn-gp3-noise-stroke-wave.blend"
+  ],
+  "video_artefacts": [
+    "public/library/videos/grease-pencil/gn-gp3-noise-stroke-wave/viewport.mp4",
+    "public/library/videos/grease-pencil/gn-gp3-noise-stroke-wave/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gp3-frame-by-frame-cel-animation",
+      "/tutorials/blender-tutorial-grease-pencil-3-line-art-toon-outline",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal"
+    ],
+    "external_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/grease_pencil/modifiers/index.html",
+        "title": "Blender Manual: Grease Pencil Modifiers",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/manual/en/5.1/grease_pencil/index.html"
+        ]
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "title": "blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "siblings": [
+          "https://github.com/njanakiev/blender-jupyter"
+        ]
+      }
+    ]
+  }
+}

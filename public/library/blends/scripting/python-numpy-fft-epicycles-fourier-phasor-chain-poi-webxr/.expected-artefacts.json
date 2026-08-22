@@ -1,0 +1,42 @@
+{
+  "slug": "python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "type": "blend", "filename": "hf_epicycle_chain.blend" },
+    { "type": "glb",   "filename": "hf_epicycle_trail.glb" },
+    { "type": "video", "filename": "viewport.mp4",  "path": "public/library/videos/scripting/python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr/" },
+    { "type": "video", "filename": "screen.mp4",    "path": "public/library/videos/scripting/python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr/" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "numpy.fft — FFT routines reference",
+        "url": "https://numpy.org/doc/stable/reference/routines.fft.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors",
+        "related_project": "https://github.com/numpy/numpy"
+      },
+      {
+        "title": "scipy.fft — Fast Fourier Transform module",
+        "url": "https://docs.scipy.org/doc/scipy/reference/fft.html",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy Contributors",
+        "related_project": "https://github.com/scipy/scipy"
+      },
+      {
+        "title": "Blender Python API 5.1 — bpy.types.Depsgraph",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Depsgraph.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "related_project": "https://github.com/blender/blender-manual"
+      }
+    ]
+  }
+}

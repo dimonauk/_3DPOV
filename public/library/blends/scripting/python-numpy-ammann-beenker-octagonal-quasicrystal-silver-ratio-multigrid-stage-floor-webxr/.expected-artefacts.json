@@ -1,0 +1,48 @@
+{
+  "slug": "python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr",
+  "blender_version": "5.1",
+  "category": "stage-floor",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "ammann_beenker_floor.blend",
+    "ammann_beenker_floor.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hyperbolic-poincare-disk-tiling-5-4-triangle-group-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-vogel-fibonacci-parastichy-poi-disc-webxr"
+    ],
+    "external_sources": [
+      {
+        "author": "Beenker FPM",
+        "year": 1982,
+        "title": "Algebraic theory of non-periodic tilings by two simple building blocks: a square and a rhombus",
+        "journal": "TU Eindhoven EUT Report 82-WSK-04",
+        "licence": "PD",
+        "url": "https://research.tue.nl/en/publications/algebraic-theory-of-non-periodic-tilings-of-the-plane-by-two-sim"
+      },
+      {
+        "author": "de Bruijn NG",
+        "year": 1981,
+        "title": "Algebraic theory of Penrose's non-periodic tilings of the plane",
+        "journal": "Indag. Math.",
+        "volume": "43",
+        "pages": "39-66",
+        "licence": "PD",
+        "url": "https://www.win.tue.nl/~aeb/combinatorics/penrose/debruijn.pdf"
+      }
+    ]
+  },
+  "tutorial_url": "/tutorials/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr"
+}

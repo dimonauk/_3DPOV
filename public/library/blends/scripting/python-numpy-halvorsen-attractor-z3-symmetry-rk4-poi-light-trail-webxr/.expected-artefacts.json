@@ -1,0 +1,46 @@
+{
+  "slug": "python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_halvorsen.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_halvorsen.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr"
+    ],
+    "external": [
+      {
+        "title": "Sprott, J.C. (2010) Elegant Chaos: Algebraically Simple Chaotic Flows — Cambridge University Press",
+        "url": "https://sprott.physics.wisc.edu/chaos/eleganceh.htm",
+        "licence": "PD (mathematical content/algorithm)",
+        "author": "Julien Clinton Sprott"
+      },
+      {
+        "title": "Gilpin, W. (2021–2024) dysts: Dynamical Systems Benchmarks (MIT)",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": "https://github.com/williamgilpin/dysts_examples"
+      }
+    ]
+  }
+}

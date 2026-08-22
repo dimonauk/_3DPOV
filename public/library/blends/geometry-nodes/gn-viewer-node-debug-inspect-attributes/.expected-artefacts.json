@@ -1,0 +1,38 @@
+{
+  "slug": "gn-viewer-node-debug-inspect-attributes",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "gn_viewer_debug.blend",
+    "../../videos/geometry-nodes/gn-viewer-node-debug-inspect-attributes/viewport.mp4",
+    "../../videos/geometry-nodes/gn-viewer-node-debug-inspect-attributes/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-capture-attribute-position-snapshot-stable-voronoi",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map",
+      "/tutorials/blender-tutorial-gn-accumulate-field-weighted-stripe-tube",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Viewer Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/debug/viewer.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "title": "Blender Manual — Spreadsheet Editor",
+        "url": "https://docs.blender.org/manual/en/latest/editors/spreadsheet.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      }
+    ]
+  }
+}

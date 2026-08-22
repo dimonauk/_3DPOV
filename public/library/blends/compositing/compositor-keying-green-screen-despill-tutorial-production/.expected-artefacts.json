@@ -1,0 +1,77 @@
+{
+  "slug": "compositor-keying-green-screen-despill-tutorial-production",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/compositing/compositor-keying-green-screen-despill-tutorial-production/blueprint.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-keying-green-screen-despill-tutorial-production/record.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-keying-green-screen-despill-tutorial-production/README.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-keying-green-screen-despill-tutorial-production/SCREEN-RECORDING-NOTES.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "green_screen_comp.blend",
+      "type": "blend",
+      "status": "pending_local_save",
+      "note": "Ctrl+S after running blueprint.py in Blender 5.1"
+    },
+    {
+      "path": "output/frame_0001.png",
+      "type": "render",
+      "status": "pending_render",
+      "note": "F12 after running blueprint.py — keyed composite RGBA PNG"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-keying-green-screen-despill-tutorial-production/viewport.mp4",
+      "type": "video",
+      "status": "pending_record",
+      "note": "Run record.py then Ctrl+F12 — 60-frame three-stage keying demo"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-keying-green-screen-despill-tutorial-production/screen.mp4",
+      "type": "video",
+      "status": "pending_obs",
+      "note": "See SCREEN-RECORDING-NOTES.md — OBS window capture of Blender session"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-compositor-color-grading-rgb-curves-cdl",
+      "/tutorials/blender-tutorial-vse-screen-recording-to-tutorial-export",
+      "/tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite",
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Manual — Keying Node",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/types/matte/keying.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors",
+        "note": "Primary reference for clip_black/white, despill, feather parameters"
+      },
+      {
+        "name": "Blender Manual — Compositor Matte Nodes Overview",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/types/matte/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors",
+        "note": "DilateErode, BoxMask, Ellipse Mask, Keying Screen sister nodes"
+      }
+    ]
+  }
+}

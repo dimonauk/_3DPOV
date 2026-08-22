@@ -1,0 +1,81 @@
+{
+  "slug": "python-numpy-kuen-dini-pseudosphere-k-minus-1-sine-gordon-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "hf_kuen_poi.blend",
+    "hf_kuen_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": ["Basis", "Dini", "Pseudosphere"],
+  "vertex_count": 4800,
+  "face_count": 4661,
+  "scale_metres": 0.115,
+  "gauss_curvature": -1.0,
+  "surfaces": {
+    "Kuen": {
+      "year": 1884,
+      "u_range": [-2.6, 2.6],
+      "v_range": [0.18, 2.96],
+      "self_intersecting": true,
+      "sine_gordon_angle": "phi = 2 arctan(u sin v)"
+    },
+    "Dini": {
+      "year": 1865,
+      "u_range": [0, 12.566],
+      "v_range": [0.18, 2.96],
+      "self_intersecting": false,
+      "params": { "a": 1.0, "b": 0.4 }
+    },
+    "Pseudosphere": {
+      "year": 1868,
+      "author": "Beltrami",
+      "u_range": [0, 6.283],
+      "v_range": [0, 3.8],
+      "self_intersecting": false,
+      "profile": "tractrix: z = v - tanh(v)"
+    }
+  },
+  "export": {
+    "format": "glTF Binary",
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "include_morph_targets": true,
+    "include_vertex_colors": true,
+    "apply_transforms": true,
+    "up_axis": "+Y"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Kuen, Theodor",
+        "title": "Flächen von constantem Krümmungsmaasse",
+        "year": 1884,
+        "url": "https://www.zobodat.at/pdf/Sitz-Ber-Akad-Muenchen-math-phys_1884_0001-0001.pdf",
+        "licence": "public domain (published 1884)",
+        "related": [
+          "https://mathworld.wolfram.com/KuenSurface.html",
+          "http://paulbourke.net/geometry/kuen/"
+        ]
+      },
+      {
+        "author": "Beltrami, Eugenio",
+        "title": "Teoria fondamentale degli spazii di curvatura costante",
+        "year": 1868,
+        "url": "https://gdz.sub.uni-goettingen.de/id/PPN235181684_0002",
+        "licence": "public domain (published 1868)",
+        "related": [
+          "https://en.wikipedia.org/wiki/Pseudosphere",
+          "https://en.wikipedia.org/wiki/Beltrami%E2%80%93Klein_model"
+        ]
+      }
+    ]
+  }
+}

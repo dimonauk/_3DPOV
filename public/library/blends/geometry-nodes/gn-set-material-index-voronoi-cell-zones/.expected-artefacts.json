@@ -1,0 +1,39 @@
+{
+  "slug": "gn-set-material-index-voronoi-cell-zones",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "voronoi_gem.blend",
+    "voronoi_gem.glb",
+    "../../videos/geometry-nodes/gn-set-material-index-voronoi-cell-zones/viewport.mp4",
+    "../../videos/geometry-nodes/gn-set-material-index-voronoi-cell-zones/screen.mp4"
+  ],
+  "gn_nodes_used": [
+    "NodeGroupInput",
+    "NodeGroupOutput",
+    "GeometryNodeInputPosition",
+    "ShaderNodeTexVoronoi",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeMath",
+    "FunctionNodeFloatToInt",
+    "GeometryNodeSetMaterialIndex"
+  ],
+  "technique": "Voronoi Texture Color.X field → MULTIPLY(Num Slots) → FLOOR → Float to Integer → Set Material Index per face",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-faceted-gem-flat-normals",
+      "/tutorials/blender-tutorial-gn-corners-of-face-vertex-of-corner-faceted-gem-gradient",
+      "/tutorials/blender-tutorial-shader-voronoi-cracked-ceramic-iridescence",
+      "/tutorials/blender-tutorial-cycles-lightmap-bake-webxr-uv2"
+    ],
+    "external": [
+      "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html",
+      "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/voronoi.html",
+      "https://iquilezles.org/articles/voronoi/"
+    ]
+  }
+}

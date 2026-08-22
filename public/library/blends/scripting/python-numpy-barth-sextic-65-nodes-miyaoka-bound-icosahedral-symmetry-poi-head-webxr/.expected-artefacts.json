@@ -1,0 +1,58 @@
+{
+  "slug": "python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr",
+  "blender_version": "5.1",
+  "artefacts": [
+    "hf_barth_sextic.blend",
+    "hf_barth_sextic.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "../../../../../../videos/scripting/python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr/viewport.mp4",
+    "../../../../../../videos/scripting/python-numpy-barth-sextic-65-nodes-miyaoka-bound-icosahedral-symmetry-poi-head-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Holoflow tutorial: Clebsch Diagonal Cubic (degree 3, 27 lines, E₆ root system)",
+        "url": "/tutorials/blender-tutorial-python-numpy-clebsch-diagonal-cubic-27-lines-algebraic-surface-stage-floor-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Kummer Quartic (degree 4, 16 nodes, maximum singularity surface)",
+        "url": "/tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-maximum-singularity-surface-faceted-poi-head-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Icosahedral Quasicrystal — cut-and-project Z⁶ lattice with same Iₕ symmetry",
+        "url": "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: Schwarz P/D/Gyroid TPMS — marching-tetrahedra technique shared with this blueprint",
+        "url": "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr"
+      },
+      {
+        "label": "Holoflow tutorial: 24-Cell stereographic projection — D₄ root system, algebraic polytope companion",
+        "url": "/tutorials/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr"
+      }
+    ],
+    "outside_sources": [
+      {
+        "label": "Barth W (1996) Two projective surfaces with many nodes, admitting the symmetry of the icosahedron. J. Algebraic Geometry 5(1):173–186. Mathematical content is public domain.",
+        "licence": "PD"
+      },
+      {
+        "label": "NumPy Developers (2020) Array programming with NumPy. Nature 585:357–362. BSD-3-Clause.",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  },
+  "mesh_stats": {
+    "expected_vertices_approx": 80000,
+    "expected_faces_approx": 160000,
+    "nodes": 65,
+    "degree": 6,
+    "symmetry_group": "Ih",
+    "symmetry_order": 120
+  }
+}

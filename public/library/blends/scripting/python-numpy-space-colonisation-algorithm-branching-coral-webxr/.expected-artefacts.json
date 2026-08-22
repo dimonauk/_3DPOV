@@ -1,0 +1,38 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-numpy-space-colonisation-algorithm-branching-coral-webxr",
+  "artefacts": [
+    "hf_coral_sca.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+      "/tutorials/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Modeling Trees with a Space Colonization Algorithm — Runions, Lane & Prusinkiewicz (2007)",
+        "url": "https://algorithmicbotany.org/papers/colonization.egwnp2007.pdf",
+        "licence": "PD (mathematical algorithm)",
+        "author": "Adam Runions, Brendan Lane, Przemyslaw Prusinkiewicz"
+      },
+      {
+        "title": "The Algorithmic Beauty of Plants — free authorized PDF",
+        "url": "http://algorithmicbotany.org/papers/#abop",
+        "licence": "PD (mathematical content, free PDF from authors)",
+        "author": "Prusinkiewicz & Lindenmayer"
+      }
+    ],
+    "related_projects": [
+      "http://algorithmicbotany.org — L+C, CPFG, Virtual Laboratory (Calgary/UAlberta)"
+    ]
+  }
+}

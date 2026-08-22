@@ -1,0 +1,58 @@
+{
+  "slug": "gn-rotation-math-analytical-2joint-ik-law-cosines-poi-arm",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_2joint_ik.blend"
+  ],
+  "videos": [
+    "../../videos/geometry-nodes/gn-rotation-math-analytical-2joint-ik-law-cosines-poi-arm/viewport.mp4",
+    "../../videos/geometry-nodes/gn-rotation-math-analytical-2joint-ik-law-cosines-poi-arm/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff",
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting"
+    ],
+    "external": [
+      {
+        "label": "Blender 5.1 Manual — Geometry Nodes: Math & Vector Math nodes",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/utilities/math/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://projects.blender.org/blender/blender",
+          "https://projects.blender.org/blender/blender-manual"
+        ]
+      },
+      {
+        "label": "Pixar Animation Studios — Kinematic chaining reference (OpenUSD / Hydra, Apache 2.0)",
+        "url": "https://github.com/PixarAnimationStudios/OpenUSD",
+        "licence": "Apache-2.0",
+        "author": "Pixar Animation Studios",
+        "related": [
+          "https://github.com/PixarAnimationStudios/OpenUSD/tree/release/pxr/usd/usdSkel",
+          "https://openusd.org/release/api/usd_skel_page_front.html"
+        ]
+      }
+    ]
+  },
+  "technique_tags": [
+    "geometry-nodes",
+    "inverse-kinematics",
+    "analytical-ik",
+    "law-of-cosines",
+    "math-nodes",
+    "blender-5x",
+    "poi",
+    "vrm",
+    "rigging"
+  ]
+}

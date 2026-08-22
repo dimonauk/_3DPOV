@@ -1,0 +1,40 @@
+{
+  "slug": "physics-rigid-body-dominoes-brick-wall",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "domino_chain.blend"
+  ],
+  "video_artefacts": [
+    "public/library/videos/physics/physics-rigid-body-dominoes-brick-wall/viewport.mp4",
+    "public/library/videos/physics/physics-rigid-body-dominoes-brick-wall/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-physics-mantaflow-liquid-dam-break",
+      "/tutorials/blender-tutorial-physics-particle-emitter-spark-trail-wind-deflector",
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-physics-mantaflow-smoke-fire-torch",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/physics/rigid_body/index.html",
+        "title": "Blender Manual — Rigid Body Simulation",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://github.com/bulletphysics/bullet3",
+        "title": "Bullet Physics SDK (bullet3)",
+        "author": "Erwin Coumans et al.",
+        "licence": "zlib"
+      }
+    ]
+  }
+}

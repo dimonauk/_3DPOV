@@ -1,0 +1,53 @@
+{
+  "slug": "gn-image-texture-heightmap-terrain",
+  "topic": "geometry-nodes",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": {
+    "blend": "terrain_heightmap.blend",
+    "glb": "terrain_heightmap.glb",
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "notes": "SCREEN-RECORDING-NOTES.md",
+    "videos": [
+      "viewport.mp4",
+      "screen.mp4"
+    ]
+  },
+  "named_attributes": {
+    "height": {
+      "domain": "POINT",
+      "data_type": "FLOAT",
+      "range": [0.0, 1.0],
+      "description": "Normalised heightmap luminance per vertex, 0=valley 1=peak"
+    }
+  },
+  "gltf_custom_accessors": ["_HEIGHT"],
+  "mesh_stats": {
+    "quads": 4096,
+    "vertices": 4225,
+    "grid_size_m": 10.0,
+    "grid_segments": 64
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/blender-tutorial-geometry-nodes-low-poly-terrain",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://polyhaven.com",
+        "licence": "CC0",
+        "author": "Greg Zaal / Poly Haven"
+      }
+    ]
+  }
+}

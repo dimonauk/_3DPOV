@@ -1,0 +1,51 @@
+{
+  "slug": "gn-catenary-curve-cable-array-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "output/cable_array.blend",
+      "type": "blend",
+      "description": "Five catenary cable objects sharing one CatenaryCable node group, EEVEE scene"
+    },
+    {
+      "path": "output/cable_array.glb",
+      "type": "glb",
+      "description": "Merged cable array, Draco 6, Y-up, snake_case root name 'cable_array'"
+    },
+    {
+      "path": "../../videos/geometry-nodes/gn-catenary-curve-cable-array-webxr/viewport.mp4",
+      "type": "video",
+      "description": "90-frame EEVEE render; Sag Parameter animates 4.0→0.25→4.0 at 30fps"
+    },
+    {
+      "path": "../../videos/geometry-nodes/gn-catenary-curve-cable-array-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen capture of GN editor walkthrough and live Sag Parameter scrub"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-offset-point-in-curve-chain-links",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril",
+      "/tutorials/blender-tutorial-modifier-wireframe-edge-tube-neon-skeleton"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "siblings": ["https://github.com/njanakiev/blender-jupyter"]
+      },
+      {
+        "url": "https://github.com/BrendanParmer/NodeToPython",
+        "licence": "MIT",
+        "author": "Brendan Parmer",
+        "siblings": ["https://github.com/BrendanParmer/NodeToPython/tree/main/tests"]
+      }
+    ]
+  }
+}

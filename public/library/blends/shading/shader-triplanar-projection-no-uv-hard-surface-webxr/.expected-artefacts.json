@@ -1,0 +1,47 @@
+{
+  "blend": "triplanar_boulder.blend",
+  "glb": "output/triplanar_boulder.glb",
+  "images": [
+    "output/triplanar_baked.png"
+  ],
+  "videos": [
+    "public/library/videos/shading/shader-triplanar-projection-no-uv-hard-surface-webxr/viewport.mp4",
+    "public/library/videos/shading/shader-triplanar-projection-no-uv-hard-surface-webxr/screen.mp4"
+  ],
+  "materials": [
+    "TriplanarRock"
+  ],
+  "node_group_pattern": "triplanar power-blend via SHARPNESS exponent on normal weights",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-gn-subdivide-mesh-adaptive-noise-lod"
+    ],
+    "external": [
+      {
+        "title": "Texture Coordinate Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/input/texture_coordinate.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Mix Color Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/converter/mix.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      },
+      {
+        "title": "Geometry Node (Shader) — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/input/geometry.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation",
+        "repo": "https://github.com/blender/blender"
+      }
+    ]
+  }
+}

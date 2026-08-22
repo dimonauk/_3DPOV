@@ -1,0 +1,61 @@
+{
+  "slug": "gn-raycast-terrain-decal-projection",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "terrain_decal.blend",
+    "terrain_decal.glb",
+    "../../videos/geometry-nodes/gn-raycast-terrain-decal-projection/viewport.mp4",
+    "../../videos/geometry-nodes/gn-raycast-terrain-decal-projection/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "url": "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+        "reason": "Natural predecessor: Distribute Points on Faces generates the scatter; Raycast terrain-snap then positions those points on an irregular target surface"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+        "reason": "stamp_col attribute storage pattern — same StoreNamedAttribute → material attribute bridge"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-field-at-index-edge-tangent-flow-map",
+        "reason": "Contrasting indexed-read: Field at Index reads by integer index; Raycast Hit Index bridges the two patterns for face-attribute transfer"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter",
+        "reason": "Extends InstanceOnPoints with Pick Instance + Index Switch for multi-variant stamp selection"
+      },
+      {
+        "url": "/tutorials/blender-tutorial-gn-sample-grid-volume-field-probe-lattice",
+        "reason": "Sibling positional-read: Sample Grid reads volume fields at a position; Raycast reads surface data at a ray intersection — both take a target geometry and a query position"
+      }
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Raycast node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "polygonrunway/blender-geometry-nodes-tutorials",
+        "url": "https://github.com/polygonrunway/blender-geometry-nodes",
+        "licence": "MIT",
+        "author": "Polygon Runway",
+        "related": ["polygonrunway/blender-node-groups"]
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

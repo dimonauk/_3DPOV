@@ -1,0 +1,51 @@
+{
+  "slug": "gn-curve-arc-dial-gauge-webxr-hud",
+  "topic": "geometry-nodes",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "output/dial_gauge.glb",
+    "../../videos/geometry-nodes/gn-curve-arc-dial-gauge-webxr-hud/viewport.mp4",
+    "../../videos/geometry-nodes/gn-curve-arc-dial-gauge-webxr-hud/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-fill-curve-logo-extrusion-webxr-badge",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-shader-holographic-panel-emission-fresnel"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Curve Arc Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/curve/primitives/arc.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/curve/primitives/circle.html",
+          "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/curve/primitives/spiral.html"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+        ]
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

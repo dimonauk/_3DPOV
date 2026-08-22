@@ -1,0 +1,55 @@
+{
+  "slug": "python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "generated_outputs": [
+    "hf_mandelbulb.glb",
+    "../../videos/scripting/python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sdf-csg-quilez-smooth-boolean-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Mandelbulb — skytopia.com",
+        "url": "http://www.skytopia.com/project/fractal/mandelbulb.html",
+        "author": "White, D. & Rudy, J.",
+        "year": "2007-2009",
+        "licence": "mathematical content / public domain"
+      },
+      {
+        "title": "Fragmentarium — GPU-accelerated fractal rendering",
+        "url": "https://github.com/Syntopia/Fragmentarium",
+        "author": "Mikael Hvidtfeldt Christensen",
+        "year": "2011-2023",
+        "licence": "BSD-2-Clause"
+      }
+    ]
+  },
+  "technique_tags": [
+    "escape-time",
+    "triplex-algebra",
+    "distance-estimation",
+    "orbit-traps",
+    "marching-cubes",
+    "vertex-colours",
+    "fractal",
+    "3d-fractal",
+    "webxr",
+    "glb"
+  ]
+}

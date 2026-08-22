@@ -1,0 +1,75 @@
+{
+  "slug": "python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/blueprint.py",
+      "type": "script",
+      "description": "Pauldron mesh + height VG + pin stripe VG → VertexWeightEditModifier S-curve → VertexWeightMixModifier MULTIPLY → debug vertex colour → GLB export"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/record.py",
+      "type": "script",
+      "description": "90-frame orbital render with phase-keyed modifier visibility toggling to show raw → S-curve → mix progression"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc",
+      "description": "OBS setup and four-section interactive recording walkthrough"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/README.md",
+      "type": "doc",
+      "description": "Quick-start, gotchas, file inventory and cross-references"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/hf_vwedit_pauldron.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/glbs/scripting/hf_vwedit_pauldron.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/viewport.mp4",
+      "type": "video",
+      "description": "90-frame Eevee render: orbital spin with three phase-transition modifier toggles showing raw → S-curve → multiply weight stages (~3.75 s @ 24 fps)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of interactive Blender workflow covering all four recording sections",
+      "committed": false
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm",
+      "/tutorials/blender-tutorial-modifier-surface-deform-vrm-cloth-binding",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope",
+      "/tutorials/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.VertexWeightEditModifier.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": "https://github.com/KhronosGroup/glTF-Sample-Models"
+      }
+    ]
+  }
+}

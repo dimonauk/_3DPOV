@@ -1,0 +1,35 @@
+{
+  "slug": "python-numpy-smoothlife-fourier-continuous-automaton-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_smoothlife.blend",
+    "hf_smoothlife.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing"
+    ],
+    "external": [
+      {
+        "label": "Rafler (2011) — Generalisation of Conway's 'Game of Life' to a continuous domain — SmoothLife",
+        "url": "https://arxiv.org/abs/1111.1567",
+        "licence": "arXiv preprint (public domain mathematical result)",
+        "author": "Stephan Rafler"
+      },
+      {
+        "label": "duckythescientist/SmoothLife — Python reference implementation",
+        "url": "https://github.com/duckythescientist/SmoothLife",
+        "licence": "MIT",
+        "author": "duckythescientist"
+      }
+    ]
+  }
+}

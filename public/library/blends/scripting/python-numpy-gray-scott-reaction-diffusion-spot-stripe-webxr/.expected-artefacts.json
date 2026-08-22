@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_gray_scott.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr"
+    ],
+    "studio_codex": [],
+    "studio_articles": [],
+    "outside_sources": [
+      {
+        "title": "Pearson (1993) — Complex Patterns in a Simple System — Science 261:189",
+        "url": "https://doi.org/10.1126/science.261.5118.189",
+        "licence": "PD",
+        "author": "John E. Pearson",
+        "related": "https://www.sciencemag.org"
+      },
+      {
+        "title": "NumPy — numpy.roll — BSD-3-Clause — NumPy Developers",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.roll.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      },
+      {
+        "title": "Blender Python API 5.1 — bpy.types.Mesh — CC-BY-SA-4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Mesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  }
+}

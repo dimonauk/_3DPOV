@@ -1,0 +1,36 @@
+{
+  "slug": "python-bpy-asset-metadata-mark-tag-batch-glb-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    { "file": "asset_library_demo.blend", "type": "blend",    "notes": "four asset-marked objects; three tagged webxr+low-poly+holoflow, one tagged render+hero+holoflow" },
+    { "file": "hf_crate_a.glb",           "type": "glb",      "notes": "low-poly cube prop, Draco L6, WebP, Y-up, single mesh" },
+    { "file": "hf_lantern_b.glb",         "type": "glb",      "notes": "faceted icosphere lantern, Draco L6, WebP, Y-up" },
+    { "file": "hf_spike_c.glb",           "type": "glb",      "notes": "hex-base cone spike, Draco L6, WebP, Y-up" },
+    { "file": "asset_manifest.json",       "type": "json",     "notes": "machine-readable export log: exported array + skipped array" },
+    { "file": "viewport.mp4",              "type": "video",    "notes": "90-frame turntable orbit; Workbench Solid + Material colour; render-only cube in wire mode" },
+    { "file": "screen.mp4",               "type": "video",    "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md" }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-mathutils-kdtree-nearest-attribute-transfer-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender Asset Library system manual",
+        "url": "https://docs.blender.org/manual/en/5.1/files/asset_libraries/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO — official Blender glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group contributors"
+      }
+    ]
+  }
+}

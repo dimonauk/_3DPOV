@@ -1,0 +1,39 @@
+{
+  "slug": "gn-simulation-zone-vicsek-active-matter-polar-flock",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_vicsek.blend"
+  ],
+  "video_outputs": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-vicsek-active-matter-polar-flock/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-vicsek-active-matter-polar-flock/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Novel Type of Phase Transition in a System of Self-Driven Particles",
+        "authors": "T. Vicsek, A. Czirók, E. Ben-Jacob, I. Cohen, O. Shochet",
+        "year": 1995,
+        "licence": "Public Domain academic preprint",
+        "url": "https://arxiv.org/abs/cond-mat/9507055"
+      },
+      {
+        "title": "Simulation Zone — Blender Manual",
+        "authors": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html"
+      }
+    ]
+  }
+}

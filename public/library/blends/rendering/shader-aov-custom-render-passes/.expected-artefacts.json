@@ -1,0 +1,40 @@
+{
+  "slug": "shader-aov-custom-render-passes",
+  "topic": "rendering",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "aov_amulet.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "output/aov_passes_0001.exr"
+  ],
+  "videos": [
+    "../../../../public/library/videos/rendering/shader-aov-custom-render-passes/viewport.mp4",
+    "../../../../public/library/videos/rendering/shader-aov-custom-render-passes/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — AOV Output Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov_output.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "OpenEXR — Academy Software Foundation",
+        "url": "https://github.com/AcademySoftwareFoundation/openexr",
+        "licence": "BSD-2-Clause",
+        "author": "Academy Software Foundation"
+      }
+    ]
+  }
+}

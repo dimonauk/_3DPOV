@@ -1,0 +1,77 @@
+{
+  "slug": "compositor-color-grading-rgb-curves-cdl",
+  "topic": "compositing",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/compositing/compositor-color-grading-rgb-curves-cdl/blueprint.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-color-grading-rgb-curves-cdl/record.py",
+      "type": "script",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-color-grading-rgb-curves-cdl/README.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "public/library/blends/compositing/compositor-color-grading-rgb-curves-cdl/SCREEN-RECORDING-NOTES.md",
+      "type": "docs",
+      "status": "authored"
+    },
+    {
+      "path": "colour_grade_demo.blend",
+      "type": "blend",
+      "status": "pending_local_save",
+      "note": "Save via Ctrl+S after running blueprint.py in Blender"
+    },
+    {
+      "path": "output/colour_grade_0001.png",
+      "type": "render",
+      "status": "pending_render",
+      "note": "F12 after running blueprint.py — graded PNG with full compositor chain"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-color-grading-rgb-curves-cdl/viewport.mp4",
+      "type": "video",
+      "status": "pending_record",
+      "note": "Run record.py from Text Editor after blueprint.py"
+    },
+    {
+      "path": "public/library/videos/compositing/compositor-color-grading-rgb-curves-cdl/screen.mp4",
+      "type": "video",
+      "status": "pending_obs",
+      "note": "See SCREEN-RECORDING-NOTES.md — OBS window capture of Blender session"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-compositor-kuwahara-painterly-stylisation",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight"
+    ],
+    "outside_sources": [
+      {
+        "name": "Blender Compositor Documentation",
+        "url": "https://docs.blender.org/manual/en/latest/compositing/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation contributors",
+        "note": "Color Balance, RGB Curves, Hue-Saturation-Value node references"
+      },
+      {
+        "name": "OpenColorIO (OCIO)",
+        "url": "https://github.com/AcademySoftwareFoundation/OpenColorIO",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation",
+        "note": "The color-transform library Blender uses internally for scene-linear operations"
+      }
+    ]
+  }
+}

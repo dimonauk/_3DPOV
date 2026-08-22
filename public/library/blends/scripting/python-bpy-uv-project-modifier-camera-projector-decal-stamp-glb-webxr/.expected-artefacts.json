@@ -1,0 +1,60 @@
+{
+  "slug": "python-bpy-uv-project-modifier-camera-projector-decal-stamp-glb-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "hf_uvproject_shield.blend",
+    "hf_uvproject_shield.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      {
+        "label": "ShrinkwrapModifier — PROJECT mode surface conform & decal drape",
+        "path": "/tutorials/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr"
+      },
+      {
+        "label": "BooleanModifier + WeldModifier — compound-body prop construction",
+        "path": "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr"
+      },
+      {
+        "label": "BevelModifier — edge-weight chamfer & hard-surface panel",
+        "path": "/tutorials/blender-tutorial-python-bpy-bevel-modifier-hard-surface-edge-chamfer-webxr"
+      },
+      {
+        "label": "bpy.types.MeshUVLoop — UV layer authoring & multi-object atlas GLB",
+        "path": "/tutorials/blender-tutorial-python-bpy-mesh-uv-layer-atlas-pack-multi-object-webxr"
+      },
+      {
+        "label": "Holoflow WebXR Exporter — install & scan docs",
+        "path": "/docs/INSTALL-SCAN-BLENDER"
+      }
+    ],
+    "outside": [
+      {
+        "title": "UV Project Modifier — Blender 5.1 Manual",
+        "author": "Blender Foundation",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/uv/uv_project.html",
+        "licence": "CC-BY-SA 4.0",
+        "related": [
+          "https://github.com/blender/blender",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "glTF 2.0 Specification — Texture Coordinates",
+        "author": "The Khronos Group",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#reference-mesh-primitive",
+        "licence": "CC-BY 4.0",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

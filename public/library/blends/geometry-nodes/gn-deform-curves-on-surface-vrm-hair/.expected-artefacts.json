@@ -1,0 +1,54 @@
+{
+  "slug": "gn-deform-curves-on-surface-vrm-hair",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "deform_curves_demo.blend",
+    "deform_curves_demo_posed.glb"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-deform-curves-on-surface-vrm-hair/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-deform-curves-on-surface-vrm-hair/screen.mp4"
+  ],
+  "key_nodes": [
+    "GeometryNodeDeformCurvesOnSurface — reads hc.surface + hc.surface_uv_map; re-positions curve points to track deformed mesh each frame",
+    "bpy.data.hair_curves.new() — HairCurves data block (type string 'CURVES', plural); distinct from legacy bpy.data.curves",
+    "hc.add_curves([GUIDE_PTS]*NUM_GUIDES) — allocate flat point array; sizes list defines per-curve point counts",
+    "hc.surface = scalp_obj — rest-pose surface binding; barycentric coords computed on first evaluation",
+    "hc.surface_uv_map = 'UVMap' — UV layer for barycentric root lookup; must match a UV layer on hc.surface",
+    "GeometryNodeObjectInfo (transform_space='RELATIVE') — required when reading the curves object from a second GN tree",
+    "GeometryNodeCurveToMesh (Fill Caps=False) — sweeps round CROSS_SEGS-polygon profile; open tips look like hair not cable",
+    "GeometryNodeTriangulateMesh — converts quads from CurveToMesh to triangles for GLB export",
+    "Armature modifier on scalp — drives surface deformation that DeformCurvesOnSurface tracks"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-interpolate-curves-strand-hair-vrm",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-modifier-surface-deform-vrm-cloth-binding"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://code.blender.org/2022/08/new-hair-in-blender-3-3/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Jacques Lucke / Blender Institute"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

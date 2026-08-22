@@ -1,0 +1,38 @@
+{
+  "blend": "smooth_prism.blend",
+  "glbs": [
+    "smooth_prism_30deg.glb",
+    "smooth_prism_15deg.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-smooth-by-angle-normal-split/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-smooth-by-angle-normal-split/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-tutorial-gn-edge-crease-subdiv-hard-surface",
+      "/tutorials/blender-tutorial-modifier-data-transfer-smooth-normals",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+      "/tutorials/blender-tutorial-low-poly-faceted-hard-surface"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Smooth by Angle Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/smooth_by_angle.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "glTF-Blender-IO — KhronosGroup",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-smooth-by-angle-normal-split"
+}

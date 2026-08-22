@@ -1,0 +1,38 @@
+{
+  "slug": "gn-index-switch-lod-mesh-kit",
+  "topic": "geometry-nodes",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "lod_sphere_hi.glb",
+    "lod_sphere_mid.glb",
+    "lod_sphere_lo.glb",
+    "blueprint.py",
+    "record.py",
+    "public/library/videos/geometry-nodes/gn-index-switch-lod-mesh-kit/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-index-switch-lod-mesh-kit/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit",
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Index Switch Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/misc/index_switch.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Developer Blog — Geometry Nodes Improvements",
+        "url": "https://code.blender.org/2023/02/geometry-nodes-improvements/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

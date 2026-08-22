@@ -1,0 +1,33 @@
+{
+  "blend": "foliage_decal_alpha.blend",
+  "glb": "foliage_decal_alpha.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/shading/shader-alpha-clip-blend-foliage-decal-webxr/viewport.mp4",
+    "screen": "public/library/videos/shading/shader-alpha-clip-blend-foliage-decal-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender glTF I/O add-on",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": ["KhronosGroup/glTF", "KhronosGroup/glTF-Sample-Viewer", "KhronosGroup/glTF-Sample-Models"]
+      },
+      {
+        "title": "glTF-Transform — CLI toolkit for inspecting and patching glTF/GLB files",
+        "url": "https://github.com/donmccurdy/glTF-Transform",
+        "licence": "MIT",
+        "author": "Don McCurdy",
+        "related": ["donmccurdy/three-gltf-viewer", "mrdoob/three.js"]
+      }
+    ]
+  }
+}

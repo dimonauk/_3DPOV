@@ -1,0 +1,43 @@
+{
+  "slug": "python-numpy-physarum-slime-mould-transport-network-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_physarum_network.glb",
+    "hf_physarum_network.blend"
+  ],
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+      "/tutorials/blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing"
+    ],
+    "outside_sources": [
+      {
+        "title": "Characteristics of Pattern Formation and Evolution in Approximations of Physarum Transport Networks",
+        "author": "Jeff Jones",
+        "year": 2010,
+        "licence": "academic public domain",
+        "url": "https://uwe-repository.worktribe.com/output/980579"
+      },
+      {
+        "title": "NumPy Reference — Random Sampling",
+        "author": "NumPy Developers",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/reference/random/"
+      }
+    ]
+  }
+}

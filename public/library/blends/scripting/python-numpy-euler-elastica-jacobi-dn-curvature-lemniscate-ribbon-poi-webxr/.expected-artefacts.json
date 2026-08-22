@@ -1,0 +1,54 @@
+{
+  "blend": "hf_elastica_poi.blend",
+  "glb": "hf_elastica_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr/screen.mp4"
+  ],
+  "shape_keys": [
+    "M_010_circle",
+    "M_348_exact",
+    "M_550_oval",
+    "M_750_elongated",
+    "M_950_cusp"
+  ],
+  "vertex_colour_layers": ["ElasticaKappa"],
+  "holoflow_meta": {
+    "facet": true,
+    "category": "poi-head",
+    "export_format": "GLB",
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "yup": true
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr"
+    ],
+    "outside_sources": [
+      {
+        "label": "Euler 1744 De Curvis Elasticis (Appendix I of Methodus Inveniendi)",
+        "url": "https://scholarlycommons.pacific.edu/euler-works/65/",
+        "licence": "Public Domain",
+        "author": "Leonhard Euler"
+      },
+      {
+        "label": "Langer & Singer 1984 Total Squared Curvature of Closed Curves J Differential Geometry 20(1)",
+        "url": "https://doi.org/10.4310/jdg/1214438990",
+        "licence": "Public Domain (mathematical content)",
+        "author": "Joel Langer, David Singer"
+      },
+      {
+        "label": "NumPy Reference Documentation BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "gn-points-to-curves-poi-trail-ribbon-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "key_nodes": [
+    "GeometryNodePointsToCurves — groups POINT-domain points by INT 'curve_group' attribute into one POLY spline per unique group ID; outputs Curves + ungrouped Points",
+    "GeometryNodeResampleCurve (Count=64) — resamples to uniform arc-length spacing before cyclic assignment and profile sweep",
+    "GeometryNodeSetSplineCyclic — marks each orbit strand as a closed loop",
+    "GeometryNodeSplineParameter — provides 0..1 Factor along each strand for the colour gradient",
+    "GeometryNodeStoreNamedAttribute ('strand_factor', FLOAT, POINT) — bakes spline parameter for GLB accessor export",
+    "GeometryNodeCurvePrimitiveCircle (8-sided, r=0.018 m) — profile swept by CurveToMesh",
+    "GeometryNodeCurveToMesh (Fill Caps=True) — sweeps the circle profile along each strand tangent"
+  ],
+  "artefacts": [
+    "hf_poi_trails.blend",
+    "hf_poi_trails.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-curve-tangent-normal-frenet-ribbon-beam-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-set-curve-tilt-mobius-ribbon",
+      "/tutorials/blender-tutorial-gn-resample-curve-railing-balustrade-bezier-path",
+      "/atelier"
+    ],
+    "outside": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/points_to_curves.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "note": "Official Blender Manual — Points to Curves node reference"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "note": "Official Blender Manual — Curve to Mesh node reference"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_apollonian_floor.glb",
+    "../../videos/scripting/python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr"
+    ],
+    "outside": [
+      {
+        "author": "René Descartes",
+        "year": 1643,
+        "title": "Letter to Princess Elizabeth — Descartes Circle Theorem",
+        "licence": "Public Domain",
+        "url": "https://en.wikipedia.org/wiki/Descartes%27_theorem"
+      },
+      {
+        "author": "Frederick Soddy",
+        "year": 1936,
+        "title": "The Kiss Precise — Nature 137:1021",
+        "licence": "Public Domain",
+        "url": "https://doi.org/10.1038/137021a0"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

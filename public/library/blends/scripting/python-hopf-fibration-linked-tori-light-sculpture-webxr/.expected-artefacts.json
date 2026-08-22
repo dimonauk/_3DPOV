@@ -1,0 +1,45 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "hf_hopf_fibration.blend",
+    "hf_hopf_fibration.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-hopf-fibration-linked-tori-light-sculpture-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-hopf-fibration-linked-tori-light-sculpture-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["https://projects.blender.org/blender/blender"]
+      },
+      {
+        "title": "niles-johnson/Hopf — Hopf Fibration Visualisation",
+        "url": "https://github.com/niles-johnson/Hopf",
+        "licence": "MIT",
+        "author": "Niles Johnson",
+        "related": ["https://nilesjohnson.net/hopf.html"]
+      },
+      {
+        "title": "Dimensions (documentary) — Fibres of the Hopf Fibration",
+        "url": "https://www.dimensions-math.org/",
+        "licence": "CC-BY-SA-3.0",
+        "author": "Étienne Ghys, Jos Leys, Aurélien Alvarez",
+        "related": ["https://www.josleys.com/"]
+      }
+    ]
+  }
+}

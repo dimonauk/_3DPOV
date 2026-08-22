@@ -1,0 +1,57 @@
+{
+  "slug": "physics-mantaflow-liquid-dam-break",
+  "topic": "physics",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "dam_break.blend",
+    "dam_break_splash.glb",
+    "../../videos/physics/physics-mantaflow-liquid-dam-break/viewport.mp4",
+    "../../videos/physics/physics-mantaflow-liquid-dam-break/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-physics-cloth-simulation-waving-flag",
+      "/tutorials/blender-tutorial-gn-volume-cube-procedural-cloud",
+      "/tutorials/blender-tutorial-physics-soft-body-jelly-squash-stretch",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-gn-bake-node-simulation-growth"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Fluid Domain Settings",
+        "url": "https://docs.blender.org/manual/en/latest/physics/fluid/type/domain/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/physics/fluid/type/flow.html",
+          "https://docs.blender.org/manual/en/latest/physics/fluid/type/effector.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  }
+}

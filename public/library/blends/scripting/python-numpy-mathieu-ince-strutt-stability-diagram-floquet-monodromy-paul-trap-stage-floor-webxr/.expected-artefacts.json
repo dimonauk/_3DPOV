@@ -1,0 +1,57 @@
+{
+  "slug": "python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_ince_strutt.blend",
+    "hf_ince_strutt.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh_stats_expected": {
+    "grid_na": 160,
+    "grid_nq": 140,
+    "vertex_count": 22400,
+    "quad_face_count": 22101,
+    "shape_key_count": 3,
+    "colour_attribute": "Col",
+    "glb_size_approx_kb": 420
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance",
+      "/tutorials/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi",
+      "/tutorials/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "NIST Digital Library of Mathematical Functions §28 — Mathieu Functions and Hill's Equation",
+        "url": "https://dlmf.nist.gov/28",
+        "licence": "Public Domain (US Government Publication)",
+        "author": "Volkmer H, in: Olver FWJ et al (eds), NIST DLMF, NIST 2010",
+        "related": [
+          "https://www.nist.gov/programs-projects/nist-digital-library-mathematical-functions",
+          "Abramowitz & Stegun §20 (1964, PD)"
+        ]
+      },
+      {
+        "title": "NumPy — fundamental package for scientific computing with Python",
+        "url": "https://numpy.org/doc/stable/reference/routines.linalg.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      },
+      {
+        "title": "SciPy Special Functions — Mathieu characteristic values (scipy.special.mathieu_a/b)",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.mathieu_a.html",
+        "licence": "BSD-3-Clause",
+        "author": "SciPy Developers",
+        "related": "https://github.com/scipy/scipy"
+      }
+    ]
+  }
+}

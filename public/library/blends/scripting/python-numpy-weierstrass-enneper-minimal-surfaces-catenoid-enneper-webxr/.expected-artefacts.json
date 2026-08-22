@@ -1,0 +1,38 @@
+{
+  "blends": ["hf_weierstrass_minimal.blend"],
+  "glbs": ["hf_weierstrass_minimal.glb"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Weierstrass, K. (1866) Untersuchungen über die Flächen, deren mittlere Krümmung überall gleich Null ist — Monatsberichte der Königlichen Akademie der Wissenschaften zu Berlin",
+        "url": "https://en.wikipedia.org/wiki/Weierstrass%E2%80%93Enneper_parameterization",
+        "licence": "Public Domain (1866 publication, mathematical content)",
+        "author": "Weierstrass, Karl"
+      },
+      {
+        "title": "Osserman, R. (1986) A Survey of Minimal Surfaces — Dover Publications (2nd ed.)",
+        "url": "https://www.maths.ed.ac.uk/~v1ranick/papers/osserman.pdf",
+        "licence": "Public Domain (academic mathematical reference, originally 1969 Van Nostrand Reinhold)",
+        "author": "Osserman, Robert",
+        "related": "https://math.stanford.edu/~osserman/"
+      },
+      {
+        "title": "NumPy — fundamental package for scientific computing with Python",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

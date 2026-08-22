@@ -1,0 +1,39 @@
+{
+  "blend": "echo_grid.blend",
+  "glb": "echo_grid.glb",
+  "video": "../../videos/geometry-nodes/gn-sample-index-echo-grid/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-sample-index-echo-grid/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-sample-index-echo-grid",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-sample-index-echo-grid",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-tower",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao"
+    ],
+    "external": [
+      {
+        "title": "Sample Index Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting — bpy scripting examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "modifier-boolean-exact-hard-surface-trim",
+  "topic": "modifiers",
+  "type": "blend + glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hard_surface_panel.blend",
+    "hard_surface_panel.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-mesh-boolean-hard-surface",
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural"
+    ],
+    "external": [
+      {
+        "title": "Boolean Modifier — Blender Manual 5.1",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/booleans.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Bevel Modifier — Blender Manual 5.1",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "tutorial_path": "/tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "gn-curve-spiral-helical-spring-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "spring_coil.blend",
+    "spring_coil.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-curve-spiral-helical-spring-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-curve-spiral-helical-spring-webxr/screen.mp4"
+  ],
+  "tutorial_route": "/tutorials/blender-tutorial-gn-curve-spiral-helical-spring-webxr",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-gn-offset-point-in-curve-chain-links",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-modifier-screw-revolve-column"
+    ],
+    "outside_sources": [
+      {
+        "title": "Spiral Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/spiral.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Helix — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Helix",
+        "licence": "CC-BY-SA 3.0",
+        "author": "Wikipedia contributors"
+      },
+      {
+        "title": "Three.js CatmullRomCurve3",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/extras/curves/CatmullRomCurve3.js",
+        "licence": "MIT",
+        "author": "Ricardo Cabello (mrdoob) + three.js contributors"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "eevee-shadow-catcher-holdout-ar-composite",
+  "blender_version": "5.1",
+  "renderer": "EEVEE_NEXT",
+  "artefacts": [
+    "ar_composite.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video_artefacts": [
+    "public/library/videos/rendering/eevee-shadow-catcher-holdout-ar-composite/viewport.mp4",
+    "public/library/videos/rendering/eevee-shadow-catcher-holdout-ar-composite/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-light-linking-character-rig",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/object_settings/visibility.html",
+        "title": "Blender Manual — Object Visibility (Shadow Catcher / Holdout)",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/eevee/index.html",
+        "title": "Blender Manual — EEVEE Next",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "eevee-next-bloom-emission-glow-cel-shade",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/blueprint.py",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/record.py",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/README.md",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/.expected-artefacts.json",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/power_core_prop.blend",
+    "public/library/blends/rendering/eevee-next-bloom-emission-glow-cel-shade/power_core_prop.glb",
+    "public/library/videos/rendering/eevee-next-bloom-emission-glow-cel-shade/viewport.mp4",
+    "public/library/videos/rendering/eevee-next-bloom-emission-glow-cel-shade/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/compositing/types/filter/glare.html",
+        "title": "Blender Manual — Compositor Glare Node",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/render/eevee/render_settings/performance.html",
+        "title": "Blender Manual — EEVEE Next Viewport Compositor",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://github.com/blender/blender",
+          "https://projects.blender.org/blender/blender/issues"
+        ]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_emissive_strength",
+        "title": "KHR_materials_emissive_strength glTF Extension Spec",
+        "licence": "CC-BY-4.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Models",
+          "https://github.com/KhronosGroup/glTF-Blender-IO"
+        ]
+      }
+    ]
+  }
+}

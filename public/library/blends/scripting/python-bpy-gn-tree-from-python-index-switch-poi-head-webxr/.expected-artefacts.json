@@ -1,0 +1,37 @@
+{
+  "blend": "hf_poi_head.blend",
+  "glb": "hf_poi_head.glb",
+  "video_viewport": "public/library/videos/scripting/python-bpy-gn-tree-from-python-index-switch-poi-head-webxr/viewport.mp4",
+  "video_screen": "public/library/videos/scripting/python-bpy-gn-tree-from-python-index-switch-poi-head-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "technique": "Python bpy — Geometry Node Tree from Python, Index Switch, multi-variant modifier",
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-socket-panels-interface-collapsible-modifier-ui",
+      "/tutorials/blender-tutorial-python-bpy-modal-face-tag-picker-bvh-raycast-gpu-overlay",
+      "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+      "/tutorials/blender-tutorial-gn-matrix-nodes-fk-chain-articulated-poi-staff",
+      "/tutorials/blender-tutorial-python-asset-library-mark-catalogue"
+    ],
+    "studio_articles": [
+      "/articles/blender-extensions-platform",
+      "/articles/webxr-asset-pipeline"
+    ],
+    "external_sources": [
+      {
+        "label": "Blender Python API — bpy.types.GeometryNodeTree (interface) — CC BY-SA 4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.GeometryNodeTree.html"
+      },
+      {
+        "label": "Blender Python API — GeometryNodeIndexSwitch — CC BY-SA 4.0 — Blender Foundation",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.GeometryNodeIndexSwitch.html"
+      },
+      {
+        "label": "njanakiev/blender-scripting — MIT — Nicolas Janakiev — Geometry Nodes via Python examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "related": "https://github.com/njanakiev/scikit-spatial"
+      }
+    ]
+  }
+}

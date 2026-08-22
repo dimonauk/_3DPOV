@@ -1,0 +1,39 @@
+{
+  "blend": "hf_boy_surface.blend",
+  "glb": "hf_boy_surface.glb",
+  "viewport_mp4": "../../videos/scripting/python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr/viewport.mp4",
+  "screen_mp4": "../../videos/scripting/python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr/screen.mp4",
+  "shape_keys": ["Basis", "SK_Oblate", "SK_Prolate", "SK_Tight"],
+  "vertex_colour_attribute": "BoyCol",
+  "holoflow_category": "poi-head",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kummer-quartic-16-nodes-tetrahedral-k3-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "label": "Boy W (1903) Mathematische Annalen 57:151-184",
+        "url": "https://link.springer.com/article/10.1007/BF01444342",
+        "licence": "Public Domain",
+        "author": "Werner Boy"
+      },
+      {
+        "label": "Apéry F (1986) Models of the Real Projective Plane. Vieweg",
+        "url": "https://www.springer.com/book/9783528089832",
+        "licence": "Mathematical content Public Domain",
+        "author": "François Apéry"
+      },
+      {
+        "label": "NumPy BSD-3-Clause",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}

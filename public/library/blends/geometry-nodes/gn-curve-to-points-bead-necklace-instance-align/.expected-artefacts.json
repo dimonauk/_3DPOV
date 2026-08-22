@@ -1,0 +1,52 @@
+{
+  "slug": "gn-curve-to-points-bead-necklace-instance-align",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "bead_necklace.glb",
+    "../../videos/geometry-nodes/gn-curve-to-points-bead-necklace-instance-align/viewport.mp4",
+    "../../videos/geometry-nodes/gn-curve-to-points-bead-necklace-instance-align/screen.mp4"
+  ],
+  "gn_nodes_used": [
+    "GeometryNodeResampleCurve",
+    "GeometryNodeCurveToPoints",
+    "GeometryNodeMeshUVSphere",
+    "FunctionNodeAlignEulerToVector",
+    "FunctionNodeRandomValue",
+    "ShaderNodeCombineXYZ",
+    "GeometryNodeInstanceOnPoints",
+    "GeometryNodeSetMaterial",
+    "GeometryNodeRealizeInstances",
+    "GeometryNodeCurvePrimitiveCircle",
+    "GeometryNodeCurveToMesh",
+    "GeometryNodeJoinGeometry"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-sample-curve-track-sleepers",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-modifier-array-curve-deform-chain-rope"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Curve to Points Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": "https://projects.blender.org/blender/blender-manual"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": "https://github.com/njanakiev"
+      }
+    ]
+  }
+}

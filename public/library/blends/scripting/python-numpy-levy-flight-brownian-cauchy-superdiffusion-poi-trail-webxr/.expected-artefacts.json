@@ -1,0 +1,41 @@
+{
+  "artefacts": [
+    "hf_levy_flight.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ifs-chaos-game-barnsley-fern-dragon-curve-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-bpy-reynolds-boids-3d-separation-alignment-cohesion-numpy-webxr"
+    ],
+    "external": [
+      {
+        "title": "Chambers, Mallows & Stuck (1976) stable RNG method",
+        "url": "https://doi.org/10.2307/2285309",
+        "licence": "PD",
+        "author": "Chambers, Mallows, Stuck"
+      },
+      {
+        "title": "Lévy, Paul (1937) Théorie de l'addition — stable distributions",
+        "url": "https://en.wikipedia.org/wiki/L%C3%A9vy_distribution",
+        "licence": "PD",
+        "author": "Paul Lévy"
+      },
+      {
+        "title": "NumPy random module",
+        "url": "https://numpy.org/doc/stable/reference/random/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "slug": "python-numpy-levy-flight-brownian-cauchy-superdiffusion-poi-trail-webxr"
+}

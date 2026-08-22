@@ -1,0 +1,53 @@
+{
+  "blend": "velvet_lacquer_clothing.blend",
+  "glb": "velvet_lacquer_clothing.glb",
+  "videos": [
+    "public/library/videos/shading/shader-principled-sheen-coat-velvet-lacquer-vrm/viewport.mp4",
+    "public/library/videos/shading/shader-principled-sheen-coat-velvet-lacquer-vrm/screen.mp4"
+  ],
+  "materials": [
+    "VelvetJacket_Navy",
+    "LacquerBelt_Black"
+  ],
+  "gltf_extensions": [
+    "KHR_materials_sheen",
+    "KHR_materials_clearcoat"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-alpha-clip-blend-foliage-decal-webxr",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin",
+      "/tutorials/blender-tutorial-shader-principled-hair-bsdf-vrm"
+    ],
+    "external": [
+      {
+        "title": "Principled BSDF — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/render/shader_nodes/shader/principled.html",
+        "licence": "CC BY",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "KHR_materials_sheen specification",
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_sheen/README.md",
+        "licence": "MIT",
+        "author": "KhronosGroup",
+        "repo": "https://github.com/KhronosGroup/glTF"
+      },
+      {
+        "title": "KHR_materials_clearcoat specification",
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_clearcoat/README.md",
+        "licence": "MIT",
+        "author": "KhronosGroup",
+        "repo": "https://github.com/KhronosGroup/glTF"
+      },
+      {
+        "title": "glTF Sample Viewer (reference implementation)",
+        "url": "https://github.com/KhronosGroup/glTF-Sample-Viewer",
+        "licence": "Apache-2.0",
+        "author": "KhronosGroup"
+      }
+    ]
+  }
+}

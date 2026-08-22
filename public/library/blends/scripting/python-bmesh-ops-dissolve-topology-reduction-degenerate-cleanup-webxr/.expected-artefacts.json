@@ -1,0 +1,38 @@
+{
+  "slug": "python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr",
+  "version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "hf_panel_tile.glb",
+    "../../../../videos/scripting/python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr/viewport.mp4",
+    "../../../../videos/scripting/python-bmesh-ops-dissolve-topology-reduction-degenerate-cleanup-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-ops-rotate-edges-beautify-fill-directed-triangulation-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-triangulate-join-triangles-quad-retopo-glb-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-face-region-panel-push-control-deck-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-split-edges-hard-normals-angle-threshold-uv-seam-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.ops.html",
+        "title": "bmesh.ops module — Blender 5.1 Python API",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO — Khronos glTF 2.0 Blender exporter/importer",
+        "author": "Khronos Group",
+        "licence": "Apache-2.0",
+        "related": "https://github.com/KhronosGroup/glTF"
+      }
+    ]
+  }
+}

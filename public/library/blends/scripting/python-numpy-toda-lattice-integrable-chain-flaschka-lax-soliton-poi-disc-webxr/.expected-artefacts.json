@@ -1,0 +1,55 @@
+{
+  "slug": "python-numpy-toda-lattice-integrable-chain-flaschka-lax-soliton-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "scripting",
+  "type": "blend + glb",
+  "files": [
+    "hf_toda_disc.blend",
+    "hf_toda_disc.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "glb": {
+    "name": "hf_toda_disc",
+    "export_yup": true,
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "holoflow_facet": true,
+    "holoflow_category": "poi-disc",
+    "shape_keys": ["Basis", "SK_1sol", "SK_phonon"],
+    "vertex_attributes": ["TodaDisp"]
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr"
+    ],
+    "external": [
+      {
+        "label": "Toda M (1967) Vibration of a chain with nonlinear interaction. J. Phys. Soc. Japan 22, 431-436.",
+        "url": "https://doi.org/10.1143/JPSJ.22.431",
+        "licence": "Public Domain"
+      },
+      {
+        "label": "Flaschka H (1974) On the Toda Lattice, I: Existence of integrals. Phys. Rev. B 9, 1924.",
+        "url": "https://doi.org/10.1103/PhysRevB.9.1924",
+        "licence": "Public Domain (mathematical content)"
+      },
+      {
+        "label": "NumPy BSD-3-Clause",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}

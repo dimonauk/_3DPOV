@@ -1,0 +1,59 @@
+{
+  "slug": "python-bpy-mesh-deform-modifier-cage-bind-vrm-clothing-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "hf_meshdeform_clothing.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      {
+        "label": "Holoflow WebXR Exporter — install & scan docs",
+        "path": "/docs/INSTALL-SCAN-BLENDER"
+      },
+      {
+        "label": "LaplacianDeformModifier — differential-coordinate cage & VRM tail",
+        "path": "/tutorials/blender-tutorial-python-bpy-laplacian-deform-modifier-anchor-cage-secondary-motion-vrm-webxr"
+      },
+      {
+        "label": "ShrinkwrapModifier — PROJECT mode surface conform & decal drape",
+        "path": "/tutorials/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr"
+      },
+      {
+        "label": "CorrectiveSmoothModifier — joint-volume recovery for deform artefacts",
+        "path": "/tutorials/blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr"
+      },
+      {
+        "label": "bpy.types.Key + ShapeKey — foreach_set morph target construction",
+        "path": "/tutorials/blender-tutorial-python-bpy-shape-key-data-block-morph-target-vrm-webxr"
+      }
+    ],
+    "outside": [
+      {
+        "title": "Mesh Deform Modifier — Blender 5.1 Manual",
+        "author": "Blender Foundation",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/mesh_deform.html",
+        "licence": "CC-BY-SA 4.0",
+        "related": [
+          "https://github.com/blender/blender",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "Bounded Biharmonic Weights for Real-Time Deformation",
+        "author": "Alec Jacobson, Ilya Baran, Jovan Popović, Olga Sorkine",
+        "source": "ACM SIGGRAPH 2011",
+        "url": "https://igl.ethz.ch/projects/bbw/",
+        "licence": "Academic / public domain",
+        "related": [
+          "https://github.com/libigl/libigl"
+        ]
+      }
+    ]
+  }
+}

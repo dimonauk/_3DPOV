@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-scipy-dec-hodge-star-harmonic-1form-perturbed-torus-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_dec_torus.blend",
+    "hf_dec_torus.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Pinkall & Polthier — Computing Discrete Minimal Surfaces and Their Conjugates",
+        "url": "https://projecteuclid.org/journals/experimental-mathematics/volume-2/issue-1/",
+        "licence": "Academic open access",
+        "authors": "Ulrich Pinkall, Konrad Polthier",
+        "year": 1993
+      },
+      {
+        "title": "Crane et al. — Digital Geometry Processing with Discrete Exterior Calculus",
+        "url": "https://www.cs.cmu.edu/~kmcrane/Projects/DDG/paper.pdf",
+        "licence": "CC BY 4.0",
+        "authors": "Keenan Crane, Fernando de Goes, Mathieu Desbrun, Peter Schröder",
+        "year": 2013,
+        "related_repo": "https://github.com/nmwsharp/geometry-central"
+      }
+    ]
+  },
+  "dec_operators": {
+    "d0_shape": "(N_T+1)*N_P x (N_T+1)*N_P",
+    "hodge_star_1": "diagonal, cotangent weights w_ij=(cot α_k + cot α_l)/2",
+    "laplacian": "L = d0^T * star1 * d0",
+    "solve": "Dirichlet CG on cut cylinder, u=0 left / u=1 right"
+  }
+}

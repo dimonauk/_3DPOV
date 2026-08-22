@@ -1,0 +1,50 @@
+{
+  "slug": "gn-curve-tangent-normal-frenet-ribbon-beam-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/energy_beam.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-curve-tangent-normal-frenet-ribbon-beam-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-curve-tangent-normal-frenet-ribbon-beam-webxr/screen.mp4"
+  ],
+  "custom_attributes": [
+    { "name": "_T",     "domain": "POINT", "data_type": "FLOAT_VECTOR", "note": "Frenet tangent T — forward direction along beam at each vertex ring" },
+    { "name": "_N",     "domain": "POINT", "data_type": "FLOAT_VECTOR", "note": "Frenet normal N (MINIMUM_ROTATION frame) — concave side direction" },
+    { "name": "_B",     "domain": "POINT", "data_type": "FLOAT_VECTOR", "note": "Frenet binormal B = T×N — lateral axis completing right-handed frame" },
+    { "name": "beam_t", "domain": "POINT", "data_type": "FLOAT",        "note": "Spline Parameter Factor [0,1] — position along beam for alpha fade" }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-set-curve-tilt-mobius-ribbon",
+      "/tutorials/blender-tutorial-gn-curve-to-points-bead-necklace-instance-align",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-gn-sample-curve-track-sleepers"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_tangent.html",
+        "label": "Blender Manual — Curve Tangent node",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "siblings": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_normal.html"
+        ]
+      },
+      {
+        "url": "https://github.com/BrendanParmer/NodeToPython",
+        "label": "BrendanParmer/NodeToPython — GN tree serialisation reference",
+        "licence": "MIT",
+        "author": "Brendan Parmer",
+        "siblings": ["https://github.com/BrendanParmer/NodeToPython/tree/main/tests"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "blend": "hf_feigenbaum_poi.blend",
+  "glb": "hf_feigenbaum_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "vertices": 36000,
+  "quads": 35820,
+  "shape_keys": ["Basis", "SK_FirstBifurc", "SK_Cascade", "SK_ChaoticOnset", "SK_Period3Win"],
+  "colour_attributes": ["Feigenbaum_Density"],
+  "poi_object": "hf_feigenbaum_poi",
+  "holoflow_facet": true,
+  "radial_rings": 200,
+  "angular_sectors": 180,
+  "r_range_basis": [2.8, 4.0],
+  "warm_up_iters": 1000,
+  "orbit_iters": 800,
+  "rad_inner_m": 0.08,
+  "rad_outer_m": 0.46,
+  "h_scale_m": 0.14,
+  "feigenbaum_delta": 4.66920160910,
+  "feigenbaum_alpha": -2.50290787509,
+  "r_bifurc_1": 3.000,
+  "r_bifurc_2": 3.449,
+  "r_chaos_onset": 3.5699456,
+  "r_period3_window": 3.8284,
+  "export": {
+    "draco_compression_level": 6,
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true,
+    "texture_format": "WEBP"
+  },
+  "cross_references": {
+    "duffing_period_doubling": "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+    "aizawa_chaos": "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr",
+    "lorenz_attractor": "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+    "coupled_map_lattice": "/tutorials/blender-tutorial-gn-simulation-zone-coupled-map-lattice-logistic-spatiotemporal-chaos-poi-webxr"
+  },
+  "outside_sources": [
+    {
+      "author": "Feigenbaum MJ",
+      "year": 1978,
+      "title": "Quantitative universality for a class of nonlinear transformations",
+      "journal": "Journal of Statistical Physics",
+      "volume": 19,
+      "issue": 1,
+      "pages": "25-52",
+      "doi": "10.1007/BF01020332",
+      "licence": "open-access",
+      "notes": "Original discovery of δ and α; renormalisation-group argument for universality"
+    },
+    {
+      "author": "Li T-Y & Yorke JA",
+      "year": 1975,
+      "title": "Period three implies chaos",
+      "journal": "American Mathematical Monthly",
+      "volume": 82,
+      "issue": 10,
+      "pages": "985-992",
+      "doi": "10.2307/2318254",
+      "licence": "open-access"
+    },
+    {
+      "author": "Strogatz SH",
+      "year": 1994,
+      "title": "Nonlinear Dynamics and Chaos",
+      "publisher": "Addison-Wesley",
+      "url": "https://www.stevenstrogatz.com/books/nonlinear-dynamics-and-chaos-with-applications-to-physics-biology-chemistry-and-engineering",
+      "licence": "All rights reserved (reference only, no code derived)"
+    },
+    {
+      "name": "NumPy",
+      "licence": "BSD-3-Clause",
+      "url": "https://numpy.org/"
+    }
+  ]
+}

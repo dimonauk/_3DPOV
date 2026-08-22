@@ -1,0 +1,52 @@
+{
+  "slug": "gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_kh_vortex.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "tutorial_url": "/tutorials/blender-tutorial-gn-simulation-zone-kelvin-helmholtz-vortex-filament-birkhoff-rott",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-equation-chladni-standing-waves"
+    ],
+    "outside": [
+      {
+        "label": "Lord Kelvin — Hydrokinetic solutions and observations (1871) — Public Domain",
+        "url": "https://www.biodiversitylibrary.org/item/18369"
+      },
+      {
+        "label": "Blender Foundation — Repeat Zone Manual — CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/repeat_zone.html"
+      }
+    ]
+  },
+  "key_gn_nodes": [
+    "GeometryNodeSimulationInput",
+    "GeometryNodeSimulationOutput",
+    "GeometryNodeRepeatInput",
+    "GeometryNodeRepeatOutput",
+    "GeometryNodeSampleIndex",
+    "GeometryNodeInputNamedAttribute",
+    "GeometryNodeStoreNamedAttribute",
+    "GeometryNodeSetPosition",
+    "GeometryNodeSwitch",
+    "FunctionNodeCompare",
+    "GeometryNodeInputIndex",
+    "GeometryNodeMeshToCurve",
+    "GeometryNodeCurvePrimitiveCircle",
+    "GeometryNodeCurveToMesh"
+  ],
+  "items_mechanism": "Repeat Zone: rep_out.repeat_items.new('GEOMETRY','State') adds State socket pair; rep_in.pair_with_output(rep_out) links them. rep_in.outputs['Iteration'] gives current j as INT. rep_i.inputs['State'] receives initial geometry; rep_o.inputs['State'] receives updated geometry each iteration; rep_o.outputs['State'] is the final result after N iterations."
+}

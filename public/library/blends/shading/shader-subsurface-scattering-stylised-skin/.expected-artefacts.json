@@ -1,0 +1,56 @@
+{
+  "slug": "shader-subsurface-scattering-stylised-skin",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "sss_skin.blend",
+    "sss_skin.glb",
+    "../../videos/shading/shader-subsurface-scattering-stylised-skin/viewport.mp4",
+    "../../videos/shading/shader-subsurface-scattering-stylised-skin/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-shader-principled-hair-bsdf-vrm",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-armature-ik-robot-arm"
+    ],
+    "outside_sources": [
+      {
+        "title": "Principled BSDF — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/render/cycles/",
+          "https://docs.blender.org/manual/en/latest/render/eevee/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

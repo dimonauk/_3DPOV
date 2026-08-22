@@ -1,0 +1,44 @@
+{
+  "slug": "gn-merge-by-distance-weld-tiled-module",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "tile_wall_welded.blend",
+    "tile_wall_welded.glb"
+  ],
+  "video": {
+    "viewport": "public/library/videos/geometry-nodes/gn-merge-by-distance-weld-tiled-module/viewport.mp4",
+    "screen":   "public/library/videos/geometry-nodes/gn-merge-by-distance-weld-tiled-module/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+      "/tutorials/blender-tutorial-python-3d-print-mesh-analysis",
+      "/tutorials/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/merge_by_distance.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

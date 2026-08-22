@@ -1,0 +1,43 @@
+{
+  "slug": "gn-align-euler-to-vector-signage-facade",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-align-euler-to-vector-signage-facade/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-align-euler-to-vector-signage-facade/record.py",
+    "public/library/blends/geometry-nodes/gn-align-euler-to-vector-signage-facade/README.md",
+    "public/library/blends/geometry-nodes/gn-align-euler-to-vector-signage-facade/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-align-euler-to-vector-signage-facade/.expected-artefacts.json",
+    "public/library/videos/geometry-nodes/gn-align-euler-to-vector-signage-facade/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-align-euler-to-vector-signage-facade/screen.mp4"
+  ],
+  "blender_files": [
+    "signage_facade.blend"
+  ],
+  "export_files": [
+    "signage_facade.glb"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-gn-geometry-to-instance-multi-variant-prop-scatter",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Align Euler to Vector",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/utilities/rotation/align_euler_to_vector.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

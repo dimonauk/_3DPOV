@@ -1,0 +1,74 @@
+{
+  "blend": "hf_enneper_poi.blend",
+  "glb": "hf_enneper_poi.glb",
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "mesh": {
+    "vertices": 6400,
+    "faces": 6241,
+    "face_type": "quad",
+    "shape_keys": ["Basis", "SK_Tight", "SK_Wide", "SK_Rotate45"],
+    "colour_attributes": ["K_curvature"],
+    "materials": ["enneper_poi_mat"]
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "morph_targets": true,
+    "vertex_colours": true,
+    "yup": true
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-triply-periodic-minimal-surfaces-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-boy-surface-apery-rp2-immersion-3fold-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-klein-bottle-figure-8-tube-euler-chi-0-non-orientable-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "title": "Analytisch-geometrische Untersuchungen",
+        "author": "Enneper A",
+        "year": 1864,
+        "journal": "Zeitschrift für Mathematik und Physik",
+        "volume": 9,
+        "pages": "96–125",
+        "licence": "PD",
+        "url": "https://archive.org/details/zeitschriftfrma09unkngoog"
+      },
+      {
+        "title": "A Survey of Minimal Surfaces",
+        "author": "Osserman R",
+        "year": 1986,
+        "publisher": "Dover Publications",
+        "licence": "mathematical content PD",
+        "url": "https://www.ams.org/books/chel/330/",
+        "related": [
+          "https://mathworld.wolfram.com/MinimalSurface.html"
+        ]
+      },
+      {
+        "title": "3D-XplorMath — Interactive Visualisation of Mathematical Objects",
+        "author": "3D-XplorMath Consortium",
+        "licence": "MIT",
+        "url": "https://3d-xplormath.org",
+        "related": [
+          "https://github.com/3DXplorMath/3DXplorMath-J"
+        ]
+      },
+      {
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  },
+  "holoflow": {
+    "facet": true,
+    "category": "poi-head",
+    "surface_type": "minimal",
+    "K_formula": "-4/(1+u^2+v^2)^4",
+    "H": 0
+  }
+}

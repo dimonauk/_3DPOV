@@ -1,0 +1,54 @@
+{
+  "slug": "gn-distribute-points-in-volume-crystal-geode",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "crystal_geode.blend",
+    "crystal_geode.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-distribute-points-in-volume-crystal-geode/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-distribute-points-in-volume-crystal-geode/screen.mp4"
+  ],
+  "tutorial_route": "/tutorials/blender-tutorial-gn-distribute-points-in-volume-crystal-geode",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion",
+      "/tutorials/blender-tutorial-gn-volume-cube-procedural-cloud",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto"
+    ],
+    "outside_sources": [
+      {
+        "title": "Distribute Points in Volume Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Mesh to Volume Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

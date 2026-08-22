@@ -1,0 +1,38 @@
+{
+  "slug": "python-pose-bone-constraint-management-export-bake",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "output/constraint_rig_baked.glb",
+    "../../videos/scripting/python-pose-bone-constraint-management-export-bake/viewport.mp4",
+    "../../videos/scripting/python-pose-bone-constraint-management-export-bake/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-rigging-vrm-eye-look-at-damped-track",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-to-site-asset-pipeline"
+    ],
+    "outside_sources": [
+      {
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow"
+      },
+      {
+        "title": "bpy.types.PoseBone — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bpy.types.PoseBone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

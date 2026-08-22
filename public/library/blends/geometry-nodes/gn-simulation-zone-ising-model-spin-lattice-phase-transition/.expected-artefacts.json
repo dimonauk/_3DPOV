@@ -1,0 +1,58 @@
+{
+  "slug": "gn-simulation-zone-ising-model-spin-lattice-phase-transition",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_ising_model.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-ising-model-spin-lattice-phase-transition/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-ising-model-spin-lattice-phase-transition/screen.mp4"
+  ],
+  "nodes_used": [
+    "GeometryNodeSimulationInput / SimulationOutput — stateful zone carrying 'spin' FACE attribute",
+    "GeometryNodeInputIndex — face index used for col/row decoding",
+    "ShaderNodeMath(MODULO/FLOOR/DIVIDE/ADD/MULTIPLY/SUBTRACT/MAXIMUM/MINIMUM/EXPONENT) — all arithmetic",
+    "GeometryNodeInputNamedAttribute(FLOAT) — reads 'spin' field per face",
+    "GeometryNodeSampleIndex(FLOAT, FACE) — reads spin at periodic neighbour index",
+    "FunctionNodeRandomValue(FLOAT) — per-face pseudo-random with seed=frame",
+    "GeometryNodeInputSceneTime — supplies current frame for temperature schedule and random seed",
+    "FunctionNodeCompare(LESS_THAN) — random < acceptance → flip boolean",
+    "GeometryNodeSwitch(FLOAT) — conditional: keep or flip spin",
+    "GeometryNodeStoreNamedAttribute(FLOAT, FACE) — writes updated spin back to geometry"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-equation-chladni-standing-waves",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-simulation-zone-predator-prey-lotka-volterra-ecosystem"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": "projects.blender.org/blender/blender-manual"
+      },
+      {
+        "title": "Ernst Ising — Beitrag zur Theorie des Ferromagnetismus (1925)",
+        "url": "https://link.springer.com/article/10.1007/BF02980577",
+        "licence": "Public Domain",
+        "author": "Ernst Ising",
+        "related": "physik.uni-augsburg.de/theo1/ising/"
+      },
+      {
+        "title": "Lars Onsager — Crystal Statistics I (1944)",
+        "url": "https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.117",
+        "licence": "Public Domain",
+        "author": "Lars Onsager",
+        "related": "physicstoday.scitation.org/doi/10.1063/1.882441"
+      }
+    ]
+  }
+}

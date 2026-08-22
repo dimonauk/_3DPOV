@@ -1,0 +1,38 @@
+{
+  "slug": "python-gltf-user-extension-export-extras-hook",
+  "blender_version": "5.1",
+  "date": "2026-07-03",
+  "licence": "CC0",
+  "files": {
+    "blueprint": "public/library/blends/scripting/python-gltf-user-extension-export-extras-hook/blueprint.py",
+    "record": "public/library/blends/scripting/python-gltf-user-extension-export-extras-hook/record.py",
+    "screen_notes": "public/library/blends/scripting/python-gltf-user-extension-export-extras-hook/SCREEN-RECORDING-NOTES.md",
+    "readme": "public/library/blends/scripting/python-gltf-user-extension-export-extras-hook/README.md",
+    "macro": "tools/blender-addon/holoflow_macros/gltf_extras_hook.py"
+  },
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-gltf-user-extension-export-extras-hook/viewport.mp4",
+    "screen": "public/library/videos/scripting/python-gltf-user-extension-export-extras-hook/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-gizmo-group-custom-viewport-handle",
+      "/tutorials/blender-tutorial-python-workspace-tool-custom-toolbar-facet-tag",
+      "/tutorials/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar"
+    ],
+    "external": [
+      {
+        "title": "Blender Foundation — glTF 2.0 format — Extensions",
+        "url": "https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html",
+        "licence": "CC-BY Blender Foundation"
+      },
+      {
+        "title": "Three.js — GLTFLoader userData mapping",
+        "url": "https://threejs.org/docs/#examples/en/loaders/GLTFLoader",
+        "licence": "MIT"
+      }
+    ]
+  }
+}

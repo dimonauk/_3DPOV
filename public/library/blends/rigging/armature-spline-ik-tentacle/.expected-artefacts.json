@@ -1,0 +1,44 @@
+{
+  "slug": "armature-spline-ik-tentacle",
+  "topic": "rigging",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "tentacle_spline_ik.blend",
+    "tentacle_skin.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/rigging/armature-spline-ik-tentacle/viewport.mp4",
+    "public/library/videos/rigging/armature-spline-ik-tentacle/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-curves-hair-grooming",
+      "/tutorials/blender-tutorial-armature-weight-paint"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Spline IK Constraint",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/tracking/spline_ik.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "glTF-Blender-IO — glTF exporter + animation baking",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

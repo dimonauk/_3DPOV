@@ -1,0 +1,46 @@
+{
+  "slug": "cycles-panoramic-equirectangular-360-webxr-hdri",
+  "topic": "rendering",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "pano_360_hdri.blend",
+    "renders/pano_360.exr",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-shader-sky-nishita-sun-position-hdri-rig",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr",
+      "/tutorials/blender-tutorial-cycles-dof-motion-blur-bokeh"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Panoramic Camera",
+        "url": "https://docs.blender.org/manual/en/5.1/render/cameras/camera_types.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation / Documentation Team"
+      },
+      {
+        "title": "pmndrs/drei — Environment component",
+        "url": "https://github.com/pmndrs/drei",
+        "licence": "MIT",
+        "author": "Paul Henschel et al."
+      },
+      {
+        "title": "mrdoob/three.js — RGBELoader",
+        "url": "https://github.com/mrdoob/three.js",
+        "licence": "MIT",
+        "author": "three.js authors"
+      }
+    ],
+    "related_upstream": [
+      "https://github.com/KhronosGroup/glTF",
+      "https://github.com/KhronosGroup/glTF-Blender-IO"
+    ]
+  }
+}

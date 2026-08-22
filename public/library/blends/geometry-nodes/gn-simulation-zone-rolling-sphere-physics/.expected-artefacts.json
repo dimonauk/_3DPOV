@@ -1,0 +1,39 @@
+{
+  "slug": "gn-simulation-zone-rolling-sphere-physics",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "rolling_sphere.blend",
+    "rolling_sphere_frame60.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-gn-simulation-zone-dla-crystal-dendrite",
+      "/tutorials/blender-tutorial-gn-raycast-terrain-decal-projection",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-viewer-node-debug-inspect-attributes"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "title": "Simulation Zone Node — Blender Manual",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_repos": ["https://github.com/blender/blender"]
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Euler_method",
+        "title": "Euler method — Wikipedia",
+        "licence": "CC BY-SA 3.0",
+        "author": "Wikipedia contributors"
+      }
+    ]
+  }
+}

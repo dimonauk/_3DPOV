@@ -1,0 +1,65 @@
+{
+  "blend": "penrose_p2_floor.blend",
+  "glb": "penrose_p2_floor.glb",
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "approximate_kites_at_step5": 200,
+    "approximate_darts_at_step5": 124,
+    "kite_dart_ratio": 1.618,
+    "kite_angles_deg": [72, 72, 72, 144],
+    "dart_angles_deg": [36, 72, 36, 216],
+    "kite_sides_m": [1.0, 1.618, 1.0, 1.618],
+    "dart_sides_m": [1.618, 1.0, 1.0, 1.618],
+    "slab_heights_m": { "kite": 0.055, "dart": 0.035 },
+    "materials": ["PenroseP2Mat"],
+    "vertex_colour_layer": "TileType"
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "yup": true,
+    "colours": true
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-robinson-deflation-aperiodic-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-fibonacci-poi-disc-webxr"
+    ],
+    "external": [
+      {
+        "title": "Role of Aesthetics in Pure and Applied Mathematical Research",
+        "author": "Penrose R",
+        "year": 1974,
+        "journal": "Bull. Inst. Math. Appl.",
+        "volume": 10,
+        "pages": "266-271",
+        "licence": "PD",
+        "url": "https://en.wikipedia.org/wiki/Penrose_tiling"
+      },
+      {
+        "title": "Algebraic theory of Penrose's nonperiodic tilings of the plane",
+        "author": "de Bruijn NG",
+        "year": 1981,
+        "journal": "Kon. Nederl. Akad. Wetensch. Proc. Ser. A",
+        "volume": 84,
+        "pages": "39-66",
+        "licence": "PD",
+        "url": "https://www.math.ucdavis.edu/~gravner/MAT135B/resources/de-Bruijn.pdf",
+        "related": [
+          "https://en.wikipedia.org/wiki/De_Bruijn_sequence"
+        ]
+      }
+    ]
+  },
+  "holoflow": {
+    "facet": true,
+    "category": "stage-floor",
+    "deflation_steps": 5,
+    "tile_types": ["kite", "dart"]
+  }
+}

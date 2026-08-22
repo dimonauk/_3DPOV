@@ -1,0 +1,45 @@
+{
+  "slug": "workbench-cavity-outline-assembly-diagram",
+  "topic": "rendering",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "workbench_sensor_pod.blend",
+    "../../glbs/rendering/workbench-cavity-outline-assembly-diagram/workbench_sensor_pod.glb",
+    "../../../../public/library/videos/rendering/workbench-cavity-outline-assembly-diagram/viewport.mp4",
+    "../../../../public/library/videos/rendering/workbench-cavity-outline-assembly-diagram/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-eevee-next-bloom-emission-glow-cel-shade",
+      "/tutorials/blender-tutorial-eevee-next-ray-tracing-ssr-glossy",
+      "/tutorials/blender-tutorial-freestyle-npr-line-rendering",
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view"
+    ],
+    "studio_docs": [
+      "/docs/BLENDER-EXTENSIONS.md",
+      "/docs/BLENDER-MCP-TUTORIALS.md"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/render/workbench/index.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["https://github.com/blender/blender"]
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_unlit",
+        "licence": "CC-BY-4.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF-Sample-Models",
+          "https://github.com/KhronosGroup/glTF-Blender-IO"
+        ]
+      }
+    ]
+  }
+}

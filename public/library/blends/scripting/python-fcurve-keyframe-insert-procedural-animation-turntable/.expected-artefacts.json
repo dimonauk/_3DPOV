@@ -1,0 +1,36 @@
+{
+  "slug": "python-fcurve-keyframe-insert-procedural-animation-turntable",
+  "blender_version": "5.1",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "turntable_prop.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-fcurve-keyframe-insert-procedural-animation-turntable/viewport.mp4",
+    "public/library/videos/scripting/python-fcurve-keyframe-insert-procedural-animation-turntable/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.FCurve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/njankowski/blender-scripting",
+        "licence": "MIT",
+        "author": "Nick Jankowski"
+      }
+    ]
+  }
+}

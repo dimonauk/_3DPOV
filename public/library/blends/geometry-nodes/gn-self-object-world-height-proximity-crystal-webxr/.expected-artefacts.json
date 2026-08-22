@@ -1,0 +1,72 @@
+{
+  "slug": "gn-self-object-world-height-proximity-crystal-webxr",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "type": "script",
+      "path": "public/library/blends/geometry-nodes/gn-self-object-world-height-proximity-crystal-webxr/blueprint.py"
+    },
+    {
+      "type": "script",
+      "path": "public/library/blends/geometry-nodes/gn-self-object-world-height-proximity-crystal-webxr/record.py"
+    },
+    {
+      "type": "glb",
+      "path": "public/library/glbs/geometry-nodes/gn-self-object-world-height-proximity-crystal-webxr/crystal_proximity.glb",
+      "note": "Produced by export_glb() in blueprint.py after running main()"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/geometry-nodes/gn-self-object-world-height-proximity-crystal-webxr/viewport.mp4",
+      "note": "Produced by record.py — OpenGL animation render, 60 frames"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/geometry-nodes/gn-self-object-world-height-proximity-crystal-webxr/screen.mp4",
+      "note": "OBS screen capture per SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-scale-elements-noise-driven-face-scale-diamond-plate",
+      "/tutorials/blender-tutorial-gn-is-viewport-render-lod-switch-webxr",
+      "/tutorials/blender-tutorial-gn-active-camera-billboard-sprite-webxr-hud"
+    ],
+    "external_sources": [
+      {
+        "title": "Blender Manual — Self Object Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/self_object.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling_repos": [
+          "github.com/blender/blender",
+          "github.com/blender/blender-developer-docs"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting — object-transform examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "sibling_repos": [
+          "njanakiev/scikit-spatial",
+          "njanakiev/python-snippets"
+        ]
+      }
+    ]
+  },
+  "key_nodes": [
+    "GeometryNodeSelfObject",
+    "GeometryNodeObjectInfo",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeMath",
+    "ShaderNodeMapRange",
+    "GeometryNodeInputPosition",
+    "GeometryNodeStoreNamedAttribute",
+    "GeometryNodeSetShadeSmooth",
+    "GeometryNodeScaleElements",
+    "GeometryNodeSetMaterial"
+  ]
+}

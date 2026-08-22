@@ -1,0 +1,34 @@
+{
+  "blend": "prop_scatter.blend",
+  "glb": "../../glbs/geometry-nodes/gn-collection-info-pick-instance-asset-scatter/prop_scatter.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "../../videos/geometry-nodes/gn-collection-info-pick-instance-asset-scatter/viewport.mp4",
+    "../../videos/geometry-nodes/gn-collection-info-pick-instance-asset-scatter/screen.mp4"
+  ],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-gn-distribute-weight-painted-scatter",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Collection Info Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/collection_info.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "related": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html"
+      },
+      {
+        "title": "Blender Studio — Sprite Fright Open Movie",
+        "url": "https://studio.blender.org/films/sprite-fright/",
+        "licence": "CC BY 4.0",
+        "author": "Blender Studio",
+        "related": "https://studio.blender.org/films/"
+      }
+    ]
+  }
+}

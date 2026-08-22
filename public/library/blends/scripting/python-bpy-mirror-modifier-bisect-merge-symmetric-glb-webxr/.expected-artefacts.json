@@ -1,0 +1,36 @@
+{
+  "slug": "python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_clasp_buckle.blend",
+    "hf_clasp_buckle.glb"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-mirror-modifier-bisect-merge-symmetric-glb-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-bpy-bevel-modifier-hard-surface-edge-chamfer-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/mirror.html",
+        "title": "Mirror Modifier — Blender 5.1 Manual",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.MirrorModifier.html",
+        "title": "bpy.types.MirrorModifier — Blender Python API",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "artefacts": [
+    "hf_weierstrass_p.blend",
+    "hf_weierstrass_p.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr"
+    ],
+    "external": [
+      {
+        "title": "Whittaker, E.T. & Watson, G.N. — A Course of Modern Analysis, 4th ed. (1927), Chapter XX: Elliptic Functions",
+        "url": "https://archive.org/details/courseofmodernan00whit",
+        "licence": "PD-mathematical",
+        "author": "E.T. Whittaker and G.N. Watson",
+        "related": [
+          "https://en.wikipedia.org/wiki/Weierstrass_elliptic_function",
+          "https://en.wikipedia.org/wiki/Elliptic_curve"
+        ]
+      },
+      {
+        "title": "DLMF §23 — Weierstrass Elliptic and Modular Functions (NIST Digital Library of Mathematical Functions)",
+        "url": "https://dlmf.nist.gov/23",
+        "licence": "PD-usgov",
+        "author": "W.P. Reinhardt and P.L. Walker (NIST)",
+        "related": [
+          "https://dlmf.nist.gov/20",
+          "https://dlmf.nist.gov/22"
+        ]
+      },
+      {
+        "title": "NumPy — Fundamental package for scientific computing with Python",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

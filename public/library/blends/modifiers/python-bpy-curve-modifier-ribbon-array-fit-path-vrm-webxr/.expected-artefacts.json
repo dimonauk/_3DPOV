@@ -1,0 +1,94 @@
+{
+  "slug": "python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr",
+  "topic": "modifiers",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/blueprint.py",
+      "type": "script",
+      "description": "Headless scene builder: Bezier path + profile tile → Weld/Array/Curve stack → GLB export"
+    },
+    {
+      "path": "public/library/blends/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/record.py",
+      "type": "script",
+      "description": "90-frame viewport animation render → viewport.mp4 (Bezier control point animated)"
+    },
+    {
+      "path": "public/library/blends/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc",
+      "description": "OBS instructions for screen.mp4 recording"
+    },
+    {
+      "path": "public/library/blends/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/README.md",
+      "type": "doc",
+      "description": "Entry overview and quick start"
+    },
+    {
+      "path": "public/library/blends/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/hf_ribbon_accessory.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/glbs/modifiers/hf_ribbon_accessory.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/viewport.mp4",
+      "type": "video",
+      "description": "Bezier control point animated — ribbon deforms along curve (3.75 s @ 24 fps)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/modifiers/python-bpy-curve-modifier-ribbon-array-fit-path-vrm-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of full Blender workflow",
+      "committed": false
+    }
+  ],
+  "expected_glb_kb_max": 80,
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-array-modifier-object-offset-radial-helix-webxr",
+      "/tutorials/blender-tutorial-python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr",
+      "/tutorials/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.CurveModifier — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.CurveModifier.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/5.1/bpy.types.ArrayModifier.html"
+        ]
+      },
+      {
+        "title": "Curve Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/curve.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "related_projects": [
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/array.html",
+          "https://docs.blender.org/manual/en/latest/modeling/curves/properties/path_animation.html"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — Khronos Group",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

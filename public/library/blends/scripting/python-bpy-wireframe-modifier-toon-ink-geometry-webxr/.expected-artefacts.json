@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-wireframe-modifier-toon-ink-geometry-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_wireframe_toon.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-gp3-lineart-modifier-toon-outline-batch-vrm"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Wireframe Modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/wireframe.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Three.js — Material.polygonOffset",
+        "url": "https://threejs.org/docs/#api/en/materials/Material.polygonOffset",
+        "licence": "MIT",
+        "author": "mrdoob et al."
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

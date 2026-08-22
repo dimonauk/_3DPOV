@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_henon.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_henon.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr"
+    ],
+    "external": [
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "NumPy User Guide",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}

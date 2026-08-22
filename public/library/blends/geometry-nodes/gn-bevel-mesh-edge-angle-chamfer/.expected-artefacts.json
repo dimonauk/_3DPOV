@@ -1,0 +1,62 @@
+{
+  "slug": "gn-bevel-mesh-edge-angle-chamfer",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer/blueprint.py",
+      "type": "script",
+      "description": "Builds junction block + GN Bevel Mesh chamfer tree; exports GLB"
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer/record.py",
+      "type": "script",
+      "description": "Renders 180-frame EEVEE viewport animation: width grow + 360° rotate"
+    },
+    {
+      "path": "junction_block.glb",
+      "type": "glb",
+      "description": "WebXR-ready sci-fi panel block, Draco 6, WebP textures",
+      "expected_size_kb_max": 120
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer/viewport.mp4",
+      "type": "video",
+      "description": "Rendered viewport animation — chamfer width grow + 360° rotation"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-bevel-mesh-edge-angle-chamfer/screen.mp4",
+      "type": "video",
+      "description": "OBS screen capture of the interactive GN modifier session"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-lines",
+      "/tutorials/blender-tutorial-gn-edge-crease-subdiv-hard-surface",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Bevel Mesh Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/bevel_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html",
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — Nicolas Janakiev",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/tree/master/scripts"
+        ]
+      }
+    ]
+  }
+}

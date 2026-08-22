@@ -1,0 +1,38 @@
+{
+  "blend": "wall_panel_switch.blend",
+  "exports": ["wall_panel_switch.glb"],
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": [
+    "../../videos/geometry-nodes/gn-switch-geometry-variant-toggle-webxr/viewport.mp4",
+    "../../videos/geometry-nodes/gn-switch-geometry-variant-toggle-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view",
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-gn-realize-instances-crystal-grotto",
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Switch Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/utilities/switch.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://github.com/blender/blender"
+        ]
+      },
+      {
+        "title": "KhronosGroup — glTF 2.0 Specification",
+        "url": "https://github.com/KhronosGroup/glTF",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF-Sample-Viewer"
+        ]
+      }
+    ]
+  }
+}

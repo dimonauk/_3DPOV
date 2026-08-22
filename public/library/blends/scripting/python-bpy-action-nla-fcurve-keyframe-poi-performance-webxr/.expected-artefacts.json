@@ -1,0 +1,44 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "hf_poi_performance.blend",
+    "hf_poi_performance.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender 5.1 Python API — bpy.types.Action",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Action.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/5.1/bpy.types.NlaStrip.html"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting — Blender Python scripting examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": [
+          "https://github.com/nicholaslord/blender-scripts",
+          "https://github.com/njanakiev/blender-animation"
+        ]
+      }
+    ]
+  }
+}

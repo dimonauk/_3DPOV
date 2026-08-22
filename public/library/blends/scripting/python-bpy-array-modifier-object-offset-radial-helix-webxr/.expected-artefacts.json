@@ -1,0 +1,40 @@
+{
+  "slug": "python-bpy-array-modifier-object-offset-radial-helix-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_array_crown_helix.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr",
+      "/tutorials/blender-tutorial-python-bpy-boolean-weld-modifier-union-clean-mesh-glb-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Array Modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/array.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.ArrayModifier — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.ArrayModifier.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

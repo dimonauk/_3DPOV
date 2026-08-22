@@ -1,0 +1,41 @@
+{
+  "slug": "python-bpy-rossler-attractor-rk4-poi-light-painting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "generated_by": "blueprint.py",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_rossler.glb",
+    "../../videos/scripting/python-bpy-rossler-attractor-rk4-poi-light-painting/viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-lorenz-attractor-poi-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-double-pendulum-chaos-butterfly",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting"
+    ],
+    "external_sources": [
+      {
+        "label": "Rössler 1976 — Physics Letters A 57(5) — public domain equations",
+        "url": "https://doi.org/10.1016/0375-9601(76)90101-8",
+        "licence": "public domain (equations)"
+      },
+      {
+        "label": "Sprott — Rössler Attractor equations & parameters — public domain",
+        "url": "https://sprott.physics.wisc.edu/chaos/rossler.htm",
+        "licence": "public domain"
+      },
+      {
+        "label": "Blender Python API — bpy.types.Curve — CC-BY-SA-4.0",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Curve.html",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "python-bpy-node-tree-interface-gn-socket-api-4x",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "radial_fan.glb",
+    "radial_fan.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-data-node-groups-gn-billboard-scatter",
+      "/tutorials/blender-tutorial-gn-socket-groups-parametric-crystal-ui",
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/atelier"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.NodeTreeInterface — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NodeTreeInterface.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.types.NodeTreeInterfaceSocket.html"
+      },
+      {
+        "title": "Blender 4.0 Python API Release Notes — Node Socket API Removal",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.0/Python_API",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.2/Python_API"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "sibling": "https://github.com/njanakiev"
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "sibling": "https://github.com/KhronosGroup/glTF-Sample-Assets"
+      }
+    ]
+  }
+}

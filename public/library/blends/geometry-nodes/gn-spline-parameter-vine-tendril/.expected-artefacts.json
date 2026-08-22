@@ -1,0 +1,55 @@
+{
+  "slug": "gn-spline-parameter-vine-tendril",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/blueprint.py",
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/record.py",
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/README.md",
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/.expected-artefacts.json",
+    "public/library/blends/geometry-nodes/gn-spline-parameter-vine-tendril/vine_tendril.blend",
+    "public/library/glbs/geometry-nodes/gn-spline-parameter-vine-tendril/vine_tendril.glb",
+    "public/library/videos/geometry-nodes/gn-spline-parameter-vine-tendril/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-spline-parameter-vine-tendril/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-tower",
+      "/tutorials/blender-tutorial-curves-hair-grooming"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Spline Parameter Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Manual — Store Named Attribute Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  },
+  "expert_notes": [
+    "SplineParameter is a CURVE-domain field — it evaluates per control point on the curve, not per face or per instance; domain mismatch after CurveToPoints is the #1 failure mode",
+    "StoreNamedAttribute(name='vine_t', domain=POINT) freezes the field value before any downstream domain shift; InputNamedAttribute('vine_t') reads it back in any derived context",
+    "ResampleCurve(COUNT=64) is mandatory: raw Bezier control points are NOT uniformly spaced in arc-length parameter — Factor at unsampled points clusters near handles",
+    "The last resampled point sits at Factor=(N-1)/N ≈ 0.984, not 1.0; set LEAF_THRESHOLD < 0.984 to include the near-tip segment",
+    "CurveToPoints(LENGTH) mode gives uniform-density leaf placement regardless of local curve speed; COUNT mode would place more leaves on fast (stretched) sections",
+    "Leaf template object is intentionally unlinked from the scene — ObjectInfo(transform_space=ORIGINAL) accesses it via the data block without needing scene membership",
+    "export_apply=True is mandatory — runtimes do not evaluate GN modifiers; GLB must contain realised mesh data",
+    "vine_t named attribute is NOT exported by default; add export_attributes=True to include _VINE_T in the glTF binary accessor for custom shader use"
+  ]
+}

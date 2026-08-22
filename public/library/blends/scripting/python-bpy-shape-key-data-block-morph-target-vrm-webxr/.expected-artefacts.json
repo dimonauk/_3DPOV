@@ -1,0 +1,50 @@
+{
+  "slug": "python-bpy-shape-key-data-block-morph-target-vrm-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "vrm_morph_proxy.glb",
+    "vrm_morph_proxy.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-shape-key-data-block-morph-target-vrm-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-shape-key-data-block-morph-target-vrm-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-shape-key-driver-rig-vrm-facial",
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-python-armature-bone-collections-vrm-rig-classification-webxr",
+      "/tutorials/blender-tutorial-python-fcurve-driver-shape-key-bone-rotation-vrm"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.Key — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Key.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.ShapeKey.html",
+          "https://docs.blender.org/api/5.1/bpy.types.ShapeKeyPoint.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "VRMC_vrm — VRM 1.0 Expression Preset Specification",
+        "url": "https://github.com/vrm-c/vrm-specification/blob/master/specification/VRMC_vrm-1.0/expressions.md",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "siblings": [
+          "https://github.com/vrm-c/vrm-specification",
+          "https://github.com/vrm-c/UniVRM",
+          "https://github.com/pixiv/three-vrm"
+        ]
+      }
+    ]
+  }
+}

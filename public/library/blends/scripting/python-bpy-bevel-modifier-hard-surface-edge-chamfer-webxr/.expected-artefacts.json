@@ -1,0 +1,44 @@
+{
+  "slug": "python-bpy-bevel-modifier-hard-surface-edge-chamfer-webxr",
+  "topic": "scripting",
+  "type": "blend+glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_bevel_panel.blend",
+    "hf_bevel_panel.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-python-bpy-weighted-normal-modifier-face-area-corner-angle-hard-surface-webxr",
+      "/tutorials/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr",
+      "/tutorials/blender-tutorial-python-bpy-mesh-edge-sharp-crease-seam-attribute-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-extrude-bevel-bridge-hard-surface-prop"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.BevelModifier — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.BevelModifier.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Bevel Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+        "licence": "CC BY SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Khronos Group",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

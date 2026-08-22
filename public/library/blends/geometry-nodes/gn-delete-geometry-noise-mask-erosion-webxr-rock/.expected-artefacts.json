@@ -1,0 +1,39 @@
+{
+  "slug": "gn-delete-geometry-noise-mask-erosion-webxr-rock",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "eroded_asteroid.glb",
+    "../../videos/geometry-nodes/gn-delete-geometry-noise-mask-erosion-webxr-rock/viewport.mp4",
+    "../../videos/geometry-nodes/gn-delete-geometry-noise-mask-erosion-webxr-rock/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-smooth-by-angle-normal-split",
+      "/tutorials/blender-tutorial-gn-merge-by-distance-weld-tiled-module",
+      "/tutorials/blender-tutorial-gn-triangulate-mesh-webxr-tri-safe-export",
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Delete Geometry Node",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/mesh/operations/delete_geometry.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling_repos": ["https://github.com/blender/blender"]
+      },
+      {
+        "title": "njanakiev/blender-scripting — Procedural Geometry Examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "sibling_repos": ["https://github.com/njanakiev/blender-jupyter"]
+      }
+    ]
+  }
+}

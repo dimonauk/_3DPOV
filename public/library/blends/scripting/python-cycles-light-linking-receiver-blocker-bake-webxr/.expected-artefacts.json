@@ -1,0 +1,61 @@
+{
+  "slug": "python-cycles-light-linking-receiver-blocker-bake-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "blends/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/blueprint.py",
+      "type": "script"
+    },
+    {
+      "path": "blends/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/record.py",
+      "type": "script"
+    },
+    {
+      "path": "blends/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/README.md",
+      "type": "doc"
+    },
+    {
+      "path": "blends/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc"
+    },
+    {
+      "path": "glbs/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/light_linking_export.glb",
+      "type": "binary",
+      "generated_by": "blueprint.py"
+    },
+    {
+      "path": "videos/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/viewport.mp4",
+      "type": "binary",
+      "generated_by": "record.py"
+    },
+    {
+      "path": "videos/scripting/python-cycles-light-linking-receiver-blocker-bake-webxr/screen.mp4",
+      "type": "binary",
+      "generated_by": "manual-obs"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake",
+      "/tutorials/blender-tutorial-python-cycles-shader-aov-custom-pass-bake-webxr",
+      "/tutorials/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config",
+      "/tutorials/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/light_linking.html",
+        "title": "Cycles Light Linking Manual",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.types.ObjectLightLinking.html",
+        "title": "bpy.types.ObjectLightLinking API Reference",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-4.0"
+      }
+    ]
+  }
+}

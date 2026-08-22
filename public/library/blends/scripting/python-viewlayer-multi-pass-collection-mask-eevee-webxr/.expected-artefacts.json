@@ -1,0 +1,51 @@
+{
+  "slug": "python-viewlayer-multi-pass-collection-mask-eevee-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-viewlayer-multi-pass-collection-mask-eevee-webxr/blueprint.py",
+      "type": "python",
+      "description": "Full scene setup: collections, view layers, render pass flags, compositor tree"
+    },
+    {
+      "path": "public/library/blends/scripting/python-viewlayer-multi-pass-collection-mask-eevee-webxr/record.py",
+      "type": "python",
+      "description": "Viewport animation with phase-based hide_render keyframes and orbiting camera"
+    },
+    {
+      "path": "public/library/videos/scripting/python-viewlayer-multi-pass-collection-mask-eevee-webxr/viewport.mp4",
+      "type": "video",
+      "description": "120-frame viewport render showing ENV/PROPS/CHAR layer isolation phases"
+    },
+    {
+      "path": "public/library/videos/scripting/python-viewlayer-multi-pass-collection-mask-eevee-webxr/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording: script run → ViewLayer panel → Compositor → Outliner"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-compositor-nodetree-render-passes-eevee-glb-bake",
+      "/tutorials/blender-tutorial-python-eevee-next-shadow-ssr-ao-render-config",
+      "/tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.ViewLayer.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "title": "bpy.types.ViewLayer API Reference (5.1)"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.LayerCollection.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "title": "bpy.types.LayerCollection API Reference (5.1)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "blend": "hf_goldberg_gp11_poi.blend",
+  "glb": "hf_goldberg_gp11_poi.glb",
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "vertices": 60,
+    "faces": 32,
+    "pentagons": 12,
+    "hexagons": 20,
+    "edges": 90,
+    "euler_characteristic": 2,
+    "triangulation_number": 3,
+    "shape_keys": ["Basis", "SK_Prolate", "SK_Flat", "SK_Raw"],
+    "materials": ["gp11_pentagon", "gp11_hexagon"]
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "morph_targets": true,
+    "yup": true
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "A class of multi-symmetric polyhedra",
+        "author": "Goldberg M",
+        "year": 1937,
+        "journal": "Tôhoku Mathematical Journal",
+        "volume": 43,
+        "pages": "104–108",
+        "licence": "PD",
+        "url": "https://doi.org/10.2748/tmj/1178540075"
+      },
+      {
+        "title": "Antiprism — polyhedron manipulation toolkit",
+        "author": "Rossiter A",
+        "licence": "MIT",
+        "url": "https://github.com/antiprism/antiprism",
+        "related": [
+          "https://github.com/antiprism/antiprism_python"
+        ]
+      }
+    ]
+  },
+  "holoflow": {
+    "facet": true,
+    "category": "poi-head",
+    "T": 3,
+    "pentagons": 12,
+    "hexagons": 20
+  }
+}

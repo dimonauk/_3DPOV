@@ -1,0 +1,60 @@
+{
+  "slug": "python-bpy-depsgraph-object-instances-gn-scatter-webxr-export",
+  "blender_version": "5.1",
+  "created": "2026-07-16",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "file": "hf_depsgraph_scatter.blend",
+      "type": "blend",
+      "notes": "HF_Ground with GN scatter modifier, HF_Prop_Ico prototype (hidden), hf_scatter_merged resolved static mesh in collection HF_DepsgraphDemo"
+    },
+    {
+      "file": "hf_scatter_resolved.glb",
+      "type": "glb",
+      "notes": "merged static mesh of ~75 icosphere instances; Draco L6, Y-up, single mesh object, no modifier stack"
+    },
+    {
+      "file": "blueprint.py",
+      "type": "py",
+      "notes": "full pipeline: scene setup → GN tree → depsgraph resolve → bmesh merge → GLB export"
+    },
+    {
+      "file": "record.py",
+      "type": "py",
+      "notes": "90-frame turntable orbit; Workbench Matcap; scatter green, ground dark grey"
+    },
+    {
+      "file": "viewport.mp4",
+      "type": "video",
+      "notes": "90-frame orbit of hf_scatter_merged; run record.py to generate"
+    },
+    {
+      "file": "screen.mp4",
+      "type": "video",
+      "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-node-tree-interface-gn-socket-api-4x",
+      "/tutorials/blender-tutorial-python-bmesh-ops-limited-dissolve-poke-faceted-ornament-webxr",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-bpy-collection-link-visibility-override-batch-glb-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender Python API — bpy.types.Depsgraph",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Depsgraph.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "njanakiev/blender-python-examples — practical bpy scripting patterns",
+        "url": "https://github.com/njanakiev/blender-python-examples",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev"
+      }
+    ]
+  }
+}

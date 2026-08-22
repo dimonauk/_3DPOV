@@ -1,0 +1,36 @@
+{
+  "slug": "shader-procedural-marble-veins",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blends/shading/shader-procedural-marble-veins/marble.blend",
+    "glbs/shading/shader-procedural-marble-veins/marble.glb",
+    "videos/shading/shader-procedural-marble-veins/viewport.mp4",
+    "videos/shading/shader-procedural-marble-veins/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-procedural-wood-grain",
+      "/tutorials/blender-tutorial-shader-procedural-lava-magma-flow",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-faceted-gem-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/wave.html",
+        "label": "Blender Manual — Wave Texture Node",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html",
+        "label": "Blender Manual — Principled BSDF v2",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      }
+    ]
+  }
+}

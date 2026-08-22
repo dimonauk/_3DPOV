@@ -1,0 +1,79 @@
+{
+  "blend": "scherk_doubly_periodic_floor.blend",
+  "glb": "scherk_doubly_periodic_floor.glb",
+  "videos": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "n_tiles": 9,
+    "n_grid_per_tile": 52,
+    "vertices_per_tile": 2704,
+    "total_vertices": 24336,
+    "quads_per_tile": 2601,
+    "total_quads": 23409,
+    "floor_span_m": "~10.8 × 10.8",
+    "max_z_m": "±0.65 (SK_Full)",
+    "shape_keys": ["Basis", "SK_Tenth", "SK_Half", "SK_Full", "SK_Steep"],
+    "vertex_colour_layer": "ScherkK",
+    "material": "ScherkMat"
+  },
+  "maths": {
+    "surface_equation": "z = ln(cos y / cos x)",
+    "domain": "checkerboard: cos(x) cos(y) > 0",
+    "period": "2π in x and y",
+    "mean_curvature": "H = 0 (minimal)",
+    "gaussian_curvature": "K = −sec²x sec²y / (1 + tan²x + tan²y)²",
+    "K_max_abs": 1.0,
+    "K_at_origin": -1.0,
+    "topology": "infinite genus doubly periodic embedded surface",
+    "discovery": "Scherk H F 1835, J. reine angew. Math. 13:185-208"
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "yup": true,
+    "colours": true,
+    "morph_targets": true
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gauss-bonnet-angle-defect-discrete-curvature-torus-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Bemerkungen über die kleinste Fläche innerhalb gegebener Grenzen",
+        "author": "Scherk H F",
+        "year": 1835,
+        "journal": "J. reine angew. Math.",
+        "volume": 13,
+        "pages": "185-208",
+        "licence": "PD",
+        "url": "https://gdz.sub.uni-goettingen.de/id/PPN243919689_0013",
+        "related": [
+          "Riemann B (1866) minimal surface classification PD",
+          "Weierstrass K (1866) Untersuchungen über die Flächen PD"
+        ]
+      },
+      {
+        "title": "NumPy 1.26 User Guide",
+        "author": "NumPy Developers",
+        "year": 2023,
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/1.26/",
+        "related": [
+          "https://scipy.org/ (BSD-3-Clause)"
+        ]
+      }
+    ]
+  },
+  "holoflow": {
+    "facet": true,
+    "category": "stage-floor",
+    "sign_alternation": "(-1)^(i+j) per tile"
+  }
+}

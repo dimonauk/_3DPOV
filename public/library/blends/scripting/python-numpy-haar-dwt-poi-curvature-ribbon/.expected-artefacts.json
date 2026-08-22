@@ -1,0 +1,38 @@
+{
+  "slug": "python-numpy-haar-dwt-poi-curvature-ribbon",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_haar_dwt.blend",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-stft-audio-spectrum-3d-bars-poi-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "PyWavelets — Discrete Wavelet Transform reference implementation",
+        "url": "https://github.com/PyWavelets/pywt",
+        "licence": "MIT"
+      },
+      {
+        "title": "NumPy Documentation — Array operations",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      },
+      {
+        "title": "Mallat 1989 — Multiresolution Signal Decomposition",
+        "url": "https://ieeexplore.ieee.org/document/192463",
+        "licence": "IEEE (free read)"
+      }
+    ]
+  }
+}

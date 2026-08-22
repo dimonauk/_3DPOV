@@ -1,0 +1,66 @@
+{
+  "slug": "python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    {
+      "path": "hf_mobius_loxodromic.glb",
+      "type": "glb",
+      "desc": "Riemann sphere (glass PBR, 3 shape keys) + 72 NURBS logarithmic spiral tubes in spectral emissive colours; Draco-6, WebP textures"
+    },
+    {
+      "path": "hf_mobius.blend",
+      "type": "blend",
+      "desc": "Blender scene with sphere, orbit curves collection, orbit camera rig, EEVEE Next bloom"
+    }
+  ],
+  "video_outputs": [
+    {
+      "path": "public/library/videos/scripting/python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr/viewport.mp4",
+      "desc": "12-second 360° camera orbit, shape key animates 0→1→0, EEVEE Next bloom, 1920×1080 30fps"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr/screen.mp4",
+      "desc": "OBS screen recording per SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "stats": {
+    "n_orbits": 72,
+    "t_steps": 64,
+    "log_r": 0.55,
+    "alpha_deg": 36.0,
+    "conjugacy_classes": ["elliptic", "hyperbolic", "loxodromic"],
+    "sphere_segments": [32, 24]
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr"
+    ],
+    "external": [
+      {
+        "title": "Théorie des groupes fuchsiens",
+        "author": "Henri Poincaré",
+        "year": 1882,
+        "licence": "Public Domain",
+        "url": "https://archive.org/details/actamathematica01stockholmgoog",
+        "related": [
+          "https://en.wikipedia.org/wiki/Möbius_transformation",
+          "https://en.wikipedia.org/wiki/Kleinian_group"
+        ]
+      },
+      {
+        "title": "Indra's Pearls: The Vision of Felix Klein",
+        "author": "David Mumford, Caroline Series, David Wright",
+        "year": 2002,
+        "licence": "CC0 preview / Cambridge",
+        "url": "https://archive.org/details/indraspearlsthev0000mumf",
+        "related": [
+          "https://github.com/jfb3615/ACP-Examples"
+        ]
+      }
+    ]
+  }
+}

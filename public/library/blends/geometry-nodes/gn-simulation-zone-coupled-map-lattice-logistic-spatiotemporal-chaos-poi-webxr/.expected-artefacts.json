@@ -1,0 +1,40 @@
+{
+  "slug": "gn-simulation-zone-coupled-map-lattice-logistic-spatiotemporal-chaos-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "hf_cml_ring.blend"
+  ],
+  "video_outputs": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-coupled-map-lattice-logistic-spatiotemporal-chaos-poi-webxr/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-coupled-map-lattice-logistic-spatiotemporal-chaos-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Period-doubling of kink-antikink patterns, quasiperiodicity in antiferro-like structures and spatial intermittency in coupled logistic lattice",
+        "authors": "Kaneko, K.",
+        "year": 1984,
+        "journal": "Prog. Theor. Phys. 72:480–486",
+        "licence": "Public Domain academic preprint",
+        "url": "https://arxiv.org/abs/nlin/0112004"
+      },
+      {
+        "title": "Simulation Zone — Blender Manual",
+        "authors": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html"
+      }
+    ]
+  }
+}

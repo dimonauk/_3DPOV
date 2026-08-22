@@ -1,0 +1,36 @@
+{
+  "slug": "gn-simulation-zone-game-of-life-mesh-faces",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "../../videos/geometry-nodes/gn-simulation-zone-game-of-life-mesh-faces/viewport.mp4",
+    "../../videos/geometry-nodes/gn-simulation-zone-game-of-life-mesh-faces/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-boid-flock",
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html",
+        "title": "Blur Attribute — Blender Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "title": "Simulation Zone — Blender Manual",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

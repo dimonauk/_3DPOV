@@ -1,0 +1,40 @@
+{
+  "blend": "hf_crystal_scatter.blend",
+  "glb": "hf_crystal_scatter.glb",
+  "video": "../../videos/geometry-nodes/gn-distribute-points-instance-on-points-scatter-webxr/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-distribute-points-instance-on-points-scatter-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-distribute-points-instance-on-points-scatter-webxr",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-distribute-points-instance-on-points-scatter-webxr",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-join-geometry-transform-multi-part-assembly-lantern-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-convex-hull-pointcloud-crystal-gem-webxr",
+      "/tutorials/blender-tutorial-python-bpy-build-modifier-face-reveal-crystal-growth-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-wireframe-edge-tube-crystal-cage-webxr",
+      "/tutorials/blender-tutorial-python-bpy-remesh-modifier-voxel-sharp-topology-clean-glb-webxr"
+    ],
+    "external": [
+      {
+        "title": "Distribute Points on Faces — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Instance on Points — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

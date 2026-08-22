@@ -1,0 +1,42 @@
+{
+  "slug": "python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_hopf_fibration.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-gn-curve-tangent-normal-frenet-ribbon-beam-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr"
+    ],
+    "external": [
+      {
+        "label": "Heinz Hopf — Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche — 1931 — Public Domain",
+        "url": "https://link.springer.com/article/10.1007/BF01449962"
+      },
+      {
+        "label": "njanakiev/blender-scripting — MIT — Nicolas Janakiev",
+        "url": "https://github.com/njanakiev/blender-scripting"
+      },
+      {
+        "label": "KhronosGroup/glTF-Blender-IO — Apache-2.0 — Khronos Group",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO"
+      },
+      {
+        "label": "Bauer 2000 — Distributing Points on a Sphere — Comp. Phys. Comm. 120 — CC0",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0010465599002660"
+      }
+    ]
+  }
+}

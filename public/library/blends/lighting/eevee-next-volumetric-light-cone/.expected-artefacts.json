@@ -1,0 +1,56 @@
+{
+  "slug": "eevee-next-volumetric-light-cone",
+  "topic": "lighting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "volumetric_light_cone.blend",
+    "volumetric_light_cone.glb",
+    "../../videos/lighting/eevee-next-volumetric-light-cone/viewport.mp4",
+    "../../videos/lighting/eevee-next-volumetric-light-cone/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-shader-subsurface-scattering-stylised-skin",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral"
+    ],
+    "outside_sources": [
+      {
+        "title": "EEVEE Volumetrics — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/render/eevee/render_settings/volumetrics.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/render/eevee/",
+          "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_principled.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

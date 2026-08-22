@@ -1,0 +1,63 @@
+{
+  "artefacts": [
+    {
+      "path": "blends/scripting/python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget/blueprint.py",
+      "type": "script",
+      "description": "Production BVH import → VRM bone remap → NLA bake pipeline"
+    },
+    {
+      "path": "blends/scripting/python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget/record.py",
+      "type": "script",
+      "description": "Synthetic two-armature constraint demo + EEVEE viewport render"
+    },
+    {
+      "path": "videos/scripting/python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget/viewport.mp4",
+      "type": "video",
+      "description": "120-frame EEVEE render: source orange skeleton driving cyan VRM skeleton via constraints"
+    },
+    {
+      "path": "videos/scripting/python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget/screen.mp4",
+      "type": "video",
+      "description": "OBS screen capture: blueprint.py walkthrough, constraint panel, NLA bake, export"
+    },
+    {
+      "path": "blends/scripting/python-bpy-bvh-import-vrm-bone-remap-nla-bake-retarget/hf_retarget_dancer.glb",
+      "type": "glb",
+      "description": "Exported animated VRM armature with NLA 'dance_retarget' clip (requires user-supplied BVH)"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mathutils-quaternion-slerp-squad-vrm-retarget",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr",
+      "/tutorials/blender-tutorial-armature-weight-paint",
+      "/tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm"
+    ],
+    "external": [
+      {
+        "name": "CMU Graphics Lab Motion Capture Database",
+        "url": "http://mocap.cs.cmu.edu/",
+        "licence": "Public Domain",
+        "author": "Carnegie Mellon University Graphics Lab",
+        "related": "https://github.com/CMU-Perceptual-Computing-Lab/openpose"
+      },
+      {
+        "name": "VRM Specification 1.0",
+        "url": "https://github.com/vrm-c/vrm-spec",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "related": "https://github.com/vrm-c/UniVRM"
+      },
+      {
+        "name": "Blender Python API — bpy.ops.import_anim.bvh",
+        "url": "https://docs.blender.org/api/5.1/bpy.ops.import_anim.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

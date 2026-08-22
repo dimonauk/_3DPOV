@@ -1,0 +1,78 @@
+{
+  "slug": "gn-foreach-element-zone-stone-chisel-wall",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "geometry-nodes",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-foreach-element-zone-stone-chisel-wall/blueprint.py",
+      "type": "script",
+      "description": "Full GN tree builder: grid, Capture Attribute (face centres + random), Foreach Element Zone (FACE), Sample Index, Mesh Box, Set Position, Set Material, GLB export"
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-foreach-element-zone-stone-chisel-wall/record.py",
+      "type": "script",
+      "description": "Viewport animation render: 90 frames, camera arc -30°→+30°, Seed 0→3 keyframes"
+    },
+    {
+      "path": "output/ashlar_wall.blend",
+      "type": "blend",
+      "description": "Blender source: ashlar wall scene with HS_AshlarChisel GN modifier"
+    },
+    {
+      "path": "output/ashlar_wall.glb",
+      "type": "glb",
+      "description": "WebXR-ready ashlar wall (48 stones), Draco 6, WebP, Y-up, snake_case root 'ashlar_wall'"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-foreach-element-zone-stone-chisel-wall/viewport.mp4",
+      "type": "video",
+      "description": "90-frame rendered viewport animation: camera arc showing stone depth and pattern variants"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-foreach-element-zone-stone-chisel-wall/screen.mp4",
+      "type": "video",
+      "description": "Screen recording: Blender viewport showing full node tree construction and export"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "GN Capture Attribute — Position Snapshot",
+        "path": "/tutorials/blender-tutorial-gn-capture-attribute-position-snapshot-stable-voronoi",
+        "reason": "Capture Attribute before the zone is the same snapshot technique used for stable Voronoi seeding"
+      },
+      {
+        "label": "GN Simulation Zone — Reaction–Diffusion",
+        "path": "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+        "reason": "Sibling zone type (Simulation Zone) shows the general zone input/output pairing pattern"
+      },
+      {
+        "label": "GN Merge by Distance — Tiled Module",
+        "path": "/tutorials/blender-tutorial-gn-merge-by-distance-weld-tiled-module",
+        "reason": "Post-zone weld pass can stitch adjacent stone edges for seamless tileability"
+      },
+      {
+        "label": "GN Menu Switch — Tile Variant Kit",
+        "path": "/tutorials/blender-tutorial-gn-menu-switch-tile-variant-kit",
+        "reason": "Menu Switch inside a Foreach zone would select from N stone profile variants per face"
+      }
+    ],
+    "external_sources": [
+      {
+        "label": "Blender Manual — Foreach Geometry Element Zone",
+        "url": "https://docs.blender.org/manual/en/4.3/modeling/geometry_nodes/geometry/foreach_geometry_element.html",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_projects": ["blender/blender (GPL-2+)", "blender/blender-addons (GPL-2+)"]
+      },
+      {
+        "label": "Blender 4.3 Release Notes — Geometry Nodes: Foreach Zone",
+        "url": "https://www.blender.org/download/releases/4-3/",
+        "licence": "CC BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related_projects": ["blender/blender (GPL-2+)"]
+      }
+    ]
+  }
+}

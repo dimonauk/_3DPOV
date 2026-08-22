@@ -1,0 +1,49 @@
+{
+  "slug": "python-numpy-raup-mollusc-shell-morphospace-helicoidal-coiling-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "hf_raup_shell.blend",
+    "hf_raup_shell.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": ["Basis", "Ammonite", "Nautilus", "Cone", "Turritella"],
+  "vertex_count": 7200,
+  "face_count": 6840,
+  "scale_metres": 0.12,
+  "export": {
+    "format": "glTF Binary",
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "include_morph_targets": true,
+    "include_vertex_colors": true,
+    "apply_transforms": true,
+    "up_axis": "+Y"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-gielis-superformula-polar-3d-organic-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-phyllotaxis-golden-angle-torus-spiral-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-numpy-weierstrass-enneper-minimal-surfaces-catenoid-enneper-webxr",
+      "/tutorials/blender-addon-3d-print-toolbox"
+    ],
+    "outside": [
+      {
+        "author": "Raup, D.M.",
+        "title": "Geometric Analysis of Shell Coiling: General Problems",
+        "year": 1966,
+        "url": "https://doi.org/10.2307/1301507",
+        "licence": "mathematical formulae are public domain",
+        "related": ["https://paleobiodb.org", "https://www.biodiversitylibrary.org"]
+      },
+      {
+        "author": "NumPy community",
+        "title": "NumPy",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "related": ["https://github.com/numpy/numpy", "https://scipy.org"]
+      }
+    ]
+  }
+}

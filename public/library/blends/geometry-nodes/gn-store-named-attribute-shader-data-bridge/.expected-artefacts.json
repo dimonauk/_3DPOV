@@ -1,0 +1,41 @@
+{
+  "slug": "gn-store-named-attribute-shader-data-bridge",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hull_edge_heat.blend",
+    "hull_edge_heat.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-store-named-attribute-shader-data-bridge/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-store-named-attribute-shader-data-bridge/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Store Named Attribute node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Python API — bpy.types.Attribute",
+        "url": "https://docs.blender.org/api/current/bpy.types.Attribute.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

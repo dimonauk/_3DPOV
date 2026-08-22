@@ -1,0 +1,42 @@
+{
+  "slug": "gn-interpolate-curves-strand-hair-vrm",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "scalp_hair.blend",
+    "../../../../glbs/geometry-nodes/gn-interpolate-curves-strand-hair-vrm/scalp_hair.glb",
+    "../../../../videos/geometry-nodes/gn-interpolate-curves-strand-hair-vrm/viewport.mp4",
+    "../../../../videos/geometry-nodes/gn-interpolate-curves-strand-hair-vrm/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-curves-hair-grooming",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm"
+    ],
+    "external": [
+      {
+        "title": "Interpolate Curves — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/interpolate_curves.html",
+        "licence": "CC-BY-SA",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Hair Meshes",
+        "url": "https://www.cemyuksel.com/research/hairMeshes/",
+        "licence": "Academic (free to cite)",
+        "author": "Cem Yuksel, Scott Schaefer, John Keyser",
+        "venue": "SIGGRAPH 2009"
+      }
+    ]
+  },
+  "gn_node": "GeometryNodeInterpolateCurves",
+  "blender_introduced": "3.6",
+  "output_types": ["blend", "glb"]
+}

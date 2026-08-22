@@ -1,0 +1,43 @@
+{
+  "slug": "modifier-skin-remesh-character-blocking",
+  "version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "character_block.blend",
+    "character_block.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/modifiers/modifier-skin-remesh-character-blocking/viewport.mp4",
+    "public/library/videos/modifiers/modifier-skin-remesh-character-blocking/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-retopology-polybuild-shrinkwrap",
+      "/tutorials/blender-tutorial-sculpt-dyntopo-voxel-remesh",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse",
+      "/tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Skin Modifier",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/skin.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_project": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "VRM Specification — vrm-c/vrm-specification",
+        "url": "https://github.com/vrm-c/vrm-specification",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "related_project": "https://github.com/vrm-c/UniVRM"
+      }
+    ]
+  }
+}

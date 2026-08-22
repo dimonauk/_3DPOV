@@ -1,0 +1,41 @@
+{
+  "slug": "shader-vector-displacement-multires-bake-cycles",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "vdm_armour_panel.exr",
+    "../../videos/shading/shader-vector-displacement-multires-bake-cycles/viewport.mp4",
+    "../../videos/shading/shader-vector-displacement-multires-bake-cycles/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-detail-normal-rnm-overlay-hard-surface"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Vector Displacement Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "AcademySoftwareFoundation/openexr",
+        "url": "https://github.com/AcademySoftwareFoundation/openexr",
+        "licence": "Apache-2.0",
+        "author": "Academy Software Foundation",
+        "related_projects": [
+          "AcademySoftwareFoundation/Imath",
+          "AcademySoftwareFoundation/openexr-website"
+        ]
+      }
+    ]
+  }
+}

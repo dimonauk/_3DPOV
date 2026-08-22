@@ -1,0 +1,35 @@
+{
+  "slug": "shader-procedural-wood-grain",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blends/shading/shader-procedural-wood-grain/wood_grain.blend",
+    "glbs/shading/shader-procedural-wood-grain/wood_grain.glb",
+    "videos/shading/shader-procedural-wood-grain/viewport.mp4",
+    "videos/shading/shader-procedural-wood-grain/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-procedural-woven-fabric",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/wave.html",
+        "label": "Blender Manual — Wave Texture Node",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_anisotropy",
+        "label": "KhronosGroup/glTF — KHR_materials_anisotropy extension",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

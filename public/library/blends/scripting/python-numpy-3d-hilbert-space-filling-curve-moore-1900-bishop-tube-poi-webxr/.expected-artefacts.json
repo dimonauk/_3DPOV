@@ -1,0 +1,48 @@
+{
+  "blend": "hf_hilbert_poi.blend",
+  "glb": "hf_hilbert_poi.glb",
+  "viewport_mp4": "../../videos/scripting/python-numpy-3d-hilbert-space-filling-curve-moore-1900-bishop-tube-poi-webxr/viewport.mp4",
+  "screen_mp4": "../../videos/scripting/python-numpy-3d-hilbert-space-filling-curve-moore-1900-bishop-tube-poi-webxr/screen.mp4",
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Torus Knot T(p,q) — Bishop Parallel-Transport Tube technique",
+        "path": "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr"
+      },
+      {
+        "label": "Menger Sponge Level 3 — Hausdorff dimension concept",
+        "path": "/tutorials/blender-tutorial-python-numpy-menger-sponge-level3-hausdorff-fractal-void-cage-poi-webxr"
+      },
+      {
+        "label": "Mandelbulb Power-8 — 3D fractal / space-filling intuition",
+        "path": "/tutorials/blender-tutorial-python-numpy-mandelbulb-power8-triplex-algebra-white-nylander-fractal-poi-head-webxr"
+      },
+      {
+        "label": "Vertex Colour Attributes — FLOAT_COLOR POINT domain in Blender 5.x",
+        "path": "/tutorials/blender-tutorial-vertex-colour-attributes"
+      }
+    ],
+    "outside_sources": [
+      {
+        "label": "Hilbert D (1891) Über die stetige Abbildung einer Linie auf ein Flächenstück. Math. Ann. 38:459–460. Public Domain.",
+        "url": "https://doi.org/10.1007/BF01199431",
+        "licence": "Public Domain (pre-1927)"
+      },
+      {
+        "label": "galtay/hilbertcurve — MIT-licensed Python implementation of Skilling (2004) transposed-bit algorithm",
+        "url": "https://github.com/galtay/hilbertcurve",
+        "licence": "MIT"
+      },
+      {
+        "label": "Skilling J (2004) Programming the Hilbert curve. AIP Conf. Proc. 707:381–387.",
+        "url": "https://doi.org/10.1063/1.1751381",
+        "licence": "academic reference"
+      },
+      {
+        "label": "Haverkort JK (2011) An inventory of three-dimensional Hilbert space-filling curves. arXiv:1109.2323 [cs.CG]. CC BY 3.0.",
+        "url": "https://arxiv.org/abs/1109.2323",
+        "licence": "CC BY 3.0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "slug": "cycles-light-groups-non-destructive-relight",
+  "topic": "rendering",
+  "blender": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "relight_scene.blend",
+    "blueprint.py",
+    "record.py",
+    "output/relight_scene0001.exr",
+    "output/relight_scene_layers0001.exr"
+  ],
+  "video_pending": [
+    "public/library/videos/rendering/cycles-light-groups-non-destructive-relight/viewport.mp4",
+    "public/library/videos/rendering/cycles-light-groups-non-destructive-relight/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-compositor-cryptomatte-multilayer-exr",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-compositor-glare-filmgrain-tonemapping",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Cycles Light Groups",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/render_settings/light_groups.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Python API — ViewLayerLightgroup",
+        "url": "https://docs.blender.org/api/current/bpy.types.ViewLayerLightgroup.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

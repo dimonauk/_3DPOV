@@ -1,0 +1,53 @@
+{
+  "slug": "python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "subject_sphere.glb",
+    "light_rig.json",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig",
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight",
+      "/tutorials/blender-tutorial-eevee-light-probes-sphere-reflection-irradiance-webxr",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable"
+    ],
+    "outside": [
+      {
+        "title": "bpy.types.AreaLight API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.AreaLight.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/5.1/bpy.types.SpotLight.html",
+          "https://docs.blender.org/api/5.1/bpy.types.PointLight.html"
+        ]
+      },
+      {
+        "title": "Blender Manual — Light Object",
+        "url": "https://docs.blender.org/manual/en/latest/render/lights/light_object.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/render/eevee/render_settings/shadows.html",
+          "https://docs.blender.org/manual/en/latest/render/layers/passes.html"
+        ]
+      },
+      {
+        "title": "Three.js RectAreaLight",
+        "url": "https://threejs.org/docs/#api/en/lights/RectAreaLight",
+        "licence": "MIT",
+        "author": "Mr.doob and Three.js contributors",
+        "related": [
+          "https://github.com/mrdoob/three.js/blob/dev/src/lights/RectAreaLight.js",
+          "https://github.com/mrdoob/three.js/blob/dev/src/lights/SpotLight.js"
+        ]
+      }
+    ]
+  }
+}

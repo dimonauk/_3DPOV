@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "date": "2026-08-22",
+  "artefacts": [
+    "hf_chua_doi.blend",
+    "hf_chua_doi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "Chua L O, Komuro M, Matsumoto T — The Double Scroll Family",
+        "url": "https://doi.org/10.1109/TCS.1986.1085869",
+        "licence": "PD (mathematical content)",
+        "author": "Leon O. Chua, Motomasa Komuro, Takashi Matsumoto"
+      },
+      {
+        "title": "NumPy scientific computing library",
+        "url": "https://numpy.org/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      },
+      {
+        "title": "Shilnikov L P — countable periodic motions (1965)",
+        "url": "https://www.mathnet.ru/php/archive.phtml?wshow=paper&jrnid=dan&paperid=29847&option_lang=eng",
+        "licence": "PD",
+        "author": "Leonid P. Shilnikov"
+      }
+    ]
+  }
+}

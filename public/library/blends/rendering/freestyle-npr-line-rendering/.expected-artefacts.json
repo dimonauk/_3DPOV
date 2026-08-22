@@ -1,0 +1,40 @@
+{
+  "slug": "freestyle-npr-line-rendering",
+  "topic": "rendering",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "freestyle_npr_lines.blend",
+    "freestyle_npr_lines.png",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "../../../../public/library/videos/rendering/freestyle-npr-line-rendering/viewport.mp4",
+    "../../../../public/library/videos/rendering/freestyle-npr-line-rendering/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-grease-pencil-3-line-art-toon-outline",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-addon-freestyle-svg-exporter",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Freestyle",
+        "url": "https://docs.blender.org/manual/en/latest/render/freestyle/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender API Reference — FreestyleLineStyle",
+        "url": "https://docs.blender.org/api/current/bpy.types.FreestyleLineStyle.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

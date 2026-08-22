@@ -1,0 +1,39 @@
+{
+  "slug": "animation-action-slots-multi-id-shared",
+  "topic": "animation",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "output/sword_prop_anim.glb",
+    "public/library/videos/animation/animation-action-slots-multi-id-shared/viewport.mp4",
+    "public/library/videos/animation/animation-action-slots-multi-id-shared/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-nla-action-clips-vrm",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-rigging-action-constraint-expression-dial-vrm",
+      "/tutorials/blender-tutorial-python-shape-key-driver-rig-vrm-facial",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver"
+    ],
+    "external": [
+      {
+        "title": "Blender 5.0 Release Notes — Animation & Rigging: Action Slots",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/5.0/Animation_And_Rigging",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.Action — Python API Reference",
+        "url": "https://docs.blender.org/api/current/bpy.types.Action.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

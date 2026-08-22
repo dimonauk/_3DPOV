@@ -1,0 +1,48 @@
+{
+  "slug": "gn-index-of-nearest-neural-web",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "neural_web.blend",
+    "neural_web.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+      "/tutorials/blender-tutorial-gn-sample-index-echo-grid",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-gn-shortest-edge-path-circuit-trace"
+    ],
+    "outside_sources": [
+      {
+        "title": "blender-scripting",
+        "author": "Nicolas Janakiev",
+        "licence": "MIT",
+        "url": "https://github.com/njanakiev/blender-scripting"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "author": "Khronos Group",
+        "licence": "Apache-2.0",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO"
+      }
+    ]
+  },
+  "gn_nodes_demonstrated": [
+    "GeometryNodeIndexOfNearest",
+    "GeometryNodeSampleIndex",
+    "GeometryNodeForeachGeometryElementInput",
+    "GeometryNodeForeachGeometryElementOutput",
+    "GeometryNodeMeshLine",
+    "GeometryNodeMeshToCurve",
+    "GeometryNodeCurveToMesh",
+    "GeometryNodeDistributePointsOnFaces",
+    "GeometryNodeStoreNamedAttribute",
+    "FunctionNodeCompare",
+    "FunctionNodeBooleanMath"
+  ]
+}

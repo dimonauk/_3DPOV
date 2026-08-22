@@ -1,0 +1,45 @@
+{
+  "slug": "cycles-path-guiding-caustics-glass",
+  "topic": "rendering",
+  "blender": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "caustic_glass.blend",
+    "blueprint.py",
+    "record.py",
+    "output/caustic_glass_0001.png"
+  ],
+  "video_pending": [
+    "public/library/videos/rendering/cycles-path-guiding-caustics-glass/viewport.mp4",
+    "public/library/videos/rendering/cycles-path-guiding-caustics-glass/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-compositor-oidn-denoise-cycles-passes",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Cycles Path Guiding",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/render_settings/sampling.html#path-guiding",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Manual — Cycles Caustics",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/render_settings/light_paths.html#caustics",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Developer Blog — Shadow Caustics in Cycles (Thomas Dinges, 2022)",
+        "url": "https://developer.blender.org/docs/release_notes/4.0/cycles/",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

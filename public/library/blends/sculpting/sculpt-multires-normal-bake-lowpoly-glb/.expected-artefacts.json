@@ -1,0 +1,46 @@
+{
+  "slug": "sculpt-multires-normal-bake-lowpoly-glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "sculpted_talisman.blend",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "glb_artefacts": [
+    "sculpted_talisman.glb"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-sculpt-dyntopo-voxel-remesh",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-shader-ao-pointiness-edge-highlight",
+      "/codex",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/multiresolution.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/baking.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://docs.blender.org/api/current/bpy.ops.object.html#bpy.ops.object.multires_reshape",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

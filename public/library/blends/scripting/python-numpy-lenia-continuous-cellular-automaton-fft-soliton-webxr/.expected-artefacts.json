@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_lenia.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-lenia-continuous-cellular-automaton-fft-soliton-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-smoothlife-fourier-continuous-automaton-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-python-bpy-image-pixel-buffer-sdf-texture-atlas-webxr"
+    ],
+    "studio_codex": [],
+    "studio_articles": [],
+    "outside_sources": [
+      {
+        "title": "Chan (2019) — Lenia: Biology of Artificial Life — arXiv:1812.05433 — CC BY 4.0",
+        "url": "https://arxiv.org/abs/1812.05433",
+        "licence": "CC-BY-4.0",
+        "author": "Bert Wang-Chak Chan",
+        "related": "https://github.com/Chakazul/Lenia"
+      },
+      {
+        "title": "Lenia Python reference — MIT licence — Bert Wang-Chak Chan",
+        "url": "https://github.com/Chakazul/Lenia",
+        "licence": "MIT",
+        "author": "Bert Wang-Chak Chan",
+        "related": "https://arxiv.org/abs/1812.05433"
+      },
+      {
+        "title": "NumPy FFT routines — BSD-3-Clause — NumPy Developers",
+        "url": "https://numpy.org/doc/stable/reference/routines.fft.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

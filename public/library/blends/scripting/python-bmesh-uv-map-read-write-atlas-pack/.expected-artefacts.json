@@ -1,0 +1,70 @@
+{
+  "slug": "python-bmesh-uv-map-read-write-atlas-pack",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "type": "blend",
+      "path": "public/library/blends/scripting/python-bmesh-uv-map-read-write-atlas-pack/blueprint.py",
+      "description": "Full bmesh UV layer read/write pipeline: per-face planar projection + atlas pack"
+    },
+    {
+      "type": "macro",
+      "path": "tools/blender-addon/holoflow_macros/bmesh_uv_per_face_planar.py",
+      "description": "Reusable helper: apply_per_face_planar_uvs(obj) for use in other library scripts"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/scripting/python-bmesh-uv-map-read-write-atlas-pack/viewport.mp4",
+      "description": "90-frame Workbench orbit: UV Grid texture mapped to icosphere via per-face projection"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/scripting/python-bmesh-uv-map-read-write-atlas-pack/screen.mp4",
+      "description": "Screen recording: Text Editor → run script → UV Editor island view → Material Preview"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "bmesh Dodecahedron — bmesh mesh creation foundations",
+        "url": "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron"
+      },
+      {
+        "label": "UV Unwrap Low-Poly Stylised — operator UV workflow",
+        "url": "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised"
+      },
+      {
+        "label": "Python Batch GLB Exporter — downstream export step",
+        "url": "/tutorials/blender-tutorial-python-batch-glb-exporter"
+      },
+      {
+        "label": "UDIM Multitile VRM Character — advanced multi-tile UV approach",
+        "url": "/tutorials/blender-tutorial-shader-udim-multitile-vrm-character"
+      }
+    ],
+    "external": [
+      {
+        "label": "bmesh.types.BMLayerCollection — Blender Python API",
+        "url": "https://docs.blender.org/api/current/bmesh.types.html#bmesh.types.BMLayerCollection",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/api/current/bmesh.html",
+          "https://docs.blender.org/manual/en/latest/modeling/meshes/uv/introduction.html"
+        ]
+      },
+      {
+        "label": "Three.js CylinderGeometry — UV generation reference",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/src/geometries/CylinderGeometry.js",
+        "licence": "MIT",
+        "author": "Ricardo Cabello (mrdoob) and Three.js contributors",
+        "siblings": [
+          "https://github.com/pmndrs/react-three-fiber",
+          "https://github.com/pmndrs/drei"
+        ]
+      }
+    ]
+  }
+}

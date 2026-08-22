@@ -1,0 +1,61 @@
+{
+  "slug": "python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr",
+  "category": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr/blueprint.py",
+      "type": "script"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr/record.py",
+      "type": "script"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr/README.md",
+      "type": "doc"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr/SCREEN-RECORDING-NOTES.md",
+      "type": "doc"
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-fcurve-modifiers-noise-cycles-stepped-envelope-poi-webxr/viewport.mp4",
+      "type": "video",
+      "note": "rendered by record.py in a local Blender 5.1 session"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-python-kuramoto-coupled-oscillators-phase-sync-poi-webxr",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — F-Curve Modifiers",
+        "url": "https://docs.blender.org/manual/en/latest/editors/graph_editor/fcurves/modifiers.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/current/bpy.types.FModifierNoise.html",
+          "https://docs.blender.org/api/current/bpy.types.FModifierCycles.html",
+          "https://docs.blender.org/api/current/bpy.types.FModifierStepped.html",
+          "https://docs.blender.org/api/current/bpy.types.FModifierGenerator.html"
+        ]
+      },
+      {
+        "title": "Blender Python API — FModifierNoise",
+        "url": "https://docs.blender.org/api/current/bpy.types.FModifierNoise.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/api/current/bpy.types.FCurve.html#bpy.types.FCurve.evaluate",
+          "https://docs.blender.org/api/current/bpy.types.FModifier.html"
+        ]
+      }
+    ]
+  }
+}

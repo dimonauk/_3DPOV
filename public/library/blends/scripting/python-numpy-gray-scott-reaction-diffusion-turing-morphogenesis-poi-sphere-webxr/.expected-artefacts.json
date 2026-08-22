@@ -1,0 +1,66 @@
+{
+  "slug": "python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": {
+    "blueprint": "blueprint.py",
+    "record": "record.py",
+    "screen_notes": "SCREEN-RECORDING-NOTES.md",
+    "readme": "README.md"
+  },
+  "generated_artefacts": [
+    "gs_morphogenesis_poi.blend",
+    "gs_morphogenesis_poi.glb"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-morphogenesis-poi-sphere-webxr/screen.mp4"
+  ],
+  "shape_keys": [
+    "Basis",
+    "worm_stripes",
+    "labyrinthine",
+    "holes",
+    "fingerprints"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ising-model-metropolis-monte-carlo-phase-transition-critical-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://royalsocietypublishing.org/doi/10.1098/rstb.1952.0012",
+        "title": "Turing AM 1952 — The Chemical Basis of Morphogenesis",
+        "licence": "Public domain"
+      },
+      {
+        "url": "https://www.science.org/doi/10.1126/science.261.5118.189",
+        "title": "Pearson JE 1993 — Complex Patterns in a Simple System",
+        "licence": "Reference only — not reproduced"
+      },
+      {
+        "url": "http://www.karlsims.com/rd.html",
+        "title": "Karl Sims — Reaction Diffusion Tutorial",
+        "licence": "Educational reference"
+      }
+    ]
+  },
+  "technique_tags": [
+    "reaction-diffusion",
+    "gray-scott",
+    "turing-morphogenesis",
+    "pde",
+    "forward-euler",
+    "laplacian",
+    "shape-keys",
+    "morph-targets",
+    "uv-sphere",
+    "displacement",
+    "webxr",
+    "poi-head"
+  ]
+}

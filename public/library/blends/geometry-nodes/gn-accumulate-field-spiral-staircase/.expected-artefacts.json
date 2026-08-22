@@ -1,0 +1,38 @@
+{
+  "slug": "gn-accumulate-field-spiral-staircase",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "spiral_staircase.blend",
+    "spiral_staircase.glb",
+    "public/library/videos/geometry-nodes/gn-accumulate-field-spiral-staircase/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-accumulate-field-spiral-staircase/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-accumulate-field-spiral-staircase",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-gn-scale-instances-spine-growth",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/znoblitt/blender-python-scripts",
+        "licence": "MIT",
+        "author": "Zach Noblitt"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

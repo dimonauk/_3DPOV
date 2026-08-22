@@ -1,0 +1,45 @@
+{
+  "slug": "modifier-decimate-lod-webxr-planar-collapse",
+  "topic": "modifiers",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "decimate_lod.blend",
+    "lod_sphere_unsubdiv.glb",
+    "lod_box_planar.glb",
+    "lod_blob_collapse.glb",
+    "output/lod_comparison_0001.png",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-gn-image-texture-heightmap-terrain",
+      "/tutorials/blender-tutorial-scripting-python-batch-glb-scene-exporter"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/decimate.html",
+        "label": "Blender Manual: Decimate Modifier (CC-BY-SA 4.0 — Blender Foundation)",
+        "related": [
+          "https://projects.blender.org/blender/blender-manual",
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html"
+        ]
+      },
+      {
+        "url": "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/modifiers/SimplifyModifier.js",
+        "label": "Three.js SimplifyModifier (MIT — mrdoob et al.)",
+        "related": [
+          "https://github.com/mrdoob/three.js",
+          "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/loaders/DRACOLoader.js"
+        ]
+      }
+    ]
+  }
+}

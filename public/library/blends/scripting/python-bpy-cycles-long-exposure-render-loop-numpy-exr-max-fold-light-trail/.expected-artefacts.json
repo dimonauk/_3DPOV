@@ -1,0 +1,58 @@
+{
+  "slug": "python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    { "path": "blueprint.py",           "type": "script",  "required": true },
+    { "path": "record.py",              "type": "script",  "required": true },
+    { "path": "README.md",              "type": "doc",     "required": true },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "doc", "required": true },
+    { "path": "hf_longexp_helix.glb",  "type": "glb",     "required": false },
+    { "path": "hf_longexp_composite.png", "type": "image","required": false }
+  ],
+  "video_outputs": [
+    {
+      "path": "public/library/videos/scripting/python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail/viewport.mp4",
+      "source": "record.py",
+      "duration_s": 5,
+      "resolution": "1920x1080",
+      "fps": 24
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-cycles-long-exposure-render-loop-numpy-exr-max-fold-light-trail/screen.mp4",
+      "source": "SCREEN-RECORDING-NOTES.md",
+      "duration_s": 150,
+      "resolution": "1920x1080",
+      "fps": 30
+    }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-cycles-lightmap-bake-webxr-uv2",
+      "/tutorials/your-first-long-exposure",
+      "/codex/long-exposure-photography"
+    ],
+    "external": [
+      {
+        "label": "Blender Python API 5.1 — bpy.ops.render & bpy.data.images",
+        "url": "https://docs.blender.org/api/5.1/bpy.ops.render.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "NumPy — numpy.maximum.reduce — BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.maximum.reduce.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      },
+      {
+        "label": "Light painting — Wikipedia — CC-BY-SA-4.0",
+        "url": "https://en.wikipedia.org/wiki/Light_painting",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Wikipedia contributors"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "gn-corners-of-vertex-offset-corner-in-face-topology-chamfer",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "output/topology_trim_panel.glb"
+  ],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-corners-of-vertex-offset-corner-in-face-topology-chamfer/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-corners-of-vertex-offset-corner-in-face-topology-chamfer/screen.mp4"
+  ],
+  "custom_attributes": [
+    { "name": "vtx_valence",   "domain": "POINT",  "data_type": "INT",          "note": "vertex valence 2/3/4" },
+    { "name": "corner_tangent","domain": "CORNER",  "data_type": "FLOAT_VECTOR", "note": "per-corner directed edge unit tangent" },
+    { "name": "edge_tangent",  "domain": "FACE",    "data_type": "FLOAT_VECTOR", "note": "average of corner tangents per face" }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-mesh-topology-vertex-valence-heat-map",
+      "/tutorials/blender-tutorial-gn-corners-of-face-vertex-of-corner-faceted-gem-gradient",
+      "/tutorials/blender-tutorial-gn-node-tool-face-push-panel-stamp",
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain"
+    ],
+    "external": [
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "label": "njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "siblings": ["https://github.com/njanakiev/blender-jupyter"]
+      },
+      {
+        "url": "https://github.com/BrendanParmer/NodeToPython",
+        "label": "BrendanParmer/NodeToPython",
+        "licence": "MIT",
+        "author": "Brendan Parmer",
+        "siblings": ["https://github.com/BrendanParmer/NodeToPython/tree/main/tests"]
+      }
+    ]
+  }
+}

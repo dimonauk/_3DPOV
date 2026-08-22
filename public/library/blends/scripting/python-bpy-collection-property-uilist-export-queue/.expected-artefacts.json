@@ -1,0 +1,55 @@
+{
+  "slug": "python-bpy-collection-property-uilist-export-queue",
+  "topic": "scripting",
+  "type": "blend",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Python Add-on: Custom Panel, PropertyGroup & Operator",
+        "url": "/tutorials/blender-tutorial-python-addon-custom-panel-property-group",
+        "relation": "prerequisite — teaches the base Panel + PropertyGroup pattern this tutorial extends"
+      },
+      {
+        "label": "Python bpy.types.FileHandler — GLB Drag-Drop Extension Extractor",
+        "url": "/tutorials/blender-tutorial-python-file-handler-gltf-drag-drop-extension-extractor",
+        "relation": "sibling — complementary drag-drop ingestion pattern using FileHandler"
+      },
+      {
+        "label": "Python — Batch GLB Exporter",
+        "url": "/tutorials/blender-tutorial-python-batch-glb-exporter",
+        "relation": "downstream — the export function this queue feeds into"
+      },
+      {
+        "label": "Python bpy.app.timers — Deferred Execution, Throttled Live Reloader & Frame Stepper",
+        "url": "/tutorials/blender-tutorial-python-app-timers-deferred-live-reload-frame-stepper",
+        "relation": "sibling Python API — scheduling and deferral patterns"
+      }
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.types.UIList",
+        "url": "https://docs.blender.org/api/current/bpy.types.UIList.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "note": "Authoritative API reference; no content reproduced"
+      },
+      {
+        "title": "Blender Python API — bpy.props.CollectionProperty",
+        "url": "https://docs.blender.org/api/current/bpy.props.html#bpy.props.CollectionProperty",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA 4.0",
+        "note": "Authoritative API reference; no content reproduced"
+      }
+    ]
+  }
+}

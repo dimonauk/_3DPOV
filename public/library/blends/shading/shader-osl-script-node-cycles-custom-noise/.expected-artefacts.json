@@ -1,0 +1,37 @@
+{
+  "blend": "osl_lava_crack.blend",
+  "renders": [
+    "output/osl_lava_0001.png"
+  ],
+  "videos": [
+    "public/library/videos/shading/shader-osl-script-node-cycles-custom-noise/viewport.mp4",
+    "public/library/videos/shading/shader-osl-script-node-cycles-custom-noise/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-shader-procedural-lava-magma-flow",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-cycles-path-guiding-caustics-glass",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge"
+    ],
+    "outside_sources": [
+      {
+        "title": "Open Shading Language — AcademySoftwareFoundation",
+        "url": "https://github.com/AcademySoftwareFoundation/OpenShadingLanguage",
+        "licence": "BSD-3-Clause",
+        "author": "Sony Pictures Imageworks / ASWF"
+      },
+      {
+        "title": "Blender Manual: Cycles Script Node",
+        "url": "https://docs.blender.org/manual/en/latest/render/cycles/nodes/types/shaders/script.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "shading",
+  "slug": "shader-osl-script-node-cycles-custom-noise"
+}

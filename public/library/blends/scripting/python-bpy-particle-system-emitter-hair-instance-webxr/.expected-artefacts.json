@@ -1,0 +1,41 @@
+{
+  "slug": "python-bpy-particle-system-emitter-hair-instance-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "runtime_outputs": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-distribute-points-faces-poisson-scatter",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-depsgraph-object-instances-gn-scatter-glb-export",
+      "/tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter",
+      "/tutorials/blender-tutorial-gn-interpolate-curves-strand-hair-vrm"
+    ],
+    "external": [
+      {
+        "title": "bpy.types.ParticleSettings API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.ParticleSettings.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      },
+      {
+        "title": "bpy.types.DepsgraphObjectInstance — is_instance, parent, matrix_world",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.DepsgraphObjectInstance.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}

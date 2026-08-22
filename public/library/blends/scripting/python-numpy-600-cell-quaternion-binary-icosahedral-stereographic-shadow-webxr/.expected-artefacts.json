@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "outputs": [
+    { "path": "hf_600cell.glb",   "type": "glb",  "desc": "720 edge-arc cylinders, Draco-6, violet emissive material" },
+    { "path": "hf_600cell.blend", "type": "blend", "desc": "Blender scene with curve + converted mesh" }
+  ],
+  "video_outputs": [
+    { "path": "public/library/videos/scripting/python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr/viewport.mp4",
+      "desc": "8-second 4D rotation animation, EEVEE Next, 1920×1080 30fps" },
+    { "path": "public/library/videos/scripting/python-numpy-600-cell-quaternion-binary-icosahedral-stereographic-shadow-webxr/screen.mp4",
+      "desc": "OBS screen recording per SCREEN-RECORDING-NOTES.md" }
+  ],
+  "stats": {
+    "vertices_4d": 120,
+    "edges": 720,
+    "arc_divisions": 8,
+    "bevel_radius_m": 0.007
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mathutils-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-torus-knot-pq-winding-parallel-transport-tube-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-mobius-strip-ntwist-parametric-mesh-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr"
+    ],
+    "external": [
+      {
+        "title": "Regular Polytopes",
+        "author": "H.S.M. Coxeter",
+        "year": 1973,
+        "publisher": "Dover",
+        "licence": "public-domain mathematical content",
+        "url": "https://archive.org/details/regularpolytopes0000coxe"
+      },
+      {
+        "title": "On Quaternions and Octonions",
+        "author": "Conway, J.H. & Smith, D.A.",
+        "year": 2003,
+        "publisher": "A.K. Peters",
+        "licence": "public-domain mathematical content",
+        "url": "https://www.routledge.com/On-Quaternions-and-Octonions/Conway-Smith/p/book/9781568811345"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "python-addon-custom-panel-property-group",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "type": "extension_source",
+      "path": "public/library/blends/scripting/python-addon-custom-panel-property-group/blueprint.py",
+      "description": "Complete Blender 5.1 extension: PropertyGroup, Panel, Operator, register/unregister"
+    },
+    {
+      "type": "extension_installable",
+      "path": "tools/blender-addon/holoflow_extensions/quick_facet/",
+      "description": "Installable extension folder with __init__.py + blender_manifest.toml"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/scripting/python-addon-custom-panel-property-group/viewport.mp4",
+      "description": "90-frame orbit: raw icosphere vs Quick-Facet-processed icosphere"
+    },
+    {
+      "type": "video",
+      "path": "public/library/videos/scripting/python-addon-custom-panel-property-group/screen.mp4",
+      "description": "Screen recording: installing and running the extension"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Holoflow WebXR Exporter (studio add-on using the same pattern)",
+        "path": "tools/blender-addon/holoflow_webxr_exporter/"
+      },
+      {
+        "label": "bmesh Dodecahedron — Python mesh scripting foundations",
+        "url": "/tutorials/blender-tutorial-python-bpy-bmesh-dodecahedron"
+      },
+      {
+        "label": "GN Tree API — building node trees in Python",
+        "url": "/tutorials/blender-tutorial-python-bpy-geonodes-tree-api"
+      },
+      {
+        "label": "3D Print Mesh Analysis — pipeline automation with bpy",
+        "url": "/tutorials/blender-tutorial-python-3d-print-mesh-analysis"
+      }
+    ],
+    "external": [
+      {
+        "label": "Blender Developer Docs — Add-on Tutorial",
+        "url": "https://docs.blender.org/api/current/info_tutorial_addon.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Blender bpy.props reference",
+        "url": "https://docs.blender.org/api/current/bpy.props.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      },
+      {
+        "label": "Blender Extensions Platform Getting Started",
+        "url": "https://docs.blender.org/manual/en/latest/extensions/getting_started.html",
+        "licence": "CC0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "blend": "probe_scene.blend",
+  "glb": "probe_scene.glb",
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "scripts": ["blueprint.py", "record.py"],
+  "notes": ["SCREEN-RECORDING-NOTES.md", "README.md"],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-shadow-catcher-holdout-ar-composite",
+      "/tutorials/blender-tutorial-shader-aov-custom-render-passes",
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-cycles-light-groups-non-destructive-relight",
+      "/tutorials/blender-tutorial-cycles-path-guiding-caustics-glass"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — EEVEE Light Probes",
+        "url": "https://docs.blender.org/manual/en/latest/render/eevee/light_probes/index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender 4.2 Release Notes — EEVEE Next",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/4.2/EEVEE",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

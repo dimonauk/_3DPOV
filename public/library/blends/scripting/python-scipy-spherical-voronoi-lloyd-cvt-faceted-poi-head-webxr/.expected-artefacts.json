@@ -1,0 +1,41 @@
+{
+  "slug": "python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "type": "script",  "path": "blueprint.py",             "required": true },
+    { "type": "script",  "path": "record.py",                "required": true },
+    { "type": "notes",   "path": "SCREEN-RECORDING-NOTES.md","required": true },
+    { "type": "glb",     "path": "hf_cvt_poi_head.glb",      "required": false, "note": "Generated on local Blender run" },
+    { "type": "video",   "path": "../../videos/scripting/python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr/viewport.mp4", "required": false },
+    { "type": "video",   "path": "../../videos/scripting/python-scipy-spherical-voronoi-lloyd-cvt-faceted-poi-head-webxr/screen.mp4",   "required": false }
+  ],
+  "cross_references": {
+    "studio_articles": [
+      "/tutorials/blender-tutorial-python-scipy-cotangent-laplacian-mesh-fairing-dirichlet-energy-vrm-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-ops-geodesic-sphere-icosahedron-frequency-subdivision-vrm-webxr",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere",
+      "/tutorials/blender-tutorial-python-numpy-apollonian-circle-packing-soddy-descartes-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-catmull-clark-subdivision-from-scratch-valence-weight-poi-head-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Du, Faber, Gunzburger",
+        "year": 1999,
+        "title": "Centroidal Voronoi Tessellations: Applications and Algorithms",
+        "journal": "SIAM Review 41(4): 637-676",
+        "licence": "PD-mathematical",
+        "url": "https://doi.org/10.1137/S0036144599352836",
+        "related": "https://www.siam.org/journals/sirev/41-4/35283.html"
+      },
+      {
+        "author": "SciPy Developers",
+        "year": 2024,
+        "title": "scipy.spatial.SphericalVoronoi",
+        "licence": "BSD-3-Clause",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.SphericalVoronoi.html",
+        "related": "https://github.com/scipy/scipy"
+      }
+    ]
+  }
+}

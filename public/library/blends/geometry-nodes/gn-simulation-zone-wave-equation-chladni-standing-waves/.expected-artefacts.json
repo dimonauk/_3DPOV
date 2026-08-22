@@ -1,0 +1,49 @@
+{
+  "slug": "gn-simulation-zone-wave-equation-chladni-standing-waves",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_chladni_wave.blend",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "video_files": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-wave-equation-chladni-standing-waves/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-wave-equation-chladni-standing-waves/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing"
+    ],
+    "external_sources": [
+      {
+        "title": "Blender Manual — Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["projects.blender.org/blender/blender-manual"]
+      },
+      {
+        "title": "Blender Manual — Blur Attribute",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/attribute/blur_attribute.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": ["projects.blender.org/blender/blender"]
+      },
+      {
+        "title": "KhronosGroup/glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": ["https://github.com/KhronosGroup/glTF-Sample-Assets"]
+      }
+    ]
+  }
+}

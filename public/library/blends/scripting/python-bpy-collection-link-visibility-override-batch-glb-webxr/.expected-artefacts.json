@@ -1,0 +1,45 @@
+{
+  "slug": "python-bpy-collection-link-visibility-override-batch-glb-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_env.glb",
+    "hf_props.glb",
+    "hf_lights.glb",
+    "collection_manifest.json",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-bpy-collection-link-visibility-override-batch-glb-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-collection-link-visibility-override-batch-glb-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-viewlayer-multi-pass-collection-mask-eevee-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-modifier-stack-pre-export-apply",
+      "/tutorials/blender-tutorial-python-bpy-light-rig-3point-eevee-lightgroup-webxr-bake"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.Collection — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Collection.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "bpy.types.LayerCollection — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.LayerCollection.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Scene Collections — Blender 5.1 Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/scene_layout/collections/collections.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

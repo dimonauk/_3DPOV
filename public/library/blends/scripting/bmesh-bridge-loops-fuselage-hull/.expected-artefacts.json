@@ -1,0 +1,56 @@
+{
+  "slug": "bmesh-bridge-loops-fuselage-hull",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "fuselage_hull.blend",
+    "fuselage_hull.glb",
+    "../../videos/scripting/bmesh-bridge-loops-fuselage-hull/viewport.mp4",
+    "../../videos/scripting/bmesh-bridge-loops-fuselage-hull/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-bmesh-extrude-scale-fractal-spikes",
+      "/tutorials/blender-tutorial-modifier-skin-remesh-character-blocking",
+      "/tutorials/blender-tutorial-gn-extrude-mesh-panel-inset-procedural",
+      "/tutorials/blender-to-site-asset-pipeline",
+      "/tutorials/blender-tutorial-modifier-solidify-shell-architecture-3d-print"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bmesh.ops module",
+        "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/api/current/bmesh.html",
+          "https://developer.blender.org/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy mesh examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF 2.0 exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

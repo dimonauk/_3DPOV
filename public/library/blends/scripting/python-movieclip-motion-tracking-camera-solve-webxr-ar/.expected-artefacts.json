@@ -1,0 +1,44 @@
+{
+  "slug": "python-movieclip-motion-tracking-camera-solve-webxr-ar",
+  "blender_version": "5.1",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "solved_camera.glb",
+    "camera_path.json"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-movieclip-motion-tracking-camera-solve-webxr-ar/viewport.mp4",
+    "public/library/videos/scripting/python-movieclip-motion-tracking-camera-solve-webxr-ar/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-movieclip-motion-tracking-camera-solve-webxr-ar",
+      "/tutorials/blender-tutorial-python-multiview-camera-rig-gaussian-splat-render",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.MovieClip.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.MovieTracking.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/dfelinto/blender-manual",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      }
+    ]
+  }
+}

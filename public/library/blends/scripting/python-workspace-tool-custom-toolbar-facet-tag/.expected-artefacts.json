@@ -1,0 +1,34 @@
+{
+  "blend": "facet_demo_grid.blend",
+  "scripts": ["blueprint.py", "record.py"],
+  "video": {
+    "viewport": "public/library/videos/scripting/python-workspace-tool-custom-toolbar-facet-tag/viewport.mp4",
+    "screen": "public/library/videos/scripting/python-workspace-tool-custom-toolbar-facet-tag/screen.mp4"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-custom-panel-operator-n-panel-sidebar",
+      "/tutorials/blender-tutorial-python-bpy-collection-property-uilist-export-queue",
+      "/tutorials/blender-tutorial-gn-node-tool-face-push-panel-stamp",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.WorkSpaceTool API Reference",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.WorkSpaceTool.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling": "https://docs.blender.org/api/5.1/bpy.utils.html#bpy.utils.register_tool"
+      },
+      {
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow",
+        "sibling": "https://github.com/robertguetzkow/blender-python-examples/tree/master/add-on-development"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

@@ -1,0 +1,38 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "scatter_billboard.glb"
+  ],
+  "video_slots": [
+    "public/library/videos/scripting/python-geometry-nodetree-build-scatter-modifier-api/viewport.mp4",
+    "public/library/videos/scripting/python-geometry-nodetree-build-scatter-modifier-api/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-world-node-tree-hdri-environment-lighting-rig",
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.types.NodeTree",
+        "url": "https://docs.blender.org/api/current/bpy.types.NodeTree.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-scripting — njankowski",
+        "url": "https://github.com/njankowski/blender-scripting",
+        "licence": "MIT",
+        "author": "njankowski",
+        "related": ["https://github.com/njankowski/blenderpy"]
+      }
+    ]
+  }
+}

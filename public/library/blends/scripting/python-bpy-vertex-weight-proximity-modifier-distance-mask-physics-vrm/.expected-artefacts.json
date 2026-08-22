@@ -1,0 +1,75 @@
+{
+  "slug": "python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/blueprint.py",
+      "type": "script",
+      "description": "Body proxy + sash grid → VWProximity modifier → Cloth pin → vertex-colour bake → GLB"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/record.py",
+      "type": "script",
+      "description": "Pulsing sphere animation + vertex-colour material → Eevee render → viewport.mp4"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/SCREEN-RECORDING-NOTES.md",
+      "type": "doc",
+      "description": "OBS setup and recording walkthrough for screen.mp4"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/README.md",
+      "type": "doc",
+      "description": "Quick-start, gotchas, and file inventory"
+    },
+    {
+      "path": "public/library/blends/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/hf_vwprox_sash.blend",
+      "type": "blend",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/glbs/scripting/hf_vwprox_sash.glb",
+      "type": "glb",
+      "generated_by": "blueprint.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/viewport.mp4",
+      "type": "video",
+      "description": "80-frame Eevee render: pulsing proxy → live weight gradient on sash (~3.3 s @ 24 fps)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/scripting/python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of full interactive Blender workflow",
+      "committed": false
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bpy-hook-modifier-vertex-bind-empty-deform-vrm-webxr",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope",
+      "/tutorials/blender-tutorial-python-bpy-shrinkwrap-modifier-surface-project-decal-conform-webxr",
+      "/tutorials/blender-tutorial-python-bpy-solidify-modifier-shell-rim-complex-mode-hard-surface-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/modify/vertex_weight_proximity.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-python-examples",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": "https://github.com/njanakiev/blender-scripts"
+      }
+    ]
+  }
+}

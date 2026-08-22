@@ -1,0 +1,56 @@
+{
+  "slug": "gn-matrix-compose-iris-fold",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "iris_fold.blend",
+    "iris_fold.glb",
+    "../../videos/geometry-nodes/gn-matrix-compose-iris-fold/viewport.mp4",
+    "../../videos/geometry-nodes/gn-matrix-compose-iris-fold/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-rotate-instances-phyllotaxis-sunflower",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb",
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-gn-separate-geometry-exploded-view",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Matrix Nodes (Geometry Nodes)",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/set_instance_transform.html",
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html"
+        ]
+      },
+      {
+        "title": "glTF 2.0 Specification — Node Hierarchy Transforms",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#transformations",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Blender-IO"
+        ]
+      },
+      {
+        "title": "blender-scripting — MIT",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/blob/master/scripts/"
+        ]
+      }
+    ]
+  }
+}

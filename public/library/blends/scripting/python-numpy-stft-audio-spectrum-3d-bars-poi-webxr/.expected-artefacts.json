@@ -1,0 +1,38 @@
+{
+  "blend": "hf_spectrum.blend",
+  "glb": "hf_spectrum.glb",
+  "videos": [
+    "public/library/videos/scripting/python-numpy-stft-audio-spectrum-3d-bars-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-stft-audio-spectrum-3d-bars-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-python-bpy-action-nla-fcurve-keyframe-poi-performance-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-spot-stripe-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi"
+    ],
+    "studio_articles": [],
+    "studio_codex": ["https://holoflow.co.uk/codex"],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.types.Object.keyframe_insert",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Object.html#bpy.types.Object.keyframe_insert",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "numpy.fft.rfft — Real FFT (NumPy documentation)",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.rfft.html",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      },
+      {
+        "title": "Hann Window — Wikipedia (Public Domain figures)",
+        "url": "https://en.wikipedia.org/wiki/Hann_function",
+        "licence": "CC-BY-SA-4.0 / Public Domain",
+        "author": "Wikipedia contributors"
+      }
+    ]
+  }
+}

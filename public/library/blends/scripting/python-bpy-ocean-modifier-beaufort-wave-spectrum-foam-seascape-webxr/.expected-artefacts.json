@@ -1,0 +1,53 @@
+{
+  "slug": "python-bpy-ocean-modifier-beaufort-wave-spectrum-foam-seascape-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "artefacts": [
+    "hf_ocean_seascape.blend",
+    "hf_ocean_seascape.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      {
+        "label": "Holoflow WebXR Exporter — install & scan docs",
+        "path": "/docs/INSTALL-SCAN-BLENDER"
+      },
+      {
+        "label": "DisplaceModifier + bpy.data.textures — procedural height-field terrain",
+        "path": "/tutorials/blender-tutorial-python-bpy-displace-modifier-texture-height-terrain-glb-webxr"
+      },
+      {
+        "label": "VertexWeightProximityModifier — distance-driven weight mask & physics VRM",
+        "path": "/tutorials/blender-tutorial-python-bpy-vertex-weight-proximity-modifier-distance-mask-physics-vrm"
+      },
+      {
+        "label": "GN: Points to Volume — organic cloud from point density",
+        "path": "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral"
+      }
+    ],
+    "outside": [
+      {
+        "title": "Simulating Ocean Water",
+        "author": "Jerry Tessendorf",
+        "source": "SIGGRAPH 2001 course notes (updated 2004)",
+        "url": "https://people.computing.clemson.edu/~jtessen/reports/papers_files/coursenotes2004.pdf",
+        "licence": "Academic/public domain"
+      },
+      {
+        "title": "three.js Water — WebXR ocean rendering",
+        "author": "mrdoob and three.js contributors",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/objects/Water.js",
+        "licence": "MIT",
+        "related": [
+          "https://github.com/pmndrs/react-three-fiber",
+          "https://github.com/pmndrs/drei"
+        ]
+      }
+    ]
+  }
+}

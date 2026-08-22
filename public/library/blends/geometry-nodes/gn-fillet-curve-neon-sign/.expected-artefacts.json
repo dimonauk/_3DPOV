@@ -1,0 +1,40 @@
+{
+  "blend": "neon_sign.blend",
+  "glb": "neon_sign.glb",
+  "video": "../../videos/geometry-nodes/gn-fillet-curve-neon-sign/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-fillet-curve-neon-sign/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-fillet-curve-neon-sign",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril",
+      "/tutorials/blender-tutorial-gn-shortest-edge-path-circuit-trace",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-gn-resample-curve"
+    ],
+    "external": [
+      {
+        "title": "Fillet Curve Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting — bpy workflow reference",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

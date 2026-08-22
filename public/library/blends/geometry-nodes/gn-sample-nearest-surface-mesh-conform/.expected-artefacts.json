@@ -1,0 +1,40 @@
+{
+  "blend": "tile_armour.blend",
+  "glb": "tile_armour.glb",
+  "video": "../../videos/geometry-nodes/gn-sample-nearest-surface-mesh-conform/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-sample-nearest-surface-mesh-conform/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-sample-nearest-surface-mesh-conform",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-sample-nearest-surface-mesh-conform",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "external": [
+      {
+        "title": "Sample Nearest Surface Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO — Official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      },
+      {
+        "title": "blender-scripting — bpy scripting cookbook",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

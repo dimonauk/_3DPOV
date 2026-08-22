@@ -1,0 +1,49 @@
+{
+  "slug": "python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "holoflow_cam_rail.glb",
+    "holoflow_cam_rail.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-curve-spline-bezier-motion-path-camera-rail-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-bpy-camera-data-webxr-frustum-fov-calibration",
+      "/tutorials/blender-tutorial-python-object-constraint-stack-lookat-floor-bake-webxr",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting",
+      "/tutorials/blender-tutorial-python-nla-track-strip-action-library-vrm-pose-blend"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.Curve — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.Curve.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.Spline.html",
+          "https://docs.blender.org/api/5.1/bpy.types.BezierSplinePoint.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "Follow Path Constraint — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/relationship/follow_path.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/manual/en/latest/animation/constraints/",
+          "https://projects.blender.org/blender/blender"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "python-numpy-mandelbrot-julia-fractal-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "licence": "CC0",
+  "files": [
+    "hf_mandelbrot.blend",
+    "hf_mandelbrot.glb",
+    "hf_julia.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-hopf-fibration-linked-tori-light-sculpture-webxr",
+      "/tutorials/blender-tutorial-python-numpy-fft-epicycles-fourier-phasor-chain-poi-webxr",
+      "/tutorials/blender-tutorial-python-nbody-gravity-star-cluster-leapfrog-light-painting",
+      "/tutorials/blender-tutorial-python-bpy-biot-savart-magnetic-field-line-tracer-poi-webxr"
+    ],
+    "external_sources": [
+      {
+        "label": "NumPy vectorised complex arithmetic",
+        "url": "https://github.com/numpy/numpy",
+        "licence": "BSD-3-Clause",
+        "related": "https://numpy.org/doc/stable/"
+      },
+      {
+        "label": "Douady & Hubbard (1982) Étude dynamique des polynômes complexes",
+        "url": "https://www.math.cornell.edu/~hubbard/OrsayFrench.pdf",
+        "licence": "mathematical results, no licence",
+        "related": "https://github.com/alexhernandez/mandelbrot-py"
+      }
+    ]
+  }
+}

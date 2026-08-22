@@ -1,0 +1,39 @@
+{
+  "blend": "orbital_cam_rig.blend",
+  "video": "../../videos/animation/animation-constraints-follow-path-track-to/viewport.mp4",
+  "screen_recording": "../../videos/animation/animation-constraints-follow-path-track-to/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "animation",
+  "slug": "animation-constraints-follow-path-track-to",
+  "tutorial_route": "/tutorials/blender-tutorial-animation-constraints-follow-path-track-to",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-armature-ik-robot-arm",
+      "/tutorials/blender-tutorial-armature-spline-ik-tentacle",
+      "/tutorials/blender-tutorial-render-cycles-dof-motion-blur-bokeh",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm"
+    ],
+    "external": [
+      {
+        "title": "Object Constraints — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/index.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Follow Path Constraint — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/constraints/relationship/follow_path.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "njanakiev/blender-scripting — bpy scripting patterns including constraint animation",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

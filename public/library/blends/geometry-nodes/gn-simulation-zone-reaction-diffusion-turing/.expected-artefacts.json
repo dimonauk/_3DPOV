@@ -1,0 +1,39 @@
+{
+  "blend": "reaction_diffusion.blend",
+  "glb": "reaction_diffusion.glb",
+  "video": "../../videos/geometry-nodes/gn-simulation-zone-reaction-diffusion-turing/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-simulation-zone-reaction-diffusion-turing/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-simulation-zone-reaction-diffusion-turing",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-wave-reveal",
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-repeat-zone-crystal-cluster",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao"
+    ],
+    "external": [
+      {
+        "title": "Simulation Zone — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "pmneila/jsexp — interactive Grey-Scott reaction-diffusion simulator",
+        "url": "https://github.com/pmneila/jsexp",
+        "licence": "MIT",
+        "author": "Patrick Mineault"
+      },
+      {
+        "title": "glTF-Blender-IO — Official Khronos glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

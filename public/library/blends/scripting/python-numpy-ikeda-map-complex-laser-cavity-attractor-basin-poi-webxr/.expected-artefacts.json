@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-ikeda-map-complex-laser-cavity-attractor-basin-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_ikeda.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_ikeda.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kleinian-limit-set-schottky-group-indras-pearls-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mobius-transformation-riemann-sphere-loxodromic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Ikeda 1979 — Multiple-valued stationary state in ring laser cavity",
+        "url": "https://www.sciencedirect.com/science/article/pii/0030401879901722",
+        "licence": "academic reference",
+        "author": "Kensuke Ikeda"
+      },
+      {
+        "title": "njanakiev/blender-scripting — Blender Python mesh patterns",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      },
+      {
+        "title": "NumPy User Guide",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors"
+      }
+    ]
+  }
+}

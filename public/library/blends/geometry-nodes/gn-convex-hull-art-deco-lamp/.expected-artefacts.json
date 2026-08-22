@@ -1,0 +1,56 @@
+{
+  "slug": "gn-convex-hull-art-deco-lamp",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "convex_hull_lamp.blend",
+    "convex_hull_lamp.glb",
+    "../../videos/geometry-nodes/gn-convex-hull-art-deco-lamp/viewport.mp4",
+    "../../videos/geometry-nodes/gn-convex-hull-art-deco-lamp/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral"
+    ],
+    "outside_sources": [
+      {
+        "title": "Convex Hull Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/convex_hull.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://www.blender.org/",
+          "https://developer.blender.org/"
+        ]
+      },
+      {
+        "title": "blender-scripting — headless bpy examples",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "related": [
+          "https://github.com/njanakiev"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — official glTF exporter",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Models"
+        ]
+      }
+    ]
+  }
+}

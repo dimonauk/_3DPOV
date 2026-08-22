@@ -1,0 +1,35 @@
+{
+  "blend": "face_driver_rig.blend",
+  "glb": "face_driver_rig.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-shape-keys-morph-targets",
+      "/tutorials/blender-tutorial-rigging-stretchy-ik-volume-preserve-vrm",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain",
+      "/tutorials/blender-tutorial-python-nla-bake-ik-fk-action-push",
+      "/tutorials/blender-tutorial-weight-paint-vrm-deformation-envelope"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/animation/shape_keys/drivers.html",
+        "title": "Blender Manual — Shape Key Drivers",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/vrm-c/vrm-specification",
+        "title": "VRM 1.0 Specification — Expressions Schema",
+        "licence": "MIT",
+        "author": "VRM Consortium"
+      },
+      {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#morph-targets",
+        "title": "glTF 2.0 Specification — Morph Targets",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

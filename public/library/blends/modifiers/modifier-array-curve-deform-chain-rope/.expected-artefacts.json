@@ -1,0 +1,40 @@
+{
+  "blend": "chain_rope.blend",
+  "glb": "chain_rope.glb",
+  "video": "../../videos/modifiers/modifier-array-curve-deform-chain-rope/viewport.mp4",
+  "screen_recording": "../../videos/modifiers/modifier-array-curve-deform-chain-rope/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "modifiers",
+  "slug": "modifier-array-curve-deform-chain-rope",
+  "tutorial_route": "/tutorials/blender-tutorial-modifier-array-curve-deform-chain-rope",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-armature-spline-ik-tentacle",
+      "/tutorials/blender-tutorial-gn-curve-to-mesh",
+      "/tutorials/blender-tutorial-gn-fillet-curve-neon-sign",
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-gn-mesh-to-curve-wireframe-scaffold"
+    ],
+    "external": [
+      {
+        "title": "Array Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/array.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Curve Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/curve.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "njanakiev/blender-scripting — bpy scripting + animation patterns",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

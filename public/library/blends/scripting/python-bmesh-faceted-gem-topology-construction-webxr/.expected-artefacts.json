@@ -1,0 +1,36 @@
+{
+  "slug": "python-bmesh-faceted-gem-topology-construction-webxr",
+  "blender_version": "5.1",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "faceted_gem.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-bmesh-faceted-gem-topology-construction-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-bmesh-faceted-gem-topology-construction-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-bmesh-faceted-gem-topology-construction-webxr",
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr",
+      "/tutorials/blender-tutorial-python-bmesh-uv-map-read-write-atlas-pack",
+      "/tutorials/blender-tutorial-gn-self-object-world-height-proximity-crystal-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/bmesh.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/njankowski/blender-scripting",
+        "licence": "MIT",
+        "author": "Nick Jankowski"
+      }
+    ]
+  }
+}

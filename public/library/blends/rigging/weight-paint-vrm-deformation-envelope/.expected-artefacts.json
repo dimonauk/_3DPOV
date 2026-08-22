@@ -1,0 +1,32 @@
+{
+  "blend": "weight_paint_vrm.blend",
+  "glb": "weight_paint_vrm.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "notes": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-rigging-bbone-cartoon-spine-vrm",
+      "/tutorials/blender-tutorial-rigging-fk-ik-switch-custom-property-driver",
+      "/tutorials/blender-tutorial-rigging-corrective-shape-keys-driver",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/weight_paint/",
+        "title": "Blender Manual — Weight Paint Mode",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://github.com/vrm-c/vrm-specification",
+        "title": "VRM Specification — Humanoid Skinning",
+        "licence": "MIT",
+        "author": "VRM Consortium",
+        "related": [
+          "https://github.com/pixiv/three-vrm"
+        ]
+      }
+    ]
+  }
+}

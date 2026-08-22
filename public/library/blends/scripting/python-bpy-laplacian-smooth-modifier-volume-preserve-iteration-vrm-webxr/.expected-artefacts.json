@@ -1,0 +1,58 @@
+{
+  "slug": "python-bpy-laplacian-smooth-modifier-volume-preserve-iteration-vrm-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_lapsmooth_panel.blend",
+    "hf_lapsmooth_panel_raw.glb",
+    "hf_lapsmooth_panel_iter3.glb",
+    "hf_lapsmooth_panel_iter6.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      {
+        "slug": "blender-tutorial-python-bpy-corrective-smooth-modifier-deform-artifact-fix-vrm-webxr",
+        "relationship": "CorrectiveSmoothModifier anchors to bind pose; LaplacianSmooth is purely geometric — different tools for different phases"
+      },
+      {
+        "slug": "blender-tutorial-python-bmesh-ops-smooth-vert-laplacian-zone-smoothing-vrm-webxr",
+        "relationship": "bmesh.ops.smooth_laplacian_vert is the destructive in-bmesh equivalent; modifier version is non-destructive and stackable"
+      },
+      {
+        "slug": "blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr",
+        "relationship": "SmoothByAngle controls split-normal threshold only, not vertex positions — frequently confused with LaplacianSmooth"
+      },
+      {
+        "slug": "blender-tutorial-python-bpy-vertex-weight-edit-mix-modifier-curve-remap-group-blend-vrm-webxr",
+        "relationship": "VertexWeightEdit builds the smooth_mask group fed into the vertex_group pin"
+      }
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/deform/laplacian_smooth.html",
+        "title": "Laplacian Smooth Modifier — Blender Manual 5.1",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_project": "https://projects.blender.org/blender/blender-manual"
+      },
+      {
+        "url": "https://docs.blender.org/api/5.1/bpy.types.LaplacianSmoothModifier.html",
+        "title": "bpy.types.LaplacianSmoothModifier — Blender Python API 5.1",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_project": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "title": "glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group",
+        "related_project": "https://github.com/KhronosGroup/glTF-Sample-Assets"
+      }
+    ]
+  }
+}

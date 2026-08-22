@@ -1,0 +1,40 @@
+{
+  "slug": "shader-ao-pointiness-edge-highlight",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hull_panel.blend",
+    "hull_panel.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-procedural-worn-metal-edge-wear",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/codex",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/input/geometry.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/input/ambient_occlusion.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      }
+    ]
+  }
+}

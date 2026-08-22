@@ -1,0 +1,49 @@
+{
+  "slug": "python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_henon_heiles.blend",
+    "hf_henon_heiles.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Hénon, M. & Heiles, C. (1964). The applicability of the third integral of motion: some numerical experiments. The Astronomical Journal 69:73.",
+        "url": "https://ui.adsabs.harvard.edu/abs/1964AJ.....69...73H",
+        "licence": "ADS open access / mathematical content Public Domain",
+        "related": [
+          "KAM theorem (Kolmogorov 1954, Arnold 1963, Moser 1962)",
+          "Chirikov resonance overlap criterion (1979)"
+        ]
+      },
+      {
+        "title": "NumPy contributors. NumPy Reference Documentation.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": [
+          "https://github.com/numpy/numpy",
+          "https://scipy.org/"
+        ]
+      }
+    ]
+  },
+  "mesh_stats_expected": {
+    "waypoints": 14000,
+    "tube_sides": 8,
+    "vertex_count_approx": 112000,
+    "face_count_approx": 111992,
+    "shape_key_count": 3,
+    "poincare_points_per_energy_approx": 400,
+    "glb_size_approx_kb": 340
+  }
+}

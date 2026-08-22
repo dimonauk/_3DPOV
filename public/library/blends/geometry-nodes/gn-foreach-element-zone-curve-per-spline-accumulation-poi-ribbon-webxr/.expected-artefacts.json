@@ -1,0 +1,45 @@
+{
+  "slug": "gn-foreach-element-zone-curve-per-spline-accumulation-poi-ribbon-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_poi_ribbons.blend",
+    "hf_poi_ribbons.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-curve-to-mesh-ribbon-trim-tilt-webxr",
+      "/tutorials/blender-tutorial-gn-for-each-element-hex-panel",
+      "/tutorials/blender-tutorial-gn-foreach-element-zone-stone-chisel-wall",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-hair-curves-spring-dynamics-vrm",
+      "/tutorials/blender-tutorial-python-bpy-gn-tree-from-python-index-switch-poi-head-webxr",
+      "/tutorials/blender-tutorial-gn-socket-panels-interface-collapsible-modifier-ui",
+      "/tutorials/blender-tutorial-gn-spline-parameter-vine-tendril"
+    ],
+    "outside_sources": [
+      {
+        "title": "Foreach Element Node — Blender 5.1 Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/foreach_geometry_element.html",
+        "author": "Blender Foundation",
+        "licence": "CC-BY 4.0",
+        "related_projects": [
+          "https://extensions.blender.org",
+          "https://github.com/blender/blender"
+        ]
+      },
+      {
+        "title": "Three.js GLTFLoader — MIT",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/loaders/GLTFLoader.js",
+        "author": "mrdoob et al.",
+        "licence": "MIT",
+        "related_projects": [
+          "https://github.com/pmndrs/drei",
+          "https://github.com/pmndrs/three-stdlib"
+        ]
+      }
+    ]
+  }
+}

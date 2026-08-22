@@ -1,0 +1,42 @@
+{
+  "slug": "modifier-solidify-shell-architecture-3d-print",
+  "version": "5.1",
+  "licence": "CC0-1.0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "wall_corner_solidify.blend",
+    "wall_corner_solidify.glb"
+  ],
+  "video_artefacts": [
+    "public/library/videos/modifiers/modifier-solidify-shell-architecture-3d-print/viewport.mp4",
+    "public/library/videos/modifiers/modifier-solidify-shell-architecture-3d-print/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-modifier-boolean-exact-hard-surface-trim",
+      "/tutorials/blender-tutorial-modifier-subdiv-crease-bevel-weight-hard-surface",
+      "/tutorials/blender-tutorial-modifier-array-curve-deform-chain-rope",
+      "/tutorials/blender-tutorial-modifier-decimate-lod-webxr-planar-collapse"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Solidify Modifier",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/modifiers/generate/solidify.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related_project": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "Blender 2.82 Release Notes — Solidify Complex Mode",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/2.82/Modeling",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation / wiki contributors",
+        "related_project": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  }
+}

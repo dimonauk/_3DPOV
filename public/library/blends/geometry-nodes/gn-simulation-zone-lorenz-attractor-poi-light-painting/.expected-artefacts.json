@@ -1,0 +1,37 @@
+{
+  "slug": "gn-simulation-zone-lorenz-attractor-poi-light-painting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_lorenz.blend",
+    "hf_lorenz.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-double-pendulum-chaos-butterfly",
+      "/tutorials/blender-tutorial-gn-simulation-zone-bz-oregonator-spiral-waves",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting"
+    ],
+    "outside_sources": [
+      {
+        "title": "Matplotlib lorenz_attractor.py",
+        "licence": "BSD-3-Clause",
+        "author": "The Matplotlib Contributors",
+        "url": "https://github.com/matplotlib/matplotlib/blob/main/galleries/examples/lines_bars_and_markers/lorenz_attractor.py"
+      },
+      {
+        "title": "Lorenz 1963 — Deterministic Nonperiodic Flow",
+        "licence": "Public Domain (mathematical equations)",
+        "author": "Edward N. Lorenz",
+        "url": "https://journals.ametsoc.org/view/journals/atsc/20/2/1520-0469_1963_020_0130_dnf_2_0_co_2.xml"
+      }
+    ]
+  }
+}

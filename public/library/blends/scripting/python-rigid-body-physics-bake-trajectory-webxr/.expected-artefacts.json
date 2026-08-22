@@ -1,0 +1,43 @@
+{
+  "slug": "python-rigid-body-physics-bake-trajectory-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "rigid_bodies_scene.glb",
+    "trajectory.json",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "public/library/videos/scripting/python-rigid-body-physics-bake-trajectory-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-rigid-body-physics-bake-trajectory-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-python-fcurve-keyframe-insert-procedural-animation-turntable",
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-physics-rigid-body-constraints-hinge-spring-motor"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.RigidBodyObject — Blender 5.1 Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.RigidBodyObject.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Rigid Body Simulation — Blender 5.1 Manual",
+        "url": "https://docs.blender.org/manual/en/5.1/physics/rigid_body/introduction.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "mrdoob/three.js — AnimationClip & VectorKeyframeTrack",
+        "url": "https://github.com/mrdoob/three.js",
+        "licence": "MIT",
+        "author": "Mr.doob and contributors"
+      }
+    ]
+  }
+}

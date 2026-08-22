@@ -1,0 +1,55 @@
+{
+  "slug": "python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "topic": "mathematics / wave physics",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_peregrine_poi.blend",
+    "../../glbs/scripting/python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr/hf_peregrine_poi.glb",
+    "../../videos/scripting/python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_articles": [
+      "/articles/advanced-cell-shading-techniques",
+      "/articles/low-poly-high-facet-shading",
+      "/articles/light-sculpture-geometry-reference"
+    ],
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-toda-lattice-integrable-chain-flaschka-lax-soliton-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-willmore-flow-h2-bending-energy-conformal-invariant-marques-neves-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets"
+    ],
+    "external_sources": [
+      {
+        "title": "Peregrine H.D. (1983). Water waves, nonlinear Schrödinger equations and their solutions",
+        "journal": "Journal of the Australian Mathematical Society Series B",
+        "url": "https://doi.org/10.1017/S0334270000003891",
+        "licence": "Equations in public domain",
+        "related_projects": "Benjamin-Feir modulation instability (1967); Akhmediev breather hierarchy (1985)"
+      },
+      {
+        "title": "NumPy — BSD-3-Clause",
+        "url": "https://numpy.org/",
+        "licence": "BSD-3-Clause",
+        "related_projects": "SciPy (BSD-3-Clause) https://scipy.org/"
+      }
+    ]
+  },
+  "vertex_count": 6400,
+  "face_count": 6241,
+  "shape_keys": ["Basis", "SK_Flat", "SK_Perturb", "SK_Narrow", "SK_Wide"],
+  "vertex_colour_attribute": "Peregrine_Amp",
+  "physical_size_m": 1.0,
+  "peak_amplitude": 3.0,
+  "background_amplitude": 1.0,
+  "holoflow_facet": true,
+  "licence": "CC0"
+}

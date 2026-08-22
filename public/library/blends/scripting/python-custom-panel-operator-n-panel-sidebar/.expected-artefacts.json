@@ -1,0 +1,38 @@
+{
+  "slug": "python-custom-panel-operator-n-panel-sidebar",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "video_outputs": [
+    "public/library/videos/scripting/python-custom-panel-operator-n-panel-sidebar/viewport.mp4",
+    "public/library/videos/scripting/python-custom-panel-operator-n-panel-sidebar/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-context-temp-override-mesh-repair-pipeline",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr",
+      "/tutorials/blender-tutorial-python-library-link-append-blend-files",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Robert Guetzkow",
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT"
+      },
+      {
+        "author": "Blender Foundation",
+        "title": "bpy.types.Panel / bpy.types.Operator API Reference",
+        "url": "https://docs.blender.org/api/current/bpy.types.Panel.html",
+        "licence": "CC-BY-SA-4.0"
+      }
+    ]
+  }
+}

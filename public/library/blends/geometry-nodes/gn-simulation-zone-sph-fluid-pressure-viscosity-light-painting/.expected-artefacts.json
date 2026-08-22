@@ -1,0 +1,34 @@
+{
+  "blend": "hf_sph_fluid.blend",
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics"
+    ],
+    "outside_sources": [
+      {
+        "title": "Particle-Based Fluid Simulation for Interactive Applications",
+        "authors": "Müller, Charypar, Gross",
+        "venue": "SCA 2003",
+        "licence": "PD",
+        "url": "https://matthias-research.github.io/pages/publications/sca03.pdf",
+        "related": "https://matthias-research.github.io/pages/projects/index.html"
+      },
+      {
+        "title": "Simulation Zone — Blender Manual",
+        "authors": "Blender Foundation",
+        "licence": "CC-BY-SA-4.0",
+        "url": "https://docs.blender.org/manual/en/5.1/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "related": "https://projects.blender.org/blender/blender"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "output_licence": "CC0"
+}

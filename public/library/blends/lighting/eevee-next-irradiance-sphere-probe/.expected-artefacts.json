@@ -1,0 +1,45 @@
+{
+  "slug": "eevee-next-irradiance-sphere-probe",
+  "topic": "lighting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "irradiance_sphere_probe.blend",
+    "irradiance_sphere_probe.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "public/library/videos/lighting/eevee-next-irradiance-sphere-probe/viewport.mp4",
+    "public/library/videos/lighting/eevee-next-irradiance-sphere-probe/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-eevee-next-volumetric-light-cone",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/atelier"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — EEVEE Light Probes Introduction",
+        "url": "https://docs.blender.org/manual/en/latest/render/eevee/light_probes/introduction.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Blender Manual — Irradiance Volumes",
+        "url": "https://docs.blender.org/manual/en/latest/render/eevee/light_probes/irradiance_volumes.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "three-stdlib: PMREMGenerator",
+        "url": "https://github.com/pmndrs/three-stdlib",
+        "licence": "MIT",
+        "author": "Poimandres / Mrdoob et al."
+      }
+    ]
+  }
+}

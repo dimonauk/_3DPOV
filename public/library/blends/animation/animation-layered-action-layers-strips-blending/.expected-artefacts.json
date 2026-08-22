@@ -1,0 +1,46 @@
+{
+  "slug": "animation-layered-action-layers-strips-blending",
+  "topic": "animation",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "output/vrm_layered_idle.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-animation-action-slots-multi-id-shared",
+      "/tutorials/blender-tutorial-nla-action-clips-vrm",
+      "/tutorials/blender-tutorial-rigging-action-constraint-expression-dial-vrm",
+      "/tutorials/blender-tutorial-vrm-spring-bones-hair-chain"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender 5.0 Release Notes — Animation & Rigging",
+        "url": "https://wiki.blender.org/wiki/Reference/Release_Notes/5.0/Animation_And_Rigging",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling_repos": ["github.com/blender/blender"]
+      },
+      {
+        "title": "bpy.types.Action Python API",
+        "url": "https://docs.blender.org/api/current/bpy.types.Action.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "sibling_repos": ["github.com/blender/blender-addons"]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev",
+        "sibling_repos": ["github.com/njanakiev/blender-jupyter"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "shader-procedural-worn-metal-edge-wear",
+  "topic": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blends/shading/shader-procedural-worn-metal-edge-wear/worn_metal.blend",
+    "glbs/shading/shader-procedural-worn-metal-edge-wear/worn_metal.glb",
+    "videos/shading/shader-procedural-worn-metal-edge-wear/viewport.mp4",
+    "videos/shading/shader-procedural-worn-metal-edge-wear/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-shader-principled-transmission-iridescence",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html",
+        "label": "Blender Manual — Bevel Node",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors"
+      },
+      {
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "label": "njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

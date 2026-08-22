@@ -1,0 +1,39 @@
+{
+  "blend": "area_heat_map.blend",
+  "glb": "area_heat_map.glb",
+  "video": "../../videos/geometry-nodes/gn-attribute-statistic-evaluate-on-domain/viewport.mp4",
+  "screen_recording": "../../videos/geometry-nodes/gn-attribute-statistic-evaluate-on-domain/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "geometry-nodes",
+  "slug": "gn-attribute-statistic-evaluate-on-domain",
+  "tutorial_route": "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-gn-blur-attribute-heat-diffusion",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute",
+      "/tutorials/blender-tutorial-vertex-colour-attributes",
+      "/tutorials/blender-tutorial-gn-geometry-proximity-deform"
+    ],
+    "external": [
+      {
+        "title": "Attribute Statistic Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Evaluate on Domain Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/evaluate_on_domain.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "glTF-Blender-IO",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group"
+      }
+    ]
+  }
+}

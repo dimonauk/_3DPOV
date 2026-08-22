@@ -1,0 +1,43 @@
+{
+  "slug": "python-bpy-render-engine-webxr-snapshot",
+  "category": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/scripting/python-bpy-render-engine-webxr-snapshot/blueprint.py",
+    "public/library/blends/scripting/python-bpy-render-engine-webxr-snapshot/record.py",
+    "public/library/blends/scripting/python-bpy-render-engine-webxr-snapshot/README.md",
+    "public/library/blends/scripting/python-bpy-render-engine-webxr-snapshot/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/scripting/python-bpy-render-engine-webxr-snapshot/.expected-artefacts.json",
+    "public/library/videos/scripting/python-bpy-render-engine-webxr-snapshot/viewport.mp4",
+    "public/library/videos/scripting/python-bpy-render-engine-webxr-snapshot/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-batch-glb-exporter",
+      "/tutorials/blender-tutorial-python-app-handler-frame-change-depsgraph",
+      "/tutorials/blender-tutorial-python-addon-preferences-keymap-hotkey-exporter",
+      "/tutorials/blender-tutorial-python-gltf-user-extension-export-extras-hook"
+    ],
+    "external": [
+      {
+        "title": "bpy.types.RenderEngine — Blender Python API Reference",
+        "url": "https://docs.blender.org/api/current/bpy.types.RenderEngine.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "blender-python-examples",
+        "url": "https://github.com/robertguetzkow/blender-python-examples",
+        "licence": "MIT",
+        "author": "Robert Guetzkow"
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

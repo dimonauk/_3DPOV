@@ -1,0 +1,63 @@
+{
+  "slug": "python-bpy-normal-edit-modifier-radial-cel-shade-vrm-glb-webxr",
+  "blender_version": "5.1",
+  "created": "2026-07-17",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "file": "hf_normal_edit_gem.glb",
+      "type": "glb",
+      "notes": "WebXR-ready GLB; sphere normals baked via depsgraph new_from_object; Draco L6; WebP; export_yup=True"
+    },
+    {
+      "file": "viewport.mp4",
+      "type": "video",
+      "notes": "150-frame EEVEE Next turntable; 1920x1080 24fps; shows sphere-normal toon gradient + base-flat weight fade"
+    },
+    {
+      "file": "screen.mp4",
+      "type": "video",
+      "notes": "OBS screen recording — see SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-bpy-smooth-by-angle-modifier-auto-smooth-migration-normals-webxr",
+      "/tutorials/blender-tutorial-python-mesh-custom-split-normals-smooth-island-faceted-webxr",
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader"
+    ],
+    "external": [
+      {
+        "title": "bpy.types.NormalEditModifier — Blender Python API 5.1",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.NormalEditModifier.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related_projects": [
+          "https://projects.blender.org/blender/blender",
+          "https://docs.blender.org/api/current/bpy.types.Modifier.html"
+        ]
+      },
+      {
+        "title": "Normal Edit Modifier — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/normal_edit.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related_projects": [
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/weighted_normal.html",
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/smooth_by_angle.html"
+        ]
+      },
+      {
+        "title": "glTF-Blender-IO — KhronosGroup",
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group contributors",
+        "related_projects": [
+          "https://github.com/KhronosGroup/glTF",
+          "https://github.com/KhronosGroup/glTF-Sample-Assets"
+        ]
+      }
+    ]
+  }
+}

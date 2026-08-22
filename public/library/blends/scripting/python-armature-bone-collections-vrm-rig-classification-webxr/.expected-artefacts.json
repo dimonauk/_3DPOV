@@ -1,0 +1,47 @@
+{
+  "slug": "python-armature-bone-collections-vrm-rig-classification-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "rig_classified.blend",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-armature-bone-collections-vrm-rig-classification-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-armature-bone-collections-vrm-rig-classification-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-armature-edit-bones-vrm-spine-chain",
+      "/tutorials/blender-tutorial-python-posebone-matrix-world-space-ik-bake-vrm",
+      "/tutorials/blender-tutorial-python-bpy-vertex-group-weight-assign-vrm-deform-envelope",
+      "/tutorials/blender-tutorial-python-bpy-context-temp-override-ops-headless-scripting"
+    ],
+    "outside_sources": [
+      {
+        "title": "bpy.types.BoneCollection — Blender Python API",
+        "url": "https://docs.blender.org/api/5.1/bpy.types.BoneCollection.html",
+        "licence": "CC-BY-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/api/5.1/bpy.types.ArmatureCollections.html",
+          "https://projects.blender.org/blender/blender"
+        ]
+      },
+      {
+        "title": "Bone Collections — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/animation/armatures/bones/bone_collection.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "siblings": [
+          "https://docs.blender.org/manual/en/latest/animation/armatures/",
+          "https://projects.blender.org/blender/blender"
+        ]
+      }
+    ]
+  }
+}

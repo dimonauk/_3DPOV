@@ -1,0 +1,34 @@
+{
+  "slug": "python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "hf_penrose_floor.blend", "type": "blend" },
+    { "path": "hf_penrose_floor.glb",   "type": "glb" },
+    { "path": "../../../../videos/scripting/python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr/viewport.mp4", "type": "video" },
+    { "path": "../../../../videos/scripting/python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr/screen.mp4",   "type": "video" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-mathutils-geometry-delaunay-2d-cdt-convex-hull-stage-floor-webxr",
+      "/tutorials/blender-tutorial-gn-dual-mesh-voronoi-cell-sphere",
+      "/tutorials/blender-tutorial-shader-principled-bsdf-v2-gltf-pbr-webxr"
+    ],
+    "outside_sources": [
+      {
+        "label": "fogleman/Penrose — Robinson-triangle deflation reference implementation",
+        "url": "https://github.com/fogleman/Penrose",
+        "licence": "MIT",
+        "author": "Michael Fogleman",
+        "related": "https://github.com/fogleman"
+      },
+      {
+        "label": "numpy — N-dimensional array library for complex-number vertex arithmetic",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

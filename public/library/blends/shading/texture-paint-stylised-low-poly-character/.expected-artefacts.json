@@ -1,0 +1,42 @@
+{
+  "blend": "gem_totem.blend",
+  "glb": "gem_totem.glb",
+  "images": [
+    "gem_totem_base.png",
+    "gem_totem_rough.png",
+    "gem_totem_emit.png"
+  ],
+  "videos": {
+    "viewport": "public/library/videos/shading/texture-paint-stylised-low-poly-character/viewport.mp4",
+    "screen": "public/library/videos/shading/texture-paint-stylised-low-poly-character/screen.mp4"
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-uv-unwrap-low-poly-stylised",
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-tutorial-gn-uv-unwrap-pack-islands-glb"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/texture_paint/index.html",
+        "title": "Blender Manual — Texture Paint Mode",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "related_projects": ["blender/blender (GPL-2.0, docs only here)"]
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/editors/uv/index.html",
+        "title": "Blender Manual — UV Editor",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "related_projects": ["blender/blender (GPL-2.0, docs only here)"]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "shading",
+  "slug": "texture-paint-stylised-low-poly-character"
+}

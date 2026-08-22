@@ -1,0 +1,41 @@
+{
+  "slug": "gn-volume-cube-procedural-cloud",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blends/geometry-nodes/gn-volume-cube-procedural-cloud/blueprint.py",
+    "blends/geometry-nodes/gn-volume-cube-procedural-cloud/record.py",
+    "blends/geometry-nodes/gn-volume-cube-procedural-cloud/README.md",
+    "blends/geometry-nodes/gn-volume-cube-procedural-cloud/SCREEN-RECORDING-NOTES.md",
+    "videos/geometry-nodes/gn-volume-cube-procedural-cloud/viewport.mp4",
+    "videos/geometry-nodes/gn-volume-cube-procedural-cloud/screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-shader-principled-volume-fog-column",
+      "/tutorials/blender-tutorial-gn-distribute-points-ground-cover-scatter",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Volume Cube Node",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Blender Manual — Principled Volume Shader",
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_principled.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nicolas Janakiev"
+      }
+    ]
+  }
+}

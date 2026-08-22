@@ -1,0 +1,59 @@
+{
+  "slug": "gn-volume-to-mesh-point-cloud-blob-reconstruction",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/geometry-nodes/gn-volume-to-mesh-point-cloud-blob-reconstruction/blueprint.py",
+      "type": "script",
+      "description": "Full scene builder: noise-displaced point cloud → SDF volume → Marching Cubes mesh"
+    },
+    {
+      "path": "public/library/blends/geometry-nodes/gn-volume-to-mesh-point-cloud-blob-reconstruction/record.py",
+      "type": "script",
+      "description": "120-frame rotating viewport render → viewport.mp4 (24 fps, Material Preview)"
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-volume-to-mesh-point-cloud-blob-reconstruction/viewport.mp4",
+      "type": "video",
+      "description": "Rotating blob reconstruction showing Marching Cubes iso-surface (5 s)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/geometry-nodes/gn-volume-to-mesh-point-cloud-blob-reconstruction/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of full pipeline walkthrough and parameter exploration",
+      "committed": false
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-points-to-volume-organic-coral",
+      "/tutorials/blender-tutorial-gn-mesh-to-volume-sdf-blob-fusion",
+      "/tutorials/blender-tutorial-metaball-organic-blob-creature-glb",
+      "/tutorials/blender-tutorial-gn-distribute-points-in-volume-crystal-geode"
+    ],
+    "outside_sources": [
+      {
+        "title": "Volume to Mesh Node — Blender Manual",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team"
+      },
+      {
+        "title": "Marching Cubes — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Marching_cubes",
+        "licence": "CC-BY-SA 3.0",
+        "author": "Wikipedia contributors"
+      },
+      {
+        "title": "THREE.MarchingCubes — three.js",
+        "url": "https://github.com/mrdoob/three.js/blob/dev/examples/jsm/objects/MarchingCubes.js",
+        "licence": "MIT",
+        "author": "mrdoob and three.js contributors"
+      }
+    ]
+  }
+}

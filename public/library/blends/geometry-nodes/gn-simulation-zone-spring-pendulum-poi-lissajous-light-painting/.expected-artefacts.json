@@ -1,0 +1,47 @@
+{
+  "slug": "gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+  "topic": "geometry-nodes",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_poi_lissajous.blend",
+    "hf_poi_lissajous.glb"
+  ],
+  "video_artefacts": [
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "tutorial_path": "/tutorials/blender-tutorial-gn-simulation-zone-spring-pendulum-poi-lissajous-light-painting",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-points-to-curves-poi-trail-ribbon-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance",
+      "/tutorials/blender-tutorial-gn-simulation-zone-verlet-rope-cable-physics",
+      "/tutorials/spinning-fire-poi-safely",
+      "/tutorials/blender-tutorial-gn-simulation-zone-spring-mass-cloth-verlet-grid-webxr"
+    ],
+    "external": [
+      {
+        "title": "Blender Manual — Geometry Nodes Simulation Zone",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/simulation/simulation_zone.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": "https://projects.blender.org/blender/blender"
+      },
+      {
+        "title": "OpenStax University Physics Vol.1 Ch.15 — Oscillations",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-introduction",
+        "licence": "CC BY 4.0",
+        "author": "OpenStax / Rice University",
+        "related": "https://github.com/openstax"
+      },
+      {
+        "title": "glTF 2.0 Specification",
+        "url": "https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/README.md",
+        "licence": "MIT",
+        "author": "Khronos Group",
+        "related": "https://github.com/KhronosGroup/glTF-Blender-IO"
+      }
+    ]
+  }
+}

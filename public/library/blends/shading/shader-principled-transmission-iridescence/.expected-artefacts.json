@@ -1,0 +1,57 @@
+{
+  "slug": "shader-principled-transmission-iridescence",
+  "category": "shading",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/shading/shader-principled-transmission-iridescence/holographic_gem.blend",
+      "type": "blend",
+      "description": "Source scene: icosphere gem with HolographicGem material, Area light, camera"
+    },
+    {
+      "path": "public/library/glbs/shading/shader-principled-transmission-iridescence/holographic_gem.glb",
+      "type": "glb",
+      "description": "Draco-6 GLB with KHR_materials_transmission + KHR_materials_iridescence"
+    },
+    {
+      "path": "public/library/videos/shading/shader-principled-transmission-iridescence/viewport.mp4",
+      "type": "video",
+      "description": "3-second EEVEE render: Wave Scale sweep + 40° camera orbit"
+    },
+    {
+      "path": "public/library/videos/shading/shader-principled-transmission-iridescence/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of the full workflow (recorded by Dimona)"
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-eevee-toon-cel-shader",
+      "/tutorials/blender-tutorial-faceted-gem-webxr",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-faceted-custom-split-normals",
+      "/tutorials/blender-tutorial-vertex-colour-attributes"
+    ],
+    "outside_sources": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation contributors",
+        "description": "Principled BSDF node full socket reference including 4.0 rename table"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Khronos/KHR_materials_iridescence",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group contributors",
+        "description": "KHR_materials_iridescence spec — iridescenceThicknessMinimum/Maximum range, IOR encoding"
+      },
+      {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "licence": "Apache-2.0",
+        "author": "Khronos Group contributors",
+        "description": "glTF-Blender-IO exporter — maps Principled BSDF Iridescence sockets to KHR_materials_iridescence JSON fields"
+      }
+    ]
+  }
+}

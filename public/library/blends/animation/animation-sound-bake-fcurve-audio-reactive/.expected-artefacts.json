@@ -1,0 +1,53 @@
+{
+  "slug": "animation-sound-bake-fcurve-audio-reactive",
+  "topic": "animation",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/animation/animation-sound-bake-fcurve-audio-reactive/blueprint.py",
+      "type": "script",
+      "description": "Full scene builder: WAV synthesis + RMS parse + GN tree + scripted driver"
+    },
+    {
+      "path": "public/library/blends/animation/animation-sound-bake-fcurve-audio-reactive/record.py",
+      "type": "script",
+      "description": "OpenGL viewport render → viewport.mp4 (144 frames, 24 fps)"
+    },
+    {
+      "path": "public/library/videos/animation/animation-sound-bake-fcurve-audio-reactive/viewport.mp4",
+      "type": "video",
+      "description": "Rendered viewport animation — grid pulses to kick+snare beat (6 s)",
+      "generated_by": "record.py",
+      "committed": false
+    },
+    {
+      "path": "public/library/videos/animation/animation-sound-bake-fcurve-audio-reactive/screen.mp4",
+      "type": "video",
+      "description": "OBS screen recording of workflow walkthrough",
+      "committed": false
+    }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-animation-fcurve-modifiers-noise-cycles-stepped",
+      "/tutorials/blender-tutorial-animation-drivers-parametric-shader",
+      "/tutorials/blender-tutorial-gn-set-position-noise-displacement",
+      "/tutorials/wiring-spatial-audio-in-the-framework"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Python API — bpy.types.Driver",
+        "url": "https://docs.blender.org/api/current/bpy.types.Driver.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "title": "Python wave module documentation",
+        "url": "https://docs.python.org/3/library/wave.html",
+        "licence": "PSF Licence",
+        "author": "Python Software Foundation"
+      }
+    ]
+  }
+}

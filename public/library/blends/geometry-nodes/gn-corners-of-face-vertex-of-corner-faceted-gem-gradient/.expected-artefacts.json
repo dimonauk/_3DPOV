@@ -1,0 +1,39 @@
+{
+  "blend": "faceted_gem_gradient.blend",
+  "glb": "faceted_gem_gradient.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": [
+    "public/library/videos/geometry-nodes/gn-corners-of-face-vertex-of-corner-faceted-gem-gradient/viewport.mp4",
+    "public/library/videos/geometry-nodes/gn-corners-of-face-vertex-of-corner-faceted-gem-gradient/screen.mp4"
+  ],
+  "notes": ["SCREEN-RECORDING-NOTES.md"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+      "/tutorials/blender-tutorial-gn-store-named-attribute-shader-data-bridge",
+      "/tutorials/blender-tutorial-faceted-gem-flat-normals",
+      "/tutorials/blender-tutorial-gn-capture-attribute-named-attribute"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Corners of Face",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/",
+          "https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html"
+        ]
+      },
+      {
+        "title": "njanakiev/blender-scripting",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": ["https://github.com/njanakiev"]
+      }
+    ]
+  }
+}

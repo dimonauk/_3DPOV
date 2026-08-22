@@ -1,0 +1,47 @@
+{
+  "slug": "modifier-subdiv-crease-bevel-weight-hard-surface",
+  "topic": "modifiers",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "mount_block.blend",
+    "mount_block.glb",
+    "../../videos/modifiers/modifier-subdiv-crease-bevel-weight-hard-surface/viewport.mp4",
+    "../../videos/modifiers/modifier-subdiv-crease-bevel-weight-hard-surface/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-gn-bevel-mesh-edge-angle-chamfer",
+      "/tutorials/blender-tutorial-low-poly-faceted-hard-surface",
+      "/tutorials/blender-tutorial-texture-baking-normal-ao",
+      "/tutorials/blender-tutorial-shader-cycles-displacement-adaptive-subdivision",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb"
+    ],
+    "outside_sources": [
+      {
+        "title": "Blender Manual — Subdivision Surface Modifier",
+        "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Documentation Team",
+        "related": [
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+          "https://docs.blender.org/manual/en/latest/modeling/modifiers/modify/weighted_normal.html"
+        ]
+      },
+      {
+        "title": "blender-scripting — Python examples for Blender (MIT)",
+        "url": "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "author": "Nikolai Janakiev",
+        "related": [
+          "https://github.com/njanakiev/blender-scripting/blob/master/scripts",
+          "https://github.com/blender/blender/tree/main/scripts/startup/bl_operators"
+        ]
+      }
+    ]
+  }
+}

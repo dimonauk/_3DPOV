@@ -1,0 +1,41 @@
+{
+  "slug": "sculpt-layer-brush-stencil-fabric-detail-vrm",
+  "topic": "sculpting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "vrm_fabric_jacket.glb",
+    "public/library/videos/sculpting/sculpt-layer-brush-stencil-fabric-detail-vrm/viewport.mp4",
+    "public/library/videos/sculpting/sculpt-layer-brush-stencil-fabric-detail-vrm/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-sculpt-layer-brush-stencil-fabric-detail-vrm",
+      "/tutorials/blender-tutorial-sculpt-multires-normal-bake-lowpoly-glb",
+      "/tutorials/blender-tutorial-sculpt-face-sets-zone-masking-vrm-retopo",
+      "/tutorials/blender-tutorial-sculpt-dyntopo-voxel-remesh",
+      "/tutorials/blender-tutorial-shader-principled-sheen-coat-velvet-lacquer-vrm",
+      "/tutorials/blender-tutorial-python-cycles-batch-bake-normal-ao-emission-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/sculpting/tools/layer.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "note": "Layer brush height parameter, persistent mode, stencil texture interaction"
+      },
+      {
+        "url": "https://docs.blender.org/manual/en/latest/sculpt_paint/sculpting/tool_settings/texture.html",
+        "licence": "CC-BY-SA 4.0",
+        "author": "Blender Documentation Team",
+        "note": "Stencil mapping mode: RMB/Shift+RMB/Ctrl+RMB controls, map_mode property"
+      },
+      {
+        "url": "https://polyhaven.com/textures?c=Fabric",
+        "licence": "CC0 1.0 Universal",
+        "author": "Poly Haven contributors (Rob Tuytel et al.)",
+        "note": "CC0 fabric PBR textures suitable for use as stencil input images"
+      }
+    ]
+  }
+}

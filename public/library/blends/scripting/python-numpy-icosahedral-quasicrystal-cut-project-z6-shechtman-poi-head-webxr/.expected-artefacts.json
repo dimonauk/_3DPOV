@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_quasicrystal_poi.blend",
+    "hf_quasicrystal_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Shechtman et al. (1984) Metallic Phase with Long-Range Orientational Order — Physical Review Letters 53(20):1951–1953",
+        "url": "https://doi.org/10.1103/PhysRevLett.53.1951",
+        "licence": "Public Domain (mathematical content / 1984)",
+        "related": [
+          "Levine & Steinhardt (1984) Quasicrystals: A New Class of Ordered Structure — PRL 53(26)",
+          "Elser (1985) indexing of icosahedral quasiperiodic crystals — Journal of Physics A"
+        ]
+      },
+      {
+        "title": "Duneau & Katz (1985) Quasiperiodic Patterns — Physical Review Letters 54(25):2688–2691",
+        "url": "https://doi.org/10.1103/PhysRevLett.54.2688",
+        "licence": "Public Domain (mathematical content / 1985)",
+        "related": [
+          "Kalugin, Kitaev & Levitov (1985) Al₀.₈₆Mn₀.₁₄ — JETP Letters 41",
+          "de Bruijn (1981) Algebraic theory of Penrose nonperiodic tilings"
+        ]
+      }
+    ]
+  },
+  "mesh_stats_expected": {
+    "accepted_vertices": "400–950 (N_RANGE=3, WINDOW_RADIUS=1.95)",
+    "bond_count_approx": "800–2200",
+    "vertex_count_mesh": "varies with bead subdivision"
+  }
+}

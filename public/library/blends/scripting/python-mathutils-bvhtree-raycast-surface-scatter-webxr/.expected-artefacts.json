@@ -1,0 +1,37 @@
+{
+  "slug": "python-mathutils-bvhtree-raycast-surface-scatter-webxr",
+  "blender_version": "5.1",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "scatter_result.glb",
+    "collision_proxy.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-mathutils-bvhtree-raycast-surface-scatter-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-mathutils-bvhtree-raycast-surface-scatter-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-mathutils-bvhtree-raycast-surface-scatter-webxr",
+      "/tutorials/blender-tutorial-python-depsgraph-evaluated-geometry-gn-instances-batch-export",
+      "/tutorials/blender-tutorial-gn-instance-on-points",
+      "/tutorials/blender-tutorial-python-bpy-particle-system-emitter-hair-instance-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://docs.blender.org/api/5.1/mathutils.bvhtree.html",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Blender Foundation"
+      },
+      {
+        "url": "https://github.com/njankowski/blender-scripting",
+        "licence": "MIT",
+        "author": "Nick Jankowski"
+      }
+    ]
+  }
+}
