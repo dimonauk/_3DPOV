@@ -1,0 +1,64 @@
+{
+  "slug": "python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "files": [
+    "hf_bessel_drum_poi.blend",
+    "hf_bessel_drum_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr/screen.mp4",
+    "duration_s": 4,
+    "fps": 24
+  },
+  "mesh": {
+    "vertices": 7200,
+    "faces": 7080,
+    "face_type": "quads",
+    "shape_keys": [
+      "Basis",
+      "SK_Mode_0_1",
+      "SK_Mode_1_1",
+      "SK_Mode_2_1",
+      "SK_Mode_0_2",
+      "SK_Mode_3_1",
+      "SK_Mode_1_2"
+    ],
+    "vertex_colour_attribute": "Drum_Mode",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "physics": {
+    "equation": "∇²Φ + k²Φ = 0, Φ(R,θ) = 0",
+    "eigenfunction": "J_m(k_{mn} r/R) cos(mθ)",
+    "zeros_source": "scipy.special.jn_zeros"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-chladni-figures-standing-wave-eigenmodes-nodal-lines-height-field-webxr",
+      "/tutorials/blender-tutorial-python-scipy-sparse-laplace-beltrami-eigenmodes-spectral-mesh-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr",
+      "/tutorials/blender-tutorial-python-numpy-zernike-polynomials-noll-wavefront-aberration-disc-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-fraunhofer-diffraction-fft-aperture-psf-airy-disk-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "NIST Digital Library of Mathematical Functions §10 Bessel Functions",
+        "url": "https://dlmf.nist.gov/10",
+        "licence": "Public Domain (US Government)"
+      },
+      {
+        "title": "scipy.special.jn_zeros",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.jn_zeros.html",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}

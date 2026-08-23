@@ -610,6 +610,7 @@ import { blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSu
 import { entry as blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr";
 import { entry as blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr";
+import { entry as blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1227,6 +1228,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry,
   blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry,
+  blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
