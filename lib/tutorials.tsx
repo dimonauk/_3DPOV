@@ -603,6 +603,7 @@ import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCh
 import { entry as blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationalSolutionPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr";
+import { blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1213,6 +1214,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationalSolutionPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,51 @@
+{
+  "blend": "neovius_floor.blend",
+  "glb": "neovius_floor.glb",
+  "video_viewport": "../../videos/scripting/python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr/viewport.mp4",
+  "video_screen": "../../videos/scripting/python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "shape_keys": ["Basis", "SK_Expand", "SK_Compress", "SK_Wide"],
+  "vertex_colour": "Neovius_K",
+  "holoflow": {
+    "facet": true,
+    "category": "stage-floor",
+    "surface": "tpms-neovius",
+    "space_group": "Im-3m",
+    "genus": 9
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Neovius, E. R.",
+        "year": 1883,
+        "title": "Bestimmung zweier specieller periodischer Minimalflächen",
+        "publisher": "Doctoral thesis, Helsingfors (Helsinki); Acta Soc. Sci. Fenn. 11:435-499",
+        "licence": "PD",
+        "url": "https://archive.org/search?query=Neovius+Minimalflachen"
+      },
+      {
+        "author": "Schoen, A. H.",
+        "year": 1970,
+        "title": "Infinite Periodic Minimal Surfaces Without Self-Intersections",
+        "publisher": "NASA Technical Note D-5541",
+        "licence": "PD",
+        "url": "https://ntrs.nasa.gov/citations/19700020472",
+        "related": ["https://ntrs.nasa.gov/"]
+      },
+      {
+        "author": "NumPy contributors",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  }
+}
