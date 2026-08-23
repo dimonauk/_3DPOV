@@ -602,6 +602,7 @@ import { entry as blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900B
 import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCheckerboardSaddleTileStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationalSolutionPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1211,6 +1212,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCheckerboardSaddleTileStageFloorWebxrEntry,
   blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationalSolutionPoiDiscWebxrEntry,
+  blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

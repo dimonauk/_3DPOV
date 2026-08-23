@@ -1,0 +1,56 @@
+{
+  "slug": "python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_arnold_cat.blend",
+    "hf_arnold_cat.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": [
+    "Basis",
+    "SK_Step1",
+    "SK_Step2",
+    "SK_Step3",
+    "SK_Step5",
+    "SK_Step8"
+  ],
+  "vertex_attributes": [
+    { "name": "CatMap_Scramble", "type": "FLOAT_COLOR", "domain": "POINT" }
+  ],
+  "objects": [
+    "hf_arnold_cat",
+    "hf_arnold_cat_unstable_mfd"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-miura-ori-rigid-origami-kawasaki-flat-fold-auxetic-poi-disc-webxr",
+      "/tutorials/blender-tutorial-shape-keys-morph-targets"
+    ],
+    "outside": [
+      {
+        "author": "Arnold, V.I. & Avez, A.",
+        "title": "Ergodic Problems of Classical Mechanics",
+        "year": 1968,
+        "publisher": "Benjamin, New York",
+        "notes": "Original treatment of the cat map as an Anosov example; mathematical content in the public domain.",
+        "related": ["Anosov, D.V. (1967) — Geodesic flows on Riemannian manifolds, MIAN Moscow"]
+      },
+      {
+        "author": "Hannay, J.H. & Berry, M.V.",
+        "title": "Quantization of linear maps on a torus — Fresnel diffraction by a periodic grating",
+        "year": 1980,
+        "journal": "Physica D",
+        "doi": "10.1016/0167-2789(80)90026-3",
+        "licence": "PD-equations",
+        "related": ["Hietarinta, J. & Tabor, M. (1989) integrability tests, Physica D"]
+      }
+    ]
+  }
+}
