@@ -1,0 +1,62 @@
+{
+  "blend": "hf_foucault_poi.blend",
+  "glb":   "hf_foucault_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs":    ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr/screen.mp4"
+  },
+  "mesh": {
+    "object_name":   "hf_foucault_poi",
+    "vertex_count":  "22400 (N_TRAJ=2800 × TUBE_SIDES=8)",
+    "face_count":    "22400 quads",
+    "material_name": "HoloflowFoucaultMat",
+    "vertex_attr":   "Foucault_Phase (FLOAT_COLOR POINT, cobalt→amber)",
+    "shape_keys":    ["Basis", "SK_Arctic", "SK_Subtropical", "SK_Tropical"],
+    "holoflow_facet":    true,
+    "holoflow_category": "poi-disc",
+    "holoflow_type":     "foucault-rosette",
+    "holoflow_base_petals": 7,
+    "holoflow_berry_phase": "2π·sin(λ) rad/day"
+  },
+  "physics": {
+    "equation": "z̈ + 2i·Ω_z·ż + ω₀²·z = 0",
+    "solution":  "z(t) = A·cos(ω₀t)·exp(−i·Ω_z·t)",
+    "berry_phase": "γ = 2π·sin(λ) per sidereal day",
+    "omega_z":   "Ω_Earth·sin(λ)",
+    "closure":   "N_PETALS = ω₀/Ω_z (integer → closed rosette)"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-euler-rigid-body-spinning-top-precession-poi-staff",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-abc-flow-beltrami-force-free-rk4-streamlines-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Léon Foucault",
+        "title": "Démonstration physique du mouvement de rotation de la Terre au moyen du pendule",
+        "ref": "Comptes Rendus de l'Académie des Sciences, vol. 32, pp. 135–138, 1851",
+        "url": "https://gallica.bnf.fr",
+        "licence": "Public Domain (published 1851, copyright expired universally)",
+        "related": [
+          "Foucault 1852 gyroscope follow-up (PD, same archive)",
+          "Wikipedia 'Foucault pendulum' (CC BY-SA 4.0)"
+        ]
+      },
+      {
+        "author": "SciPy community",
+        "title": "scipy.integrate.solve_ivp — Solve an Initial Value Problem for a System of ODEs",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html",
+        "licence": "BSD-3-Clause",
+        "related": [
+          "https://github.com/scipy/scipy (BSD-3-Clause)",
+          "https://github.com/numpy/numpy (BSD-3-Clause)"
+        ]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
