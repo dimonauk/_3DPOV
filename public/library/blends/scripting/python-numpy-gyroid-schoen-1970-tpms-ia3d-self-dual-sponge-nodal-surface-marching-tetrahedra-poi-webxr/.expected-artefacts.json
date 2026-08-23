@@ -1,0 +1,51 @@
+{
+  "blend": "hf_gyroid_poi.blend",
+  "glb":   "hf_gyroid_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs":    ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr/screen.mp4"
+  },
+  "mesh": {
+    "object_name":   "hf_gyroid_poi",
+    "vertex_count":  "~6000–12000 (N_GRID=50)",
+    "material_name": "HoloflowGyroidMat",
+    "vertex_attr":   "Gyroid_K (FLOAT_COLOR POINT)",
+    "shape_keys":    ["Basis", "SK_ThickShell", "SK_ThinShell"],
+    "holoflow_facet": true,
+    "holoflow_category": "poi-head",
+    "holoflow_surface":  "tpms-gyroid",
+    "holoflow_space_group": "Ia-3d",
+    "holoflow_genus": 3
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Alan Schoen",
+        "title": "Infinite Periodic Minimal Surfaces Without Self-Intersections",
+        "ref": "NASA TN D-5541, 1970",
+        "url": "https://ntrs.nasa.gov/citations/19700020472",
+        "licence": "Public Domain (US Government work)",
+        "related": ["ntrs.nasa.gov TPMS archive", "Karcher & Polthier 1996 Exp. Math."]
+      },
+      {
+        "author": "Ken Brakke",
+        "title": "Surface Evolver v2.70",
+        "url": "http://facstaff.susqu.edu/brakke/evolver/evolver.html",
+        "licence": "MIT",
+        "related": [
+          "https://github.com/nschloe/meshzoo",
+          "https://github.com/scipy/scipy"
+        ]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
