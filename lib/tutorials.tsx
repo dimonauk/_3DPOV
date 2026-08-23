@@ -607,6 +607,7 @@ import { blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFl
 import { blenderTutorialPythonNumpyScipyWeairePhelanA15KelvinConjectureFoamBubbleCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-weaire-phelan-a15-kelvin-conjecture-foam-bubble-cage-poi-webxr";
 import { blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr";
 import { blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr";
+import { blenderTutorialGnSimulationZoneKuramotoCoupledPhaseOscillatorsMeanFieldOrderParameterPoiRingWebxrEntry } from "components/tutorials/entries/blender-tutorial-gn-simulation-zone-kuramoto-coupled-phase-oscillators-mean-field-order-parameter-poi-ring-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1221,6 +1222,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyScipyWeairePhelanA15KelvinConjectureFoamBubbleCagePoiWebxrEntry,
   blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry,
   blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry,
+  blenderTutorialGnSimulationZoneKuramotoCoupledPhaseOscillatorsMeanFieldOrderParameterPoiRingWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

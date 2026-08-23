@@ -1,0 +1,37 @@
+{
+  "slug": "gn-simulation-zone-kuramoto-coupled-phase-oscillators-mean-field-order-parameter-poi-ring-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_kuramoto_poi.blend",
+    "hf_kuramoto_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-gn-simulation-zone-ising-model-spin-lattice-phase-transition",
+      "/tutorials/blender-tutorial-gn-simulation-zone-van-der-pol-nonlinear-limit-cycle-poi",
+      "/tutorials/blender-tutorial-gn-attribute-statistic-evaluate-on-domain",
+      "/tutorials/blender-tutorial-gn-simulation-zone-coupled-pendulums-mathieu-resonance"
+    ],
+    "outside_sources": [
+      {
+        "title": "Kuramoto Y. (1975) — International Symposium on Mathematical Problems in Theoretical Physics",
+        "licence": "Public Domain (mathematical equations)",
+        "author": "Yoshiki Kuramoto",
+        "url": "https://link.springer.com/chapter/10.1007/BFb0013365"
+      },
+      {
+        "title": "Strogatz S.H. (2000) — From Kuramoto to Crawford: exploring the onset of synchronization",
+        "licence": "CC-BY / mathematical content Public Domain",
+        "author": "Steven H. Strogatz",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0167278900000506"
+      }
+    ]
+  }
+}
