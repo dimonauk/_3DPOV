@@ -1,0 +1,68 @@
+{
+  "blend": "hf_weaire_phelan.blend",
+  "glb": "hf_weaire_phelan.glb",
+  "video_viewport": "../../videos/scripting/python-numpy-scipy-weaire-phelan-a15-kelvin-conjecture-foam-bubble-cage-poi-webxr/viewport.mp4",
+  "video_screen": "../../videos/scripting/python-numpy-scipy-weaire-phelan-a15-kelvin-conjecture-foam-bubble-cage-poi-webxr/screen.mp4",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "object_name": "hf_weaire_phelan",
+  "shape_keys": ["Basis", "SK_Tight", "SK_Expanded"],
+  "vertex_colour": "WP_Colour",
+  "materials": ["WP_Amber", "WP_Cobalt"],
+  "holoflow": {
+    "facet": true,
+    "category": "poi-head",
+    "surface": "weaire-phelan-a15",
+    "space_group": "Pm-3n",
+    "space_group_number": 223,
+    "cell_types": {
+      "A": {"polyhedron": "pentagonal-dodecahedron", "faces": 12, "count_per_cell": 2},
+      "B": {"polyhedron": "tetrakaidecahedron", "faces": 14, "count_per_cell": 6}
+    },
+    "kelvin_advantage_percent": -0.3
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarz-p-d-gyroid-tpms-marching-tets-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-goldberg-polyhedra-gp11-c60-truncated-icosahedron-hexagonal-cage-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Thomson, W. (Lord Kelvin)",
+        "year": 1887,
+        "title": "On the Division of Space with Minimum Partitional Area",
+        "publisher": "Acta Mathematica 11: 121–134; also Phil. Mag. 24: 503–514",
+        "licence": "PD",
+        "url": "https://link.springer.com/article/10.1007/BF02612322",
+        "note": "Original conjecture paper; public domain. Archives also at archive.org.",
+        "related": ["https://archive.org/details/actamathematica11upps"]
+      },
+      {
+        "author": "Weaire, D. & Phelan, R.",
+        "year": 1994,
+        "title": "A counter-example to Kelvin's conjecture on minimal surfaces",
+        "publisher": "Philosophical Magazine Letters 69(2): 107–110",
+        "licence": "academic",
+        "url": "https://doi.org/10.1080/09500839408241577",
+        "related": ["https://www.tcd.ie/Physics/research/groups/foam-and-emulsions/"]
+      },
+      {
+        "author": "SciPy contributors",
+        "title": "scipy.spatial.Voronoi",
+        "licence": "BSD-3-Clause",
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html",
+        "related": ["https://github.com/scipy/scipy", "https://qhull.org"]
+      },
+      {
+        "author": "NumPy contributors",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  }
+}
