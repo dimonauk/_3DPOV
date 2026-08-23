@@ -6,6 +6,7 @@ import type { Entry } from "lib/writing";
 const lk = "underline underline-offset-4 hover:text-pink-200";
 
 const data = {
+  slug: "blender-tutorial-python-numpy-l-system-lindenmayer-turtle3d-coral-webxr",
   title:
     "Python numpy — L-System Lindenmayer: 3D Turtle String Rewriting, Rodrigues Rotation Frame & Branching Coral GLB for WebXR + 3D Print (Blender 5.1)",
   lede: "Expand a three-symbol Lindenmayer production rule ('A → F[+&A][-&A][^A]') through five generations of simultaneous string substitution, then walk the result with a 3D turtle carrying a (fwd, up, right) frame updated by Rodrigues rotation — no gimbal lock, no quaternion overhead — to collect 121 polyline branches; pack all branches into a single Blender Curve object where per-point .radius scales bevel_depth for a root-to-tip taper, and export the evaluated mesh as a Draco-compressed GLB ready for WebXR or MSLA light-sculpture printing.",

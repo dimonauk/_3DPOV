@@ -6,6 +6,7 @@ import type { Entry } from "lib/writing";
 const lk = "underline underline-offset-4 hover:text-pink-200";
 
 const data = {
+  slug: "blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr",
   title:
     "Python numpy — Penrose P3 Rhombus Tiling: Substitution Deflation, Quasicrystal 5-Fold Symmetry & Stage Floor GLB for WebXR (Blender 5.1)",
   lede: "Build an aperiodic Penrose P3 rhombus floor in pure Python: seed a 10-fold 'sun', apply Robinson-triangle deflation N times, merge triangle pairs into fat and thin rhombus quads, extrude each tile, and export a Draco-compressed GLB for use as an XR stage floor — all without touching the viewport.",

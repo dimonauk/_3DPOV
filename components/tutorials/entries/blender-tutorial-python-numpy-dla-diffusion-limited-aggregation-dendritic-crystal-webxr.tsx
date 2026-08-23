@@ -6,6 +6,7 @@ import type { Entry } from "lib/writing";
 const lk = "underline underline-offset-4 hover:text-pink-200";
 
 const data = {
+  slug: "blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr",
   title:
     "Python numpy — Diffusion-Limited Aggregation: Brownian Particle Sticking, Marsaglia Sphere Sampling & Dendritic Crystal GLB for WebXR (Blender 5.1)",
   lede: "Release random walkers from a SPAWN_RADIUS ring, step each one by a unit-sphere displacement sampled via Marsaglia's (1972) two-uniform rejection method, and freeze it the instant its Euclidean distance to any existing aggregate point drops below STICK_RADIUS — repeating until 600 particles are locked in place; the resulting fractal dendrite (dimension ≈ 1.71) is assembled in Blender 5.1 as a GN-instanced point cloud with a per-point INT attribute 'appear_frame' driving a Compare → Delete Geometry chain that re-plays the growth as a 120-frame EEVEE Next animation, then exported as a Draco-compressed GLB for WebXR bloom display or MSLA resin printing.",

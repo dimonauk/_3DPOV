@@ -6,6 +6,7 @@ import type { Entry } from "lib/writing";
 const lk = "underline underline-offset-4 hover:text-pink-200";
 
 const data = {
+  slug: "blender-tutorial-python-numpy-marching-cubes-gyroid-sdf-isosurface-webxr",
   title:
     "Python numpy — Surface Nets: Gyroid SDF Isosurface, Trilinear Edge Interpolation & Watertight GLB for WebXR + 3D Print (Blender 5.1)",
   lede: "Extract the gyroid triply-periodic minimal surface from a signed-distance field using the Surface Nets algorithm: evaluate the SDF on a 48³ numpy grid, place one vertex per surface cell at the centroid of its active edge-crossings, stitch adjacent cells into quads along sign-change edges, then triangulate and export a Draco-compressed GLB — all without a 256-case Marching Cubes lookup table.",
