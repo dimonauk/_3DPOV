@@ -605,6 +605,7 @@ import { entry as blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationa
 import { entry as blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr";
 import { blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr";
 import { blenderTutorialPythonNumpyScipyWeairePhelanA15KelvinConjectureFoamBubbleCagePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-weaire-phelan-a15-kelvin-conjecture-foam-bubble-cage-poi-webxr";
+import { blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1217,6 +1218,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFloorWebxrEntry,
   blenderTutorialPythonNumpyScipyWeairePhelanA15KelvinConjectureFoamBubbleCagePoiWebxrEntry,
+  blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

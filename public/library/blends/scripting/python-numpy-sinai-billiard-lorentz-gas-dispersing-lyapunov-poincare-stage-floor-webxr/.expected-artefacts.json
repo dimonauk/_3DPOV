@@ -1,0 +1,59 @@
+{
+  "slug": "python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "file": "sinai_floor.blend", "type": "blend", "generated_by": "blueprint.py" },
+    { "file": "sinai_floor.glb",   "type": "glb",   "generated_by": "blueprint.py" },
+    { "file": "blueprint.py",      "type": "script", "role": "build" },
+    { "file": "record.py",         "type": "script", "role": "render-animation" },
+    { "file": "viewport.mp4",      "type": "video",  "generated_by": "record.py",
+      "path": "public/library/videos/scripting/python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr/viewport.mp4" },
+    { "file": "screen.mp4",        "type": "video",  "generated_by": "human-obs",
+      "path": "public/library/videos/scripting/python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr/screen.mp4" }
+  ],
+  "mesh_stats": {
+    "vertices": 3185,
+    "faces": 3072,
+    "face_type": "QUAD",
+    "vertex_colour": "SinaiDensity (FLOAT_COLOR POINT)"
+  },
+  "simulation": {
+    "n_trajectories": 60,
+    "n_bounces_per_trajectory": 2500,
+    "total_disk_collisions_approx": 150000,
+    "disk_radius": 0.38,
+    "cell_half_side": 1.0,
+    "birkhoff_grid": "64 × 48",
+    "lyapunov_eps": 1e-7
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Ya. G. Sinai",
+        "year": 1970,
+        "title": "Dynamical systems with elastic reflections",
+        "journal": "Russian Mathematical Surveys",
+        "volume": "25(2)",
+        "pages": "137–189",
+        "url": "https://iopscience.iop.org/article/10.1070/RM1970v025n02ABEH003794",
+        "licence": "PD"
+      },
+      {
+        "author": "NumPy Developers",
+        "year": 2024,
+        "title": "NumPy: Array computing for Python",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
