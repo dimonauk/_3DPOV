@@ -785,3 +785,5 @@ Append-only. One row per library entry. Newest rows at the bottom.
 | 2026-08-23 | blend + glb | scripting | python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr | 5.1 | CC0 | hf_gyroid_poi.blend · hf_gyroid_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr |
 
 | 2026-08-23 | blend + glb | scripting | python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr | 5.1 | CC0 | hf_foucault_poi.blend · hf_foucault_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr |
+
+| 2026-08-23 | blend + glb | scripting | python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr | 5.1 | CC0 | hf_gray_scott_poi.blend · hf_gray_scott_poi.glb · blueprint.py · record.py · viewport.mp4 · screen.mp4 | /tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr |

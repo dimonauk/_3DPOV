@@ -1,0 +1,72 @@
+{
+  "blend":   "hf_gray_scott_poi.blend",
+  "glb":     "hf_gray_scott_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs":    ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr/screen.mp4"
+  },
+  "mesh": {
+    "object_name":   "HF_GrayScott_RD_Poi",
+    "vertex_count":  "6400 (80×80 grid)",
+    "face_count":    "6241 quads ((N-1)²)",
+    "material_name": "RD_Mat",
+    "vertex_attr":   "RD_Concentration (FLOAT_COLOR POINT, cobalt→amber)",
+    "shape_keys":    ["Basis", "SK_Stripes", "SK_Labyrinth", "SK_Solitons"],
+    "holoflow_facet":    true,
+    "holoflow_category": "poi-disc",
+    "holoflow_surface":  "gray-scott-rd",
+    "holoflow_space_group": "none (RD pattern, not crystallographic)"
+  },
+  "simulation": {
+    "model":      "Gray-Scott two-variable RD",
+    "D_U":        0.160,
+    "D_V":        0.080,
+    "D_ratio":    2.0,
+    "dt":         1.0,
+    "N_STEPS":    3000,
+    "grid_size":  "80×80 periodic",
+    "laplacian":  "5-point finite-difference, periodic BC via np.roll",
+    "seed":       42,
+    "param_sets": {
+      "Basis":        {"F": 0.055, "k": 0.062, "class": "Pearson α (leopard spots)"},
+      "SK_Stripes":   {"F": 0.060, "k": 0.045, "class": "Pearson γ (zebra stripes)"},
+      "SK_Labyrinth": {"F": 0.062, "k": 0.061, "class": "Pearson ε (labyrinthine)"},
+      "SK_Solitons":  {"F": 0.025, "k": 0.060, "class": "Pearson μ-ish (solitons)"}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-mean-curvature-flow-huisken-cotangent-laplacian-sphere-smoothing-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-miura-ori-rigid-origami-kawasaki-flat-fold-auxetic-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Alan M. Turing",
+        "title": "The Chemical Basis of Morphogenesis",
+        "ref": "Proc. R. Soc. Lond. B 237(641):37-72, 1952",
+        "url": "https://doi.org/10.1098/rstb.1952.0012",
+        "licence": "Public Domain (1952, copyright expired universally)",
+        "related": [
+          "Pearson J E 1993 Complex Patterns in a Simple System Science 261(5118):189-192 PD-equations https://doi.org/10.1126/science.261.5118.189",
+          "Gray P & Scott S K 1984 Autocatalytic reactions Chem Eng Sci 39(6):1087-1097 PD-equations"
+        ]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy 2.x Documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": [
+          "https://github.com/numpy/numpy (BSD-3-Clause)",
+          "SciPy Community scipy.ndimage.laplace BSD-3-Clause https://scipy.org/"
+        ]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

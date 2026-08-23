@@ -608,6 +608,7 @@ import { blenderTutorialPythonNumpyScipyWeairePhelanA15KelvinConjectureFoamBubbl
 import { blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr";
 import { blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr";
+import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1223,6 +1224,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoincareStageFloorWebxrEntry,
   blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry,
   blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry,
+  blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
