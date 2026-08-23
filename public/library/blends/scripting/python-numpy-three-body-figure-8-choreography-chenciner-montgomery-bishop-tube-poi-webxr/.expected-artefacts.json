@@ -1,0 +1,72 @@
+{
+  "slug": "python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "files": [
+    "hf_three_body_fig8.blend",
+    "hf_three_body_fig8.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr/screen.mp4",
+    "duration_s": 10,
+    "fps": 30
+  },
+  "mesh": {
+    "vertices": 5040,
+    "faces": 5040,
+    "face_type": "quads",
+    "n_long": 360,
+    "n_circ": 14,
+    "shape_keys": ["Basis", "SK_Wide", "SK_Thin"],
+    "vertex_colour_attribute": "ThreeBody_Phase",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "integration": {
+    "method": "RK4",
+    "dt_formula": "T / 6000",
+    "T_period": 6.3259,
+    "N_steps": 6000,
+    "energy_error": "ΔE/E₀ ≈ 5e-9 per period",
+    "ICs_source": "Simó 2002 Table 1"
+  },
+  "orbit": {
+    "symmetry": "D₆ (dihedral group order 12)",
+    "braid_word": "(σ₁ σ₂⁻¹)³ in B₃",
+    "bodies": 3,
+    "phase_offsets": ["0", "T/3", "2T/3"],
+    "self_intersection": "origin (0,0,0) — figure-8 crossing"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Chenciner A, Montgomery R (2000) A Remarkable Periodic Solution of the Three-Body Problem in the Case of Equal Masses",
+        "url": "https://arxiv.org/abs/math/0011268",
+        "licence": "Mathematical content uncopyrightable; preprint freely available"
+      },
+      {
+        "title": "Simó C (2002) Dynamical properties of the figure eight solution of the three-body problem — CEMDA 83(1–2):3–12",
+        "url": "https://doi.org/10.1023/A:1020354801541",
+        "licence": "Mathematical facts (initial conditions, period T) are uncopyrightable"
+      },
+      {
+        "title": "NumPy User Guide — NumPy contributors (BSD-3-Clause)",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}

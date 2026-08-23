@@ -612,6 +612,7 @@ import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpot
 import { entry as blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr";
 import { entry as blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyVivianiCurveSphereCylinderIntersectionBishopTubeFigure8PoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr";
+import { entry as blenderTutorialPythonNumpyThreeBodyFigure8ChoreographyChencinerMontgomeryBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1231,6 +1232,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry,
   blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyVivianiCurveSphereCylinderIntersectionBishopTubeFigure8PoiWebxrEntry,
+  blenderTutorialPythonNumpyThreeBodyFigure8ChoreographyChencinerMontgomeryBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
