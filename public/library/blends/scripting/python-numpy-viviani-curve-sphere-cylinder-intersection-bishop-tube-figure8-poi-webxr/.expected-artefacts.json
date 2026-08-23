@@ -1,0 +1,64 @@
+{
+  "slug": "python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "files": [
+    "hf_viviani_poi.blend",
+    "hf_viviani_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr/screen.mp4",
+    "duration_s": 9,
+    "fps": 30
+  },
+  "mesh": {
+    "vertices": 3360,
+    "faces": 3360,
+    "face_type": "quads",
+    "n_long": 240,
+    "n_circ": 14,
+    "shape_keys": [
+      "Basis",
+      "SK_Contracted",
+      "SK_Expanded",
+      "SK_Thick"
+    ],
+    "vertex_colour_attribute": "Viviani_Z",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "curve": {
+    "parametrisation": "x=A(1+cos t), y=A sin t, z=2A sin(t/2), t in [0,4pi)",
+    "period": "4pi",
+    "self_intersection": "(2A, 0, 0) at t=0 and t=2pi",
+    "projection_xz": "z^2 = 2A(2A - x)  (parabola / figure-8)",
+    "projection_xy": "(x-A)^2 + y^2 = A^2  (generator cylinder)"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-tpq-braid-word-seifert-fiber-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lissajous-knots-chebyshev-amphichiral-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-villarceau-circles-torus-hopf-fiber-interlocked-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-enneper-surface-weierstrass-representation-minimal-gauss-curvature-saddle-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-fiber-bundle-linked-circles-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Viviani V (1674) Quinto libro degli Elementi di Euclide",
+        "url": "https://en.wikipedia.org/wiki/Vincenzo_Viviani",
+        "licence": "Public Domain (17th century)"
+      },
+      {
+        "title": "NumPy User Guide — NumPy contributors (BSD-3-Clause)",
+        "url": "https://numpy.org/doc/stable/user/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
