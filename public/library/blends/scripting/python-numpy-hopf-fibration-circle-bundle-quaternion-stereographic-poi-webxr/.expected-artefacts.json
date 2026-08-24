@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+  "topic": "topology",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_hopf_poi.blend",
+    "hf_hopf_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/topology/python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr/viewport.mp4",
+    "public/library/videos/topology/python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr/screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Clifford", "SK_SouthHeavy", "SK_NorthHeavy", "SK_Taut"],
+  "vertex_attribute": "Hopf_Fibre",
+  "holoflow_meta": {
+    "facet": true,
+    "category": "poi-head",
+    "topic": "hopf-fibration"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Heinz Hopf",
+        "title": "Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche",
+        "year": 1931,
+        "url": "https://link.springer.com/article/10.1007/BF01457962",
+        "licence": "PD"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy v2.x",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  }
+}
