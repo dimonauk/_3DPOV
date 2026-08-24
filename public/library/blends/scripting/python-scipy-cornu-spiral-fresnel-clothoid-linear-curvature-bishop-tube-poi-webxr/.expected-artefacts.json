@@ -1,0 +1,61 @@
+{
+  "slug": "python-scipy-cornu-spiral-fresnel-clothoid-linear-curvature-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "files": [
+    "hf_cornu_poi.blend",
+    "hf_cornu_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-scipy-cornu-spiral-fresnel-clothoid-linear-curvature-bishop-tube-poi-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-scipy-cornu-spiral-fresnel-clothoid-linear-curvature-bishop-tube-poi-webxr/screen.mp4",
+    "duration_s": 10,
+    "fps": 30
+  },
+  "mesh": {
+    "vertices": 4322,
+    "faces": 4296,
+    "face_type": "quads + triangles (end caps)",
+    "n_long": 360,
+    "n_circ": 12,
+    "shape_keys": ["Basis", "SK_Helix", "SK_Tight", "SK_Fat"],
+    "vertex_colour_attribute": "Cornu_Kappa",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR",
+    "colour_mapping": "Cobalt (kappa=0 at centre) -> Amber (kappa=pi*T_MAX at tips)"
+  },
+  "curve": {
+    "parametrisation": "x=SCALE*C(t), y=SCALE*S(t), z=0 (Basis) | z=HELIX_RISE*t (SK_Helix), t in [-T_MAX, +T_MAX]",
+    "curvature": "kappa(t) = pi * t  (linear in arc length — the defining property of the clothoid)",
+    "limits": "(C(inf), S(inf)) = (0.5, 0.5)  (Fresnel terminal point)",
+    "t_max": 3.0,
+    "scale": 0.38,
+    "tube_r": 0.018,
+    "helix_rise": 0.055
+  },
+  "outside_sources": [
+    {
+      "title": "DLMF Chapter 7 — Error Functions, Dawson's and Fresnel Integrals",
+      "url": "https://dlmf.nist.gov/7.2",
+      "licence": "Public Domain (NIST, US Government)"
+    },
+    {
+      "title": "SciPy — scipy.special.fresnel (BSD-3-Clause)",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.fresnel.html",
+      "licence": "BSD-3-Clause"
+    }
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-euler-elastica-jacobi-dn-curvature-lemniscate-ribbon-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dini-surface-pseudosphere-sine-gordon-kink-tractrix-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kuen-dini-pseudosphere-k-minus-1-sine-gordon-poi-webxr"
+    ]
+  }
+}
