@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-wigner-semicircle-goe-random-matrix-eigenvalue-level-repulsion-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "wigner_goe_floor.blend", "required": true,  "notes": "Scene with WignerGOE_Floor object, 4 shape keys, WignerCol FLOAT_COLOR attribute, emission material" },
+    { "path": "wigner_goe_floor.glb",   "required": true,  "notes": "Exported GLB, +Y up, transforms applied, Draco level 6, WebP, morph targets included" },
+    { "path": "blueprint.py",           "required": true,  "notes": "Procedural generator — runs in Blender 5.1 Scripting workspace, no UI context required" },
+    { "path": "record.py",              "required": true,  "notes": "Viewport-animation renderer — 240 frames, 24 fps, EEVEE Next, MPEG4/H264" },
+    { "path": "README.md",              "required": true,  "notes": "Mathematics documentation and quick-start guide" },
+    { "path": "SCREEN-RECORDING-NOTES.md", "required": true, "notes": "OBS settings and three suggested screen-recording takes" },
+    { "path": "../../videos/scripting/python-numpy-wigner-semicircle-goe-random-matrix-eigenvalue-level-repulsion-stage-floor-webxr/viewport.mp4",
+                                         "required": false, "notes": "Rendered by record.py — binary, not committed to git" },
+    { "path": "../../videos/scripting/python-numpy-wigner-semicircle-goe-random-matrix-eigenvalue-level-repulsion-stage-floor-webxr/screen.mp4",
+                                         "required": false, "notes": "OBS screen capture — binary, not committed to git" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-riemann-zeta-critical-strip-nontrivial-zeros-euler-product-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bunimovich-stadium-ergodic-billiard-poincare-section-density-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr"
+    ],
+    "external": [
+      {
+        "author": "Eugene P. Wigner",
+        "title": "Characteristic Vectors of Bordered Matrices with Infinite Dimensions",
+        "journal": "Annals of Mathematics 62(3): 548–564",
+        "year": 1955,
+        "url": "https://www.jstor.org/stable/1970079",
+        "licence": "public-domain (published 1955, equations and theorems)"
+      },
+      {
+        "author": "Bohigas O, Giannoni MJ, Schmit C",
+        "title": "Characterization of Chaotic Quantum Spectra and Universality of Level Fluctuation Laws",
+        "journal": "Physical Review Letters 52(1): 1–4",
+        "year": 1984,
+        "url": "https://doi.org/10.1103/PhysRevLett.52.1",
+        "licence": "public-domain (equations and theorems; APS copyright on typeset text)"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "numpy.linalg.eigh — NumPy reference documentation",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html",
+        "licence": "BSD-3-Clause"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 14400,
+    "faces": 14161,
+    "shape_keys": ["Basis", "SK_Small", "SK_Med", "SK_Pois"]
+  }
+}

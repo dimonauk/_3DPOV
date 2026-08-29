@@ -626,6 +626,7 @@ import { entry as blenderTutorialPythonNumpyRikitakeTwoDiscDynamoGeomagneticReve
 import { entry as blenderTutorialPythonNumpyLorenz96AtmosphericRingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyCompoundFiveCubesDodecahedronIcosahedralA5GoldenRatioPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-compound-five-cubes-dodecahedron-icosahedral-a5-golden-ratio-poi-head-webxr";
+import { entry as blenderTutorialPythonNumpyWignerSemicircleGoeRandomMatrixEigenvalueLevelRepulsionStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-wigner-semicircle-goe-random-matrix-eigenvalue-level-repulsion-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1259,6 +1260,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLorenz96AtmosphericRingRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyCompoundFiveCubesDodecahedronIcosahedralA5GoldenRatioPoiHeadWebxrEntry,
+  blenderTutorialPythonNumpyWignerSemicircleGoeRandomMatrixEigenvalueLevelRepulsionStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
