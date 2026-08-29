@@ -1,0 +1,81 @@
+{
+  "slug": "python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "category": "poi-head",
+  "topic": "rikitake-two-disc-dynamo",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr/rikitake_dynamo.blend",
+      "type": "blend",
+      "required": true
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr/rikitake_dynamo.glb",
+      "type": "glb",
+      "required": true,
+      "export_settings": {
+        "draco_compression_level": 6,
+        "texture_format": "WEBP",
+        "export_yup": true,
+        "export_morph": true,
+        "export_colors": true
+      }
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "required": true,
+      "notes": "Rendered by record.py — 300 frames @ 30 fps, Eevee Next, bloom on"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "required": true,
+      "notes": "OBS screen recording per SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "mesh": {
+    "waypoints": 3000,
+    "tube_sides": 10,
+    "vertices_approx": 30000,
+    "faces_approx": 29970,
+    "shape_keys": ["Basis", "SK_HighFriction", "SK_LowFriction"]
+  },
+  "colour_attribute": {
+    "name": "Rikitake_Polarity",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "encoding": "cobalt(x>0) through white(x≈0) to amber(x<0)"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting"
+    ],
+    "outside": [
+      {
+        "title": "Rikitake (1958) Oscillations of a system of disk dynamos",
+        "url": "https://doi.org/10.1017/S0305004100033223",
+        "licence": "Mathematical content Public Domain",
+        "author": "Tsuneji Rikitake",
+        "related": ["Bullard (1955) single-disc dynamo", "Lorenz (1963) deterministic chaos"]
+      },
+      {
+        "title": "Gilpin (2021–2024) dysts: Dynamical Systems Benchmarks",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": ["dysts_examples MIT Jupyter notebooks", "William Gilpin chaos atlas"]
+      },
+      {
+        "title": "NumPy Documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community",
+        "related": ["SciPy BSD-3-Clause scipy.org", "matplotlib PSF matplotlib.org"]
+      }
+    ]
+  }
+}
