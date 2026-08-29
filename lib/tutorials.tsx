@@ -627,6 +627,7 @@ import { entry as blenderTutorialPythonNumpyLorenz96AtmosphericRingRk4BishopTube
 import { entry as blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyCompoundFiveCubesDodecahedronIcosahedralA5GoldenRatioPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-compound-five-cubes-dodecahedron-icosahedral-a5-golden-ratio-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyWignerSemicircleGoeRandomMatrixEigenvalueLevelRepulsionStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-wigner-semicircle-goe-random-matrix-eigenvalue-level-repulsion-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyChenAttractorGuanrongChenUeta1999LorenzDualButterflyRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1261,6 +1262,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyCompoundFiveCubesDodecahedronIcosahedralA5GoldenRatioPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyWignerSemicircleGoeRandomMatrixEigenvalueLevelRepulsionStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyChenAttractorGuanrongChenUeta1999LorenzDualButterflyRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "blueprint.py",              "type": "script", "required": true  },
+    { "path": "record.py",                 "type": "script", "required": true  },
+    { "path": "README.md",                 "type": "docs",   "required": true  },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "docs",   "required": true  },
+    { "path": ".expected-artefacts.json",  "type": "meta",   "required": true  },
+    { "path": "chen_attractor_poi.blend",  "type": "blend",  "required": false },
+    { "path": "chen_attractor_poi.glb",    "type": "glb",    "required": false }
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Chen G & Ueta T (1999) Yet Another Chaotic Attractor",
+        "url": "https://doi.org/10.1142/S0218127499001024",
+        "licence": "PD-equations",
+        "related": [
+          "https://doi.org/10.1142/S0218127402004620"
+        ]
+      },
+      {
+        "title": "Gilpin W (2021-2024) dysts: Dynamical Systems Benchmarks",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "related": [
+          "https://github.com/williamgilpin/dysts_examples"
+        ]
+      }
+    ]
+  }
+}
