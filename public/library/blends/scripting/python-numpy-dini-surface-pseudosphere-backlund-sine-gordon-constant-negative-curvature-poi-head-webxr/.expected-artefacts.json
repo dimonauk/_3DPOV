@@ -1,0 +1,72 @@
+{
+  "blend": "hf_dini_poi.blend",
+  "glb": "hf_dini_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "vertices": 19200,
+  "quads": 18921,
+  "shape_keys": ["Basis", "SK_Tight", "SK_Loose", "SK_Pseudo"],
+  "colour_attributes": ["Dini_Radius"],
+  "poi_object": "hf_dini_poi",
+  "holoflow_facet": true,
+  "object_name": "Dini_Surface",
+  "A_radius": 1.0,
+  "B_basis": 0.20,
+  "B_tight": 0.40,
+  "B_loose": 0.08,
+  "B_pseudo": 0.01,
+  "K_basis": -0.9615,
+  "K_tight": -0.8621,
+  "K_loose": -0.9936,
+  "K_pseudo": -0.9999,
+  "u_range": [0.0, 12.566370614359172],
+  "v_range": [0.10, 3.0415926535897932],
+  "N_U": 160,
+  "N_V": 120,
+  "max_extent_m": 0.35,
+  "surface": "Dini — constant negative Gaussian curvature K = -1/(a^2+b^2)",
+  "sine_gordon": "phi_uv = sin(phi); kink soliton corresponds to Dini b parameter",
+  "export": {
+    "draco_compression_level": 6,
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true,
+    "texture_format": "WEBP"
+  },
+  "cross_references": {
+    "gyroid_tpms": "/tutorials/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr",
+    "scherk_minimal": "/tutorials/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr",
+    "hopf_fibration": "/tutorials/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+    "bloch_berry_phase": "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr"
+  },
+  "outside_sources": [
+    {
+      "author": "Eisenhart LP",
+      "year": 1909,
+      "title": "A Treatise on the Differential Geometry of Curves and Surfaces",
+      "publisher": "Ginn & Company, Boston",
+      "url": "https://archive.org/details/treatisedifferen00eiseuoft",
+      "licence": "Public Domain",
+      "notes": "Sections 174-178: pseudospherical surfaces, Bäcklund transform, constant negative curvature. Related: do Carmo MP (1976) Differential Geometry of Curves and Surfaces, Prentice-Hall (standard modern reference); Spivak M (1979) A Comprehensive Introduction to Differential Geometry Vol 3, Publish or Perish."
+    },
+    {
+      "author": "Bäcklund AV",
+      "year": 1876,
+      "title": "Ueber Flächen-Transformationen",
+      "journal": "Mathematische Annalen",
+      "volume": 9,
+      "pages": "297-320",
+      "url": "https://link.springer.com/article/10.1007/BF01443337",
+      "licence": "Public Domain",
+      "notes": "Original paper introducing the Bäcklund transform for pseudospherical surfaces. The transform maps Σ → Σ̃ preserving K = -1/r² and satisfying the sine-Gordon equation φ_uv = sin φ. Related: Rogers C & Schief WK (2002) Bäcklund and Darboux Transformations, Cambridge Univ Press; Hirota R (1972) Phys Rev Lett 27:1192 exact N-soliton solution of sine-Gordon via Bäcklund chain."
+    },
+    {
+      "name": "NumPy",
+      "licence": "BSD-3-Clause",
+      "url": "https://numpy.org/",
+      "related": "https://github.com/numpy/numpy"
+    }
+  ]
+}

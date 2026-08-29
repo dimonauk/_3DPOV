@@ -598,6 +598,7 @@ import { entry as blenderTutorialPythonNumpyMeanCurvatureFlowHuiskenCotangentLap
 import { entry as blenderTutorialPythonNumpyAizawaAttractorToroidalChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyWillmoreFlowH2BendingEnergyConformalInvariantMarquesNevesPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-willmore-flow-h2-bending-energy-conformal-invariant-marques-neves-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFeigenbaumLogisticMapPeriodDoublingUniversalityPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr";
+import { entry as blenderTutorialPythonNumpyDiniSurfacePseudosphereBacklundSineGordonConstantNegativeCurvaturePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dini-surface-pseudosphere-backlund-sine-gordon-constant-negative-curvature-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyPenroseP2KiteDartAperiodicRobinsonDeflationStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMiuraOriRigidOrigamiKawasakiFlatFoldAuxeticPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-miura-ori-rigid-origami-kawasaki-flat-fold-auxetic-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-3d-hilbert-space-filling-curve-moore-1900-bishop-tube-poi-webxr";
@@ -1263,6 +1264,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyCompoundFiveCubesDodecahedronIcosahedralA5GoldenRatioPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyWignerSemicircleGoeRandomMatrixEigenvalueLevelRepulsionStageFloorWebxrEntry,
   blenderTutorialPythonNumpyChenAttractorGuanrongChenUeta1999LorenzDualButterflyRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyDiniSurfacePseudosphereBacklundSineGordonConstantNegativeCurvaturePoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
