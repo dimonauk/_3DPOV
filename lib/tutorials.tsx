@@ -554,6 +554,7 @@ import { entry as blenderTutorialPythonNumpyCalabiYauQuinticThreefoldHansonSlice
 import { entry as blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hypotrochoid-epitrochoid-spirograph-roulette-poi-ring-webxr";
 import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-circle-theorem-inversive-geometry-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyLorenzAttractorRk4StrangeButterflyPoiLightTrailWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr";
+import { entry as blenderTutorialPythonNumpyRabinovichFabrikantModulationInstabilityPlasmaWavesRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rabinovich-fabrikant-modulation-instability-plasma-waves-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHenonHeilesHamiltonianKamToriPoincarePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr";
 import { entry as blenderTutorialPythonNumpyIcosahedralQuasicrystalCutProjectZ6ShechtmanPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-icosahedral-quasicrystal-cut-project-z6-shechtman-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-jacobi-elliptic-sn-cn-dn-agm-pendulum-poi-head-webxr";
@@ -1179,6 +1180,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHypotrochoidEpitrochoidSpirographRoulettePoiRingWebxrEntry,
   blenderTutorialPythonNumpyApollonianGasketDescartesCircleTheoremInversiveGeometryPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyLorenzAttractorRk4StrangeButterflyPoiLightTrailWebxrEntry,
+  blenderTutorialPythonNumpyRabinovichFabrikantModulationInstabilityPlasmaWavesRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyHenonHeilesHamiltonianKamToriPoincarePoiWebxrEntry,
   blenderTutorialPythonNumpyIcosahedralQuasicrystalCutProjectZ6ShechtmanPoiHeadWebxrEntry,
   blenderTutorialPythonNumpyJacobiEllipticSnCnDnAgmPendulumPoiHeadWebxrEntry,

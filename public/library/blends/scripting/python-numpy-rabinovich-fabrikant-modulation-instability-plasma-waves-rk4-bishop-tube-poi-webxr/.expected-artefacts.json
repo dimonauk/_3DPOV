@@ -1,0 +1,50 @@
+{
+  "slug": "python-numpy-rabinovich-fabrikant-modulation-instability-plasma-waves-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "category": "scripting",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_rf_poi.blend",
+    "hf_rf_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-bpy-rossler-attractor-rk4-poi-light-painting",
+      "/tutorials/blender-tutorial-python-scipy-thomas-cyclically-symmetric-attractor-labyrinth-chaos-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Rabinovich, M. I. & Fabrikant, A. L. (1979). Stochastic self-modulation of waves in nonequilibrium media. Zh. Eksp. Teor. Fiz. 77(2):617–629. (Soviet Physics JETP 50(1):311–317.) Mathematical content Public Domain.",
+        "url": "https://www.osti.gov/biblio/7357534",
+        "licence": "Mathematical content Public Domain (Soviet-era journal article)",
+        "author": "M. I. Rabinovich & A. L. Fabrikant",
+        "related": [
+          "Lorenz 1963 (deterministic nonperiodic flow — landmark predecessor)",
+          "Sparrow, C. (1982). The Lorenz equations. Springer-Verlag."
+        ]
+      },
+      {
+        "title": "NumPy Developers. NumPy Reference Documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community",
+        "related": [
+          "SciPy — BSD-3-Clause — https://scipy.org/",
+          "github.com/numpy/numpy"
+        ]
+      }
+    ]
+  },
+  "mesh_stats_expected": {
+    "waypoints": 3000,
+    "tube_sides": 8,
+    "vertex_count": 24000,
+    "face_count": 23976,
+    "shape_key_count": 3,
+    "glb_size_approx_kb": 560
+  }
+}
