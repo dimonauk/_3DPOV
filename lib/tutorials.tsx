@@ -619,6 +619,7 @@ import { entry as blenderTutorialPythonNumpyFermiPastaUlamTsingouRecurrenceAnhar
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr";
 import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyDoublePendulumLagrangianChaosRk4ButterflyBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyMandelboxBoxFoldBallFoldLowe2010FractalDePoiHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbox-box-fold-ball-fold-lowe-2010-fractal-de-poi-head-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1245,6 +1246,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry,
   blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry,
   blenderTutorialPythonNumpyDoublePendulumLagrangianChaosRk4ButterflyBishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyMandelboxBoxFoldBallFoldLowe2010FractalDePoiHeadWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
