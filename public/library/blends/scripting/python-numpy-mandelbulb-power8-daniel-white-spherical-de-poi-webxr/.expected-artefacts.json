@@ -1,0 +1,67 @@
+{
+  "slug": "python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "mandelbulb_poi.blend",
+    "mandelbulb_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr/screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Power6", "SK_Power4"],
+  "vertex_attribute": "Mandelbulb_Depth",
+  "mesh_spec": {
+    "verts": 9600,
+    "quads": 9480,
+    "theta_n": 80,
+    "phi_n": 120,
+    "poi_scale_m": 0.42,
+    "march_steps": 60,
+    "march_r0": 1.45,
+    "de_hit": 0.004,
+    "max_iter_de": 18,
+    "bailout_r": 2.0
+  },
+  "holoflow_meta": {
+    "facet": true,
+    "category": "poi-head",
+    "topic": "mandelbulb-power8"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Inigo Quilez",
+        "title": "Mandelbulb — iquilezles.org",
+        "url": "https://iquilezles.org/articles/mandelbulb/",
+        "licence": "CC0",
+        "related": [
+          "Shadertoy https://www.shadertoy.com",
+          "Distance Functions https://iquilezles.org/articles/distfunctions/"
+        ]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy v2.x",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": [
+          "SciPy BSD-3-Clause https://scipy.org",
+          "matplotlib PSF-compatible https://matplotlib.org"
+        ]
+      }
+    ]
+  }
+}
