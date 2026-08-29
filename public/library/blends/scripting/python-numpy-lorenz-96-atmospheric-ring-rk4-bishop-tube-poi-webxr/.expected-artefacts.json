@@ -1,0 +1,62 @@
+{
+  "slug": "python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "lorenz96_poi.blend",
+    "lorenz96_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      {
+        "title": "Double Pendulum — Lagrangian Chaos",
+        "url": "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr",
+        "reason": "Same Bishop parallel-transport tube technique; directly comparable strange attractor topology"
+      },
+      {
+        "title": "Chirikov Standard Map — KAM Breakdown",
+        "url": "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+        "reason": "Complementary Hamiltonian chaos benchmark; KAM breakdown at critical forcing is analogous to L96 Hopf threshold"
+      },
+      {
+        "title": "Bloch Sphere — Rabi Precession",
+        "url": "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr",
+        "reason": "Ring geometry with N coupled variables; conceptual parallel to L96's atmospheric latitude circle"
+      },
+      {
+        "title": "Rikitake Two-Disc Dynamo",
+        "url": "/tutorials/blender-tutorial-python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr",
+        "reason": "Lorenz-like geophysical attractor in 3-D; same Bishop tube pipeline; both model dissipative electromagnetic/fluid systems"
+      }
+    ],
+    "outside_sources": [
+      {
+        "title": "Lorenz & Emanuel 1998 — Optimal Sites for Supplementary Weather Observations",
+        "url": "https://doi.org/10.1175/1520-0469(1998)055<0399:OSFSWO>2.0.CO;2",
+        "licence": "PD / journal article",
+        "author": "Lorenz, E. N. & Emanuel, K. A.",
+        "related_projects": [
+          "https://github.com/lorenz96-family"
+        ]
+      },
+      {
+        "title": "Ott et al. 2004 — Estimating the State of a Geophysical System (EnKF benchmark using L96)",
+        "url": "https://doi.org/10.1175/1520-0493(2004)132<1850:ETSOAS>2.0.CO;2",
+        "licence": "PD / AMS fair use",
+        "author": "Ott, E. et al.",
+        "related_projects": [
+          "https://github.com/envfluids/lorenz96",
+          "https://github.com/DataWaveProject/L96_emulator"
+        ]
+      }
+    ]
+  },
+  "shape_keys": ["Basis", "SK_Hopf", "SK_Onset", "SK_Strong"],
+  "vertex_colour": "Lorenz96_V",
+  "holoflow_category": "poi-head",
+  "holoflow_facet": true
+}
