@@ -1,0 +1,61 @@
+{
+  "slug": "python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "scripting",
+  "type": "blend + glb",
+  "artefacts": [
+    "hf_double_pendulum_poi.blend",
+    "hf_double_pendulum_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Chaotic", "SK_WideSwing", "SK_Tight"],
+  "vertex_colour": "DoublePend_Energy",
+  "vertex_colour_type": "FLOAT_COLOR",
+  "vertex_colour_domain": "POINT",
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "yup": true,
+    "colours": true,
+    "morph": true
+  },
+  "cross_references": {
+    "internal": [
+      {
+        "label": "Three-Body Figure-8 Choreography (Lagrangian N-body)",
+        "href": "/tutorials/blender-tutorial-python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr"
+      },
+      {
+        "label": "Lorenz Attractor — strange butterfly (RK4 chaos tube)",
+        "href": "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr"
+      },
+      {
+        "label": "Foucault Pendulum — Berry phase, Coriolis, Bishop tube",
+        "href": "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr"
+      },
+      {
+        "label": "Duffing Oscillator — period-doubling, Poincaré chaos",
+        "href": "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+      }
+    ],
+    "external": [
+      {
+        "label": "Lagrange J-L (1788) Mécanique Analytique — Public Domain",
+        "url": "https://archive.org/details/mcaniqueanaly00lagr",
+        "licence": "PD",
+        "related": ["d'Alembert 1743 PD", "Hamilton 1834 PD"]
+      },
+      {
+        "label": "NumPy Developers — BSD-3-Clause",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": ["github.com/numpy/numpy", "scipy.org BSD-3-Clause"]
+      }
+    ]
+  }
+}

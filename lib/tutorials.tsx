@@ -617,6 +617,7 @@ import { entry as blenderTutorialPythonNumpyHopfFibrationCircleBundleQuaternionS
 import { entry as blenderTutorialPythonNumpyFermiPastaUlamTsingouRecurrenceAnharmonicChainAlphaFpuStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr";
 import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyDoublePendulumLagrangianChaosRk4ButterflyBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1241,6 +1242,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyFermiPastaUlamTsingouRecurrenceAnharmonicChainAlphaFpuStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry,
   blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyDoublePendulumLagrangianChaosRk4ButterflyBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
