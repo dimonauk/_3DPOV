@@ -1,0 +1,51 @@
+{
+  "slug": "python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_thomas_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_thomas_poi.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-toroidal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Thomas R (1999) Deterministic Chaos Seen in Terms of Feedback Circuits — Int J Bifurc Chaos 9(10):1889–1905",
+        "url": "https://doi.org/10.1142/S0218127499001383",
+        "licence": "PD (mathematical content/equations)",
+        "author": "René Thomas"
+      },
+      {
+        "title": "Gilpin W (2021–2024) dysts: Dynamical Systems Benchmarks (MIT)",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": "https://github.com/williamgilpin/dysts_examples"
+      },
+      {
+        "title": "Sprott J C (2010) Elegant Chaos: Algebraically Simple Chaotic Flows — Cambridge University Press",
+        "url": "https://www.worldscientific.com/worldscibooks/10.1142/7183",
+        "licence": "PD (equations)",
+        "author": "Julien Clinton Sprott"
+      }
+    ]
+  }
+}
