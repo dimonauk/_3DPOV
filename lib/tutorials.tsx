@@ -616,6 +616,7 @@ import { entry as blenderTutorialPythonNumpyThreeBodyFigure8ChoreographyChencine
 import { entry as blenderTutorialPythonNumpyHopfFibrationCircleBundleQuaternionStereographicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFermiPastaUlamTsingouRecurrenceAnharmonicChainAlphaFpuStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr";
+import { entry as blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1239,6 +1240,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHopfFibrationCircleBundleQuaternionStereographicPoiWebxrEntry,
   blenderTutorialPythonNumpyFermiPastaUlamTsingouRecurrenceAnharmonicChainAlphaFpuStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMandelbulbPower8DanielWhiteSphericalDePoiWebxrEntry,
+  blenderTutorialPythonNumpyApollonianGasketDescartesTheoremIntegerPackingFractalStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

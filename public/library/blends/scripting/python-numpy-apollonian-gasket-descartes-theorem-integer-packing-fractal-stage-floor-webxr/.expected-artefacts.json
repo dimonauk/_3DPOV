@@ -1,0 +1,66 @@
+{
+  "slug": "python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "apollonian_gasket_floor.blend",
+    "apollonian_gasket_floor.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-apollonian-gasket-descartes-theorem-integer-packing-fractal-stage-floor-webxr/screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Elevated", "SK_Inverted"],
+  "vertex_attribute": "Apollon_K",
+  "mesh_spec": {
+    "outer_radius_m": 0.80,
+    "max_k": 80,
+    "n_circ_max": 32,
+    "h_scale_m": 0.12,
+    "disc_thick_m": 0.004,
+    "approx_circles": "280-400",
+    "approx_verts": "2500-4000",
+    "colour_cobalt": [0.06, 0.14, 0.66],
+    "colour_amber": [0.88, 0.52, 0.04]
+  },
+  "holoflow_meta": {
+    "facet": true,
+    "category": "stage-floor",
+    "topic": "apollonian-gasket"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-penrose-p2-kite-dart-aperiodic-robinson-deflation-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-differential-growth-laplacian-smooth-ruffle-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "David W. Boyd",
+        "title": "The Residual Set Dimension of the Apollonius Packing — Mathematika 20 (1973) 170–174",
+        "url": "https://doi.org/10.1112/S0025579300004745",
+        "licence": "Public Domain (pre-1978 UK publication)",
+        "related": [
+          "Lagarias JC Mallows CL Wilks AR 2002 Beyond the Descartes Circle Theorem Amer Math Monthly 109(4):338-361",
+          "McMullen CT 1998 Hausdorff dimension and conformal dynamics III"
+        ]
+      },
+      {
+        "author": "Frederick Soddy",
+        "title": "The Kiss Precise — Nature 137 (1936) 1021",
+        "url": "https://doi.org/10.1038/1371021a0",
+        "licence": "Public Domain",
+        "related": [
+          "Descartes René 1643 letter to Princess Elizabeth of Bohemia (Oeuvres vol.4) Public Domain",
+          "Apollonius of Perga c.200 BC De Tactionibus Public Domain"
+        ]
+      }
+    ]
+  }
+}
