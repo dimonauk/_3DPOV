@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "hf_chirikov_standard_map.blend", "required": true,  "notes": "Scene with StandardMap_KAM object, 4 shape keys, material" },
+    { "path": "hf_chirikov_standard_map.glb",   "required": true,  "notes": "Exported GLB, +Y up, transforms applied, WebP textures" },
+    { "path": "blueprint.py",                    "required": true,  "notes": "Procedural generator — runs in Blender 5.1 Scripting workspace" },
+    { "path": "record.py",                       "required": true,  "notes": "Viewport-animation renderer" },
+    { "path": "README.md",                       "required": true,  "notes": "Mathematics + quick-start documentation" },
+    { "path": "SCREEN-RECORDING-NOTES.md",       "required": true,  "notes": "OBS instructions for screen.mp4" },
+    { "path": "../../videos/scripting/python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr/viewport.mp4",
+                                                 "required": false, "notes": "Rendered by record.py — binary, not committed" },
+    { "path": "../../videos/scripting/python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr/screen.mp4",
+                                                 "required": false, "notes": "OBS screen capture — binary, not committed" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-arnold-tongue-circle-map-mode-locking-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-heiles-hamiltonian-kam-tori-poincare-section-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "external": [
+      {
+        "author": "Boris Chirikov",
+        "title": "A universal instability of many-dimensional oscillator systems",
+        "journal": "Physics Reports 52(5):263–379",
+        "year": 1979,
+        "url": "https://www.sciencedirect.com/science/article/pii/0370157379900231",
+        "licence": "public-domain (equations and theorems)"
+      },
+      {
+        "author": "John M. Greene",
+        "title": "A method for determining a stochastic transition",
+        "journal": "Journal of Mathematical Physics 20:1183–1201",
+        "year": 1979,
+        "url": "https://doi.org/10.1063/1.524170",
+        "licence": "public-domain (equations and theorems)"
+      },
+      {
+        "author": "Chaos Book — Cvitanović et al.",
+        "title": "Chaos: Classical and Quantum (online edition)",
+        "url": "https://chaosbook.org",
+        "licence": "CC-BY for educators"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 32400,
+    "faces": 32041,
+    "shape_keys": ["Basis", "SK_Integrable", "SK_Intact", "SK_Chaotic"]
+  }
+}
