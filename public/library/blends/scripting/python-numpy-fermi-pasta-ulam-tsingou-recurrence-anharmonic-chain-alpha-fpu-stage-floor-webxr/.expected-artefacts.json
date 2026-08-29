@@ -1,0 +1,56 @@
+{
+  "slug": "python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "fput_floor.blend",
+    "fput_floor.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr/screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_Linear", "SK_Half", "SK_Double"],
+  "vertex_attribute": "FPUT_Disp",
+  "holoflow_meta": {
+    "facet": true,
+    "category": "stage-floor",
+    "topic": "fput-recurrence"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-toda-lattice-integrable-chain-flaschka-lax-soliton-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Fermi E.; Pasta J.; Ulam S.; Tsingou M.",
+        "title": "Studies of Nonlinear Problems",
+        "year": 1955,
+        "url": "https://www.osti.gov/biblio/4376203",
+        "licence": "PD",
+        "related": [
+          "Zabusky & Kruskal 1965 Phys Rev Lett 15:240 (soliton discovery)",
+          "Ford J 1992 Phys Reports 213(5):271 (FPUT retrospective)"
+        ]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy v2.x",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": [
+          "SciPy BSD-3-Clause https://scipy.org",
+          "matplotlib PSF-compatible https://matplotlib.org"
+        ]
+      }
+    ]
+  }
+}
