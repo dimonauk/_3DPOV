@@ -1,0 +1,46 @@
+{
+  "blend": "hf_five_cubes_compound.blend",
+  "glb":   "../../glbs/scripting/python-numpy-compound-five-cubes-dodecahedron-icosahedral-a5-golden-ratio-poi-head-webxr/hf_five_cubes_compound.glb",
+  "video": {
+    "viewport": "../../../../videos/scripting/python-numpy-compound-five-cubes-dodecahedron-icosahedral-a5-golden-ratio-poi-head-webxr/viewport.mp4",
+    "screen":   "../../../../videos/scripting/python-numpy-compound-five-cubes-dodecahedron-icosahedral-a5-golden-ratio-poi-head-webxr/screen.mp4"
+  },
+  "mesh": {
+    "verts":  40,
+    "faces":  30,
+    "shape_keys": ["Basis","SK_Dodecahedron","SK_Frame","SK_GoldenStar"],
+    "attributes": [
+      { "name": "Compound_Cube", "type": "FLOAT_COLOR", "domain": "POINT" }
+    ]
+  },
+  "export": {
+    "draco_level": 6,
+    "textures": "WebP",
+    "yup": true,
+    "morph_targets": true,
+    "vertex_colors": true
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kepler-poinsot-star-polyhedra-schlafli-symbol-four-regular-star-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-24-cell-icositetrachoron-d4-root-lattice-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-goldberg-polyhedra-gp11-c60-truncated-icosahedron-hexagonal-cage-poi-webxr",
+      "/codex/icosahedral-symmetry"
+    ],
+    "external": [
+      {
+        "label": "Coxeter — Regular Polytopes (Dover, 1973)",
+        "url": "https://store.doverpublications.com/0486614808.html",
+        "licence": "Public Domain (mathematical content)",
+        "author": "H. S. M. Coxeter"
+      },
+      {
+        "label": "Wenninger — Polyhedron Models (CUP, 1971)",
+        "url": "https://www.cambridge.org/gb/academic/subjects/mathematics/geometry-and-topology/polyhedron-models",
+        "licence": "Public Domain (mathematical content)",
+        "author": "Magnus J. Wenninger"
+      }
+    ]
+  }
+}
