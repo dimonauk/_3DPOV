@@ -624,6 +624,7 @@ import { entry as blenderTutorialPythonNumpyMandelboxBoxFoldBallFoldLowe2010Frac
 import { entry as blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractorReneThomas1999SinDecayZ3BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRikitakeTwoDiscDynamoGeomagneticReversalBullardChaosBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyLorenz96AtmosphericRingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1255,6 +1256,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractorReneThomas1999SinDecayZ3BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRikitakeTwoDiscDynamoGeomagneticReversalBullardChaosBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyLorenz96AtmosphericRingRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyLorenz84LowOrderClimateWesterlyWaveThermalForcingRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

@@ -1,0 +1,52 @@
+{
+  "slug": "python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json",
+    "hf_lorenz84_poi.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "generated_on_run": [
+    "hf_lorenz84_poi.glb",
+    "viewport.mp4"
+  ],
+  "recorded_manually": [
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-z3-symmetry-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Lorenz EN (1984) Irregularity: A Fundamental Property of the Atmosphere. Tellus A, 36A(2):98–110.",
+        "url": "https://doi.org/10.1111/j.1600-0870.1984.tb00230.x",
+        "licence": "Mathematical content Public Domain",
+        "author": "Edward N. Lorenz",
+        "related": "https://www.ametsoc.org/ams/index.cfm/publications/journals/"
+      },
+      {
+        "title": "Gilpin W (2021–2024) dysts: Dynamical Systems Benchmarks (MIT). Lorenz84 catalogued at registry.json.",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": "https://github.com/williamgilpin/dysts_examples"
+      },
+      {
+        "title": "NumPy contributors. NumPy Reference Documentation. BSD-3-Clause.",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      }
+    ]
+  }
+}
