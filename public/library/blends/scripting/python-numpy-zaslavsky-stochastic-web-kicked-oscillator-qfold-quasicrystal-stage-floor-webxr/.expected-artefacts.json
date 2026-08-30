@@ -1,0 +1,55 @@
+{
+  "slug": "python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "zaslavsky_web_floor.blend",       "required": true,  "notes": "Scene with Zaslavsky_Web object, 4 shape keys (Basis/SK_Q3/SK_Q6/SK_Q5), material" },
+    { "path": "zaslavsky_web_floor.glb",         "required": true,  "notes": "Exported GLB, +Y up, transforms applied, Draco level 6, WebP textures, morph targets" },
+    { "path": "blueprint.py",                    "required": true,  "notes": "Procedural generator — run in Blender 5.1 Scripting workspace" },
+    { "path": "record.py",                       "required": true,  "notes": "Viewport-animation renderer — run after blueprint.py" },
+    { "path": "README.md",                       "required": true,  "notes": "Mathematics + quick-start documentation" },
+    { "path": "SCREEN-RECORDING-NOTES.md",       "required": true,  "notes": "OBS instructions for screen.mp4 capture" },
+    { "path": "../../videos/scripting/python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr/viewport.mp4",
+                                                 "required": false, "notes": "Rendered by record.py — binary, not committed" },
+    { "path": "../../videos/scripting/python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr/screen.mp4",
+                                                 "required": false, "notes": "OBS screen capture — binary, not committed" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ammann-beenker-octagonal-quasicrystal-silver-ratio-multigrid-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sinai-billiard-lorentz-gas-dispersing-lyapunov-poincare-stage-floor-webxr"
+    ],
+    "external": [
+      {
+        "author": "Zaslavsky G.M., Zakharov M.Yu., Sagdeev R.Z., Usikov D.A., Chernikov A.A.",
+        "title": "Stochastic web and diffusion of particles in a magnetic field",
+        "journal": "Zh. Eksp. Teor. Fiz. 91:500 (Sov. Phys. JETP 64:294)",
+        "year": 1986,
+        "url": "https://link.aps.org/doi/10.1103/PhysRevLett.58.1559",
+        "licence": "public-domain (equations and theorems)"
+      },
+      {
+        "author": "Chernikov A.A., Sagdeev R.Z., Usikov D.A., Zakharov M.Yu., Zaslavsky G.M.",
+        "title": "Minimal chaos and stochastic webs",
+        "journal": "Nature 326:559–563",
+        "year": 1987,
+        "url": "https://doi.org/10.1038/326559a0",
+        "licence": "public-domain (equations and theorems)"
+      },
+      {
+        "author": "Zaslavsky G.M.",
+        "title": "Chaos, fractional kinetics, and anomalous transport",
+        "journal": "Physics Reports 371:461–580",
+        "year": 2002,
+        "url": "https://doi.org/10.1016/S0370-1573(02)00331-9",
+        "licence": "public-domain (equations and theorems)"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 32400,
+    "faces": 32041,
+    "shape_keys": ["Basis", "SK_Q3", "SK_Q6", "SK_Q5"]
+  }
+}
