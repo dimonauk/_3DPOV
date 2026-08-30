@@ -1,0 +1,74 @@
+{
+  "slug": "python-numpy-cr3bp-hill-region-jacobi-zvc-lagrange-roche-lobe-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "cr3bp_hill_floor.blend",
+      "required": true,
+      "notes": "CR3BP_Hill_Floor mesh, 4 shape keys (Basis/SK_L1Open/SK_L2Open/SK_Wide), CR3BP_Omega FLOAT_COLOR attribute, CR3BP_Hill_Mat material"
+    },
+    {
+      "path": "cr3bp_hill_floor.glb",
+      "required": true,
+      "notes": "GLB export: +Y up, transforms applied, Draco level 6, WebP textures, morph targets, vertex colors"
+    },
+    {
+      "path": "blueprint.py",
+      "required": true,
+      "notes": "Procedural generator — run in Blender 5.1 Scripting workspace"
+    },
+    {
+      "path": "record.py",
+      "required": true,
+      "notes": "Viewport-animation renderer — run after blueprint.py to produce viewport.mp4"
+    },
+    {
+      "path": "README.md",
+      "required": true,
+      "notes": "CR3BP mathematics, Lagrange-point derivation, shape-key topology guide"
+    },
+    {
+      "path": "SCREEN-RECORDING-NOTES.md",
+      "required": true,
+      "notes": "OBS/Game Bar instructions for screen.mp4 capture"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-cr3bp-hill-region-jacobi-zvc-lagrange-roche-lobe-stage-floor-webxr/viewport.mp4",
+      "required": false,
+      "notes": "Rendered by record.py — binary, not committed to git"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-cr3bp-hill-region-jacobi-zvc-lagrange-roche-lobe-stage-floor-webxr/screen.mp4",
+      "required": false,
+      "notes": "OBS screen capture — binary, not committed to git"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Szebehely V",
+        "title": "Theory of Orbits: The Restricted Problem of Three Bodies",
+        "publisher": "Academic Press, New York",
+        "year": 1967,
+        "url": "https://archive.org/details/theoryoforbitsth0000szeb",
+        "licence": "public-domain (US government-funded; equations are mathematical facts)",
+        "notes": "The canonical CR3BP reference; Szebehely's quintic for L1/L2 appears in Chapter 5"
+      },
+      {
+        "author": "Richardson DL",
+        "title": "Analytic construction of periodic orbits about the collinear points",
+        "journal": "Celestial Mechanics 22(3):241–253",
+        "year": 1980,
+        "url": "https://doi.org/10.1007/BF01229511",
+        "licence": "public-domain (mathematical results; paper predates CC licensing)",
+        "notes": "Third-order Lindstedt-Poincaré expansion giving analytical halo orbit approximations; used for ISEE-3 trajectory design"
+      }
+    ]
+  }
+}
