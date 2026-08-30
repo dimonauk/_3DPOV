@@ -1,0 +1,84 @@
+{
+  "slug": "python-numpy-swift-hohenberg-pde-hexagonal-rolls-benard-convection-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "swift_hohenberg_floor.blend",
+    "swift_hohenberg_floor.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": [
+    "Basis",
+    "SK_Hex",
+    "SK_Labyrinth",
+    "SK_Onset"
+  ],
+  "vertex_attributes": [
+    { "name": "SH_Pattern", "type": "FLOAT_COLOR", "domain": "POINT" }
+  ],
+  "objects": [
+    "swift_hohenberg_floor"
+  ],
+  "mesh": {
+    "vertices": 6400,
+    "quads": 6241,
+    "grid_n": 80,
+    "domain_L": 6.283185307179586
+  },
+  "pde_params": {
+    "k0": 1.0,
+    "dt": 0.5,
+    "shape_keys": {
+      "Basis"        : { "eps": 0.30, "n_steps": 500, "ic": "noise" },
+      "SK_Hex"       : { "eps": 0.30, "n_steps": 300, "ic": "hex"   },
+      "SK_Labyrinth" : { "eps": 0.60, "n_steps": 800, "ic": "noise" },
+      "SK_Onset"     : { "eps": 0.05, "n_steps": 200, "ic": "noise" }
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Swift, J.B. & Hohenberg, P.C.",
+        "title": "Hydrodynamic fluctuations at the convective instability",
+        "year": 1977,
+        "journal": "Physical Review A",
+        "volume": 15,
+        "pages": "319-328",
+        "doi": "10.1103/PhysRevA.15.319",
+        "licence": "PD-equations",
+        "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.15.319",
+        "notes": "Original derivation of the SH equation as the amplitude equation for Rayleigh-Bénard convection near onset. Equations and physical content public domain.",
+        "related": [
+          "Cross, M.C. & Hohenberg, P.C. (1993) — Pattern formation outside of equilibrium, Rev. Mod. Phys. 65:851 — the definitive review, PD-equations",
+          "Rayleigh, Lord (1916) — On convection currents in a horizontal layer of fluid, Phil. Mag. 32:529 — the original Bénard-instability analysis, PD"
+        ]
+      },
+      {
+        "author": "Cox, S.M. & Matthews, P.C.",
+        "title": "Exponential time differencing for stiff systems",
+        "year": 2002,
+        "journal": "Journal of Computational Physics",
+        "volume": 176,
+        "pages": "430-455",
+        "doi": "10.1006/jcph.2002.6995",
+        "licence": "PD-equations",
+        "url": "https://doi.org/10.1006/jcph.2002.6995",
+        "notes": "ETD schemes used for the pseudo-spectral integration here; equations and analysis public domain.",
+        "related": [
+          "Kassam, A.-K. & Trefethen, L.N. (2005) — Fourth-order time-stepping for stiff PDEs, SIAM J. Sci. Comput. 26:1214 — improved ETD4RK, PD-equations",
+          "Trefethen, L.N. et al. — Chebfun MIT-licensed solver https://github.com/chebfun/chebfun"
+        ]
+      }
+    ]
+  }
+}
