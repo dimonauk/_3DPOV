@@ -1,0 +1,47 @@
+{
+  "blend": "hf_clifford_attractor.blend",
+  "glb": "hf_clifford_attractor.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr/screen.mp4"
+  },
+  "mesh": {
+    "object_name": "Clifford_Attractor",
+    "vertices": 14400,
+    "quads": 14161,
+    "shape_keys": ["Basis", "SK_Cave", "SK_Web", "SK_Sparse"],
+    "color_attribute": "Clifford_Z",
+    "color_type": "FLOAT_COLOR",
+    "color_domain": "CORNER"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "external": [
+      {
+        "title": "Clifford Attractors",
+        "author": "Paul Bourke",
+        "year": 2013,
+        "url": "http://paulbourke.net/fractals/clifford/",
+        "licence": "PD (algorithm) / CC BY 4.0 (figures)",
+        "related_org": "http://paulbourke.net/fractals/"
+      },
+      {
+        "title": "Computers and the Imagination: Visual Adventures Beyond the Edge",
+        "author": "Clifford A. Pickover",
+        "year": 1991,
+        "publisher": "St. Martin's Press",
+        "isbn": "0-312-06131-4",
+        "note": "Mathematical equations PD — definitions are not copyrightable",
+        "related": "https://pickover.com"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
