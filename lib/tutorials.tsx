@@ -522,6 +522,7 @@ import { entry as blenderTutorialPythonNumpyHalvorsenAttractorZ3SymmetryRk4PoiLi
 import { entry as blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mandelbulb-power8-triplex-de-orbit-trap-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr";
+import { entry as blenderTutorialPythonNumpyKapitzaPendulumParametricResonanceMathieuEffectivePotentialBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kapitza-pendulum-parametric-resonance-mathieu-effective-potential-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyQuaternionJuliaSet4dHyperplaneSweepDeHeightFieldWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-quaternion-julia-set-4d-hyperplane-sweep-de-height-field-webxr";
 import { entry as blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ikeda-map-complex-laser-cavity-attractor-basin-poi-webxr";
 import { entry as blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-joukowski-conformal-map-aerofoil-complex-potential-flow-poi-webxr";
@@ -1165,6 +1166,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyMandelbulbPower8TriplexDeOrbitTrapWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringPatternHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyKdvSolitonHirotaTauPhaseShiftHeightFieldWebxrEntry,
+  blenderTutorialPythonNumpyKapitzaPendulumParametricResonanceMathieuEffectivePotentialBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyQuaternionJuliaSet4dHyperplaneSweepDeHeightFieldWebxrEntry,
   blenderTutorialPythonNumpyIkedaMapComplexLaserCavityAttractorBasinPoiWebxrEntry,
   blenderTutorialPythonNumpyJoukowskiConformalMapAerofoilComplexPotentialFlowPoiWebxrEntry,

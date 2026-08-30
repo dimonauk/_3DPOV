@@ -1,0 +1,56 @@
+{
+  "slug": "python-numpy-kapitza-pendulum-parametric-resonance-mathieu-effective-potential-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_kapitza_poi.blend",
+    "hf_kapitza_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-mathieu-ince-strutt-stability-diagram-floquet-monodromy-paul-trap-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Arthur Stephenson",
+        "title": "On a new type of dynamical stability",
+        "year": 1908,
+        "venue": "Memoirs of the Manchester Literary and Philosophical Society 52(8):1-10",
+        "licence": "PD",
+        "url": "https://archive.org/details/memoirsproceedi07manc"
+      },
+      {
+        "author": "Pyotr L. Kapitza",
+        "title": "Dynamic stability of a pendulum when its point of suspension vibrates",
+        "year": 1951,
+        "venue": "Zh. Eksp. Teor. Fiz. 21(5):588-597 [Soviet Physics JETP]",
+        "licence": "PD-equations",
+        "url": "https://jetp.ac.ru/cgi-bin/e/index/e/21/5/p588?a=list"
+      },
+      {
+        "author": "William Gilpin",
+        "title": "dysts: Dynamical Systems Benchmarks",
+        "year": 2021,
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts",
+        "related": "https://github.com/williamgilpin/dysts_examples"
+      }
+    ]
+  },
+  "mesh": {
+    "approx_verts": 36000,
+    "approx_faces": 35988,
+    "shape_keys": ["Basis", "SK_Border", "SK_Wide", "SK_Fall"],
+    "vertex_colour": "Kapitza_Speed"
+  },
+  "topic": "scripting",
+  "category": "poi-head"
+}
