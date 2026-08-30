@@ -606,6 +606,7 @@ import { entry as blenderTutorialPythonNumpy3dHilbertSpaceFillingCurveMoore1900B
 import { entry as blenderTutorialPythonNumpyScherkDoublyPeriodicMinimalSurfaceCheckerboardSaddleTileStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scherk-doubly-periodic-minimal-surface-checkerboard-saddle-tile-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyChuaCircuitDoubleScrollShilnikovChaosPiecewiseLinearBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHindmarshRoseBurstingNeuronTonicChaoticRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hindmarsh-rose-bursting-neuron-tonic-chaotic-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyRucklidgeAttractorMagnetoconvection1992Rk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rucklidge-attractor-magnetoconvection-1992-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyPeregrineBreatherRogueWaveNlsRationalSolutionPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyArnoldsCatMapAnosovDiffeomorphismGoldenRatioTorusChaosPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arnolds-cat-map-anosov-diffeomorphism-golden-ratio-torus-chaos-poi-disc-webxr";
 import { blenderTutorialPythonNumpyNeoviusSurfaceIm3mGenus9PrimitiveCubicStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-neovius-surface-im3m-genus-9-primitive-cubic-stage-floor-webxr";
@@ -1283,6 +1284,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyRosslerAttractorOtto1976SingleScrollBandHorseshoeShilnikovRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySwiftHohenbergPdeHexagonalRollsBenardConvectionStageFloorWebxrEntry,
   blenderTutorialPythonNumpyHindmarshRoseBurstingNeuronTonicChaoticRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyRucklidgeAttractorMagnetoconvection1992Rk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
