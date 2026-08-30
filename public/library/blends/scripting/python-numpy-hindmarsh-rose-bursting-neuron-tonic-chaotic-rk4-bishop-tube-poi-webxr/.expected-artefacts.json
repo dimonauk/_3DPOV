@@ -1,0 +1,45 @@
+{
+  "slug": "python-numpy-hindmarsh-rose-bursting-neuron-tonic-chaotic-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "date": "2026-08-30",
+  "artefacts": [
+    "hf_hr_neuron_poi.blend",
+    "hf_hr_neuron_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-period-doubling-poincare-chaos-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr"
+    ],
+    "external_sources": [
+      {
+        "title": "Hindmarsh JL & Rose RM — A model of neuronal bursting using three coupled first order differential equations",
+        "url": "https://doi.org/10.1098/rspb.1984.0024",
+        "licence": "PD (Crown copyright expired; >40 years)",
+        "author": "J. L. Hindmarsh, R. M. Rose"
+      },
+      {
+        "title": "Gilpin W — dysts: Dynamical Systems Benchmarks (MIT)",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": "https://github.com/williamgilpin/dysts_examples"
+      },
+      {
+        "title": "NumPy scientific computing library",
+        "url": "https://numpy.org/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy contributors",
+        "related": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
