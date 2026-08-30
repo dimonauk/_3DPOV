@@ -632,6 +632,7 @@ import { entry as blenderTutorialPythonNumpyChenAttractorGuanrongChenUeta1999Lor
 import { entry as blenderTutorialPythonNumpyZaslavskyStochasticWebKickedOscillatorQfoldQuasicrystalStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyNoseHooverOscillatorThermostatedHarmonicMaxwellBoltzmannKamChaosPoisHeadWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr";
 import { entry as blenderTutorialPythonNumpyVanDerPolLienardLimitCycleRelaxationOscillationsBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyTorusKnotPqSeifertGenusMillnorFibreBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-torus-knot-pq-seifert-genus-milnor-fibre-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1271,6 +1272,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyZaslavskyStochasticWebKickedOscillatorQfoldQuasicrystalStageFloorWebxrEntry,
   blenderTutorialPythonNumpyNoseHooverOscillatorThermostatedHarmonicMaxwellBoltzmannKamChaosPoisHeadWebxrEntry,
   blenderTutorialPythonNumpyVanDerPolLienardLimitCycleRelaxationOscillationsBishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyTorusKnotPqSeifertGenusMillnorFibreBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

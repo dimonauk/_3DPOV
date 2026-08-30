@@ -1,0 +1,50 @@
+{
+  "blend": "hf_torus_knot_poi.blend",
+  "glb": "hf_torus_knot_poi.glb",
+  "scripts": [
+    "blueprint.py",
+    "record.py"
+  ],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-torus-knot-pq-seifert-genus-milnor-fibre-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-torus-knot-pq-seifert-genus-milnor-fibre-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh": {
+    "vertices": 18000,
+    "faces": 18000,
+    "shape_keys": ["Basis", "SK_Cinq", "SK_T34", "SK_T35"],
+    "color_attributes": ["TorKnot_Z"]
+  },
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "textures": "WebP",
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-three-body-figure-8-choreography-chenciner-montgomery-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Rolfsen D",
+        "title": "Knots and Links (1976)",
+        "url": "https://www.ams.org/publications/authors/books/postpub/chel-346",
+        "licence": "PD-equations",
+        "related": "https://knotinfo.math.indiana.edu/"
+      },
+      {
+        "author": "Bar-Natan D et al.",
+        "title": "Knot Atlas (1995–2025)",
+        "url": "https://katlas.org",
+        "licence": "CC-BY-academic",
+        "related": "https://katlas.org/wiki/The_Mathematica_Package_KnotTheory`"
+      }
+    ]
+  }
+}
