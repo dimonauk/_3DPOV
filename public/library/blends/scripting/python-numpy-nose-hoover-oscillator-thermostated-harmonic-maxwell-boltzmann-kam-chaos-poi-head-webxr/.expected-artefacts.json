@@ -1,0 +1,63 @@
+{
+  "slug": "python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "hf_nose_hoover_poi.blend", "required": true,
+      "notes": "Scene with NoseHoover object, 4 shape keys (Basis/SK_Torus/SK_HotT/SK_ColdT), NH_Xi FLOAT_COLOR attribute, NH_Mat material" },
+    { "path": "hf_nose_hoover_poi.glb",   "required": true,
+      "notes": "Exported GLB, +Y up, transforms applied, Draco level 6, WebP textures, morph targets, colors" },
+    { "path": "blueprint.py",             "required": true,
+      "notes": "Procedural generator — run in Blender 5.1 Scripting workspace" },
+    { "path": "record.py",               "required": true,
+      "notes": "Viewport-animation renderer — run after blueprint.py" },
+    { "path": "README.md",               "required": true,
+      "notes": "Mathematics + quick-start documentation" },
+    { "path": "SCREEN-RECORDING-NOTES.md", "required": true,
+      "notes": "OBS instructions for screen.mp4 capture" },
+    { "path": "../../videos/scripting/python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr/viewport.mp4",
+      "required": false,
+      "notes": "Rendered by record.py — binary, not committed" },
+    { "path": "../../videos/scripting/python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr/screen.mp4",
+      "required": false,
+      "notes": "OBS screen capture — binary, not committed" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "Nosé S",
+        "title": "A unified formulation of the constant temperature molecular dynamics methods",
+        "journal": "J Chem Phys 81(1):511–519",
+        "year": 1984,
+        "url": "https://doi.org/10.1063/1.447334",
+        "licence": "public-domain (equations and theorems)"
+      },
+      {
+        "author": "Hoover WG",
+        "title": "Canonical dynamics: Equilibrium phase-space distributions",
+        "journal": "Phys Rev A 31(3):1695–1697",
+        "year": 1985,
+        "url": "https://doi.org/10.1103/PhysRevA.31.1695",
+        "licence": "public-domain (LLNL / US Government work)"
+      },
+      {
+        "author": "Gilpin W",
+        "title": "dysts — Dynamical Systems in Python (MIT)",
+        "journal": "GitHub",
+        "year": 2024,
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 38400,
+    "faces": 38388,
+    "shape_keys": ["Basis", "SK_Torus", "SK_HotT", "SK_ColdT"]
+  }
+}
