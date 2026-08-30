@@ -1,0 +1,64 @@
+{
+  "slug": "python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "hf_van_der_pol_poi.blend", "required": true,
+      "notes": "Scene with VanDerPol object, 4 shape keys (Basis/SK_Gentle/SK_Relax/SK_Strong), VdP_Y FLOAT_COLOR attribute, VdP_Mat material" },
+    { "path": "hf_van_der_pol_poi.glb", "required": true,
+      "notes": "GLB export: +Y up, transforms applied, Draco level 6, WebP, morph targets, vertex colours" },
+    { "path": "blueprint.py", "required": true,
+      "notes": "Procedural generator — run in Blender 5.1 Scripting workspace" },
+    { "path": "record.py", "required": true,
+      "notes": "Viewport-animation renderer — run after blueprint.py" },
+    { "path": "README.md", "required": true,
+      "notes": "Mathematics, parameter table, shape-key guide" },
+    { "path": "SCREEN-RECORDING-NOTES.md", "required": true,
+      "notes": "OBS instructions for screen.mp4 capture" },
+    { "path": "../../videos/scripting/python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr/viewport.mp4",
+      "required": false,
+      "notes": "Rendered by record.py — binary, not committed" },
+    { "path": "../../videos/scripting/python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr/screen.mp4",
+      "required": false,
+      "notes": "OBS screen capture — binary, not committed" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "author": "van der Pol B",
+        "title": "A theory of the amplitude of free and forced triode vibrations",
+        "journal": "Radio Review 1:701–762",
+        "year": 1920,
+        "url": "https://doi.org/10.1038/120363a0",
+        "licence": "public-domain"
+      },
+      {
+        "author": "Gilpin W",
+        "title": "dysts — Dynamical Systems in Python",
+        "journal": "GitHub",
+        "year": 2024,
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT"
+      },
+      {
+        "author": "Strogatz SH",
+        "title": "Nonlinear Dynamics and Chaos (2nd ed.) — Chapter 7: Limit Cycles",
+        "journal": "Perseus Books / Westview Press",
+        "year": 2018,
+        "url": "https://www.stevenstrogatz.com/books/nonlinear-dynamics-and-chaos-with-applications-to-physics-biology-chemistry-and-engineering",
+        "licence": "public-domain (mathematical results)"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 30000,
+    "faces": 29990,
+    "shape_keys": ["Basis", "SK_Gentle", "SK_Relax", "SK_Strong"]
+  }
+}
