@@ -1,0 +1,36 @@
+{
+  "blend": "skyrmion_floor.blend",
+  "glb":   "skyrmion_floor.glb",
+  "video": "public/library/videos/scripting/python-numpy-magnetic-skyrmion-belavin-polyakov-bps-pontryagin-topological-charge-stage-floor-webxr/viewport.mp4",
+  "screen":"public/library/videos/scripting/python-numpy-magnetic-skyrmion-belavin-polyakov-bps-pontryagin-topological-charge-stage-floor-webxr/screen.mp4",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-circle-bundle-quaternion-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Belavin & Polyakov (1975) Metastable states of two-dimensional isotropic ferromagnets",
+        "url":   "https://link.springer.com/article/10.1007/BF01078541",
+        "licence": "PD (equations)",
+        "authors": "Alexander Belavin, Alexander Polyakov"
+      },
+      {
+        "title": "Skyrme THR (1961) A non-linear field theory",
+        "url":   "https://royalsocietypublishing.org/doi/10.1098/rspa.1961.0018",
+        "licence": "PD",
+        "authors": "Tony Skyrme"
+      },
+      {
+        "title": "scikit-image / NumPy (BSD-3)",
+        "url":   "https://github.com/numpy/numpy",
+        "licence": "BSD-3-Clause",
+        "authors": "NumPy team"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}
