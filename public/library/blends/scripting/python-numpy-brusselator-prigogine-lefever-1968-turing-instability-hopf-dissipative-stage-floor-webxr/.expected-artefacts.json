@@ -1,0 +1,66 @@
+{
+  "blend":   "brussel_floor.blend",
+  "glb":     "brussel_floor.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs":    ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr/screen.mp4"
+  },
+  "mesh": {
+    "object_name":   "Brussel_Floor",
+    "vertex_count":  "6400 (80×80 grid)",
+    "face_count":    "6241 quads ((N−1)²)",
+    "material_name": "Brussel_Mat",
+    "vertex_attr":   "Brussel_U (FLOAT_COLOR POINT, cobalt→amber)",
+    "shape_keys":    ["Basis", "SK_Spots", "SK_Hopf", "SK_Dense"],
+    "holoflow_facet":    true,
+    "holoflow_category": "stage-floor",
+    "holoflow_topic":    "brusselator-rd",
+    "holoflow_export_name": "brussel_floor"
+  },
+  "simulation": {
+    "model":    "Brusselator (Prigogine & Lefever 1968)",
+    "DT":       0.002,
+    "N_WARMUP": 2000,
+    "N_STEPS":  5000,
+    "grid":     "80×80 periodic via np.roll",
+    "laplacian": "5-point finite-difference",
+    "param_sets": {
+      "Basis":    {"A":2.0,"B":3.8,"D_u":1.0,"D_v":8.0,"k2_c":1.15,"pattern":"labyrinthine"},
+      "SK_Spots": {"A":3.0,"B":5.5,"D_u":1.0,"D_v":8.0,"k2_c":1.69,"pattern":"hexagonal spots"},
+      "SK_Hopf":  {"A":1.0,"B":2.5,"D_u":1.0,"D_v":1.0,"regime":"Hopf B>1+A²=2"},
+      "SK_Dense": {"A":2.0,"B":4.5,"D_u":0.5,"D_v":8.0,"k2_c":3.25,"pattern":"dense labyrinth"}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-python-numpy-barkley-excitable-medium-spiral-wave-uv-sphere-poi-head-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Prigogine I & Lefever R",
+        "title": "Symmetry Breaking Instabilities in Dissipative Systems",
+        "ref": "J Chem Phys 48(4):1695-1700, 1968",
+        "url": "https://doi.org/10.1063/1.1668896",
+        "licence": "Public Domain (equations)",
+        "related": [
+          "Nicolis G & Prigogine I 1977 Self-Organization in Non-Equilibrium Systems Wiley PD-equations",
+          "Turing A M 1952 The Chemical Basis of Morphogenesis Proc R Soc B 237:37 PD"
+        ]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy 2.x Documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "related": ["https://github.com/numpy/numpy"]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0"
+}

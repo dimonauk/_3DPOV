@@ -612,6 +612,7 @@ import { blenderTutorialPythonNumpySinaiBilliardLorentzGasDispersingLyapunovPoin
 import { blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gyroid-schoen-1970-tpms-ia3d-self-dual-sponge-nodal-surface-marching-tetrahedra-poi-webxr";
 import { entry as blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-foucault-pendulum-berry-phase-hannay-angle-parallel-transport-poi-webxr";
 import { entry as blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr";
+import { entry as blenderTutorialPythonNumpyBrusselatorPrigogineLeftver1968TuringInstabilityHopfDissipativeStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr";
 import { entry as blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-scipy-bessel-drum-eigenmodes-jm-zeros-circular-membrane-nodal-poi-disc-webxr";
 import { entry as blenderTutorialPythonNumpyVivianiCurveSphereCylinderIntersectionBishopTubeFigure8PoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-viviani-curve-sphere-cylinder-intersection-bishop-tube-figure8-poi-webxr";
@@ -1253,6 +1254,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyGyroidSchoen1970TpmsIa3dSelfDualSpongeNodalSurfaceMarchingTetrahedraPoiWebxrEntry,
   blenderTutorialPythonNumpyFoucaultPendulumBerryPhaseHannayAngleParallelTransportPoiWebxrEntry,
   blenderTutorialPythonNumpyGrayScottReactionDiffusionTuringSpotsSpherePoiWebxrEntry,
+  blenderTutorialPythonNumpyBrusselatorPrigogineLeftver1968TuringInstabilityHopfDissipativeStageFloorWebxrEntry,
   blenderTutorialPythonNumpyBlochSphereQubitRabiPrecessionBerryPhaseSu2PauliPoiWebxrEntry,
   blenderTutorialPythonNumpyScipyBesselDrumEigenmodesJmZerosCircularMembraneNodalPoiDiscWebxrEntry,
   blenderTutorialPythonNumpyVivianiCurveSphereCylinderIntersectionBishopTubeFigure8PoiWebxrEntry,
