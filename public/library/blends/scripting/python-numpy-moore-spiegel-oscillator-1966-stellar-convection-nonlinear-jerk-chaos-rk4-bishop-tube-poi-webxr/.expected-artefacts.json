@@ -1,0 +1,47 @@
+{
+  "slug": "python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "public/library/blends/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/blueprint.py",
+    "public/library/blends/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/record.py",
+    "public/library/blends/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/README.md",
+    "public/library/blends/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/SCREEN-RECORDING-NOTES.md",
+    "public/library/blends/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/.expected-artefacts.json",
+    "public/library/glbs/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/hf_moore_spiegel_poi.blend",
+    "public/library/glbs/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/hf_moore_spiegel_poi.glb",
+    "public/library/videos/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hindmarsh-rose-bursting-neuron-tonic-chaotic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kapitza-pendulum-parametric-resonance-mathieu-effective-potential-bishop-tube-poi-webxr",
+      "/articles/low-poly-graphics-in-vr",
+      "/articles/how-the-studio-breeds-sculptures"
+    ],
+    "external": [
+      {
+        "title": "Moore DW & Spiegel EA (1966) A Thermally Excited Non-Linear Oscillator",
+        "url": "https://doi.org/10.1086/148562",
+        "licence": "PD-equations",
+        "author": "D.W. Moore & E.A. Spiegel"
+      },
+      {
+        "title": "Sprott JC — Elegant Chaos: algebraically simple chaotic flows (Chapter 4)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elec.htm",
+        "licence": "MIT (code samples)",
+        "author": "Julien C. Sprott"
+      },
+      {
+        "title": "NumPy library",
+        "url": "https://github.com/numpy/numpy",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Developers"
+      }
+    ]
+  }
+}
