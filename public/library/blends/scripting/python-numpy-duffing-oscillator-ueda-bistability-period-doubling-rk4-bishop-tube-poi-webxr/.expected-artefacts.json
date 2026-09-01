@@ -1,0 +1,64 @@
+{
+  "slug": "python-numpy-duffing-oscillator-ueda-bistability-period-doubling-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_duffing_poi.blend",
+    "hf_duffing_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "object_name": "hf_duffing_poi",
+    "verts_approx": 30000,
+    "quads_approx": 29990,
+    "waypoints": 3000,
+    "tube_sides": 10,
+    "shape_keys": ["Basis", "SK_Ueda", "SK_Period2", "SK_Locked"],
+    "colour_attribute": "Duffing_Phase",
+    "colour_domain": "POINT",
+    "colour_mode": "FLOAT_COLOR",
+    "colour_meaning": "x-position normalised [0,1]: left-well=cobalt, right-well=amber"
+  },
+  "holoflow": {
+    "facet": false,
+    "category": "poi-head",
+    "export_name": "hf_duffing_poi",
+    "coord_system": "+Y up, apply transforms, Draco 6, WebP textures"
+  },
+  "physics": {
+    "system": "Duffing oscillator",
+    "equation": "x'' + delta*x' + alpha*x + beta*x^3 = gamma*cos(omega*t)",
+    "basis_params": {"alpha": -1.0, "beta": 1.0, "delta": 0.3, "gamma": 0.5, "omega": 1.2},
+    "lyapunov_lambda1_approx": 0.155,
+    "dimension_D2_approx": 1.4,
+    "integration": "RK4, DT=0.025, N_WARMUP=4000, N_STEPS=90000, SKIP=30"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kapitza-pendulum-parametric-resonance-mathieu-effective-potential-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Duffing G (1918) Erzwungene Schwingungen bei veränderlicher Eigenfrequenz",
+        "url": "https://archive.org/details/duffing1918",
+        "licence": "PD",
+        "author": "Georg Duffing",
+        "related_repos": ["https://github.com/scipy/scipy"]
+      },
+      {
+        "title": "Ueda Y (1979) Randomly Transitional Phenomena. J Stat Phys 20(2):181",
+        "url": "https://doi.org/10.1007/BF01011512",
+        "licence": "equations-PD",
+        "author": "Yoshisuke Ueda",
+        "related_repos": ["https://github.com/numpy/numpy", "https://github.com/scipy/scipy"]
+      }
+    ]
+  }
+}
