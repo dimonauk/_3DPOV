@@ -1,0 +1,44 @@
+{
+  "slug": "python-numpy-may-leonard-3species-cyclic-competition-heteroclinic-simplex-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "blueprint.py",              "type": "script", "required": true  },
+    { "path": "record.py",                 "type": "script", "required": true  },
+    { "path": "README.md",                 "type": "docs",   "required": true  },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "docs",   "required": true  },
+    { "path": ".expected-artefacts.json",  "type": "meta",   "required": true  },
+    { "path": "may_leonard_poi.blend",     "type": "blend",  "required": false },
+    { "path": "may_leonard_poi.glb",       "type": "glb",    "required": false }
+  ],
+  "video": {
+    "viewport_mp4": "public/library/videos/scripting/python-numpy-may-leonard-3species-cyclic-competition-heteroclinic-simplex-bishop-tube-poi-webxr/viewport.mp4",
+    "screen_mp4":   "public/library/videos/scripting/python-numpy-may-leonard-3species-cyclic-competition-heteroclinic-simplex-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-nose-hoover-oscillator-thermostated-harmonic-maxwell-boltzmann-kam-chaos-poi-head-webxr"
+    ],
+    "external": [
+      {
+        "title": "May R M & Leonard W J (1975) Nonlinear aspects of competition between three species. SIAM J Appl Math 29(2):243-253",
+        "url": "https://doi.org/10.1137/0129022",
+        "licence": "PD-equations",
+        "related": [
+          "https://doi.org/10.1007/BF02459549"
+        ]
+      },
+      {
+        "title": "Gilpin W (2021-2024) dysts: Dynamical Systems Benchmarks. MIT licence.",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "related": [
+          "https://github.com/williamgilpin/dysts_examples"
+        ]
+      }
+    ]
+  }
+}
