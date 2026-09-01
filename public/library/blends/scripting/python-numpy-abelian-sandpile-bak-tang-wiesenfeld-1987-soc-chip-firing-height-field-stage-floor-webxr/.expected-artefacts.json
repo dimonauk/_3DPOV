@@ -1,0 +1,55 @@
+{
+  "slug": "python-numpy-abelian-sandpile-bak-tang-wiesenfeld-1987-soc-chip-firing-height-field-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    { "path": "sandpile_soc_floor.blend", "required": true,
+      "notes": "Scene with Sandpile_SOC object, 4 shape keys, Sandpile_Chips FLOAT_COLOR attribute, emission material" },
+    { "path": "sandpile_soc_floor.glb",   "required": true,
+      "notes": "+Y up, transforms applied, Draco level 6, WebP textures, morph targets, vertex colours exported" },
+    { "path": "blueprint.py",            "required": true,
+      "notes": "Procedural BTW sandpile generator — run in Blender 5.1 Scripting workspace" },
+    { "path": "record.py",               "required": true,
+      "notes": "Viewport-animation renderer — run after blueprint.py" },
+    { "path": "README.md",               "required": true,
+      "notes": "Mathematics + quick-start documentation" },
+    { "path": "SCREEN-RECORDING-NOTES.md", "required": true,
+      "notes": "OBS instructions for screen.mp4 capture" },
+    { "path": "../../videos/scripting/python-numpy-abelian-sandpile-bak-tang-wiesenfeld-1987-soc-chip-firing-height-field-stage-floor-webxr/viewport.mp4",
+      "required": false, "notes": "Rendered by record.py — binary, not committed" },
+    { "path": "../../videos/scripting/python-numpy-abelian-sandpile-bak-tang-wiesenfeld-1987-soc-chip-firing-height-field-stage-floor-webxr/screen.mp4",
+      "required": false, "notes": "OBS screen capture — binary, not committed" }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-ising-model-metropolis-monte-carlo-phase-transition-critical-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dla-diffusion-limited-aggregation-dendritic-crystal-webxr"
+    ],
+    "external": [
+      {
+        "author": "Bak P, Tang C, Wiesenfeld K",
+        "title": "Self-Organized Criticality: An Explanation of the 1/f Noise",
+        "journal": "Phys Rev Lett 59(4):381–384",
+        "year": 1987,
+        "url": "https://link.aps.org/doi/10.1103/PhysRevLett.59.381",
+        "licence": "public-domain (equations and theorems)",
+        "related": "BTW follow-up Bak & Sneppen 1993 Phys Rev Lett 71:4083 (punctuated equilibrium SOC)"
+      },
+      {
+        "author": "Dhar D",
+        "title": "Self-organized Critical State of Sandpile Automaton Models",
+        "journal": "Phys Rev Lett 64(14):1613–1616",
+        "year": 1990,
+        "url": "https://link.aps.org/doi/10.1103/PhysRevLett.64.1613",
+        "licence": "public-domain (equations and theorems)",
+        "related": "Levine & Peres 2010 J Anal Math 111:151 (limit shape theorem, arXiv:0712.3378)"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 10201,
+    "faces": 10000,
+    "shape_keys": ["Basis", "SK_Sparse", "SK_Dense", "SK_Cross"]
+  }
+}

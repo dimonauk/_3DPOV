@@ -641,6 +641,7 @@ import { entry as blenderTutorialPythonNumpyRosslerAttractorOtto1976SingleScroll
 import { entry as blenderTutorialPythonNumpySwiftHohenbergPdeHexagonalRollsBenardConvectionStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-swift-hohenberg-pde-hexagonal-rolls-benard-convection-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyCliffordAttractorPickoverDiscrete2dMapFractalDensityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMooreSpiegelOscillator1966StellarConvectionNonlinearJerkChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyAbelianSandpileBakTangWiesenfeld1987SocChipFiringHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-abelian-sandpile-bak-tang-wiesenfeld-1987-soc-chip-firing-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1289,6 +1290,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyRucklidgeAttractorMagnetoconvection1992Rk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyCliffordAttractorPickoverDiscrete2dMapFractalDensityStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMooreSpiegelOscillator1966StellarConvectionNonlinearJerkChaosRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyAbelianSandpileBakTangWiesenfeld1987SocChipFiringHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
