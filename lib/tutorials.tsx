@@ -654,6 +654,7 @@ import { entry as blenderTutorialPythonNumpyShimizuMoriokaAttractor1980LaserMode
 import { entry as blenderTutorialPythonNumpyAizawaAttractorLangford1984TorusWrappingBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyGenesioTesiAttractor1992JerkChaosQuadraticRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosFlameFrontHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyRosslerHyperchaos1979TwoPositiveLyapunov4dRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rossler-hyperchaos-1979-two-positive-lyapunov-4d-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1315,6 +1316,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyAizawaAttractorLangford1984TorusWrappingBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyGenesioTesiAttractor1992JerkChaosQuadraticRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosFlameFrontHeightFieldStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyRosslerHyperchaos1979TwoPositiveLyapunov4dRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

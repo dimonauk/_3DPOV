@@ -1,0 +1,62 @@
+{
+  "slug": "python-numpy-rossler-hyperchaos-1979-two-positive-lyapunov-4d-rk4-bishop-tube-poi-webxr",
+  "type": "blend + glb",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "rossler_hyperchaos_poi.blend",
+    "rossler_hyperchaos_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-numpy-rossler-hyperchaos-1979-two-positive-lyapunov-4d-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-rossler-hyperchaos-1979-two-positive-lyapunov-4d-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr",
+      "/articles/how-the-studio-breeds-sculptures",
+      "/articles/low-poly-graphics-in-vr"
+    ],
+    "outside_sources": [
+      {
+        "title": "An equation for hyperchaos",
+        "author": "Otto E. Rössler",
+        "year": 1979,
+        "journal": "Physics Letters A",
+        "volume": "71(2-3):155-157",
+        "doi": "10.1016/0375-9601(79)90150-6",
+        "licence": "public domain (equations)"
+      },
+      {
+        "title": "Sprott Chaos Gallery — Elegant Chaos code samples",
+        "author": "Julien C. Sprott",
+        "url": "https://sprott.physics.wisc.edu/chaos/comchaos.htm",
+        "licence": "MIT (code samples)",
+        "related": ["https://github.com/jsprott/chaos"]
+      }
+    ]
+  },
+  "shape_keys": [
+    {"name": "Basis",        "d": 0.05, "desc": "canonical hyperchaos, λ₁≈+0.135 λ₂≈+0.032"},
+    {"name": "SK_WeakHyper", "d": 0.02, "desc": "barely above threshold, λ₂→0⁺"},
+    {"name": "SK_Regular",   "d": 0.00, "desc": "single positive LE, ordinary chaos"},
+    {"name": "SK_StrongHyper","d": 0.15,"desc": "strong hyperchaos, broad w spread"}
+  ],
+  "lyapunov_spectrum": {
+    "lambda_1": "+0.135",
+    "lambda_2": "+0.032",
+    "lambda_3": "≈0.000",
+    "lambda_4": "−1.030",
+    "DKY": "≈3.16",
+    "divergence": "x + 0.30  (position-dependent)",
+    "sum_lambda": "≈−0.86 (matches time-averaged divergence)"
+  }
+}
