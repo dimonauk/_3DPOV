@@ -1,0 +1,55 @@
+{
+  "blend": "dejong_floor.blend",
+  "glb":   "dejong_floor.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "vertices": 14400,
+    "quads":    14161,
+    "shape_keys": ["Basis", "SK_Web", "SK_Star", "SK_Spiral"],
+    "colour_attribute": "DeJong_Density",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "physics": {
+    "map": "x'=sin(a·y)−cos(b·x), y'=sin(c·x)−cos(d·y)",
+    "bound": "always |x|,|y|≤2",
+    "dissipative": true,
+    "fractal_dim": "D_f<2 (parameter-dependent)",
+    "iterations_per_key": 5000000,
+    "presets": {
+      "Basis":     {"a": -2.00, "b": -2.00, "c": -1.20, "d":  2.00},
+      "SK_Web":    {"a":  1.40, "b": -2.30, "c":  2.40, "d": -2.10},
+      "SK_Star":   {"a": -2.50, "b":  1.50, "c": -0.70, "d":  1.80},
+      "SK_Spiral": {"a": -0.80, "b": -1.30, "c": -1.80, "d": -2.60}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Julien C. Sprott",
+        "title":  "Strange Attractors: Creating Patterns in Chaos — parameter tables",
+        "url":    "https://sprott.physics.wisc.edu/fractals/2d/",
+        "licence": "CC0 / public domain"
+      },
+      {
+        "author": "Paul Bourke",
+        "title":  "Peter de Jong Attractors",
+        "url":    "https://paulbourke.net/fractals/peterdejong/",
+        "licence": "CC0"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr"
+}
