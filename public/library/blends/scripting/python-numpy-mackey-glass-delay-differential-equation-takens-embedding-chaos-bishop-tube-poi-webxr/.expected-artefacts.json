@@ -1,0 +1,84 @@
+{
+  "slug": "python-numpy-mackey-glass-delay-differential-equation-takens-embedding-chaos-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "files": [
+    "mackey_glass_poi.blend",
+    "mackey_glass_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_path": "public/library/videos/scripting/python-numpy-mackey-glass-delay-differential-equation-takens-embedding-chaos-bishop-tube-poi-webxr/",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hindmarsh-rose-bursting-neuron-tonic-chaotic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "authors": "Mackey MC, Glass L",
+        "year": 1977,
+        "title": "Oscillation and Chaos in Physiological Control Systems",
+        "venue": "Science 197(4300):287-289",
+        "doi": "10.1126/science.267326",
+        "licence": "PD-equations (>90yr)",
+        "url": "https://www.science.org/doi/10.1126/science.267326",
+        "related": ["From Clocks to Chaos (Glass & Mackey 1988) Princeton UP companion monograph"]
+      },
+      {
+        "authors": "Takens F",
+        "year": 1981,
+        "title": "Detecting Strange Attractors in Turbulence",
+        "venue": "Lecture Notes in Mathematics 898:366-381",
+        "doi": "10.1007/BFb0091924",
+        "licence": "PD-equations academic",
+        "url": "https://link.springer.com/chapter/10.1007/BFb0091924",
+        "related": ["Sauer, Yorke, Casdagli 1991 Embedology J Stat Phys 65:579-616"]
+      },
+      {
+        "authors": "NumPy developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  },
+  "parameters": {
+    "BETA": 0.2,
+    "GAMMA": 0.1,
+    "N_HILL": 10,
+    "X_INIT": 0.5,
+    "DT": 0.1,
+    "T_WARMUP": 500.0,
+    "T_RECORD": 600.0,
+    "THIN": 2,
+    "T_EMBED": 4.0,
+    "TUBE_R": 0.045,
+    "TUBE_SIDES": 10,
+    "POI_R": 0.09
+  },
+  "shape_keys": {
+    "Basis":        {"tau": 17.0, "D_KY_approx": 2.1},
+    "SK_HighTau":   {"tau": 23.0, "D_KY_approx": 2.7},
+    "SK_VeryHiTau": {"tau": 30.0, "D_KY_approx": 3.4},
+    "SK_Periodic":  {"tau":  8.0, "regime": "near-limit-cycle"}
+  },
+  "colour_attribute": {
+    "name": "MG_Value",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "meaning": "normalised x(t) blood-cell concentration",
+    "low": "cobalt (0.03, 0.20, 0.78)",
+    "high": "amber (0.98, 0.62, 0.05)"
+  }
+}

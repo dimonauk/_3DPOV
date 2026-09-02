@@ -660,6 +660,7 @@ import { entry as blenderTutorialPythonNumpySprottAConservativeChaosKamToriNoEqu
 import { entry as blenderTutorialPythonNumpySprottEAttractor1994MinimalChaosSaddleCentreSingleFixedPointRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyPeterDeJongAttractorDiscrete2dMapLogDensityHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyFinanceAttractorMaChen2001InterestRateChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-finance-attractor-ma-chen-2001-interest-rate-chaos-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyMackeyGlassDelayDifferentialEquationTakensEmbeddingChaosBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mackey-glass-delay-differential-equation-takens-embedding-chaos-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1327,6 +1328,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottEAttractor1994MinimalChaosSaddleCentreSingleFixedPointRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyPeterDeJongAttractorDiscrete2dMapLogDensityHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyFinanceAttractorMaChen2001InterestRateChaosRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyMackeyGlassDelayDifferentialEquationTakensEmbeddingChaosBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
