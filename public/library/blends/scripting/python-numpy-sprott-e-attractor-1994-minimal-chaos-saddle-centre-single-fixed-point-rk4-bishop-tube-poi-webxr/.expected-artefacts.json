@@ -1,0 +1,96 @@
+{
+  "slug": "python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_sprott_e_poi.blend",
+    "hf_sprott_e_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_sprott_e_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "SprottE_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_Loose", "SK_Tight", "SK_Wide"],
+    "tube_segments": 8,
+    "tube_radius": 0.052,
+    "waypoints": 3000,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Sprott E attractor (1994), alpha-parameterised",
+    "original_citation": "Sprott JC (1994) 'Some simple chaotic flows' Phys Rev E 50(2):R647-R650",
+    "equations": {
+      "x_dot": "y * z",
+      "y_dot": "x^2 - y",
+      "z_dot": "1 - alpha * x"
+    },
+    "canonical_alpha": 4.0,
+    "equilibrium": "P = (1/alpha, 1/alpha^2, 0) — unique fixed point",
+    "equilibrium_eigenvalues": "lambda = -1, +- i/sqrt(alpha)",
+    "eigenvalue_type": "saddle-centre (real stable + purely imaginary pair)",
+    "divergence": "-1 (constant, from single -y term in y_dot)",
+    "terms": 5,
+    "quadratic_terms": 2,
+    "lyapunov_lambda1": 0.053,
+    "lyapunov_lambda2": 0.0,
+    "lyapunov_lambda3": -1.053,
+    "kaplan_yorke_dim": 2.050,
+    "lyapunov_time": 18.9,
+    "liouville_check": "0.053 + 0 - 1.053 = -1.000 = nabla_F",
+    "integrator": "RK4",
+    "dt": 0.010,
+    "n_warmup": 3000,
+    "n_steps": 90000,
+    "thin": 30,
+    "shape_key_variants": {
+      "Basis":    "alpha=4.0 canonical, eigenvalues -1 and +/-i/2",
+      "SK_Loose": "alpha=3.0 broader orbit, eigenvalues -1 and +/-i/sqrt(3)",
+      "SK_Tight": "alpha=5.0 compressed orbit, eigenvalues -1 and +/-i/sqrt(5)",
+      "SK_Wide":  "alpha=2.5 near-onset geometry, eigenvalues -1 and +/-i/sqrt(2.5)"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Sprott JC",
+        "title": "Some simple chaotic flows, Phys Rev E 50(2):R647 (1994)",
+        "licence": "PD (mathematical content) / MIT (companion C code on author website)",
+        "url": "https://sprott.physics.wisc.edu/pubs/paper229.pdf",
+        "companion_code": "https://sprott.physics.wisc.edu/chaos/sprott.htm"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows (2010), World Scientific",
+        "licence": "PD (mathematical content)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm",
+        "related_repos": ["https://github.com/jsprott/sprott-chaos"]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy — array computing for Python",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
