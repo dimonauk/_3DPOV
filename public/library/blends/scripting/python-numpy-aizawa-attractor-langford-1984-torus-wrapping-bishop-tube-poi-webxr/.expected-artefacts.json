@@ -1,0 +1,80 @@
+{
+  "slug": "python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_aizawa_poi.blend",
+    "hf_aizawa_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_aizawa_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "Aizawa_Z",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_HighD", "SK_NoEF", "SK_LowB"],
+    "tube_segments": 8,
+    "tube_radius": 0.040,
+    "waypoints": 3000,
+    "poi_radius": 0.090,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Aizawa attractor (Langford 1984)",
+    "original_citation": "Langford WF (1984) in Küpper, Mittelmann & Weber (eds), ISNM vol.70, Birkhäuser, pp.285–295",
+    "doi": "10.1007/978-3-0348-6256-1_18",
+    "physical_context": "Torus-doubling bifurcations in slow-fast planar system plus cubic z-oscillator; orbit winds around toroidal manifold without closing",
+    "equations": {
+      "x_dot": "(z-b)*x - d*y",
+      "y_dot": "d*x + (z-b)*y",
+      "z_dot": "c + a*z - z**3/3 - (x**2+y**2)*(1 + e*z) + f*x*z"
+    },
+    "canonical_parameters": {
+      "a": 0.95, "b": 0.70, "c": 0.60, "d": 3.50, "e": 0.25, "f": 0.10
+    },
+    "divergence": "2*(z-b) + a - z**2 - e*(x**2+y**2) + f*x  [position-dependent, NOT constant]",
+    "fixed_points_z_axis": [1.944, -0.835, -1.109],
+    "lyapunov_lambda1": 0.076,
+    "kaplan_yorke_dim": 2.015,
+    "integrator": "RK4",
+    "dt": 0.01,
+    "n_total": 120000,
+    "burn_in": 2000,
+    "thin": 40,
+    "initial_condition": [0.1, 0.0, 0.5]
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-pq-seifert-genus-milnor-fibre-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-heinz-hopf-1931-circle-bundle-clifford-torus-bishop-holonomy-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Langford WF",
+        "title": "Numerical studies of torus bifurcations",
+        "year": 1984,
+        "venue": "ISNM vol.70, Birkhäuser Basel",
+        "doi": "10.1007/978-3-0348-6256-1_18",
+        "licence": "PD (mathematical equations)"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Strange Attractors — a gallery of strange attractors and their Lyapunov spectra",
+        "url": "https://sprott.physics.wisc.edu/chaostsa/",
+        "licence": "PD / free for any use (author's stated terms)"
+      }
+    ]
+  }
+}
