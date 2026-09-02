@@ -1,0 +1,101 @@
+{
+  "slug": "python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0-1.0",
+  "category": "poi-head",
+  "topic": "bouali-attractor",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr/bouali_attractor.blend",
+      "type": "blend",
+      "required": true
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr/bouali_attractor.glb",
+      "type": "glb",
+      "required": true,
+      "export_settings": {
+        "draco_compression_level": 6,
+        "texture_format": "WEBP",
+        "export_yup": true,
+        "export_morph": true,
+        "export_colors": true
+      }
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "required": true,
+      "notes": "Rendered by record.py — 300 frames @ 30 fps = 10 s, Eevee Next, bloom on"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "required": true,
+      "notes": "OBS screen recording per SCREEN-RECORDING-NOTES.md"
+    }
+  ],
+  "mesh": {
+    "waypoints": 3000,
+    "tube_sides": 10,
+    "vertices_approx": 30000,
+    "faces_approx": 29970,
+    "shape_keys": ["Basis", "SK_FastZ", "SK_WeakGrowth", "SK_StrongCouple"]
+  },
+  "colour_attribute": {
+    "name": "Bouali_Speed",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "encoding": "cobalt(slow) through white(mid) to amber(fast) — speed ||(ẋ,ẏ,ż)||"
+  },
+  "ode_parameters": {
+    "basis":           {"alpha": 3.0, "beta": 2.2, "c": 1.0, "mu": 0.01},
+    "sk_fastz":        {"alpha": 3.0, "beta": 2.2, "c": 1.0, "mu": 0.05},
+    "sk_weakgrowth":   {"alpha": 2.0, "beta": 2.2, "c": 1.0, "mu": 0.01},
+    "sk_strongcouple": {"alpha": 3.0, "beta": 4.0, "c": 1.0, "mu": 0.01},
+    "dt": 0.05,
+    "burn_in_steps": 2000,
+    "n_steps": 120000,
+    "skip": 40,
+    "ic": [1.0, 0.5, 0.0]
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Bouali S (2012) Feedback Loop in Extended Van der Pol's Equation Applied to an Economic Model of Cycles",
+        "url": "https://arxiv.org/abs/1205.3169",
+        "licence": "Mathematical content Public Domain",
+        "author": "Safieddine Bouali",
+        "related": [
+          "Van der Pol (1926) original limit-cycle oscillator",
+          "Liénard (1928) general existence theorem for limit cycles"
+        ]
+      },
+      {
+        "title": "Sprott JC — Chaos Atlas (sprott.physics.wisc.edu/chaos/)",
+        "url": "https://sprott.physics.wisc.edu/chaos/",
+        "licence": "Permissive educational use — freely redistributable for non-commercial academic purposes",
+        "author": "Julien Clinton Sprott",
+        "related": [
+          "Sprott JC (1994) Some simple chaotic flows — Phys Rev E 50(2):R647",
+          "Sprott JC (2003) Chaos and Time-Series Analysis — Oxford UP"
+        ]
+      },
+      {
+        "title": "Gilpin W (2021–2024) dysts: Dynamical Systems Benchmarks",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin",
+        "related": [
+          "williamgilpin/dysts companion notebooks (MIT)",
+          "williamgilpin/fnn (false-nearest-neighbours for embedding dimension, MIT)"
+        ]
+      }
+    ]
+  }
+}
