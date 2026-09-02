@@ -21,7 +21,12 @@ export const metadata: Metadata = {
     "Start a commission: heritage digitisation, VR development, or parametric manufacturing. Scoped individually, fixed price agreed before any work begins.",
 };
 
-export default function CommissionPage() {
+export default async function CommissionPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string }>;
+}) {
+  const { type } = await searchParams;
   return (
     <main className="mx-auto max-w-2xl px-4 py-16">
       <header className="mb-10">
@@ -35,7 +40,7 @@ export default function CommissionPage() {
         </p>
       </header>
 
-      <CommissionForm />
+      <CommissionForm initialType={type ?? ""} />
     </main>
   );
 }

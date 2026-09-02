@@ -26,6 +26,11 @@ const PROJECT_TYPES = [
     hint: "Waveguide jewellery, sculpture, desktop art — generative geometry → print farm.",
   },
   {
+    value: "performance",
+    label: "Live Performance",
+    hint: "Poi + laser + evolving resin sculpture. Neo London / AntiGravity — booked as a live act.",
+  },
+  {
     value: "other",
     label: "Something else",
     hint: "Describe it below.",
@@ -43,8 +48,8 @@ const BUDGET_RANGES = [
 
 type State = "idle" | "sending" | "sent" | "error";
 
-export function CommissionForm() {
-  const [projectType, setProjectType] = useState("");
+export function CommissionForm({ initialType = "" }: { initialType?: string }) {
+  const [projectType, setProjectType] = useState(initialType);
   const [budget, setBudget] = useState("");
   const [state, setState] = useState<State>("idle");
   const [errorMsg, setErrorMsg] = useState("");
