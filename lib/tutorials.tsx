@@ -656,6 +656,7 @@ import { entry as blenderTutorialPythonNumpyGenesioTesiAttractor1992JerkChaosQua
 import { entry as blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosFlameFrontHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyFtleDoubleGyrelagrangianCoherentStructuresRidgeHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr";
 import { blenderTutorialPythonNumpyHopfFibrationS3S2QuaternionVillarceauCirclesStereographicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottAConservativeChaosKamToriNoEquilibriaRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1319,6 +1320,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosFlameFrontHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyFtleDoubleGyrelagrangianCoherentStructuresRidgeHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyHopfFibrationS3S2QuaternionVillarceauCirclesStereographicPoiWebxrEntry,
+  blenderTutorialPythonNumpySprottAConservativeChaosKamToriNoEquilibriaRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
