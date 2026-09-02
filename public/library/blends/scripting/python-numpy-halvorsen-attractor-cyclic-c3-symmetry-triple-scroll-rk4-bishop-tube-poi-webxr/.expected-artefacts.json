@@ -1,0 +1,71 @@
+{
+  "slug": "python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_halvorsen_poi.blend",
+    "hf_halvorsen_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_halvorsen_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "Halvors_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_Wide", "SK_Tight", "SK_Trans"],
+    "tube_segments": 8,
+    "tube_radius": 0.045,
+    "waypoints": 3200,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Halvorsen attractor",
+    "attributed_to": "Torsten Halvorsen (~1998)",
+    "catalogued_in": "Sprott JC (2010) Elegant Chaos, World Scientific",
+    "canonical_a": 1.89,
+    "divergence": "-3a = -5.67 (constant)",
+    "symmetry": "C3 cyclic (x,y,z)→(y,z,x)",
+    "lyapunov_lambda1": 0.078,
+    "lyapunov_lambda2": 0.0,
+    "lyapunov_lambda3": -5.75,
+    "kaplan_yorke_dim": 2.014,
+    "lyapunov_time": 12.8,
+    "integrator": "RK4",
+    "dt": 0.01,
+    "n_steps": 80000,
+    "thin": 25
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-rene-thomas-1999-sin-decay-z3-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Sprott JC",
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows (2010)",
+        "licence": "MIT (companion C code)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
