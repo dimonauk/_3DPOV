@@ -1,0 +1,48 @@
+{
+  "slug": "python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "licence": "CC0",
+  "expected_files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_hopf_poi.blend",
+    "hf_hopf_poi.glb"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-torus-knot-pq-seifert-genus-milnor-fibre-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-schwarzschild-geodesics-gr-effective-potential-isco-mercury-precession-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halton-sequence-fibonacci-sphere-lattice-scatter-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Hopf (1931) — Mathematische Annalen 104:637-665",
+        "url": "https://doi.org/10.1007/BF01457962",
+        "author": "Heinz Hopf",
+        "licence": "PD (>90 years old; mathematical equations as scientific facts)"
+      },
+      {
+        "title": "Lyons (2003) — An Elementary Introduction to the Hopf Fibration",
+        "url": "https://faculty.lvc.edu/lyons/pubs/hopf.pdf",
+        "author": "David W. Lyons",
+        "licence": "Academic / freely accessible (Mathematics Magazine)"
+      }
+    ]
+  },
+  "shape_keys": {
+    "Basis":    "16 fibres Fibonacci-spiral over S² — distributed Villarceau rings",
+    "SK_CapN":  "All base points mirrored to pz>0 — fibres expand toward equator",
+    "SK_Equat": "Base points near equator (pz≈0) — all rings on one Clifford torus",
+    "SK_2Lat":  "8+8 base points on pz=+0.5 and pz=−0.5 — two linked tori"
+  },
+  "colour_attribute": "Hopf_Z  FLOAT_COLOR  cobalt(negative-Z large rings)→amber(positive-Z small rings)"
+}
