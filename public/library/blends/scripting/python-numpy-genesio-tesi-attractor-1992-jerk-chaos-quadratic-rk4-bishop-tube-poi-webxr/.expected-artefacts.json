@@ -1,0 +1,48 @@
+{
+  "slug": "python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "licence": "CC0",
+  "expected_files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_genesio_tesi_poi.blend",
+    "hf_genesio_tesi_poi.glb"
+  ],
+  "video_files": [
+    "public/library/videos/scripting/python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-moore-spiegel-oscillator-1966-stellar-convection-nonlinear-jerk-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Genesio & Tesi 1992 — Automatica 28(3):531–548",
+        "url": "https://doi.org/10.1016/0005-1098(92)90177-H",
+        "author": "Roberto Genesio, Alberto Tesi",
+        "licence": "PD (mathematical equations as scientific facts)"
+      },
+      {
+        "title": "Sprott — Elegant Chaos companion C source",
+        "url": "https://sprott.physics.wisc.edu/chaos/",
+        "author": "Julien Clinton Sprott",
+        "licence": "Academic use / no stated restriction"
+      }
+    ]
+  },
+  "shape_keys": {
+    "Basis": "c1=1.0 c2=1.3 c3=0.44  canonical chaos  D_KY≈2.142",
+    "SK_DenseWrap": "c3=0.30  weaker dissipation  larger orbit",
+    "SK_BorderChs": "c3=0.55  near chaos boundary  near-periodic",
+    "SK_ShiftedEQ": "c1=0.70 c2=1.2 c3=0.44  P1 at x=0.70  topology shift"
+  },
+  "colour_attribute": "GT_Speed  FLOAT_COLOR  cobalt(slow)→amber(fast)"
+}
