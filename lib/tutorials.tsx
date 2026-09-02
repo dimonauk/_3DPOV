@@ -658,6 +658,7 @@ import { entry as blenderTutorialPythonNumpyFtleDoubleGyrelagrangianCoherentStru
 import { blenderTutorialPythonNumpyHopfFibrationS3S2QuaternionVillarceauCirclesStereographicPoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottAConservativeChaosKamToriNoEquilibriaRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottEAttractor1994MinimalChaosSaddleCentreSingleFixedPointRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyPeterDeJongAttractorDiscrete2dMapLogDensityHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1323,6 +1324,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHopfFibrationS3S2QuaternionVillarceauCirclesStereographicPoiWebxrEntry,
   blenderTutorialPythonNumpySprottAConservativeChaosKamToriNoEquilibriaRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottEAttractor1994MinimalChaosSaddleCentreSingleFixedPointRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyPeterDeJongAttractorDiscrete2dMapLogDensityHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
