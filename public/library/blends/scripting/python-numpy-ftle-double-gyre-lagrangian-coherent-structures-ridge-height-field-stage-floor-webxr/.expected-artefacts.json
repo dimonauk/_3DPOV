@@ -1,0 +1,48 @@
+{
+  "blend": "ftle_double_gyre_floor.blend",
+  "glb":   "ftle_double_gyre_floor.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs":    ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr/screen.mp4"
+  },
+  "mesh": {
+    "vertices":   7200,
+    "quads":      7021,
+    "shape_keys": ["Basis", "SK_Bwd", "SK_HiEps", "SK_LongT"]
+  },
+  "colour_attributes": ["FTLE_Value"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic":   "scripting",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-gn-simulation-zone-sph-fluid-pressure-viscosity-light-painting",
+      "/tutorials/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "ref":     "Shadden SC, Lekien F, Marsden JE (2005). Definition and properties of Lagrangian coherent structures from finite-time Lyapunov exponents in two-dimensional aperiodic flows. Physica D 212(3–4):271–304.",
+        "url":     "https://doi.org/10.1016/j.physd.2005.10.007",
+        "preprint": "https://shaddenlab.berkeley.edu/uploads/LCS-theory.pdf",
+        "licence": "PD-equations",
+        "related": [
+          "https://github.com/shaddenlab/LCS-Tool (BSD-2-Clause) — MATLAB FTLE toolkit by Shadden lab",
+          "https://github.com/haller-group/LCS-Tool (BSD-2-Clause) — maintained fork"
+        ]
+      },
+      {
+        "ref":     "Haller G, Yuan G (2000). Lagrangian coherent structures and mixing in two-dimensional turbulence. Physica D 147(3–4):352–370.",
+        "url":     "https://doi.org/10.1016/S0167-2789(00)00142-1",
+        "licence": "PD-equations",
+        "related": [
+          "https://github.com/haller-group/geodesic-LCS-computation (MIT) — geodesic LCS method",
+          "https://github.com/Haasdonk/functa (MIT) — LCS-related implicit neural fields"
+        ]
+      }
+    ]
+  }
+}
