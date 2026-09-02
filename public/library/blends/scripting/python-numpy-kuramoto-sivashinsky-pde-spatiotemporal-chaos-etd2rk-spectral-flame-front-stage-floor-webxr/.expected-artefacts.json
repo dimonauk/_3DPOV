@@ -1,0 +1,77 @@
+{
+  "slug": "python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-etd2rk-spectral-flame-front-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "category": "scripting",
+  "topic": "kuramoto-sivashinsky-pde",
+  "blend_filename": "ks_flame_floor.blend",
+  "glb_filename": "ks_flame_floor.glb",
+  "expected_vertex_count": 8192,
+  "expected_face_count": 7938,
+  "shape_keys": ["Basis", "SK_Onset", "SK_Short", "SK_Long"],
+  "vertex_attributes": ["KS_Velocity"],
+  "colour_scheme": "Cobalt–Amber FLOAT_COLOR",
+  "holoflow_facet": false,
+  "holoflow_category": "stage-floor",
+  "draco_level": 6,
+  "export_yup": true,
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-etd2rk-spectral-flame-front-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-etd2rk-spectral-flame-front-stage-floor-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-swift-hohenberg-pde-hexagonal-rolls-benard-convection-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-fermi-pasta-ulam-tsingou-recurrence-anharmonic-chain-alpha-fpu-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "citation": "Sivashinsky GI (1977) Nonlinear analysis of hydrodynamic instability in laminar flames Acta Astronaut 4(11–12):1177–1206",
+        "doi": "10.1016/0094-5765(77)90096-0",
+        "licence": "PD-equations",
+        "role": "Flame-front KS equation derivation"
+      },
+      {
+        "citation": "Kuramoto Y & Tsuzuki T (1976) Persistent propagation of concentration waves in dissipative media Prog Theor Phys 55(2):356–369",
+        "doi": "10.1143/PTP.55.356",
+        "licence": "PD-equations",
+        "role": "Chemical-wave KS equation; spatiotemporal chaos context",
+        "related": "https://github.com/spectralDNS/spectralDNS (MIT) — dealiasing reference"
+      },
+      {
+        "citation": "Cox SM & Matthews PC (2002) Exponential time differencing for stiff systems J Comput Phys 176(2):430–455",
+        "doi": "10.1006/jcph.2002.6995",
+        "licence": "PD-equations",
+        "role": "ETD2RK integration scheme used in blueprint.py",
+        "related": "https://github.com/spectralDNS/shenfun (MIT) — spectral solver framework"
+      },
+      {
+        "citation": "NumPy Developers",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "role": "rfft, irfft, rfftfreq, vectorised array operations"
+      }
+    ]
+  },
+  "mathematical_details": {
+    "pde": "u_t = -u_xxxx - u_xx - u*u_x",
+    "fourier_linear": "L_hat(k) = k^2 - k^4",
+    "fourier_nonlinear": "N_hat(u_hat) = -(ik/2) * rfft(irfft(u_hat)^2)  [2/3 dealiased]",
+    "scheme": "ETD2RK (Heun predictor-corrector with exponential integrating factor)",
+    "domain_basis": 64.0,
+    "domain_onset": 22.0,
+    "domain_short": 32.0,
+    "domain_long": 96.0,
+    "dt": 0.25,
+    "n_warmup": 1200,
+    "n_snapshots": 64,
+    "skip_steps": 8,
+    "dealiasing": "2/3 rule — modes index > NX//3 zeroed",
+    "linear_instability_threshold": "L > 2*pi*sqrt(2) ≈ 8.9",
+    "chaos_threshold": "L ≳ 20",
+    "fastest_growing_mode": "k_c = 1/sqrt(2), growth rate = 1/4",
+    "notes": "k=0 mode has L_hat=0; phi1(0)=1 by Taylor limit so mean is conserved (zero for odd IC)"
+  }
+}
