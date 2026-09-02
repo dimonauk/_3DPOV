@@ -648,6 +648,7 @@ import { entry as blenderTutorialPythonNumpyDadrasAttractorMomeni2009FourScrollV
 import { entry as blenderTutorialPythonNumpyRayleighTaylorInstability2dBoussinesqVorticityStreamfunctionSpectralHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyHalvorsenAttractorCyclicC3SymmetryTripleScrollRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottBAttractorLinzTwoQuadraticMinimalChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyShawAttractorRobertShaw1981TwoScrollDualSaddleFocusRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1303,6 +1304,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyRayleighTaylorInstability2dBoussinesqVorticityStreamfunctionSpectralHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyHalvorsenAttractorCyclicC3SymmetryTripleScrollRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottBAttractorLinzTwoQuadraticMinimalChaosRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyShawAttractorRobertShaw1981TwoScrollDualSaddleFocusRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

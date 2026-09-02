@@ -1,0 +1,98 @@
+{
+  "slug": "python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_shaw_poi.blend",
+    "hf_shaw_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_shaw_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "Shaw_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_LoA", "SK_HiA", "SK_HiB"],
+    "tube_segments": 8,
+    "tube_radius": 0.045,
+    "waypoints": 3000,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Shaw attractor (Robert Shaw 1981)",
+    "original_citation": "Shaw R (1981) Z Naturforsch A 36(1):80-112",
+    "equations": {
+      "x_dot": "-a * (x + y)",
+      "y_dot": "-y - a * x * z",
+      "z_dot": "a * x * y + b"
+    },
+    "canonical_a": 10.0,
+    "canonical_b": 4.272,
+    "equilibria": "P± = (±√(b/a), ∓√(b/a), 1/a) — two symmetric saddle-foci",
+    "equilibria_canonical": "P± ≈ (±0.6538, ∓0.6538, 0.100)",
+    "symmetry": "Z₂: (x,y,z) → (-x,-y,z)",
+    "divergence": "-(a+1) = -11 (constant, independent of position)",
+    "terms": 5,
+    "quadratic_terms": 2,
+    "lyapunov_lambda1": 0.368,
+    "lyapunov_lambda2": 0.0,
+    "lyapunov_lambda3": -11.368,
+    "kaplan_yorke_dim": 2.032,
+    "lyapunov_time": 2.72,
+    "liouville_check": "0.368 + 0 - 11.368 = -11.000 = nabla_F",
+    "ks_entropy_nats_per_tu": 0.368,
+    "integrator": "RK4",
+    "dt": 0.002,
+    "n_warmup": 5000,
+    "n_steps": 150000,
+    "thin": 50,
+    "shape_key_variants": {
+      "Basis": "a=10.0, b=4.272 canonical 2-scroll",
+      "SK_LoA": "a=7.0, b=4.272 lower coupling, broader orbit, nabla_F=-8",
+      "SK_HiA": "a=12.0, b=4.272 higher coupling, tighter orbit, nabla_F=-13",
+      "SK_HiB": "a=10.0, b=7.5 larger forcing, bigger equilibrium displacement"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rikitake-two-disc-dynamo-geomagnetic-reversal-bullard-chaos-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Robert Shaw",
+        "title": "Strange attractors, chaotic behavior, and information flow — Z Naturforsch A 36(1):80-112 (1981)",
+        "licence": "PD (mathematical equations and results)",
+        "url": "https://doi.org/10.1515/zna-1981-0115"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows (2010), World Scientific",
+        "licence": "MIT (companion C code)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm",
+        "related": "https://sprott.physics.wisc.edu/chaos/sprott.htm"
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
