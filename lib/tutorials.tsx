@@ -646,6 +646,7 @@ import { entry as blenderTutorialPythonNumpyMayLeonard3speciesCyclicCompetitionH
 import { entry as blenderTutorialPythonNumpyDuffingOscillatorUedaBistabilityPeriodDoublingRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-duffing-oscillator-ueda-bistability-period-doubling-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyDadrasAttractorMomeni2009FourScrollVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-dadras-attractor-momeni-2009-four-scroll-variable-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRayleighTaylorInstability2dBoussinesqVorticityStreamfunctionSpectralHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosEtd2rkSpectralFlameFrontStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-etd2rk-spectral-flame-front-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1299,6 +1300,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyDuffingOscillatorUedaBistabilityPeriodDoublingRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyDadrasAttractorMomeni2009FourScrollVariableDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRayleighTaylorInstability2dBoussinesqVorticityStreamfunctionSpectralHeightFieldStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyKuramotoSivashinskyPdeSpatiotemporalChaosEtd2rkSpectralFlameFrontStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
