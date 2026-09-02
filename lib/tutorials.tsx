@@ -650,6 +650,7 @@ import { entry as blenderTutorialPythonNumpyHalvorsenAttractorCyclicC3SymmetryTr
 import { entry as blenderTutorialPythonNumpySprottBAttractorLinzTwoQuadraticMinimalChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyShawAttractorRobertShaw1981TwoScrollDualSaddleFocusRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyNewtonLeipnikAttractor1981DoubleStrangeBistabilityRigidBodyFeedbackRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-newton-leipnik-attractor-1981-double-strange-bistability-rigid-body-feedback-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyShimizuMoriokaAttractor1980LaserModeZ2SaddleFocusRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1307,6 +1308,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottBAttractorLinzTwoQuadraticMinimalChaosRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyShawAttractorRobertShaw1981TwoScrollDualSaddleFocusRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyNewtonLeipnikAttractor1981DoubleStrangeBistabilityRigidBodyFeedbackRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyShimizuMoriokaAttractor1980LaserModeZ2SaddleFocusRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
