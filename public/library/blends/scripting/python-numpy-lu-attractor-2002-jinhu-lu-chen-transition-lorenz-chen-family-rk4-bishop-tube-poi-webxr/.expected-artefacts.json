@@ -1,0 +1,50 @@
+{
+  "slug": "python-numpy-lu-attractor-2002-jinhu-lu-chen-transition-lorenz-chen-family-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "outputs": [
+    "lu_attractor.blend",
+    "lu_attractor.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "shape_keys": ["Basis", "SK_LowC", "SK_HighC", "SK_LowA"],
+  "colour_attribute": "Lu_Speed",
+  "colour_domain": "POINT",
+  "colour_type": "FLOAT_COLOR",
+  "holoflow_category": "poi-head",
+  "holoflow_facet": false,
+  "waypoints": 3000,
+  "tube_sides": 10,
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "citation": "Lü J, Chen G (2002). A new chaotic attractor coined. Int. J. Bifurc. Chaos 12(3):659–661.",
+        "doi": "10.1142/S0218127402004620",
+        "licence": "CC0 (mathematics)",
+        "url": "https://doi.org/10.1142/S0218127402004620"
+      },
+      {
+        "citation": "Chen G, Ueta T (1999). Yet another chaotic attractor. IJBC 9(7):1465–1466.",
+        "doi": "10.1142/S0218127499001024",
+        "licence": "CC0 (mathematics)",
+        "url": "https://doi.org/10.1142/S0218127499001024"
+      },
+      {
+        "citation": "Gilpin W (2021–2024). dysts: Dynamical Systems Benchmarks.",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts"
+      }
+    ]
+  }
+}
