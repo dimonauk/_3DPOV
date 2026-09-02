@@ -1,0 +1,77 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr",
+  "outputs": [
+    "kelvin_helmholtz_kh.blend",
+    "kelvin_helmholtz_kh.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "vertices": 16384,
+    "faces": 16129,
+    "topology": "quad grid 128×128",
+    "geometry": "height-field stage floor"
+  },
+  "vertex_attributes": [
+    {
+      "name": "KH_Vorticity",
+      "type": "FLOAT_COLOR",
+      "domain": "POINT",
+      "palette": "cobalt (CCW, ω<0) → amber (CW, ω>0)"
+    }
+  ],
+  "shape_keys": ["Basis", "SK_t20", "SK_t40", "SK_t60"],
+  "shader": "Principled BSDF — KH_Vorticity drives Base Color + Emission",
+  "simulation": {
+    "method": "pseudo-spectral RK4",
+    "equations": "2-D inviscid Euler, vorticity-streamfunction",
+    "resolution": "128×128",
+    "domain": "4π × 2π (doubly periodic)",
+    "dealiasing": "Orszag 2/3 rule",
+    "parameters": {
+      "U0": 1.0,
+      "delta": 0.2,
+      "epsilon": 0.001,
+      "DT": 0.025,
+      "snapshot_times": [0, 20, 40, 60]
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      {
+        "label": "Rayleigh–Taylor Instability — companion buoyancy-driven instability",
+        "url": "/tutorials/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr"
+      },
+      {
+        "label": "Kuramoto–Sivashinsky PDE — pseudo-spectral spatiotemporal chaos height field",
+        "url": "/tutorials/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr"
+      },
+      {
+        "label": "FTLE Lagrangian Coherent Structures — double-gyre flow analysis",
+        "url": "/tutorials/blender-tutorial-python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr"
+      }
+    ],
+    "outside_sources": [
+      {
+        "author": "Lord Kelvin (Sir William Thomson)",
+        "title": "Hydrokinetic solutions and observations",
+        "venue": "Philosophical Magazine, Series 4, 42(281):362–377",
+        "year": 1871,
+        "licence": "Public Domain (>100 years, pre-copyright)",
+        "url": "https://www.tandfonline.com/doi/abs/10.1080/14786447108640585",
+        "note": "Primary mathematical treatment of the shear-flow instability"
+      },
+      {
+        "author": "Zingale, Michael et al.",
+        "title": "pyro2: A pure Python hydrodynamics solver",
+        "year": "2015-2025",
+        "licence": "MIT",
+        "url": "https://github.com/python-hydro/pyro2",
+        "note": "Reference implementation for pseudo-spectral Euler integration; KH example"
+      }
+    ]
+  }
+}

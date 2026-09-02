@@ -662,6 +662,7 @@ import { entry as blenderTutorialPythonNumpyPeterDeJongAttractorDiscrete2dMapLog
 import { entry as blenderTutorialPythonNumpyFinanceAttractorMaChen2001InterestRateChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-finance-attractor-ma-chen-2001-interest-rate-chaos-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyMackeyGlassDelayDifferentialEquationTakensEmbeddingChaosBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-mackey-glass-delay-differential-equation-takens-embedding-chaos-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRosslerHyperchaos4dTwoPositiveLyapunovBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rossler-hyperchaos-4d-two-positive-lyapunov-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyKelvinHelmholtzShearInstabilitySpectralVorticityHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1331,6 +1332,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyFinanceAttractorMaChen2001InterestRateChaosRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyMackeyGlassDelayDifferentialEquationTakensEmbeddingChaosBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRosslerHyperchaos4dTwoPositiveLyapunovBishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyKelvinHelmholtzShearInstabilitySpectralVorticityHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
