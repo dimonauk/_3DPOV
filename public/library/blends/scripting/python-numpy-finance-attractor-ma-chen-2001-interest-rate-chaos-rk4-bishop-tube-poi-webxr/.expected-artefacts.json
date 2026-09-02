@@ -1,0 +1,72 @@
+{
+  "blend": "hf_finance_attractor_poi.blend",
+  "glb":   "hf_finance_attractor_poi.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-finance-attractor-ma-chen-2001-interest-rate-chaos-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-finance-attractor-ma-chen-2001-interest-rate-chaos-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "waypoints":  3000,
+    "tube_sides": 8,
+    "vertices":   24000,
+    "quads":      23920,
+    "shape_keys": ["Basis", "SK_Thrift", "SK_LowCost", "SK_Rigid"],
+    "colour_attribute": "Finance_Speed",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "physics": {
+    "system":    "Ma–Chen Finance Attractor 2001",
+    "equations": ["ẋ = z + (y − a)x", "ẏ = 1 − by − x²", "ż = −x − cz"],
+    "variables": {"x": "interest rate", "y": "investment demand", "z": "price index"},
+    "canonical": {"a": 0.9, "b": 0.2, "c": 1.5},
+    "fixed_points": {
+      "P0": [0.0, 5.0, 0.0],
+      "Pplus":  [0.829, 1.567, -0.553],
+      "Pminus": [-0.829, 1.567, 0.553]
+    },
+    "lyapunov": {"lambda1": 0.095, "lambda2": 0.0, "lambda3": -1.095},
+    "D_KY": 2.09,
+    "divergence": "y − (a+b+c)  [position-dependent]",
+    "integrator": "RK4",
+    "dt": 0.01,
+    "burn_in": 3000,
+    "n_total": 90000,
+    "thin": 30,
+    "presets": {
+      "Basis":      {"a": 0.9, "b": 0.2, "c": 1.5},
+      "SK_Thrift":  {"a": 0.4, "b": 0.2, "c": 1.5},
+      "SK_LowCost": {"a": 0.9, "b": 0.1, "c": 1.5},
+      "SK_Rigid":   {"a": 0.9, "b": 0.2, "c": 0.8}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rabinovich-fabrikant-modulation-instability-plasma-waves-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-aizawa-attractor-langford-1984-torus-wrapping-bishop-tube-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Junhai Ma & Guanrong Chen",
+        "title":  "Study for the bifurcation topological structure and the global complicated character of a kind of non-linear finance system (I)",
+        "url":    "https://link.springer.com/article/10.1023/A:1016313804297",
+        "licence": "equations PD (mathematical content not copyrightable)",
+        "journal": "Applied Mathematics and Mechanics 22(11):1240–1251 (2001)"
+      },
+      {
+        "author": "Wei-Ching Chen",
+        "title":  "Nonlinear dynamics and chaos in a fractional-order financial system",
+        "url":    "https://doi.org/10.1016/j.chaos.2006.08.005",
+        "licence": "equations PD",
+        "journal": "Chaos, Solitons & Fractals 36(5):1305–1314 (2008)",
+        "related": "https://github.com/numpy/numpy (NumPy BSD-3-Clause, integration ecosystem)"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-finance-attractor-ma-chen-2001-interest-rate-chaos-rk4-bishop-tube-poi-webxr"
+}
