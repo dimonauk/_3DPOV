@@ -1,0 +1,104 @@
+{
+  "slug": "python-numpy-newton-leipnik-attractor-1981-double-strange-bistability-rigid-body-feedback-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_newton_leipnik_poi.blend",
+    "hf_newton_leipnik_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-newton-leipnik-attractor-1981-double-strange-bistability-rigid-body-feedback-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-newton-leipnik-attractor-1981-double-strange-bistability-rigid-body-feedback-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_newton_leipnik_poi",
+    "object_type": "poi_dual_tube",
+    "vertex_colour": "NL_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "upper_gradient": "cobalt-to-amber (NL_Speed 0–1)",
+    "lower_gradient": "white-to-crimson (NL_Speed 1–2)",
+    "shape_keys": ["Basis", "SK_LowA", "SK_HighA", "SK_LowB"],
+    "tube_segments": 8,
+    "tube_radius": 0.030,
+    "waypoints_per_orbit": 3000,
+    "total_waypoints": 6000,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Newton–Leipnik attractor (Newton & Leipnik 1981)",
+    "original_citation": "Newton TA, Leipnik RB (1981) Phys Lett A 86(2-3):63-67",
+    "doi": "10.1016/0375-9601(81)90165-1",
+    "equations": {
+      "x_dot": "-a*x + y + 10*y*z",
+      "y_dot": "-x - 0.4*y + 5*x*z",
+      "z_dot": "b*z - 5*x*y"
+    },
+    "canonical_a": 0.4,
+    "canonical_b": 0.175,
+    "ic_upper": [0.349, 0.0, -0.160],
+    "ic_lower": [-0.349, 0.0, 0.160],
+    "defining_property": "Two coexisting strange attractors at same parameter values (bistability of chaos)",
+    "divergence": "-a - 0.4 + b = -0.625 (constant)",
+    "lyapunov_lambda1": 0.155,
+    "lyapunov_lambda2": 0.000,
+    "lyapunov_lambda3": -0.780,
+    "kaplan_yorke_dim": 2.199,
+    "lyapunov_time_tu": 6.5,
+    "liouville_check": "0.155 + 0 - 0.780 = -0.625 = nabla_F",
+    "integrator": "RK4",
+    "dt": 0.005,
+    "n_warmup": 2000,
+    "n_steps": 60000,
+    "thin": 20,
+    "shape_key_variants": {
+      "Basis": "a=0.4, b=0.175 canonical double coexisting attractors",
+      "SK_LowA": "a=0.3, b=0.175 less damping, larger orbits, nabla_F=-0.525",
+      "SK_HighA": "a=0.55, b=0.175 more damping, tighter scrolls, nabla_F=-0.775",
+      "SK_LowB": "a=0.4, b=0.10 reduced z-growth, nabla_F=-0.700"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rucklidge-attractor-magnetoconvection-1992-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chua-circuit-double-scroll-shilnikov-chaos-piecewise-linear-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-ueda-bistability-period-doubling-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Newton TA, Leipnik RB",
+        "title": "Double strange attractors in rigid body motion with linear feedback control",
+        "journal": "Physics Letters A 86(2-3):63-67 (1981)",
+        "licence": "PD (mathematical equations and results)",
+        "url": "https://doi.org/10.1016/0375-9601(81)90165-1"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Some simple chaotic flows — Phys Rev E 50(2):R647-R650 (1994)",
+        "licence": "PD (journal article, equations in public domain)",
+        "url": "https://doi.org/10.1103/PhysRevE.50.R647",
+        "companion_code": "https://sprott.physics.wisc.edu/chaos/compchaos.htm",
+        "related": [
+          "https://sprott.physics.wisc.edu/chaos/sprott.htm",
+          "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm"
+        ]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy — fundamental array computing for Python",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
