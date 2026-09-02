@@ -1,0 +1,87 @@
+{
+  "slug": "python-numpy-rossler-hyperchaos-4d-two-positive-lyapunov-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "files": [
+    "hc_rossler_poi.blend",
+    "hc_rossler_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_path": "public/library/videos/scripting/python-numpy-rossler-hyperchaos-4d-two-positive-lyapunov-bishop-tube-poi-webxr/",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "authors": "Rössler OE",
+        "year": 1979,
+        "title": "An equation for hyperchaos",
+        "venue": "Phys Lett A 71(2–3):155–157",
+        "doi": "10.1016/0375-9601(79)90150-6",
+        "licence": "PD-equations (>45 yr academic publication)",
+        "url": "https://doi.org/10.1016/0375-9601(79)90150-6",
+        "related": [
+          "Rössler OE 1976 Phys Lett A 57(5):397 (the parent 3D system)",
+          "Matsumoto T Chua LO Kobayashi K 1986 IEEE Trans CAS 33(11):1143 (circuit verification)"
+        ]
+      },
+      {
+        "authors": "NumPy developers",
+        "year": 2020,
+        "title": "Array programming with NumPy",
+        "venue": "Nature 585:357–362",
+        "doi": "10.1038/s41586-020-2649-2",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  },
+  "parameters": {
+    "A_BASIS": 0.25,
+    "B": 3.0,
+    "C": 0.5,
+    "D_BASIS": 0.05,
+    "DT": 0.005,
+    "BURN_IN": 5000,
+    "N_STEPS": 90000,
+    "THIN": 30,
+    "TUBE_R": 0.045,
+    "TUBE_SIDES": 10,
+    "POI_R": 0.09
+  },
+  "shape_keys": {
+    "Basis":   {"a": 0.25, "d": 0.05, "regime": "hyperchaos (2 positive λ)", "D_KY_approx": 3.013},
+    "SK_LoD":  {"a": 0.25, "d": 0.01, "regime": "near-periodic (hyperchaos lost)"},
+    "SK_HiA":  {"a": 0.35, "d": 0.05, "regime": "broader hyperchaotic orbit"},
+    "SK_HiD":  {"a": 0.25, "d": 0.10, "regime": "strong 4D coupling, altered fold"}
+  },
+  "colour_attribute": {
+    "name": "HC_Rossler_W",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "meaning": "normalised 4th-dimension coordinate w",
+    "low": "cobalt (0.03, 0.20, 0.78) — w near minimum",
+    "high": "amber (0.98, 0.62, 0.05) — w near maximum"
+  },
+  "lyapunov_spectrum": {
+    "lambda_1": "+0.155",
+    "lambda_2": "+0.033",
+    "lambda_3": "~0",
+    "lambda_4": "~-14.3",
+    "D_KY": "~3.013",
+    "note": "Two positive exponents → hyperchaos; no 3D autonomous ODE can achieve this"
+  }
+}
