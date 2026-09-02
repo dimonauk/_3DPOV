@@ -1,0 +1,57 @@
+{
+  "blend": "ks_floor.blend",
+  "glb": "ks_floor.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr/screen.mp4"
+  },
+  "mesh": {
+    "vertices": 16384,
+    "quads":    16129,
+    "shape_keys": ["Basis", "SK_Early", "SK_SmL", "SK_LgL"]
+  },
+  "colour_attributes": ["KS_Value"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-swift-hohenberg-pde-hexagonal-rolls-benard-convection-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rayleigh-taylor-instability-2d-boussinesq-vorticity-streamfunction-spectral-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-spots-stripes-sphere-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-cahn-hilliard-phase-separation-spinodal-displacement-webxr"
+    ],
+    "outside": [
+      {
+        "ref":     "Kuramoto Y, Tsuzuki T (1976). Persistent propagation of concentration waves in dissipative media far from thermal equilibrium. Prog. Theor. Phys. 55(2):356–369.",
+        "url":     "https://doi.org/10.1143/PTP.55.356",
+        "licence": "PD-equations",
+        "related": [
+          "https://github.com/chebfun/chebfun (MIT) — ETDRK4 reference implementation",
+          "https://github.com/spectralDNS/spectralDNS (MIT) — pseudo-spectral DNS"
+        ]
+      },
+      {
+        "ref":     "Sivashinsky GI (1977). Nonlinear analysis of hydrodynamic instability in laminar flames I. Acta Astronautica 4(11-12):1177–1206.",
+        "url":     "https://doi.org/10.1016/0094-5765(77)90096-0",
+        "licence": "PD-equations",
+        "related": [
+          "https://github.com/spectralDNS/shenfun (MIT) — spectral Galerkin PDE solver",
+          "https://github.com/spectralDNS/mpi4py-fft (MIT) — parallel FFT for PDEs"
+        ]
+      },
+      {
+        "ref":     "Kassam AK, Trefethen LN (2005). Fourth-order time-stepping for stiff PDEs. SIAM J. Sci. Comput. 26(4):1214–1233.",
+        "url":     "https://doi.org/10.1137/S1064827502410633",
+        "licence": "Academic / Chebfun MIT",
+        "related": [
+          "https://github.com/chebfun/chebfun (MIT)",
+          "https://github.com/olivierverdier/pychebfun (MIT)"
+        ]
+      }
+    ]
+  }
+}
