@@ -1,0 +1,31 @@
+{
+  "blend":  "mg_dde_poi.blend",
+  "glb":    "mg_dde_poi.glb",
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-mackey-glass-dde-delay-differential-infinite-dimensional-chaos-takens-embedding-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-mackey-glass-dde-delay-differential-infinite-dimensional-chaos-takens-embedding-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "licence": "CC0",
+  "blender_version": "5.1",
+  "mesh": {
+    "object_name": "MackeyGlass_Poi",
+    "shape_keys": ["Basis", "SK_Med", "SK_Limit", "SK_Strong"],
+    "attributes": ["MG_Signal"],
+    "material": "MackeyGlass_Mat"
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-hindmarsh-rose-bursting-neuron-tonic-chaotic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-van-der-pol-lienard-limit-cycle-relaxation-oscillations-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {"doi": "10.1126/science.267326", "licence": "PD"},
+      {"doi": "10.1007/BFb0091924",     "licence": "PD"},
+      {"doi": "10.1016/0167-2789(82)90042-2", "licence": "PD"},
+      {"url": "https://github.com/numpy/numpy", "licence": "BSD-3-Clause"}
+    ]
+  }
+}
