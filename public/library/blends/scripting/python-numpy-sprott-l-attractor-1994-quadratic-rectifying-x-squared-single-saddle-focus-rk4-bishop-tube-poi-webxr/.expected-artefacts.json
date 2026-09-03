@@ -1,0 +1,77 @@
+{
+  "blend": "hf_sprott_l_poi.blend",
+  "glb":   "hf_sprott_l_poi.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "waypoints":        3000,
+    "tube_segments":    8,
+    "vertices":         24000,
+    "quads":            23992,
+    "shape_keys":       ["Basis", "SK_HighA", "SK_LowB", "SK_Compact"],
+    "colour_attribute": "SprottL_Speed",
+    "colour_domain":    "POINT",
+    "colour_type":      "FLOAT_COLOR"
+  },
+  "physics": {
+    "system": "Sprott L (1994) — ẋ=y+az  ẏ=bx²−y  ż=1−x",
+    "canonical_params": {"a": 3.9, "b": 0.9},
+    "fixed_point": {"x": 1.0, "y": 0.9, "z": -0.2308},
+    "eigenvalues": {
+      "real": -1.47,
+      "complex": "+0.235 ± 1.61i (unstable spiral)"
+    },
+    "shilnikov_condition": "|λ_r| = 1.47 > Re(λ_c) = 0.235  ✓",
+    "divergence": "∇·F = −1  (constant everywhere)",
+    "lyapunov_1": "+0.063",
+    "lyapunov_2": "0  (tangent to flow)",
+    "lyapunov_3": "−1.063",
+    "lyapunov_sum": "−1.000  = ∇·F  (Liouville verified)",
+    "kaplan_yorke_dim": 2.059,
+    "integration": {
+      "method": "RK4",
+      "dt": 0.01,
+      "burn_in": 3000,
+      "n_steps": 90000,
+      "thin": 30,
+      "n_waypoints": 3000,
+      "ic": [0.0, -0.1, 0.1]
+    },
+    "presets": {
+      "Basis"     : {"a": 3.9, "b": 0.9},
+      "SK_HighA"  : {"a": 5.0, "b": 0.9},
+      "SK_LowB"   : {"a": 3.9, "b": 0.6},
+      "SK_Compact": {"a": 2.8, "b": 1.1}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Julien Clinton Sprott",
+        "title":  "Some simple chaotic flows — original 1994 catalogue, Table I, System L",
+        "url":    "https://sprott.physics.wisc.edu/chaos/",
+        "doi":    "10.1103/PhysRevE.50.R647",
+        "licence": "PD mathematics; companion site permissive educational"
+      },
+      {
+        "author": "William Gilpin",
+        "title":  "dysts — Dynamical Systems Benchmarks (131 chaotic systems, Lyapunov spectra)",
+        "url":    "https://github.com/williamgilpin/dysts",
+        "licence": "MIT"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr"
+}
