@@ -1,0 +1,81 @@
+{
+  "slug": "python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "burning_ship_floor.blend",
+      "required": true,
+      "notes": "Scene with BurningShip object, 4 shape keys (Basis/SK_Ship/SK_Mast/SK_Julia), BS_Escape FLOAT_COLOR attribute, emission material"
+    },
+    {
+      "path": "burning_ship_floor.glb",
+      "required": true,
+      "notes": "+Y up, transforms applied, Draco level 6, WebP textures, morph targets, vertex colours exported, root name: burning_ship"
+    },
+    {
+      "path": "blueprint.py",
+      "required": true,
+      "notes": "Vectorised Burning Ship + Julia escape-time generator — run in Blender 5.1 Scripting workspace"
+    },
+    {
+      "path": "record.py",
+      "required": true,
+      "notes": "Viewport-animation renderer — run after blueprint.py"
+    },
+    {
+      "path": "README.md",
+      "required": true,
+      "notes": "Mathematics of the Burning Ship iteration + quick-start documentation"
+    },
+    {
+      "path": "SCREEN-RECORDING-NOTES.md",
+      "required": true,
+      "notes": "OBS instructions for screen.mp4 capture"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr/viewport.mp4",
+      "required": false,
+      "notes": "Rendered by record.py — binary, not committed"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr/screen.mp4",
+      "required": false,
+      "notes": "OBS screen capture — binary, not committed"
+    }
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-mandelbulb-power8-daniel-white-spherical-de-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-newton-fractal-basin-attraction-complex-roots-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "external": [
+      {
+        "author": "Michelitsch M & Rössler O",
+        "title": "The 'burning ship' and its quasi-Julia sets",
+        "journal": "Comput & Graphics 16(4):435–438",
+        "year": 1992,
+        "doi": "10.1016/0097-8493(92)90007-3",
+        "url": "https://doi.org/10.1016/0097-8493(92)90007-3",
+        "licence": "public-domain (mathematical equations and iteration algorithm)",
+        "related": "Rössler O (1976) Phys Lett A 57(5):397 (Rössler attractor — same lead author); related entry at /tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr"
+      },
+      {
+        "author": "Mandelbrot B",
+        "title": "The Fractal Geometry of Nature",
+        "publisher": "W.H. Freeman",
+        "year": 1982,
+        "url": "https://archive.org/details/fractalgeometryo00beno",
+        "licence": "public-domain (mathematical theorems and equations)",
+        "related": "Mandelbrot B (1980) Ann NY Acad Sci 357:249 — original Mandelbrot set paper; Douady A & Hubbard J (1984) Étude dynamique des polynômes complexes I–II, Publ Math Orsay"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 14400,
+    "faces": 14161,
+    "shape_keys": ["Basis", "SK_Ship", "SK_Mast", "SK_Julia"]
+  }
+}
