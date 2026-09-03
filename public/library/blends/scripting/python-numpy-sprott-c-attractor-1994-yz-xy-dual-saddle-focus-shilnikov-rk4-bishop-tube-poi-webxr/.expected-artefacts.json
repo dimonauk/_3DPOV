@@ -1,0 +1,47 @@
+{
+  "blend": "hf_sprott_c_poi.blend",
+  "glb": "hf_sprott_c_poi.glb",
+  "videos": [
+    "public/library/videos/scripting/python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rossler-attractor-otto-1976-single-scroll-band-horseshoe-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://doi.org/10.1103/PhysRevE.50.R647",
+        "title": "Sprott JC (1994) Some simple chaotic flows",
+        "journal": "Physical Review E 50(2):R647-R650",
+        "licence": "PD-mathematics",
+        "related": ["https://sprott.physics.wisc.edu/chaos/"]
+      },
+      {
+        "url": "https://github.com/williamgilpin/dysts",
+        "title": "Gilpin W (2021-2024) dysts Dynamical Systems Benchmarks",
+        "licence": "MIT",
+        "related": ["https://github.com/williamgilpin/fnn"]
+      }
+    ]
+  },
+  "mesh": {
+    "verts": 30000,
+    "quads": 29970,
+    "shape_keys": ["Basis", "SK_cLow", "SK_cHigh", "SK_cWide"],
+    "attribute": "SprottC_Speed",
+    "attribute_type": "FLOAT_COLOR"
+  },
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "y_up": true,
+    "morph_targets": true
+  }
+}

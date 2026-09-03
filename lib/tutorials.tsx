@@ -668,6 +668,7 @@ import { entry as blenderTutorialPythonNumpyLuAttractor2002JinhuLuChenTransition
 import { entry as blenderTutorialPythonNumpyBurningShipFractalMichelitschRossler1992AbsoluteValueEscapeTimeHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyTinkerbellMapBarryMartin1984JamesYorkeDiscreteQuadraticLogDensityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpySprottLAttractor1994QuadraticRectifyingXSquaredSingleSaddleFocusRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottCAttractor1994YzXyDualSaddleFocusShilnikovRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1343,6 +1344,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyBurningShipFractalMichelitschRossler1992AbsoluteValueEscapeTimeHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyTinkerbellMapBarryMartin1984JamesYorkeDiscreteQuadraticLogDensityStageFloorWebxrEntry,
   blenderTutorialPythonNumpySprottLAttractor1994QuadraticRectifyingXSquaredSingleSaddleFocusRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottCAttractor1994YzXyDualSaddleFocusShilnikovRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
