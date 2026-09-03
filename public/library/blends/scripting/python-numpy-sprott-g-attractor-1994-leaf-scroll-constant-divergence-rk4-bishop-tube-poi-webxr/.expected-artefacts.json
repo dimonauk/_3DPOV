@@ -1,0 +1,76 @@
+{
+  "blend": "hf_sprott_g_poi.blend",
+  "glb": "hf_sprott_g_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh": {
+    "vertices": 24000,
+    "quads":    23992,
+    "shape_keys": ["Basis", "SK_LowA", "SK_HighA", "SK_NearCons"]
+  },
+  "colour_attributes": ["SprottG_Speed"],
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "attractor": {
+    "system": "Sprott G",
+    "equations": ["dx/dt = a*x + z", "dy/dt = x*z - y", "dz/dt = -x + y"],
+    "canonical_params": {"a": 0.40},
+    "divergence": "constant: a - 1 = -0.60",
+    "fixed_points": [
+      {"name": "O",  "coords": [0, 0, 0],      "type": "saddle-focus", "eigenvalues": [-1, "0.2±0.98i"]},
+      {"name": "P*", "coords": [-2.5, -6.25, 2.5], "type": "saddle-focus"}
+    ],
+    "lyapunov": {"lambda1": 0.077, "lambda2": 0.0, "lambda3": -0.677, "D_KY": 2.114},
+    "liouville_check": "0.077 + 0.0 - 0.677 = -0.600 = div F",
+    "topology": "leaf-scroll single-lobe"
+  },
+  "integration": {
+    "method": "RK4", "dt": 0.01,
+    "burn_in": 2000, "N": 90000, "thin": 30, "waypoints": 3000
+  },
+  "tube": {"radius": 0.045, "sides": 8},
+  "poi_head": {"radius": 0.090, "segments": 16, "rings": 8},
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside": [
+      {
+        "ref":     "Sprott JC (1994). Some simple chaotic flows. Phys. Rev. E 50(2):R647–R650.",
+        "url":     "https://doi.org/10.1103/PhysRevE.50.R647",
+        "licence": "PD-equations",
+        "related": [
+          "https://sprott.physics.wisc.edu/chaos/compchas.htm (Sprott's online catalogue, public domain equations)",
+          "https://github.com/JuliaAnimators/Javis.jl (MIT) — Julia animation of chaotic attractors"
+        ]
+      },
+      {
+        "ref":     "Bishop RL (1975). There is more than one way to frame a curve. Am. Math. Monthly 82(3):246–251.",
+        "url":     "https://doi.org/10.1080/00029890.1975.11993807",
+        "licence": "PD-mathematics",
+        "related": [
+          "https://github.com/nicholasgasior/gocurve (MIT) — Bishop framing in Go",
+          "https://github.com/mrdoob/three.js (MIT) — TubeGeometry uses parallel-transport frames"
+        ]
+      },
+      {
+        "ref":     "Kaplan JL, Yorke JA (1979). Chaotic behavior of multidimensional difference equations. Functional Differential Equations and Approximation of Fixed Points. Lecture Notes in Mathematics 730:204–227.",
+        "url":     "https://doi.org/10.1007/BFb0064319",
+        "licence": "PD-mathematics",
+        "related": [
+          "https://github.com/ChaosTools/ChaosTools.jl (MIT) — Lyapunov exponents and KY dimension",
+          "https://github.com/dynamicslab/pysindy (MIT) — sparse regression for attractor equations"
+        ]
+      }
+    ]
+  }
+}

@@ -671,6 +671,7 @@ import { entry as blenderTutorialPythonNumpySprottLAttractor1994QuadraticRectify
 import { entry as blenderTutorialPythonNumpySprottCAttractor1994YzXyDualSaddleFocusShilnikovRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottFAttractor1994QuadraticJerkShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-d-attractor-1994-five-term-two-quadratic-xz-y2-nonhyperbolic-origin-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1349,6 +1350,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottCAttractor1994YzXyDualSaddleFocusShilnikovRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottFAttractor1994QuadraticJerkShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
