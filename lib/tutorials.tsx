@@ -667,6 +667,7 @@ import { entry as blenderTutorialPythonNumpyKelvinHelmholtzShearInstabilitySpect
 import { entry as blenderTutorialPythonNumpyLuAttractor2002JinhuLuChenTransitionLorenzChenFamilyRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lu-attractor-2002-jinhu-lu-chen-transition-lorenz-chen-family-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyBurningShipFractalMichelitschRossler1992AbsoluteValueEscapeTimeHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyTinkerbellMapBarryMartin1984JamesYorkeDiscreteQuadraticLogDensityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyLoziMapPiecewiseLinearChaosMisiurewiczSrbHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lozi-map-piecewise-linear-chaos-misiurewicz-srb-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1341,6 +1342,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLuAttractor2002JinhuLuChenTransitionLorenzChenFamilyRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyBurningShipFractalMichelitschRossler1992AbsoluteValueEscapeTimeHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyTinkerbellMapBarryMartin1984JamesYorkeDiscreteQuadraticLogDensityStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyLoziMapPiecewiseLinearChaosMisiurewiczSrbHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
