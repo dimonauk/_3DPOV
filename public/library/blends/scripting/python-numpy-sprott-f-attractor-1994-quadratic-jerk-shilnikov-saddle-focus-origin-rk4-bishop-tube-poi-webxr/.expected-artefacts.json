@@ -1,0 +1,68 @@
+{
+  "blend": "hf_sprott_f_poi.blend",
+  "glb": "hf_sprott_f_poi.glb",
+  "videos": [
+    "public/library/videos/scripting/python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-b-attractor-linz-two-quadratic-minimal-chaos-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-e-attractor-1994-minimal-chaos-saddle-centre-single-fixed-point-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-l-attractor-1994-quadratic-rectifying-x-squared-single-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rucklidge-attractor-magnetoconvection-1992-lobe-switching-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "url": "https://doi.org/10.1103/PhysRevE.50.R647",
+        "title": "Sprott JC (1994) Some simple chaotic flows",
+        "journal": "Physical Review E 50(2):R647-R650",
+        "licence": "PD-mathematics",
+        "related": ["https://sprott.physics.wisc.edu/chaos/"]
+      },
+      {
+        "url": "https://github.com/williamgilpin/dysts",
+        "title": "Gilpin W (2021-2024) dysts Dynamical Systems Benchmarks",
+        "licence": "MIT",
+        "related": ["https://github.com/williamgilpin/fnn"]
+      }
+    ]
+  },
+  "mesh": {
+    "verts": 24000,
+    "quads": 23992,
+    "shape_keys": ["Basis", "SK_LoA", "SK_HiA", "SK_NearCons"],
+    "attribute": "SprottF_Speed",
+    "attribute_type": "FLOAT_COLOR"
+  },
+  "dynamics": {
+    "equations": [
+      "dx/dt = y + z",
+      "dy/dt = -x + a*y",
+      "dz/dt = x^2 - z"
+    ],
+    "canonical_a": 0.5,
+    "divergence": "a - 1 = -0.5 (constant)",
+    "equilibria": ["O=(0,0,0)", "P=(-2,-4,4) at a=0.5"],
+    "eigenvalues_O": ["-1.0", "0.25 ± 0.968i"],
+    "shilnikov_condition": "|lambda_r| = 1.0 > Re(lambda_c) = 0.25 VERIFIED",
+    "lyapunov": ["+0.123", "0", "-0.623"],
+    "D_KY": 2.197,
+    "integrator": "RK4",
+    "dt": 0.01,
+    "burn_in": 2000,
+    "n_steps": 90000,
+    "thin": 30,
+    "waypoints": 3000
+  },
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "y_up": true,
+    "morph_targets": true,
+    "root_name": "hf_sprott_f_poi"
+  }
+}
