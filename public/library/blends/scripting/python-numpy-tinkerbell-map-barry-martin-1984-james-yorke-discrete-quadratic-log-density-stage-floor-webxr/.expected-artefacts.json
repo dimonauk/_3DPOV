@@ -1,0 +1,60 @@
+{
+  "blend": "tinkerbell_floor.blend",
+  "glb":   "tinkerbell_floor.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "vertices": 14400,
+    "quads":    14161,
+    "shape_keys": ["Basis", "SK_Curled", "SK_Open", "SK_Drift"],
+    "colour_attribute": "Tinkerbell_Density",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "physics": {
+    "map": "x'=x²−y²+ax+by  y'=2xy+cx+dy",
+    "standard_params": {"a": 0.9, "b": -0.6013, "c": 2.0, "d": 0.5},
+    "lyapunov_1": "+0.064",
+    "lyapunov_2": "-0.143",
+    "kaplan_yorke_dim": 1.45,
+    "dissipation": "variable (position-dependent det J), ⟨log|det J|⟩ ≈ −0.079",
+    "bounded": false,
+    "escape_detection": "r²>100 → reset to (0,0)",
+    "iterations_per_key": 5000000,
+    "burn_in": 10000,
+    "presets": {
+      "Basis"    : {"a":  0.900, "b": -0.6013, "c": 2.000, "d": 0.500},
+      "SK_Curled": {"a":  0.700, "b": -0.6013, "c": 2.000, "d": 0.500},
+      "SK_Open"  : {"a":  1.300, "b": -0.6013, "c": 2.000, "d": 0.500},
+      "SK_Drift" : {"a":  0.900, "b": -0.6013, "c": 2.500, "d": 0.500}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-mandelbrot-julia-fractal-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "outside": [
+      {
+        "author": "Julien C. Sprott",
+        "title":  "2-D Strange Attractors — parameter survey with C source",
+        "url":    "https://sprott.physics.wisc.edu/fractals/2d/",
+        "licence": "CC0 / public domain"
+      },
+      {
+        "author": "Paul Bourke",
+        "title":  "Tinkerbell Attractor — reference images and C source",
+        "url":    "https://paulbourke.net/fractals/tinkerbell/",
+        "licence": "CC0"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr"
+}
