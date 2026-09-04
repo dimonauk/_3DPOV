@@ -178,6 +178,13 @@ export const CHAMBERS: ReadonlyArray<Chamber> = [
     status: "live",
   },
   {
+    slug: "prism-lattice",
+    title: "Prism Lattice",
+    blurb: "A geodesic sphere of instanced acrylic struts, breathing and cycling through the spectrum.",
+    category: "make-3d",
+    status: "live",
+  },
+  {
     slug: "breeding-floor",
     title: "Breeding Floor",
     blurb: "Twelve sculpture genomes per generation. Favourite and breed; the lineage builds underneath.",
