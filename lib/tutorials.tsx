@@ -679,6 +679,7 @@ import { entry as blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductS
 import { entry as blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-m-attractor-1994-six-term-xsq-dual-saddle-foci-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hydraulic-erosion-particle-droplet-fbm-terrain-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-n-attractor-1994-five-term-zsquared-single-saddle-focus-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1365,6 +1366,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
