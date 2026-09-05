@@ -673,6 +673,7 @@ import { entry as blenderTutorialPythonNumpySprottFAttractor1994QuadraticJerkShi
 import { entry as blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-d-attractor-1994-five-term-two-quadratic-xz-y2-nonhyperbolic-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1353,6 +1354,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

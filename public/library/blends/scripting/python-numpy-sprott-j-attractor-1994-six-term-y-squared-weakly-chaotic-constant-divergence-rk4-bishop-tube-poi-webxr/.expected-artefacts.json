@@ -1,0 +1,61 @@
+{
+  "slug": "python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_sprott_j_poi.blend",
+    "hf_sprott_j_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh_stats": {
+    "tube_verts": 23976,
+    "tube_quads": 23928,
+    "poi_head_verts": "~500",
+    "shape_keys": ["Basis", "SK_LoB", "SK_HiB", "SK_VHiB"]
+  },
+  "vertex_color_attributes": [
+    { "name": "SprottJ_Speed", "domain": "POINT", "type": "FLOAT_COLOR" }
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "yup": true,
+    "morph_targets": true,
+    "vertex_colors": true
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-ueda-bistability-period-doubling-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Sprott JC (1994). Some simple chaotic flows.",
+        "journal": "Phys. Rev. E 50(2):R647–R650",
+        "doi": "10.1103/PhysRevE.50.R647",
+        "licence": "PD-equations",
+        "url": "https://doi.org/10.1103/PhysRevE.50.R647",
+        "related": "https://sprott.physics.wisc.edu/chaos/"
+      },
+      {
+        "title": "Gilpin W (2021–2024). dysts: Dynamical Systems Benchmarks.",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts",
+        "related": "https://github.com/williamgilpin/fnn"
+      },
+      {
+        "title": "Bishop RL (1975). There is more than one way to frame a curve.",
+        "journal": "Amer. Math. Monthly 82(3):246–251",
+        "doi": "10.2307/2311093",
+        "licence": "PD",
+        "url": "https://doi.org/10.2307/2311093"
+      }
+    ]
+  }
+}
