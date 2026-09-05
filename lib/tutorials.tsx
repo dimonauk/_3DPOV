@@ -682,6 +682,7 @@ import { entry as blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquared
 import { entry as blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottIAttractor1994SixTermYSquaredSingleSaddleFocusOriginConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-i-attractor-1994-six-term-y-squared-single-saddle-focus-origin-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-q-attractor-1994-six-term-y-squared-x-coupling-parameter-invariant-shilnikov-ratio-four-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1371,6 +1372,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottIAttractor1994SixTermYSquaredSingleSaddleFocusOriginConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
