@@ -678,6 +678,7 @@ import { entry as blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor19
 import { entry as blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-m-attractor-1994-six-term-xsq-dual-saddle-foci-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hydraulic-erosion-particle-droplet-fbm-terrain-height-field-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-n-attractor-1994-five-term-zsquared-single-saddle-focus-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1363,6 +1364,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry,
+  blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
