@@ -686,6 +686,7 @@ import { entry as blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredX
 import { entry as blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-r-attractor-1994-five-term-xy-bilinear-single-saddle-focus-shilnikov-ratio-ten-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-p-attractor-1994-seven-term-y-squared-variable-divergence-dual-fixed-points-shilnikov-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRikitakeTwoDiskDynamo1958GeomagneticReversalChaoticFlipConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rikitake-two-disk-dynamo-1958-geomagnetic-reversal-chaotic-flip-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyLoziMap1978PiecewiseLinearHenonMisiurewiczStrangeAttractorStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1379,6 +1380,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRikitakeTwoDiskDynamo1958GeomagneticReversalChaoticFlipConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyLoziMap1978PiecewiseLinearHenonMisiurewiczStrangeAttractorStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
