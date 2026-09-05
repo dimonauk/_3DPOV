@@ -684,6 +684,7 @@ import { entry as blenderTutorialPythonNumpySprottIAttractor1994SixTermYSquaredS
 import { entry as blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-q-attractor-1994-six-term-y-squared-x-coupling-parameter-invariant-shilnikov-ratio-four-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-r-attractor-1994-five-term-xy-bilinear-single-saddle-focus-shilnikov-ratio-ten-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-p-attractor-1994-seven-term-y-squared-variable-divergence-dual-fixed-points-shilnikov-origin-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1375,6 +1376,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
