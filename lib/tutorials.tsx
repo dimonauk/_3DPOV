@@ -676,6 +676,7 @@ import { entry as blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquared
 import { entry as blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyIkedaMap1979LaserCavityOpticalBistabilityLogDensityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-ikeda-map-1979-laser-cavity-optical-bistability-log-density-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1359,6 +1360,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyIkedaMap1979LaserCavityOpticalBistabilityLogDensityStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
