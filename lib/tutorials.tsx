@@ -675,6 +675,7 @@ import { entry as blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConsta
 import { entry as blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1357,6 +1358,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
