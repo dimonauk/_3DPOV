@@ -1,0 +1,54 @@
+{
+  "slug": "python-numpy-kp-lump-soliton-manakov-zakharov-bordag-1977-rational-exact-2d-height-field-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "README.md",
+    "SCREEN-RECORDING-NOTES.md",
+    ".expected-artefacts.json"
+  ],
+  "outputs": [
+    "hf_kp_lump.blend",
+    "hf_kp_lump.glb",
+    "../../videos/scripting/python-numpy-kp-lump-soliton-manakov-zakharov-bordag-1977-rational-exact-2d-height-field-webxr/viewport.mp4",
+    "../../videos/scripting/python-numpy-kp-lump-soliton-manakov-zakharov-bordag-1977-rational-exact-2d-height-field-webxr/screen.mp4"
+  ],
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-kdv-soliton-hirota-tau-phase-shift-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-peregrine-breather-rogue-wave-nls-rational-solution-poi-disc-webxr",
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Manakov SV, Zakharov VE, Bordag LA, Its AR, Matveev VB — Two-dimensional solitons of the Kadomtsev-Petviashvili equation and their interaction (1977)",
+        "url": "https://www.sciencedirect.com/science/article/pii/0375960177906566",
+        "licence": "PD (mathematical content, published 1977)",
+        "author": "Manakov, Zakharov, Bordag, Its, Matveev"
+      },
+      {
+        "title": "Kadomtsev BP, Petviashvili VI — On the stability of solitary waves in weakly dispersing media (1970)",
+        "url": "https://www.mathnet.ru/php/archive.phtml?wshow=paper&jrnid=dan&paperid=35918&option_lang=eng",
+        "licence": "PD (mathematical content, published 1970)",
+        "author": "B.P. Kadomtsev, V.I. Petviashvili"
+      },
+      {
+        "title": "NumPy — Array programming with NumPy, Harris CR et al. (2020)",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy Contributors"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 16384,
+    "quads": 16129,
+    "shape_keys": ["Basis", "SK_t-1", "SK_t0", "SK_t+1", "SK_t+2"],
+    "color_attr": "KP_Lump_Height",
+    "color_domain": "POINT",
+    "color_type": "FLOAT_COLOR"
+  },
+  "notes": "Run blueprint.py from Blender Scripting workspace. Save .blend before running to allow bpy.path.abspath('//...') to resolve. The lump velocity is v=3 at C=1; adjusting C_PARAM changes both velocity and peak amplitude."
+}
