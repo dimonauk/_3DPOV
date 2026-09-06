@@ -1,0 +1,51 @@
+{
+  "artefacts": [
+    "hydraulic_erosion_floor.blend",
+    "hydraulic_erosion_floor.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "blend_objects": ["hydraulic_erosion_floor"],
+  "shape_keys": ["Basis", "SK_Eroded", "SK_Rivers", "SK_Deposition"],
+  "vertex_attributes": ["Erosion_Depth"],
+  "topology": {
+    "vertices": 16384,
+    "faces": 16129,
+    "face_type": "quad"
+  },
+  "cross_references": {
+    "outside_sources": [
+      {
+        "author": "Sebastian Lague",
+        "year": "2019-2023",
+        "title": "Hydraulic Erosion (particle-droplet implementation)",
+        "licence": "MIT",
+        "url": "https://github.com/SebLague/Hydraulic-Erosion"
+      },
+      {
+        "author": "Galin E, Guérin E, Peytavie A, Cordonnier G, Cani M-P, Benes B, Gain J",
+        "year": 2019,
+        "title": "A Review of Digital Terrain Modeling",
+        "journal": "Computer Graphics Forum (Eurographics 2019)",
+        "volume": "38(2)",
+        "doi": "10.1111/cgf.13657",
+        "licence": "open-access survey",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.13657"
+      }
+    ],
+    "internal_links": [
+      "/tutorials/blender-tutorial-gn-image-texture-heightmap-terrain",
+      "/tutorials/blender-tutorial-gn-raycast-terrain-decal-scatter",
+      "/tutorials/blender-tutorial-gn-simulation-zone-reaction-diffusion-turing",
+      "/tutorials/blender-tutorial-python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr"
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "hydraulic-erosion-particle-droplet-terrain"
+}

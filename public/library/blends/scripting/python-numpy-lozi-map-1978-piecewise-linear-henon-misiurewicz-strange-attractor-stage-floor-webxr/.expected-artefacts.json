@@ -1,0 +1,69 @@
+{
+  "blend": "lozi_floor.blend",
+  "glb":   "lozi_floor.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "vertices": 14641,
+    "quads":    14400,
+    "shape_keys": ["Basis", "SK_LowA", "SK_HighA", "SK_LowB"],
+    "colour_attribute": "Lozi_Density",
+    "colour_domain": "POINT",
+    "colour_type": "FLOAT_COLOR"
+  },
+  "physics": {
+    "map": "x'=1−a|x|+y   y'=b·x",
+    "canonical_params": {"a": 1.7, "b": 0.5},
+    "jacobian": "piecewise-constant: [[-a,1],[b,0]] (x>0) or [[+a,1],[b,0]] (x<0)",
+    "det_jacobian": "−b everywhere (constant in absolute value)",
+    "lyapunov_1": "+0.470",
+    "lyapunov_2": "−1.163",
+    "lyapunov_sum": "−0.693 = log(0.5) = log(b) ✓",
+    "kaplan_yorke_dim": 1.404,
+    "fixed_point_pos": {"x": 0.4545, "y": 0.2273},
+    "fixed_point_neg": {"x": -0.8333, "y": -0.4167},
+    "proof_of_strange": "Misiurewicz (1980) Ann. NY Acad. Sci. 357, 348-358",
+    "iterations_per_key": 5000000,
+    "burn_in": 10000,
+    "presets": {
+      "Basis"   : {"a": 1.7, "b": 0.5},
+      "SK_LowA" : {"a": 1.4, "b": 0.5},
+      "SK_HighA": {"a": 2.0, "b": 0.5},
+      "SK_LowB" : {"a": 1.7, "b": 0.3}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-feigenbaum-logistic-map-period-doubling-universality-poi-disc-webxr"
+    ],
+    "outside": [
+      {
+        "author": "René Lozi",
+        "title":  "Un attracteur étrange (?) du type attracteur de Hénon (1978)",
+        "url":    "https://doi.org/10.1051/jphyscol:1978529",
+        "licence": "PD (mathematical equations)"
+      },
+      {
+        "author": "Julien C. Sprott",
+        "title":  "2-D Strange Attractors — parameter survey with C source",
+        "url":    "https://sprott.physics.wisc.edu/fractals/2d/",
+        "licence": "CC0 / public domain"
+      },
+      {
+        "author": "Paul Bourke",
+        "title":  "Lozi Attractor — reference images and source",
+        "url":    "https://paulbourke.net/fractals/lozi/",
+        "licence": "CC0"
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr"
+}

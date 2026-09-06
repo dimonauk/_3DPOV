@@ -1,0 +1,59 @@
+{
+  "blend": "hf_sprott_q_poi.blend",
+  "glb": "hf_sprott_q_poi.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-sprott-q-attractor-1994-six-term-y-squared-x-coupling-parameter-invariant-shilnikov-ratio-four-constant-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen": "public/library/videos/scripting/python-numpy-sprott-q-attractor-1994-six-term-y-squared-x-coupling-parameter-invariant-shilnikov-ratio-four-constant-divergence-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh_stats": {
+    "waypoints": 3000,
+    "tube_sides": 8,
+    "vertices": 24000,
+    "quads": 23992,
+    "shape_keys": ["Basis", "SK_LowA", "SK_HighA", "SK_NearTorus"]
+  },
+  "attributes": [
+    { "name": "SprottQ_Speed", "type": "FLOAT_COLOR", "domain": "POINT" }
+  ],
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-vertex-colour-attributes"
+    ],
+    "outside_sources": [
+      {
+        "title": "Some simple chaotic flows",
+        "author": "Sprott JC",
+        "year": 1994,
+        "journal": "Physical Review E",
+        "doi": "10.1103/PhysRevE.50.R647",
+        "url": "https://sprott.physics.wisc.edu/chaos/sprott.htm",
+        "licence": "public-domain equations",
+        "related_repos": [
+          { "url": "https://github.com/williamgilpin/dysts", "licence": "MIT" }
+        ]
+      },
+      {
+        "title": "There is more than one way to frame a curve",
+        "author": "Bishop RL",
+        "year": 1975,
+        "journal": "American Mathematical Monthly",
+        "doi": "10.2307/2311093",
+        "licence": "public-domain",
+        "related_repos": [
+          { "url": "https://github.com/mrdoob/three.js", "licence": "MIT" }
+        ]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "export_morph": true,
+    "export_colors": true,
+    "yup": true
+  }
+}

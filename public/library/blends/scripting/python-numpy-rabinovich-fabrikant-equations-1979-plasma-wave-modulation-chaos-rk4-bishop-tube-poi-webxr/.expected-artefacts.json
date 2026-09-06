@@ -1,0 +1,75 @@
+{
+  "slug": "python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "date": "2026-09-06",
+  "artefacts": [
+    { "path": "hf_rf_poi.blend",   "type": "blend", "optional": false },
+    { "path": "hf_rf_poi.glb",     "type": "glb",   "optional": false },
+    { "path": "blueprint.py",      "type": "script", "optional": false },
+    { "path": "record.py",         "type": "script", "optional": false },
+    { "path": "README.md",         "type": "doc",    "optional": false },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "doc", "optional": false },
+    {
+      "path": "../../videos/scripting/python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "optional": true,
+      "note": "Rendered by record.py; not committed to git"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "optional": true,
+      "note": "OBS screen capture; not committed to git"
+    }
+  ],
+  "cross_references": {
+    "internal_studio": [
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ross-ler-attractor-rk4-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "Rabinovich MI, Fabrikant AL (1979) — Stochastic wave self-modulation in nonequilibrium media",
+        "url": "https://inspirehep.net/literature/147015",
+        "licence": "CC0 (equations, >45yr)",
+        "note": "Original JETP 50:311 paper deriving the RF equations from plasma-wave modulation physics"
+      },
+      {
+        "title": "williamgilpin/dysts — Dynamical Systems in Python",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "note": "RF system catalogued; Lyapunov exponents and D_KY independently verified"
+      }
+    ]
+  },
+  "mesh_stats": {
+    "waypoints": 3000,
+    "tube_sides": 12,
+    "vertices": 36000,
+    "quads": 35988
+  },
+  "ode": {
+    "integrator": "RK4",
+    "dt": 0.005,
+    "burn_in": 3000,
+    "n_steps": 60000,
+    "thin": 20
+  },
+  "parameters": {
+    "basis":       { "alpha": 0.14, "gamma": 0.10 },
+    "sk_weakdiss": { "alpha": 0.10, "gamma": 0.10 },
+    "sk_strongdiss": { "alpha": 0.20, "gamma": 0.10 },
+    "sk_highg":    { "alpha": 0.14, "gamma": 0.15 }
+  },
+  "lyapunov": {
+    "lambda1": 0.063,
+    "lambda2": 0.0,
+    "lambda3": -0.143,
+    "dky": 2.44,
+    "divergence": -0.08
+  }
+}
