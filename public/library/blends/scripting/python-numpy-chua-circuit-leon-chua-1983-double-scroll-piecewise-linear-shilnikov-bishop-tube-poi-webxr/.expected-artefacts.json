@@ -1,0 +1,86 @@
+{
+  "slug": "python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "date": "2026-09-06",
+  "artefacts": [
+    { "path": "hf_chua_poi.blend",  "type": "blend",  "optional": false },
+    { "path": "hf_chua_poi.glb",    "type": "glb",    "optional": false },
+    { "path": "blueprint.py",       "type": "script", "optional": false },
+    { "path": "record.py",          "type": "script", "optional": false },
+    { "path": "README.md",          "type": "doc",    "optional": false },
+    { "path": "SCREEN-RECORDING-NOTES.md", "type": "doc", "optional": false },
+    {
+      "path": "../../videos/scripting/python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "optional": true,
+      "note": "Rendered by record.py; not committed to git"
+    },
+    {
+      "path": "../../videos/scripting/python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "optional": true,
+      "note": "OBS screen capture; not committed to git"
+    }
+  ],
+  "cross_references": {
+    "internal_studio": [
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-c-attractor-1994-yz-xy-dual-saddle-focus-shilnikov-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-duffing-oscillator-ueda-bistability-period-doubling-rk4-bishop-tube-poi-webxr"
+    ],
+    "external": [
+      {
+        "title": "williamgilpin/dysts — Dynamical Systems in Python",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "note": "Chua system catalogued with verified Lyapunov exponents and Kaplan-Yorke dimension"
+      },
+      {
+        "title": "Sprott JC — A Collection of Strange Attractors (Chua circuit)",
+        "url": "https://sprott.physics.wisc.edu/chaos/chua/",
+        "licence": "permissive-educational",
+        "note": "Reference phase portraits and canonical parameter tables; related: sprott.physics.wisc.edu/chaos/"
+      }
+    ]
+  },
+  "mesh_stats": {
+    "waypoints": 3000,
+    "tube_sides": 12,
+    "vertices": 36000,
+    "quads": 35988
+  },
+  "ode": {
+    "integrator": "RK4",
+    "dt": 0.002,
+    "burn_in": 3000,
+    "n_steps": 90000,
+    "thin": 30
+  },
+  "parameters": {
+    "basis":        { "alpha": 15.6, "beta": 28.0, "m0": -0.14286, "m1": 0.28571 },
+    "sk_highalpha": { "alpha": 20.0, "beta": 28.0, "m0": -0.14286, "m1": 0.28571 },
+    "sk_spiralchua":{ "alpha":  9.5, "beta": 28.0, "m0": -0.14286, "m1": 0.28571 },
+    "sk_lowbeta":   { "alpha": 15.6, "beta": 16.0, "m0": -0.14286, "m1": 0.28571 }
+  },
+  "fixed_points": {
+    "P0": [0.0, 0.0, 0.0],
+    "P_plus":  [1.5, 0.0, -1.5],
+    "P_minus": [-1.5, 0.0, 1.5]
+  },
+  "shilnikov": {
+    "lambda_r": -1.52,
+    "lambda_c_real": 0.31,
+    "lambda_c_imag": 2.70,
+    "ratio": 4.9,
+    "chaos_guaranteed": true
+  },
+  "lyapunov": {
+    "lambda1":   0.39,
+    "lambda2":   0.00,
+    "lambda3":  -2.79,
+    "dky":       2.14,
+    "lyapunov_time": 2.6
+  }
+}

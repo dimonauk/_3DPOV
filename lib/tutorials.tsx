@@ -690,6 +690,7 @@ import { entry as blenderTutorialPythonNumpyLoziMap1978PiecewiseLinearHenonMisiu
 import { entry as blenderTutorialPythonNumpyVallisEnsoAttractor1988ElNinoOscillationThermoclineConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1387,6 +1388,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyVallisEnsoAttractor1988ElNinoOscillationThermoclineConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
