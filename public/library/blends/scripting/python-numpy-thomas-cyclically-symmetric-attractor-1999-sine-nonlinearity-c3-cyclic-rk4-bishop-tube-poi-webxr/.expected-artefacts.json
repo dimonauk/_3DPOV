@@ -1,0 +1,62 @@
+{
+  "slug": "python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "hf_thomas_poi.blend",
+    "hf_thomas_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh_stats": {
+    "tube_waypoints": 3000,
+    "tube_segs": 8,
+    "tube_verts": 24000,
+    "tube_quads": 23984,
+    "poi_head_verts": "~288",
+    "shape_keys": ["Basis", "SK_LowB", "SK_NearTorus", "SK_Periodic"]
+  },
+  "vertex_color_attributes": [
+    { "name": "Thomas_Speed", "domain": "POINT", "type": "FLOAT_COLOR" }
+  ],
+  "export": {
+    "format": "GLB",
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "yup": true,
+    "morph_targets": true,
+    "vertex_colors": true
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-a-conservative-chaos-kam-tori-no-equilibria-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Thomas R (1999). Deterministic chaos seen in terms of feedback circuits.",
+        "journal": "Int. J. Bifurc. Chaos 9(10):1889–1905",
+        "doi": "10.1142/S0218127499001383",
+        "licence": "PD-equations",
+        "url": "https://doi.org/10.1142/S0218127499001383"
+      },
+      {
+        "title": "Gilpin W (2021–2024). dysts: Dynamical Systems Benchmarks.",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts",
+        "related": "https://github.com/williamgilpin/fnn"
+      },
+      {
+        "title": "Bishop RL (1975). There is more than one way to frame a curve.",
+        "journal": "Amer. Math. Monthly 82(3):246–251",
+        "doi": "10.2307/2311093",
+        "licence": "PD",
+        "url": "https://doi.org/10.2307/2311093"
+      }
+    ]
+  }
+}

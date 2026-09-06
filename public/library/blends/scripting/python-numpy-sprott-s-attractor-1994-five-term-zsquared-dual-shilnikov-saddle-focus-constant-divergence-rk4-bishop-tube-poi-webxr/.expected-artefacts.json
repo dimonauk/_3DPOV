@@ -1,0 +1,67 @@
+{
+  "blend": "hf_sprott_s_poi.blend",
+  "glb":   "hf_sprott_s_poi.glb",
+  "scripts": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "waypoints":   3000,
+    "tube_segs":   8,
+    "tube_radius": 0.04,
+    "head_radius": 0.12,
+    "shape_keys":  ["Basis", "SK_LowC", "SK_HighC", "SK_WideC"],
+    "color_attrs": ["SprottS_Speed"]
+  },
+  "system": {
+    "equations": ["ẋ=−x−4y", "ẏ=x+z²", "ż=c+x"],
+    "canonical_c": 1.0,
+    "fixed_points": ["-1, 0.25, +1", "-1, 0.25, -1"],
+    "divergence": "-1 (constant, c-independent)",
+    "shilnikov_ratio_at_P_plus": 5.3,
+    "lambda_1": 0.051,
+    "D_KY": 2.05
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-n-attractor-1994-five-term-zsquared-single-saddle-focus-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-newton-leipnik-attractor-1981-double-strange-bistability-rigid-body-feedback-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-vertex-colour-attributes"
+    ],
+    "external": [
+      {
+        "title": "Some simple chaotic flows",
+        "authors": ["Julien C. Sprott"],
+        "year": 1994,
+        "journal": "Physical Review E",
+        "volume": "50(2)",
+        "pages": "R647-R650",
+        "doi": "10.1103/PhysRevE.50.R647",
+        "licence": "open-access published research — equations are mathematical facts (PD)"
+      },
+      {
+        "title": "Sprott Chaos Data — Simple Chaotic Flows Parameter Tables",
+        "authors": ["Julien C. Sprott"],
+        "url": "https://sprott.physics.wisc.edu/chaos/sprott.htm",
+        "licence": "public domain"
+      },
+      {
+        "title": "Shilnikov Chaos and the Geometry of Homoclinic Orbits",
+        "authors": ["L.P. Shilnikov"],
+        "year": 1965,
+        "journal": "Soviet Math. Dokl.",
+        "note": "Original Shilnikov condition paper; equations are mathematical results (PD)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    {
+      "path": "public/library/blends/scripting/python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr/hf_sprott_o_poi.blend",
+      "type": "blend",
+      "description": "Blender 5.1 scene: 24 000-vertex Bishop-tube attractor, 4 shape keys, cobalt-amber SprottO_Speed FLOAT_COLOR, SprottO_Mat Principled BSDF"
+    },
+    {
+      "path": "public/library/glbs/scripting/python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr/hf_sprott_o_poi.glb",
+      "type": "glb",
+      "description": "Draco level-6 compressed GLB, morph targets for shape keys, vertex colour SprottO_Speed, +Y up, WebXR poi-head ready"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+      "type": "video",
+      "description": "150-frame / 30-fps / 1920×1080 Workbench viewport render: camera orbits 360°, shape keys morph Basis→SK_LowB→SK_HighB→SK_NearP"
+    },
+    {
+      "path": "public/library/videos/scripting/python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr/screen.mp4",
+      "type": "video",
+      "description": "Screen recording: Scripting workspace code, run-script output, 3D viewport orbit, shape-key slider demo"
+    }
+  ],
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-d-attractor-1994-five-term-two-quadratic-xz-y2-nonhyperbolic-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-n-attractor-1994-five-term-zsquared-single-saddle-focus-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-m-attractor-1994-six-term-xsq-dual-saddle-foci-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Sprott JC",
+        "year": 1994,
+        "title": "Some simple chaotic flows",
+        "journal": "Phys Rev E",
+        "volume": "50(2)",
+        "pages": "R647-R650",
+        "doi": "10.1103/PhysRevE.50.R647",
+        "licence": "PD-equations",
+        "url": "https://sprott.physics.wisc.edu/chaos/"
+      },
+      {
+        "author": "Gilpin W",
+        "year": "2021-2024",
+        "title": "dysts: Dynamical Systems Benchmarks",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts"
+      },
+      {
+        "author": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "journal": "Am Math Monthly",
+        "volume": "82(3)",
+        "pages": "246-251",
+        "doi": "10.2307/2311093",
+        "licence": "PD"
+      }
+    ]
+  }
+}

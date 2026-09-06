@@ -1,0 +1,59 @@
+{
+  "artefacts": [
+    "hf_sprott_m_poi.blend",
+    "hf_sprott_m_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "blend_objects": ["hf_sprott_m_poi"],
+  "shape_keys": ["Basis", "SK_WeakA", "SK_HighC", "SK_LowB"],
+  "vertex_attributes": ["SprottM_Speed"],
+  "topology": {
+    "vertices": 24000,
+    "faces": 23992,
+    "face_type": "quad"
+  },
+  "cross_references": {
+    "outside_sources": [
+      {
+        "author": "Sprott JC",
+        "year": 1994,
+        "title": "Some simple chaotic flows",
+        "journal": "Phys Rev E",
+        "volume": "50(2):R647",
+        "licence": "PD",
+        "url": "https://sprott.physics.wisc.edu/chaos/"
+      },
+      {
+        "author": "Gilpin W",
+        "year": "2021-2024",
+        "title": "dysts: Dynamical Systems Benchmarks",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts"
+      },
+      {
+        "author": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "journal": "Am Math Monthly",
+        "volume": "82(3):246-251",
+        "licence": "PD",
+        "url": "https://www.jstor.org/stable/2311093"
+      }
+    ],
+    "internal_links": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr"
+    ]
+  },
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "sprott-m-attractor"
+}

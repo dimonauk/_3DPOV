@@ -1,0 +1,56 @@
+{
+  "slug": "python-numpy-aref-blinking-vortex-1984-chaotic-advection-poincare-stroboscopic-density-kam-islands-height-field-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "artefacts": [
+    "aref_blinking_vortex_floor.blend",
+    "aref_blinking_vortex_floor.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "vertices": 14400,
+    "quads": 14161,
+    "grid": "120x120",
+    "domain": "[-2.5, 2.5]^2",
+    "shape_keys": ["Basis", "SK_Ordered", "SK_Islands", "SK_Turbulent"]
+  },
+  "physics": {
+    "system": "Aref Blinking Vortex",
+    "parameter": "mu = GammaT/(2*pi*a^2)",
+    "mu_basis": 4.0,
+    "a": 0.5,
+    "Gamma": 3.14159,
+    "n_particles": 9801,
+    "n_periods": 300,
+    "map": "exact_rotation (no RK4)"
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-zaslavsky-stochastic-web-kicked-oscillator-qfold-quasicrystal-stage-floor-webxr"
+    ],
+    "external": [
+      {
+        "title": "Stirring by chaotic advection",
+        "author": "Hassan Aref",
+        "year": 1984,
+        "journal": "Journal of Fluid Mechanics",
+        "doi": "10.1017/S0022112084001233",
+        "licence": "mathematical formulation public domain"
+      },
+      {
+        "title": "The development of chaotic advection",
+        "author": "Hassan Aref",
+        "year": 2002,
+        "journal": "Physics of Fluids",
+        "doi": "10.1063/1.1458932",
+        "licence": "free-to-read review article (AIP)"
+      }
+    ]
+  }
+}

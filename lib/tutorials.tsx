@@ -672,6 +672,20 @@ import { entry as blenderTutorialPythonNumpySprottCAttractor1994YzXyDualSaddleFo
 import { entry as blenderTutorialPythonNumpySprottFAttractor1994QuadraticJerkShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-d-attractor-1994-five-term-two-quadratic-xz-y2-nonhyperbolic-origin-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-m-attractor-1994-six-term-xsq-dual-saddle-foci-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-hydraulic-erosion-particle-droplet-fbm-terrain-height-field-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-n-attractor-1994-five-term-zsquared-single-saddle-focus-shilnikov-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-o-attractor-1994-five-term-xz-product-zero-trace-shilnikov-ratio-two-variable-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottIAttractor1994SixTermYSquaredSingleSaddleFocusOriginConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-i-attractor-1994-six-term-y-squared-single-saddle-focus-origin-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-s-attractor-1994-five-term-zsquared-dual-shilnikov-saddle-focus-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-q-attractor-1994-six-term-y-squared-x-coupling-parameter-invariant-shilnikov-ratio-four-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-r-attractor-1994-five-term-xy-bilinear-single-saddle-focus-shilnikov-ratio-ten-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-sprott-p-attractor-1994-seven-term-y-squared-variable-divergence-dual-fixed-points-shilnikov-origin-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyArefBlinkingVortex1984ChaoticAdvectionPoincareStroboscopicDensityKamIslandsHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-aref-blinking-vortex-1984-chaotic-advection-poincare-stroboscopic-density-kam-islands-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1351,6 +1365,20 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpySprottFAttractor1994QuadraticJerkShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottDAttractor1994FiveTermTwoQuadraticXzY2NonhyperbolicOriginRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpySprottGAttractor1994LeafScrollConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottHAttractor1994FiveTermZSquaredShilnikovSaddleFocusOriginRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottJAttractor1994SixTermYSquaredWeaklyChaotiConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyThomasCyclicallySymmetricAttractor1999SineNonlinearityC3CyclicRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottKAttractor1994SingleXyProductShilnikovSaddleFocusVariableDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottMAttractor1994SixTermXsqDualSaddleFociShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyHydraulicErosionParticleDropletFbmTerrainHeightFieldStageFloorWebxrEntry,
+  blenderTutorialPythonNumpySprottNAttractor1994FiveTermZsquaredSingleSaddleFocusShilnikovConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottOAttractor1994FiveTermXzProductZeroTraceShilnikovRatioTwoVariableDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottIAttractor1994SixTermYSquaredSingleSaddleFocusOriginConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottSAttractor1994FiveTermZsquaredDualShilnikovSaddleFocusConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottQAttractor1994SixTermYSquaredXCouplingParameterInvariantShilnikovRatioFourConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottRAttractor1994FiveTermXyBilinearSingleSaddleFocusShilnikovRatioTenConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpySprottPAttractor1994SevenTermYSquaredVariableDivergenceDualFixedPointsShilnikovOriginRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyArefBlinkingVortex1984ChaoticAdvectionPoincareStroboscopicDensityKamIslandsHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
