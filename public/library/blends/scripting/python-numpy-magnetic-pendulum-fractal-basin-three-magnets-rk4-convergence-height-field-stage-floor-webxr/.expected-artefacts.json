@@ -1,0 +1,62 @@
+{
+  "slug": "python-numpy-magnetic-pendulum-fractal-basin-three-magnets-rk4-convergence-height-field-stage-floor-webxr",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "type": "blend + glb",
+  "category": "scripting",
+  "artefacts": [
+    "hf_magpend.blend",
+    "hf_magpend.glb",
+    "blueprint.py",
+    "record.py",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "vertices": 14400,
+    "quads": 14161,
+    "shape_keys": ["Basis", "SK_HighDamp", "SK_LowDamp", "SK_4Mag"],
+    "vertex_color_attribute": "MagPendCol",
+    "holoflow_facet": true,
+    "holoflow_category": "stage-floor"
+  },
+  "physics": {
+    "integrator": "RK4",
+    "dt": 0.05,
+    "max_steps": 3000,
+    "magnets": 3,
+    "damping_basis": 0.30,
+    "spring_k": 0.20,
+    "magnet_height": 0.50
+  },
+  "export": {
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "yup": true,
+    "morph_targets": true,
+    "vertex_colors": true
+  },
+  "cross_references": {
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-newton-fractal-basin-attraction-complex-roots-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chirikov-standard-map-kam-breakdown-greene-critical-threshold-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-double-pendulum-lagrangian-chaos-rk4-butterfly-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-henon-map-strange-attractor-fractal-basin-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "NumPy Documentation",
+        "url": "https://numpy.org/doc/stable/",
+        "licence": "BSD-3-Clause",
+        "author": "NumPy community"
+      },
+      {
+        "title": "dysts — Dynamical Systems Benchmarks",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "author": "William Gilpin"
+      }
+    ]
+  }
+}
