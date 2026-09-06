@@ -1,0 +1,103 @@
+{
+  "slug": "python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_act_poi.blend",
+    "hf_act_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_act_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "ACT_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_LowG", "SK_HighG", "SK_LowAlp"],
+    "tube_segments": 8,
+    "tube_radius": 0.048,
+    "waypoints": 3000,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Arneodo–Coullet–Tresser (ACT) attractor 1981",
+    "original_citation": "Arneodo A, Coullet P, Tresser C (1981) Commun. Math. Phys. 79(4):573-579",
+    "doi": "10.1007/BF01209312",
+    "equations": {
+      "x_dot": "y",
+      "y_dot": "z",
+      "z_dot": "-alpha*z - beta*y + gamma*x - x**3"
+    },
+    "canonical_alpha": 0.2,
+    "canonical_beta": -1.4,
+    "canonical_gamma": 7.5,
+    "equilibria": "P0=(0,0,0)  P±=(±√γ,0,0)≈(±2.739,0,0)",
+    "symmetry": "Z₂: (x,y,z) → (−x,−y,−z)",
+    "divergence": "-alpha = -0.20 (constant, gamma-independent)",
+    "jacobian_at_P_plus": "[[0,1,0],[0,0,1],[-2*gamma,-beta,-alpha]]",
+    "char_poly_at_P_plus": "lambda^3 + alpha*lambda^2 + beta*lambda + 2*gamma = 0",
+    "eigenvalues_canonical": {
+      "lambda_s": -2.720,
+      "lambda_u_re": 1.260,
+      "lambda_u_im": 1.980
+    },
+    "shilnikov_ratio": 2.16,
+    "lyapunov_lambda1_approx": 0.085,
+    "lyapunov_lambda2_approx": 0.0,
+    "lyapunov_lambda3_approx": -0.285,
+    "kaplan_yorke_dim_approx": 2.01,
+    "liouville_check": "0.085 + 0.000 - 0.285 = -0.200 = nabla_F",
+    "integrator": "RK4",
+    "dt": 0.012,
+    "n_warmup": 4000,
+    "n_steps": 90000,
+    "thin": 30,
+    "shape_key_variants": {
+      "Basis":    "alpha=0.20, beta=-1.4, gamma=7.5 — canonical spiral chaos",
+      "SK_LowG":  "alpha=0.20, beta=-1.4, gamma=5.5 — P±=(±2.345,0,0) contracted scrolls",
+      "SK_HighG": "alpha=0.20, beta=-1.4, gamma=9.5 — P±=(±3.082,0,0) widened scrolls",
+      "SK_LowAlp":"alpha=0.08, beta=-1.4, gamma=7.5 — weak dissipation, larger orbit"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-genesio-tesi-attractor-1992-jerk-chaos-quadratic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-f-attractor-1994-quadratic-jerk-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shaw-attractor-robert-shaw-1981-two-scroll-dual-saddle-focus-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Arneodo A, Coullet P, Tresser C",
+        "title": "Possible new strange attractors with spiral structure — Commun. Math. Phys. 79(4):573-579 (1981)",
+        "licence": "CC0 (mathematical equations and results, public domain)",
+        "url": "https://doi.org/10.1007/BF01209312"
+      },
+      {
+        "author": "Gilpin W",
+        "title": "Chaos as an interpretable benchmark for machine learning (2021)",
+        "licence": "MIT",
+        "url": "https://github.com/williamgilpin/dysts",
+        "related": ["https://github.com/williamgilpin/dysts/blob/main/dysts/systems.py"]
+      },
+      {
+        "author": "NumPy Developers",
+        "title": "NumPy",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}
