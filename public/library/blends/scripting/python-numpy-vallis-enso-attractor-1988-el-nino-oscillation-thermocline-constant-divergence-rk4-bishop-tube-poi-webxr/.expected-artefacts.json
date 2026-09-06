@@ -1,0 +1,72 @@
+{
+  "blend": "vallis_enso_poi.blend",
+  "glb":   "vallis_enso_poi.glb",
+  "video": {
+    "viewport": "public/library/videos/scripting/python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr/screen.mp4"
+  },
+  "mesh_spec": {
+    "wire_points":     3000,
+    "tube_sides":      8,
+    "vertices":        24000,
+    "quads":           23992,
+    "shape_keys":      ["Basis", "SK_Periodic", "SK_StrongB", "SK_LowDamp"],
+    "colour_attribute": "Vallis_Speed",
+    "colour_domain":   "POINT",
+    "colour_type":     "FLOAT_COLOR"
+  },
+  "physics": {
+    "system":  "ẋ=b·y·z−c·x+F   ẏ=−y+x·z   ż=1−z−x·y",
+    "canonical_params": {"b": 14.0, "c": 0.1, "F": 18.0},
+    "divergence": "−(c+2) = −2.1   (constant, independent of b and F)",
+    "lyapunov_1": "+0.120",
+    "lyapunov_2": "≈0",
+    "lyapunov_3": "−2.220",
+    "lyapunov_sum": "−2.100 = −(c+2) ✓ Liouville",
+    "kaplan_yorke_dim": 2.054,
+    "lyapunov_time": "≈8.3 time units",
+    "fixed_point_approx": {"x": 1.42, "y": 0.81, "z": 0.33},
+    "integration": "RK4  DT=0.02  BURN_IN=3000  N_STEPS=90000  THIN=30 → 3000 pts",
+    "presets": {
+      "Basis":       {"b": 14.0, "c": 0.1,  "F": 18.0, "regime": "chaotic"},
+      "SK_Periodic": {"b": 14.0, "c": 0.1,  "F": 11.0, "regime": "limit-cycle"},
+      "SK_StrongB":  {"b": 20.0, "c": 0.1,  "F": 18.0, "regime": "chaotic-wide"},
+      "SK_LowDamp":  {"b": 14.0, "c": 0.05, "F": 18.0, "regime": "chaotic-low-damp"}
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bouali-attractor-2012-van-der-pol-feedback-economic-cycles-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-ftle-double-gyre-lagrangian-coherent-structures-ridge-height-field-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "author":  "Gregory K. Vallis",
+        "title":   "Conceptual models of El Niño and the Southern Oscillation (1988)",
+        "url":     "https://doi.org/10.1029/JC093iC11p13979",
+        "licence": "PD (mathematical equations)",
+        "related": ["Vallis 2006 Atmospheric and Oceanic Fluid Dynamics Cambridge"]
+      },
+      {
+        "author":  "Julien C. Sprott",
+        "title":   "Elegant Chaos parameter database — CC0",
+        "url":     "https://sprott.physics.wisc.edu/chaos/2020b.htm",
+        "licence": "CC0",
+        "related": ["https://www.worldscientific.com/worldscibooks/10.1142/6820"]
+      },
+      {
+        "author":  "Nikolai Janakiev",
+        "title":   "blender-scripting — Bishop-frame reference implementations",
+        "url":     "https://github.com/njanakiev/blender-scripting",
+        "licence": "MIT",
+        "related": ["https://github.com/njanakiev/scikit-spatial"]
+      }
+    ]
+  },
+  "blender_version": "5.1",
+  "licence":  "CC0",
+  "category": "scripting",
+  "slug":     "python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr"
+}
