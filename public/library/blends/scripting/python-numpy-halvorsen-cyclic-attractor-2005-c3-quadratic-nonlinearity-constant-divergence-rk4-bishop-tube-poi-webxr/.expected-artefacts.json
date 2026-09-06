@@ -1,0 +1,121 @@
+{
+  "slug": "python-numpy-halvorsen-cyclic-attractor-2005-c3-quadratic-nonlinearity-constant-divergence-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "files": [
+    "hf_halvorsen_poi.blend",
+    "hf_halvorsen_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_path": "public/library/videos/scripting/python-numpy-halvorsen-cyclic-attractor-2005-c3-quadratic-nonlinearity-constant-divergence-rk4-bishop-tube-poi-webxr/",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-i-attractor-1994-six-term-y-squared-single-saddle-focus-origin-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-lee-attractor-2004-rigid-body-euler-rotation-linear-pumping-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "authors": "Sprott JC",
+        "year": 2010,
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows",
+        "venue": "World Scientific",
+        "isbn": "978-981-283-881-0",
+        "page": "37-38",
+        "licence": "PD-equations (mathematical objects)",
+        "url": "https://www.worldscientific.com/worldscibooks/10.1142/7183",
+        "related": [
+          "Sprott JC (1994) Phys Rev E 50(2):R647 — original 19-attractor catalogue",
+          "Thomas R (1999) Int J Bifurc Chaos 9(10):1889 — cyclic C3 sine attractor",
+          "Heidel J, Zhang F (1999) Nonlinearity 12:617 — algebraic simplicity analysis"
+        ]
+      },
+      {
+        "authors": "NumPy developers",
+        "year": 2020,
+        "title": "Array programming with NumPy",
+        "venue": "Nature 585:357-362",
+        "doi": "10.1038/s41586-020-2649-2",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      },
+      {
+        "authors": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "venue": "Amer Math Monthly 82(3):246-251",
+        "doi": "10.2307/2319846",
+        "licence": "PD (>50 yr academic publication)",
+        "url": "https://www.jstor.org/stable/2319846",
+        "related": [
+          "Hanson AJ, Ma H (1995) IEEE TVCG 1(2):89 — parallel transport frames in CG"
+        ]
+      }
+    ]
+  },
+  "parameters": {
+    "A_BASIS": 1.89,
+    "DT": 0.005,
+    "BURN_IN": 4000,
+    "N_STEPS": 90000,
+    "THIN": 30,
+    "TUBE_R": 0.045,
+    "TUBE_SIDES": 10,
+    "POI_R": 0.09,
+    "SCALE": 0.14
+  },
+  "fixed_points": {
+    "O": "(0, 0, 0) — unstable, eigenvalues {-9.89, +2.11, +2.11} (circulant, C3-degenerate)",
+    "P1": "(-9.89, -9.89, -9.89) — saddle-focus, eigenvalues {+9.89, -7.78±17.13i}"
+  },
+  "symmetry": "C3 cyclic: (x,y,z) → (y,z,x) maps all three equations cyclically",
+  "divergence": {
+    "formula": "-3a",
+    "canonical_value": -5.67,
+    "note": "Constant divergence — no Shilnikov mechanism; chaos is global-topological"
+  },
+  "chaos_mechanism": "Rectified quadratic trapping: y², z², x² always push negative; asymmetric trapping region forces global folding without homoclinic orbit",
+  "shape_keys": {
+    "Basis":   {"a": 1.89, "regime": "canonical trefoil chaos, D_KY≈2.013"},
+    "SK_LowA": {"a": 1.50, "regime": "weaker dissipation, arms expand ~25%"},
+    "SK_HighA":{"a": 2.50, "regime": "stronger dissipation, orbit contracts"},
+    "SK_NearP":{"a": 1.20, "regime": "near bifurcation, large-amplitude loop"}
+  },
+  "colour_attribute": {
+    "name": "Halvorsen_Speed",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "meaning": "normalised instantaneous orbit speed |ẋ,ẏ,ż|",
+    "low": "cobalt (0.03, 0.20, 0.78) — slow, near-fixed-point",
+    "high": "amber (0.98, 0.62, 0.05) — fast, open-arm arcs"
+  },
+  "lyapunov_spectrum": {
+    "lambda_1": "+0.076 (approximate)",
+    "lambda_2": "~-0.07",
+    "lambda_3": "~-5.68",
+    "sum": "~-5.67 = -3a",
+    "D_KY": "~2.013",
+    "lyapunov_time_s": "~13"
+  },
+  "waypoints_per_shape_key": 3000,
+  "tube_topology": "Bishop parallel-transport, 10-sided, 2999 quads per key",
+  "export": {
+    "format": "glTF 2.0 GLB",
+    "draco_level": 6,
+    "textures": "WebP",
+    "morph_targets": true,
+    "vertex_colours": true,
+    "root_name": "hf_halvorsen_poi",
+    "up_axis": "+Y"
+  }
+}

@@ -695,6 +695,7 @@ import { entry as blenderTutorialPythonNumpyLiuAttractor2004LorenzVariantXSquare
 import { entry as blenderTutorialPythonNumpyQiFourWingAttractor2006ChenLiZhangYzCouplingRealFourScrollRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-qi-four-wing-attractor-2006-chen-li-zhang-yz-coupling-real-four-scroll-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyChenLeeAttractor2004RigidBodyEulerRotationLinearPumpingConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chen-lee-attractor-2004-rigid-body-euler-rotation-linear-pumping-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-cyclic-attractor-2005-c3-quadratic-nonlinearity-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1397,6 +1398,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyQiFourWingAttractor2006ChenLiZhangYzCouplingRealFourScrollRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyChenLeeAttractor2004RigidBodyEulerRotationLinearPumpingConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
