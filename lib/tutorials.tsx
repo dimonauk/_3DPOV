@@ -689,6 +689,7 @@ import { entry as blenderTutorialPythonNumpyRikitakeTwoDiskDynamo1958Geomagnetic
 import { entry as blenderTutorialPythonNumpyLoziMap1978PiecewiseLinearHenonMisiurewiczStrangeAttractorStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lozi-map-1978-piecewise-linear-henon-misiurewicz-strange-attractor-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyVallisEnsoAttractor1988ElNinoOscillationThermoclineConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-vallis-enso-attractor-1988-el-nino-oscillation-thermocline-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1385,6 +1386,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLoziMap1978PiecewiseLinearHenonMisiurewiczStrangeAttractorStageFloorWebxrEntry,
   blenderTutorialPythonNumpyVallisEnsoAttractor1988ElNinoOscillationThermoclineConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
