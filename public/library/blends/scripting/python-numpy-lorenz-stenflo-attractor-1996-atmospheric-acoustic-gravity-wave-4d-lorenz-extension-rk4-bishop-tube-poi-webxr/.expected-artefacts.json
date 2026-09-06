@@ -1,0 +1,110 @@
+{
+  "slug": "python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "files": [
+    "lorenz_stenflo_poi.blend",
+    "lorenz_stenflo_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_path": "public/library/videos/scripting/python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr/",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-rossler-hyperchaos-4d-two-positive-lyapunov-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-84-low-order-climate-westerly-wave-thermal-forcing-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-96-atmospheric-ring-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lu-attractor-2002-jinhu-lu-chen-transition-lorenz-chen-family-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "authors": "Stenflo L",
+        "year": 1996,
+        "title": "Generalized Lorenz equations for acoustic-gravity waves in the atmosphere",
+        "venue": "Physica Scripta 53(1):83-84",
+        "doi": "10.1088/0031-8949/53/1/015",
+        "licence": "PD-equations (mathematical objects, >25 yr academic publication)",
+        "url": "https://doi.org/10.1088/0031-8949/53/1/015",
+        "related": [
+          "Lorenz EN 1963 J Atmos Sci 20(2):130 (parent 3D system)",
+          "Liu L et al. 2010 Nonlinear Dyn 61(3):587 (adaptive control of Stenflo system)",
+          "Sun K et al. 2010 Acta Phys Sin 59(8):5178 (circuit implementation)"
+        ]
+      },
+      {
+        "authors": "NumPy developers",
+        "year": 2020,
+        "title": "Array programming with NumPy",
+        "venue": "Nature 585:357-362",
+        "doi": "10.1038/s41586-020-2649-2",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      },
+      {
+        "authors": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "venue": "Amer Math Monthly 82(3):246-251",
+        "doi": "10.2307/2319846",
+        "licence": "PD (>50 yr academic publication)",
+        "url": "https://www.jstor.org/stable/2319846",
+        "related": [
+          "Hanson AJ Ma H 1995 IEEE TVCG 1(2):89 (parallel transport frames in computer graphics)"
+        ]
+      }
+    ]
+  },
+  "parameters": {
+    "SIGMA": 0.7,
+    "R_BASIS": 26.0,
+    "B": 2.6667,
+    "S_BASIS": 1.5,
+    "DT": 0.005,
+    "BURN_IN": 4000,
+    "N_STEPS": 90000,
+    "THIN": 30,
+    "TUBE_R": 0.045,
+    "TUBE_SIDES": 10,
+    "POI_R": 0.09
+  },
+  "fixed_points": {
+    "O":  "(0, 0, 0, 0) — unstable saddle",
+    "P+": "(+3.795, +15.41, 21.939, -5.42) — unstable saddle-focus",
+    "P-": "(-3.795, -15.41, 21.939, +5.42) — unstable saddle-focus"
+  },
+  "divergence": {
+    "formula": "-(2*sigma + 1 + b)",
+    "canonical_value": -5.067,
+    "note": "Constant — the Lorenz divergence -(sigma+1+b) is the 3D limit"
+  },
+  "shape_keys": {
+    "Basis":       {"s": 1.5, "r": 26.0, "regime": "canonical Stenflo chaos", "D_KY_approx": 2.28},
+    "SK_WeakS":    {"s": 0.5, "r": 26.0, "regime": "weak acoustic coupling, Lorenz-like orbit"},
+    "SK_StrongS":  {"s": 3.0, "r": 26.0, "regime": "strong acoustic distortion, asymmetric scrolls"},
+    "SK_HighR":    {"s": 1.5, "r": 35.0, "regime": "higher Rayleigh number, expanded butterfly"}
+  },
+  "colour_attribute": {
+    "name": "LS_Stenflo_W",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "meaning": "normalised acoustic-gravity wave amplitude w",
+    "low": "cobalt (0.03, 0.20, 0.78) — w near minimum",
+    "high": "amber (0.98, 0.62, 0.05) — w near maximum"
+  },
+  "lyapunov_spectrum": {
+    "lambda_1": "+0.122",
+    "lambda_2": "~0",
+    "lambda_3": "~-0.44",
+    "lambda_4": "~-4.75",
+    "D_KY": "~2.28",
+    "note": "Single positive exponent — chaotic but not hyperchaotic at canonical params"
+  }
+}

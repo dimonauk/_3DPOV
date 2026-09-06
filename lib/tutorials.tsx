@@ -693,6 +693,7 @@ import { entry as blenderTutorialPythonNumpyRabinovichFabrikantEquations1979Plas
 import { entry as blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyLiuAttractor2004LorenzVariantXSquaredZDrivingZ2SymmetryConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-liu-attractor-2004-lorenz-variant-x-squared-z-driving-z2-symmetry-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyQiFourWingAttractor2006ChenLiZhangYzCouplingRealFourScrollRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-qi-four-wing-attractor-2006-chen-li-zhang-yz-coupling-real-four-scroll-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1393,6 +1394,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyLiuAttractor2004LorenzVariantXSquaredZDrivingZ2SymmetryConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyQiFourWingAttractor2006ChenLiZhangYzCouplingRealFourScrollRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
