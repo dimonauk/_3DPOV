@@ -1,0 +1,111 @@
+{
+  "slug": "python-numpy-sprott-k-attractor-1994-single-xy-product-shilnikov-saddle-focus-variable-divergence-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "hf_sprott_k_poi.blend",
+    "hf_sprott_k_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "parameters": {
+    "A_BASIS": 0.30,
+    "A_LOA": 0.15,
+    "A_HIA": 0.50,
+    "A_NEARP": 0.65,
+    "DT": 0.01,
+    "BURN_IN": 3000,
+    "N_STEPS": 90000,
+    "THIN": 30,
+    "WAYPOINTS": 3000,
+    "TUBE_R": 0.045,
+    "TUBE_SEGS": 8,
+    "POI_R": 0.090,
+    "VERTICES": 24000,
+    "QUADS": 23992
+  },
+  "ode": {
+    "equations": ["dx=x*y-z", "dy=x-y", "dz=x+a*z"],
+    "equilibria": {
+      "O": [0, 0, 0],
+      "P": [-3.333, -3.333, 11.111]
+    },
+    "eigenvalues_at_O": {
+      "lambda_s": -1.0,
+      "lambda_c_real": 0.15,
+      "lambda_c_imag": 0.985,
+      "shilnikov_ratio": 6.7,
+      "shilnikov_satisfied": true
+    },
+    "divergence": "y - 0.7  (variable; position-dependent)",
+    "MLE": 0.076,
+    "D_KY": 2.11,
+    "lyapunov_time": 13
+  },
+  "shape_keys": [
+    {"name": "Basis",   "a": 0.30, "description": "canonical Shilnikov spiral"},
+    {"name": "SK_LoA",  "a": 0.15, "description": "weaker self-coupling, wider loops"},
+    {"name": "SK_HiA",  "a": 0.50, "description": "tighter orbit, shifted shape"},
+    {"name": "SK_NearP","a": 0.65, "description": "near second-equilibrium topology"}
+  ],
+  "colour_attribute": {
+    "name": "SprottK_Speed",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "cobalt": [0.05, 0.20, 0.75, 1.0],
+    "amber":  [0.95, 0.60, 0.00, 1.0]
+  },
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "export_morph": true,
+    "export_colors": true
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-sprott-h-attractor-1994-five-term-z-squared-shilnikov-saddle-focus-origin-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-g-attractor-1994-leaf-scroll-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-thomas-cyclically-symmetric-attractor-1999-sine-nonlinearity-c3-cyclic-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-sprott-j-attractor-1994-six-term-y-squared-weakly-chaotic-constant-divergence-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Sprott JC",
+        "year": 1994,
+        "title": "Some simple chaotic flows",
+        "journal": "Phys Rev E",
+        "volume": "50(2):R647-R650",
+        "doi": "10.1103/PhysRevE.50.R647",
+        "url": "https://sprott.physics.wisc.edu/chaos/",
+        "licence": "PD-mathematics",
+        "related_projects": ["Sprott 2010 Elegant Chaos World-Scientific"]
+      },
+      {
+        "author": "Gilpin W",
+        "year": "2021-2024",
+        "title": "dysts: Dynamical Systems Benchmarks",
+        "url": "https://github.com/williamgilpin/dysts",
+        "licence": "MIT",
+        "related_projects": ["williamgilpin/fnn MIT"]
+      },
+      {
+        "author": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "journal": "Am Math Monthly",
+        "volume": "82(3):246-251",
+        "doi": "10.2307/2311093",
+        "url": "https://www.jstor.org/stable/2311093",
+        "licence": "PD-mathematics",
+        "related_projects": ["mrdoob/three.js MIT TubeGeometry"]
+      }
+    ]
+  }
+}

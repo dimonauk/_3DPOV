@@ -1,0 +1,74 @@
+{
+  "slug": "python-numpy-ikeda-map-1979-laser-cavity-optical-bistability-log-density-stage-floor-webxr",
+  "category": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "blend_file": "ikeda_floor.blend",
+  "glb_file": "ikeda_floor.glb",
+  "video_viewport": "../../videos/scripting/python-numpy-ikeda-map-1979-laser-cavity-optical-bistability-log-density-stage-floor-webxr/viewport.mp4",
+  "video_screen": "../../videos/scripting/python-numpy-ikeda-map-1979-laser-cavity-optical-bistability-log-density-stage-floor-webxr/screen.mp4",
+  "mesh": {
+    "vertices": 14400,
+    "quads": 14161,
+    "topology": "stage-floor height-field"
+  },
+  "shape_keys": [
+    { "name": "Basis",     "mu": 0.90, "notes": "canonical chaotic flame attractor" },
+    { "name": "SK_MuHigh", "mu": 0.95, "notes": "denser flame, finer Cantor-set filaments" },
+    { "name": "SK_MuMid",  "mu": 0.85, "notes": "intermediate topology, fewer scrolls" },
+    { "name": "SK_MuLow",  "mu": 0.70, "notes": "period-4 basin, near-ordered sparse peaks" }
+  ],
+  "vertex_attribute": {
+    "name": "Ikeda_Density",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "colour_low":  [0.04, 0.20, 0.78, 1.0],
+    "colour_high": [0.92, 0.58, 0.04, 1.0]
+  },
+  "dynamics": {
+    "lyapunov_1": "+0.505",
+    "lyapunov_2": "-1.85",
+    "d_ky": "1.27",
+    "divergence": "variable (det J = μ² everywhere)",
+    "fixed_points": "one at μ<0.61, period-doubling cascade above"
+  },
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "export_morph_targets": true,
+    "export_vertex_colors": true,
+    "yup_orientation": true
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-peter-de-jong-attractor-discrete-2d-map-log-density-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-tinkerbell-map-barry-martin-1984-james-yorke-discrete-quadratic-log-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-clifford-attractor-pickover-discrete-2d-map-fractal-density-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-burning-ship-fractal-michelitsch-rossler-1992-absolute-value-escape-time-height-field-stage-floor-webxr"
+    ],
+    "outside": [
+      {
+        "url": "https://doi.org/10.1016/0030-4018(79)90090-7",
+        "author": "Ikeda K",
+        "year": 1979,
+        "title": "Multiple-valued stationary state and its instability of the transmitted light by a ring cavity system",
+        "journal": "Opt Comm 30(2):257-261",
+        "licence": "PD-equations"
+      },
+      {
+        "url": "https://paulbourke.net/fractals/ikeda/",
+        "author": "Bourke P",
+        "title": "Ikeda Attractor",
+        "licence": "CC0",
+        "related": "https://paulbourke.net/fractals/peterdejong/"
+      },
+      {
+        "url": "https://sprott.physics.wisc.edu/chaos/2D/ikeda.htm",
+        "author": "Sprott JC",
+        "title": "Ikeda Map — 2D Chaos Survey",
+        "licence": "permissive-educational",
+        "related": "https://sprott.physics.wisc.edu/chaos/"
+      }
+    ]
+  }
+}
