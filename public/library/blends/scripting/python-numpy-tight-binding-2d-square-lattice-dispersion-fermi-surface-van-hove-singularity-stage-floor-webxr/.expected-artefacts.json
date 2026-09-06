@@ -1,0 +1,37 @@
+{
+  "blend": "tb_band_floor.blend",
+  "glb": "tb_band_floor.glb",
+  "scripts": ["blueprint.py", "record.py"],
+  "docs": ["README.md", "SCREEN-RECORDING-NOTES.md"],
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "shape_keys": ["Basis", "SK_NNN", "SK_TriLattice", "SK_DWave"],
+  "colour_attributes": ["BandE"],
+  "mesh": {
+    "vertices": 16384,
+    "quads": 16129,
+    "grid": "128×128",
+    "domain": "kx,ky ∈ [−π, π]² (first Brillouin zone)",
+    "z_axis": "E(kx,ky) energy in units of t=1"
+  },
+  "cross_references": {
+    "internal": [
+      "/tutorials/blender-tutorial-python-numpy-scipy-wigner-seitz-bcc-fcc-brillouin-zone-3d-voronoi-poi-head-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-penrose-p3-rhombus-quasicrystal-stage-floor-webxr"
+    ],
+    "external": [
+      {
+        "title": "Bloch F (1929) Über die Quantenmechanik der Elektronen in Kristallgittern",
+        "url": "https://link.springer.com/article/10.1007/BF01339455",
+        "licence": "Public Domain",
+        "authors": "Felix Bloch"
+      },
+      {
+        "title": "Slater JC & Koster GF (1954) Simplified LCAO Method for the Periodic Potential Problem",
+        "url": "https://doi.org/10.1103/PhysRev.94.1498",
+        "licence": "Public Domain",
+        "authors": "Slater, Koster"
+      }
+    ]
+  }
+}

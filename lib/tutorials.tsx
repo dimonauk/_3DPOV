@@ -696,6 +696,7 @@ import { entry as blenderTutorialPythonNumpyQiFourWingAttractor2006ChenLiZhangYz
 import { entry as blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyChenLeeAttractor2004RigidBodyEulerRotationLinearPumpingConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chen-lee-attractor-2004-rigid-body-euler-rotation-linear-pumping-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-cyclic-attractor-2005-c3-quadratic-nonlinearity-constant-divergence-rk4-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-tight-binding-2d-square-lattice-dispersion-fermi-surface-van-hove-singularity-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1399,6 +1400,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyLorenzStenfloAttractor1996AtmosphericAcousticGravityWave4dLorenzExtensionRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyChenLeeAttractor2004RigidBodyEulerRotationLinearPumpingConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
