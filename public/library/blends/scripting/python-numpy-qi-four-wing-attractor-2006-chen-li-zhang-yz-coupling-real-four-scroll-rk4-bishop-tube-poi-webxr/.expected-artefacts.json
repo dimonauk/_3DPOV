@@ -1,0 +1,104 @@
+{
+  "slug": "python-numpy-qi-four-wing-attractor-2006-chen-li-zhang-yz-coupling-real-four-scroll-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_qi_poi.blend",
+    "hf_qi_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-qi-four-wing-attractor-2006-chen-li-zhang-yz-coupling-real-four-scroll-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-qi-four-wing-attractor-2006-chen-li-zhang-yz-coupling-real-four-scroll-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_qi_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "Qi_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_TwoWing", "SK_HighB", "SK_LowC"],
+    "tube_segments": 10,
+    "tube_radius": 0.045,
+    "waypoints": 3000,
+    "poi_radius": 0.090,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Qi four-wing attractor (Qi, Chen, Li & Zhang 2006)",
+    "original_citation": "Qi G, Chen G, Li S, Zhang Y (2006) Int. J. Bifurcation Chaos 16(4):859-885",
+    "doi": "10.1142/S0218127406015180",
+    "physical_context": "Abstract 3D quadratic autonomous system; single yz bilinear coupling creates four-wing topology over two-scroll (Chen/Lorenz) base",
+    "equations": {
+      "x_dot": "a*(y - x) + d*y*z",
+      "y_dot": "b*x - x*z - y",
+      "z_dot": "x*y - c*z"
+    },
+    "canonical_params": { "a": 14, "b": 16, "c": 8, "d": 1 },
+    "equilibria_origin": {
+      "point": "(0, 0, 0)",
+      "eigenvalues": ["+8.82 (unstable real)", "-23.82 (stable real)", "-8 (stable)"],
+      "type": "real saddle (no Shilnikov pair)"
+    },
+    "equilibria_wings": {
+      "points": "P± ≈ (±16.08, ±7.72, +15.52)",
+      "derivation": "z² - 2z - 210 = 0 → z* ≈ 15.52; x*² = 8·z*/0.48 ≈ 258.7",
+      "type": "saddle-focus (complex pair at P±)",
+      "note": "Only z* ≈ 15.52 gives real solutions; z* ≈ -13.52 branch has no real fixed points"
+    },
+    "symmetry": "Z2: (x,y) → (-x,-y) leaves the ODE invariant (yz term flips with y)",
+    "divergence": "-(a+1+c) = -23 (constant, position-independent; -1 from explicit -y in dy/dt)",
+    "lyapunov_lambda1": 0.28,
+    "lyapunov_lambda2": 0.00,
+    "lyapunov_lambda3": -23.28,
+    "kaplan_yorke_dim": 2.012,
+    "liouville_check": "0.28 + 0 - 23.28 = -23 = nabla_F",
+    "integrator": "RK4",
+    "dt": 0.005,
+    "burn_in": 3000,
+    "n_steps": 90000,
+    "thin": 30,
+    "shape_key_variants": {
+      "Basis": "a=14, b=16, c=8, d=1 — canonical four-wing",
+      "SK_TwoWing": "d=0 — yz coupling OFF; collapses to two-wing double-scroll (Chen-like topology)",
+      "SK_HighB": "b=24 — stronger x-forcing; wings expand outward symmetrically",
+      "SK_LowC": "c=4 — slower z-dissipation; orbit broadens and flattens in z"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-dadras-attractor-momeni-2009-four-scroll-variable-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-halvorsen-attractor-cyclic-c3-symmetry-triple-scroll-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Qi G, Chen G, Li S, Zhang Y",
+        "title": "Four-wing attractors: From pseudo to real — Int. J. Bifurcation Chaos 16(4):859-885 (2006)",
+        "licence": "PD (mathematical equations)",
+        "url": "https://doi.org/10.1142/S0218127406015180"
+      },
+      {
+        "author": "Harris CR et al (NumPy Developers)",
+        "title": "Array programming with NumPy — Nature 585:357-362 (2020)",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows (2010), World Scientific",
+        "licence": "MIT (companion C code)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm",
+        "related_org": "https://sprott.physics.wisc.edu"
+      }
+    ]
+  }
+}
