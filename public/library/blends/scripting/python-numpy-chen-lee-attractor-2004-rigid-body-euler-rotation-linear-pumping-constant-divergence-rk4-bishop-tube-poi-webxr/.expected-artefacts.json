@@ -1,0 +1,112 @@
+{
+  "slug": "python-numpy-chen-lee-attractor-2004-rigid-body-euler-rotation-linear-pumping-constant-divergence-rk4-bishop-tube-poi-webxr",
+  "blender_version": "5.1",
+  "topic": "scripting",
+  "type": "blend + glb",
+  "licence": "CC0",
+  "files": [
+    "chen_lee_poi.blend",
+    "chen_lee_poi.glb",
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "video_path": "public/library/videos/scripting/python-numpy-chen-lee-attractor-2004-rigid-body-euler-rotation-linear-pumping-constant-divergence-rk4-bishop-tube-poi-webxr/",
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lu-attractor-2002-jinhu-lu-chen-transition-lorenz-chen-family-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-rikitake-two-disk-dynamo-1958-geomagnetic-reversal-chaotic-flip-constant-divergence-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lorenz-stenflo-attractor-1996-atmospheric-acoustic-gravity-wave-4d-lorenz-extension-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "authors": "Chen HK, Lee CI",
+        "year": 2004,
+        "title": "Anti-control of chaos in rigid body motion",
+        "venue": "Chaos, Solitons & Fractals 21(4):957-965",
+        "doi": "10.1016/j.chaos.2003.12.034",
+        "licence": "PD-equations (mathematical objects cannot be copyrighted; paper >20 yr)",
+        "url": "https://doi.org/10.1016/j.chaos.2003.12.034",
+        "related": [
+          "Euler L 1758 Du mouvement de rotation des corps solides autour d'un axe variable (parent rigid-body equations)",
+          "Ott E, Grebogi C, Yorke JA 1990 Phys Rev Lett 64(11):1196 (OGY control; inspiration for anti-control)",
+          "Wang X, Chen G 2012 Commun Nonlinear Sci Numer Simul 17(3):1264 (follow-on: system with one stable equilibrium)"
+        ]
+      },
+      {
+        "authors": "NumPy developers",
+        "year": 2020,
+        "title": "Array programming with NumPy",
+        "venue": "Nature 585:357-362",
+        "doi": "10.1038/s41586-020-2649-2",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      },
+      {
+        "authors": "Bishop RL",
+        "year": 1975,
+        "title": "There is more than one way to frame a curve",
+        "venue": "Amer Math Monthly 82(3):246-251",
+        "doi": "10.2307/2319846",
+        "licence": "PD (>50 yr academic publication)",
+        "url": "https://www.jstor.org/stable/2319846",
+        "related": [
+          "Hanson AJ Ma H 1995 IEEE TVCG 1(2):89 (parallel transport frames in CG)"
+        ]
+      }
+    ]
+  },
+  "parameters": {
+    "A_BASIS": 5.0,
+    "B_PARAM": -10.0,
+    "C_BASIS": -0.38,
+    "DT": 0.001,
+    "BURN_IN": 5000,
+    "N_STEPS": 120000,
+    "THIN": 40,
+    "TUBE_R": 0.045,
+    "TUBE_SIDES": 10,
+    "POI_R": 0.09
+  },
+  "fixed_points": {
+    "O":  "(0, 0, 0) — saddle, eigenvalues diag(+5, -10, -0.38)",
+    "P1": "(+3.375, +2.387, +7.071) — unstable",
+    "P2": "(-3.375, -2.387, +7.071) — unstable (sigma1-image of P1)",
+    "P3": "(-3.375, +2.387, -7.071) — unstable",
+    "P4": "(+3.375, -2.387, -7.071) — unstable (sigma1-image of P3)"
+  },
+  "symmetry": "Z2xZ2: sigma1=(x,y,z)->(-x,-y,z)  sigma2=(x,y,z)->(x,-y,-z)",
+  "divergence": {
+    "formula": "a + b + c",
+    "canonical_value": -5.38,
+    "note": "Constant divergence — identical to a linear dissipative system"
+  },
+  "shape_keys": {
+    "Basis":    {"a": 5.0, "b": -10.0, "c": -0.38, "regime": "canonical chaos, D_KY≈2.28"},
+    "SK_LowA":  {"a": 3.0, "b": -10.0, "c": -0.38, "regime": "weaker x-pump, orbit tightens"},
+    "SK_HighC": {"a": 5.0, "b": -10.0, "c": -0.10, "regime": "weaker z-damp, orbit elongates in z"},
+    "SK_WeakB": {"a": 5.0, "b":  -7.0, "c": -0.38, "regime": "weaker y-damp, lobes widen in xy-plane"}
+  },
+  "colour_attribute": {
+    "name": "ChenLee_Speed",
+    "type": "FLOAT_COLOR",
+    "domain": "POINT",
+    "meaning": "normalised instantaneous orbit speed |ẋ,ẏ,ż|",
+    "low": "cobalt (0.03, 0.20, 0.78) — slow, near fixed-point vicinities",
+    "high": "amber (0.98, 0.62, 0.05) — fast, free-flight arcs between lobes"
+  },
+  "lyapunov_spectrum": {
+    "lambda_1": "+2.1 (approximate)",
+    "lambda_2": "~0",
+    "lambda_3": "~-7.48",
+    "sum": "~-5.38 = a+b+c",
+    "D_KY": "~2.28",
+    "lyapunov_time_s": "~0.48"
+  }
+}
