@@ -23,6 +23,7 @@ export const GROUPS: NavGroup[] = [
       { label: "About", href: "/about" },
       { label: "The Loop", href: "/the-loop" },
       { label: "Practice", href: "/practice" },
+      { label: "Performances", href: "/performances" },
       { label: "Research", href: "/research" },
       { label: "Cast", href: "/cast" },
       { label: "Academy", href: "/academy" },
