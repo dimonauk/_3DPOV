@@ -1,0 +1,65 @@
+{
+  "blend": "cahn_hilliard_floor.blend",
+  "glb": "cahn_hilliard_floor.glb",
+  "videos": ["viewport.mp4", "screen.mp4"],
+  "blender_version": "5.1",
+  "grid": "128x128",
+  "vertices": 16384,
+  "quads": 16129,
+  "shape_keys": ["Basis", "SK_Coarsened", "SK_Droplets", "SK_ThickInterface"],
+  "vertex_attributes": ["CH_Comp"],
+  "export": {
+    "draco_level": 6,
+    "texture_format": "WEBP",
+    "export_morph": true,
+    "export_colors": true,
+    "y_up": true
+  },
+  "cross_references": {
+    "studio_articles": [
+      "/articles/holoflow-webxr-stage-floors",
+      "/codex/blender-python-scripting",
+      "/codex/numpy-in-blender"
+    ],
+    "studio_tutorials": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-swift-hohenberg-pde-hexagonal-rolls-benard-convection-stage-floor-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "Free Energy of a Nonuniform System. I. Interfacial Free Energy",
+        "authors": "Cahn JW, Hilliard JE",
+        "year": 1958,
+        "journal": "Journal of Chemical Physics",
+        "volume": 28,
+        "pages": 258,
+        "doi": "10.1063/1.1744102",
+        "licence": "Public domain (>65 yr)",
+        "url": "https://doi.org/10.1063/1.1744102"
+      },
+      {
+        "title": "Unconditionally gradient stable time marching the Cahn-Hilliard equation",
+        "authors": "Eyre DJ",
+        "year": 1998,
+        "journal": "MRS Symposium Proceedings",
+        "volume": 529,
+        "pages": 39,
+        "licence": "Public domain (1998)",
+        "url": "https://math.utah.edu/~eyre/research/methods/stable.ps"
+      },
+      {
+        "title": "Array programming with NumPy",
+        "authors": "Harris CR et al.",
+        "year": 2020,
+        "journal": "Nature",
+        "volume": 585,
+        "pages": "357-362",
+        "doi": "10.1038/s41586-020-2649-2",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      }
+    ]
+  }
+}

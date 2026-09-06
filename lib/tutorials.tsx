@@ -698,6 +698,7 @@ import { entry as blenderTutorialPythonNumpyChenLeeAttractor2004RigidBodyEulerRo
 import { entry as blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-halvorsen-cyclic-attractor-2005-c3-quadratic-nonlinearity-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-tight-binding-2d-square-lattice-dispersion-fermi-surface-van-hove-singularity-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMagneticPendulumFractalBasinThreeMagnetsRk4ConvergenceHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-magnetic-pendulum-fractal-basin-three-magnets-rk4-convergence-height-field-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseFieldSpiniodalDecompositionOstwaldRipeningStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-field-spinodal-decomposition-ostwald-ripening-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1403,6 +1404,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3QuadraticNonlinearityConstantDivergenceRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMagneticPendulumFractalBasinThreeMagnetsRk4ConvergenceHeightFieldStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyCahnHilliardPhaseFieldSpiniodalDecompositionOstwaldRipeningStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
