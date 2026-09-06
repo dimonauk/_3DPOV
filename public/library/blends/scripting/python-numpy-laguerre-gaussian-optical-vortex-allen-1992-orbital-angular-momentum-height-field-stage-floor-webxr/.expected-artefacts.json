@@ -1,0 +1,70 @@
+{
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "topic": "scripting",
+  "slug": "python-numpy-laguerre-gaussian-optical-vortex-allen-1992-orbital-angular-momentum-height-field-stage-floor-webxr",
+  "outputs": [
+    "lg_vortex_floor.blend",
+    "lg_vortex_floor.glb",
+    "viewport.mp4",
+    "screen.mp4"
+  ],
+  "mesh": {
+    "vertices": 16384,
+    "faces": 16129,
+    "topology": "quad grid 128×128",
+    "geometry": "height-field stage floor"
+  },
+  "vertex_attributes": [
+    {
+      "name": "LG_Phase",
+      "type": "FLOAT_COLOR",
+      "domain": "POINT",
+      "palette": "cobalt (phase node) → amber (phase lobe peak) — |sin(l·φ/2)| mapping"
+    }
+  ],
+  "shape_keys": ["Basis", "SK_l2", "SK_l3", "SK_p1"],
+  "shader": "Principled BSDF + Emission mix — LG_Phase drives Base Color + Emission",
+  "simulation": {
+    "method": "closed-form analytical",
+    "equations": "LG_p^l(r,φ,0) = C_pl · (√2r/w₀)^|l| · L_p^|l|(2r²/w₀²) · exp(−r²/w₀²) · exp(i·l·φ)",
+    "parameters": {
+      "N_grid": 128,
+      "EXTENT": 3.5,
+      "W0": 1.0,
+      "HEIGHT_SCALE": 0.55,
+      "modes": [
+        {"name": "Basis", "l": 1, "p": 0},
+        {"name": "SK_l2", "l": 2, "p": 0},
+        {"name": "SK_l3", "l": 3, "p": 0},
+        {"name": "SK_p1", "l": 1, "p": 1}
+      ]
+    }
+  },
+  "cross_references": {
+    "studio": [
+      "/tutorials/blender-tutorial-python-numpy-spherical-harmonics-real-sh-shape-keys-atomic-orbital-webxr",
+      "/tutorials/blender-tutorial-python-numpy-hopf-fibration-s3-s2-quaternion-villarceau-circles-stereographic-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-tight-binding-2d-square-lattice-dispersion-fermi-surface-van-hove-singularity-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-bloch-sphere-qubit-rabi-precession-berry-phase-su2-pauli-poi-webxr"
+    ],
+    "outside": [
+      {
+        "title": "Allen et al. 1992 — Orbital angular momentum of light",
+        "url": "https://doi.org/10.1103/PhysRevA.45.8185",
+        "licence": "academic citation (PD equations)"
+      },
+      {
+        "title": "NumPy — numerical computing library",
+        "url": "https://numpy.org",
+        "licence": "BSD-3-Clause"
+      },
+      {
+        "title": "NIST DLMF §18.3 — Laguerre polynomials",
+        "url": "https://dlmf.nist.gov/18.3",
+        "licence": "US Government public domain"
+      }
+    ]
+  }
+}
