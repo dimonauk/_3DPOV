@@ -1,0 +1,106 @@
+{
+  "slug": "python-numpy-liu-attractor-2004-lorenz-variant-x-squared-z-driving-z2-symmetry-constant-divergence-rk4-bishop-tube-poi-webxr",
+  "topic": "scripting",
+  "blender_version": "5.1",
+  "licence": "CC0",
+  "files": [
+    "blueprint.py",
+    "record.py",
+    "SCREEN-RECORDING-NOTES.md",
+    "README.md",
+    ".expected-artefacts.json",
+    "hf_liu_poi.blend",
+    "hf_liu_poi.glb"
+  ],
+  "videos": [
+    "public/library/videos/scripting/python-numpy-liu-attractor-2004-lorenz-variant-x-squared-z-driving-z2-symmetry-constant-divergence-rk4-bishop-tube-poi-webxr/viewport.mp4",
+    "public/library/videos/scripting/python-numpy-liu-attractor-2004-lorenz-variant-x-squared-z-driving-z2-symmetry-constant-divergence-rk4-bishop-tube-poi-webxr/screen.mp4"
+  ],
+  "mesh": {
+    "name": "hf_liu_poi",
+    "object_type": "poi_head",
+    "vertex_colour": "Liu_Speed",
+    "colour_type": "FLOAT_COLOR",
+    "colour_domain": "POINT",
+    "shape_keys": ["Basis", "SK_LoB", "SK_HiB", "SK_SoftZ"],
+    "tube_segments": 10,
+    "tube_radius": 0.045,
+    "waypoints": 3000,
+    "poi_radius": 0.090,
+    "export_yup": true,
+    "draco_level": 6
+  },
+  "physics": {
+    "system": "Liu attractor (Liu et al 2004)",
+    "original_citation": "Liu C, Liu T, Liu L, Liu K (2004) Chaos Solitons Fractals 22(5):1031-1038",
+    "doi": "10.1016/j.chaos.2004.02.060",
+    "physical_context": "Abstract 3D strange attractor; key distinction from Lorenz is hx² replacing xy in the z-equation",
+    "equations": {
+      "x_dot": "a*(y - x)",
+      "y_dot": "b*x - k*x*z",
+      "z_dot": "-c*z + h*x^2"
+    },
+    "canonical_params": { "a": 10, "b": 40, "k": 1, "c": 2.5, "h": 4 },
+    "equilibria_origin": {
+      "point": "(0, 0, 0)",
+      "eigenvalues": ["+15.62 (unstable)", "-25.62 (stable)", "-2.5 (stable)"],
+      "type": "saddle"
+    },
+    "equilibria_wings": {
+      "points": "P± = (±5, ±5, 40)",
+      "derivation": "z=b/k=40 from ẏ=0; x²=cz/h=25 from ż=0",
+      "char_poly": "lambda^3 + 12.5*lambda^2 + 25*lambda - 2000 = 0",
+      "eigenvalues": ["+9.05 (unstable real)", "-10.78 ± 10.24i (stable complex)"],
+      "type": "saddle-node (1 unstable real, 2 stable complex)"
+    },
+    "symmetry": "Z2: (x,y,z) -> (-x,-y,z)",
+    "divergence": "-(a+c) = -12.5 (constant, position-independent)",
+    "lyapunov_lambda1": 1.847,
+    "lyapunov_lambda2": 0.000,
+    "lyapunov_lambda3": -14.347,
+    "kaplan_yorke_dim": 2.129,
+    "lyapunov_time_tu": 0.54,
+    "liouville_check": "1.847 + 0.000 - 14.347 = -12.500 = nabla_F",
+    "integrator": "RK4",
+    "dt": 0.005,
+    "burn_in": 3000,
+    "n_steps": 90000,
+    "thin": 30,
+    "shape_key_variants": {
+      "Basis": "a=10, b=40, k=1, c=2.5, h=4 — canonical Liu 2004",
+      "SK_LoB": "b=28 — wings at z=28, x±≈±4.18, compact orbit",
+      "SK_HiB": "b=52 — wings at z=52, x±≈±5.70, expanded orbit",
+      "SK_SoftZ": "c=1.5 — slower z-relaxation, x±≈±3.87, topology reshapes"
+    }
+  },
+  "cross_references": {
+    "studio_surfaces": [
+      "/tutorials/blender-tutorial-python-numpy-lorenz-attractor-rk4-strange-butterfly-poi-light-trail-webxr",
+      "/tutorials/blender-tutorial-python-numpy-lu-attractor-2002-jinhu-lu-chen-transition-lorenz-chen-family-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-chen-attractor-guanrong-chen-ueta-1999-lorenz-dual-butterfly-rk4-bishop-tube-poi-webxr",
+      "/tutorials/blender-tutorial-python-numpy-shimizu-morioka-attractor-1980-laser-mode-z2-saddle-focus-rk4-bishop-tube-poi-webxr"
+    ],
+    "outside_sources": [
+      {
+        "author": "Liu C, Liu T, Liu L, Liu K",
+        "title": "A new chaotic attractor — Chaos Solitons Fractals 22(5):1031-1038 (2004)",
+        "licence": "PD (mathematical equations)",
+        "url": "https://doi.org/10.1016/j.chaos.2004.02.060"
+      },
+      {
+        "author": "Harris CR et al (NumPy Developers)",
+        "title": "Array programming with NumPy — Nature 585:357-362 (2020)",
+        "licence": "BSD-3-Clause",
+        "url": "https://numpy.org",
+        "repo": "https://github.com/numpy/numpy"
+      },
+      {
+        "author": "Sprott JC",
+        "title": "Elegant Chaos: Algebraically Simple Chaotic Flows (2010), World Scientific",
+        "licence": "MIT (companion C code)",
+        "url": "https://sprott.physics.wisc.edu/chaos/elegantchaos.htm",
+        "related_org": "https://sprott.physics.wisc.edu"
+      }
+    ]
+  }
+}

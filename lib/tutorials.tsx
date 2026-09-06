@@ -691,6 +691,7 @@ import { entry as blenderTutorialPythonNumpyVallisEnsoAttractor1988ElNinoOscilla
 import { entry as blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-arneodo-coullet-tresser-attractor-1981-cubic-jerk-shilnikov-dual-saddle-focus-z2-symmetry-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-rabinovich-fabrikant-equations-1979-plasma-wave-modulation-chaos-rk4-bishop-tube-poi-webxr";
 import { entry as blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-chua-circuit-leon-chua-1983-double-scroll-piecewise-linear-shilnikov-bishop-tube-poi-webxr";
+import { entry as blenderTutorialPythonNumpyLiuAttractor2004LorenzVariantXSquaredZDrivingZ2SymmetryConstantDivergenceRk4BishopTubePoiWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-liu-attractor-2004-lorenz-variant-x-squared-z-driving-z2-symmetry-constant-divergence-rk4-bishop-tube-poi-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1389,6 +1390,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyArneodoCoulletTresserAttractor1981CubicJerkShilnikovDualSaddleFocusZ2SymmetryRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyRabinovichFabrikantEquations1979PlasmaWaveModulationChaosRk4BishopTubePoiWebxrEntry,
   blenderTutorialPythonNumpyChuaCircuitLeonChua1983DoubleScrollPiecewiseLinearShilnikovBishopTubePoiWebxrEntry,
+  blenderTutorialPythonNumpyLiuAttractor2004LorenzVariantXSquaredZDrivingZ2SymmetryConstantDivergenceRk4BishopTubePoiWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);
