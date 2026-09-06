@@ -699,6 +699,7 @@ import { entry as blenderTutorialPythonNumpyHalvorsenCyclicAttractor2005C3Quadra
 import { entry as blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-tight-binding-2d-square-lattice-dispersion-fermi-surface-van-hove-singularity-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyMagneticPendulumFractalBasinThreeMagnetsRk4ConvergenceHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-magnetic-pendulum-fractal-basin-three-magnets-rk4-convergence-height-field-stage-floor-webxr";
 import { entry as blenderTutorialPythonNumpyCahnHilliardPhaseFieldSpiniodalDecompositionOstwaldRipeningStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-cahn-hilliard-phase-field-spinodal-decomposition-ostwald-ripening-stage-floor-webxr";
+import { entry as blenderTutorialPythonNumpyComplexGinzburgLandauPdeSpiralTurbulenceBenjaminFeirDefectHeightFieldStageFloorWebxrEntry } from "components/tutorials/entries/blender-tutorial-python-numpy-complex-ginzburg-landau-pde-spiral-turbulence-benjamin-feir-defect-height-field-stage-floor-webxr";
 import { Entry, sortByDateDescending } from "./writing";
 
 const ENTRIES: Entry[] = [
@@ -1405,6 +1406,7 @@ const ENTRIES: Entry[] = [
   blenderTutorialPythonNumpyTightBinding2dSquareLatticeDispersionFermiSurfaceVanHoveSingularityStageFloorWebxrEntry,
   blenderTutorialPythonNumpyMagneticPendulumFractalBasinThreeMagnetsRk4ConvergenceHeightFieldStageFloorWebxrEntry,
   blenderTutorialPythonNumpyCahnHilliardPhaseFieldSpiniodalDecompositionOstwaldRipeningStageFloorWebxrEntry,
+  blenderTutorialPythonNumpyComplexGinzburgLandauPdeSpiralTurbulenceBenjaminFeirDefectHeightFieldStageFloorWebxrEntry,
 ];
 
 export const tutorials: Entry[] = sortByDateDescending(ENTRIES);

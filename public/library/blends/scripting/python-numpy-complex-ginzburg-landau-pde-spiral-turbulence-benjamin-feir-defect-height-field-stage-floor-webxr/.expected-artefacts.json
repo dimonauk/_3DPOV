@@ -1,0 +1,52 @@
+{
+  "blend": "holoflow_cgl_floor.blend",
+  "glb":   "holoflow_cgl_floor.glb",
+  "topology": {
+    "vertices": 16384,
+    "quads":    16129,
+    "shape_keys": ["Basis", "SK_Turbulent", "SK_PhaseTurb", "SK_Frozen"]
+  },
+  "colour_attribute": "CGL_Phase",
+  "colour_domain": "POINT",
+  "colour_type": "FLOAT_COLOR",
+  "export": {
+    "draco_level": 6,
+    "image_format": "WEBP",
+    "export_morph": true,
+    "export_colors": true
+  },
+  "videos": {
+    "viewport": "public/library/videos/scripting/python-numpy-complex-ginzburg-landau-pde-spiral-turbulence-benjamin-feir-defect-height-field-stage-floor-webxr/viewport.mp4",
+    "screen":   "public/library/videos/scripting/python-numpy-complex-ginzburg-landau-pde-spiral-turbulence-benjamin-feir-defect-height-field-stage-floor-webxr/screen.mp4"
+  },
+  "cross_references": {
+    "studio_internal": [
+      "/tutorials/blender-tutorial-python-numpy-gray-scott-reaction-diffusion-turing-pattern-height-field-webxr",
+      "/tutorials/blender-tutorial-python-numpy-brusselator-prigogine-lefever-1968-turing-instability-hopf-dissipative-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kelvin-helmholtz-shear-instability-spectral-vorticity-height-field-stage-floor-webxr",
+      "/tutorials/blender-tutorial-python-numpy-kuramoto-sivashinsky-pde-spatiotemporal-chaos-flame-front-height-field-stage-floor-webxr"
+    ],
+    "outside_sources": [
+      {
+        "title": "The world of the complex Ginzburg–Landau equation",
+        "authors": ["Igor S. Aranson", "Lorenz Kramer"],
+        "year": 2002,
+        "journal": "Rev Mod Phys",
+        "volume": 74,
+        "page": 99,
+        "url": "https://arxiv.org/abs/cond-mat/0106115",
+        "licence": "CC0 / arXiv open access"
+      },
+      {
+        "title": "Exponential time differencing for stiff systems",
+        "authors": ["S. M. Cox", "P. C. Matthews"],
+        "year": 2002,
+        "journal": "J Comput Phys",
+        "volume": 176,
+        "pages": "430-455",
+        "doi": "10.1006/jcph.2002.6995",
+        "licence": "public-domain algorithm"
+      }
+    ]
+  }
+}
